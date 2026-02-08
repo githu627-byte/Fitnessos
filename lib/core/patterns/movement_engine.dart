@@ -445,19 +445,6 @@ class MovementEngine {
     'incline_fly': ExerciseConfig(patternType: PatternType.push),
     'incline_flys': ExerciseConfig(patternType: PatternType.push),
     
-    // PUSH PATTERN - LATERAL RAISES (inverted - arms go UP)
-    'lateral_raise': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Up!', 'cueBad': 'Higher!'}),
-    'lateral_raises': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Up!', 'cueBad': 'Higher!'}),
-    'dumbbell_lateral_raise': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Up!', 'cueBad': 'Higher!'}),
-    'leaning_lateral_raise': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Up!', 'cueBad': 'Higher!'}),
-    'front_raise': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Up!', 'cueBad': 'Higher!'}),
-    'front_raises': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Up!', 'cueBad': 'Higher!'}),
-    'plate_front_raise': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Up!', 'cueBad': 'Higher!'}),
-    'dumbbell_front_raise': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Up!', 'cueBad': 'Higher!'}),
-    'barbell_front_raise': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Up!', 'cueBad': 'Higher!'}),
-    'cable_lateral_raise': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Up!', 'cueBad': 'Higher!'}),
-    'cable_lateral_raises': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Up!', 'cueBad': 'Higher!'}),
-    
     // PUSH PATTERN - PLANK SHOULDER TAPS
     'plank_shoulder_tap': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Tap!', 'cueBad': 'Stay stable!'}),
     'plank_shoulder_taps': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Tap!', 'cueBad': 'Stay stable!'}),
@@ -706,6 +693,18 @@ class MovementEngine {
     'wrist_curls': ExerciseConfig(patternType: PatternType.curl),
     'reverse_wrist_curl': ExerciseConfig(patternType: PatternType.curl),
     
+    // CURL PATTERN - LATERAL RAISES & FRONT RAISES (moved from push - use barbell_curl pattern)
+    'lateral_raise': ExerciseConfig(patternType: PatternType.curl),
+    'lateral_raises': ExerciseConfig(patternType: PatternType.curl),
+    'dumbbell_lateral_raise': ExerciseConfig(patternType: PatternType.curl),
+    'leaning_lateral_raise': ExerciseConfig(patternType: PatternType.curl),
+    'front_raise': ExerciseConfig(patternType: PatternType.curl),
+    'front_raises': ExerciseConfig(patternType: PatternType.curl),
+    'plate_front_raise': ExerciseConfig(patternType: PatternType.curl),
+    'dumbbell_front_raise': ExerciseConfig(patternType: PatternType.curl),
+    'barbell_front_raise': ExerciseConfig(patternType: PatternType.curl),
+    'cable_lateral_raise': ExerciseConfig(patternType: PatternType.curl),
+    'cable_lateral_raises': ExerciseConfig(patternType: PatternType.curl),
     
 
 // =============================================================================
