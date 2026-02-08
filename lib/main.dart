@@ -107,17 +107,21 @@ class _AppInitializerState extends ConsumerState<AppInitializer> {
   }
 
   Future<void> _checkOnboardingStatus() async {
-    final storage = await ref.read(storageServiceProvider.future);
-    final hasCompletedOnboarding = storage.hasCompletedOnboarding;
-
+    // TEMPORARILY BYPASSING ONBOARDING FOR TESTING
+    // Onboarding code kept intact below - uncomment when ready
+    
+    // final storage = await ref.read(storageServiceProvider.future);
+    // final hasCompletedOnboarding = storage.hasCompletedOnboarding;
+    // if (!mounted) return;
+    // if (hasCompletedOnboarding) {
+    //   Navigator.of(context).pushReplacementNamed('/home');
+    // } else {
+    //   Navigator.of(context).pushReplacementNamed('/onboarding');
+    // }
+    
+    // TEMPORARY: Go straight to home screen for testing
     if (!mounted) return;
-
-    // Navigate to appropriate screen based on onboarding status
-    if (hasCompletedOnboarding) {
-      Navigator.of(context).pushReplacementNamed('/home');
-    } else {
-      Navigator.of(context).pushReplacementNamed('/onboarding');
-    }
+    Navigator.of(context).pushReplacementNamed('/home');
   }
 
   @override
