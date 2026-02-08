@@ -280,15 +280,6 @@ class MovementEngine {
     'lateral_hops': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
     'skater_hop': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80, 'cueGood': 'Jump!', 'cueBad': 'Push off!'}),
     
-    // SQUAT PATTERN - BURPEE/SPRAWL
-    'burpee': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.65, 'resetPercent': 0.90, 'cueGood': 'Explode!', 'cueBad': 'Chest down!'}),
-    'burpees': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.65, 'resetPercent': 0.90, 'cueGood': 'Explode!', 'cueBad': 'Chest down!'}),
-    'modified_burpee': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'resetPercent': 0.90}),
-    'burpee_tuck_jump': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.60, 'resetPercent': 0.88, 'cueGood': 'Explode!', 'cueBad': 'Tuck!'}),
-    'burpee_sprawl': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.65, 'resetPercent': 0.90}),
-    'sprawl': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.65, 'resetPercent': 0.90}),
-    'sprawls': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.65, 'resetPercent': 0.90}),
-    
     // SQUAT PATTERN - PULSE
     'squat_pulse': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80, 'resetPercent': 0.85, 'cueGood': 'Pulse!', 'cueBad': 'Stay low!'}),
     'sumo_squat_pulse': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80, 'resetPercent': 0.85, 'cueGood': 'Pulse!', 'cueBad': 'Stay low!'}),
@@ -305,6 +296,25 @@ class MovementEngine {
     'thruster': ExerciseConfig(patternType: PatternType.squat, params: {'cueGood': 'Drive up!', 'cueBad': 'Full squat!'}),
     'thrusters': ExerciseConfig(patternType: PatternType.squat, params: {'cueGood': 'Drive up!', 'cueBad': 'Full squat!'}),
     'spanish_squat': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70}),
+    
+    // SQUAT PATTERN - DEADLIFTS (moved from hinge - use basic squat pattern)
+    'deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'deadlifts': ExerciseConfig(patternType: PatternType.squat),
+    'rack_pull': ExerciseConfig(patternType: PatternType.squat),
+    'conventional_deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'deficit_deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'sumo_deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'sumo_deadlifts': ExerciseConfig(patternType: PatternType.squat),
+    'romanian_deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'romanian_deadlifts': ExerciseConfig(patternType: PatternType.squat),
+    'rdl': ExerciseConfig(patternType: PatternType.squat),
+    'dumbbell_rdl': ExerciseConfig(patternType: PatternType.squat),
+    'stiff_leg_deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'stiff_leg_deadlifts': ExerciseConfig(patternType: PatternType.squat),
+    'single_leg_deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'single_leg_deadlifts': ExerciseConfig(patternType: PatternType.squat),
+    'single_leg_rdl': ExerciseConfig(patternType: PatternType.squat),
+    'trap_bar_deadlift': ExerciseConfig(patternType: PatternType.squat),
     
     // SQUAT PATTERN - GLUTE EXERCISES
     'clamshell': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
@@ -409,6 +419,16 @@ class MovementEngine {
     'db_overhead_press': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Lockout!', 'cueBad': 'Press higher!'}),
     'standing_ohp': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Lockout!', 'cueBad': 'Press higher!'}),
     'ohp': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Lockout!', 'cueBad': 'Press higher!'}),
+    
+    // PUSH PATTERN - TRICEP EXTENSIONS (moved from curl - use barbell_overhead_press pattern)
+    'tricep_extension': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Lockout!', 'cueBad': 'Press higher!'}),
+    'tricep_extensions': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Lockout!', 'cueBad': 'Press higher!'}),
+    'overhead_tricep_extension': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Lockout!', 'cueBad': 'Press higher!'}),
+    'overhead_tricep': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Lockout!', 'cueBad': 'Press higher!'}),
+    'overhead_tricep_ext': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Lockout!', 'cueBad': 'Press higher!'}),
+    'skull_crusher': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Lockout!', 'cueBad': 'Press higher!'}),
+    'skull_crushers': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Lockout!', 'cueBad': 'Press higher!'}),
+    'cable_tricep_extension': ExerciseConfig(patternType: PatternType.push, params: {'inverted': true, 'cueGood': 'Lockout!', 'cueBad': 'Press higher!'}),
     
     // PUSH PATTERN - DIPS
     'dip': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Push!', 'cueBad': 'Deeper!'}),
@@ -537,24 +557,14 @@ class MovementEngine {
     // ===== HINGE PATTERN - Hip hinge movements =====
     // =========================================================================
     
-    // HINGE PATTERN - DEADLIFTS
-    'deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
-    'deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75}),
-    'rack_pull': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75}),
-    'conventional_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75}),
-    'deficit_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.75}),
-    'sumo_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.45, 'resetPercent': 0.75}),
-    'sumo_deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.45, 'resetPercent': 0.75}),
-    'romanian_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70, 'cueGood': 'Hamstrings!', 'cueBad': 'Flat back!'}),
-    'romanian_deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70}),
-    'rdl': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70}),
-    'dumbbell_rdl': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75}),
-    'stiff_leg_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70}),
-    'stiff_leg_deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70}),
-    'single_leg_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.70}),
-    'single_leg_deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.70}),
-    'single_leg_rdl': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.70}),
-    'trap_bar_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.45, 'resetPercent': 0.75}),
+    // HINGE PATTERN - BURPEE/SPRAWL (moved from squat - use deadlift pattern)
+    'burpee': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
+    'burpees': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
+    'modified_burpee': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
+    'burpee_tuck_jump': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
+    'burpee_sprawl': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
+    'sprawl': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
+    'sprawls': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
     
     // HINGE PATTERN - GOOD MORNINGS
     'good_morning': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.70, 'cueGood': 'Feel it!', 'cueBad': 'Hinge!'}),
@@ -658,23 +668,15 @@ class MovementEngine {
     '21s': ExerciseConfig(patternType: PatternType.curl),
     
     // CURL PATTERN - TRICEP EXTENSIONS
-    'tricep_extension': ExerciseConfig(patternType: PatternType.curl, params: {'cueGood': 'Lockout!', 'cueBad': 'Extend!'}),
-    'tricep_extensions': ExerciseConfig(patternType: PatternType.curl, params: {'cueGood': 'Lockout!', 'cueBad': 'Extend!'}),
-    'overhead_tricep_extension': ExerciseConfig(patternType: PatternType.curl),
-    'overhead_tricep': ExerciseConfig(patternType: PatternType.curl), // NEW - Missing
-    'overhead_tricep_ext': ExerciseConfig(patternType: PatternType.curl),
     'tricep_pushdown': ExerciseConfig(patternType: PatternType.curl, params: {'cueGood': 'Push!', 'cueBad': 'Lockout!'}),
     'tricep_pushdowns': ExerciseConfig(patternType: PatternType.curl, params: {'cueGood': 'Push!', 'cueBad': 'Lockout!'}),
     'cable_pushdown': ExerciseConfig(patternType: PatternType.curl),
     'rope_pushdown': ExerciseConfig(patternType: PatternType.curl),
     'rope_pushdowns': ExerciseConfig(patternType: PatternType.curl),
     'rope_tricep_extension': ExerciseConfig(patternType: PatternType.curl),
-    'skull_crusher': ExerciseConfig(patternType: PatternType.curl, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
-    'skull_crushers': ExerciseConfig(patternType: PatternType.curl, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
     'tricep_kickback': ExerciseConfig(patternType: PatternType.curl),
     'tricep_kickbacks': ExerciseConfig(patternType: PatternType.curl),
     'dumbbell_kickback': ExerciseConfig(patternType: PatternType.curl),
-    'cable_tricep_extension': ExerciseConfig(patternType: PatternType.curl),
     
     // CURL PATTERN - LEG EXTENSIONS/CURLS
     'leg_extension': ExerciseConfig(patternType: PatternType.curl, params: {'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
