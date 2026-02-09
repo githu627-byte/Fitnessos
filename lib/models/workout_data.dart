@@ -129,7 +129,6 @@ class WorkoutData {
       Exercise(id: 'calf_raises', name: 'Calf Raises', difficulty: 'beginner', equipment: 'weights'),
       Exercise(id: 'step_ups', name: 'Step-ups', difficulty: 'beginner', equipment: 'bodyweight'),
       Exercise(id: 'goblet_squats', name: 'Goblet Squats', difficulty: 'beginner', equipment: 'weights'),
-      Exercise(id: 'wall_sits', name: 'Wall Sits', difficulty: 'beginner', equipment: 'bodyweight'),
       Exercise(id: 'jump_squats', name: 'Jump Squats', difficulty: 'intermediate', equipment: 'bodyweight'),
     ],
     'arms': [
@@ -320,7 +319,6 @@ class WorkoutData {
     Exercise(id: 'mountain_climbers', name: 'Mountain Climbers', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'burpees', name: 'Burpees', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'pike_pushups', name: 'Pike Push-ups', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'wall_sits', name: 'Wall Sits', difficulty: 'beginner', equipment: 'bodyweight'),
   ];
 
   // Cardio Only Exercises
@@ -331,7 +329,6 @@ class WorkoutData {
     Exercise(id: 'butt_kicks', name: 'Butt Kicks', difficulty: 'beginner', equipment: 'none'),
     Exercise(id: 'box_jumps', name: 'Box Jumps', difficulty: 'advanced', equipment: 'none'),
     Exercise(id: 'jump_rope', name: 'Jump Rope', difficulty: 'intermediate', equipment: 'none'),
-    Exercise(id: 'bear_crawls', name: 'Bear Crawls', difficulty: 'intermediate', equipment: 'none'),
     Exercise(id: 'sprawls', name: 'Sprawls', difficulty: 'advanced', equipment: 'none'),
     Exercise(id: 'skaters', name: 'Skaters', difficulty: 'intermediate', equipment: 'none'),
     Exercise(id: 'tuck_jumps', name: 'Tuck Jumps', difficulty: 'advanced', equipment: 'none'),
@@ -959,7 +956,6 @@ class WorkoutData {
       exercises: [
         WorkoutExercise(id: 'cable_crunch', name: 'Cable Crunch', sets: 3, reps: 15),
         WorkoutExercise(id: 'hanging_leg_raise', name: 'Hanging Leg Raise', sets: 3, reps: 12),
-        WorkoutExercise(id: 'ab_wheel_rollout', name: 'Ab Wheel Rollout', sets: 3, reps: 10),
         WorkoutExercise(id: 'russian_twist', name: 'Russian Twist (weighted)', sets: 3, reps: 20),
         WorkoutExercise(id: 'woodchoppers', name: 'Woodchoppers', sets: 3, reps: 12, included: false),
         WorkoutExercise(id: 'decline_situp', name: 'Decline Sit-Up', sets: 3, reps: 15, included: false),
@@ -1310,7 +1306,6 @@ class WorkoutData {
         WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 3, reps: 15),
         WorkoutExercise(id: 'air_squats', name: 'Air Squats', sets: 3, reps: 20),
         WorkoutExercise(id: 'lunges', name: 'Lunges', sets: 3, reps: 12),
-        WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15),
         WorkoutExercise(id: 'glute_bridge', name: 'Glute Bridge', sets: 3, reps: 15),
         WorkoutExercise(id: 'plank', name: 'Plank', sets: 3, reps: 45),
         WorkoutExercise(id: 'mountain_climbers', name: 'Mountain Climbers', sets: 3, reps: 20),
@@ -1326,11 +1321,9 @@ class WorkoutData {
       duration: '~25 min',
       exercises: [
         WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 3, reps: 15),
-        WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15),
         WorkoutExercise(id: 'pike_pushups', name: 'Pike Push-Ups', sets: 3, reps: 10),
         WorkoutExercise(id: 'inverted_rows', name: 'Inverted Rows (table)', sets: 3, reps: 12),
         WorkoutExercise(id: 'tricep_dips_chair', name: 'Tricep Dips (chair)', sets: 3, reps: 12),
-        WorkoutExercise(id: 'plank_shoulder_taps', name: 'Plank Shoulder Taps', sets: 3, reps: 20),
       ],
     ),
     WorkoutPreset(
@@ -1347,7 +1340,6 @@ class WorkoutData {
         WorkoutExercise(id: 'glute_bridge', name: 'Glute Bridge', sets: 4, reps: 15),
         WorkoutExercise(id: 'single_leg_glute_bridge', name: 'Single Leg Glute Bridge', sets: 3, reps: 10),
         WorkoutExercise(id: 'stepups_chair', name: 'Step-Ups (chair)', sets: 3, reps: 12),
-        WorkoutExercise(id: 'wall_sit', name: 'Wall Sit', sets: 3, reps: 45),
         WorkoutExercise(id: 'calf_raises', name: 'Calf Raises', sets: 3, reps: 20),
       ],
     ),
@@ -1459,8 +1451,6 @@ class WorkoutData {
         WorkoutExercise(id: 'single_leg_glute_bridge', name: 'Single Leg Glute Bridge', sets: 3, reps: 12),
         WorkoutExercise(id: 'donkey_kicks', name: 'Donkey Kicks', sets: 3, reps: 15),
         WorkoutExercise(id: 'fire_hydrants', name: 'Fire Hydrants', sets: 3, reps: 15),
-        WorkoutExercise(id: 'clamshells', name: 'Clamshells', sets: 3, reps: 15),
-        WorkoutExercise(id: 'frog_pumps', name: 'Frog Pumps', sets: 3, reps: 20),
       ],
     ),
     WorkoutPreset(
@@ -1491,7 +1481,6 @@ class WorkoutData {
       exercises: [
         WorkoutExercise(id: 'banded_squat', name: 'Banded Squat', sets: 3, reps: 15),
         WorkoutExercise(id: 'banded_glute_bridge', name: 'Banded Glute Bridge', sets: 3, reps: 15),
-        WorkoutExercise(id: 'banded_clamshell', name: 'Banded Clamshell', sets: 3, reps: 15),
         WorkoutExercise(id: 'banded_kickback', name: 'Banded Kickback', sets: 3, reps: 15),
         WorkoutExercise(id: 'banded_lateral_walk', name: 'Banded Lateral Walk', sets: 3, reps: 12),
         WorkoutExercise(id: 'banded_fire_hydrant', name: 'Banded Fire Hydrant', sets: 3, reps: 12),
@@ -1531,7 +1520,6 @@ class WorkoutData {
         // Upper
         WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 3, reps: 12),
         WorkoutExercise(id: 'pike_pushups', name: 'Pike Push-Ups', sets: 3, reps: 10),
-        WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15),
         WorkoutExercise(id: 'tricep_dips_chair', name: 'Tricep Dips (chair)', sets: 3, reps: 12),
         // Lower
         WorkoutExercise(id: 'air_squats', name: 'Air Squats', sets: 4, reps: 20, included: false),
@@ -1551,7 +1539,6 @@ class WorkoutData {
         WorkoutExercise(id: 'air_squats', name: 'Air Squats', sets: 3, reps: 20),
         WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 3, reps: 12),
         WorkoutExercise(id: 'glute_bridge', name: 'Glute Bridge', sets: 3, reps: 15),
-        WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15),
         WorkoutExercise(id: 'lunges', name: 'Lunges', sets: 3, reps: 12),
         WorkoutExercise(id: 'plank', name: 'Plank', sets: 2, reps: 45, included: false),
         WorkoutExercise(id: 'mountain_climbers', name: 'Mountain Climbers', sets: 3, reps: 20, included: false),
@@ -1571,7 +1558,6 @@ class WorkoutData {
         WorkoutExercise(id: 'pike_pushups', name: 'Pike Push-Ups', sets: 3, reps: 10),
         WorkoutExercise(id: 'diamond_pushups', name: 'Diamond Push-Ups', sets: 2, reps: 10),
         // Pull
-        WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15, included: false),
         WorkoutExercise(id: 'inverted_rows', name: 'Inverted Rows (table)', sets: 3, reps: 10, included: false),
         // Legs
         WorkoutExercise(id: 'air_squats', name: 'Air Squats', sets: 4, reps: 20, included: false),
@@ -1663,7 +1649,6 @@ class WorkoutData {
     Exercise(id: 'barbell_back_squat', name: 'Barbell Back Squat', difficulty: 'intermediate', equipment: 'weights'),
     Exercise(id: 'barbell_squat', name: 'Barbell Squat', difficulty: 'intermediate', equipment: 'weights'),
     Exercise(id: 'barbell_squat_press', name: 'Barbell Squat Press', difficulty: 'intermediate', equipment: 'weights'),
-    Exercise(id: 'bear_crawl', name: 'Bear Crawl', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'bodyweight_squat', name: 'Bodyweight Squat', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'box_jump', name: 'Box Jump', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'bulgarian_split', name: 'Bulgarian Split', difficulty: 'intermediate', equipment: 'bodyweight'),
@@ -1732,10 +1717,6 @@ class WorkoutData {
     Exercise(id: 'stepups_chair', name: 'Stepups Chair', difficulty: 'intermediate', equipment: 'bodyweight'),
 
     // ===== PUSH PATTERN =====
-    Exercise(id: 'ab_wheel', name: 'Ab Wheel', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'ab_wheel_kneeling', name: 'Ab Wheel Kneeling', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'ab_wheel_rollout', name: 'Ab Wheel Rollout', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'ab_wheel_standing', name: 'Ab Wheel Standing', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'archer_push_up', name: 'Archer Push Up', difficulty: 'advanced', equipment: 'bodyweight'),
     Exercise(id: 'archer_pushup', name: 'Archer Pushup', difficulty: 'advanced', equipment: 'bodyweight'),
     Exercise(id: 'arnold_press', name: 'Arnold Press', difficulty: 'intermediate', equipment: 'bodyweight'),
@@ -1800,7 +1781,6 @@ class WorkoutData {
     Exercise(id: 'pec_deck', name: 'Pec Deck', difficulty: 'intermediate', equipment: 'weights'),
     Exercise(id: 'pike_push_ups', name: 'Pike Push Ups', difficulty: 'advanced', equipment: 'bodyweight'),
     Exercise(id: 'pike_pushup', name: 'Pike Pushup', difficulty: 'advanced', equipment: 'bodyweight'),
-    Exercise(id: 'plank_shoulder_tap', name: 'Plank Shoulder Tap', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'plank_to_pushup', name: 'Plank To Pushup', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'plate_front_raise', name: 'Plate Front Raise', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'push_press', name: 'Push Press', difficulty: 'intermediate', equipment: 'bodyweight'),
@@ -1865,7 +1845,6 @@ class WorkoutData {
     // ===== HINGE PATTERN =====
     Exercise(id: 'american_swing', name: 'American Swing', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'back_extension', name: 'Back Extension', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'banded_clamshell', name: 'Banded Clamshell', difficulty: 'intermediate', equipment: 'bands'),
     Exercise(id: 'banded_fire_hydrant', name: 'Banded Fire Hydrant', difficulty: 'intermediate', equipment: 'bands'),
     Exercise(id: 'banded_glute_bridge', name: 'Banded Glute Bridge', difficulty: 'intermediate', equipment: 'bands'),
     Exercise(id: 'banded_kickback', name: 'Banded Kickback', difficulty: 'intermediate', equipment: 'bands'),
@@ -1882,9 +1861,6 @@ class WorkoutData {
     Exercise(id: 'dumbbell_rdl', name: 'Dumbbell RDL', difficulty: 'intermediate', equipment: 'weights'),
     Exercise(id: 'elevated_glute_bridge', name: 'Elevated Glute Bridge', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'fire_hydrant', name: 'Fire Hydrant', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'frog_pump', name: 'Frog Pump', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'frog_pump_hold_pulse', name: 'Frog Pump Hold Pulse', difficulty: 'beginner', equipment: 'bodyweight'),
-    Exercise(id: 'frog_pump_pulse', name: 'Frog Pump Pulse', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'glute_bridge', name: 'Glute Bridge', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'glute_bridge_single', name: 'Glute Bridge Single', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'glute_kickback', name: 'Glute Kickback', difficulty: 'intermediate', equipment: 'bodyweight'),
@@ -1990,10 +1966,7 @@ class WorkoutData {
     Exercise(id: 'cat_cow', name: 'Cat Cow', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'chest_doorway_stretch', name: 'Chest Doorway Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'childs_pose', name: 'Childs Pose', difficulty: 'beginner', equipment: 'bodyweight'),
-    Exercise(id: 'clamshell', name: 'Clamshell', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'dead_hang', name: 'Dead Hang', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'forearm_plank', name: 'Forearm Plank', difficulty: 'beginner', equipment: 'bodyweight'),
-    Exercise(id: 'frog_stretch', name: 'Frog Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'glute_bridge_hold', name: 'Glute Bridge Hold', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'hamstring_stretch', name: 'Hamstring Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'hang', name: 'Hang', difficulty: 'intermediate', equipment: 'bodyweight'),
@@ -2001,8 +1974,6 @@ class WorkoutData {
     Exercise(id: 'high_plank', name: 'High Plank', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'hip_flexor_stretch', name: 'Hip Flexor Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'hollow_body_hold', name: 'Hollow Body Hold', difficulty: 'beginner', equipment: 'bodyweight'),
-    Exercise(id: 'l_sit', name: 'L-Sit', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'pigeon_pose', name: 'Pigeon Pose', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'plank', name: 'Plank', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'plank_hold', name: 'Plank Hold', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'plank_jack', name: 'Plank Jack', difficulty: 'beginner', equipment: 'bodyweight'),
@@ -2012,12 +1983,6 @@ class WorkoutData {
     Exercise(id: 'side_plank', name: 'Side Plank', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'side_plank_left', name: 'Side Plank Left', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'side_plank_right', name: 'Side Plank Right', difficulty: 'beginner', equipment: 'bodyweight'),
-    Exercise(id: 'superman', name: 'Superman', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'superman_hold', name: 'Superman Hold', difficulty: 'beginner', equipment: 'bodyweight'),
-    Exercise(id: 'superman_raises', name: 'Superman Raises', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'wall_sit', name: 'Wall Sit', difficulty: 'beginner', equipment: 'bodyweight'),
-    Exercise(id: 'wall_squat', name: 'Wall Squat', difficulty: 'beginner', equipment: 'bodyweight'),
-    Exercise(id: 'worlds_greatest_stretch', name: 'Worlds Greatest Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
 
     // ===== ROTATION PATTERN =====
     Exercise(id: 'cable_wood_chop', name: 'Cable Wood Chop', difficulty: 'intermediate', equipment: 'weights'),

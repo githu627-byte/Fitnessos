@@ -976,16 +976,6 @@ const Map<String, ExerciseMuscleData> exerciseMuscleDatabase = {
     },
     description: 'HOW TO: Anchor a resistance band at knee height behind you. Loop the band behind your knees. Step forward to create tension, with the band pulling your knees forward. Stand with feet shoulder-width apart. Squat down by bending your knees while the band restricts forward knee movement. The band forces your quads to work harder. Squat to comfortable depth, then stand. This specialized variation is excellent for quad development and knee health.',
   ),
-  'clamshell': ExerciseMuscleData(
-    primaryMuscles: {
-      'glutes': 0.0,
-      'hip_abductors': 0.0,
-    },
-    secondaryMuscles: {
-      'core': 0.6,
-    },
-    description: 'HOW TO: Lie on your side with hips and knees bent at 90 degrees, feet together. Rest your head on your lower arm. Keep your feet touching throughout. Lift your top knee as high as possible while keeping your feet together, like opening a clamshell. Hold briefly at the top, squeezing your glute. Lower with control. Keep your hips stacked and don\'t roll backward. Complete all reps, then switch sides.',
-  ),
   'side_lying_leg_lift': ExerciseMuscleData(
     primaryMuscles: {
       'hip_abductors': 0.0,
@@ -995,16 +985,6 @@ const Map<String, ExerciseMuscleData> exerciseMuscleDatabase = {
       'core': 0.6,
     },
     description: 'HOW TO: Lie on your side with legs straight and stacked on top of each other. Rest your head on your lower arm. Keep your top leg straight. Lift your top leg up toward the ceiling as high as you can while keeping it straight. Hold briefly at the top. Lower with control without letting your legs touch. Keep your hips stacked and core engaged. Complete all reps, then switch sides.',
-  ),
-  'fire_hydrant_pulse': ExerciseMuscleData(
-    primaryMuscles: {
-      'glutes': 0.0,
-      'hip_abductors': 0.0,
-    },
-    secondaryMuscles: {
-      'core': 0.6,
-    },
-    description: 'HOW TO: Start on all fours with hands under shoulders and knees under hips. Keeping your knee bent at 90 degrees, lift one leg out to the side until your thigh is parallel to the floor (like a dog at a fire hydrant). Hold this top position. Perform small pulsing movements up and down (1-2 inches) for the prescribed reps. Lower leg down. Complete all reps, then switch sides.',
   ),
   'crunch': ExerciseMuscleData(
     primaryMuscles: {
@@ -1098,42 +1078,6 @@ const Map<String, ExerciseMuscleData> exerciseMuscleDatabase = {
       'hip_abductors': 0.6,
     },
     description: 'HOW TO: Stand with feet hip-width apart, hands behind your head with elbows wide. Shift your weight to your left leg. Lift your right knee up and out to the side while simultaneously crunching your right elbow down to meet it. Contract your right obliques. Lower with control and repeat. Complete all reps on one side, then switch. This standing variation targets obliques while improving balance.',
-  ),
-  'bear_crawl': ExerciseMuscleData(
-    primaryMuscles: {
-      'core': 0.0,
-      'shoulders': 0.0,
-    },
-    secondaryMuscles: {
-      'quads': 0.5,
-      'hip_flexors': 0.5,
-      'triceps': 0.6,
-    },
-    description: 'HOW TO: Start on all fours with hands under shoulders and knees under hips. Lift your knees 1-2 inches off the ground. Crawl forward by moving opposite hand and foot together (right hand with left foot). Keep your hips low, back flat, and core tight. Keep your knees hovering off the ground throughout. Move slowly and controlled, or fast for conditioning. Crawl forward or backward.',
-  ),
-  'bear_crawls': ExerciseMuscleData(
-    primaryMuscles: {
-      'core': 0.0,
-      'shoulders': 0.0,
-    },
-    secondaryMuscles: {
-      'quads': 0.5,
-      'hip_flexors': 0.5,
-      'triceps': 0.6,
-    },
-    description: 'HOW TO: Start on all fours with hands under shoulders and knees under hips. Lift your knees 1-2 inches off the ground. Crawl forward by moving opposite hand and foot together (right hand with left foot). Keep your hips low, back flat, and core tight. Keep your knees hovering off the ground throughout. Move slowly and controlled, or fast for conditioning. Crawl forward or backward.',
-  ),
-  'inchworm': ExerciseMuscleData(
-    primaryMuscles: {
-      'hamstrings': 0.0,
-      'core': 0.0,
-    },
-    secondaryMuscles: {
-      'shoulders': 0.5,
-      'lower_back': 0.6,
-      'calves': 0.6,
-    },
-    description: 'HOW TO: Stand with feet hip-width apart. Bend forward at the hips and place your hands on the floor in front of your feet (bend knees slightly if needed). Walk your hands forward until you\'re in a plank position, keeping your legs as straight as possible. Hold the plank briefly. Walk your feet toward your hands in small steps, keeping legs straight. Stand up. Repeat.',
   ),
   'step_up': ExerciseMuscleData(
     primaryMuscles: {
@@ -2244,73 +2188,6 @@ const Map<String, ExerciseMuscleData> exerciseMuscleDatabase = {
       'traps': 0.6,
     },
     description: 'HOW TO: Stand sideways to a cable machine set at the lowest position. Grab the handle with the hand furthest from the machine (cable will cross your body). Stand upright. Raise your arm out to the side (away from the machine) until it reaches shoulder height, leading with your elbow. Pause. Lower with control. Cables provide constant tension throughout. Complete all reps, then switch sides.',
-  ),
-  'plank_shoulder_tap': ExerciseMuscleData(
-    primaryMuscles: {
-      'core': 0.0,
-      'shoulders': 0.0,
-    },
-    secondaryMuscles: {
-      'chest': 0.6,
-      'triceps': 0.6,
-    },
-    description: 'HOW TO: Start in a high plank position with hands under shoulders, body in a straight line. Widen your feet slightly for stability. Lift your right hand and tap your left shoulder. Place it back down. Lift your left hand and tap your right shoulder. Continue alternating. Keep your hips as stable as possible - don\'t let them rotate or sag. This anti-rotation exercise builds core stability.',
-  ),
-  'plank_shoulder_taps': ExerciseMuscleData(
-    primaryMuscles: {
-      'core': 0.0,
-      'shoulders': 0.0,
-    },
-    secondaryMuscles: {
-      'chest': 0.6,
-      'triceps': 0.6,
-    },
-    description: 'HOW TO: Start in a high plank position with hands under shoulders, body in a straight line. Widen your feet slightly for stability. Lift your right hand and tap your left shoulder. Place it back down. Lift your left hand and tap your right shoulder. Continue alternating. Keep your hips as stable as possible - don\'t let them rotate or sag. This anti-rotation exercise builds core stability.',
-  ),
-  'ab_wheel': ExerciseMuscleData(
-    primaryMuscles: {
-      'core': 0.0,
-    },
-    secondaryMuscles: {
-      'lats': 0.5,
-      'shoulders': 0.5,
-      'lower_back': 0.6,
-    },
-    description: 'HOW TO: Kneel on the floor holding an ab wheel with both hands. Position the wheel directly under your shoulders. Slowly roll the wheel forward, extending your arms and lowering your body toward the floor. Keep your core tight and back straight - don\'t let your hips sag. Roll out as far as you can while maintaining form. Pull the wheel back to the starting position using your abs and lats.',
-  ),
-  'ab_wheel_rollout': ExerciseMuscleData(
-    primaryMuscles: {
-      'core': 0.0,
-    },
-    secondaryMuscles: {
-      'lats': 0.5,
-      'shoulders': 0.5,
-      'lower_back': 0.6,
-    },
-    description: 'HOW TO: Kneel on the floor holding an ab wheel with both hands. Position the wheel directly under your shoulders. Slowly roll the wheel forward, extending your arms and lowering your body toward the floor. Keep your core tight and back straight - don\'t let your hips sag. Roll out as far as you can while maintaining form. Pull the wheel back to the starting position using your abs and lats.',
-  ),
-  'ab_wheel_kneeling': ExerciseMuscleData(
-    primaryMuscles: {
-      'core': 0.0,
-    },
-    secondaryMuscles: {
-      'lats': 0.5,
-      'shoulders': 0.5,
-      'lower_back': 0.6,
-    },
-    description: 'HOW TO: Kneel on a mat or pad with the ab wheel in front of you. Grip the handles with both hands. Brace your core and keep your back straight. Roll the wheel forward slowly, extending your body. Go as far forward as you can while maintaining a straight spine. Your arms should end up extended in front of you. Pull yourself back to kneeling using your core. Kneeling is easier than standing.',
-  ),
-  'ab_wheel_standing': ExerciseMuscleData(
-    primaryMuscles: {
-      'core': 0.0,
-    },
-    secondaryMuscles: {
-      'lats': 0.5,
-      'shoulders': 0.5,
-      'hamstrings': 0.5,
-      'lower_back': 0.6,
-    },
-    description: 'HOW TO: Stand with feet together, holding the ab wheel on the floor in front of you. Keeping your legs straight (or slightly bent), roll the wheel forward as you bend at the hips and lower your torso. Roll out until your body is nearly parallel to the floor. Keep core extremely tight. Pull yourself back to standing. This is an extremely advanced variation requiring exceptional core strength.',
   ),
   'pullup': ExerciseMuscleData(
     primaryMuscles: {
@@ -3436,42 +3313,6 @@ const Map<String, ExerciseMuscleData> exerciseMuscleDatabase = {
       'core': 0.6,
     },
     description: 'HOW TO: Lie on your back with knees bent and feet flat on the floor. Drive through your heels to thrust your hips up into a bridge position. Hold this top position for the prescribed time (typically 20-60 seconds). Keep your glutes squeezed maximally throughout the hold. Maintain a straight line from shoulders to knees. This isometric hold builds glute endurance.',
-  ),
-  'frog_pump': ExerciseMuscleData(
-    primaryMuscles: {
-      'glutes': 0.0,
-    },
-    secondaryMuscles: {
-      'hip_abductors': 0.6,
-    },
-    description: 'HOW TO: Lie on your back with knees bent and the soles of your feet pressed together (frog position), letting your knees fall out to the sides. Keep your feet close to your glutes. Drive your hips up by squeezing your glutes, lifting your hips off the floor. Lower and repeat in a pumping motion. This unique foot position isolates the glutes by removing hamstring involvement.',
-  ),
-  'frog_pumps': ExerciseMuscleData(
-    primaryMuscles: {
-      'glutes': 0.0,
-    },
-    secondaryMuscles: {
-      'hip_abductors': 0.6,
-    },
-    description: 'HOW TO: Lie on your back with knees bent and the soles of your feet pressed together (frog position), letting your knees fall out to the sides. Keep your feet close to your glutes. Drive your hips up by squeezing your glutes, lifting your hips off the floor. Lower and repeat in a pumping motion. This unique foot position isolates the glutes by removing hamstring involvement.',
-  ),
-  'frog_pump_pulse': ExerciseMuscleData(
-    primaryMuscles: {
-      'glutes': 0.0,
-    },
-    secondaryMuscles: {
-      'hip_abductors': 0.6,
-    },
-    description: 'HOW TO: Get into frog pump position (on your back, soles of feet together, knees out). Thrust your hips up to the top position. Instead of lowering all the way down, perform small pulsing movements (1-2 inches up and down) at the top. Keep constant tension on your glutes. The pulses create an intense burn.',
-  ),
-  'frog_pump_hold_pulse': ExerciseMuscleData(
-    primaryMuscles: {
-      'glutes': 0.0,
-    },
-    secondaryMuscles: {
-      'hip_abductors': 0.6,
-    },
-    description: 'HOW TO: Get into frog pump position and thrust hips to the top. Hold this position while performing small pulsing movements. Keep your glutes maximally contracted throughout. This combination of isometric hold plus pulses creates extreme glute fatigue and activation.',
   ),
   'quadruped_hip_extension': ExerciseMuscleData(
     primaryMuscles: {
@@ -4852,104 +4693,6 @@ const Map<String, ExerciseMuscleData> exerciseMuscleDatabase = {
     secondaryMuscles: {},
     description: 'HOW TO: Lie on your side with knees bent at 45 degrees and feet together. Rest your head on your lower arm. Keep your feet together and engage your core. Lift your top knee as high as possible while keeping your feet touching, opening your legs like a clamshell. Squeeze your glutes at the top. Lower with control. Complete all reps on one side before switching. Clamshells isolate the glute medius, essential for hip stability and preventing knee valgus.',
   ),
-  '90_90_stretch': ExerciseMuscleData(
-    primaryMuscles: {
-      'glutes': 0.0,
-      'hip_flexors': 0.0,
-    },
-    secondaryMuscles: {},
-    description: 'HOW TO: Sit on the floor with both knees bent at 90 degrees. Your front shin should be parallel to your body, and your back leg should extend to the side with the knee bent. Sit tall with chest up. Lean forward over your front leg to deepen the hip stretch. Hold this position. To switch sides, rotate your legs to the opposite 90-90 position. This stretch targets hip internal and external rotation, improving hip mobility and relieving tightness.',
-  ),
-  'butterfly_stretch': ExerciseMuscleData(
-    primaryMuscles: {
-      'adductors': 0.0,     // Inner thighs
-      'hip_flexors': 0.0,
-    },
-    secondaryMuscles: {},
-    description: 'HOW TO: Sit on the floor with your knees bent and the soles of your feet pressed together, pulling them close to your groin. Hold your feet with your hands. Sit tall with a straight back. Gently press your knees down toward the floor using your elbows. Hold this position while breathing deeply. For a deeper stretch, lean forward from your hips while keeping your back straight. Butterfly stretch improves hip mobility and stretches the inner thighs.',
-  ),
-  'cat_cow': ExerciseMuscleData(
-    primaryMuscles: {
-      'lower_back': 0.0,
-      'core': 0.0,
-    },
-    secondaryMuscles: {},
-    description: 'HOW TO: Start on all fours with hands under shoulders and knees under hips. For the "cow" position: Inhale, drop your belly toward the floor, lift your chest and tailbone up, and look slightly upward. For the "cat" position: Exhale, round your spine toward the ceiling, tuck your tailbone, and drop your head. Flow smoothly between these two positions with your breath. Cat-cow improves spine mobility, relieves back tension, and warms up the core.',
-  ),
-  'chest_doorway_stretch': ExerciseMuscleData(
-    primaryMuscles: {
-      'chest': 0.0,
-      'front_delts': 0.0,
-    },
-    secondaryMuscles: {},
-    description: 'HOW TO: Stand in a doorway or next to a wall. Place your forearm against the doorframe with your elbow at shoulder height and bent at 90 degrees. Step forward with the leg on the same side until you feel a stretch across your chest and front shoulder. Keep your core engaged and chest up. Hold this position. You can adjust the angle of your arm higher or lower to target different parts of the chest. This stretch counteracts rounded shoulders and tight chest muscles.',
-  ),
-  'frog_stretch': ExerciseMuscleData(
-    primaryMuscles: {
-      'adductors': 0.0,     // Inner thighs
-      'hip_flexors': 0.0,
-    },
-    secondaryMuscles: {
-      'glutes': 0.6,
-    },
-    description: 'HOW TO: Start on all fours. Spread your knees as wide as comfortable while keeping your ankles in line with your knees. Turn your feet out so the inner edges are flat on the floor. Lower down onto your forearms. Gently push your hips back toward your heels and let your torso sink toward the floor. Hold this position while breathing deeply. The frog stretch is one of the most effective stretches for hip adductor flexibility and hip mobility.',
-  ),
-  'hamstring_stretch': ExerciseMuscleData(
-    primaryMuscles: {
-      'hamstrings': 0.0,
-    },
-    secondaryMuscles: {
-      'lower_back': 0.6,
-      'calves': 0.6,
-    },
-    description: 'HOW TO: Sit on the floor with one leg extended straight and the other bent with foot against your inner thigh. Keep your back straight and chest up. Hinge at your hips and reach toward your toes on the extended leg. Keep the extended leg straight but not locked. Hold when you feel a stretch in your hamstring. Avoid rounding your back. Breathe deeply and relax into the stretch. Complete one side before switching. Hamstring stretches improve posterior chain flexibility and reduce lower back strain.',
-  ),
-  'happy_baby': ExerciseMuscleData(
-    primaryMuscles: {
-      'hip_flexors': 0.0,
-      'glutes': 0.0,
-    },
-    secondaryMuscles: {
-      'lower_back': 0.6,
-      'adductors': 0.6,
-    },
-    description: 'HOW TO: Lie on your back. Bring your knees toward your chest, then spread them apart wider than your torso. Grab the outside edges of your feet with your hands, bringing your ankles directly above your knees (shins perpendicular to floor). Gently pull your feet down toward the floor while pressing your knees down with your elbows. Keep your lower back on the floor. Rock gently side to side if desired. Happy baby pose stretches the hips, groin, and lower back while calming the nervous system.',
-  ),
-  'hip_flexor_stretch': ExerciseMuscleData(
-    primaryMuscles: {
-      'hip_flexors': 0.0,
-    },
-    secondaryMuscles: {
-      'quads': 0.6,
-    },
-    description: 'HOW TO: Kneel on one knee with the other foot flat in front of you, forming a 90-degree angle with both knees (lunge position). Keep your torso upright with chest up. Engage your core and squeeze the glute of your back leg. Shift your hips forward until you feel a stretch in the front of your back hip. For a deeper stretch, raise the arm on the same side as your back leg overhead and lean slightly to the opposite side. Hold and breathe. Switch sides. Hip flexor stretches combat the effects of prolonged sitting.',
-  ),
-  'pigeon_pose': ExerciseMuscleData(
-    primaryMuscles: {
-      'glutes': 0.0,
-      'hip_flexors': 0.0,
-    },
-    secondaryMuscles: {},
-    description: 'HOW TO: Start in a plank or downward dog position. Bring your right knee forward and place it behind your right wrist, with your shin angled toward your left hip. Extend your left leg straight back with the top of your foot on the floor. Square your hips to face forward. Sit up tall or fold forward over your front leg for a deeper stretch. Hold while breathing deeply. Switch sides. Pigeon pose deeply stretches the hip rotators and flexors, essential for hip mobility and relieving sciatic tension.',
-  ),
-  'quad_stretch': ExerciseMuscleData(
-    primaryMuscles: {
-      'quads': 0.0,
-    },
-    secondaryMuscles: {
-      'hip_flexors': 0.6,
-    },
-    description: 'HOW TO: Stand on one leg (use a wall for balance if needed). Bend your other knee and grab your ankle or foot behind you with the same-side hand. Pull your heel toward your glute while keeping your knees together. Keep your torso upright and core engaged. Squeeze the glute of the stretching leg. For a deeper stretch, gently push your hips forward. Hold and breathe. Switch sides. Quad stretches improve quadriceps flexibility and help prevent knee pain.',
-  ),
-  'superman_raises': ExerciseMuscleData(
-    primaryMuscles: {
-      'lower_back': 0.0,
-      'glutes': 0.0,
-    },
-    secondaryMuscles: {
-      'hamstrings': 0.5,
-      'rear_delts': 0.5,
-      'traps': 0.6,
     },
     description: 'HOW TO: Lie face down with arms extended overhead and legs straight. Engage your core and glutes. Simultaneously lift your arms, chest, and legs off the floor as high as possible, creating a "U" shape with your body. Hold briefly at the top while squeezing your glutes and lower back. Lower back down with control. Repeat for reps. Superman raises strengthen the entire posterior chain, particularly the lower back and glutes.',
   ),
@@ -4975,129 +4718,8 @@ const Map<String, ExerciseMuscleData> exerciseMuscleDatabase = {
     },
     description: 'HOW TO: Kneel on the floor with big toes touching and knees spread apart. Sit back on your heels. Fold forward, extending your arms straight in front of you on the floor. Rest your forehead on the ground. Relax your entire body, letting your chest sink toward the floor. Breathe deeply into your back. Hold this position. Child\'s pose is a restorative stretch that relieves tension in the lower back, shoulders, and hips while calming the mind.',
   ),
-  'wall_sit': ExerciseMuscleData(
-    primaryMuscles: {
-      'quads': 0.0,
-    },
-    secondaryMuscles: {
-      'glutes': 0.5,
-      'core': 0.6,
-    },
-    description: 'HOW TO: Stand with your back against a wall. Walk your feet out about 2 feet from the wall. Slide down the wall until your thighs are parallel to the floor and knees are at 90 degrees. Your knees should be directly above your ankles. Keep your back flat against the wall, core engaged, and arms at your sides or crossed over your chest. Hold this position. Wall sits build incredible quadriceps endurance and mental toughness.',
-  ),
-  'wall_sits': ExerciseMuscleData(
-    primaryMuscles: {
-      'quads': 0.0,
-    },
-    secondaryMuscles: {
-      'glutes': 0.5,
-      'core': 0.6,
-    },
-    description: 'HOW TO: Stand with your back against a wall. Walk your feet out about 2 feet from the wall. Slide down the wall until your thighs are parallel to the floor and knees are at 90 degrees. Your knees should be directly above your ankles. Keep your back flat against the wall, core engaged, and arms at your sides or crossed over your chest. Hold this position. Wall sits build incredible quadriceps endurance and mental toughness.',
-  ),
-  'wall_squat': ExerciseMuscleData(
-    primaryMuscles: {
-      'quads': 0.0,
-    },
-    secondaryMuscles: {
-      'glutes': 0.5,
-      'core': 0.6,
-    },
-    description: 'HOW TO: Stand with your back against a wall. Walk your feet out about 2 feet from the wall. Slide down the wall until your thighs are parallel to the floor and knees are at 90 degrees. Your knees should be directly above your ankles. Keep your back flat against the wall, core engaged, and arms at your sides or crossed over your chest. Hold this position. Wall squats (wall sits) build quadriceps endurance through isometric contraction.',
-  ),
-  'dead_hang': ExerciseMuscleData(
-    primaryMuscles: {
-      'forearms': 0.0,
-      'lats': 0.0,
-    },
-    secondaryMuscles: {
-      'traps': 0.6,
-      'core': 0.6,
-    },
-    description: 'HOW TO: Grab a pull-up bar with an overhand grip, hands shoulder-width apart. Allow your body to hang completely with arms fully extended. Relax your shoulders and let them elevate naturally. Keep your legs straight or slightly bent. Engage your core to prevent excessive swinging. Hold this position for time. Dead hangs decompress the spine, build tremendous grip strength, and improve shoulder mobility and health.',
-  ),
-  'active_hang': ExerciseMuscleData(
-    primaryMuscles: {
-      'lats': 0.0,
-      'forearms': 0.0,
-    },
-    secondaryMuscles: {
-      'traps': 0.5,
-      'core': 0.5,
-      'rear_delts': 0.6,
     },
     description: 'HOW TO: Grab a pull-up bar with an overhand grip, hands shoulder-width apart. Hang with arms fully extended. Actively engage your lats and pull your shoulder blades down and together (scapular depression and retraction), lifting your body slightly. Your arms remain straight, but you create tension throughout your back. Hold this engaged position. Active hangs build scapular strength and stability essential for pull-ups and overhead movements.',
-  ),
-  'hang': ExerciseMuscleData(
-    primaryMuscles: {
-      'forearms': 0.0,
-      'lats': 0.0,
-    },
-    secondaryMuscles: {
-      'traps': 0.6,
-      'core': 0.6,
-    },
-    description: 'HOW TO: Grab a pull-up bar with an overhand grip, hands shoulder-width apart. Allow your body to hang with arms fully extended. You can either dead hang (relaxed shoulders) or active hang (engaged lats and shoulder blades pulled down). Keep your core engaged. Hold this position for time. Hanging builds grip strength, decompresses the spine, and improves shoulder health.',
-  ),
-  'l_sit': ExerciseMuscleData(
-    primaryMuscles: {
-      'core': 0.0,
-      'hip_flexors': 0.0,
-    },
-    secondaryMuscles: {
-      'quads': 0.5,
-      'triceps': 0.5,
-      'front_delts': 0.5,
-    },
-    description: 'HOW TO: Sit on the floor with legs extended straight in front of you. Place your hands on the floor beside your hips, fingers pointing forward. Press down through your hands, engage your core, and lift your entire body off the floor. Keep your legs straight and parallel to the floor, forming an "L" shape. Hold this position. L-sits are an advanced gymnastics skill that builds extreme core, hip flexor, and shoulder strength.',
-  ),
-  'l_sits': ExerciseMuscleData(
-    primaryMuscles: {
-      'core': 0.0,
-      'hip_flexors': 0.0,
-    },
-    secondaryMuscles: {
-      'quads': 0.5,
-      'triceps': 0.5,
-      'front_delts': 0.5,
-    },
-    description: 'HOW TO: Sit on the floor with legs extended straight in front of you. Place your hands on the floor beside your hips, fingers pointing forward. Press down through your hands, engage your core, and lift your entire body off the floor. Keep your legs straight and parallel to the floor, forming an "L" shape. Hold this position. L-sits are an advanced gymnastics skill that builds extreme core, hip flexor, and shoulder strength.',
-  ),
-  'superman': ExerciseMuscleData(
-    primaryMuscles: {
-      'lower_back': 0.0,
-      'glutes': 0.0,
-    },
-    secondaryMuscles: {
-      'hamstrings': 0.5,
-      'rear_delts': 0.5,
-      'traps': 0.6,
-    },
-    description: 'HOW TO: Lie face down with arms extended overhead and legs straight. Engage your core and glutes. Simultaneously lift your arms, chest, and legs off the floor as high as possible, creating a "U" shape with your body. Squeeze your glutes and lower back at the top. Hold briefly, then lower back down with control. Repeat for reps. Superman exercises strengthen the entire posterior chain, improve posture, and protect the lower back.',
-  ),
-  'supermans': ExerciseMuscleData(
-    primaryMuscles: {
-      'lower_back': 0.0,
-      'glutes': 0.0,
-    },
-    secondaryMuscles: {
-      'hamstrings': 0.5,
-      'rear_delts': 0.5,
-      'traps': 0.6,
-    },
-    description: 'HOW TO: Lie face down with arms extended overhead and legs straight. Engage your core and glutes. Simultaneously lift your arms, chest, and legs off the floor as high as possible, creating a "U" shape with your body. Squeeze your glutes and lower back at the top. Hold briefly, then lower back down with control. Repeat for reps. Superman exercises strengthen the entire posterior chain, improve posture, and protect the lower back.',
-  ),
-  'superman_hold': ExerciseMuscleData(
-    primaryMuscles: {
-      'lower_back': 0.0,
-      'glutes': 0.0,
-    },
-    secondaryMuscles: {
-      'hamstrings': 0.5,
-      'rear_delts': 0.5,
-      'traps': 0.6,
-    },
-    description: 'HOW TO: Lie face down with arms extended overhead and legs straight. Engage your core and glutes. Simultaneously lift your arms, chest, and legs off the floor as high as possible, creating a "U" shape with your body. Squeeze your glutes and lower back maximally. Hold this elevated position for the prescribed time. Keep breathing steadily. Lower back down with control. Superman holds build isometric posterior chain strength and endurance.',
   ),
   'russian_twist': ExerciseMuscleData(
     primaryMuscles: {
