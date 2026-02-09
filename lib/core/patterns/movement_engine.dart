@@ -297,25 +297,6 @@ class MovementEngine {
     'thrusters': ExerciseConfig(patternType: PatternType.squat, params: {'cueGood': 'Drive up!', 'cueBad': 'Full squat!'}),
     'spanish_squat': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70}),
     
-    // SQUAT PATTERN - DEADLIFTS (moved from hinge - use basic squat pattern)
-    'deadlift': ExerciseConfig(patternType: PatternType.squat),
-    'deadlifts': ExerciseConfig(patternType: PatternType.squat),
-    'rack_pull': ExerciseConfig(patternType: PatternType.squat),
-    'conventional_deadlift': ExerciseConfig(patternType: PatternType.squat),
-    'deficit_deadlift': ExerciseConfig(patternType: PatternType.squat),
-    'sumo_deadlift': ExerciseConfig(patternType: PatternType.squat),
-    'sumo_deadlifts': ExerciseConfig(patternType: PatternType.squat),
-    'romanian_deadlift': ExerciseConfig(patternType: PatternType.squat),
-    'romanian_deadlifts': ExerciseConfig(patternType: PatternType.squat),
-    'rdl': ExerciseConfig(patternType: PatternType.squat),
-    'dumbbell_rdl': ExerciseConfig(patternType: PatternType.squat),
-    'stiff_leg_deadlift': ExerciseConfig(patternType: PatternType.squat),
-    'stiff_leg_deadlifts': ExerciseConfig(patternType: PatternType.squat),
-    'single_leg_deadlift': ExerciseConfig(patternType: PatternType.squat),
-    'single_leg_deadlifts': ExerciseConfig(patternType: PatternType.squat),
-    'single_leg_rdl': ExerciseConfig(patternType: PatternType.squat),
-    'trap_bar_deadlift': ExerciseConfig(patternType: PatternType.squat),
-    
     // SQUAT PATTERN - GLUTE EXERCISES
     // 'clamshell': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
     // 'side_lying_leg_lift': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
@@ -557,6 +538,25 @@ class MovementEngine {
     // ===== HINGE PATTERN - Hip hinge movements =====
     // =========================================================================
     
+    // HINGE PATTERN - DEADLIFTS
+    'deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
+    'deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75}),
+    'rack_pull': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75}),
+    'conventional_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75}),
+    'deficit_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.75}),
+    'sumo_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.45, 'resetPercent': 0.75}),
+    'sumo_deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.45, 'resetPercent': 0.75}),
+    'romanian_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70, 'cueGood': 'Hamstrings!', 'cueBad': 'Flat back!'}),
+    'romanian_deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70}),
+    'rdl': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70}),
+    'dumbbell_rdl': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75}),
+    'stiff_leg_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70}),
+    'stiff_leg_deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70}),
+    'single_leg_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.70}),
+    'single_leg_deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.70}),
+    'single_leg_rdl': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.70}),
+    'trap_bar_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.45, 'resetPercent': 0.75}),
+
     // HINGE PATTERN - BURPEE/SPRAWL (moved from squat - use deadlift pattern)
     'burpee': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
     'burpees': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
