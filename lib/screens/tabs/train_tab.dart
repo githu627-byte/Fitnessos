@@ -2691,7 +2691,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
           WorkoutExercise(id: 'calf_raise', name: 'Calf Raise', reps: 25, sets: 3, restSeconds: 45),
           WorkoutExercise(id: 'glute_bridge', name: 'Glute Bridge', reps: 20, sets: 3, restSeconds: 60),
           WorkoutExercise(id: 'single_leg_deadlift', name: 'Single Leg Deadlift', reps: 12, sets: 3, restSeconds: 60),
-          WorkoutExercise(id: 'wall_sit', name: 'Wall Sit', reps: 60, sets: 3, restSeconds: 60),
+          // WorkoutExercise(id: 'wall_sit', name: 'Wall Sit', reps: 60, sets: 3, restSeconds: 60),
           WorkoutExercise(id: 'side_lunge', name: 'Side Lunge', reps: 15, sets: 3, restSeconds: 60),
         ];
       case 'Back':
@@ -2699,7 +2699,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
           WorkoutExercise(id: 'pull_up', name: 'Pull-up', reps: 10, sets: 3, restSeconds: 90),
           WorkoutExercise(id: 'chin_up', name: 'Chin-up', reps: 10, sets: 3, restSeconds: 90),
           WorkoutExercise(id: 'inverted_row', name: 'Inverted Row', reps: 15, sets: 3, restSeconds: 60),
-          WorkoutExercise(id: 'superman', name: 'Superman', reps: 20, sets: 3, restSeconds: 45),
+          // WorkoutExercise(id: 'superman', name: 'Superman', reps: 20, sets: 3, restSeconds: 45),
           WorkoutExercise(id: 'wide_pull_up', name: 'Wide Pull-up', reps: 8, sets: 3, restSeconds: 90),
           WorkoutExercise(id: 'aussie_pullup', name: 'Aussie Pull-up', reps: 12, sets: 3, restSeconds: 60),
           WorkoutExercise(id: 'deadlift', name: 'Deadlift', reps: 12, sets: 3, restSeconds: 90),

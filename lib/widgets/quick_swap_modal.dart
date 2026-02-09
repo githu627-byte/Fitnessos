@@ -101,7 +101,7 @@ class _QuickSwapModalState extends State<QuickSwapModal> {
       const WorkoutExercise(id: 'mountain_climbers', name: 'Mountain Climbers', sets: 3, reps: 30),
       const WorkoutExercise(id: 'bicycle_crunches', name: 'Bicycle Crunches', sets: 3, reps: 30),
       const WorkoutExercise(id: 'side_planks', name: 'Side Planks', sets: 3, reps: 45, timeSeconds: 45),
-      const WorkoutExercise(id: 'ab_wheel', name: 'Ab Wheel Rollouts', sets: 3, reps: 12),
+      // const WorkoutExercise(id: 'ab_wheel', name: 'Ab Wheel Rollouts', sets: 3, reps: 12),
       const WorkoutExercise(id: 'hanging_leg_raises', name: 'Hanging Leg Raises', sets: 3, reps: 12),
       const WorkoutExercise(id: 'cable_crunches', name: 'Cable Crunches', sets: 3, reps: 15),
     ],
