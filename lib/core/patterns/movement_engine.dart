@@ -317,9 +317,9 @@ class MovementEngine {
     'trap_bar_deadlift': ExerciseConfig(patternType: PatternType.squat),
     
     // SQUAT PATTERN - GLUTE EXERCISES
-    'clamshell': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
-    'side_lying_leg_lift': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
-    'fire_hydrant_pulse': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
+    // 'clamshell': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
+    // 'side_lying_leg_lift': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
+    // 'fire_hydrant_pulse': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
     
     // SQUAT PATTERN - CRUNCHES (uses squat for torso-hip tracking)
     'crunch': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'resetPercent': 0.92, 'cueGood': 'Squeeze!', 'cueBad': 'Crunch harder!'}),
@@ -335,9 +335,9 @@ class MovementEngine {
     'standing_oblique_crunch': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80}),
     
     // SQUAT PATTERN - BEAR CRAWL
-    'bear_crawl': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'cueGood': 'Crawl!', 'cueBad': 'Stay low!'}),
-    'bear_crawls': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'cueGood': 'Crawl!', 'cueBad': 'Stay low!'}),
-    'inchworm': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'cueGood': 'Walk out!', 'cueBad': 'Chest down!'}),
+    // 'bear_crawl': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'cueGood': 'Crawl!', 'cueBad': 'Stay low!'}),
+    // 'bear_crawls': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'cueGood': 'Crawl!', 'cueBad': 'Stay low!'}),
+    // 'inchworm': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'cueGood': 'Walk out!', 'cueBad': 'Chest down!'}),
     
     // =========================================================================
     // ===== STEPUP PATTERN - Step up movements =====
@@ -466,14 +466,14 @@ class MovementEngine {
     'incline_flys': ExerciseConfig(patternType: PatternType.push),
     
     // PUSH PATTERN - PLANK SHOULDER TAPS
-    'plank_shoulder_tap': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Tap!', 'cueBad': 'Stay stable!'}),
-    'plank_shoulder_taps': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Tap!', 'cueBad': 'Stay stable!'}),
+    // 'plank_shoulder_tap': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Tap!', 'cueBad': 'Stay stable!'}),
+    // 'plank_shoulder_taps': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Tap!', 'cueBad': 'Stay stable!'}),
     
     // PUSH PATTERN - AB WHEEL
-    'ab_wheel': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
-    'ab_wheel_rollout': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
-    'ab_wheel_kneeling': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
-    'ab_wheel_standing': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
+    // 'ab_wheel': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
+    // 'ab_wheel_rollout': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
+    // 'ab_wheel_kneeling': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
+    // 'ab_wheel_standing': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
     
     // =========================================================================
     // ===== PULL PATTERN - Upper body pulling =====
@@ -783,38 +783,38 @@ class MovementEngine {
     'clamshells': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
     
     // HOLD PATTERN - STRETCHES/MOBILITY (NEW)
-    '90_90_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
-    'butterfly_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
-    'cat_cow': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
-    'chest_doorway_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
-    'frog_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
-    'hamstring_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
-    'happy_baby': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
-    'hip_flexor_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
-    'pigeon_pose': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
-    'quad_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
-    'superman_raises': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
-    'worlds_greatest_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
-    'childs_pose': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
+    // '90_90_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    // 'butterfly_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    // 'cat_cow': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    // 'chest_doorway_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    // 'frog_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    // 'hamstring_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    // 'happy_baby': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    // 'hip_flexor_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    // 'pigeon_pose': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    // 'quad_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    // 'superman_raises': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    // 'worlds_greatest_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
+    // 'childs_pose': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
     
     // HOLD PATTERN - WALL SIT
-    'wall_sit': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.wallSit}),
-    'wall_sits': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.wallSit}),
-    'wall_squat': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.wallSit}),
+    // 'wall_sit': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.wallSit}),
+    // 'wall_sits': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.wallSit}),
+    // 'wall_squat': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.wallSit}),
     
     // HOLD PATTERN - HANGS
-    'dead_hang': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.hang}),
-    'active_hang': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.hang}),
-    'hang': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.hang}),
+    // 'dead_hang': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.hang}),
+    // 'active_hang': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.hang}),
+    // 'hang': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.hang}),
     
     // HOLD PATTERN - L-SIT
-    'l_sit': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
-    'l_sits': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
+    // 'l_sit': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
+    // 'l_sits': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
     
     // HOLD PATTERN - SUPERMAN
-    'superman': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Hold!', 'cueBad': 'Lift higher!'}),
-    'supermans': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
-    'superman_hold': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
+    // 'superman': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Hold!', 'cueBad': 'Lift higher!'}),
+    // 'supermans': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
+    // 'superman_hold': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
     
     // =========================================================================
     // ===== ROTATION PATTERN - Twisting movements =====

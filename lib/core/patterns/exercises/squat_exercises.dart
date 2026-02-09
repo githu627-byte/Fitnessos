@@ -111,8 +111,8 @@ class SquatExercises {
     'spanish_squat': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70}),
     
     // SQUAT PATTERN - GLUTE EXERCISES
-    'side_lying_leg_lift': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
-    'fire_hydrant_pulse': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
+    // 'side_lying_leg_lift': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
+    // 'fire_hydrant_pulse': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
     
     // SQUAT PATTERN - CRUNCHES (uses squat for torso-hip tracking)
     'crunch': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'resetPercent': 0.92, 'cueGood': 'Squeeze!', 'cueBad': 'Crunch harder!'}),
@@ -128,13 +128,13 @@ class SquatExercises {
     'standing_oblique_crunch': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80}),
     
     // SQUAT PATTERN - BEAR CRAWL
-    'bear_crawl': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'cueGood': 'Crawl!', 'cueBad': 'Stay low!'}),
-    'bear_crawls': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'cueGood': 'Crawl!', 'cueBad': 'Stay low!'}),
-    'inchworm': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'cueGood': 'Walk out!', 'cueBad': 'Chest down!'}),
+    // 'bear_crawl': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'cueGood': 'Crawl!', 'cueBad': 'Stay low!'}),
+    // 'bear_crawls': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'cueGood': 'Crawl!', 'cueBad': 'Stay low!'}),
+    // 'inchworm': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'cueGood': 'Walk out!', 'cueBad': 'Chest down!'}),
     
     // SQUAT PATTERN - WALL SIT
-    'wall_sit': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.squat, 'cueGood': 'Hold it!', 'cueBad': 'Stay strong!'}),
-    'wall_sits': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.squat, 'cueGood': 'Hold it!', 'cueBad': 'Stay strong!'}),
-    'wall_squat': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.squat}),
+    // 'wall_sit': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.squat, 'cueGood': 'Hold it!', 'cueBad': 'Stay strong!'}),
+    // 'wall_sits': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.squat, 'cueGood': 'Hold it!', 'cueBad': 'Stay strong!'}),
+    // 'wall_squat': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.squat}),
   };
 }
