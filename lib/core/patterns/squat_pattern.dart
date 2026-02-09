@@ -19,6 +19,8 @@ class SquatPattern implements BasePattern {
 
   bool _leftActive = false;
   bool _rightActive = false;
+  DateTime _lastRepTime = DateTime.now();
+  static const int _minTimeBetweenRepsMs = 500;
 
   SquatPattern({
     this.triggerAngle = 115.0, 
@@ -86,8 +88,9 @@ class SquatPattern implements BasePattern {
       if (!repScored) repScored = true; 
     }
 
-    if (repScored) {
+    if (repScored && DateTime.now().difference(_lastRepTime).inMilliseconds > _minTimeBetweenRepsMs) {
       _repCount++;
+      _lastRepTime = DateTime.now();
       _justHitTrigger = true;
       _state = RepState.down;
       _feedback = cueGood;
@@ -109,6 +112,7 @@ class SquatPattern implements BasePattern {
     _state = RepState.ready;
     _leftActive = false;
     _rightActive = false;
+    _lastRepTime = DateTime.now();
     _chargeProgress = 0.0;
   }
 }
