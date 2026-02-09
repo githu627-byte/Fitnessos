@@ -297,8 +297,29 @@ class MovementEngine {
     'thrusters': ExerciseConfig(patternType: PatternType.squat, params: {'cueGood': 'Drive up!', 'cueBad': 'Full squat!'}),
     'spanish_squat': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70}),
     
+    // SQUAT PATTERN - DEADLIFTS (moved from hinge - use basic squat pattern)
+    'deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'deadlifts': ExerciseConfig(patternType: PatternType.squat),
+    'rack_pull': ExerciseConfig(patternType: PatternType.squat),
+    'conventional_deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'deficit_deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'sumo_deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'sumo_deadlifts': ExerciseConfig(patternType: PatternType.squat),
+    'romanian_deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'romanian_deadlifts': ExerciseConfig(patternType: PatternType.squat),
+    'rdl': ExerciseConfig(patternType: PatternType.squat),
+    'dumbbell_rdl': ExerciseConfig(patternType: PatternType.squat),
+    'stiff_leg_deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'stiff_leg_deadlifts': ExerciseConfig(patternType: PatternType.squat),
+    'single_leg_deadlift': ExerciseConfig(patternType: PatternType.squat),
+    'single_leg_deadlifts': ExerciseConfig(patternType: PatternType.squat),
+    'single_leg_rdl': ExerciseConfig(patternType: PatternType.squat),
+    'trap_bar_deadlift': ExerciseConfig(patternType: PatternType.squat),
     
     // SQUAT PATTERN - GLUTE EXERCISES
+    'clamshell': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
+    'side_lying_leg_lift': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
+    'fire_hydrant_pulse': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
     
     // SQUAT PATTERN - CRUNCHES (uses squat for torso-hip tracking)
     'crunch': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'resetPercent': 0.92, 'cueGood': 'Squeeze!', 'cueBad': 'Crunch harder!'}),
@@ -313,7 +334,10 @@ class MovementEngine {
     'decline_weighted_sit_up': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.65, 'resetPercent': 0.92}),
     'standing_oblique_crunch': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80}),
     
-    // SQUAT PATTERN - BEAR CRAWL (REMOVED)
+    // SQUAT PATTERN - BEAR CRAWL
+    'bear_crawl': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'cueGood': 'Crawl!', 'cueBad': 'Stay low!'}),
+    'bear_crawls': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'cueGood': 'Crawl!', 'cueBad': 'Stay low!'}),
+    'inchworm': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'cueGood': 'Walk out!', 'cueBad': 'Chest down!'}),
     
     // =========================================================================
     // ===== STEPUP PATTERN - Step up movements =====
@@ -441,9 +465,15 @@ class MovementEngine {
     'incline_fly': ExerciseConfig(patternType: PatternType.push),
     'incline_flys': ExerciseConfig(patternType: PatternType.push),
     
-    // PUSH PATTERN - PLANK SHOULDER TAPS (REMOVED)
+    // PUSH PATTERN - PLANK SHOULDER TAPS
+    'plank_shoulder_tap': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Tap!', 'cueBad': 'Stay stable!'}),
+    'plank_shoulder_taps': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Tap!', 'cueBad': 'Stay stable!'}),
     
-    // PUSH PATTERN - AB WHEEL (REMOVED)
+    // PUSH PATTERN - AB WHEEL
+    'ab_wheel': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
+    'ab_wheel_rollout': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
+    'ab_wheel_kneeling': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
+    'ab_wheel_standing': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Extend!', 'cueBad': 'Control!'}),
     
     // =========================================================================
     // ===== PULL PATTERN - Upper body pulling =====
@@ -536,25 +566,6 @@ class MovementEngine {
     'sprawl': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
     'sprawls': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
     
-    // HINGE PATTERN - DEADLIFTS
-    'deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
-    'deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75}),
-    'rack_pull': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75}),
-    'conventional_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75}),
-    'deficit_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.75}),
-    'sumo_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.45, 'resetPercent': 0.75}),
-    'sumo_deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.45, 'resetPercent': 0.75}),
-    'romanian_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70, 'cueGood': 'Hamstrings!', 'cueBad': 'Flat back!'}),
-    'romanian_deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70}),
-    'rdl': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70}),
-    'dumbbell_rdl': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75}),
-    'stiff_leg_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70}),
-    'stiff_leg_deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35, 'resetPercent': 0.70}),
-    'single_leg_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.70}),
-    'single_leg_deadlifts': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.70}),
-    'single_leg_rdl': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.70}),
-    'trap_bar_deadlift': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.45, 'resetPercent': 0.75}),
-    
     // HINGE PATTERN - GOOD MORNINGS
     'good_morning': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.70, 'cueGood': 'Feel it!', 'cueBad': 'Hinge!'}),
     'good_mornings': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.70}),
@@ -577,6 +588,10 @@ class MovementEngine {
     'barbell_hip_thrust': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true, 'triggerPercent': 0.55}), // NEW - Missing
     'glute_bridge_single': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}), // NEW - Missing
     'glute_bridge_hold': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    'frog_pump': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
+    'frog_pumps': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
+    'frog_pump_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
+    'frog_pump_hold_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
     'quadruped_hip_extension': ExerciseConfig(patternType: PatternType.hinge, params: {'cueGood': 'Squeeze!', 'cueBad': 'Higher!'}),
     'quadruped_hip_extension_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40}),
     'standing_glute_squeeze': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
@@ -767,17 +782,39 @@ class MovementEngine {
     'hollow_body_hold': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
     'clamshells': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
     
-    // HOLD PATTERN - STRETCHES/MOBILITY (REMOVED)
+    // HOLD PATTERN - STRETCHES/MOBILITY (NEW)
+    '90_90_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    'butterfly_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    'cat_cow': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    'chest_doorway_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    'frog_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    'hamstring_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    'happy_baby': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    'hip_flexor_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    'pigeon_pose': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    'quad_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
+    'superman_raises': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
     'worlds_greatest_stretch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
     'childs_pose': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
     
-    // HOLD PATTERN - WALL SIT (REMOVED)
+    // HOLD PATTERN - WALL SIT
+    'wall_sit': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.wallSit}),
+    'wall_sits': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.wallSit}),
+    'wall_squat': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.wallSit}),
     
-    // HOLD PATTERN - HANGS (REMOVED)
+    // HOLD PATTERN - HANGS
+    'dead_hang': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.hang}),
+    'active_hang': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.hang}),
+    'hang': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.hang}),
     
-    // HOLD PATTERN - L-SIT (REMOVED)
+    // HOLD PATTERN - L-SIT
+    'l_sit': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
+    'l_sits': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
     
-    // HOLD PATTERN - SUPERMAN (REMOVED)
+    // HOLD PATTERN - SUPERMAN
+    'superman': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Hold!', 'cueBad': 'Lift higher!'}),
+    'supermans': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
+    'superman_hold': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
     
     // =========================================================================
     // ===== ROTATION PATTERN - Twisting movements =====
