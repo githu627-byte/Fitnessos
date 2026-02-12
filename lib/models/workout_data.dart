@@ -7118,6 +7118,7 @@ class WorkoutData {
   static WorkoutPreset _getHomeGirlFullBodyCircuit(String difficulty) {
     List<WorkoutExercise> exercises;
     int rounds;
+    bool isCircuit = true;
     
     switch (difficulty.toLowerCase()) {
       case 'beginner':
