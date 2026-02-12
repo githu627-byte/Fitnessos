@@ -331,7 +331,7 @@ class WorkoutData {
     Exercise(id: 'butt_kicks', name: 'Butt Kicks', difficulty: 'beginner', equipment: 'none'),
     Exercise(id: 'box_jumps', name: 'Box Jumps', difficulty: 'advanced', equipment: 'none'),
     Exercise(id: 'jump_rope', name: 'Jump Rope', difficulty: 'intermediate', equipment: 'none'),
-    Exercise(id: 'bear_crawls', name: 'Bear Crawls', difficulty: 'intermediate', equipment: 'none'),
+    // Exercise(id: 'bear_crawls', name: 'Bear Crawls', difficulty: 'intermediate', equipment: 'none'),
     Exercise(id: 'sprawls', name: 'Sprawls', difficulty: 'advanced', equipment: 'none'),
     Exercise(id: 'skaters', name: 'Skaters', difficulty: 'intermediate', equipment: 'none'),
     Exercise(id: 'tuck_jumps', name: 'Tuck Jumps', difficulty: 'advanced', equipment: 'none'),

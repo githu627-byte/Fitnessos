@@ -133,7 +133,7 @@ class MuscleRecoveryService {
     'mountain_climber': ['abs'],
     'dead_bug': ['abs'],
     'bird_dog': ['abs', 'lower_back'],
-    'superman': ['lower_back'],
+    // 'superman': ['lower_back'],
     'v_up': ['abs'],
     'hanging_leg': ['abs'],
     'cable_crunch': ['abs'],

@@ -71,8 +71,8 @@ class ExerciseIdOverrides {
     'stepups_chair': 'barbell_step_up',
     'box_stepups': 'barbell_step_up',
     'goblet_squats': 'dumbbell_goblet_squat',
-    'wall_sits': 'wall_sit',
-    'wall_sit': 'wall_sit',
+    // 'wall_sits': 'wall_sit',
+    // 'wall_sit': 'wall_sit',
     'jump_squats': 'squat_m',
     'squat_jumps': 'squat_m',
     'glute_bridge': 'hip_thrusts',
@@ -133,7 +133,7 @@ class ExerciseIdOverrides {
     'side_plank': 'side_plank_male',
     'dead_bugs': 'dead_bug',
     'dead_bug': 'dead_bug',
-    'plank_shoulder_taps': 'cable_shoulder_press',
+    // 'plank_shoulder_taps': 'cable_shoulder_press',
     
     // CARDIO & BODYWEIGHT
     'burpees': 'burpee',
@@ -141,14 +141,14 @@ class ExerciseIdOverrides {
     'high_knees': 'high_knee_run',
     'jump_rope': 'skipping_rope',
     'box_jumps': 'box_jump',
-    'bear_crawls': 'finger_curls',
+    // 'bear_crawls': 'finger_curls',
     'battle_ropes': 'butt_ups',
     'sprawls': 'sprawl',
     'skaters': 'skater',
     'tuck_jumps': 'tuck_jump',
     'star_jumps': 'star_jump',
     'lateral_hops': 'lateral_jump',
-    'superman_raises': 'superman_back_extension',
+    // 'superman_raises': 'superman_back_extension',
     'barbell_squat_press': 'barbell_bench_press',
   };
   
