@@ -390,461 +390,6918 @@ class WorkoutData {
   // GYM MODE - MUSCLE SPLITS (Individual body parts)
   static List<WorkoutPreset> getGymMuscleSplits(String difficulty) {
     return [
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_chest',
-        name: 'CHEST',
-        category: 'gym',
-        subcategory: 'muscle_splits',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['chest'],
-        icon: '🦾',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_back',
-        name: 'BACK',
-        category: 'gym',
-        subcategory: 'muscle_splits',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['back'],
-        icon: '🔙',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_shoulders',
-        name: 'SHOULDERS',
-        category: 'gym',
-        subcategory: 'muscle_splits',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['shoulders'],
-        icon: '💪',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_legs',
-        name: 'LEGS',
-        category: 'gym',
-        subcategory: 'muscle_splits',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['legs'],
-        icon: '🦵',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_arms',
-        name: 'ARMS',
-        category: 'gym',
-        subcategory: 'muscle_splits',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['biceps', 'triceps'],
-        icon: '💪',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_core',
-        name: 'CORE',
-        category: 'gym',
-        subcategory: 'muscle_splits',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['core'],
-        icon: '🎯',
-      ),
+      _getGymChestWorkout(difficulty),
+      _getGymBackWorkout(difficulty),
+      _getGymShouldersWorkout(difficulty),
+      _getGymLegsWorkout(difficulty),
+      _getGymArmsWorkout(difficulty),
+      _getGymCoreWorkout(difficulty),
     ];
+  }
+
+  // CHEST WORKOUT - Research-backed muscle split
+  static WorkoutPreset _getGymChestWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Ups',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'incline_push_up',
+            name: 'Incline Push-Ups',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'cable_chest_fly',
+            name: 'Cable Chest Fly',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'dumbbell_bench_press',
+            name: 'Dumbbell Bench Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'incline_dumbbell_press',
+            name: 'Incline Dumbbell Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'decline_dumbbell_press',
+            name: 'Decline Dumbbell Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_chest_fly',
+            name: 'Dumbbell Chest Fly',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'cable_chest_fly',
+            name: 'Cable Chest Fly',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'barbell_bench_press',
+            name: 'Barbell Bench Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'incline_barbell_press',
+            name: 'Incline Barbell Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'decline_barbell_press',
+            name: 'Decline Barbell Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'cable_crossover',
+            name: 'Cable Crossover',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_chest_fly',
+            name: 'Dumbbell Chest Fly',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'cable_chest_fly',
+            name: 'Cable Chest Fly',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Ups',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_chest',
+      name: 'CHEST',
+      category: 'gym',
+      subcategory: 'muscle_splits',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🦾',
+    );
+  }
+
+  // BACK WORKOUT - Research-backed muscle split
+  static WorkoutPreset _getGymBackWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'lat_pulldown',
+            name: 'Lat Pulldown',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'seated_cable_row',
+            name: 'Seated Cable Row',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'face_pull',
+            name: 'Face Pull',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['back'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'assisted_pull_up',
+            name: 'Assisted Pull-Up',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_row',
+            name: 'Dumbbell Row',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'chin_up',
+            name: 'Chin-Up',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'chest_supported_row',
+            name: 'Chest Supported Row',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['back', 'glutes'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'conventional_deadlift',
+            name: 'Conventional Deadlift',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['hamstrings', 'glutes'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_bent_over_row',
+            name: 'Barbell Bent Over Row',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'weighted_pull_up',
+            name: 'Weighted Pull-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 't_bar_row',
+            name: 'T-Bar Row',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'rear_delt_fly',
+            name: 'Rear Delt Fly',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['back'],
+          ),
+          WorkoutExercise(
+            id: 'chin_up',
+            name: 'Chin-Up',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_back',
+      name: 'BACK',
+      category: 'gym',
+      subcategory: 'muscle_splits',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🔙',
+    );
+  }
+
+  // SHOULDERS WORKOUT - Research-backed muscle split
+  static WorkoutPreset _getGymShouldersWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'seated_dumbbell_press',
+            name: 'Seated Dumbbell Press',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'cable_lateral_raise',
+            name: 'Cable Lateral Raise',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'face_pull',
+            name: 'Face Pull',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['back'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'standing_dumbbell_press',
+            name: 'Standing Dumbbell Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'arnold_press',
+            name: 'Arnold Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_lateral_raise',
+            name: 'Dumbbell Lateral Raise',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_front_raise',
+            name: 'Dumbbell Front Raise',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'rear_delt_fly',
+            name: 'Rear Delt Fly',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['back'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'barbell_overhead_press',
+            name: 'Barbell Overhead Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'push_press',
+            name: 'Push Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps', 'legs'],
+          ),
+          WorkoutExercise(
+            id: 'leaning_lateral_raise',
+            name: 'Leaning Lateral Raise',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'barbell_front_raise',
+            name: 'Barbell Front Raise',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'reverse_pec_deck',
+            name: 'Reverse Pec Deck',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['back'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_lateral_raise',
+            name: 'Dumbbell Lateral Raise',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'rear_delt_fly',
+            name: 'Rear Delt Fly',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['back'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_shoulders',
+      name: 'SHOULDERS',
+      category: 'gym',
+      subcategory: 'muscle_splits',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '💪',
+    );
+  }
+
+  // LEGS WORKOUT - Research-backed muscle split
+  static WorkoutPreset _getGymLegsWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'goblet_squat',
+            name: 'Goblet Squat',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'leg_press',
+            name: 'Leg Press',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_rdl',
+            name: 'Dumbbell RDL',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'barbell_back_squat',
+            name: 'Barbell Back Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'walking_lunge',
+            name: 'Walking Lunge',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'hack_squat',
+            name: 'Hack Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'lying_leg_curl',
+            name: 'Lying Leg Curl',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'front_squat',
+            name: 'Front Squat',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'deficit_deadlift',
+            name: 'Deficit Deadlift',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['back', 'glutes'],
+          ),
+          WorkoutExercise(
+            id: 'bulgarian_split_squat',
+            name: 'Bulgarian Split Squat',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'sissy_squat',
+            name: 'Sissy Squat',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'nordic_curl',
+            name: 'Nordic Curl',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'spanish_squat',
+            name: 'Spanish Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'single_leg_calf_raise',
+            name: 'Single Leg Calf Raise',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['calves'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_legs',
+      name: 'LEGS',
+      category: 'gym',
+      subcategory: 'muscle_splits',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🦵',
+    );
+  }
+
+  // ARMS WORKOUT - Research-backed muscle split
+  static WorkoutPreset _getGymArmsWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'cable_bicep_curl',
+            name: 'Cable Bicep Curl',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'cable_pushdown',
+            name: 'Cable Pushdown',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'seated_hammer_curl',
+            name: 'Seated Hammer Curl',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: ['forearms'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'dumbbell_bicep_curl',
+            name: 'Dumbbell Bicep Curl',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'overhead_tricep_extension',
+            name: 'Overhead Tricep Extension',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'standing_hammer_curl',
+            name: 'Standing Hammer Curl',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: ['forearms'],
+          ),
+          WorkoutExercise(
+            id: 'preacher_curl',
+            name: 'Preacher Curl',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'dip_machine',
+            name: 'Dip Machine',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: ['chest'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'barbell_bicep_curl',
+            name: 'Barbell Bicep Curl',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'skull_crusher',
+            name: 'Skull Crusher',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'cross_body_hammer_curl',
+            name: 'Cross Body Hammer Curl',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: ['forearms'],
+          ),
+          WorkoutExercise(
+            id: 'weighted_dip',
+            name: 'Weighted Dip',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: ['chest'],
+          ),
+          WorkoutExercise(
+            id: 'spider_curl',
+            name: 'Spider Curl',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'jm_press',
+            name: 'JM Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'close_grip_bench_press',
+            name: 'Close Grip Bench Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: ['chest'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_arms',
+      name: 'ARMS',
+      category: 'gym',
+      subcategory: 'muscle_splits',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '💪',
+    );
+  }
+
+  // CORE WORKOUT - Research-backed muscle split
+  static WorkoutPreset _getGymCoreWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'crunch',
+            name: 'Crunch',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'dead_bug',
+            name: 'Dead Bug',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'pallof_press_kneeling',
+            name: 'Pallof Press Kneeling',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'cable_crunch',
+            name: 'Cable Crunch',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'lying_leg_raise',
+            name: 'Lying Leg Raise',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'pallof_press_standing',
+            name: 'Pallof Press Standing',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'russian_twist',
+            name: 'Russian Twist',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'side_plank',
+            name: 'Side Plank',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'decline_weighted_sit_up',
+            name: 'Decline Weighted Sit-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'hanging_leg_raise',
+            name: 'Hanging Leg Raise',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'pallof_press_split_stance',
+            name: 'Pallof Press Split Stance',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'landmine_rotation',
+            name: 'Landmine Rotation',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'russian_twist',
+            name: 'Russian Twist',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'lying_leg_raise',
+            name: 'Lying Leg Raise',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'cable_crunch',
+            name: 'Cable Crunch',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_core',
+      name: 'CORE',
+      category: 'gym',
+      subcategory: 'muscle_splits',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🎯',
+    );
   }
 
   // GYM MODE - MUSCLE GROUPINGS (Pre-built combinations)
   static List<WorkoutPreset> getGymMuscleGroupings(String difficulty) {
     return [
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_upper_body',
-        name: 'UPPER BODY',
-        category: 'gym',
-        subcategory: 'muscle_groupings',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['chest', 'back', 'shoulders'],
-        icon: '💪',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_lower_body',
-        name: 'LOWER BODY',
-        category: 'gym',
-        subcategory: 'muscle_groupings',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['legs', 'glutes'],
-        icon: '🦵',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_push_day',
-        name: 'PUSH DAY',
-        category: 'gym',
-        subcategory: 'muscle_groupings',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['chest', 'shoulders', 'triceps'],
-        icon: '🚀',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_pull_day',
-        name: 'PULL DAY',
-        category: 'gym',
-        subcategory: 'muscle_groupings',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['back', 'biceps'],
-        icon: '💪',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_full_body',
-        name: 'FULL BODY',
-        category: 'gym',
-        subcategory: 'muscle_groupings',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['chest', 'back', 'legs'],
-        icon: '⚡',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_glutes_legs',
-        name: 'GLUTES & LEGS 🍑',
-        category: 'gym',
-        subcategory: 'muscle_groupings',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['glutes', 'legs'],
-        icon: '🍑',
-      ),
+      _getGymUpperBodyWorkout(difficulty),
+      _getGymLowerBodyWorkout(difficulty),
+      _getGymPushDayWorkout(difficulty),
+      _getGymPullDayWorkout(difficulty),
+      _getGymFullBodyWorkout(difficulty),
+      _getGymGlutesLegsWorkout(difficulty),
     ];
+  }
+
+  // UPPER BODY - Research-backed muscle grouping
+  static WorkoutPreset _getGymUpperBodyWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Ups',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps', 'shoulders'],
+          ),
+          WorkoutExercise(
+            id: 'lat_pulldown',
+            name: 'Lat Pulldown',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'seated_dumbbell_press',
+            name: 'Seated Dumbbell Press',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'dumbbell_bench_press',
+            name: 'Dumbbell Bench Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_row',
+            name: 'Dumbbell Row',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'standing_dumbbell_press',
+            name: 'Standing Dumbbell Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'assisted_pull_up',
+            name: 'Assisted Pull-Up',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_lateral_raise',
+            name: 'Dumbbell Lateral Raise',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'barbell_bench_press',
+            name: 'Barbell Bench Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_bent_over_row',
+            name: 'Barbell Bent Over Row',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_overhead_press',
+            name: 'Barbell Overhead Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'incline_dumbbell_press',
+            name: 'Incline Dumbbell Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'cable_crossover',
+            name: 'Cable Crossover',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'rear_delt_fly',
+            name: 'Rear Delt Fly',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['back'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_upper_body',
+      name: 'UPPER BODY',
+      category: 'gym',
+      subcategory: 'muscle_groupings',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '💪',
+    );
+  }
+
+  // LOWER BODY - Research-backed muscle grouping
+  static WorkoutPreset _getGymLowerBodyWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'goblet_squat',
+            name: 'Goblet Squat',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_rdl',
+            name: 'Dumbbell RDL',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'leg_press',
+            name: 'Leg Press',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'barbell_back_squat',
+            name: 'Barbell Back Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'walking_lunge',
+            name: 'Walking Lunge',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'leg_extension',
+            name: 'Leg Extension',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'lying_leg_curl',
+            name: 'Lying Leg Curl',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'front_squat',
+            name: 'Front Squat',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'deficit_deadlift',
+            name: 'Deficit Deadlift',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['back', 'glutes'],
+          ),
+          WorkoutExercise(
+            id: 'bulgarian_split_squat',
+            name: 'Bulgarian Split Squat',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'hack_squat',
+            name: 'Hack Squat',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'nordic_curl',
+            name: 'Nordic Curl',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'sissy_squat',
+            name: 'Sissy Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'standing_calf_raise',
+            name: 'Standing Calf Raise',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['calves'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_lower_body',
+      name: 'LOWER BODY',
+      category: 'gym',
+      subcategory: 'muscle_groupings',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🦵',
+    );
+  }
+
+  // PUSH DAY - Research-backed muscle grouping
+  static WorkoutPreset _getGymPushDayWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Ups',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'seated_dumbbell_press',
+            name: 'Seated Dumbbell Press',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'cable_pushdown',
+            name: 'Cable Pushdown',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'dumbbell_bench_press',
+            name: 'Dumbbell Bench Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'standing_dumbbell_press',
+            name: 'Standing Dumbbell Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'incline_dumbbell_press',
+            name: 'Incline Dumbbell Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_lateral_raise',
+            name: 'Dumbbell Lateral Raise',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'overhead_tricep_extension',
+            name: 'Overhead Tricep Extension',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'barbell_bench_press',
+            name: 'Barbell Bench Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_overhead_press',
+            name: 'Barbell Overhead Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'incline_barbell_press',
+            name: 'Incline Barbell Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'weighted_dip',
+            name: 'Weighted Dip',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: ['chest'],
+          ),
+          WorkoutExercise(
+            id: 'leaning_lateral_raise',
+            name: 'Leaning Lateral Raise',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'cable_crossover',
+            name: 'Cable Crossover',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'skull_crusher',
+            name: 'Skull Crusher',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_push_day',
+      name: 'PUSH DAY',
+      category: 'gym',
+      subcategory: 'muscle_groupings',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🚀',
+    );
+  }
+
+  // PULL DAY - Research-backed muscle grouping
+  static WorkoutPreset _getGymPullDayWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'lat_pulldown',
+            name: 'Lat Pulldown',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'seated_cable_row',
+            name: 'Seated Cable Row',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'cable_bicep_curl',
+            name: 'Cable Bicep Curl',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'assisted_pull_up',
+            name: 'Assisted Pull-Up',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_row',
+            name: 'Dumbbell Row',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['back', 'glutes'],
+          ),
+          WorkoutExercise(
+            id: 'reverse_fly',
+            name: 'Reverse Fly',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['back'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_bicep_curl',
+            name: 'Dumbbell Bicep Curl',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'conventional_deadlift',
+            name: 'Conventional Deadlift',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['hamstrings', 'glutes'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_bent_over_row',
+            name: 'Barbell Bent Over Row',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'weighted_pull_up',
+            name: 'Weighted Pull-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 't_bar_row',
+            name: 'T-Bar Row',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'rear_delt_fly',
+            name: 'Rear Delt Fly',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['back'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_bicep_curl',
+            name: 'Barbell Bicep Curl',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_pull_day',
+      name: 'PULL DAY',
+      category: 'gym',
+      subcategory: 'muscle_groupings',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '💪',
+    );
+  }
+
+  // FULL BODY - Research-backed muscle grouping
+  static WorkoutPreset _getGymFullBodyWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'goblet_squat',
+            name: 'Goblet Squat',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Ups',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'lat_pulldown',
+            name: 'Lat Pulldown',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'barbell_back_squat',
+            name: 'Barbell Back Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_bench_press',
+            name: 'Dumbbell Bench Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes', 'back'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_row',
+            name: 'Dumbbell Row',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'standing_dumbbell_press',
+            name: 'Standing Dumbbell Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'front_squat',
+            name: 'Front Squat',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'conventional_deadlift',
+            name: 'Conventional Deadlift',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['hamstrings', 'glutes'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_bench_press',
+            name: 'Barbell Bench Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_overhead_press',
+            name: 'Barbell Overhead Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'bulgarian_split_squat',
+            name: 'Bulgarian Split Squat',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'hanging_leg_raise',
+            name: 'Hanging Leg Raise',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_full_body',
+      name: 'FULL BODY',
+      category: 'gym',
+      subcategory: 'muscle_groupings',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '⚡',
+    );
+  }
+
+  // GLUTES & LEGS - Research-backed muscle grouping
+  static WorkoutPreset _getGymGlutesLegsWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'goblet_squat',
+            name: 'Goblet Squat',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'reverse_lunge',
+            name: 'Reverse Lunge',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_back_squat',
+            name: 'Barbell Back Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'curtsy_lunge',
+            name: 'Curtsy Lunge',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat',
+            name: 'Sumo Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'front_squat',
+            name: 'Front Squat',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'deficit_deadlift',
+            name: 'Deficit Deadlift',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['back', 'glutes'],
+          ),
+          WorkoutExercise(
+            id: 'pulse_curtsy_lunge',
+            name: 'Pulse Curtsy Lunge',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'bulgarian_split_squat',
+            name: 'Bulgarian Split Squat',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat_hold_pulse',
+            name: 'Sumo Squat Hold Pulse',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'donkey_kick_pulse',
+            name: 'Donkey Kick Pulse',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_glutes_legs',
+      name: 'GLUTES & LEGS 🍑',
+      category: 'gym',
+      subcategory: 'muscle_groupings',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🍑',
+    );
   }
 
   // GYM MODE - GYM CIRCUITS
   static List<WorkoutPreset> getGymCircuits(String difficulty) {
     return [
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_full_body_blast',
-        name: 'FULL BODY BLAST',
-        category: 'gym',
-        subcategory: 'gym_circuits',
-        difficulty: difficulty,
-        workoutType: 'circuit',
-        muscleGroups: ['full_body'],
-        icon: '💥',
-        isCircuit: true,
-        rounds: 3,
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_upper_burner',
-        name: 'UPPER BODY BURNER',
-        category: 'gym',
-        subcategory: 'gym_circuits',
-        difficulty: difficulty,
-        workoutType: 'circuit',
-        muscleGroups: ['upper'],
-        icon: '🔥',
-        isCircuit: true,
-        rounds: 3,
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_lower_torch',
-        name: 'LOWER BODY TORCH',
-        category: 'gym',
-        subcategory: 'gym_circuits',
-        difficulty: difficulty,
-        workoutType: 'circuit',
-        muscleGroups: ['lower'],
-        icon: '⚡',
-        isCircuit: true,
-        rounds: 4,
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_core_destroyer',
-        name: 'CORE DESTROYER',
-        category: 'gym',
-        subcategory: 'gym_circuits',
-        difficulty: difficulty,
-        workoutType: 'circuit',
-        muscleGroups: ['core'],
-        icon: '🎯',
-        isCircuit: true,
-        rounds: 3,
-      ),
+      _getFullBodyBlastCircuit(difficulty),
+      _getUpperBodyBurnerCircuit(difficulty),
+      _getLowerBodyTorchCircuit(difficulty),
+      _getCoreDestroyerCircuit(difficulty),
     ];
+  }
+
+  // FULL BODY BLAST - Research-backed circuit exercises
+  static WorkoutPreset _getFullBodyBlastCircuit(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'marching_in_place',
+            name: 'Marching In Place',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Ups',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'air_squat',
+            name: 'Air Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'plank',
+            name: 'Plank',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'high_knee',
+            name: 'High Knee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_bench_press',
+            name: 'Dumbbell Bench Press',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'goblet_squat',
+            name: 'Goblet Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_row',
+            name: 'Dumbbell Row',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'walking_lunge',
+            name: 'Walking Lunge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'high_knee_sprint',
+            name: 'High Knee Sprint',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'barbell_bench_press',
+            name: 'Barbell Bench Press',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'bulgarian_split_squat',
+            name: 'Bulgarian Split Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_bent_over_row',
+            name: 'Barbell Bent Over Row',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_full_body_blast',
+      name: 'FULL BODY BLAST',
+      category: 'gym',
+      subcategory: 'gym_circuits',
+      exercises: exercises,
+      rounds: 3,
+      duration: difficulty == 'beginner' ? '8 min' : difficulty == 'intermediate' ? '18 min' : '24 min',
+      isCircuit: true,
+      icon: '💥',
+    );
+  }
+
+  // UPPER BODY BURNER - Research-backed circuit exercises  
+  static WorkoutPreset _getUpperBodyBurnerCircuit(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'step_touch',
+            name: 'Step Touch',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'incline_push_up',
+            name: 'Incline Push-Ups',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'lat_pulldown',
+            name: 'Lat Pulldown',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'cable_lateral_raise',
+            name: 'Cable Lateral Raise',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'jumping_jack',
+            name: 'Jumping Jack',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_bench_press',
+            name: 'Dumbbell Bench Press',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'cable_row',
+            name: 'Cable Row',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'standing_dumbbell_press',
+            name: 'Standing Dumbbell Press',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_chest_fly',
+            name: 'Dumbbell Chest Fly',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_bench_press',
+            name: 'Barbell Bench Press',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_overhead_press',
+            name: 'Barbell Overhead Press',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'incline_dumbbell_press',
+            name: 'Incline Dumbbell Press',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'cable_crossover',
+            name: 'Cable Crossover',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_upper_burner',
+      name: 'UPPER BODY BURNER',
+      category: 'gym',
+      subcategory: 'gym_circuits',
+      exercises: exercises,
+      rounds: 3,
+      duration: difficulty == 'beginner' ? '8 min' : difficulty == 'intermediate' ? '15 min' : '20 min',
+      isCircuit: true,
+      icon: '🔥',
+    );
+  }
+
+  // LOWER BODY TORCH - Research-backed circuit exercises
+  static WorkoutPreset _getLowerBodyTorchCircuit(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'air_squat',
+            name: 'Air Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'static_lunge',
+            name: 'Static Lunge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'wall_sit',
+            name: 'Wall Sit',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'goblet_squat',
+            name: 'Goblet Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'walking_lunge',
+            name: 'Walking Lunge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat',
+            name: 'Sumo Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'calf_raise',
+            name: 'Calf Raise',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['calves'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'jumping_lunge',
+            name: 'Jumping Lunge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'bulgarian_split_squat',
+            name: 'Bulgarian Split Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'single_leg_calf_raise',
+            name: 'Single Leg Calf Raise',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['calves'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'squat_jump_180',
+            name: 'Squat Jump 180',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_lower_torch',
+      name: 'LOWER BODY TORCH',
+      category: 'gym',
+      subcategory: 'gym_circuits',
+      exercises: exercises,
+      rounds: 4,
+      duration: difficulty == 'beginner' ? '10 min' : difficulty == 'intermediate' ? '20 min' : '28 min',
+      isCircuit: true,
+      icon: '⚡',
+    );
+  }
+
+  // CORE DESTROYER - Research-backed circuit exercises
+  static WorkoutPreset _getCoreDestroyerCircuit(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'plank',
+            name: 'Plank',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'dead_bug',
+            name: 'Dead Bug',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['core'],
+          ),
+          WorkoutExercise(
+            id: 'modified_side_plank',
+            name: 'Modified Side Plank',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'bicycle_crunch',
+            name: 'Bicycle Crunch',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'russian_twist',
+            name: 'Russian Twist',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'side_plank',
+            name: 'Side Plank',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'leg_raise',
+            name: 'Leg Raise',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'mountain_climber_crossover',
+            name: 'Mountain Climber Crossover',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'v_up',
+            name: 'V-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'weighted_russian_twist',
+            name: 'Weighted Russian Twist',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'side_plank_rotation',
+            name: 'Side Plank Rotation',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'hanging_leg_raise',
+            name: 'Hanging Leg Raise',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'plank_up_down',
+            name: 'Plank Up Down',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['shoulders'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_core_destroyer',
+      name: 'CORE DESTROYER',
+      category: 'gym',
+      subcategory: 'gym_circuits',
+      exercises: exercises,
+      rounds: 3,
+      duration: difficulty == 'beginner' ? '8 min' : difficulty == 'intermediate' ? '15 min' : '22 min',
+      isCircuit: true,
+      icon: '🎯',
+    );
   }
 
   // GYM MODE - BOOTY BUILDER
   static List<WorkoutPreset> getGymBootyBuilder(String difficulty) {
     return [
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_glute_sculpt',
-        name: 'GLUTE SCULPT',
-        category: 'gym',
-        subcategory: 'booty_builder',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['glutes'],
-        icon: '🍑',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_peach_pump',
-        name: 'PEACH PUMP',
-        category: 'gym',
-        subcategory: 'booty_builder',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['glutes'],
-        icon: '🍑',
-      ),
+      _getGymGluteSculptWorkout(difficulty),
+      _getGymPeachPumpWorkout(difficulty),
     ];
+  }
+
+  // GLUTE SCULPT - Instagram-famous exercises for shape + definition
+  static WorkoutPreset _getGymGluteSculptWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'reverse_lunge',
+            name: 'Reverse Lunge',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'standing_glute_kickback',
+            name: 'Standing Glute Kickback',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'curtsy_lunge',
+            name: 'Curtsy Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'standing_glute_kickback',
+            name: 'Standing Glute Kickback',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat',
+            name: 'Sumo Squat',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'bird_dog',
+            name: 'Bird Dog',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'pulse_curtsy_lunge',
+            name: 'Pulse Curtsy Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat_pulse',
+            name: 'Sumo Squat Pulse',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'donkey_kick_pulse',
+            name: 'Donkey Kick Pulse',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'quadruped_hip_extension',
+            name: 'Quadruped Hip Extension',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump',
+            name: 'Frog Pump',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'single_leg_rdl',
+            name: 'Single Leg RDL',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_glute_sculpt',
+      name: 'GLUTE SCULPT',
+      category: 'gym',
+      subcategory: 'booty_builder',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🍑',
+    );
+  }
+
+  // PEACH PUMP - Maximum pump using popular gym machines + cables
+  static WorkoutPreset _getGymPeachPumpWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat',
+            name: 'Sumo Squat',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'bird_dog',
+            name: 'Bird Dog',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'reverse_lunge',
+            name: 'Reverse Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat',
+            name: 'Sumo Squat',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'standing_glute_kickback',
+            name: 'Standing Glute Kickback',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump',
+            name: 'Frog Pump',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'curtsy_lunge',
+            name: 'Curtsy Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat_hold_pulse',
+            name: 'Sumo Squat Hold Pulse',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'donkey_kick_pulse',
+            name: 'Donkey Kick Pulse',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'quadruped_hip_extension_pulse',
+            name: 'Quadruped Hip Extension Pulse',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump_pulse',
+            name: 'Frog Pump Pulse',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'single_leg_rdl',
+            name: 'Single Leg RDL',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_peach_pump',
+      name: 'PEACH PUMP',
+      category: 'gym',
+      subcategory: 'booty_builder',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🍑',
+    );
   }
 
   // GYM MODE - GIRL POWER
   static List<WorkoutPreset> getGymGirlPower(String difficulty) {
     return [
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_girl_glute_specialization',
-        name: 'GLUTE SPECIALIZATION',
-        category: 'gym',
-        subcategory: 'girl_power',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['glutes'],
-        icon: '🍑',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_girl_upper_lower',
-        name: 'UPPER/LOWER SPLIT',
-        category: 'gym',
-        subcategory: 'girl_power',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['chest', 'back', 'shoulders'],
-        icon: '💪',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_girl_full_body',
-        name: 'FULL BODY',
-        category: 'gym',
-        subcategory: 'girl_power',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['chest', 'back', 'legs', 'glutes'],
-        icon: '⚡',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_girl_push_pull_legs',
-        name: 'PUSH/PULL/LEGS',
-        category: 'gym',
-        subcategory: 'girl_power',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['chest', 'back', 'legs'],
-        icon: '🚀',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'gym_girl_bro_split',
-        name: 'BRO SPLIT (MODIFIED)',
-        category: 'gym',
-        subcategory: 'girl_power',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['chest'],
-        icon: '💪',
-      ),
+      _getGymGirlGluteSpecialization(difficulty),
+      _getGymGirlUpperBody(difficulty),
+      _getGymGirlLowerBody(difficulty),
+      _getGymGirlFullBody(difficulty),
+      _getGymGirlPPLPush(difficulty),
+      _getGymGirlPPLPull(difficulty),
+      _getGymGirlPPLLegs(difficulty),
     ];
+  }
+
+  // GIRL POWER - GLUTE SPECIALIZATION
+  static WorkoutPreset _getGymGirlGluteSpecialization(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'reverse_lunge',
+            name: 'Reverse Lunge',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat',
+            name: 'Sumo Squat',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'reverse_lunge',
+            name: 'Reverse Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'curtsy_lunge',
+            name: 'Curtsy Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat',
+            name: 'Sumo Squat',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'standing_glute_kickback',
+            name: 'Standing Glute Kickback',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'bulgarian_split_squat',
+            name: 'Bulgarian Split Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'curtsy_lunge',
+            name: 'Curtsy Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat_pulse',
+            name: 'Sumo Squat Pulse',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'donkey_kick_pulse',
+            name: 'Donkey Kick Pulse',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'single_leg_rdl',
+            name: 'Single Leg RDL',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump',
+            name: 'Frog Pump',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_girl_glute_specialization',
+      name: 'GLUTE SPECIALIZATION',
+      category: 'gym',
+      subcategory: 'girl_power',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🍑',
+    );
+  }
+
+  // GIRL POWER - UPPER BODY (Upper/Lower Split)
+  static WorkoutPreset _getGymGirlUpperBody(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Ups',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'lat_pulldown',
+            name: 'Lat Pulldown',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'seated_dumbbell_press',
+            name: 'Seated Dumbbell Press',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'dumbbell_bench_press',
+            name: 'Dumbbell Bench Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'seated_cable_row',
+            name: 'Seated Cable Row',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'standing_dumbbell_press',
+            name: 'Standing Dumbbell Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'lat_pulldown',
+            name: 'Lat Pulldown',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_lateral_raise',
+            name: 'Dumbbell Lateral Raise',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'incline_dumbbell_press',
+            name: 'Incline Dumbbell Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_row',
+            name: 'Dumbbell Row',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_overhead_press',
+            name: 'Barbell Overhead Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_lateral_raise',
+            name: 'Dumbbell Lateral Raise',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'cable_crossover',
+            name: 'Cable Crossover',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'reverse_fly',
+            name: 'Reverse Fly',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['back'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_girl_upper_body',
+      name: 'UPPER BODY',
+      category: 'gym',
+      subcategory: 'girl_power',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '💪',
+    );
+  }
+
+  // GIRL POWER - LOWER BODY (Upper/Lower Split)
+  static WorkoutPreset _getGymGirlLowerBody(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'goblet_squat',
+            name: 'Goblet Squat',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_rdl',
+            name: 'Dumbbell RDL',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'barbell_back_squat',
+            name: 'Barbell Back Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'walking_lunge',
+            name: 'Walking Lunge',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'lying_leg_curl',
+            name: 'Lying Leg Curl',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'barbell_back_squat',
+            name: 'Barbell Back Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'bulgarian_split_squat',
+            name: 'Bulgarian Split Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'walking_lunge',
+            name: 'Walking Lunge',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'lying_leg_curl',
+            name: 'Lying Leg Curl',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'standing_calf_raise',
+            name: 'Standing Calf Raise',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['calves'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_girl_lower_body',
+      name: 'LOWER BODY',
+      category: 'gym',
+      subcategory: 'girl_power',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🦵',
+    );
+  }
+
+  // GIRL POWER - FULL BODY
+  static WorkoutPreset _getGymGirlFullBody(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'goblet_squat',
+            name: 'Goblet Squat',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Ups',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'goblet_squat',
+            name: 'Goblet Squat',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_bench_press',
+            name: 'Dumbbell Bench Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_rdl',
+            name: 'Dumbbell RDL',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'seated_cable_row',
+            name: 'Seated Cable Row',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'barbell_back_squat',
+            name: 'Barbell Back Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_bench_press',
+            name: 'Dumbbell Bench Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'bulgarian_split_squat',
+            name: 'Bulgarian Split Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'standing_dumbbell_press',
+            name: 'Standing Dumbbell Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'plank',
+            name: 'Plank',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 45,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_girl_full_body',
+      name: 'FULL BODY',
+      category: 'gym',
+      subcategory: 'girl_power',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '⚡',
+    );
+  }
+
+  // GIRL POWER - PPL PUSH DAY
+  static WorkoutPreset _getGymGirlPPLPush(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Ups',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'seated_dumbbell_press',
+            name: 'Seated Dumbbell Press',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'cable_pushdown',
+            name: 'Cable Pushdown',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'dumbbell_bench_press',
+            name: 'Dumbbell Bench Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'standing_dumbbell_press',
+            name: 'Standing Dumbbell Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'incline_dumbbell_press',
+            name: 'Incline Dumbbell Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_lateral_raise',
+            name: 'Dumbbell Lateral Raise',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'overhead_tricep_extension',
+            name: 'Overhead Tricep Extension',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'incline_barbell_press',
+            name: 'Incline Barbell Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_overhead_press',
+            name: 'Barbell Overhead Press',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_bench_press',
+            name: 'Dumbbell Bench Press',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_lateral_raise',
+            name: 'Dumbbell Lateral Raise',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'cable_crossover',
+            name: 'Cable Crossover',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'reverse_fly',
+            name: 'Reverse Fly',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['back'],
+          ),
+          WorkoutExercise(
+            id: 'skull_crusher',
+            name: 'Skull Crusher',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['triceps'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_girl_ppl_push',
+      name: 'PPL - PUSH DAY',
+      category: 'gym',
+      subcategory: 'girl_power',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🚀',
+    );
+  }
+
+  // GIRL POWER - PPL PULL DAY
+  static WorkoutPreset _getGymGirlPPLPull(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'lat_pulldown',
+            name: 'Lat Pulldown',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'seated_cable_row',
+            name: 'Seated Cable Row',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'cable_bicep_curl',
+            name: 'Cable Bicep Curl',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'lat_pulldown',
+            name: 'Lat Pulldown',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'seated_cable_row',
+            name: 'Seated Cable Row',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_row',
+            name: 'Dumbbell Row',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'reverse_fly',
+            name: 'Reverse Fly',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['back'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_bicep_curl',
+            name: 'Dumbbell Bicep Curl',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'barbell_bent_over_row',
+            name: 'Barbell Bent Over Row',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'lat_pulldown',
+            name: 'Lat Pulldown',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_row',
+            name: 'Dumbbell Row',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'reverse_fly',
+            name: 'Reverse Fly',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['shoulders'],
+            secondaryMuscles: ['back'],
+          ),
+          WorkoutExercise(
+            id: 'cable_bicep_curl',
+            name: 'Cable Bicep Curl',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['biceps'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'hanging_leg_raise',
+            name: 'Hanging Leg Raise',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_girl_ppl_pull',
+      name: 'PPL - PULL DAY',
+      category: 'gym',
+      subcategory: 'girl_power',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '💪',
+    );
+  }
+
+  // GIRL POWER - PPL LEG DAY
+  static WorkoutPreset _getGymGirlPPLLegs(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'goblet_squat',
+            name: 'Goblet Squat',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'dumbbell_rdl',
+            name: 'Dumbbell RDL',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'barbell_back_squat',
+            name: 'Barbell Back Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'walking_lunge',
+            name: 'Walking Lunge',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'lying_leg_curl',
+            name: 'Lying Leg Curl',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'barbell_back_squat',
+            name: 'Barbell Back Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'bulgarian_split_squat',
+            name: 'Bulgarian Split Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'walking_lunge',
+            name: 'Walking Lunge',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'lying_leg_curl',
+            name: 'Lying Leg Curl',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'standing_calf_raise',
+            name: 'Standing Calf Raise',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['calves'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'gym_girl_ppl_legs',
+      name: 'PPL - LEG DAY',
+      category: 'gym',
+      subcategory: 'girl_power',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🦵',
+    );
   }
 
   // HOME MODE - BODYWEIGHT BASICS
   static List<WorkoutPreset> getHomeBodyweightBasics(String difficulty) {
     return [
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_full_body',
-        name: 'FULL BODY',
-        category: 'home',
-        subcategory: 'bodyweight_basics',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['bodyweight'],
-        icon: '⚡',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_upper_body',
-        name: 'BALANCED UPPER BODY',
-        category: 'home',
-        subcategory: 'bodyweight_basics',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['bodyweight'],
-        icon: '💪',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_lower_body',
-        name: 'LOWER BODY',
-        category: 'home',
-        subcategory: 'bodyweight_basics',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['legs', 'glutes'], // FIXED: Use legs/glutes instead of bodyweight
-        icon: '🦵',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_core',
-        name: 'CORE',
-        category: 'home',
-        subcategory: 'bodyweight_basics',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['core'],
-        icon: '🎯',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_bro_split',
-        name: 'BRO SPLIT (MODIFIED)',
-        category: 'home',
-        subcategory: 'bodyweight_basics',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['bodyweight'],
-        icon: '💪',
-      ),
+      _getHomeFullBodyWorkout(difficulty),
+      _getHomeBalancedUpperBodyWorkout(difficulty),
+      _getHomeLowerBodyWorkout(difficulty),
+      _getHomeCoreWorkout(difficulty),
+      _getHomeBroSplitCircuit(difficulty),
     ];
+  }
+
+  // HOME BODYWEIGHT BASICS - FULL BODY
+  static WorkoutPreset _getHomeFullBodyWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'air_squat',
+            name: 'Air Squat',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Up',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'plank',
+            name: 'Plank',
+            sets: 3,
+            reps: 0,
+            timeSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Up',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'inverted_row',
+            name: 'Inverted Row',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'static_lunge',
+            name: 'Static Lunge',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'pistol_squat',
+            name: 'Pistol Squat',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'decline_push_up',
+            name: 'Decline Push-Up',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'jumping_lunge',
+            name: 'Jumping Lunge',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 40,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'plank',
+            name: 'Plank',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 60,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_full_body',
+      name: 'FULL BODY',
+      category: 'home',
+      subcategory: 'bodyweight_basics',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '⚡',
+    );
+  }
+
+  // HOME BODYWEIGHT BASICS - BALANCED UPPER BODY
+  static WorkoutPreset _getHomeBalancedUpperBodyWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'incline_push_up',
+            name: 'Incline Push-Up',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'inverted_row',
+            name: 'Inverted Row',
+            sets: 3,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'plank',
+            name: 'Plank',
+            sets: 3,
+            reps: 0,
+            timeSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Up',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'diamond_push_up',
+            name: 'Diamond Push-Up',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'inverted_row',
+            name: 'Inverted Row',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'chin_up',
+            name: 'Chin-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'decline_push_up',
+            name: 'Decline Push-Up',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'archer_push_up',
+            name: 'Archer Push-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'diamond_push_up',
+            name: 'Diamond Push-Up',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'chin_up',
+            name: 'Chin-Up',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'plank',
+            name: 'Plank',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 60,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_upper_body',
+      name: 'BALANCED UPPER BODY',
+      category: 'home',
+      subcategory: 'bodyweight_basics',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '💪',
+    );
+  }
+
+  // HOME BODYWEIGHT BASICS - LOWER BODY
+  static WorkoutPreset _getHomeLowerBodyWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'air_squat',
+            name: 'Air Squat',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'static_lunge',
+            name: 'Static Lunge',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'walking_lunge',
+            name: 'Walking Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'static_lunge',
+            name: 'Static Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'air_squat',
+            name: 'Air Squat',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'pistol_squat',
+            name: 'Pistol Squat',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'jumping_lunge',
+            name: 'Jumping Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'walking_lunge',
+            name: 'Walking Lunge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'air_squat',
+            name: 'Air Squat',
+            sets: 4,
+            reps: 25,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_lower_body',
+      name: 'LOWER BODY',
+      category: 'home',
+      subcategory: 'bodyweight_basics',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🦵',
+    );
+  }
+
+  // HOME BODYWEIGHT BASICS - CORE
+  static WorkoutPreset _getHomeCoreWorkout(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'crunch',
+            name: 'Crunch',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'plank',
+            name: 'Plank',
+            sets: 3,
+            reps: 0,
+            timeSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'bicycle_crunch',
+            name: 'Bicycle Crunch',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'crunch',
+            name: 'Crunch',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 40,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'bicycle_crunch',
+            name: 'Bicycle Crunch',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'plank',
+            name: 'Plank',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 45,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'russian_twist',
+            name: 'Russian Twist',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'v_up',
+            name: 'V-Up',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber_crossover',
+            name: 'Mountain Climber Crossover',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 45,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'bicycle_crunch',
+            name: 'Bicycle Crunch',
+            sets: 4,
+            reps: 25,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'plank',
+            name: 'Plank',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 60,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'russian_twist',
+            name: 'Russian Twist',
+            sets: 4,
+            reps: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'side_plank',
+            name: 'Side Plank',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 45,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_core',
+      name: 'CORE',
+      category: 'home',
+      subcategory: 'bodyweight_basics',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🎯',
+    );
+  }
+
+  // HOME BODYWEIGHT BASICS - BRO SPLIT (CIRCUIT)
+  static WorkoutPreset _getHomeBroSplitCircuit(String difficulty) {
+    List<WorkoutExercise> exercises;
+    int rounds;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        rounds = 3;
+        exercises = [
+          WorkoutExercise(
+            id: 'air_squat',
+            name: 'Air Squat',
+            sets: 1,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Up',
+            sets: 1,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        rounds = 4;
+        exercises = [
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 1,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Up',
+            sets: 1,
+            reps: 15,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'inverted_row',
+            name: 'Inverted Row',
+            sets: 1,
+            reps: 12,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'static_lunge',
+            name: 'Static Lunge',
+            sets: 1,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 10,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        rounds = 4;
+        exercises = [
+          WorkoutExercise(
+            id: 'pistol_squat',
+            name: 'Pistol Squat',
+            sets: 1,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'decline_push_up',
+            name: 'Decline Push-Up',
+            sets: 1,
+            reps: 15,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 1,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'jumping_lunge',
+            name: 'Jumping Lunge',
+            sets: 1,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 15,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'plank',
+            name: 'Plank',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 60,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        rounds = 3;
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_bro_split',
+      name: 'BRO SPLIT (CIRCUIT)',
+      category: 'home',
+      subcategory: 'bodyweight_basics',
+      exercises: exercises,
+      rounds: rounds,
+      isCircuit: true,
+      icon: '💪',
+    );
   }
 
   // HOME MODE - HIIT CIRCUITS
   static List<WorkoutPreset> getHomeHIITCircuits(String difficulty) {
     return [
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_10min_quick_burn',
-        name: '10 MIN QUICK BURN',
-        category: 'home',
-        subcategory: 'hiit_circuits',
-        difficulty: difficulty,
-        workoutType: 'circuit',
-        muscleGroups: ['hiit'],
-        icon: '⚡',
-        isCircuit: true,
-        rounds: 2,
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_20min_destroyer',
-        name: '20 MIN DESTROYER',
-        category: 'home',
-        subcategory: 'hiit_circuits',
-        difficulty: difficulty,
-        workoutType: 'circuit',
-        muscleGroups: ['hiit'],
-        icon: '🔥',
-        isCircuit: true,
-        rounds: 3,
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_tabata_torture',
-        name: 'TABATA TORTURE',
-        category: 'home',
-        subcategory: 'hiit_circuits',
-        difficulty: difficulty,
-        workoutType: 'circuit',
-        muscleGroups: ['hiit'],
-        icon: '💥',
-        isCircuit: true,
-        rounds: 4,
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_cardio_blast',
-        name: 'CARDIO BLAST',
-        category: 'home',
-        subcategory: 'hiit_circuits',
-        difficulty: difficulty,
-        workoutType: 'circuit',
-        muscleGroups: ['hiit'],
-        icon: '⚡',
-        isCircuit: true,
-        rounds: 3,
-      ),
+      _getHome10MinQuickBurn(difficulty),
+      _getHome20MinDestroyer(difficulty),
+      _getHomeTabataTorture(difficulty),
+      _getHomeCardioBlast(difficulty),
     ];
+  }
+
+  // HOME HIIT - 10 MIN QUICK BURN
+  static WorkoutPreset _getHome10MinQuickBurn(String difficulty) {
+    List<WorkoutExercise> exercises;
+    int rounds;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        rounds = 2;
+        exercises = [
+          WorkoutExercise(
+            id: 'marching_in_place',
+            name: 'Marching In Place',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'squat_reach',
+            name: 'Squat Reach',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'incline_push_up',
+            name: 'Incline Push-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'standing_oblique_crunch',
+            name: 'Standing Oblique Crunch',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        rounds = 2;
+        exercises = [
+          WorkoutExercise(
+            id: 'high_knee',
+            name: 'High Knee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'butt_kick',
+            name: 'Butt Kick',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        rounds = 2;
+        exercises = [
+          WorkoutExercise(
+            id: 'high_knee_sprint',
+            name: 'High Knee Sprint',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'tuck_jump',
+            name: 'Tuck Jump',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber_crossover',
+            name: 'Mountain Climber Crossover',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'star_jump',
+            name: 'Star Jump',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'butt_kick_sprint',
+            name: 'Butt Kick Sprint',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      default:
+        rounds = 2;
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_10min_quick_burn',
+      name: '10 MIN QUICK BURN',
+      category: 'home',
+      subcategory: 'hiit_circuits',
+      exercises: exercises,
+      rounds: rounds,
+      duration: '10 min',
+      isCircuit: true,
+      icon: '⚡',
+    );
+  }
+
+  // HOME HIIT - 20 MIN DESTROYER
+  static WorkoutPreset _getHome20MinDestroyer(String difficulty) {
+    List<WorkoutExercise> exercises;
+    int rounds;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        rounds = 3;
+        exercises = [
+          WorkoutExercise(
+            id: 'step_touch',
+            name: 'Step Touch',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'squat_reach',
+            name: 'Squat Reach',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'incline_push_up',
+            name: 'Incline Push-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'plank_tap',
+            name: 'Plank Tap',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        rounds = 3;
+        exercises = [
+          WorkoutExercise(
+            id: 'jumping_jack',
+            name: 'Jumping Jack',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'high_knee',
+            name: 'High Knee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        rounds = 3;
+        exercises = [
+          WorkoutExercise(
+            id: 'star_jump',
+            name: 'Star Jump',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'burpee_tuck_jump',
+            name: 'Burpee Tuck Jump',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'tuck_jump',
+            name: 'Tuck Jump',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber_crossover',
+            name: 'Mountain Climber Crossover',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'high_knee_sprint',
+            name: 'High Knee Sprint',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'skater_hop',
+            name: 'Skater Hop',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'burpee_sprawl',
+            name: 'Burpee Sprawl',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      default:
+        rounds = 3;
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_20min_destroyer',
+      name: '20 MIN DESTROYER',
+      category: 'home',
+      subcategory: 'hiit_circuits',
+      exercises: exercises,
+      rounds: rounds,
+      duration: '20 min',
+      isCircuit: true,
+      icon: '🔥',
+    );
+  }
+
+  // HOME HIIT - TABATA TORTURE
+  static WorkoutPreset _getHomeTabataTorture(String difficulty) {
+    List<WorkoutExercise> exercises;
+    int rounds;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        rounds = 8; // Tabata = 8 rounds per exercise
+        exercises = [
+          WorkoutExercise(
+            id: 'marching_in_place',
+            name: 'Marching In Place',
+            sets: 8,
+            reps: 0,
+            timeSeconds: 20,
+            restSeconds: 10,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'squat_reach',
+            name: 'Squat Reach',
+            sets: 8,
+            reps: 0,
+            timeSeconds: 20,
+            restSeconds: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        rounds = 8;
+        exercises = [
+          WorkoutExercise(
+            id: 'high_knee',
+            name: 'High Knee',
+            sets: 8,
+            reps: 0,
+            timeSeconds: 20,
+            restSeconds: 10,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 8,
+            reps: 0,
+            timeSeconds: 20,
+            restSeconds: 10,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 8,
+            reps: 0,
+            timeSeconds: 20,
+            restSeconds: 10,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 8,
+            reps: 0,
+            timeSeconds: 20,
+            restSeconds: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        rounds = 8;
+        exercises = [
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 8,
+            reps: 0,
+            timeSeconds: 20,
+            restSeconds: 10,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'tuck_jump',
+            name: 'Tuck Jump',
+            sets: 8,
+            reps: 0,
+            timeSeconds: 20,
+            restSeconds: 10,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber_crossover',
+            name: 'Mountain Climber Crossover',
+            sets: 8,
+            reps: 0,
+            timeSeconds: 20,
+            restSeconds: 10,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'star_jump',
+            name: 'Star Jump',
+            sets: 8,
+            reps: 0,
+            timeSeconds: 20,
+            restSeconds: 10,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'burpee_tuck_jump',
+            name: 'Burpee Tuck Jump',
+            sets: 8,
+            reps: 0,
+            timeSeconds: 20,
+            restSeconds: 10,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'high_knee_sprint',
+            name: 'High Knee Sprint',
+            sets: 8,
+            reps: 0,
+            timeSeconds: 20,
+            restSeconds: 10,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        rounds = 8;
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_tabata_torture',
+      name: 'TABATA TORTURE',
+      category: 'home',
+      subcategory: 'hiit_circuits',
+      exercises: exercises,
+      rounds: 1, // Already doing 8 sets per exercise
+      duration: '15-20 min',
+      isCircuit: false, // Not a circuit, each exercise done 8 times
+      icon: '💥',
+    );
+  }
+
+  // HOME HIIT - CARDIO BLAST
+  static WorkoutPreset _getHomeCardioBlast(String difficulty) {
+    List<WorkoutExercise> exercises;
+    int rounds;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        rounds = 3;
+        exercises = [
+          WorkoutExercise(
+            id: 'step_touch',
+            name: 'Step Touch',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'marching_in_place',
+            name: 'Marching In Place',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'standing_oblique_crunch',
+            name: 'Standing Oblique Crunch',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 30,
+            restSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        rounds = 4;
+        exercises = [
+          WorkoutExercise(
+            id: 'jumping_jack',
+            name: 'Jumping Jack',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'high_knee',
+            name: 'High Knee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'butt_kick',
+            name: 'Butt Kick',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        rounds = 4;
+        exercises = [
+          WorkoutExercise(
+            id: 'star_jump',
+            name: 'Star Jump',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'high_knee_sprint',
+            name: 'High Knee Sprint',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['cardio'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'tuck_jump',
+            name: 'Tuck Jump',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber_crossover',
+            name: 'Mountain Climber Crossover',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'skater_hop',
+            name: 'Skater Hop',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'burpee_tuck_jump',
+            name: 'Burpee Tuck Jump',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 45,
+            restSeconds: 15,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      default:
+        rounds = 3;
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_cardio_blast',
+      name: 'CARDIO BLAST',
+      category: 'home',
+      subcategory: 'hiit_circuits',
+      exercises: exercises,
+      rounds: rounds,
+      duration: '15-20 min',
+      isCircuit: true,
+      icon: '💨',
+    );
   }
 
   // HOME MODE - HOME BOOTY
   static List<WorkoutPreset> getHomeBooty(String difficulty) {
     return [
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_glute_activation',
-        name: 'GLUTE ACTIVATION',
-        category: 'home',
-        subcategory: 'home_booty',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['glutes'],
-        icon: '🍑',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_booty_burner',
-        name: 'BOOTY BURNER',
-        category: 'home',
-        subcategory: 'home_booty',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['glutes'],
-        icon: '🔥',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_band_booty',
-        name: 'BAND BOOTY',
-        category: 'home',
-        subcategory: 'home_booty',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['glutes'],
-        icon: '🍑',
-      ),
+      _getHomeGluteActivation(difficulty),
+      _getHomeBootyBurner(difficulty),
+      _getHomeBandBooty(difficulty),
     ];
+  }
+
+  // HOME BOOTY - GLUTE ACTIVATION
+  static WorkoutPreset _getHomeGluteActivation(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 3,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'standing_glute_kickback',
+            name: 'Standing Glute Kickback',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump',
+            name: 'Frog Pump',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'donkey_kick',
+            name: 'Donkey Kick',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'standing_glute_kickback',
+            name: 'Standing Glute Kickback',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump',
+            name: 'Frog Pump',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'quadruped_hip_extension',
+            name: 'Quadruped Hip Extension',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'donkey_kick_pulse',
+            name: 'Donkey Kick Pulse',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'standing_glute_kickback',
+            name: 'Standing Glute Kickback',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'curtsy_lunge',
+            name: 'Curtsy Lunge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump_pulse',
+            name: 'Frog Pump Pulse',
+            sets: 4,
+            reps: 25,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'quadruped_hip_extension_pulse',
+            name: 'Quadruped Hip Extension Pulse',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'single_leg_rdl',
+            name: 'Single Leg RDL',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_glute_activation',
+      name: 'GLUTE ACTIVATION',
+      category: 'home',
+      subcategory: 'home_booty',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🍑',
+    );
+  }
+
+  // HOME BOOTY - BOOTY BURNER
+  static WorkoutPreset _getHomeBootyBurner(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 3,
+            reps: 25,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat',
+            name: 'Sumo Squat',
+            sets: 3,
+            reps: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'reverse_lunge',
+            name: 'Reverse Lunge',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat',
+            name: 'Sumo Squat',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'reverse_lunge',
+            name: 'Reverse Lunge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'donkey_kick',
+            name: 'Donkey Kick',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump',
+            name: 'Frog Pump',
+            sets: 4,
+            reps: 25,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat_pulse',
+            name: 'Sumo Squat Pulse',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'curtsy_lunge',
+            name: 'Curtsy Lunge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'donkey_kick_pulse',
+            name: 'Donkey Kick Pulse',
+            sets: 4,
+            reps: 25,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump_pulse',
+            name: 'Frog Pump Pulse',
+            sets: 4,
+            reps: 30,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'standing_glute_kickback',
+            name: 'Standing Glute Kickback',
+            sets: 4,
+            reps: 25,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'quadruped_hip_extension_pulse',
+            name: 'Quadruped Hip Extension Pulse',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_booty_burner',
+      name: 'BOOTY BURNER',
+      category: 'home',
+      subcategory: 'home_booty',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🔥',
+    );
+  }
+
+  // HOME BOOTY - BAND BOOTY
+  static WorkoutPreset _getHomeBandBooty(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 3,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat',
+            name: 'Sumo Squat',
+            sets: 3,
+            reps: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'standing_glute_kickback',
+            name: 'Standing Glute Kickback',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat',
+            name: 'Sumo Squat',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'donkey_kick',
+            name: 'Donkey Kick',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'standing_glute_kickback',
+            name: 'Standing Glute Kickback',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump',
+            name: 'Frog Pump',
+            sets: 4,
+            reps: 25,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat_hold_pulse',
+            name: 'Sumo Squat Hold Pulse',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'donkey_kick_pulse',
+            name: 'Donkey Kick Pulse',
+            sets: 4,
+            reps: 25,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'curtsy_lunge',
+            name: 'Curtsy Lunge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump_pulse',
+            name: 'Frog Pump Pulse',
+            sets: 4,
+            reps: 30,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'quadruped_hip_extension_pulse',
+            name: 'Quadruped Hip Extension Pulse',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'standing_glute_kickback',
+            name: 'Standing Glute Kickback',
+            sets: 4,
+            reps: 25,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_band_booty',
+      name: 'BAND BOOTY',
+      category: 'home',
+      subcategory: 'home_booty',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '💪',
+    );
   }
 
   // HOME MODE - GIRL POWER
   static List<WorkoutPreset> getHomeGirlPower(String difficulty) {
     return [
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_girl_glute_sculpt',
-        name: 'GLUTE SCULPT',
-        category: 'home',
-        subcategory: 'girl_power',
-        difficulty: difficulty,
-        workoutType: 'single_muscle',
-        muscleGroups: ['glutes'],
-        icon: '🍑',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_girl_upper_lower',
-        name: 'UPPER/LOWER SPLIT',
-        category: 'home',
-        subcategory: 'girl_power',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['bodyweight'],
-        icon: '💪',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_girl_full_body',
-        name: 'FULL BODY',
-        category: 'home',
-        subcategory: 'girl_power',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['bodyweight'],
-        icon: '⚡',
-      ),
-      WorkoutTemplateService.generateWorkoutPreset(
-        id: 'home_girl_push_pull_legs',
-        name: 'PUSH/PULL/LEGS',
-        category: 'home',
-        subcategory: 'girl_power',
-        difficulty: difficulty,
-        workoutType: 'compound',
-        muscleGroups: ['bodyweight'],
-        icon: '🚀',
-      ),
+      _getHomeGirlGluteSculpt(difficulty),
+      _getHomeGirlUpperBody(difficulty),
+      _getHomeGirlFullBody(difficulty),
+      _getHomeGirlPPL(difficulty),
+      _getHomeGirlFullBodyCircuit(difficulty),
     ];
+  }
+
+  // HOME GIRL POWER - GLUTE SCULPT
+  static WorkoutPreset _getHomeGirlGluteSculpt(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 3,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'sumo_squat',
+            name: 'Sumo Squat',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'reverse_lunge',
+            name: 'Reverse Lunge',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'walking_lunge',
+            name: 'Walking Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'curtsy_lunge',
+            name: 'Curtsy Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'curtsy_lunge',
+            name: 'Curtsy Lunge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'donkey_kick_pulse',
+            name: 'Donkey Kick Pulse',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'jumping_lunge',
+            name: 'Jumping Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump_pulse',
+            name: 'Frog Pump Pulse',
+            sets: 4,
+            reps: 25,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber_crossover',
+            name: 'Mountain Climber Crossover',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 40,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_girl_glute_sculpt',
+      name: 'GLUTE SCULPT',
+      category: 'home',
+      subcategory: 'girl_power',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🍑',
+    );
+  }
+
+  // HOME GIRL POWER - UPPER BODY
+  static WorkoutPreset _getHomeGirlUpperBody(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'incline_push_up',
+            name: 'Incline Push-Up',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'inverted_row',
+            name: 'Inverted Row',
+            sets: 3,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'plank',
+            name: 'Plank',
+            sets: 3,
+            reps: 0,
+            timeSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Up',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'diamond_push_up',
+            name: 'Diamond Push-Up',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'inverted_row',
+            name: 'Inverted Row',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'plank_tap',
+            name: 'Plank Tap',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['shoulders'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'decline_push_up',
+            name: 'Decline Push-Up',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'diamond_push_up',
+            name: 'Diamond Push-Up',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'archer_push_up',
+            name: 'Archer Push-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'inverted_row',
+            name: 'Inverted Row',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'plank_jack',
+            name: 'Plank Jack',
+            sets: 4,
+            reps: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber_crossover',
+            name: 'Mountain Climber Crossover',
+            sets: 4,
+            reps: 0,
+            timeSeconds: 40,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_girl_upper_lower',
+      name: 'UPPER BODY',
+      category: 'home',
+      subcategory: 'girl_power',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '💪',
+    );
+  }
+
+  // HOME GIRL POWER - FULL BODY (Chloe Ting format)
+  static WorkoutPreset _getHomeGirlFullBody(String difficulty) {
+    List<WorkoutExercise> exercises;
+    bool isCircuit;
+    int? rounds;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        isCircuit = false;
+        exercises = [
+          WorkoutExercise(
+            id: 'air_squat',
+            name: 'Air Squat',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'incline_push_up',
+            name: 'Incline Push-Up',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 3,
+            reps: 0,
+            timeSeconds: 30,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        isCircuit = true;
+        rounds = 4;
+        exercises = [
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'inverted_row',
+            name: 'Inverted Row',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        isCircuit = true;
+        rounds = 4;
+        exercises = [
+          WorkoutExercise(
+            id: 'tuck_jump',
+            name: 'Tuck Jump',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'decline_push_up',
+            name: 'Decline Push-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'jumping_lunge',
+            name: 'Jumping Lunge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber_crossover',
+            name: 'Mountain Climber Crossover',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      default:
+        isCircuit = false;
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_girl_full_body',
+      name: 'FULL BODY',
+      category: 'home',
+      subcategory: 'girl_power',
+      exercises: exercises,
+      rounds: rounds,
+      isCircuit: isCircuit,
+      duration: difficulty == 'beginner' ? '15 min' : '20-25 min',
+      icon: '⚡',
+    );
+  }
+
+  // HOME GIRL POWER - PPL (Modified for home)
+  static WorkoutPreset _getHomeGirlPPL(String difficulty) {
+    List<WorkoutExercise> exercises;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        exercises = [
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Up',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'inverted_row',
+            name: 'Inverted Row',
+            sets: 3,
+            reps: 10,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'air_squat',
+            name: 'Air Squat',
+            sets: 3,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        exercises = [
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Up',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'diamond_push_up',
+            name: 'Diamond Push-Up',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'inverted_row',
+            name: 'Inverted Row',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        exercises = [
+          WorkoutExercise(
+            id: 'decline_push_up',
+            name: 'Decline Push-Up',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'archer_push_up',
+            name: 'Archer Push-Up',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'inverted_row',
+            name: 'Inverted Row',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'pistol_squat',
+            name: 'Pistol Squat',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'jumping_lunge',
+            name: 'Jumping Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_girl_push_pull_legs',
+      name: 'PUSH/PULL/LEGS',
+      category: 'home',
+      subcategory: 'girl_power',
+      exercises: exercises,
+      isCircuit: false,
+      icon: '🚀',
+    );
+  }
+
+  // HOME GIRL POWER - BRO SPLIT (Circuit)
+  static WorkoutPreset _getHomeGirlFullBodyCircuit(String difficulty) {
+    List<WorkoutExercise> exercises;
+    int rounds;
+    
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        rounds = 3;
+        exercises = [
+          WorkoutExercise(
+            id: 'air_squat',
+            name: 'Air Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'incline_push_up',
+            name: 'Incline Push-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'glute_bridge',
+            name: 'Glute Bridge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+        ];
+        break;
+      case 'intermediate':
+        rounds = 4;
+        exercises = [
+          WorkoutExercise(
+            id: 'jump_squat',
+            name: 'Jump Squat',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'push_up',
+            name: 'Push-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'inverted_row',
+            name: 'Inverted Row',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber',
+            name: 'Mountain Climber',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      case 'advanced':
+        rounds = 4;
+        exercises = [
+          WorkoutExercise(
+            id: 'tuck_jump',
+            name: 'Tuck Jump',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'decline_push_up',
+            name: 'Decline Push-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['chest'],
+            secondaryMuscles: ['triceps'],
+          ),
+          WorkoutExercise(
+            id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'pull_up',
+            name: 'Pull-Up',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['back'],
+            secondaryMuscles: ['biceps'],
+          ),
+          WorkoutExercise(
+            id: 'jumping_lunge',
+            name: 'Jumping Lunge',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'burpee',
+            name: 'Burpee',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['full_body'],
+            secondaryMuscles: ['cardio'],
+          ),
+          WorkoutExercise(
+            id: 'mountain_climber_crossover',
+            name: 'Mountain Climber Crossover',
+            sets: 1,
+            reps: 0,
+            timeSeconds: 40,
+            restSeconds: 20,
+            primaryMuscles: ['core'],
+            secondaryMuscles: ['cardio'],
+          ),
+        ];
+        break;
+      default:
+        rounds = 3;
+        isCircuit = false;
+        exercises = [];
+    }
+
+    return WorkoutPreset(
+      id: 'home_girl_full_body_circuit',
+      name: 'FULL BODY CIRCUIT',
+      category: 'home',
+      subcategory: 'girl_power',
+      exercises: exercises,
+      rounds: rounds,
+      isCircuit: isCircuit,
+      duration: difficulty == 'beginner' ? '15 min' : '20-25 min',
+      icon: '🔥',
+    );
   }
 
   // HOME MODE - RECOVERY & MOBILITY (not difficulty-dependent)
@@ -1579,11 +8036,11 @@ class WorkoutData {
       ],
     ),
     WorkoutPreset(
-      id: 'home_girl_bro_split',
-      name: 'BRO SPLIT (MODIFIED)',
+      id: 'home_girl_full_body_circuit',
+      name: 'FULL BODY CIRCUIT',
       category: 'home',
       subcategory: 'girl_power',
-      icon: '👑',
+      icon: '🔥',
       isCircuit: false,
       duration: '~30 min',
       exercises: [

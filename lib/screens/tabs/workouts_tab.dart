@@ -359,12 +359,12 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
           'icon': '🍑',
           'desc': 'Glute workouts at home',
         },
-        {
-          'id': 'recovery',
-          'name': 'RECOVERY & MOBILITY',
-          'icon': '🧘',
-          'desc': 'Stretching and mobility work',
-        },
+        // {
+        //   'id': 'recovery',
+        //   'name': 'RECOVERY & MOBILITY',
+        //   'icon': '🧘',
+        //   'desc': 'Stretching and mobility work',
+        // },
         {
           'id': 'girl_power',
           'name': 'GIRL POWER',
