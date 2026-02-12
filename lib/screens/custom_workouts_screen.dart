@@ -415,7 +415,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
     if (name.contains('elastic')) return true;
     
     // Band-specific exercises
-    if (name.contains('clamshell')) return true;
+    // if (name.contains('clamshell')) return true;
     if (name.contains('fire hydrant') && name.contains('band')) return true;
     if (name.contains('lateral walk') && name.contains('band')) return true;
     if (name.contains('monster walk')) return true;
@@ -468,7 +468,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
     if (name.contains('bicycle') && name.contains('crunch')) return true;
     if (name.contains('dead bug')) return true;
     if (name.contains('bird dog')) return true;
-    if (name.contains('superman')) return true;
+    // if (name.contains('superman')) return true;
     if (name.contains('hollow') && name.contains('hold')) return true;
     if (name.contains('v-up') || name.contains('v up')) return true;
     if (name.contains('tuck jump')) return true;

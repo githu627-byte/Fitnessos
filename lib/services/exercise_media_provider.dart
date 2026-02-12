@@ -82,7 +82,7 @@ class ExerciseMediaProvider {
     'sumo_squat_pulse': 'https://fitnessprogramer.com/wp-content/uploads/2022/09/Dumbbell-Sumo-Squat.gif',
     'jump_squats': 'https://fitnessprogramer.com/wp-content/uploads/2021/09/Jump-Squat.gif',
     'squat_jumps': 'https://fitnessprogramer.com/wp-content/uploads/2021/09/Jump-Squat.gif',
-    'wall_sit': 'https://fitnessprogramer.com/wp-content/uploads/2021/05/Wall-Sit.gif',
+    // 'wall_sit': 'https://fitnessprogramer.com/wp-content/uploads/2021/05/Wall-Sit.gif',
     
     // ═══════════════════════════════════════════════════════════════════════
     // ARM EXERCISES
@@ -106,14 +106,14 @@ class ExerciseMediaProvider {
     'cable_crunch': 'https://fitnessprogramer.com/wp-content/uploads/2021/06/Cable-Crunch.gif',
     'hanging_leg_raise': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Hanging-Leg-raise.gif',
     'leg_raises': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Lying-Leg-Raise.gif',
-    'ab_wheel_rollout': 'https://fitnessprogramer.com/wp-content/uploads/2021/04/Ab-Wheel.gif',
+    // 'ab_wheel_rollout': 'https://fitnessprogramer.com/wp-content/uploads/2021/04/Ab-Wheel.gif',
     'russian_twist': 'https://fitnessprogramer.com/wp-content/uploads/2021/06/Russian-twist.gif',
     'woodchoppers': 'https://fitnessprogramer.com/wp-content/uploads/2022/02/Cable-Woodchoppers.gif',
     'decline_situp': 'https://fitnessprogramer.com/wp-content/uploads/2021/06/Decline-Sit-up.gif',
     'plank': 'https://fitnessprogramer.com/wp-content/uploads/2022/09/Plank.gif',
     'plank_hold': 'https://fitnessprogramer.com/wp-content/uploads/2022/09/Plank.gif',
     'side_plank': 'https://fitnessprogramer.com/wp-content/uploads/2021/05/Side-Plank.gif',
-    'plank_shoulder_taps': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Plank-Shoulder-Tap.gif',
+    // 'plank_shoulder_taps': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Plank-Shoulder-Tap.gif',
     'plank_jacks': 'https://fitnessprogramer.com/wp-content/uploads/2021/06/Plank-Jacks.gif',
     'mountain_climbers': 'https://fitnessprogramer.com/wp-content/uploads/2021/04/Mountain-Climber.gif',
     'bicycle_crunches': 'https://fitnessprogramer.com/wp-content/uploads/2021/04/Bicycle-Crunch.gif',
@@ -168,23 +168,23 @@ class ExerciseMediaProvider {
     // COMPLEX MOVEMENTS
     // ═══════════════════════════════════════════════════════════════════════
     'barbell_squat_press': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Thruster.gif',
-    'superman_raises': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Superman.gif',
+    // 'superman_raises': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Superman.gif',
     
     // ═══════════════════════════════════════════════════════════════════════
     // STRETCHES & MOBILITY (Using closest bodyweight equivalents as fallback)
     // ═══════════════════════════════════════════════════════════════════════
-    'cat_cow': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
-    'worlds_greatest_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Lunge.gif', // fallback  
-    'pigeon_pose': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
-    'hamstring_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2022/03/Romanian-Deadlift.gif', // closest
-    'quad_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
-    'chest_doorway_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Push-Up.gif', // fallback
-    'childs_pose': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
-    '90_90_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
-    'frog_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
-    'hip_flexor_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Lunge.gif', // fallback
-    'happy_baby': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
-    'butterfly_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
+    // 'cat_cow': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
+    // 'worlds_greatest_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Lunge.gif', // fallback
+    // 'pigeon_pose': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
+    // 'hamstring_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2022/03/Romanian-Deadlift.gif', // closest
+    // 'quad_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
+    // 'chest_doorway_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Push-Up.gif', // fallback
+    // 'childs_pose': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
+    // '90_90_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
+    // 'frog_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
+    // 'hip_flexor_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Lunge.gif', // fallback
+    // 'happy_baby': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
+    // 'butterfly_stretch': 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Bodyweight-Squat.gif', // fallback
   };
   
   /// High-quality fallback GIFs for the 5 core movement patterns

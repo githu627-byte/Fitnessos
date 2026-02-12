@@ -224,13 +224,13 @@ class ExerciseDifficultyMapping {
       movementPattern: 'hinge',
     ),
     // Abduction Pattern
-    ExerciseProgression(
-      beginner: 'clamshell',
-      intermediate: 'side_lying_leg_lift',
-      advanced: 'fire_hydrant_pulse',
-      muscleGroup: 'glutes',
-      movementPattern: 'isolation',
-    ),
+    // ExerciseProgression(
+    //   beginner: 'clamshell',
+    //   intermediate: 'side_lying_leg_lift',
+    //   advanced: 'fire_hydrant_pulse',
+    //   muscleGroup: 'glutes',
+    //   movementPattern: 'isolation',
+    // ),
     // Kickback Pattern
     ExerciseProgression(
       beginner: 'standing_glute_kickback',
@@ -333,13 +333,13 @@ class ExerciseDifficultyMapping {
   // CORE PROGRESSIONS
   static const List<ExerciseProgression> coreProgressions = [
     // Anti-Extension
-    ExerciseProgression(
-      beginner: 'plank',
-      intermediate: 'ab_wheel_kneeling',
-      advanced: 'ab_wheel_standing',
-      muscleGroup: 'core',
-      movementPattern: 'isolation',
-    ),
+    // ExerciseProgression(
+    //   beginner: 'plank',
+    //   intermediate: 'ab_wheel_kneeling',
+    //   advanced: 'ab_wheel_standing',
+    //   muscleGroup: 'core',
+    //   movementPattern: 'isolation',
+    // ),
     // Anti-Rotation
     ExerciseProgression(
       beginner: 'pallof_press_kneeling',
@@ -464,13 +464,13 @@ class ExerciseDifficultyMapping {
       muscleGroup: 'legs',
       movementPattern: 'cardio',
     ),
-    ExerciseProgression(
-      beginner: 'plank_walk_out',
-      intermediate: 'inchworm',
-      advanced: 'burpee',
-      muscleGroup: 'full_body',
-      movementPattern: 'cardio',
-    ),
+    // ExerciseProgression(
+    //   beginner: 'plank_walk_out',
+    //   intermediate: 'inchworm',
+    //   advanced: 'burpee',
+    //   muscleGroup: 'full_body',
+    //   movementPattern: 'cardio',
+    // ),
     ExerciseProgression(
       beginner: 'modified_burpee',
       intermediate: 'burpee',
