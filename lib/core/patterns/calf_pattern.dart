@@ -47,6 +47,9 @@ class CalfPattern implements BasePattern {
   @override bool get justHitTrigger => _justHitTrigger;
   
   @override
+  String get debugInfo => 'CALF\nState: ${_state.name}\nReps: $_repCount';
+
+  @override
   double get chargeProgress {
     double progress = _currentRisePercent / _triggerRisePercent;
     return progress.clamp(0.0, 1.0);

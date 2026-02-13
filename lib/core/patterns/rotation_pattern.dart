@@ -19,6 +19,10 @@ class RotationPattern implements BasePattern {
   bool _hasCrossedCenter = true;
   bool _isFirstRep = true;
 
+  // Debug
+  double _debugSweep = 0;
+  double _debugThreshold = 0;
+
   // Smoothing
   double _smoothedSweep = 0.0;
   static const double _emaAlpha = 0.45;
@@ -39,6 +43,9 @@ class RotationPattern implements BasePattern {
   @override String get feedback => _feedback;
   @override double get chargeProgress => _chargeProgress;
   @override bool get justHitTrigger => _justHitTrigger;
+
+  @override
+  String get debugInfo => 'ROTATION\nSweep: ${_debugSweep.toStringAsFixed(3)}\nThresh: ${_debugThreshold.toStringAsFixed(3)}\nCenter: $_hasCrossedCenter\nLastLeft: $_lastWasLeft\nReps: $_repCount';
 
   @override
   void captureBaseline(Map<PoseLandmarkType, PoseLandmark> map) {
@@ -75,6 +82,10 @@ class RotationPattern implements BasePattern {
 
     // Threshold: 45 → 0.325 | 50 → 0.35 | 60 → 0.40
     final double threshold = 0.10 + (triggerAngle / 200.0);
+
+    _debugSweep = rawSweep;
+    _debugThreshold = threshold;
+
     final double centerDeadzone = 0.08;
 
     final bool inLeftZone = _smoothedSweep < -threshold;

@@ -135,6 +135,12 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
   int _workTimeRemaining = 0;
   Timer? _workTimer;
 
+  // DEBUG OVERLAY - REMOVE BEFORE SHIPPING
+  String _debugLive = '';
+  List<String> _debugLog = [];
+  bool _debugExpanded = false;
+  static const int _maxDebugLogLines = 200;
+
   @override
   void initState() {
     super.initState();
@@ -262,6 +268,20 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
         final chargeProgress = _session?.chargeProgress ?? 0.0;
         _chargeProgress = chargeProgress;
         _powerGaugeFill = chargeProgress;
+
+        // DEBUG: Capture live pattern values
+        final _dbgPattern = _session?.movementEngine?.activePattern;
+        if (_dbgPattern != null) {
+          _debugLive = _dbgPattern.debugInfo;
+          if (_dbgPattern.justHitTrigger || _debugLog.isEmpty ||
+              (_debugLog.isNotEmpty && !_debugLog.last.contains(_dbgPattern.state.name))) {
+            final timestamp = DateTime.now().toString().substring(11, 19);
+            _debugLog.add('[$timestamp] ${_dbgPattern.debugInfo.replaceAll('\n', ' | ')}');
+            if (_debugLog.length > _maxDebugLogLines) {
+              _debugLog.removeAt(0);
+            }
+          }
+        }
       });
     } else {
       // Body lost
@@ -1381,6 +1401,123 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                 ),
               ),
             ),
+
+          // DEBUG OVERLAY - TAP TO EXPAND, LONG-PRESS TO COPY - REMOVE BEFORE SHIPPING
+          Positioned(
+            top: 100,
+            right: 8,
+            child: GestureDetector(
+              onTap: () => setState(() => _debugExpanded = !_debugExpanded),
+              onLongPress: () {
+                final fullLog = _debugLog.join('\n');
+                Clipboard.setData(ClipboardData(text: fullLog));
+                HapticFeedback.heavyImpact();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Debug log copied!'),
+                    backgroundColor: Colors.amber,
+                    duration: Duration(seconds: 1),
+                  ),
+                );
+              },
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                width: _debugExpanded ? 280 : 140,
+                constraints: BoxConstraints(
+                  maxHeight: _debugExpanded ? 400 : 120,
+                ),
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.85),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.amber, width: 1),
+                ),
+                child: _debugExpanded
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                'DEBUG LOG',
+                                style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: Colors.amber),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Clipboard.setData(ClipboardData(text: _debugLog.join('\n')));
+                                      HapticFeedback.heavyImpact();
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(content: Text('Copied!'), backgroundColor: Colors.amber, duration: Duration(milliseconds: 500)),
+                                      );
+                                    },
+                                    child: const Padding(padding: EdgeInsets.all(4), child: Icon(Icons.copy, size: 14, color: Colors.amber)),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () => setState(() => _debugLog.clear()),
+                                    child: const Padding(padding: EdgeInsets.all(4), child: Icon(Icons.delete_outline, size: 14, color: Colors.amber)),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () => setState(() => _debugExpanded = false),
+                                    child: const Padding(padding: EdgeInsets.all(4), child: Icon(Icons.close, size: 14, color: Colors.amber)),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 4),
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                              color: Colors.amber.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: Text(
+                              _debugLive,
+                              style: const TextStyle(fontSize: 9, fontFamily: 'monospace', color: Colors.amber, height: 1.3),
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          const Divider(color: Colors.amber, height: 1),
+                          const SizedBox(height: 4),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              reverse: true,
+                              child: Text(
+                                _debugLog.join('\n'),
+                                style: const TextStyle(fontSize: 8, fontFamily: 'monospace', color: Colors.amber, height: 1.3),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: const [
+                              Text('DEBUG', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: Colors.amber, letterSpacing: 1)),
+                              Text('TAP \u25B6', style: TextStyle(fontSize: 7, color: Colors.amber)),
+                            ],
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            _debugLive,
+                            style: const TextStyle(fontSize: 9, fontFamily: 'monospace', color: Colors.amber, height: 1.3),
+                            maxLines: 6,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
+              ),
+            ),
+          ),
 
           // GAMING: Power Gauge - Left edge (ALWAYS VISIBLE)
           Positioned(

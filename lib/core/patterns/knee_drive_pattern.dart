@@ -48,6 +48,9 @@ class KneeDrivePattern extends BasePattern {
   @override bool get justHitTrigger => _justHitTrigger;
 
   @override
+  String get debugInfo => 'KNEEDRIVE\nMode: ${mode.name}\nReps: $_repCount';
+
+  @override
   void captureBaseline(Map<PoseLandmarkType, PoseLandmark> landmarks) {
     _isLocked = true;
     _state = RepState.ready;

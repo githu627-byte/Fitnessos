@@ -59,6 +59,9 @@ class HingePattern implements BasePattern {
   }
   
   @override
+  String get debugInfo => 'HINGE\nPct: ${_currentPercentage.toStringAsFixed(1)}%\nSmooth: ${_smoothedPercentage.toStringAsFixed(1)}%\nBaseline: ${_baselineShoulderHipY.toStringAsFixed(1)}\nInverted: $inverted\nState: ${_state.name}\nReps: $_repCount';
+
+  @override
   void captureBaseline(Map<PoseLandmarkType, PoseLandmark> map) {
     final lShoulder = map[PoseLandmarkType.leftShoulder];
     final rShoulder = map[PoseLandmarkType.rightShoulder];

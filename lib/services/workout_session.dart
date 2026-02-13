@@ -12,6 +12,7 @@ export '../core/patterns/base_pattern.dart' show RepState;
 class WorkoutSession {
   final VoiceCoach _voice = VoiceCoach();
   MovementEngine _engine = MovementEngine();
+  MovementEngine? get movementEngine => _engine;
   String _currentExerciseId = '';
   bool _baselineCaptured = false;
 
