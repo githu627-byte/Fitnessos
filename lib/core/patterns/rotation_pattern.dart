@@ -3,10 +3,10 @@ import 'dart:math' as math;
 import 'base_pattern.dart';
 
 class RotationPattern implements BasePattern {
-  final double triggerAngle; // We'll use this to scale the sensitivity
+  final double triggerAngle;
   final String cueGood;
   final String cueBad;
-  
+
   RepState _state = RepState.ready;
   bool _isLocked = false;
   int _repCount = 0;
@@ -14,15 +14,23 @@ class RotationPattern implements BasePattern {
   bool _justHitTrigger = false;
   double _chargeProgress = 0.0;
 
-  // The "Pendulum" Memory
+  // Pendulum Memory
   bool _lastWasLeft = false;
   bool _hasCrossedCenter = true;
   bool _isFirstRep = true;
 
+  // Smoothing
+  double _smoothedSweep = 0.0;
+  static const double _emaAlpha = 0.30;
+
+  // Timing Guard
+  DateTime _lastRepTime = DateTime.now();
+  static const int _minTimeBetweenRepsMs = 350;
+
   RotationPattern({
-    this.triggerAngle = 45.0, 
+    this.triggerAngle = 45.0,
     this.cueGood = "Twist!",
-    this.cueBad = "Swing Arms!",
+    this.cueBad = "Rotate more!",
   });
 
   @override RepState get state => _state;
@@ -37,13 +45,13 @@ class RotationPattern implements BasePattern {
     _isLocked = true;
     _state = RepState.ready;
     _feedback = "LOCKED";
+    _smoothedSweep = 0.0;
   }
 
   @override
   bool processFrame(Map<PoseLandmarkType, PoseLandmark> map) {
     _justHitTrigger = false;
 
-    // 1. DATA PULL (Hands and Hips only)
     final lW = map[PoseLandmarkType.leftWrist];
     final rW = map[PoseLandmarkType.rightWrist];
     final lH = map[PoseLandmarkType.leftHip];
@@ -51,53 +59,67 @@ class RotationPattern implements BasePattern {
 
     if (lW == null || rW == null || lH == null || rH == null) return false;
 
-    // 2. FIND THE MID-LINE (The Pendulum Anchor)
-    double bodyCenter = (lH.x + rH.x) / 2;
-    double handX = (lW.x + rW.x) / 2;
-
-    // 3. CALCULATE SWEEP (Distance from center)
-    // Normalized by body width so distance from camera doesn't break it
-    double bodyWidth = (lH.x - rH.x).abs() + 0.01;
-    double sweepOffset = (handX - bodyCenter) / bodyWidth;
-
-    // 4. THE THRESHOLD (How far the arms must go)
-    // 0.8 body-widths out is a solid "Full Twist"
-    double threshold = 0.8; 
-
-    // 5. ZONE DETECTION
-    bool inLeftZone = sweepOffset < -threshold;
-    bool inRightZone = sweepOffset > threshold;
-    bool inCenterZone = sweepOffset.abs() < 0.2; // Return to middle to reset
-
-    if (inCenterZone) {
-      _hasCrossedCenter = true; 
+    if (lW.likelihood < 0.5 || rW.likelihood < 0.5 ||
+        lH.likelihood < 0.5 || rH.likelihood < 0.5) {
+      _feedback = "Stay in frame";
+      return false;
     }
 
-    // 6. REFRESH FEEDBACK
-    _chargeProgress = (sweepOffset.abs() / threshold).clamp(0.0, 1.0);
-    _state = _chargeProgress > 0.1 ? RepState.goingDown : RepState.ready;
+    final double bodyCenter = (lH.x + rH.x) / 2;
+    final double handX = (lW.x + rW.x) / 2;
+    final double bodyWidth = (lH.x - rH.x).abs() + 0.01;
+    final double rawSweep = (handX - bodyCenter) / bodyWidth;
 
-    // 7. THE TRIGGER
-    if (_hasCrossedCenter) {
+    // EMA smoothing
+    _smoothedSweep = (_emaAlpha * rawSweep) + ((1 - _emaAlpha) * _smoothedSweep);
+
+    // triggerAngle now actually scales the threshold:
+    // 45 → 0.65 body-widths | 50 → 0.70 | 60 → 0.80
+    final double threshold = 0.20 + (triggerAngle / 100.0);
+    final double centerDeadzone = 0.15;
+
+    final bool inLeftZone = _smoothedSweep < -threshold;
+    final bool inRightZone = _smoothedSweep > threshold;
+    final bool inCenterZone = _smoothedSweep.abs() < centerDeadzone;
+
+    if (inCenterZone) {
+      _hasCrossedCenter = true;
+    }
+
+    _chargeProgress = (_smoothedSweep.abs() / threshold).clamp(0.0, 1.0);
+    _state = _chargeProgress > 0.15 ? RepState.goingDown : RepState.ready;
+
+    final now = DateTime.now();
+    final timeSinceLastRep = now.difference(_lastRepTime).inMilliseconds;
+
+    if (_hasCrossedCenter && timeSinceLastRep > _minTimeBetweenRepsMs) {
       if (inLeftZone && (!_lastWasLeft || _isFirstRep)) {
-        _countRep(true);
+        _countRep(true, now);
         return true;
       } else if (inRightZone && (_lastWasLeft || _isFirstRep)) {
-        _countRep(false);
+        _countRep(false, now);
         return true;
       }
     }
 
-    _feedback = _chargeProgress > 0.8 ? cueGood : cueBad;
+    if (_chargeProgress > 0.85) {
+      _feedback = cueGood;
+    } else if (_chargeProgress > 0.4) {
+      _feedback = "Keep going!";
+    } else {
+      _feedback = cueBad;
+    }
+
     return false;
   }
 
-  void _countRep(bool left) {
+  void _countRep(bool left, DateTime now) {
     _repCount++;
     _lastWasLeft = left;
     _isFirstRep = false;
-    _hasCrossedCenter = false; // LOCK: Must go back to center before next side
+    _hasCrossedCenter = false;
     _justHitTrigger = true;
+    _lastRepTime = now;
     _state = RepState.down;
     _feedback = cueGood;
   }
@@ -110,5 +132,7 @@ class RotationPattern implements BasePattern {
     _lastWasLeft = false;
     _hasCrossedCenter = true;
     _isFirstRep = true;
+    _smoothedSweep = 0.0;
+    _lastRepTime = DateTime.now();
   }
 }

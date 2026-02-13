@@ -817,29 +817,36 @@ class MovementEngine {
     // 'superman_hold': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
     
     // =========================================================================
-    // ===== ROTATION PATTERN - Twisting movements =====
+    // ===== ROTATION PATTERN - Lateral sweep twisting movements =====
     // =========================================================================
-    
+
+    // RUSSIAN TWISTS
     'russian_twist': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 45, 'cueGood': 'Twist!', 'cueBad': 'Rotate more!'}),
     'russian_twists': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 45}),
     'russian_twist_weighted': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 45}),
+
+    // WOOD CHOPS
     'wood_chop': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 60, 'cueGood': 'Chop!', 'cueBad': 'Rotate!'}),
     'wood_chops': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 60}),
     'cable_wood_chop': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 60}),
-    'medicine_ball_woodchop': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 60}), // NEW - Missing
-    'dumbbell_woodchop': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 60}), // NEW - Missing
-    'woodchop': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 60}), // NEW - Missing
-    'woodchoppers': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 60}), // NEW - Missing
-    'windmill': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 45}),
-    'windmills': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 45}),
-    'pallof_press': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 30}),
-    'pallof_press_kneeling': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 30}),
-    'pallof_press_standing': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 30}),
-    'pallof_press_split_stance': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 30}),
-    'landmine_rotation': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 45}),
-    'seated_twist': ExerciseConfig(patternType: PatternType.rotation),
-    'oblique_crunch': ExerciseConfig(patternType: PatternType.rotation),
-    'oblique_crunches': ExerciseConfig(patternType: PatternType.rotation),
+    'medicine_ball_woodchop': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 60}),
+    'dumbbell_woodchop': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 60}),
+    'woodchop': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 60}),
+    'woodchoppers': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 60}),
+
+    // LANDMINE & SEATED
+    'landmine_rotation': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 50, 'cueGood': 'Rotate!', 'cueBad': 'Twist more!'}),
+    'seated_twist': ExerciseConfig(patternType: PatternType.rotation, params: {'triggerAngle': 45}),
+
+    // MOVED TO HOLD - these don't sweep laterally, rotation pattern can't track them
+    'windmill': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Control!', 'cueBad': 'Stay stable!'}),
+    'windmills': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Control!', 'cueBad': 'Stay stable!'}),
+    'pallof_press': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Brace!', 'cueBad': 'Stay tight!'}),
+    'pallof_press_kneeling': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Brace!', 'cueBad': 'Stay tight!'}),
+    'pallof_press_standing': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Brace!', 'cueBad': 'Stay tight!'}),
+    'pallof_press_split_stance': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Brace!', 'cueBad': 'Stay tight!'}),
+    'oblique_crunch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Crunch!', 'cueBad': 'Squeeze obliques!'}),
+    'oblique_crunches': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Crunch!', 'cueBad': 'Squeeze obliques!'}),
     
     // =========================================================================
     // ===== CALF PATTERN - Calf raises =====
