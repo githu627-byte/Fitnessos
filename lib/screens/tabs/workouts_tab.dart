@@ -89,40 +89,38 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
     return SafeArea(
       child: CustomScrollView(
         slivers: [
-          // Header
           SliverToBoxAdapter(
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(20, 40, 20, 16),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'WORKOUTS',
-                          style: TextStyle(
-                            fontSize: 36,
-                            fontWeight: FontWeight.w900,
-                            color: AppColors.cyberLime,
-                            letterSpacing: -0.5,
-                            height: 1.1,
-                          ),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: AppColors.white5,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: AppColors.white10,
+                          width: 1,
                         ),
-                        const SizedBox(height: 4),
-                        const Text(
-                          'Commit a workout to start training',
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: AppColors.white50,
-                            fontWeight: FontWeight.w500,
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: _buildToggleButton('GYM', 'gym', Icons.fitness_center),
                           ),
-                        ),
-                      ],
+                          Expanded(
+                            child: _buildToggleButton('HOME', 'home', Icons.home),
+                          ),
+                          Expanded(
+                            child: _buildToggleButton('CUSTOM', 'custom', Icons.edit_note),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  // Settings Icon
+                  const SizedBox(width: 12),
                   GestureDetector(
                     onTap: () {
                       HapticFeedback.mediumImpact();
@@ -156,48 +154,6 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-          ),
-          
-          // GYM / HOME / CUSTOM - All in one row
-          SliverToBoxAdapter(
-            child: _buildModeToggle(),
-          ),
-          
-          // Section Title
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    _selectedMode == 'gym' 
-                        ? 'GYM WORKOUTS' 
-                        : _selectedMode == 'home'
-                            ? 'HOME WORKOUTS'
-                            : 'CUSTOM WORKOUTS',
-                    style: const TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    _selectedMode == 'gym'
-                        ? 'Build strength with equipment'
-                        : _selectedMode == 'home'
-                            ? 'Train anywhere, anytime'
-                            : 'Create your own workouts',
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: AppColors.white50,
-                    ),
-                  ),
-                  const SizedBox(height: 24),
                 ],
               ),
             ),

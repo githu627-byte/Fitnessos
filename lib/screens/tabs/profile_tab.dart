@@ -64,7 +64,7 @@ class _ProfileTabState extends ConsumerState<ProfileTab> {
 
   Widget _buildHeader() {
     return Container(
-      padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
+      padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -77,33 +77,12 @@ class _ProfileTabState extends ConsumerState<ProfileTab> {
       ),
       child: Column(
         children: [
-          // Title row
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'PROFILE',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w900,
-                      color: AppColors.cyberLime,
-                      letterSpacing: 2,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    _userName,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white.withOpacity(0.5),
-                    ),
-                  ),
-                ],
+              Expanded(
+                child: _buildSegmentToggle(),
               ),
-              // Settings button
+              const SizedBox(width: 12),
               GestureDetector(
                 onTap: () {
                   HapticFeedback.mediumImpact();
@@ -140,11 +119,6 @@ class _ProfileTabState extends ConsumerState<ProfileTab> {
               ),
             ],
           ),
-          
-          const SizedBox(height: 16),
-          
-          // Segment toggle
-          _buildSegmentToggle(),
         ],
       ),
     );
