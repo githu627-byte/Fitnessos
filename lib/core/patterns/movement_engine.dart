@@ -144,6 +144,7 @@ class MovementEngine {
           triggerPercent: config.params['triggerPercent'] ?? 0.40,
           resetPercent: config.params['resetPercent'] ?? 0.75,
           inverted: config.params['inverted'] ?? false,
+          floor: config.params['floor'] ?? false,
           cueGood: config.params['cueGood'] ?? 'Lockout!',
           cueBad: config.params['cueBad'] ?? 'Hips forward!',
         );
@@ -577,21 +578,25 @@ class MovementEngine {
     'russian_swing': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.45, 'resetPercent': 0.80}),
     'american_swing': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.45, 'resetPercent': 0.80}),
     
-    // HINGE PATTERN - HIP THRUST/BRIDGES (inverted)
+    // HINGE PATTERN - HIP THRUST (back on bench - inverted, NOT floor)
     'hip_thrust': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
-    'hip_thrusts': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
-    'glute_bridge': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
-    'glute_bridges': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
-    'single_leg_glute_bridge': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
-    'elevated_glute_bridge': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
-    'banded_glute_bridge': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
-    'barbell_hip_thrust': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true, 'triggerPercent': 0.55}), // NEW - Missing
-    'glute_bridge_single': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}), // NEW - Missing
-    'glute_bridge_hold': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}), // NEW - Missing
-    'frog_pump': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
-    'frog_pumps': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
-    'frog_pump_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
-    'frog_pump_hold_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
+    'hip_thrusts': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+    'barbell_hip_thrust': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+
+    // HINGE PATTERN - GLUTE BRIDGE / FROG PUMP (lying on floor - floor mode)
+    'glute_bridge': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+    'glute_bridges': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+    'single_leg_glute_bridge': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+    'elevated_glute_bridge': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+    'banded_glute_bridge': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+    'glute_bridge_single': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+    'glute_bridge_hold': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank}),
+    'frog_pump': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+    'frog_pumps': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+    'frog_pump_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+    'frog_pump_hold_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+
+    // HINGE PATTERN - Other (unchanged)
     'quadruped_hip_extension': ExerciseConfig(patternType: PatternType.hinge, params: {'cueGood': 'Squeeze!', 'cueBad': 'Higher!'}),
     'quadruped_hip_extension_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40}),
     'standing_glute_squeeze': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
