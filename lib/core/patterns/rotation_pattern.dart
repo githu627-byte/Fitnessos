@@ -21,7 +21,7 @@ class RotationPattern implements BasePattern {
 
   // Smoothing
   double _smoothedSweep = 0.0;
-  static const double _emaAlpha = 0.30;
+  static const double _emaAlpha = 0.45;
 
   // Timing Guard
   DateTime _lastRepTime = DateTime.now();
@@ -59,8 +59,8 @@ class RotationPattern implements BasePattern {
 
     if (lW == null || rW == null || lH == null || rH == null) return false;
 
-    if (lW.likelihood < 0.5 || rW.likelihood < 0.5 ||
-        lH.likelihood < 0.5 || rH.likelihood < 0.5) {
+    if (lW.likelihood < 0.3 || rW.likelihood < 0.3 ||
+        lH.likelihood < 0.3 || rH.likelihood < 0.3) {
       _feedback = "Stay in frame";
       return false;
     }
@@ -70,13 +70,12 @@ class RotationPattern implements BasePattern {
     final double bodyWidth = (lH.x - rH.x).abs() + 0.01;
     final double rawSweep = (handX - bodyCenter) / bodyWidth;
 
-    // EMA smoothing
+    // EMA smoothing - alpha 0.45 so it actually responds
     _smoothedSweep = (_emaAlpha * rawSweep) + ((1 - _emaAlpha) * _smoothedSweep);
 
-    // triggerAngle now actually scales the threshold:
-    // 45 → 0.65 body-widths | 50 → 0.70 | 60 → 0.80
-    final double threshold = 0.20 + (triggerAngle / 100.0);
-    final double centerDeadzone = 0.15;
+    // Threshold: 45 → 0.325 | 50 → 0.35 | 60 → 0.40
+    final double threshold = 0.10 + (triggerAngle / 200.0);
+    final double centerDeadzone = 0.08;
 
     final bool inLeftZone = _smoothedSweep < -threshold;
     final bool inRightZone = _smoothedSweep > threshold;
