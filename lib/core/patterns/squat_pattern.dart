@@ -39,6 +39,9 @@ class SquatPattern implements BasePattern {
   @override bool get justHitTrigger => _justHitTrigger;
 
   @override
+  String get debugInfo => 'SQUAT\nPct: ${_chargeProgress.toStringAsFixed(1)}%\nState: ${_state.name}\nReps: $_repCount';
+
+  @override
   void captureBaseline(Map<PoseLandmarkType, PoseLandmark> map) {
     _isLocked = true;
     _state = RepState.ready;

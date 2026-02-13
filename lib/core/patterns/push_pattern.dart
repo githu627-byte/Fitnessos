@@ -52,6 +52,9 @@ class PushPattern implements BasePattern {
   @override bool get justHitTrigger => _justHitTrigger;
 
   @override
+  String get debugInfo => 'PUSH\nAngle: ${_smoothedAngle.toStringAsFixed(1)}\nInv: $inverted\nState: ${_state.name}\nReps: $_repCount';
+
+  @override
   double get chargeProgress {
     // UI Progress Bar Logic
     if (inverted) {

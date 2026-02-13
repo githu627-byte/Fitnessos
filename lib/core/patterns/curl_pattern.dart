@@ -64,6 +64,9 @@ class CurlPattern implements BasePattern {
   
   // Getters
   @override
+  String get debugInfo => 'CURL\nProgress: ${_smoothedCurlProgress.toStringAsFixed(1)}%\nState: ${_state.name}\nReps: $_repCount';
+
+  @override
   RepState get state => _state;
   @override
   bool get isLocked => _baselineCaptured;

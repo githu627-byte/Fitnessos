@@ -36,6 +36,7 @@ class ExerciseConfig {
 
 class MovementEngine {
   BasePattern? _activePattern;
+  BasePattern? get activePattern => _activePattern;
   String? _currentExerciseId;
   
   // Getters - delegate to active pattern

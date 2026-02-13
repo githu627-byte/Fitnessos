@@ -33,6 +33,9 @@ abstract class BasePattern {
   double get chargeProgress; // 0.0 to 1.0 for power gauge
   bool get justHitTrigger; // <-- ADDED for UI green flash
   
+  // Debug
+  String get debugInfo => '';
+
   // Actions
   void captureBaseline(Map<PoseLandmarkType, PoseLandmark> landmarks);
   bool processFrame(Map<PoseLandmarkType, PoseLandmark> landmarks); // Returns true if rep counted

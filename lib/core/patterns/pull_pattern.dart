@@ -54,6 +54,9 @@ class PullPattern implements BasePattern {
   @override bool get justHitTrigger => _justHitTrigger;
 
   @override
+  String get debugInfo => 'PULL\nAngle: ${_currentAngle.toStringAsFixed(1)}\nState: ${_state.name}\nReps: $_repCount';
+
+  @override
   double get chargeProgress {
     // Start Straight (180) -> Goal Bent (90)
     // Adjusted visualization to match new thresholds

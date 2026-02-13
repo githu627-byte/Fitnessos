@@ -45,6 +45,9 @@ class HoldPattern implements BasePattern {
   @override bool get justHitTrigger => _justHitTrigger;
   
   @override
+  String get debugInfo => 'HOLD\nType: ${holdType.name}\nSecs: $_secondsHeld\nInPos: $_isInPosition';
+
+  @override
   double get chargeProgress {
     if (!_isInPosition) return 0;
     int targetSeconds = 30;
