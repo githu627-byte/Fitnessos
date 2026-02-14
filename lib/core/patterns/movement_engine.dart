@@ -11,9 +11,10 @@ import 'hold_pattern.dart';
 import 'rotation_pattern.dart';
 import 'calf_pattern.dart';
 import 'piston_pattern.dart';
+import 'core_pattern.dart';
 
 /// Pattern types
-enum PatternType { squat, stepUp, push, pull, hinge, curl, kneeDrive, hold, rotation, calf, piston }
+enum PatternType { squat, stepUp, push, pull, hinge, curl, kneeDrive, hold, rotation, calf, piston, core }
 
 /// Exercise configuration
 class ExerciseConfig {
@@ -197,6 +198,15 @@ class MovementEngine {
           resetPercent: (config.params['resetPercent'] as double?) ?? 0.90,
           cueGood: config.params['cueGood'] ?? 'Good!',
           cueBad: config.params['cueBad'] ?? 'More!',
+        );
+
+      case PatternType.core:
+        return CorePattern(
+          coreMode: (config.params['coreMode'] as CoreMode?) ?? CoreMode.noseRise,
+          triggerRisePercent: (config.params['triggerRisePercent'] as double?) ?? 15.0,
+          resetRisePercent: (config.params['resetRisePercent'] as double?) ?? 5.0,
+          cueGood: config.params['cueGood'] ?? 'Squeeze!',
+          cueBad: config.params['cueBad'] ?? 'Higher!',
         );
     }
   }
