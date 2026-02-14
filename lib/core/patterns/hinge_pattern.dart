@@ -144,8 +144,8 @@ class HingePattern implements BasePattern {
     bool isReset;
     
     if (inverted) {
-      isDown = _currentPercentage >= 140;
-      isReset = _currentPercentage <= 110;
+      isDown = _currentPercentage >= 120;
+      isReset = _currentPercentage <= 108;
     } else {
       isDown = _currentPercentage <= (triggerPercent * 100);
       isReset = _currentPercentage >= (resetPercent * 100);
