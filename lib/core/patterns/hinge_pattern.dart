@@ -51,7 +51,7 @@ class HingePattern implements BasePattern {
   @override
   double get chargeProgress {
     if (inverted) {
-      return ((_currentPercentage - 50) / 50).clamp(0.0, 1.0);
+      return ((_currentPercentage - 100) / 15).clamp(0.0, 1.0);
     } else {
       double trigger = triggerPercent * 100;
       return ((100 - _currentPercentage) / (100 - trigger)).clamp(0.0, 1.0);
@@ -144,8 +144,8 @@ class HingePattern implements BasePattern {
     bool isReset;
     
     if (inverted) {
-      isDown = _currentPercentage >= 120;
-      isReset = _currentPercentage <= 108;
+      isDown = _currentPercentage >= 115;
+      isReset = _currentPercentage <= 105;
     } else {
       isDown = _currentPercentage <= (triggerPercent * 100);
       isReset = _currentPercentage >= (resetPercent * 100);
