@@ -14,6 +14,7 @@ class WorkoutSession {
   MovementEngine _engine = MovementEngine();
   MovementEngine? get movementEngine => _engine;
   String _currentExerciseId = '';
+  String get debugExerciseId => _currentExerciseId;
   bool _baselineCaptured = false;
 
   // Current state
@@ -129,7 +130,8 @@ class WorkoutSession {
     // Load the pattern for this exercise
     if (!MovementEngine.hasPattern(baseExerciseId)) {
       print('⚠️ No tracking pattern for: $baseExerciseId (original: $exerciseId)');
-      return;
+      // DON'T RETURN - load it anyway so we can debug
+      // return;
     }
 
     _currentExerciseId = baseExerciseId; // Store the base ID
