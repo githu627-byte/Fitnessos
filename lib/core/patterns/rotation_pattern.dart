@@ -14,7 +14,6 @@ class RotationPattern implements BasePattern {
   bool _justHitTrigger = false;
   double _chargeProgress = 0.0;
 
-  // Pendulum Memory
   bool _lastWasLeft = false;
   bool _hasCrossedCenter = true;
   bool _isFirstRep = true;
@@ -22,14 +21,7 @@ class RotationPattern implements BasePattern {
   // Debug
   double _debugSweep = 0;
   double _debugThreshold = 0;
-
-  // Smoothing
-  double _smoothedSweep = 0.0;
-  static const double _emaAlpha = 0.45;
-
-  // Timing Guard
-  DateTime _lastRepTime = DateTime.now();
-  static const int _minTimeBetweenRepsMs = 350;
+  String _debugLandmarks = '';
 
   RotationPattern({
     this.triggerAngle = 45.0,
@@ -45,77 +37,104 @@ class RotationPattern implements BasePattern {
   @override bool get justHitTrigger => _justHitTrigger;
 
   @override
-  String get debugInfo => 'ROTATION\nSweep: ${_debugSweep.toStringAsFixed(3)}\nThresh: ${_debugThreshold.toStringAsFixed(3)}\nCenter: $_hasCrossedCenter\nLastLeft: $_lastWasLeft\nReps: $_repCount';
+  String get debugInfo => 'ROTATION\nSweep: ${_debugSweep.toStringAsFixed(3)}\nThresh: ${_debugThreshold.toStringAsFixed(3)}\nCharge: ${(_chargeProgress * 100).toStringAsFixed(0)}%\nLM: $_debugLandmarks\nReps: $_repCount';
 
   @override
   void captureBaseline(Map<PoseLandmarkType, PoseLandmark> map) {
     _isLocked = true;
     _state = RepState.ready;
     _feedback = "LOCKED";
-    _smoothedSweep = 0.0;
   }
 
   @override
   bool processFrame(Map<PoseLandmarkType, PoseLandmark> map) {
     _justHitTrigger = false;
 
+    // Get landmarks - USE SHOULDERS AS FALLBACK FOR HIPS
     final lW = map[PoseLandmarkType.leftWrist];
     final rW = map[PoseLandmarkType.rightWrist];
     final lH = map[PoseLandmarkType.leftHip];
     final rH = map[PoseLandmarkType.rightHip];
+    final lS = map[PoseLandmarkType.leftShoulder];
+    final rS = map[PoseLandmarkType.rightShoulder];
 
-    if (lW == null || rW == null || lH == null || rH == null) return false;
+    // Debug: track what landmarks we have
+    _debugLandmarks = '${lW != null ? "LW" : ".."}|${rW != null ? "RW" : ".."}|${lH != null ? "LH" : ".."}|${rH != null ? "RH" : ".."}|${lS != null ? "LS" : ".."}|${rS != null ? "RS" : ".."}';
 
-    if (lW.likelihood < 0.3 || rW.likelihood < 0.3 ||
-        lH.likelihood < 0.3 || rH.likelihood < 0.3) {
-      _feedback = "Stay in frame";
+    // Need at least ONE wrist and ONE body center reference
+    // Use shoulders if hips aren't visible (seated position)
+    double? centerX;
+    double? bodyWidth;
+
+    if (lH != null && rH != null) {
+      centerX = (lH.x + rH.x) / 2;
+      bodyWidth = (lH.x - rH.x).abs() + 0.01;
+    } else if (lS != null && rS != null) {
+      centerX = (lS.x + rS.x) / 2;
+      bodyWidth = (lS.x - rS.x).abs() + 0.01;
+    } else if (lH != null && rS != null) {
+      centerX = (lH.x + rS.x) / 2;
+      bodyWidth = (lH.x - rS.x).abs() + 0.01;
+    } else if (rH != null && lS != null) {
+      centerX = (rH.x + lS.x) / 2;
+      bodyWidth = (rH.x - lS.x).abs() + 0.01;
+    }
+
+    if (centerX == null || bodyWidth == null) {
+      _feedback = "Body not visible";
       return false;
     }
 
-    final double bodyCenter = (lH.x + rH.x) / 2;
-    final double handX = (lW.x + rW.x) / 2;
-    final double bodyWidth = (lH.x - rH.x).abs() + 0.01;
-    final double rawSweep = (handX - bodyCenter) / bodyWidth;
+    // Get hand position - use whichever wrist(s) are visible
+    double? handX;
+    if (lW != null && rW != null) {
+      handX = (lW.x + rW.x) / 2;
+    } else if (lW != null) {
+      handX = lW.x;
+    } else if (rW != null) {
+      handX = rW.x;
+    }
 
-    // EMA smoothing - alpha 0.45 so it actually responds
-    _smoothedSweep = (_emaAlpha * rawSweep) + ((1 - _emaAlpha) * _smoothedSweep);
+    if (handX == null) {
+      _feedback = "Hands not visible";
+      return false;
+    }
 
-    // Threshold: 45 → 0.325 | 50 → 0.35 | 60 → 0.40
-    final double threshold = 0.10 + (triggerAngle / 200.0);
+    // Calculate sweep
+    double sweepOffset = (handX - centerX) / bodyWidth;
 
-    _debugSweep = rawSweep;
+    // Threshold - LOW so it actually triggers
+    double threshold = 0.15;
+
+    _debugSweep = sweepOffset;
     _debugThreshold = threshold;
 
-    final double centerDeadzone = 0.08;
-
-    final bool inLeftZone = _smoothedSweep < -threshold;
-    final bool inRightZone = _smoothedSweep > threshold;
-    final bool inCenterZone = _smoothedSweep.abs() < centerDeadzone;
+    // Zone detection
+    bool inLeftZone = sweepOffset < -threshold;
+    bool inRightZone = sweepOffset > threshold;
+    bool inCenterZone = sweepOffset.abs() < 0.05;
 
     if (inCenterZone) {
       _hasCrossedCenter = true;
     }
 
-    _chargeProgress = (_smoothedSweep.abs() / threshold).clamp(0.0, 1.0);
+    // Update gauge
+    _chargeProgress = (sweepOffset.abs() / threshold).clamp(0.0, 1.0);
     _state = _chargeProgress > 0.15 ? RepState.goingDown : RepState.ready;
 
-    final now = DateTime.now();
-    final timeSinceLastRep = now.difference(_lastRepTime).inMilliseconds;
-
-    if (_hasCrossedCenter && timeSinceLastRep > _minTimeBetweenRepsMs) {
+    // Trigger
+    if (_hasCrossedCenter) {
       if (inLeftZone && (!_lastWasLeft || _isFirstRep)) {
-        _countRep(true, now);
+        _countRep(true);
         return true;
       } else if (inRightZone && (_lastWasLeft || _isFirstRep)) {
-        _countRep(false, now);
+        _countRep(false);
         return true;
       }
     }
 
-    if (_chargeProgress > 0.85) {
+    if (_chargeProgress > 0.8) {
       _feedback = cueGood;
-    } else if (_chargeProgress > 0.4) {
-      _feedback = "Keep going!";
     } else {
       _feedback = cueBad;
     }
@@ -123,13 +142,12 @@ class RotationPattern implements BasePattern {
     return false;
   }
 
-  void _countRep(bool left, DateTime now) {
+  void _countRep(bool left) {
     _repCount++;
     _lastWasLeft = left;
     _isFirstRep = false;
     _hasCrossedCenter = false;
     _justHitTrigger = true;
-    _lastRepTime = now;
     _state = RepState.down;
     _feedback = cueGood;
   }
@@ -142,7 +160,8 @@ class RotationPattern implements BasePattern {
     _lastWasLeft = false;
     _hasCrossedCenter = true;
     _isFirstRep = true;
-    _smoothedSweep = 0.0;
-    _lastRepTime = DateTime.now();
+    _debugSweep = 0;
+    _debugThreshold = 0;
+    _debugLandmarks = '';
   }
 }
