@@ -71,92 +71,174 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
       ? _getAllManualExercises() 
       : _allExercises;
     
-    // Filter by category
+    // Filter by category - for manual mode, only use name-based filtering
     if (_selectedCategory != 'all') {
-      if (_selectedCategory == 'chest') {
-        exercises = exercises.where((e) => 
-          WorkoutData.muscleSplits['chest']!.any((c) => c.id == e.id) ||
-          e.name.toLowerCase().contains('chest') ||
-          e.name.toLowerCase().contains('press') && (e.name.toLowerCase().contains('bench') || e.name.toLowerCase().contains('incline') || e.name.toLowerCase().contains('decline')) ||
-          e.name.toLowerCase().contains('pushup') || e.name.toLowerCase().contains('push-up') || e.name.toLowerCase().contains('push_up') ||
-          e.name.toLowerCase().contains('fly') || e.name.toLowerCase().contains('flye') ||
-          e.name.toLowerCase().contains('dip') && !e.name.toLowerCase().contains('hip')
-        ).toList();
-      } else if (_selectedCategory == 'back') {
-        exercises = exercises.where((e) => 
-          WorkoutData.muscleSplits['back']!.any((c) => c.id == e.id) ||
-          e.name.toLowerCase().contains('back') ||
-          e.name.toLowerCase().contains('row') ||
-          e.name.toLowerCase().contains('pulldown') ||
-          e.name.toLowerCase().contains('pullup') || e.name.toLowerCase().contains('pull-up') || e.name.toLowerCase().contains('pull_up') ||
-          e.name.toLowerCase().contains('chinup') || e.name.toLowerCase().contains('chin-up') || e.name.toLowerCase().contains('chin_up') ||
-          e.name.toLowerCase().contains('deadlift') ||
-          e.name.toLowerCase().contains('shrug')
-        ).toList();
-      } else if (_selectedCategory == 'shoulders') {
-        exercises = exercises.where((e) => 
-          WorkoutData.muscleSplits['shoulders']!.any((c) => c.id == e.id) ||
-          e.name.toLowerCase().contains('shoulder') ||
-          e.name.toLowerCase().contains('overhead') ||
-          e.name.toLowerCase().contains('lateral') ||
-          e.name.toLowerCase().contains('front raise') ||
-          e.name.toLowerCase().contains('rear delt') ||
-          e.name.toLowerCase().contains('upright row') ||
-          e.name.toLowerCase().contains('pike')
-        ).toList();
-      } else if (_selectedCategory == 'arms') {
-        exercises = exercises.where((e) => 
-          WorkoutData.muscleSplits['arms']!.any((c) => c.id == e.id) ||
-          e.name.toLowerCase().contains('bicep') ||
-          e.name.toLowerCase().contains('tricep') ||
-          e.name.toLowerCase().contains('curl') ||
-          e.name.toLowerCase().contains('extension') && (e.name.toLowerCase().contains('tricep') || e.name.toLowerCase().contains('overhead')) ||
-          e.name.toLowerCase().contains('hammer') ||
-          e.name.toLowerCase().contains('preacher')
-        ).toList();
-      } else if (_selectedCategory == 'legs') {
-        exercises = exercises.where((e) => 
-          WorkoutData.muscleSplits['legs']!.any((c) => c.id == e.id) ||
-          e.name.toLowerCase().contains('squat') ||
-          e.name.toLowerCase().contains('lunge') ||
-          e.name.toLowerCase().contains('leg') ||
-          e.name.toLowerCase().contains('quad') ||
-          e.name.toLowerCase().contains('hamstring') ||
-          e.name.toLowerCase().contains('glute') ||
-          e.name.toLowerCase().contains('calf') ||
-          e.name.toLowerCase().contains('thigh') ||
-          e.name.toLowerCase().contains('hip thrust') ||
-          e.name.toLowerCase().contains('step up') ||
-          e.name.toLowerCase().contains('wall sit') ||
-          e.name.toLowerCase().contains('bulgarian')
-        ).toList();
-      } else if (_selectedCategory == 'core') {
-        exercises = exercises.where((e) => 
-          WorkoutData.muscleSplits['core']!.any((c) => c.id == e.id) ||
-          e.name.toLowerCase().contains('core') ||
-          e.name.toLowerCase().contains('abs') ||
-          e.name.toLowerCase().contains('abdominal') ||
-          e.name.toLowerCase().contains('crunch') ||
-          e.name.toLowerCase().contains('plank') ||
-          e.name.toLowerCase().contains('sit-up') || e.name.toLowerCase().contains('situp') ||
-          e.name.toLowerCase().contains('russian twist') ||
-          e.name.toLowerCase().contains('mountain climber') ||
-          e.name.toLowerCase().contains('bicycle') ||
-          e.name.toLowerCase().contains('knee raise') ||
-          e.name.toLowerCase().contains('leg raise') ||
-          e.name.toLowerCase().contains('dead bug') ||
-          e.name.toLowerCase().contains('bird dog') ||
-          e.name.toLowerCase().contains('hollow') ||
-          e.name.toLowerCase().contains('v-up') ||
-          e.name.toLowerCase().contains('ab wheel')
-        ).toList();
-      } else if (_selectedCategory == 'home') {
-        // Include ALL bodyweight exercises - from atHome, cardio, and any exercise with bodyweight equipment
-        exercises = exercises.where((e) => 
-          WorkoutData.cardioExercises.any((c) => c.id == e.id) ||
-          WorkoutData.atHomeExercises.any((c) => c.id == e.id) ||
-          e.equipment.toLowerCase() == 'bodyweight'
-        ).toList();
+      if (_workoutMode == 'manual') {
+        // Manual mode: only use name-based filtering
+        if (_selectedCategory == 'chest') {
+          exercises = exercises.where((e) => 
+            e.name.toLowerCase().contains('chest') ||
+            e.name.toLowerCase().contains('press') && (e.name.toLowerCase().contains('bench') || e.name.toLowerCase().contains('incline') || e.name.toLowerCase().contains('decline')) ||
+            e.name.toLowerCase().contains('pushup') || e.name.toLowerCase().contains('push-up') || e.name.toLowerCase().contains('push_up') ||
+            e.name.toLowerCase().contains('fly') || e.name.toLowerCase().contains('flye') ||
+            e.name.toLowerCase().contains('dip') && !e.name.toLowerCase().contains('hip')
+          ).toList();
+        } else if (_selectedCategory == 'back') {
+          exercises = exercises.where((e) => 
+            e.name.toLowerCase().contains('back') ||
+            e.name.toLowerCase().contains('row') ||
+            e.name.toLowerCase().contains('pulldown') ||
+            e.name.toLowerCase().contains('pullup') || e.name.toLowerCase().contains('pull-up') || e.name.toLowerCase().contains('pull_up') ||
+            e.name.toLowerCase().contains('chinup') || e.name.toLowerCase().contains('chin-up') || e.name.toLowerCase().contains('chin_up') ||
+            e.name.toLowerCase().contains('deadlift') ||
+            e.name.toLowerCase().contains('shrug')
+          ).toList();
+        } else if (_selectedCategory == 'shoulders') {
+          exercises = exercises.where((e) => 
+            e.name.toLowerCase().contains('shoulder') ||
+            e.name.toLowerCase().contains('overhead') ||
+            e.name.toLowerCase().contains('lateral') ||
+            e.name.toLowerCase().contains('front raise') ||
+            e.name.toLowerCase().contains('rear delt') ||
+            e.name.toLowerCase().contains('upright row') ||
+            e.name.toLowerCase().contains('pike')
+          ).toList();
+        } else if (_selectedCategory == 'arms') {
+          exercises = exercises.where((e) => 
+            e.name.toLowerCase().contains('bicep') ||
+            e.name.toLowerCase().contains('tricep') ||
+            e.name.toLowerCase().contains('curl') ||
+            e.name.toLowerCase().contains('extension') && (e.name.toLowerCase().contains('tricep') || e.name.toLowerCase().contains('overhead')) ||
+            e.name.toLowerCase().contains('hammer') ||
+            e.name.toLowerCase().contains('preacher')
+          ).toList();
+        } else if (_selectedCategory == 'legs') {
+          exercises = exercises.where((e) => 
+            e.name.toLowerCase().contains('squat') ||
+            e.name.toLowerCase().contains('lunge') ||
+            e.name.toLowerCase().contains('leg') ||
+            e.name.toLowerCase().contains('quad') ||
+            e.name.toLowerCase().contains('hamstring') ||
+            e.name.toLowerCase().contains('glute') ||
+            e.name.toLowerCase().contains('calf') ||
+            e.name.toLowerCase().contains('thigh') ||
+            e.name.toLowerCase().contains('hip thrust') ||
+            e.name.toLowerCase().contains('step up') ||
+            e.name.toLowerCase().contains('wall sit') ||
+            e.name.toLowerCase().contains('bulgarian')
+          ).toList();
+        } else if (_selectedCategory == 'core') {
+          exercises = exercises.where((e) => 
+            e.name.toLowerCase().contains('core') ||
+            e.name.toLowerCase().contains('abs') ||
+            e.name.toLowerCase().contains('abdominal') ||
+            e.name.toLowerCase().contains('crunch') ||
+            e.name.toLowerCase().contains('plank') ||
+            e.name.toLowerCase().contains('sit-up') || e.name.toLowerCase().contains('situp') ||
+            e.name.toLowerCase().contains('russian twist') ||
+            e.name.toLowerCase().contains('mountain climber') ||
+            e.name.toLowerCase().contains('bicycle') ||
+            e.name.toLowerCase().contains('knee raise') ||
+            e.name.toLowerCase().contains('leg raise') ||
+            e.name.toLowerCase().contains('dead bug') ||
+            e.name.toLowerCase().contains('bird dog') ||
+            e.name.toLowerCase().contains('hollow') ||
+            e.name.toLowerCase().contains('v-up') ||
+            e.name.toLowerCase().contains('ab wheel')
+          ).toList();
+        } else if (_selectedCategory == 'home') {
+          // For manual mode home, just use bodyweight equipment
+          exercises = exercises.where((e) => 
+            e.equipment.toLowerCase() == 'bodyweight'
+          ).toList();
+        }
+      } else {
+        // AI mode: use original filtering with WorkoutData
+        if (_selectedCategory == 'chest') {
+          exercises = exercises.where((e) => 
+            WorkoutData.muscleSplits['chest']!.any((c) => c.id == e.id) ||
+            e.name.toLowerCase().contains('chest') ||
+            e.name.toLowerCase().contains('press') && (e.name.toLowerCase().contains('bench') || e.name.toLowerCase().contains('incline') || e.name.toLowerCase().contains('decline')) ||
+            e.name.toLowerCase().contains('pushup') || e.name.toLowerCase().contains('push-up') || e.name.toLowerCase().contains('push_up') ||
+            e.name.toLowerCase().contains('fly') || e.name.toLowerCase().contains('flye') ||
+            e.name.toLowerCase().contains('dip') && !e.name.toLowerCase().contains('hip')
+          ).toList();
+        } else if (_selectedCategory == 'back') {
+          exercises = exercises.where((e) => 
+            WorkoutData.muscleSplits['back']!.any((c) => c.id == e.id) ||
+            e.name.toLowerCase().contains('back') ||
+            e.name.toLowerCase().contains('row') ||
+            e.name.toLowerCase().contains('pulldown') ||
+            e.name.toLowerCase().contains('pullup') || e.name.toLowerCase().contains('pull-up') || e.name.toLowerCase().contains('pull_up') ||
+            e.name.toLowerCase().contains('chinup') || e.name.toLowerCase().contains('chin-up') || e.name.toLowerCase().contains('chin_up') ||
+            e.name.toLowerCase().contains('deadlift') ||
+            e.name.toLowerCase().contains('shrug')
+          ).toList();
+        } else if (_selectedCategory == 'shoulders') {
+          exercises = exercises.where((e) => 
+            WorkoutData.muscleSplits['shoulders']!.any((c) => c.id == e.id) ||
+            e.name.toLowerCase().contains('shoulder') ||
+            e.name.toLowerCase().contains('overhead') ||
+            e.name.toLowerCase().contains('lateral') ||
+            e.name.toLowerCase().contains('front raise') ||
+            e.name.toLowerCase().contains('rear delt') ||
+            e.name.toLowerCase().contains('upright row') ||
+            e.name.toLowerCase().contains('pike')
+          ).toList();
+        } else if (_selectedCategory == 'arms') {
+          exercises = exercises.where((e) => 
+            WorkoutData.muscleSplits['arms']!.any((c) => c.id == e.id) ||
+            e.name.toLowerCase().contains('bicep') ||
+            e.name.toLowerCase().contains('tricep') ||
+            e.name.toLowerCase().contains('curl') ||
+            e.name.toLowerCase().contains('extension') && (e.name.toLowerCase().contains('tricep') || e.name.toLowerCase().contains('overhead')) ||
+            e.name.toLowerCase().contains('hammer') ||
+            e.name.toLowerCase().contains('preacher')
+          ).toList();
+        } else if (_selectedCategory == 'legs') {
+          exercises = exercises.where((e) => 
+            WorkoutData.muscleSplits['legs']!.any((c) => c.id == e.id) ||
+            e.name.toLowerCase().contains('squat') ||
+            e.name.toLowerCase().contains('lunge') ||
+            e.name.toLowerCase().contains('leg') ||
+            e.name.toLowerCase().contains('quad') ||
+            e.name.toLowerCase().contains('hamstring') ||
+            e.name.toLowerCase().contains('glute') ||
+            e.name.toLowerCase().contains('calf') ||
+            e.name.toLowerCase().contains('thigh') ||
+            e.name.toLowerCase().contains('hip thrust') ||
+            e.name.toLowerCase().contains('step up') ||
+            e.name.toLowerCase().contains('wall sit') ||
+            e.name.toLowerCase().contains('bulgarian')
+          ).toList();
+        } else if (_selectedCategory == 'core') {
+          exercises = exercises.where((e) => 
+            WorkoutData.muscleSplits['core']!.any((c) => c.id == e.id) ||
+            e.name.toLowerCase().contains('core') ||
+            e.name.toLowerCase().contains('abs') ||
+            e.name.toLowerCase().contains('abdominal') ||
+            e.name.toLowerCase().contains('crunch') ||
+            e.name.toLowerCase().contains('plank') ||
+            e.name.toLowerCase().contains('sit-up') || e.name.toLowerCase().contains('situp') ||
+            e.name.toLowerCase().contains('russian twist') ||
+            e.name.toLowerCase().contains('mountain climber') ||
+            e.name.toLowerCase().contains('bicycle') ||
+            e.name.toLowerCase().contains('knee raise') ||
+            e.name.toLowerCase().contains('leg raise') ||
+            e.name.toLowerCase().contains('dead bug') ||
+            e.name.toLowerCase().contains('bird dog') ||
+            e.name.toLowerCase().contains('hollow') ||
+            e.name.toLowerCase().contains('v-up') ||
+            e.name.toLowerCase().contains('ab wheel')
+          ).toList();
+        } else if (_selectedCategory == 'home') {
+          // Include ALL bodyweight exercises - from atHome, cardio, and any exercise with bodyweight equipment
+          exercises = exercises.where((e) => 
+            WorkoutData.cardioExercises.any((c) => c.id == e.id) ||
+            WorkoutData.atHomeExercises.any((c) => c.id == e.id) ||
+            e.equipment.toLowerCase() == 'bodyweight'
+          ).toList();
+        }
       }
     }
     
