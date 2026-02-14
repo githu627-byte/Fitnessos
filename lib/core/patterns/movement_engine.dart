@@ -10,9 +10,10 @@ import 'knee_drive_pattern.dart';
 import 'hold_pattern.dart';
 import 'rotation_pattern.dart';
 import 'calf_pattern.dart';
+import 'piston_pattern.dart';
 
 /// Pattern types
-enum PatternType { squat, stepUp, push, pull, hinge, curl, kneeDrive, hold, rotation, calf }
+enum PatternType { squat, stepUp, push, pull, hinge, curl, kneeDrive, hold, rotation, calf, piston }
 
 /// Exercise configuration
 class ExerciseConfig {
@@ -183,6 +184,19 @@ class MovementEngine {
         return CalfPattern(
           cueGood: config.params['cueGood'] ?? 'Squeeze!',
           cueBad: config.params['cueBad'] ?? 'Higher!',
+        );
+
+      case PatternType.piston:
+        return PistonPattern(
+          pointA: config.params['pointA'] as PoseLandmarkType,
+          pointB: config.params['pointB'] as PoseLandmarkType,
+          pointARight: config.params['pointARight'] as PoseLandmarkType?,
+          pointBRight: config.params['pointBRight'] as PoseLandmarkType?,
+          mode: (config.params['mode'] as PistonMode?) ?? PistonMode.shrink,
+          triggerPercent: (config.params['triggerPercent'] as double?) ?? 0.70,
+          resetPercent: (config.params['resetPercent'] as double?) ?? 0.90,
+          cueGood: config.params['cueGood'] ?? 'Good!',
+          cueBad: config.params['cueBad'] ?? 'More!',
         );
     }
   }
@@ -598,11 +612,38 @@ class MovementEngine {
     'standing_glute_squeeze': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
     'single_leg_rdl_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35}),
     
-    // HINGE PATTERN - KICKBACKS
-    'glute_kickback': ExerciseConfig(patternType: PatternType.hinge, params: {'cueGood': 'Squeeze!', 'cueBad': 'Higher!'}),
-    'glute_kickbacks': ExerciseConfig(patternType: PatternType.hinge, params: {'cueGood': 'Squeeze!', 'cueBad': 'Higher!'}),
-    'cable_kickback': ExerciseConfig(patternType: PatternType.hinge),
-    'standing_glute_kickback': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40}),
+    // STANDING GLUTE KICKBACKS - Ankle moves away from other ankle (GROW)
+    'glute_kickback': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle,
+      'pointB': PoseLandmarkType.rightAnkle,
+      'mode': PistonMode.grow, 'triggerPercent': 1.25, 'resetPercent': 1.10,
+      'cueGood': 'Squeeze!', 'cueBad': 'Kick back!',
+    }),
+    'glute_kickbacks': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle,
+      'pointB': PoseLandmarkType.rightAnkle,
+      'mode': PistonMode.grow, 'triggerPercent': 1.25, 'resetPercent': 1.10,
+      'cueGood': 'Squeeze!', 'cueBad': 'Kick back!',
+    }),
+    'cable_kickback': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle,
+      'pointB': PoseLandmarkType.rightAnkle,
+      'mode': PistonMode.grow, 'triggerPercent': 1.25, 'resetPercent': 1.10,
+      'cueGood': 'Squeeze!', 'cueBad': 'Kick back!',
+    }),
+    'standing_glute_kickback': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle,
+      'pointB': PoseLandmarkType.rightAnkle,
+      'mode': PistonMode.grow, 'triggerPercent': 1.25, 'resetPercent': 1.10,
+      'cueGood': 'Squeeze!', 'cueBad': 'Kick back!',
+    }),
+    'banded_kickback': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle,
+      'pointB': PoseLandmarkType.rightAnkle,
+      'mode': PistonMode.grow, 'triggerPercent': 1.25, 'resetPercent': 1.10,
+      'cueGood': 'Squeeze!', 'cueBad': 'Kick back!',
+    }),
+    // DONKEY KICKS - stay as hinge (on all fours, different movement)
     'donkey_kick': ExerciseConfig(patternType: PatternType.hinge, params: {'cueGood': 'Squeeze!', 'cueBad': 'Higher!'}),
     'donkey_kicks': ExerciseConfig(patternType: PatternType.hinge),
     'donkey_kick_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40}),
@@ -613,7 +654,6 @@ class MovementEngine {
     'banded_fire_hydrant': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.70}), // NEW - Missing
     'banded_clamshell': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.70}), // NEW - Missing
     'side_lying_leg_raise': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.75}), // NEW - Missing
-    'banded_kickback': ExerciseConfig(patternType: PatternType.hinge),
     
     // HINGE PATTERN - CABLE PULL THROUGH
     'cable_pull_through': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.45, 'resetPercent': 0.80}),
