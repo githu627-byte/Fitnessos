@@ -1,6 +1,4 @@
 import 'package:google_mlkit_pose_detection/google_mlkit_pose_detection.dart';
-import 'dart:math' as math;
-import 'dart:math' show sqrt;
 import 'base_pattern.dart';
 
 /// =============================================================================
@@ -82,37 +80,8 @@ class CorePattern implements BasePattern {
     if (rHip != null) { hipY += rHip.y; hc++; }
     if (hc > 0) hipY /= hc;
 
-    // Use hip-to-ankle distance for normalization (works when lying sideways)
-    final lAnkle = map[PoseLandmarkType.leftAnkle];
-    final rAnkle = map[PoseLandmarkType.rightAnkle];
-    double ankleY = 0;
-    int ac = 0;
-    if (lAnkle != null) { ankleY += lAnkle.y; ac++; }
-    if (rAnkle != null) { ankleY += rAnkle.y; ac++; }
-
-    if (ac > 0) {
-      ankleY /= ac;
-      // Use full body length: distance from shoulder to ankle (both X and Y)
-      double ankleX = 0;
-      int axc = 0;
-      if (lAnkle != null) { ankleX += lAnkle.x; axc++; }
-      if (rAnkle != null) { ankleX += rAnkle.x; axc++; }
-      if (axc > 0) ankleX /= axc;
-
-      double shoulderX = 0;
-      int sxc = 0;
-      if (lShoulder != null) { shoulderX += lShoulder.x; sxc++; }
-      if (rShoulder != null) { shoulderX += rShoulder.x; sxc++; }
-      if (sxc > 0) shoulderX /= sxc;
-
-      // Euclidean distance shoulder to ankle (works in any orientation)
-      double dx = shoulderX - ankleX;
-      double dy = shoulderY - ankleY;
-      _baselineTorsoLength = sqrt(dx * dx + dy * dy);
-    } else {
-      _baselineTorsoLength = (hipY - shoulderY).abs();
-    }
-    if (_baselineTorsoLength < 30) _baselineTorsoLength = 150;
+    _baselineTorsoLength = (hipY - shoulderY).abs();
+    if (_baselineTorsoLength < 10) _baselineTorsoLength = 100;
 
     // Capture baseline Y of the tracked point
     if (coreMode == CoreMode.noseRise) {

@@ -336,17 +336,41 @@ class MovementEngine {
     // 'side_lying_leg_lift': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
     // 'fire_hydrant_pulse': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
     
-    // SQUAT PATTERN - CRUNCHES (uses squat for torso-hip tracking)
-    'crunch': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'resetPercent': 0.92, 'cueGood': 'Squeeze!', 'cueBad': 'Crunch harder!'}),
-    'crunches': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'resetPercent': 0.92, 'cueGood': 'Squeeze!', 'cueBad': 'Crunch harder!'}),
+    // CORE PATTERN - CRUNCHES
+    'crunch': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 10.0, 'resetRisePercent': 2.0,
+      'cueGood': 'Squeeze!', 'cueBad': 'Crunch up!',
+    }),
+    'crunches': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 10.0, 'resetRisePercent': 2.0,
+      'cueGood': 'Squeeze!', 'cueBad': 'Crunch up!',
+    }),
     'cable_crunch': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80, 'resetPercent': 0.92}),
     'cable_crunches': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80, 'resetPercent': 0.92}),
-    'sit_up': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'resetPercent': 0.92, 'cueGood': 'Up!', 'cueBad': 'Squeeze abs!'}),
-    'sit_ups': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'resetPercent': 0.92, 'cueGood': 'Up!', 'cueBad': 'Squeeze abs!'}),
-    'situp': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'resetPercent': 0.92}),
-    'situps': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'resetPercent': 0.92}),
-    'decline_situp': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'resetPercent': 0.92}), // NEW - Missing
-    'decline_weighted_sit_up': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.65, 'resetPercent': 0.92}),
+    'sit_up': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 20.0, 'resetRisePercent': 3.0,
+      'cueGood': 'Up!', 'cueBad': 'All the way!',
+    }),
+    'sit_ups': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 20.0, 'resetRisePercent': 3.0,
+      'cueGood': 'Up!', 'cueBad': 'All the way!',
+    }),
+    'situp': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 20.0, 'resetRisePercent': 3.0,
+      'cueGood': 'Up!', 'cueBad': 'All the way!',
+    }),
+    'situps': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 20.0, 'resetRisePercent': 3.0,
+      'cueGood': 'Up!', 'cueBad': 'All the way!',
+    }),
+    'decline_situp': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 18.0, 'resetRisePercent': 3.0,
+      'cueGood': 'Up!', 'cueBad': 'All the way!',
+    }),
+    'decline_weighted_sit_up': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 15.0, 'resetRisePercent': 3.0,
+      'cueGood': 'Up!', 'cueBad': 'All the way!',
+    }),
     'standing_oblique_crunch': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80}),
     
     // SQUAT PATTERN - BEAR CRAWL
@@ -612,37 +636,12 @@ class MovementEngine {
     'standing_glute_squeeze': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
     'single_leg_rdl_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35}),
     
-    // STANDING GLUTE KICKBACKS - Ankle moves away from other ankle (GROW)
-    'glute_kickback': ExerciseConfig(patternType: PatternType.piston, params: {
-      'pointA': PoseLandmarkType.leftAnkle,
-      'pointB': PoseLandmarkType.rightAnkle,
-      'mode': PistonMode.grow, 'triggerPercent': 1.25, 'resetPercent': 1.10,
-      'cueGood': 'Squeeze!', 'cueBad': 'Kick back!',
-    }),
-    'glute_kickbacks': ExerciseConfig(patternType: PatternType.piston, params: {
-      'pointA': PoseLandmarkType.leftAnkle,
-      'pointB': PoseLandmarkType.rightAnkle,
-      'mode': PistonMode.grow, 'triggerPercent': 1.25, 'resetPercent': 1.10,
-      'cueGood': 'Squeeze!', 'cueBad': 'Kick back!',
-    }),
-    'cable_kickback': ExerciseConfig(patternType: PatternType.piston, params: {
-      'pointA': PoseLandmarkType.leftAnkle,
-      'pointB': PoseLandmarkType.rightAnkle,
-      'mode': PistonMode.grow, 'triggerPercent': 1.25, 'resetPercent': 1.10,
-      'cueGood': 'Squeeze!', 'cueBad': 'Kick back!',
-    }),
-    'standing_glute_kickback': ExerciseConfig(patternType: PatternType.piston, params: {
-      'pointA': PoseLandmarkType.leftAnkle,
-      'pointB': PoseLandmarkType.rightAnkle,
-      'mode': PistonMode.grow, 'triggerPercent': 1.25, 'resetPercent': 1.10,
-      'cueGood': 'Squeeze!', 'cueBad': 'Kick back!',
-    }),
-    'banded_kickback': ExerciseConfig(patternType: PatternType.piston, params: {
-      'pointA': PoseLandmarkType.leftAnkle,
-      'pointB': PoseLandmarkType.rightAnkle,
-      'mode': PistonMode.grow, 'triggerPercent': 1.25, 'resetPercent': 1.10,
-      'cueGood': 'Squeeze!', 'cueBad': 'Kick back!',
-    }),
+    // STANDING GLUTE KICKBACKS - Use calf pattern (ankle rise/fall)
+    'glute_kickback': ExerciseConfig(patternType: PatternType.calf, params: {'cueGood': 'Squeeze!', 'cueBad': 'Kick back!'}),
+    'glute_kickbacks': ExerciseConfig(patternType: PatternType.calf, params: {'cueGood': 'Squeeze!', 'cueBad': 'Kick back!'}),
+    'cable_kickback': ExerciseConfig(patternType: PatternType.calf, params: {'cueGood': 'Squeeze!', 'cueBad': 'Kick back!'}),
+    'standing_glute_kickback': ExerciseConfig(patternType: PatternType.calf, params: {'cueGood': 'Squeeze!', 'cueBad': 'Kick back!'}),
+    'banded_kickback': ExerciseConfig(patternType: PatternType.calf, params: {'cueGood': 'Squeeze!', 'cueBad': 'Kick back!'}),
     // DONKEY KICKS - stay as hinge (on all fours, different movement)
     'donkey_kick': ExerciseConfig(patternType: PatternType.hinge, params: {'cueGood': 'Squeeze!', 'cueBad': 'Higher!'}),
     'donkey_kicks': ExerciseConfig(patternType: PatternType.hinge),
