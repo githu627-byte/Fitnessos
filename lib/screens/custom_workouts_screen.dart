@@ -37,22 +37,30 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
   // Get all manual exercises from GIF library
   List<Exercise> _getAllManualExercises() {
     final List<Exercise> manualExercises = [];
-    
+
     // Load from ExerciseGifMapping (534 exercises)
     ExerciseGifMapping.exerciseGifs.forEach((id, gifInfo) {
-      // Convert snake_case id to readable name
-      final name = id.split('_').map((word) => 
-        word[0].toUpperCase() + word.substring(1)
-      ).join(' ');
-      
-      manualExercises.add(Exercise(
-        id: id,
-        name: name,
-        difficulty: 'intermediate', // Default
-        equipment: _inferEquipment(name),
-      ));
+      try {
+        // Convert snake_case id to readable name safely
+        final name = id.split('_').where((word) => word.isNotEmpty).map((word) =>
+          word[0].toUpperCase() + word.substring(1)
+        ).join(' ');
+
+        manualExercises.add(Exercise(
+          id: id,
+          name: name.isEmpty ? id : name,
+          difficulty: 'intermediate',
+          equipment: _inferEquipment(name),
+        ));
+      } catch (e) {
+        // Skip any exercise that crashes during name conversion
+        debugPrint('⚠️ Skipped exercise: $id - $e');
+      }
     });
-    
+
+    // Sort alphabetically
+    manualExercises.sort((a, b) => a.name.compareTo(b.name));
+
     return manualExercises;
   }
   
