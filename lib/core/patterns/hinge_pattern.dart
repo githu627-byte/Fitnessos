@@ -15,6 +15,7 @@ class HingePattern implements BasePattern {
   final double triggerPercent;
   final double resetPercent;
   final bool inverted;
+  final bool floor;
   final String cueGood;
   final String cueBad;
   
@@ -25,6 +26,9 @@ class HingePattern implements BasePattern {
   bool _justHitTrigger = false;
   
   double _baselineShoulderHipY = 0;
+  double _baselineHipY = 0;
+  double _baselineKneeY = 0;
+  double _hipRisePercent = 0;
   double _currentPercentage = 100;
   double _smoothedPercentage = 100;
   
@@ -38,6 +42,7 @@ class HingePattern implements BasePattern {
     this.triggerPercent = 0.40,
     this.resetPercent = 0.75,
     this.inverted = false,
+    this.floor = false,
     this.cueGood = "Lockout!",
     this.cueBad = "Hips forward!",
   });
@@ -50,7 +55,9 @@ class HingePattern implements BasePattern {
   
   @override
   double get chargeProgress {
-    if (inverted) {
+    if (floor) {
+      return ((_currentPercentage - 100) / 15).clamp(0.0, 1.0);
+    } else if (inverted) {
       return ((_currentPercentage - 100) / 15).clamp(0.0, 1.0);
     } else {
       double trigger = triggerPercent * 100;
@@ -59,7 +66,7 @@ class HingePattern implements BasePattern {
   }
   
   @override
-  String get debugInfo => 'HINGE\nPct: ${_currentPercentage.toStringAsFixed(1)}%\nSmooth: ${_smoothedPercentage.toStringAsFixed(1)}%\nBaseline: ${_baselineShoulderHipY.toStringAsFixed(1)}\nInverted: $inverted\nState: ${_state.name}\nReps: $_repCount';
+  String get debugInfo => 'HINGE\nMode: ${floor ? "FLOOR" : inverted ? "INV" : "STD"}\nPct: ${_currentPercentage.toStringAsFixed(1)}%\nSmooth: ${_smoothedPercentage.toStringAsFixed(1)}%\nBaseline: ${_baselineShoulderHipY.toStringAsFixed(1)}\n${floor ? "HipY: ${_baselineHipY.toStringAsFixed(1)}\nRise: ${_hipRisePercent.toStringAsFixed(1)}%" : "Inv: $inverted"}\nState: ${_state.name}\nReps: $_repCount';
 
   @override
   void captureBaseline(Map<PoseLandmarkType, PoseLandmark> map) {
@@ -93,6 +100,19 @@ class HingePattern implements BasePattern {
       return;
     }
     
+    // FLOOR MODE: Also capture absolute hip Y and knee Y
+    if (floor) {
+      _baselineHipY = hipY;
+      final lKnee = map[PoseLandmarkType.leftKnee];
+      final rKnee = map[PoseLandmarkType.rightKnee];
+      double kneeY = 0;
+      int kc = 0;
+      if (lKnee != null) { kneeY += lKnee.y; kc++; }
+      if (rKnee != null) { kneeY += rKnee.y; kc++; }
+      if (kc > 0) kneeY /= kc;
+      _baselineKneeY = kneeY;
+    }
+
     _smoothedPercentage = 100;
     _baselineCaptured = true;
     _state = RepState.ready;
@@ -132,9 +152,79 @@ class HingePattern implements BasePattern {
     if (hc > 0) hipY /= hc;
     
     double currentShoulderHipY = (hipY - shoulderY).abs();
-    
-    double rawPercentage = (_baselineShoulderHipY > 0.01) 
-        ? (currentShoulderHipY / _baselineShoulderHipY) * 100 
+
+    // FLOOR MODE: Track hip Y rising instead of shoulder-hip ratio
+    if (floor) {
+      double legLength = (_baselineKneeY - _baselineHipY).abs();
+      if (legLength < 1) legLength = 100;
+      double hipRise = _baselineHipY - hipY; // positive = hips went up (Y decreases)
+      _hipRisePercent = (hipRise / legLength) * 100;
+
+      double rawPct = 100 + _hipRisePercent; // 100% at rest, goes higher as hips rise
+      _smoothedPercentage = (_smoothingFactor * rawPct) + ((1 - _smoothingFactor) * _smoothedPercentage);
+      _currentPercentage = _smoothedPercentage;
+
+      // Use inverted logic - trigger when percentage goes UP (hips rise)
+      bool isDown = _currentPercentage >= 112; // Hips rose 12% of leg length
+      bool isReset = _currentPercentage <= 104; // Hips back near floor
+
+      // Run the same state machine
+      switch (_state) {
+        case RepState.ready:
+        case RepState.up:
+          if (isDown) {
+            _intentTimer ??= DateTime.now();
+            if (DateTime.now().difference(_intentTimer!).inMilliseconds > _intentDelayMs) {
+              _state = RepState.down;
+              _feedback = cueGood;
+              _intentTimer = null;
+              _justHitTrigger = true;
+            } else {
+              _state = RepState.goingDown;
+            }
+          } else {
+            _intentTimer = null;
+            _state = RepState.ready;
+            _feedback = "";
+          }
+          return false;
+        case RepState.goingDown:
+          if (isDown) {
+            _intentTimer ??= DateTime.now();
+            if (DateTime.now().difference(_intentTimer!).inMilliseconds > _intentDelayMs) {
+              _state = RepState.down;
+              _feedback = cueGood;
+              _intentTimer = null;
+              _justHitTrigger = true;
+            }
+          } else {
+            _intentTimer = null;
+            _state = RepState.ready;
+          }
+          return false;
+        case RepState.down:
+          if (isReset) {
+            _state = RepState.goingUp;
+          }
+          return false;
+        case RepState.goingUp:
+          if (isReset) {
+            if (DateTime.now().difference(_lastRepTime).inMilliseconds > _minTimeBetweenRepsMs) {
+              _state = RepState.up;
+              _repCount++;
+              _lastRepTime = DateTime.now();
+              _feedback = "";
+              return true;
+            }
+          } else {
+            _state = RepState.down;
+          }
+          return false;
+      }
+    }
+
+    double rawPercentage = (_baselineShoulderHipY > 0.01)
+        ? (currentShoulderHipY / _baselineShoulderHipY) * 100
         : 100;
     
     _smoothedPercentage = (_smoothingFactor * rawPercentage) + ((1 - _smoothingFactor) * _smoothedPercentage);
