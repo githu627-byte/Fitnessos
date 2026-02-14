@@ -75,7 +75,7 @@ class TrainingModeSelectionScreen extends StatelessWidget {
                 const SizedBox(height: 40),
               
               // Mode buttons - conditionally show based on isManualOnly
-              if (workout == null || !workout.isManualOnly) ...[
+              if (workout?.isManualOnly != true) ...[
                 // Show AI Rep Counter only for non-manual workouts
                 _buildModeButton(
                   context: context,
@@ -133,7 +133,7 @@ class TrainingModeSelectionScreen extends StatelessWidget {
               const SizedBox(height: 40),
               
               // Tip - only show for AI-enabled workouts
-              if (workout == null || !workout.isManualOnly)
+              if (workout?.isManualOnly != true)
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
