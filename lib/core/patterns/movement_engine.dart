@@ -11,9 +11,10 @@ import 'hold_pattern.dart';
 import 'rotation_pattern.dart';
 import 'calf_pattern.dart';
 import 'piston_pattern.dart';
+import 'core_pattern.dart';
 
 /// Pattern types
-enum PatternType { squat, stepUp, push, pull, hinge, curl, kneeDrive, hold, rotation, calf, piston }
+enum PatternType { squat, stepUp, push, pull, hinge, curl, kneeDrive, hold, rotation, calf, piston, core }
 
 /// Exercise configuration
 class ExerciseConfig {
@@ -198,6 +199,15 @@ class MovementEngine {
           cueGood: config.params['cueGood'] ?? 'Good!',
           cueBad: config.params['cueBad'] ?? 'More!',
         );
+
+      case PatternType.core:
+        return CorePattern(
+          coreMode: config.params['coreMode'] ?? CoreMode.noseRise,
+          triggerRisePercent: config.params['triggerRisePercent'] ?? 15.0,
+          resetRisePercent: config.params['resetRisePercent'] ?? 5.0,
+          cueGood: config.params['cueGood'] ?? 'Squeeze!',
+          cueBad: config.params['cueBad'] ?? 'Higher!',
+        );
     }
   }
   
@@ -336,18 +346,7 @@ class MovementEngine {
     // 'side_lying_leg_lift': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
     // 'fire_hydrant_pulse': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85}),
     
-    // SQUAT PATTERN - CRUNCHES (uses squat for torso-hip tracking)
-    'crunch': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'resetPercent': 0.92, 'cueGood': 'Squeeze!', 'cueBad': 'Crunch harder!'}),
-    'crunches': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'resetPercent': 0.92, 'cueGood': 'Squeeze!', 'cueBad': 'Crunch harder!'}),
-    'cable_crunch': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80, 'resetPercent': 0.92}),
-    'cable_crunches': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80, 'resetPercent': 0.92}),
-    'sit_up': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'resetPercent': 0.92, 'cueGood': 'Up!', 'cueBad': 'Squeeze abs!'}),
-    'sit_ups': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'resetPercent': 0.92, 'cueGood': 'Up!', 'cueBad': 'Squeeze abs!'}),
-    'situp': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'resetPercent': 0.92}),
-    'situps': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'resetPercent': 0.92}),
-    'decline_situp': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.70, 'resetPercent': 0.92}), // NEW - Missing
-    'decline_weighted_sit_up': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.65, 'resetPercent': 0.92}),
-    'standing_oblique_crunch': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80}),
+    // REMOVED: crunches/sit-ups moved to CORE PATTERN section below
     
     // SQUAT PATTERN - BEAR CRAWL
     // 'bear_crawl': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'cueGood': 'Crawl!', 'cueBad': 'Stay low!'}),
@@ -736,14 +735,7 @@ class MovementEngine {
 'mountain_climbers': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.horizontalKnee}),
 'mountain_climber_crossover': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.horizontalKnee, 'cueGood': 'Cross!', 'cueBad': 'Knee across!'}),
 
-// =============================================================================
-// LEG RAISE (core / supine) - ankle → hip
-// =============================================================================
-'leg_raise': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'cueGood': 'Legs up!', 'cueBad': 'Control!'}),
-'leg_raises': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'cueGood': 'Legs up!', 'cueBad': 'Control!'}),
-'lying_leg_raise': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise}),
-'hanging_leg_raise': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'cueGood': 'Up!', 'cueBad': 'No swing!'}),
-'hanging_leg_raises': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'cueGood': 'Up!', 'cueBad': 'No swing!'}),
+// REMOVED: leg raises moved to CORE PATTERN section
 'v_up': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'cueGood': 'Touch!', 'cueBad': 'Reach!'}),
 'v_ups': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'cueGood': 'Touch!', 'cueBad': 'Reach!'}),
 'bicycle_crunch': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'cueGood': 'Twist!', 'cueBad': 'Opposite!'}),
@@ -848,8 +840,7 @@ class MovementEngine {
     'pallof_press_kneeling': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Brace!', 'cueBad': 'Stay tight!'}),
     'pallof_press_standing': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Brace!', 'cueBad': 'Stay tight!'}),
     'pallof_press_split_stance': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Brace!', 'cueBad': 'Stay tight!'}),
-    'oblique_crunch': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Crunch!', 'cueBad': 'Squeeze obliques!'}),
-    'oblique_crunches': ExerciseConfig(patternType: PatternType.hold, params: {'holdType': HoldType.plank, 'cueGood': 'Crunch!', 'cueBad': 'Squeeze obliques!'}),
+    // REMOVED: oblique_crunch/oblique_crunches moved to CORE PATTERN section
     
     // =========================================================================
     // ===== CALF PATTERN - Calf raises =====
@@ -943,6 +934,90 @@ class MovementEngine {
       'pointB': PoseLandmarkType.leftHip, 'pointBRight': PoseLandmarkType.rightHip,
       'mode': PistonMode.grow, 'triggerPercent': 1.20, 'resetPercent': 1.08,
       'cueGood': 'Squeeze!', 'cueBad': 'Higher!',
+    }),
+
+    // =========================================================================
+    // ===== CORE PATTERN - Crunches, sit ups, leg raises =====
+    // =========================================================================
+
+    // CRUNCHES - Nose rises slightly (small ROM)
+    'crunch': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 10.0, 'resetRisePercent': 4.0,
+      'cueGood': 'Squeeze!', 'cueBad': 'Crunch up!',
+    }),
+    'crunches': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 10.0, 'resetRisePercent': 4.0,
+      'cueGood': 'Squeeze!', 'cueBad': 'Crunch up!',
+    }),
+    'cable_crunch': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 12.0, 'resetRisePercent': 4.0,
+      'cueGood': 'Squeeze!', 'cueBad': 'Crunch harder!',
+    }),
+    'cable_crunches': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 12.0, 'resetRisePercent': 4.0,
+      'cueGood': 'Squeeze!', 'cueBad': 'Crunch harder!',
+    }),
+
+    // SIT UPS - Nose rises a lot (full ROM)
+    'sit_up': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 20.0, 'resetRisePercent': 6.0,
+      'cueGood': 'Up!', 'cueBad': 'All the way!',
+    }),
+    'sit_ups': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 20.0, 'resetRisePercent': 6.0,
+      'cueGood': 'Up!', 'cueBad': 'All the way!',
+    }),
+    'situp': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 20.0, 'resetRisePercent': 6.0,
+      'cueGood': 'Up!', 'cueBad': 'All the way!',
+    }),
+    'situps': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 20.0, 'resetRisePercent': 6.0,
+      'cueGood': 'Up!', 'cueBad': 'All the way!',
+    }),
+    'decline_situp': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 18.0, 'resetRisePercent': 6.0,
+      'cueGood': 'Up!', 'cueBad': 'All the way!',
+    }),
+    'decline_weighted_sit_up': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 15.0, 'resetRisePercent': 5.0,
+      'cueGood': 'Up!', 'cueBad': 'All the way!',
+    }),
+
+    // OBLIQUE CRUNCH - Same as crunch
+    'oblique_crunch': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 10.0, 'resetRisePercent': 4.0,
+      'cueGood': 'Crunch!', 'cueBad': 'Twist up!',
+    }),
+    'oblique_crunches': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 10.0, 'resetRisePercent': 4.0,
+      'cueGood': 'Crunch!', 'cueBad': 'Twist up!',
+    }),
+    'standing_oblique_crunch': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.noseRise, 'triggerRisePercent': 8.0, 'resetRisePercent': 3.0,
+      'cueGood': 'Crunch!', 'cueBad': 'Squeeze!',
+    }),
+
+    // LEG RAISES - Ankle rises
+    'leg_raise': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.ankleRise, 'triggerRisePercent': 25.0, 'resetRisePercent': 8.0,
+      'cueGood': 'Hold!', 'cueBad': 'Legs up!',
+    }),
+    'leg_raises': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.ankleRise, 'triggerRisePercent': 25.0, 'resetRisePercent': 8.0,
+      'cueGood': 'Hold!', 'cueBad': 'Legs up!',
+    }),
+    'lying_leg_raise': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.ankleRise, 'triggerRisePercent': 25.0, 'resetRisePercent': 8.0,
+      'cueGood': 'Hold!', 'cueBad': 'Legs up!',
+    }),
+    'hanging_leg_raise': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.ankleRise, 'triggerRisePercent': 15.0, 'resetRisePercent': 5.0,
+      'cueGood': 'Hold!', 'cueBad': 'Legs up!',
+    }),
+    'hanging_leg_raises': ExerciseConfig(patternType: PatternType.core, params: {
+      'coreMode': CoreMode.ankleRise, 'triggerRisePercent': 15.0, 'resetRisePercent': 5.0,
+      'cueGood': 'Hold!', 'cueBad': 'Legs up!',
     }),
 
   };
