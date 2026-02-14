@@ -18,7 +18,6 @@ class RotationPattern implements BasePattern {
   bool _hasCrossedCenter = true;
   bool _isFirstRep = true;
 
-  // Debug
   double _debugSweep = 0;
   double _debugThreshold = 0;
   String _debugLandmarks = '';
@@ -37,7 +36,7 @@ class RotationPattern implements BasePattern {
   @override bool get justHitTrigger => _justHitTrigger;
 
   @override
-  String get debugInfo => 'ROTATION\nSweep: ${_debugSweep.toStringAsFixed(3)}\nThresh: ${_debugThreshold.toStringAsFixed(3)}\nCharge: ${(_chargeProgress * 100).toStringAsFixed(0)}%\nLM: $_debugLandmarks\nReps: $_repCount';
+  String get debugInfo => 'ROTATION\nSweep: ${_debugSweep.toStringAsFixed(3)}\nThresh: ${_debugThreshold.toStringAsFixed(3)}\nCharge: ${(_chargeProgress * 100).toStringAsFixed(0)}%\nLM: $_debugLandmarks\nCtr: $_hasCrossedCenter\nReps: $_repCount';
 
   @override
   void captureBaseline(Map<PoseLandmarkType, PoseLandmark> map) {
@@ -50,7 +49,6 @@ class RotationPattern implements BasePattern {
   bool processFrame(Map<PoseLandmarkType, PoseLandmark> map) {
     _justHitTrigger = false;
 
-    // Get landmarks - USE SHOULDERS AS FALLBACK FOR HIPS
     final lW = map[PoseLandmarkType.leftWrist];
     final rW = map[PoseLandmarkType.rightWrist];
     final lH = map[PoseLandmarkType.leftHip];
@@ -58,11 +56,8 @@ class RotationPattern implements BasePattern {
     final lS = map[PoseLandmarkType.leftShoulder];
     final rS = map[PoseLandmarkType.rightShoulder];
 
-    // Debug: track what landmarks we have
     _debugLandmarks = '${lW != null ? "LW" : ".."}|${rW != null ? "RW" : ".."}|${lH != null ? "LH" : ".."}|${rH != null ? "RH" : ".."}|${lS != null ? "LS" : ".."}|${rS != null ? "RS" : ".."}';
 
-    // Need at least ONE wrist and ONE body center reference
-    // Use shoulders if hips aren't visible (seated position)
     double? centerX;
     double? bodyWidth;
 
@@ -78,14 +73,18 @@ class RotationPattern implements BasePattern {
     } else if (rH != null && lS != null) {
       centerX = (rH.x + lS.x) / 2;
       bodyWidth = (rH.x - lS.x).abs() + 0.01;
+    } else {
+      if (lS != null) { centerX = lS.x; bodyWidth = 100.0; }
+      else if (rS != null) { centerX = rS.x; bodyWidth = 100.0; }
+      else if (lH != null) { centerX = lH.x; bodyWidth = 100.0; }
+      else if (rH != null) { centerX = rH.x; bodyWidth = 100.0; }
     }
 
-    if (centerX == null || bodyWidth == null) {
+    if (centerX == null) {
       _feedback = "Body not visible";
       return false;
     }
 
-    // Get hand position - use whichever wrist(s) are visible
     double? handX;
     if (lW != null && rW != null) {
       handX = (lW.x + rW.x) / 2;
@@ -100,16 +99,12 @@ class RotationPattern implements BasePattern {
       return false;
     }
 
-    // Calculate sweep
-    double sweepOffset = (handX - centerX) / bodyWidth;
-
-    // Threshold - LOW so it actually triggers
+    double sweepOffset = (handX - centerX!) / bodyWidth!;
     double threshold = 0.15;
 
     _debugSweep = sweepOffset;
     _debugThreshold = threshold;
 
-    // Zone detection
     bool inLeftZone = sweepOffset < -threshold;
     bool inRightZone = sweepOffset > threshold;
     bool inCenterZone = sweepOffset.abs() < 0.05;
@@ -118,11 +113,9 @@ class RotationPattern implements BasePattern {
       _hasCrossedCenter = true;
     }
 
-    // Update gauge
     _chargeProgress = (sweepOffset.abs() / threshold).clamp(0.0, 1.0);
     _state = _chargeProgress > 0.15 ? RepState.goingDown : RepState.ready;
 
-    // Trigger
     if (_hasCrossedCenter) {
       if (inLeftZone && (!_lastWasLeft || _isFirstRep)) {
         _countRep(true);
@@ -133,12 +126,7 @@ class RotationPattern implements BasePattern {
       }
     }
 
-    if (_chargeProgress > 0.8) {
-      _feedback = cueGood;
-    } else {
-      _feedback = cueBad;
-    }
-
+    _feedback = _chargeProgress > 0.8 ? cueGood : cueBad;
     return false;
   }
 
@@ -160,6 +148,7 @@ class RotationPattern implements BasePattern {
     _lastWasLeft = false;
     _hasCrossedCenter = true;
     _isFirstRep = true;
+    _chargeProgress = 0.0;
     _debugSweep = 0;
     _debugThreshold = 0;
     _debugLandmarks = '';

@@ -273,8 +273,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
         final _dbgPattern = _session?.movementEngine?.activePattern;
         if (_dbgPattern != null) {
           _debugLive = _dbgPattern.debugInfo;
-          if (_dbgPattern.justHitTrigger || _debugLog.isEmpty ||
-              (_debugLog.isNotEmpty && !_debugLog.last.contains(_dbgPattern.state.name))) {
+          if (true) {
             final timestamp = DateTime.now().toString().substring(11, 19);
             _debugLog.add('[$timestamp] ${_dbgPattern.debugInfo.replaceAll('\n', ' | ')}');
             if (_debugLog.length > _maxDebugLogLines) {
