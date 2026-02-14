@@ -74,23 +74,26 @@ class TrainingModeSelectionScreen extends StatelessWidget {
                 
                 const SizedBox(height: 40),
               
-              // Mode buttons
-              _buildModeButton(
-                context: context,
-                icon: Icons.videocam,
-                title: 'AI REP COUNTER',
-                subtitle: 'Auto Tracking',
-                description: 'Camera counts your reps automatically\nVoice coaching • No logging needed',
-                gradient: const LinearGradient(
-                  colors: [AppColors.electricCyan, AppColors.cyberLime],
+              // Mode buttons - conditionally show based on isManualOnly
+              if (workout == null || !workout.isManualOnly) ...[
+                // Show AI Rep Counter only for non-manual workouts
+                _buildModeButton(
+                  context: context,
+                  icon: Icons.videocam,
+                  title: 'AI REP COUNTER',
+                  subtitle: 'Auto Tracking',
+                  description: 'Camera counts your reps automatically\nVoice coaching • No logging needed',
+                  gradient: const LinearGradient(
+                    colors: [AppColors.electricCyan, AppColors.cyberLime],
+                  ),
+                  onTap: () {
+                    HapticFeedback.mediumImpact();
+                    Navigator.of(context).pop('auto');
+                  },
                 ),
-                onTap: () {
-                  HapticFeedback.mediumImpact();
-                  Navigator.of(context).pop('auto');
-                },
-              ),
-              
-              const SizedBox(height: 20),
+                
+                const SizedBox(height: 20),
+              ],
               
               _buildModeButton(
                 context: context,
@@ -129,35 +132,36 @@ class TrainingModeSelectionScreen extends StatelessWidget {
               
               const SizedBox(height: 40),
               
-              // Tip
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: AppColors.white5,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: AppColors.white10),
-                ),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.lightbulb_outline,
-                      color: AppColors.cyberLime.withOpacity(0.7),
-                      size: 20,
-                    ),
-                    const SizedBox(width: 12),
-                    const Expanded(
-                      child: Text(
-                        'Tip: AI Rep Counter works best in good lighting with full body visible',
-                        style: TextStyle(
-                          color: AppColors.white60,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
+              // Tip - only show for AI-enabled workouts
+              if (workout == null || !workout.isManualOnly)
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: AppColors.white5,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: AppColors.white10),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.lightbulb_outline,
+                        color: AppColors.cyberLime.withOpacity(0.7),
+                        size: 20,
+                      ),
+                      const SizedBox(width: 12),
+                      const Expanded(
+                        child: Text(
+                          'Tip: AI Rep Counter works best in good lighting with full body visible',
+                          style: TextStyle(
+                            color: AppColors.white60,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
               
               const SizedBox(height: 24),
             ],

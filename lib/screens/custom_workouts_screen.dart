@@ -10,6 +10,7 @@ import '../widgets/glow_button.dart';
 import '../providers/workout_provider.dart';
 import '../providers/workout_schedule_provider.dart';
 import '../services/storage_service.dart';
+import '../data/exercise_gif_mapping.dart';
 import 'exercise_explanation_screen.dart';
 
 class CustomWorkoutsScreen extends ConsumerStatefulWidget {
@@ -24,6 +25,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
   final TextEditingController _workoutNameController = TextEditingController(text: 'My Custom Workout');
   final TextEditingController _emojiController = TextEditingController(text: '💪'); // Default emoji
   
+  String _workoutMode = 'ai'; // NEW: 'ai' or 'manual'
   String _selectedCategory = 'all';
   String _selectedEquipment = 'all'; // Add equipment filter
   List<Exercise> _selectedExercises = [];
@@ -32,8 +34,42 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
   // Get all exercises from WorkoutData
   List<Exercise> get _allExercises => WorkoutData.getAllExercises();
   
+  // Get all manual exercises from GIF library
+  List<Exercise> _getAllManualExercises() {
+    final List<Exercise> manualExercises = [];
+    
+    // Load from ExerciseGifMapping (534 exercises)
+    ExerciseGifMapping.exerciseGifs.forEach((id, gifInfo) {
+      // Convert snake_case id to readable name
+      final name = id.split('_').map((word) => 
+        word[0].toUpperCase() + word.substring(1)
+      ).join(' ');
+      
+      manualExercises.add(Exercise(
+        id: id,
+        name: name,
+        difficulty: 'intermediate', // Default
+        equipment: _inferEquipment(name),
+      ));
+    });
+    
+    return manualExercises;
+  }
+  
+  String _inferEquipment(String name) {
+    final lower = name.toLowerCase();
+    if (lower.contains('barbell')) return 'barbell';
+    if (lower.contains('dumbbell')) return 'dumbbell';
+    if (lower.contains('cable')) return 'cable';
+    if (lower.contains('band')) return 'band';
+    return 'bodyweight';
+  }
+  
   List<Exercise> get _filteredExercises {
-    List<Exercise> exercises = _allExercises;
+    // Use manual exercises if in manual mode, otherwise use AI exercises
+    List<Exercise> exercises = _workoutMode == 'manual' 
+      ? _getAllManualExercises() 
+      : _allExercises;
     
     // Filter by category
     if (_selectedCategory != 'all') {
@@ -207,6 +243,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
       subcategory: 'custom',
       icon: _emojiController.text.isEmpty ? '💪' : _emojiController.text, // Add emoji
       isCircuit: false,
+      isManualOnly: _workoutMode == 'manual', // Flag manual workouts
       duration: '${_selectedExercises.length * 5} min', // Rough estimate
       exercises: _selectedExercises.map((e) {
         final settings = _exerciseSettings[e.id]!;
@@ -224,7 +261,13 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
     // Save if user chose to
     if (shouldSave == true) {
       final storage = await StorageService.getInstance();
-      await storage.saveCustomWorkout(customPreset);
+      
+      // Save to appropriate storage based on mode
+      if (_workoutMode == 'manual') {
+        await storage.saveManualWorkout(customPreset);
+      } else {
+        await storage.saveCustomWorkout(customPreset); // AI workouts
+      }
     }
 
     // Commit the workout
@@ -523,35 +566,33 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
 
   Widget _buildHeader() {
     return Container(
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 8),
+      padding: const EdgeInsets.fromLTRB(20, 16, 20, 12),
       child: Column(
         children: [
-          // Title row
+          // Row: Title left, back button right
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                onPressed: () => Navigator.pop(context),
-                icon: const Icon(Icons.arrow_back, color: Colors.white),
-              ),
-              const SizedBox(width: 8),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'CUSTOM WORKOUTS',
-                      style: TextStyle(
-                        fontSize: 28,
+                    Text(
+                      _workoutMode == 'ai' ? 'AI Exercise Library' : 'Manual Exercise Library',
+                      style: const TextStyle(
+                        fontSize: 18,
                         fontWeight: FontWeight.w900,
-                        color: AppColors.cyberLime,
+                        color: Colors.white,
                         letterSpacing: -0.5,
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    const Text(
-                      'Create your perfect workout',
-                      style: TextStyle(
-                        fontSize: 13,
+                    const SizedBox(height: 2),
+                    Text(
+                      _workoutMode == 'ai' 
+                        ? 'MediaPipe AI tracking available'
+                        : 'Visual guide & manual logging only',
+                      style: const TextStyle(
+                        fontSize: 12,
                         color: AppColors.white50,
                         fontWeight: FontWeight.w500,
                       ),
@@ -563,7 +604,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
                           '${_selectedExercises.length} exercises • Est. ${_calculateCalories()} cal',
                           style: const TextStyle(
                             color: AppColors.cyberLime,
-                            fontSize: 14,
+                            fontSize: 12,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -571,15 +612,100 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
                   ],
                 ),
               ),
+              IconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: const Icon(Icons.close, color: Colors.white, size: 24),
+                style: IconButton.styleFrom(
+                  backgroundColor: AppColors.white10,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
             ],
           ),
           
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
+          
+          // AI/Manual mode toggle
+          _buildModeToggle(),
+          
+          const SizedBox(height: 12),
           
           // Equipment filter buttons
           _buildEquipmentFilters(),
         ],
       ),
+    );
+  }
+
+  Widget _buildModeToggle() {
+    return Row(
+      children: [
+        Expanded(
+          child: GestureDetector(
+            onTap: () {
+              HapticFeedback.selectionClick();
+              setState(() {
+                _workoutMode = 'ai';
+              });
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              decoration: BoxDecoration(
+                color: _workoutMode == 'ai' ? AppColors.cyberLime.withOpacity(0.2) : AppColors.white5,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: _workoutMode == 'ai' ? AppColors.cyberLime : AppColors.white10,
+                  width: _workoutMode == 'ai' ? 2 : 1,
+                ),
+              ),
+              child: Text(
+                '🤖 AI TRACKED',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: _workoutMode == 'ai' ? AppColors.cyberLime : Colors.white,
+                  fontWeight: FontWeight.w900,
+                  fontSize: 14,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: GestureDetector(
+            onTap: () {
+              HapticFeedback.selectionClick();
+              setState(() {
+                _workoutMode = 'manual';
+              });
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              decoration: BoxDecoration(
+                color: _workoutMode == 'manual' ? AppColors.neonCrimson.withOpacity(0.2) : AppColors.white5,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: _workoutMode == 'manual' ? AppColors.neonCrimson : AppColors.white10,
+                  width: _workoutMode == 'manual' ? 2 : 1,
+                ),
+              ),
+              child: Text(
+                '📝 MANUAL LOG',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: _workoutMode == 'manual' ? AppColors.neonCrimson : Colors.white,
+                  fontWeight: FontWeight.w900,
+                  fontSize: 14,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 

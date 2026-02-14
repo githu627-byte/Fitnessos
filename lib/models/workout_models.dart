@@ -98,6 +98,7 @@ class WorkoutPreset {
   final String? duration;      // Estimated time
   final bool isCircuit;
   final String? icon;          // Optional icon for display
+  final bool isManualOnly;     // If true, can only be trained with Visual Guide or Pro Logger (no MediaPipe)
 
   const WorkoutPreset({
     required this.id,
@@ -109,6 +110,7 @@ class WorkoutPreset {
     this.duration,
     required this.isCircuit,
     this.icon,
+    this.isManualOnly = false,  // Default to false for existing workouts
   });
 
   int get estimatedMinutes {
@@ -209,6 +211,7 @@ class WorkoutPreset {
     String? duration,
     bool? isCircuit,
     String? icon,
+    bool? isManualOnly,
   }) {
     return WorkoutPreset(
       id: id ?? this.id,
@@ -220,6 +223,7 @@ class WorkoutPreset {
       duration: duration ?? this.duration,
       isCircuit: isCircuit ?? this.isCircuit,
       icon: icon ?? this.icon,
+      isManualOnly: isManualOnly ?? this.isManualOnly,
     );
   }
 
@@ -234,6 +238,7 @@ class WorkoutPreset {
       'duration': duration,
       'isCircuit': isCircuit,
       'icon': icon,
+      'isManualOnly': isManualOnly,
     };
   }
 
@@ -250,6 +255,7 @@ class WorkoutPreset {
       duration: json['duration'] as String?,
       isCircuit: json['isCircuit'] as bool,
       icon: json['icon'] as String?,
+      isManualOnly: json['isManualOnly'] as bool? ?? false,
     );
   }
 }
@@ -263,6 +269,7 @@ class LockedWorkout {
   final int estimatedMinutes;
   final bool isCircuit;
   final int? rounds;
+  final bool isManualOnly;
 
   const LockedWorkout({
     required this.id,
@@ -273,6 +280,7 @@ class LockedWorkout {
     required this.estimatedMinutes,
     required this.isCircuit,
     this.rounds,
+    this.isManualOnly = false,
   });
 
   int get estimatedCalories {
@@ -344,6 +352,7 @@ class LockedWorkout {
       estimatedMinutes: preset.estimatedMinutes,
       isCircuit: preset.isCircuit,
       rounds: preset.rounds,
+      isManualOnly: preset.isManualOnly,
     );
   }
 
@@ -357,6 +366,7 @@ class LockedWorkout {
       'estimatedMinutes': estimatedMinutes,
       'isCircuit': isCircuit,
       'rounds': rounds,
+      'isManualOnly': isManualOnly,
     };
   }
 
@@ -372,6 +382,7 @@ class LockedWorkout {
       estimatedMinutes: json['estimatedMinutes'] as int,
       isCircuit: json['isCircuit'] as bool,
       rounds: json['rounds'] as int?,
+      isManualOnly: json['isManualOnly'] as bool? ?? false,
     );
   }
 }

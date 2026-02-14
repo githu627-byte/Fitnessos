@@ -13,7 +13,8 @@ class StorageService {
   static const String _keyLockedWorkout = 'locked_workout';
   static const String _keyScheduledWorkouts = 'scheduled_workouts';
   static const String _keyWorkoutAlarms = 'workout_alarms';
-  static const String _keyCustomWorkouts = 'custom_workouts'; // New: Store custom workouts
+  static const String _keyCustomWorkouts = 'custom_workouts'; // Store AI workouts
+  static const String _keyManualWorkouts = 'manual_workouts'; // Store manual workouts separately
 
   final SharedPreferences _prefs;
 
@@ -249,6 +250,53 @@ class StorageService {
 
   Future<void> updateCustomWorkout(WorkoutPreset workout) async {
     await saveCustomWorkout(workout); // Same as save
+  }
+
+  // Manual Workouts (separate from AI workouts)
+  Future<void> saveManualWorkout(WorkoutPreset workout) async {
+    final manualWorkouts = getManualWorkouts();
+    manualWorkouts[workout.id] = workout;
+    
+    final workoutsJson = manualWorkouts.map(
+      (key, value) => MapEntry(key, jsonEncode(value.toJson())),
+    );
+    await _prefs.setString(_keyManualWorkouts, jsonEncode(workoutsJson));
+    debugPrint('✅ Saved manual workout: ${workout.name}');
+  }
+
+  Map<String, WorkoutPreset> getManualWorkouts() {
+    final jsonString = _prefs.getString(_keyManualWorkouts);
+    if (jsonString == null) return {};
+    
+    try {
+      final Map<String, dynamic> workoutsJson = jsonDecode(jsonString);
+      return workoutsJson.map((key, value) {
+        final workoutJson = jsonDecode(value);
+        return MapEntry(key, WorkoutPreset.fromJson(workoutJson));
+      });
+    } catch (e) {
+      debugPrint('Error loading manual workouts: $e');
+      return {};
+    }
+  }
+
+  List<WorkoutPreset> getManualWorkoutsList() {
+    return getManualWorkouts().values.toList();
+  }
+
+  Future<void> deleteManualWorkout(String workoutId) async {
+    final manualWorkouts = getManualWorkouts();
+    manualWorkouts.remove(workoutId);
+    
+    final workoutsJson = manualWorkouts.map(
+      (key, value) => MapEntry(key, jsonEncode(value.toJson())),
+    );
+    await _prefs.setString(_keyManualWorkouts, jsonEncode(workoutsJson));
+    debugPrint('🗑️ Deleted manual workout: $workoutId');
+  }
+
+  Future<void> updateManualWorkout(WorkoutPreset workout) async {
+    await saveManualWorkout(workout); // Same as save
   }
 }
 

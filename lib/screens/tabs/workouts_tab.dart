@@ -31,7 +31,8 @@ class WorkoutsTab extends ConsumerStatefulWidget {
 class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
   String _selectedMode = 'gym'; // 'gym' or 'home'
   String? _selectedCategory;
-  List<WorkoutPreset> _customWorkouts = []; // Store loaded custom workouts
+  List<WorkoutPreset> _customWorkouts = []; // AI workouts
+  List<WorkoutPreset> _manualWorkouts = []; // Manual workouts
   
   // Track difficulty selection for each workout (workoutId -> difficulty)
   final Map<String, String> _selectedDifficulties = {};
@@ -66,10 +67,13 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
 
   Future<void> _loadCustomWorkouts() async {
     final storage = await StorageService.getInstance();
-    final savedWorkouts = storage.getCustomWorkoutsList();
+    final savedAiWorkouts = storage.getCustomWorkoutsList();
+    final savedManualWorkouts = storage.getManualWorkoutsList();
+    
     if (mounted) {
       setState(() {
-        _customWorkouts = savedWorkouts;
+        _customWorkouts = savedAiWorkouts;
+        _manualWorkouts = savedManualWorkouts;
       });
     }
   }
@@ -331,10 +335,16 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
     } else { // custom mode
       return [
         {
-          'id': 'custom_workouts',
-          'name': 'MY CUSTOM WORKOUTS',
+          'id': 'ai_workouts',
+          'name': 'MY AI WORKOUTS',
+          'icon': '🤖',
+          'desc': 'AI-tracked custom workouts',
+        },
+        {
+          'id': 'manual_workouts',
+          'name': 'MY MANUAL WORKOUTS',
           'icon': '📝',
-          'desc': 'Your saved custom workouts',
+          'desc': 'Manual log workouts',
         },
         {
           'id': 'create_new',
@@ -359,12 +369,10 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
             ),
           );
           
-          // If workout was saved, reload custom workouts and switch to view them
+          // If workout was saved, reload both workout lists
           if (result == true && mounted) {
-            await _loadCustomWorkouts(); // Reload the list
-            setState(() {
-              _selectedCategory = 'custom_workouts'; // Switch to custom workouts view
-            });
+            await _loadCustomWorkouts(); // Reload both lists
+            // Don't auto-switch - let user navigate to appropriate list
           }
         } else {
           setState(() {
@@ -511,9 +519,12 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
       case 'recovery':
         return WorkoutData.getHomeRecovery(); // Recovery not difficulty-dependent
       // CUSTOM MODE
-      case 'custom_workouts':
-        // Load saved custom workouts from storage
+      case 'ai_workouts':
+        // Load saved AI workouts from storage
         return _customWorkouts; // Use state variable loaded from storage
+      case 'manual_workouts':
+        // Load saved manual workouts from storage
+        return _manualWorkouts; // Use state variable loaded from storage
       default:
         return [];
     }
@@ -769,9 +780,15 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                     if (confirmed == true) {
                       HapticFeedback.mediumImpact();
                       final storage = await StorageService.getInstance();
-                      await storage.deleteCustomWorkout(preset.id);
                       
-                      // Reload custom workouts list
+                      // Delete from correct storage based on category
+                      if (_selectedCategory == 'manual_workouts') {
+                        await storage.deleteManualWorkout(preset.id);
+                      } else {
+                        await storage.deleteCustomWorkout(preset.id);
+                      }
+                      
+                      // Reload workouts list
                       await _loadCustomWorkouts();
                       
                       if (mounted) {
