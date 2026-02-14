@@ -10,9 +10,10 @@ import 'knee_drive_pattern.dart';
 import 'hold_pattern.dart';
 import 'rotation_pattern.dart';
 import 'calf_pattern.dart';
+import 'piston_pattern.dart';
 
 /// Pattern types
-enum PatternType { squat, stepUp, push, pull, hinge, curl, kneeDrive, hold, rotation, calf }
+enum PatternType { squat, stepUp, push, pull, hinge, curl, kneeDrive, hold, rotation, calf, piston }
 
 /// Exercise configuration
 class ExerciseConfig {
@@ -183,6 +184,19 @@ class MovementEngine {
         return CalfPattern(
           cueGood: config.params['cueGood'] ?? 'Squeeze!',
           cueBad: config.params['cueBad'] ?? 'Higher!',
+        );
+
+      case PatternType.piston:
+        return PistonPattern(
+          pointA: config.params['pointA'] ?? PoseLandmarkType.leftShoulder,
+          pointB: config.params['pointB'] ?? PoseLandmarkType.leftHip,
+          pointARight: config.params['pointARight'],
+          pointBRight: config.params['pointBRight'],
+          mode: config.params['mode'] ?? PistonMode.shrink,
+          triggerPercent: config.params['triggerPercent'] ?? 0.70,
+          resetPercent: config.params['resetPercent'] ?? 0.90,
+          cueGood: config.params['cueGood'] ?? 'Good!',
+          cueBad: config.params['cueBad'] ?? 'More!',
         );
     }
   }
@@ -593,27 +607,15 @@ class MovementEngine {
     'frog_pumps': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
     'frog_pump_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
     'frog_pump_hold_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
-    'quadruped_hip_extension': ExerciseConfig(patternType: PatternType.hinge, params: {'cueGood': 'Squeeze!', 'cueBad': 'Higher!'}),
-    'quadruped_hip_extension_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40}),
     'standing_glute_squeeze': ExerciseConfig(patternType: PatternType.hinge, params: {'inverted': true}),
     'single_leg_rdl_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.35}),
     
-    // HINGE PATTERN - KICKBACKS
-    'glute_kickback': ExerciseConfig(patternType: PatternType.hinge, params: {'cueGood': 'Squeeze!', 'cueBad': 'Higher!'}),
-    'glute_kickbacks': ExerciseConfig(patternType: PatternType.hinge, params: {'cueGood': 'Squeeze!', 'cueBad': 'Higher!'}),
-    'cable_kickback': ExerciseConfig(patternType: PatternType.hinge),
-    'standing_glute_kickback': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40}),
-    'donkey_kick': ExerciseConfig(patternType: PatternType.hinge, params: {'cueGood': 'Squeeze!', 'cueBad': 'Higher!'}),
-    'donkey_kicks': ExerciseConfig(patternType: PatternType.hinge),
-    'donkey_kick_pulse': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40}),
-    'donkey_kick_pulses': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40}), // NEW - Missing
-    'donkey_kicks_cable': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.55}), // NEW - Missing
-    'fire_hydrant': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.70}), // NEW - Missing
-    'fire_hydrants': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.70}), // NEW - Missing
-    'banded_fire_hydrant': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.70}), // NEW - Missing
-    'banded_clamshell': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.70}), // NEW - Missing
-    'side_lying_leg_raise': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.75}), // NEW - Missing
-    'banded_kickback': ExerciseConfig(patternType: PatternType.hinge),
+    // HINGE PATTERN - KICKBACKS (remaining non-piston exercises)
+    'fire_hydrant': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.70}),
+    'fire_hydrants': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.70}),
+    'banded_fire_hydrant': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.70}),
+    'banded_clamshell': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.70}),
+    'side_lying_leg_raise': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.75}),
     
     // HINGE PATTERN - CABLE PULL THROUGH
     'cable_pull_through': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.45, 'resetPercent': 0.80}),
@@ -862,6 +864,86 @@ class MovementEngine {
     'donkey_calf_raise': ExerciseConfig(patternType: PatternType.calf),
     'single_leg_calf_raise': ExerciseConfig(patternType: PatternType.calf),
     'jump_rope': ExerciseConfig(patternType: PatternType.calf, params: {'cueGood': 'Jump!', 'cueBad': 'Light feet!'}),
-    
+
+    // =========================================================================
+    // ===== PISTON PATTERN - Donkey kicks & kickbacks =====
+    // =========================================================================
+
+    // DONKEY KICKS - Ankle moves away from hip (GROW)
+    'donkey_kick': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle, 'pointARight': PoseLandmarkType.rightAnkle,
+      'pointB': PoseLandmarkType.leftHip, 'pointBRight': PoseLandmarkType.rightHip,
+      'mode': PistonMode.grow, 'triggerPercent': 1.20, 'resetPercent': 1.08,
+      'cueGood': 'Squeeze!', 'cueBad': 'Higher!',
+    }),
+    'donkey_kicks': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle, 'pointARight': PoseLandmarkType.rightAnkle,
+      'pointB': PoseLandmarkType.leftHip, 'pointBRight': PoseLandmarkType.rightHip,
+      'mode': PistonMode.grow, 'triggerPercent': 1.20, 'resetPercent': 1.08,
+      'cueGood': 'Squeeze!', 'cueBad': 'Higher!',
+    }),
+    'donkey_kick_pulse': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle, 'pointARight': PoseLandmarkType.rightAnkle,
+      'pointB': PoseLandmarkType.leftHip, 'pointBRight': PoseLandmarkType.rightHip,
+      'mode': PistonMode.grow, 'triggerPercent': 1.12, 'resetPercent': 1.05,
+      'cueGood': 'Squeeze!', 'cueBad': 'Higher!',
+    }),
+    'donkey_kick_pulses': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle, 'pointARight': PoseLandmarkType.rightAnkle,
+      'pointB': PoseLandmarkType.leftHip, 'pointBRight': PoseLandmarkType.rightHip,
+      'mode': PistonMode.grow, 'triggerPercent': 1.12, 'resetPercent': 1.05,
+      'cueGood': 'Squeeze!', 'cueBad': 'Higher!',
+    }),
+    'donkey_kicks_cable': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle, 'pointARight': PoseLandmarkType.rightAnkle,
+      'pointB': PoseLandmarkType.leftHip, 'pointBRight': PoseLandmarkType.rightHip,
+      'mode': PistonMode.grow, 'triggerPercent': 1.20, 'resetPercent': 1.08,
+      'cueGood': 'Squeeze!', 'cueBad': 'Higher!',
+    }),
+    'quadruped_hip_extension': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle, 'pointARight': PoseLandmarkType.rightAnkle,
+      'pointB': PoseLandmarkType.leftHip, 'pointBRight': PoseLandmarkType.rightHip,
+      'mode': PistonMode.grow, 'triggerPercent': 1.20, 'resetPercent': 1.08,
+      'cueGood': 'Squeeze!', 'cueBad': 'Higher!',
+    }),
+    'quadruped_hip_extension_pulse': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle, 'pointARight': PoseLandmarkType.rightAnkle,
+      'pointB': PoseLandmarkType.leftHip, 'pointBRight': PoseLandmarkType.rightHip,
+      'mode': PistonMode.grow, 'triggerPercent': 1.12, 'resetPercent': 1.05,
+      'cueGood': 'Squeeze!', 'cueBad': 'Higher!',
+    }),
+
+    // GLUTE KICKBACKS - Same movement, ankle away from hip (GROW)
+    'glute_kickback': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle, 'pointARight': PoseLandmarkType.rightAnkle,
+      'pointB': PoseLandmarkType.leftHip, 'pointBRight': PoseLandmarkType.rightHip,
+      'mode': PistonMode.grow, 'triggerPercent': 1.20, 'resetPercent': 1.08,
+      'cueGood': 'Squeeze!', 'cueBad': 'Higher!',
+    }),
+    'glute_kickbacks': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle, 'pointARight': PoseLandmarkType.rightAnkle,
+      'pointB': PoseLandmarkType.leftHip, 'pointBRight': PoseLandmarkType.rightHip,
+      'mode': PistonMode.grow, 'triggerPercent': 1.20, 'resetPercent': 1.08,
+      'cueGood': 'Squeeze!', 'cueBad': 'Higher!',
+    }),
+    'cable_kickback': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle, 'pointARight': PoseLandmarkType.rightAnkle,
+      'pointB': PoseLandmarkType.leftHip, 'pointBRight': PoseLandmarkType.rightHip,
+      'mode': PistonMode.grow, 'triggerPercent': 1.20, 'resetPercent': 1.08,
+      'cueGood': 'Squeeze!', 'cueBad': 'Higher!',
+    }),
+    'standing_glute_kickback': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle, 'pointARight': PoseLandmarkType.rightAnkle,
+      'pointB': PoseLandmarkType.leftHip, 'pointBRight': PoseLandmarkType.rightHip,
+      'mode': PistonMode.grow, 'triggerPercent': 1.20, 'resetPercent': 1.08,
+      'cueGood': 'Squeeze!', 'cueBad': 'Higher!',
+    }),
+    'banded_kickback': ExerciseConfig(patternType: PatternType.piston, params: {
+      'pointA': PoseLandmarkType.leftAnkle, 'pointARight': PoseLandmarkType.rightAnkle,
+      'pointB': PoseLandmarkType.leftHip, 'pointBRight': PoseLandmarkType.rightHip,
+      'mode': PistonMode.grow, 'triggerPercent': 1.20, 'resetPercent': 1.08,
+      'cueGood': 'Squeeze!', 'cueBad': 'Higher!',
+    }),
+
   };
 }
