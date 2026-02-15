@@ -249,9 +249,9 @@ class _HevyManualWorkoutScreenState extends ConsumerState<HevyManualWorkoutScree
         ),
       );
 
-      // After summary, pop back to home
+      // After summary, pop all the way back to main tab navigator (home tab)
       if (mounted) {
-        Navigator.of(context).pop();
+        Navigator.of(context).popUntil((route) => route.isFirst);
       }
     }
   }
