@@ -348,7 +348,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
           Expanded(
             child: Image.asset(
               'assets/images/logo/skeletal_logo.png',
-              height: 120,
+              height: 180,
               fit: BoxFit.cover,
               alignment: Alignment.centerLeft,
             ),
