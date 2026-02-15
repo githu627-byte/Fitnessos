@@ -135,7 +135,7 @@ class _HevyManualWorkoutScreenState extends ConsumerState<HevyManualWorkoutScree
           return WorkoutSet(
             setNumber: index + 1,
             weight: null,
-            reps: null,
+            reps: exercise.reps, // Pre-fill with target reps from committed workout
             isCompleted: false,
           );
         }),
@@ -269,22 +269,6 @@ class _HevyManualWorkoutScreenState extends ConsumerState<HevyManualWorkoutScree
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                leading: const Icon(Icons.edit_note, color: AppColors.cyberLime),
-                title: const Text('Add Notes', style: TextStyle(color: Colors.white)),
-                onTap: () {
-                  Navigator.pop(context);
-                  _showNotesDialog();
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.save, color: AppColors.electricCyan),
-                title: const Text('Save as Draft', style: TextStyle(color: Colors.white)),
-                onTap: () {
-                  Navigator.pop(context);
-                  _saveAsDraft();
-                },
-              ),
-              ListTile(
                 leading: const Icon(Icons.cancel, color: AppColors.neonCrimson),
                 title: const Text('Cancel Workout', style: TextStyle(color: Colors.white)),
                 onTap: () {
@@ -296,66 +280,6 @@ class _HevyManualWorkoutScreenState extends ConsumerState<HevyManualWorkoutScree
           ),
         );
       },
-    );
-  }
-
-  void _showNotesDialog() {
-    final TextEditingController notesController = TextEditingController();
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: Colors.black,
-        title: const Text('Workout Notes', style: TextStyle(color: Colors.white)),
-        content: TextField(
-          controller: notesController,
-          maxLines: 5,
-          style: const TextStyle(color: Colors.white),
-          decoration: InputDecoration(
-            hintText: 'Add notes about this workout...',
-            hintStyle: const TextStyle(color: AppColors.white50),
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: AppColors.white30),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: AppColors.cyberLime),
-              borderRadius: BorderRadius.circular(8),
-            ),
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel', style: TextStyle(color: AppColors.white50)),
-          ),
-          TextButton(
-            onPressed: () {
-              // TODO: Save notes with workout
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Notes saved!'),
-                  backgroundColor: AppColors.cyberLime,
-                  duration: Duration(seconds: 2),
-                ),
-              );
-            },
-            child: const Text('Save', style: TextStyle(color: AppColors.cyberLime)),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _saveAsDraft() {
-    // TODO: Implement draft saving to database
-    Navigator.of(context).pop();
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Workout saved as draft!'),
-        backgroundColor: AppColors.electricCyan,
-        duration: Duration(seconds: 2),
-      ),
     );
   }
 

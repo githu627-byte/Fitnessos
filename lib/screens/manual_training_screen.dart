@@ -36,6 +36,13 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
   int _restTimeRemaining = 60;
   Timer? _restTimer;
   
+  // Workout timer
+  Timer? _workoutTimer;
+  int _totalElapsedSeconds = 0;
+  bool _isPaused = false;
+
+  String _weightUnit = 'lbs'; // 'lbs' or 'kg'
+
   DateTime? _workoutStartTime;
   final Map<String, List<Map<String, dynamic>>> _workoutLog = {}; // exerciseId -> list of sets
   
@@ -45,7 +52,8 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
     _weightController = TextEditingController(text: _currentWeight > 0 ? _currentWeight.toInt().toString() : '');
     _workoutStartTime = DateTime.now();
     _initializeExercise();
-    
+    _startWorkoutTimer();
+
     // Keep screen awake during workout
     WakelockPlus.enable();
     
@@ -59,6 +67,7 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
   void dispose() {
     _weightController.dispose();
     _restTimer?.cancel();
+    _workoutTimer?.cancel();
     WakelockPlus.disable();
     SystemChrome.setPreferredOrientations(DeviceOrientation.values);
     super.dispose();
@@ -71,6 +80,39 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
       _currentReps = exercise.reps;
       _currentWeight = 0.0;
     });
+  }
+
+  void _startWorkoutTimer() {
+    _workoutTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (!_isPaused && !_isResting) {
+        setState(() => _totalElapsedSeconds++);
+      }
+    });
+  }
+
+  void _togglePause() {
+    setState(() => _isPaused = !_isPaused);
+    HapticFeedback.mediumImpact();
+  }
+
+  String _formatTime(int seconds) {
+    final mins = seconds ~/ 60;
+    final secs = seconds % 60;
+    return '${mins.toString().padLeft(2, '0')}:${secs.toString().padLeft(2, '0')}';
+  }
+
+  void _toggleWeightUnit() {
+    setState(() {
+      if (_weightUnit == 'lbs') {
+        _weightUnit = 'kg';
+        _currentWeight = _currentWeight / 2.20462;
+      } else {
+        _weightUnit = 'lbs';
+        _currentWeight = _currentWeight * 2.20462;
+      }
+      _weightController.text = _currentWeight > 0 ? _currentWeight.toStringAsFixed(1) : '';
+    });
+    HapticFeedback.selectionClick();
   }
 
   void _completeSet() {
@@ -168,9 +210,23 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
 
   void _moveToNextExercise() {
     if (_currentExerciseIndex < widget.workout.exercises.length - 1) {
+      // Start rest period between exercises (60 seconds)
       setState(() {
-        _currentExerciseIndex++;
-        _initializeExercise();
+        _isResting = true;
+        _restTimeRemaining = 60;
+      });
+
+      _restTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        if (_restTimeRemaining > 0) {
+          setState(() => _restTimeRemaining--);
+        } else {
+          _restTimer?.cancel();
+          setState(() {
+            _isResting = false;
+            _currentExerciseIndex++;
+            _initializeExercise();
+          });
+        }
       });
     } else {
       _completeWorkout();
@@ -383,27 +439,32 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
               ),
               
               // Exercise progress
-              Column(
-                children: [
-                  Text(
-                    '${_currentExerciseIndex + 1} / ${widget.workout.exercises.length}',
-                    style: const TextStyle(
-                      color: AppColors.white60,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
+              Expanded(
+                child: Column(
+                  children: [
+                    Text(
+                      '${_currentExerciseIndex + 1} / ${widget.workout.exercises.length}',
+                      style: const TextStyle(
+                        color: AppColors.white60,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    exercise.name.toUpperCase(),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 1,
+                    const SizedBox(height: 4),
+                    Text(
+                      exercise.name.toUpperCase(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 1,
+                      ),
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               
               // Action buttons
@@ -447,8 +508,63 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
             ],
           ),
           
-          const SizedBox(height: 12),
-          
+          const SizedBox(height: 8),
+
+          // Workout timer with pause button
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: AppColors.white10,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: AppColors.white20),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.timer,
+                      size: 16,
+                      color: _isPaused ? AppColors.neonOrange : AppColors.electricCyan,
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      _formatTime(_totalElapsedSeconds),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              GestureDetector(
+                onTap: _togglePause,
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: _isPaused ? AppColors.neonOrange.withOpacity(0.2) : AppColors.white10,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: _isPaused ? AppColors.neonOrange : AppColors.white20,
+                    ),
+                  ),
+                  child: Icon(
+                    _isPaused ? Icons.play_arrow : Icons.pause,
+                    size: 18,
+                    color: _isPaused ? AppColors.neonOrange : Colors.white70,
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 8),
+
           // Set indicator - MOVED UP under exercise name
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -686,11 +802,6 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
                 fontSize: 36,
                 fontWeight: FontWeight.w900,
               ),
-              suffixText: 'lbs',
-              suffixStyle: const TextStyle(
-                color: AppColors.white40,
-                fontSize: 16,
-              ),
               border: InputBorder.none,
               contentPadding: EdgeInsets.zero,
             ),
@@ -699,6 +810,31 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
                 _currentWeight = double.tryParse(value) ?? 0.0;
               });
             },
+          ),
+
+          const SizedBox(height: 8),
+
+          // Tappable kg/lbs toggle
+          GestureDetector(
+            onTap: _toggleWeightUnit,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: AppColors.cyberLime.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: AppColors.cyberLime.withOpacity(0.3),
+                ),
+              ),
+              child: Text(
+                _weightUnit,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: AppColors.cyberLime,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
           ),
         ],
       ),

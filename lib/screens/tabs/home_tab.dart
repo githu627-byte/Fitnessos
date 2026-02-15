@@ -301,29 +301,6 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                             const SizedBox(height: 20),
 
                             // ═══════════════════════════════════════════════
-                            // STATS & HEATMAP: Full width like profile cards
-                            // ═══════════════════════════════════════════════
-                            _buildSafeWidget(
-                              () => _analyticsLoaded && _cachedAnalytics != null
-                                  ? HeroStatsCard(data: _cachedAnalytics!)
-                                  : HeroStatsCard(data: _buildAnalyticsData(stats)),
-                              'Hero Stats Card',
-                            ),
-
-                            const SizedBox(height: 20),
-
-                            _buildSafeWidget(
-                              () => WorkoutHeatmapWidget(
-                                workoutIntensityMap: _analyticsLoaded && _cachedAnalytics != null
-                                    ? _cachedAnalytics!.workoutIntensityMap
-                                    : {},
-                              ),
-                              'Workout Heatmap',
-                            ),
-
-                            const SizedBox(height: 20),
-
-                            // ═══════════════════════════════════════════════
                             // FORM CHECK: With horizontal padding
                             // ═══════════════════════════════════════════════
                             Padding(
