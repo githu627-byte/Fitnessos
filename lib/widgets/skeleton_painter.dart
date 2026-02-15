@@ -1,11 +1,89 @@
-import 'dart:ui' as ui;
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_pose_detection/google_mlkit_pose_detection.dart';
+
+// =============================================================================
+// ONE EURO FILTER — Industry-standard skeleton smoothing
+// =============================================================================
+// Speed-adaptive: smooth when idle (kills jitter), responsive when moving
+// (near-zero lag). This is what Google used in the original MediaPipe before
+// they removed the smoothLandmarks parameter.
+// =============================================================================
+
+class OneEuroFilter {
+  final double _freq;
+  final double _minCutoff;
+  final double _beta;
+  final double _dCutoff;
+  double? _xPrev;
+  double? _dxPrev;
+  double? _tPrev;
+
+  OneEuroFilter({
+    double freq = 30.0,
+    double minCutoff = 1.7,
+    double beta = 0.3,
+    double dCutoff = 1.0,
+  })  : _freq = freq,
+        _minCutoff = minCutoff,
+        _beta = beta,
+        _dCutoff = dCutoff;
+
+  double _alpha(double cutoff, double te) {
+    final r = 2 * math.pi * cutoff * te;
+    return r / (r + 1);
+  }
+
+  double filter(double x, {double? timestamp}) {
+    final double te;
+    if (timestamp != null && _tPrev != null) {
+      te = timestamp - _tPrev!;
+    } else {
+      te = 1.0 / _freq;
+    }
+    if (timestamp != null) _tPrev = timestamp;
+
+    if (_xPrev == null) {
+      _xPrev = x;
+      _dxPrev = 0.0;
+      _tPrev = timestamp;
+      return x;
+    }
+
+    // Filter the derivative
+    final double aD = _alpha(_dCutoff, te);
+    final double dx = (x - _xPrev!) / te;
+    final double dxHat = aD * dx + (1 - aD) * _dxPrev!;
+    _dxPrev = dxHat;
+
+    // Filter the signal
+    final double cutoff = _minCutoff + _beta * dxHat.abs();
+    final double a = _alpha(cutoff, te);
+    final double xHat = a * x + (1 - a) * _xPrev!;
+    _xPrev = xHat;
+
+    return xHat;
+  }
+
+  void reset() {
+    _xPrev = null;
+    _dxPrev = null;
+    _tPrev = null;
+  }
+}
+
+// =============================================================================
+// SKELETON STATE — Rep phase colors
+// =============================================================================
 
 enum SkeletonState {
   normal, // White bones - default
   success, // Blue bones - rep counted flash
 }
+
+// =============================================================================
+// SKELETON PAINTER — One Euro Filter + phase colors + subtle glow
+// =============================================================================
 
 class SkeletonPainter extends CustomPainter {
   final List<PoseLandmark>? landmarks;
@@ -14,13 +92,10 @@ class SkeletonPainter extends CustomPainter {
   final SkeletonState skeletonState;
   final double chargeProgress;
 
-  // Smoothing config
-  static final Map<PoseLandmarkType, Offset> _smoothedPositions = {};
-  static const double _lerpFactor = 0.35; // Pro-grade smoothing
-  
-  // Visual config
-  static const double _lineWidth = 3.0;
-  static const double _jointSize = 8.0;
+  // One filter per landmark per axis (x and y) — static so they persist between frames
+  static final Map<PoseLandmarkType, OneEuroFilter> _filtersX = {};
+  static final Map<PoseLandmarkType, OneEuroFilter> _filtersY = {};
+  static final Map<PoseLandmarkType, Offset> _lastGoodPositions = {};
 
   SkeletonPainter({
     required this.landmarks,
@@ -40,130 +115,149 @@ class SkeletonPainter extends CustomPainter {
       landmarkMap[landmark.type] = landmark;
     }
 
-    // Get the phase color
-    final Color skeletonColor = _getPhaseColor();
-    
-    // Draw skeleton
-    _drawBody(canvas, size, skeletonColor, landmarkMap);
-  }
+    final Color color = _getPhaseColor();
 
-  /// SMOOTHING ENGINE - Gets position with LERP and confidence filtering
-  Offset? getPos(PoseLandmarkType type, Size size, Map<PoseLandmarkType, PoseLandmark> landmarkMap) {
-    final lm = landmarkMap[type];
-    
-    // CONFIDENCE SHIELD: Ignore garbage data (likelihood < 0.5)
-    if (lm == null || lm.likelihood < 0.5) {
-      return _smoothedPositions[type]; // Return last known good position
+    // Body connections — NO nose/face lines
+    final connections = [
+      [PoseLandmarkType.leftShoulder, PoseLandmarkType.rightShoulder],
+      [PoseLandmarkType.leftShoulder, PoseLandmarkType.leftHip],
+      [PoseLandmarkType.rightShoulder, PoseLandmarkType.rightHip],
+      [PoseLandmarkType.leftHip, PoseLandmarkType.rightHip],
+      [PoseLandmarkType.leftShoulder, PoseLandmarkType.leftElbow],
+      [PoseLandmarkType.leftElbow, PoseLandmarkType.leftWrist],
+      [PoseLandmarkType.rightShoulder, PoseLandmarkType.rightElbow],
+      [PoseLandmarkType.rightElbow, PoseLandmarkType.rightWrist],
+      [PoseLandmarkType.leftHip, PoseLandmarkType.leftKnee],
+      [PoseLandmarkType.leftKnee, PoseLandmarkType.leftAnkle],
+      [PoseLandmarkType.rightHip, PoseLandmarkType.rightKnee],
+      [PoseLandmarkType.rightKnee, PoseLandmarkType.rightAnkle],
+    ];
+
+    // Draw bones
+    for (final conn in connections) {
+      final p1 = getPos(conn[0], size, landmarkMap);
+      final p2 = getPos(conn[1], size, landmarkMap);
+      if (p1 != null && p2 != null) {
+        _drawBone(canvas, p1, p2, color);
+      }
     }
 
-    // Convert landmark coordinates to screen space
+    // Draw joints — major joints only
+    final majorJoints = [
+      PoseLandmarkType.leftShoulder,
+      PoseLandmarkType.rightShoulder,
+      PoseLandmarkType.leftElbow,
+      PoseLandmarkType.rightElbow,
+      PoseLandmarkType.leftWrist,
+      PoseLandmarkType.rightWrist,
+      PoseLandmarkType.leftHip,
+      PoseLandmarkType.rightHip,
+      PoseLandmarkType.leftKnee,
+      PoseLandmarkType.rightKnee,
+      PoseLandmarkType.leftAnkle,
+      PoseLandmarkType.rightAnkle,
+    ];
+
+    for (final joint in majorJoints) {
+      final pos = getPos(joint, size, landmarkMap);
+      if (pos != null) {
+        _drawJoint(canvas, pos, color);
+      }
+    }
+  }
+
+  /// One Euro Filter smoothing — replaces the old LERP approach
+  Offset? getPos(PoseLandmarkType type, Size size, Map<PoseLandmarkType, PoseLandmark> landmarkMap) {
+    final lm = landmarkMap[type];
+
+    // Confidence filter — if garbage, return last known good position
+    if (lm == null || lm.likelihood < 0.5) {
+      return _lastGoodPositions[type];
+    }
+
+    // Convert to screen space
     double tx = lm.x * size.width / imageSize.width;
     double ty = lm.y * size.height / imageSize.height;
     if (isFrontCamera) tx = size.width - tx;
-    
-    final Offset targetPos = Offset(tx, ty);
 
-    // LERP SMOOTHING: Current + (Target - Current) * Factor
-    final Offset current = _smoothedPositions[type] ?? targetPos;
-    final Offset smoothed = Offset(
-      ui.lerpDouble(current.dx, targetPos.dx, _lerpFactor)!,
-      ui.lerpDouble(current.dy, targetPos.dy, _lerpFactor)!,
-    );
+    // Get or create One Euro Filters for this landmark
+    _filtersX.putIfAbsent(type, () => OneEuroFilter(minCutoff: 1.7, beta: 0.3));
+    _filtersY.putIfAbsent(type, () => OneEuroFilter(minCutoff: 1.7, beta: 0.3));
 
-    // Store smoothed position for next frame
-    _smoothedPositions[type] = smoothed;
-    return smoothed;
+    // Apply One Euro Filter
+    final filteredX = _filtersX[type]!.filter(tx);
+    final filteredY = _filtersY[type]!.filter(ty);
+    final result = Offset(filteredX, filteredY);
+
+    // Store as last known good position
+    _lastGoodPositions[type] = result;
+    return result;
   }
 
-  /// Get color based on charge/state
+  /// Rep phase colors: White → Green → Blue
   Color _getPhaseColor() {
-    // Success state (rep counted) → ELECTRIC BLUE
+    // Rep complete → ELECTRIC BLUE flash
     if (skeletonState == SkeletonState.success) {
-      return const Color(0xFF00D9FF); // Electric blue
+      return const Color(0xFF00D9FF);
     }
-    
-    // Charging (going down) → GREEN
-    if (chargeProgress > 0.3) {
-      return const Color(0xFF00FF41); // Cyber green
+    // Past halfway of rep → GREEN (the dopamine hit)
+    if (chargeProgress > 0.5) {
+      return const Color(0xFF00FF41);
     }
-    
-    // Normal → WHITE
+    // Default → clean WHITE
     return Colors.white.withOpacity(0.9);
   }
 
-  /// Draw the complete skeleton
-  void _drawBody(Canvas canvas, Size size, Color color, Map<PoseLandmarkType, PoseLandmark> landmarkMap) {
-    final paint = Paint()
-      ..color = color
-      ..strokeWidth = _lineWidth
-      ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.round;
+  /// Bone drawing — thinner than form skeleton, single subtle glow
+  void _drawBone(Canvas canvas, Offset start, Offset end, Color color) {
+    final distance = (end - start).distance;
+    if (distance < 10) return;
 
-    final jointPaint = Paint()
-      ..color = color
-      ..style = PaintingStyle.fill;
+    // Subtle glow only
+    canvas.drawLine(
+      start,
+      end,
+      Paint()
+        ..color = color.withOpacity(0.3)
+        ..strokeWidth = 10
+        ..strokeCap = StrokeCap.round
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
+    );
 
-    // Draw all connections
-    _drawTorso(canvas, size, paint, jointPaint, landmarkMap);
-    _drawLeftArm(canvas, size, paint, jointPaint, landmarkMap);
-    _drawRightArm(canvas, size, paint, jointPaint, landmarkMap);
-    _drawLeftLeg(canvas, size, paint, jointPaint, landmarkMap);
-    _drawRightLeg(canvas, size, paint, jointPaint, landmarkMap);
+    // Main bone
+    canvas.drawLine(
+      start,
+      end,
+      Paint()
+        ..color = color
+        ..strokeWidth = 5
+        ..strokeCap = StrokeCap.round,
+    );
   }
 
-  void _drawTorso(Canvas canvas, Size size, Paint linePaint, Paint jointPaint, Map<PoseLandmarkType, PoseLandmark> landmarkMap) {
-    _drawLine(canvas, size, PoseLandmarkType.leftShoulder, PoseLandmarkType.rightShoulder, linePaint, jointPaint, landmarkMap);
-    _drawLine(canvas, size, PoseLandmarkType.leftHip, PoseLandmarkType.rightHip, linePaint, jointPaint, landmarkMap);
-    _drawLine(canvas, size, PoseLandmarkType.leftShoulder, PoseLandmarkType.leftHip, linePaint, jointPaint, landmarkMap);
-    _drawLine(canvas, size, PoseLandmarkType.rightShoulder, PoseLandmarkType.rightHip, linePaint, jointPaint, landmarkMap);
-  }
-
-  void _drawLeftArm(Canvas canvas, Size size, Paint linePaint, Paint jointPaint, Map<PoseLandmarkType, PoseLandmark> landmarkMap) {
-    _drawLine(canvas, size, PoseLandmarkType.leftShoulder, PoseLandmarkType.leftElbow, linePaint, jointPaint, landmarkMap);
-    _drawLine(canvas, size, PoseLandmarkType.leftElbow, PoseLandmarkType.leftWrist, linePaint, jointPaint, landmarkMap);
-  }
-
-  void _drawRightArm(Canvas canvas, Size size, Paint linePaint, Paint jointPaint, Map<PoseLandmarkType, PoseLandmark> landmarkMap) {
-    _drawLine(canvas, size, PoseLandmarkType.rightShoulder, PoseLandmarkType.rightElbow, linePaint, jointPaint, landmarkMap);
-    _drawLine(canvas, size, PoseLandmarkType.rightElbow, PoseLandmarkType.rightWrist, linePaint, jointPaint, landmarkMap);
-  }
-
-  void _drawLeftLeg(Canvas canvas, Size size, Paint linePaint, Paint jointPaint, Map<PoseLandmarkType, PoseLandmark> landmarkMap) {
-    _drawLine(canvas, size, PoseLandmarkType.leftHip, PoseLandmarkType.leftKnee, linePaint, jointPaint, landmarkMap);
-    _drawLine(canvas, size, PoseLandmarkType.leftKnee, PoseLandmarkType.leftAnkle, linePaint, jointPaint, landmarkMap);
-  }
-
-  void _drawRightLeg(Canvas canvas, Size size, Paint linePaint, Paint jointPaint, Map<PoseLandmarkType, PoseLandmark> landmarkMap) {
-    _drawLine(canvas, size, PoseLandmarkType.rightHip, PoseLandmarkType.rightKnee, linePaint, jointPaint, landmarkMap);
-    _drawLine(canvas, size, PoseLandmarkType.rightKnee, PoseLandmarkType.rightAnkle, linePaint, jointPaint, landmarkMap);
-  }
-
-  void _drawLine(
-    Canvas canvas, 
-    Size size, 
-    PoseLandmarkType start, 
-    PoseLandmarkType end,
-    Paint linePaint,
-    Paint jointPaint,
-    Map<PoseLandmarkType, PoseLandmark> landmarkMap,
-  ) {
-    final p1 = getPos(start, size, landmarkMap);
-    final p2 = getPos(end, size, landmarkMap);
-    
-    if (p1 != null && p2 != null) {
-      canvas.drawLine(p1, p2, linePaint);
-      canvas.drawCircle(p1, _jointSize, jointPaint);
-      canvas.drawCircle(p2, _jointSize, jointPaint);
-    }
+  /// Joint drawing — small dots, major joints only
+  void _drawJoint(Canvas canvas, Offset pos, Color color) {
+    // Small glow
+    canvas.drawCircle(
+      pos,
+      8,
+      Paint()
+        ..color = color.withOpacity(0.3)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
+    );
+    // Joint dot
+    canvas.drawCircle(pos, 5, Paint()..color = color);
   }
 
   @override
   bool shouldRepaint(SkeletonPainter oldDelegate) {
     return oldDelegate.skeletonState != skeletonState ||
-           oldDelegate.chargeProgress != chargeProgress;
+        oldDelegate.chargeProgress != chargeProgress;
   }
-  
+
   static void resetSmoothing() {
-    _smoothedPositions.clear();
+    _filtersX.clear();
+    _filtersY.clear();
+    _lastGoodPositions.clear();
   }
 }
