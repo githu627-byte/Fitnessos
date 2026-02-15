@@ -638,6 +638,11 @@ class _WorkoutEditorScreenState extends ConsumerState<WorkoutEditorScreen> {
       customExercises: _exercises,
     );
 
+    // Update committed workout so hero card shows correct count
+    final includedExercises = _exercises.where((e) => e.included).toList();
+    final updatedPreset = widget.preset.copyWith(exercises: includedExercises);
+    await ref.read(committedWorkoutProvider.notifier).commitWorkout(updatedPreset);
+
     if (mounted) {
       // Show confirmation
       ScaffoldMessenger.of(context).showSnackBar(

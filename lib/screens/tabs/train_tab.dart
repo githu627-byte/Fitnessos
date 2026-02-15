@@ -811,7 +811,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
     }
   }
 
-  void _startRest() {
+  Future<void> _startRest() async {
     // ═══════════════════════════════════════════════════════════════════════════
     // FIX: Use exercise's actual rest time instead of hardcoded 60
     // ═══════════════════════════════════════════════════════════════════════════
@@ -826,6 +826,23 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
     _weightsSubmitted = false;
 
     debugPrint('⏸️ Starting rest: ${actualRestTime}s (exercise.restSeconds: ${exercise.restSeconds})');
+
+    // Auto-stop recording when rest begins (one set at a time)
+    if (_isRecording) {
+      final workoutName = _committedWorkout?.name ?? 'FitnessOS Workout';
+      final savedPath = await ScreenRecordingService.stopRecording(workoutName: workoutName);
+      _isRecording = false;
+      _currentRecordingPath = savedPath;
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('🎬 Set recorded & saved!'),
+            backgroundColor: AppColors.cyberLime,
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    }
 
     setState(() {
       _isResting = true;

@@ -1243,11 +1243,6 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                                       ),
                                       backgroundColor: AppColors.cyberLime,
                                       behavior: SnackBarBehavior.floating,
-                                      action: SnackBarAction(
-                                        label: 'TEST',
-                                        textColor: Colors.black,
-                                        onPressed: () => _scheduleTestAlarm(),
-                                      ),
                                     ),
                                   );
                                 }
@@ -2089,11 +2084,6 @@ class _HomeTabState extends ConsumerState<HomeTab> {
           backgroundColor: AppColors.cyberLime,
           duration: const Duration(seconds: 3),
           behavior: SnackBarBehavior.floating,
-          action: hasAlarm ? SnackBarAction(
-            label: 'TEST',
-            textColor: Colors.black,
-            onPressed: () => _scheduleTestAlarm(),
-          ) : null,
         ),
       );
     }
