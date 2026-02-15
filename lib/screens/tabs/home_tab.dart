@@ -77,12 +77,19 @@ class _HomeTabState extends ConsumerState<HomeTab> {
   Future<void> _loadCustomWorkouts() async {
     try {
       final storage = await StorageService.getInstance();
-      final customWorkouts = storage.getCustomWorkouts();
+      // Load BOTH AI and manual workouts into cache
+      final aiWorkouts = storage.getCustomWorkouts();
+      final manualWorkouts = storage.getManualWorkouts();
+
+      final Map<String, WorkoutPreset> cache = {};
+      cache.addAll(aiWorkouts);
+      cache.addAll(manualWorkouts);
+
       if (mounted) {
         setState(() {
-          _cachedCustomWorkouts = customWorkouts;
+          _cachedCustomWorkouts = cache;
         });
-        debugPrint('📦 Loaded ${customWorkouts.length} custom workouts for hero card lookup');
+        debugPrint('📦 Loaded ${aiWorkouts.length} AI + ${manualWorkouts.length} manual workouts for hero card lookup');
       }
     } catch (e) {
       debugPrint('❌ Custom workouts load failed: $e');
@@ -693,6 +700,17 @@ class _HomeTabState extends ConsumerState<HomeTab> {
         // Build LockedWorkout from schedule data
         if (workoutPreset != null) {
           final lockedWorkout = LockedWorkout.fromPreset(workoutPreset);
+
+          // If manual-only workout, skip mode selection → go straight to ProLogger
+          if (workoutPreset.isManualOnly) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HevyManualWorkoutScreen(workout: lockedWorkout),
+              ),
+            );
+            return;
+          }
 
           final result = await Navigator.push(
             context,
