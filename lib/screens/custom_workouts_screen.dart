@@ -12,6 +12,7 @@ import '../providers/workout_schedule_provider.dart';
 import '../services/storage_service.dart';
 import '../data/exercise_gif_mapping.dart';
 import 'exercise_explanation_screen.dart';
+import 'exercise_config_screen.dart';
 
 class CustomWorkoutsScreen extends ConsumerStatefulWidget {
   const CustomWorkoutsScreen({super.key});
@@ -553,6 +554,11 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
       _exerciseSettings.remove(exercise.id);
     });
     HapticFeedback.lightImpact();
+  }
+
+  void _showSelectedExercisesScreen() {
+    // TODO: Navigate to full-screen selected exercises view
+    // Will show all selected exercises with edit/remove options
   }
 
   void _updateExerciseSettings(String exerciseId, ExerciseSettings settings) {
@@ -1593,15 +1599,28 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
         color: Colors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(16),
-          onTap: () {
-            // Open explanation screen instead of adding exercise
+          onTap: () async {
             HapticFeedback.selectionClick();
-            Navigator.push(
+
+            // Open full-screen config
+            final settings = await Navigator.push<ExerciseSettings>(
               context,
               MaterialPageRoute(
-                builder: (context) => ExerciseExplanationScreen(exercise: exercise),
+                builder: (context) => ExerciseConfigScreen(
+                  exercise: exercise,
+                  initialSets: 3,
+                  initialReps: 10,
+                  initialRest: 60,
+                ),
+                fullscreenDialog: true,
               ),
             );
+
+            // If user configured settings, add the exercise
+            if (settings != null) {
+              _addExercise(exercise);
+              _updateExerciseSettings(exercise.id, settings);
+            }
           },
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -1846,40 +1865,88 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
                 ),
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          '${_selectedExercises.length} exercises',
-                          style: const TextStyle(
-                            color: AppColors.white50,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
+                    GestureDetector(
+                      onTap: () {
+                        if (_selectedExercises.isNotEmpty) {
+                          HapticFeedback.mediumImpact();
+                          _showSelectedExercisesScreen();
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                        decoration: BoxDecoration(
+                          color: _selectedExercises.isEmpty ? AppColors.white5 : AppColors.cyberLime.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: _selectedExercises.isEmpty ? AppColors.white10 : AppColors.cyberLime,
+                            width: _selectedExercises.isEmpty ? 1 : 2,
                           ),
                         ),
-                        const Spacer(),
-                        TextButton(
-                          onPressed: () {
-                            setState(() {
-                              _selectedExercises.clear();
-                              _exerciseSettings.clear();
-                            });
-                          },
-                          child: const Text(
-                            'CLEAR ALL',
-                            style: TextStyle(
-                              color: AppColors.white40,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
+                        child: Row(
+                          children: [
+                            // Exercise count badge
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: _selectedExercises.isEmpty ? AppColors.white10 : AppColors.cyberLime,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                '${_selectedExercises.length}',
+                                style: TextStyle(
+                                  color: _selectedExercises.isEmpty ? AppColors.white60 : Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
                             ),
-                          ),
+
+                            const SizedBox(width: 12),
+
+                            Text(
+                              '${_selectedExercises.length == 1 ? 'exercise' : 'exercises'}${_selectedExercises.isEmpty ? '' : ' \u2022 Tap to view'}',
+                              style: TextStyle(
+                                color: _selectedExercises.isEmpty ? AppColors.white50 : AppColors.cyberLime,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+
+                            const Spacer(),
+
+                            if (_selectedExercises.isNotEmpty)
+                              const Icon(
+                                Icons.arrow_forward_ios,
+                                size: 16,
+                                color: AppColors.cyberLime,
+                              ),
+
+                            if (_selectedExercises.isEmpty)
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _selectedExercises.clear();
+                                    _exerciseSettings.clear();
+                                  });
+                                },
+                                child: const Text(
+                                  'CLEAR',
+                                  style: TextStyle(
+                                    color: AppColors.white40,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                    const SizedBox(height: 24), // Increased from 8 to 24 (push up 1cm)
+                    const SizedBox(height: 16),
                     GlowButton(
                       text: '✅ COMMIT WORKOUT',
                       onPressed: _commitWorkout,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      padding: const EdgeInsets.symmetric(vertical: 18),
                     ),
                   ],
                 ),
