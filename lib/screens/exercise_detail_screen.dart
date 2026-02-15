@@ -3,9 +3,8 @@ import '../utils/app_colors.dart';
 import '../models/exercise_in_workout.dart';
 import '../widgets/exercise_detail_tabs/summary_tab.dart';
 import '../widgets/exercise_detail_tabs/history_tab.dart';
-import '../widgets/exercise_detail_tabs/leaderboard_tab.dart';
 
-/// Full-screen exercise detail modal with 4 tabs
+/// Full-screen exercise detail modal with 2 tabs
 class ExerciseDetailScreen extends StatelessWidget {
   final ExerciseInWorkout exercise;
 
@@ -17,7 +16,7 @@ class ExerciseDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
@@ -55,7 +54,6 @@ class ExerciseDetailScreen extends StatelessWidget {
             tabs: [
               Tab(text: 'SUMMARY'),
               Tab(text: 'HISTORY'),
-              Tab(text: 'LEADERBOARD'),
             ],
           ),
         ),
@@ -63,7 +61,6 @@ class ExerciseDetailScreen extends StatelessWidget {
           children: [
             ExerciseSummaryTab(exercise: exercise),
             ExerciseHistoryTab(exercise: exercise),
-            const ExerciseLeaderboardTab(),
           ],
         ),
       ),

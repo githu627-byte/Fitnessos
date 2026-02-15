@@ -111,13 +111,16 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                       ),
                       child: Row(
                         children: [
-                          Expanded(
+                          Flexible(
+                            flex: 2,
                             child: _buildToggleButton('GYM', 'gym', Icons.fitness_center),
                           ),
-                          Expanded(
+                          Flexible(
+                            flex: 2,
                             child: _buildToggleButton('HOME', 'home', Icons.home),
                           ),
-                          Expanded(
+                          Flexible(
+                            flex: 3,
                             child: _buildToggleButton('CUSTOM', 'custom', Icons.edit_note),
                           ),
                         ],
@@ -162,7 +165,33 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
               ),
             ),
           ),
-          
+
+          // AI + Manual subtitle
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(24, 0, 20, 8),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.auto_awesome,
+                    size: 13,
+                    color: AppColors.cyberLime.withOpacity(0.8),
+                  ),
+                  const SizedBox(width: 6),
+                  Text(
+                    'AI Tracked & Manual Logging Available',
+                    style: TextStyle(
+                      fontSize: 11.5,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.white50,
+                      letterSpacing: 0.2,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
           // Category Cards
           SliverPadding(
             padding: const EdgeInsets.only(left: 20, right: 20, bottom: 100),
@@ -184,30 +213,62 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
   }
 
   Widget _buildModeToggle() {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: AppColors.white5,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: AppColors.white10,
-          width: 1,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+          padding: const EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            color: AppColors.white5,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: AppColors.white10,
+              width: 1,
+            ),
+          ),
+          child: Row(
+            children: [
+              Flexible(
+                flex: 2,
+                child: _buildToggleButton('GYM', 'gym', Icons.fitness_center),
+              ),
+              Flexible(
+                flex: 2,
+                child: _buildToggleButton('HOME', 'home', Icons.home),
+              ),
+              Flexible(
+                flex: 3,
+                child: _buildToggleButton('CUSTOM', 'custom', Icons.edit_note),
+              ),
+            ],
+          ),
         ),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: _buildToggleButton('GYM', 'gym', Icons.fitness_center),
+        const SizedBox(height: 8),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Row(
+            children: [
+              Icon(
+                Icons.auto_awesome,
+                size: 13,
+                color: AppColors.cyberLime.withOpacity(0.8),
+              ),
+              const SizedBox(width: 6),
+              Text(
+                'AI Tracked & Manual Logging Available',
+                style: TextStyle(
+                  fontSize: 11.5,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.white50,
+                  letterSpacing: 0.2,
+                ),
+              ),
+            ],
           ),
-          Expanded(
-            child: _buildToggleButton('HOME', 'home', Icons.home),
-          ),
-          Expanded(
-            child: _buildToggleButton('CUSTOM', 'custom', Icons.edit_note),
-          ),
-        ],
-      ),
+        ),
+        const SizedBox(height: 20),
+      ],
     );
   }
 

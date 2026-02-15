@@ -197,27 +197,14 @@ class ExerciseHistoryTab extends StatelessWidget {
                         ),
                       ),
                     ),
-                    if (entry.sets.any((s) => s.formScore != null))
-                      const Expanded(
-                        flex: 2,
-                        child: Text(
-                          'FORM',
-                          style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.white50,
-                            letterSpacing: 1,
-                          ),
-                        ),
-                      ),
                   ],
                 ),
                 const SizedBox(height: 8),
-                
+
                 // Sets data
                 ...entry.sets.map((set) => _buildSetRow(
                   set,
-                  showFormScore: entry.sets.any((s) => s.formScore != null),
+                  showFormScore: false,
                 )),
                 
                 const SizedBox(height: 12),
