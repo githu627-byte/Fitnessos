@@ -19,6 +19,7 @@ import '../workout_editor_screen.dart';
 import '../custom_workouts_screen.dart';
 import '../home_screen.dart' show TabNavigator;
 import '../training_mode_selection_screen.dart';
+import '../../providers/selected_card_slot_provider.dart';
 import 'settings_tab.dart';
 
 class WorkoutsTab extends ConsumerStatefulWidget {
@@ -1061,7 +1062,20 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
     
     // Create preset with adjusted exercises
     final adjustedPreset = preset.copyWith(exercises: adjustedExercises);
-    
+
+    // Check if user came from an empty card (has pre-selected slot)
+    String? selectedSlot = ref.read(selectedCardSlotProvider);
+
+    // If no pre-selected slot, show modal
+    if (selectedSlot == null) {
+      selectedSlot = await _showSlotSelectionModal();
+      // If user cancelled, return
+      if (selectedSlot == null) return;
+    } else {
+      // Clear the pre-selected slot
+      ref.read(selectedCardSlotProvider.notifier).state = null;
+    }
+
     // Check if we're in scheduling mode (user came from home tab)
     final scheduleDate = ref.read(selectedScheduleDateProvider);
     final isScheduling = ref.read(isSchedulingModeProvider);
@@ -1070,17 +1084,18 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
       // SCHEDULING MODE: Create or update workout schedule for the selected date
       debugPrint('📅 Scheduling workout ${preset.name} for date: $scheduleDate');
       
-      // Check if there's an existing schedule for this date
+      // Check if there's an existing schedule for this date and priority
       final allSchedules = ref.read(workoutSchedulesProvider);
       WorkoutSchedule? existingSchedule = allSchedules.where((s) {
         return s.scheduledDate.year == scheduleDate.year &&
                s.scheduledDate.month == scheduleDate.month &&
-               s.scheduledDate.day == scheduleDate.day;
+               s.scheduledDate.day == scheduleDate.day &&
+               s.priority == selectedSlot;
       }).firstOrNull;
-      
-      // Create or update schedule for the selected date
+
+      // Create or update schedule for the selected date with priority
       final schedule = WorkoutSchedule(
-        id: existingSchedule?.id ?? '${DateTime.now().millisecondsSinceEpoch}_${scheduleDate.millisecondsSinceEpoch}',
+        id: existingSchedule?.id ?? '${DateTime.now().millisecondsSinceEpoch}_${scheduleDate.millisecondsSinceEpoch}_$selectedSlot',
         workoutId: preset.id,
         workoutName: preset.name,
         scheduledDate: DateTime(scheduleDate.year, scheduleDate.month, scheduleDate.day),
@@ -1088,6 +1103,7 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
         hasAlarm: existingSchedule?.hasAlarm ?? false, // Preserve existing alarm setting
         createdAt: existingSchedule?.createdAt ?? DateTime.now(),
         repeatDays: existingSchedule?.repeatDays ?? [], // Preserve existing repeat days
+        priority: selectedSlot, // Use selected slot
       );
       
       // Save schedule to Hive
@@ -1152,17 +1168,18 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
       final now = DateTime.now();
       final todayDate = DateTime(now.year, now.month, now.day);
       
-      // Check if there's already a schedule for today
+      // Check if there's already a schedule for today with the same priority
       final allSchedules = ref.read(workoutSchedulesProvider);
       WorkoutSchedule? existingTodaySchedule = allSchedules.where((s) {
         return s.scheduledDate.year == todayDate.year &&
                s.scheduledDate.month == todayDate.month &&
-               s.scheduledDate.day == todayDate.day;
+               s.scheduledDate.day == todayDate.day &&
+               s.priority == selectedSlot;
       }).firstOrNull;
-      
-      // Create or update schedule for today
+
+      // Create or update schedule for today with selected priority
       final todaySchedule = WorkoutSchedule(
-        id: existingTodaySchedule?.id ?? '${DateTime.now().millisecondsSinceEpoch}_${todayDate.millisecondsSinceEpoch}',
+        id: existingTodaySchedule?.id ?? '${DateTime.now().millisecondsSinceEpoch}_${todayDate.millisecondsSinceEpoch}_$selectedSlot',
         workoutId: preset.id,
         workoutName: preset.name,
         scheduledDate: todayDate,
@@ -1170,6 +1187,7 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
         hasAlarm: existingTodaySchedule?.hasAlarm ?? false, // Preserve existing alarm
         createdAt: existingTodaySchedule?.createdAt ?? DateTime.now(),
         repeatDays: existingTodaySchedule?.repeatDays ?? [], // Preserve repeat settings
+        priority: selectedSlot, // Use selected slot
       );
       
       // Save schedule for today
@@ -1226,6 +1244,163 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
         }
       }
     }
+  }
+
+  Future<String?> _showSlotSelectionModal() async {
+    return showModalBottomSheet<String>(
+      context: context,
+      backgroundColor: Colors.black,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) {
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Header
+                const Text(
+                  'COMMIT TO WHICH CARD?',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                    letterSpacing: 1.5,
+                  ),
+                ),
+
+                const SizedBox(height: 8),
+
+                const Text(
+                  'Choose where to save this workout',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: AppColors.white60,
+                  ),
+                ),
+
+                const SizedBox(height: 24),
+
+                // Card 1 - Main
+                _buildSlotOption(
+                  context: context,
+                  slot: 'main',
+                  icon: Icons.fitness_center,
+                  title: 'MAIN WORKOUT',
+                  subtitle: 'Your primary training session',
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF0EA5E9), Color(0xFF06B6D4)],
+                  ),
+                ),
+
+                const SizedBox(height: 12),
+
+                // Card 2 - Secondary
+                _buildSlotOption(
+                  context: context,
+                  slot: 'secondary',
+                  icon: Icons.bolt,
+                  title: 'ACCESSORY',
+                  subtitle: 'Secondary exercises, cardio',
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFFF59E0B), Color(0xFFEF4444)],
+                  ),
+                ),
+
+                const SizedBox(height: 12),
+
+                // Card 3 - Tertiary
+                _buildSlotOption(
+                  context: context,
+                  slot: 'tertiary',
+                  icon: Icons.self_improvement,
+                  title: 'STRETCHING',
+                  subtitle: 'Mobility, flexibility, recovery',
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF8B5CF6), Color(0xFFEC4899)],
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildSlotOption({
+    required BuildContext context,
+    required String slot,
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required Gradient gradient,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        HapticFeedback.lightImpact();
+        Navigator.of(context).pop(slot);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          gradient: gradient,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.3),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, color: Colors.white, size: 28),
+            ),
+
+            const SizedBox(width: 16),
+
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.white,
+                      letterSpacing: 1,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    subtitle,
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.white.withOpacity(0.9),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const Icon(Icons.arrow_forward_ios, color: Colors.white, size: 18),
+          ],
+        ),
+      ),
+    );
   }
 
   Future<void> _editWorkout(WorkoutPreset preset) async {

@@ -26,13 +26,14 @@ class WorkoutScheduleAdapter extends TypeAdapter<WorkoutSchedule> {
       isCompleted: fields[6] as bool,
       createdAt: fields[7] as DateTime,
       repeatDays: (fields[8] as List).cast<int>(),
+      priority: fields[9] as String? ?? 'main',
     );
   }
 
   @override
   void write(BinaryWriter writer, WorkoutSchedule obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -50,7 +51,9 @@ class WorkoutScheduleAdapter extends TypeAdapter<WorkoutSchedule> {
       ..writeByte(7)
       ..write(obj.createdAt)
       ..writeByte(8)
-      ..write(obj.repeatDays);
+      ..write(obj.repeatDays)
+      ..writeByte(9)
+      ..write(obj.priority);
   }
 
   @override

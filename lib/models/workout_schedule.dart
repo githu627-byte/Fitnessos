@@ -34,6 +34,9 @@ class WorkoutSchedule extends HiveObject {
   @HiveField(8)
   List<int> repeatDays; // 0=Sun...6=Sat (like FutureYou)
 
+  @HiveField(9, defaultValue: 'main')
+  String priority; // 'main', 'secondary', or 'tertiary'
+
   WorkoutSchedule({
     required this.id,
     required this.workoutId,
@@ -44,6 +47,7 @@ class WorkoutSchedule extends HiveObject {
     this.isCompleted = false,
     required this.createdAt,
     this.repeatDays = const [],
+    this.priority = 'main',
   });
 
   /// Get TimeOfDay from string time
@@ -85,6 +89,7 @@ class WorkoutSchedule extends HiveObject {
       'isCompleted': isCompleted,
       'createdAt': createdAt.toIso8601String(),
       'repeatDays': repeatDays,
+      'priority': priority,
     };
   }
 
@@ -100,6 +105,7 @@ class WorkoutSchedule extends HiveObject {
       isCompleted: json['isCompleted'] as bool? ?? false,
       createdAt: DateTime.parse(json['createdAt'] as String),
       repeatDays: (json['repeatDays'] as List<dynamic>?)?.cast<int>() ?? [],
+      priority: json['priority'] as String? ?? 'main',
     );
   }
 
@@ -114,6 +120,7 @@ class WorkoutSchedule extends HiveObject {
     bool? isCompleted,
     DateTime? createdAt,
     List<int>? repeatDays,
+    String? priority,
   }) {
     return WorkoutSchedule(
       id: id ?? this.id,
@@ -125,6 +132,7 @@ class WorkoutSchedule extends HiveObject {
       isCompleted: isCompleted ?? this.isCompleted,
       createdAt: createdAt ?? this.createdAt,
       repeatDays: repeatDays ?? this.repeatDays,
+      priority: priority ?? this.priority,
     );
   }
 

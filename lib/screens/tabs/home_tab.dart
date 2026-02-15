@@ -27,6 +27,10 @@ import '../home_screen.dart' show TabNavigator;
 import '../tabs/settings_tab.dart';
 import '../../features/form_checking/form_check_exercise_picker_screen.dart';
 import '../tabs/train_tab.dart';
+import '../../providers/selected_card_slot_provider.dart';
+import '../training_mode_selection_screen.dart';
+import '../manual_training_screen.dart';
+import '../hevy_manual_workout_screen.dart';
 
 /// =============================================================================
 /// HOME TAB - STUNNING PROFESSIONAL FITNESS UI
@@ -282,8 +286,8 @@ class _HomeTabState extends ConsumerState<HomeTab> {
 
                                   const SizedBox(height: 20),
 
-                                  // Hero Workout Card
-                                  _buildHeroWorkoutCard(context, ref, displayWorkout),
+                                  // 3 HERO WORKOUT CARDS
+                                  _build3HeroCards(context, ref),
                                 ],
                               ),
                             ),
@@ -514,6 +518,310 @@ class _HomeTabState extends ConsumerState<HomeTab> {
             ),
           );
         },
+      ),
+    );
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // 3 HERO CARDS LAYOUT
+  // ═══════════════════════════════════════════════════════════════════════════
+  Widget _build3HeroCards(BuildContext context, WidgetRef ref) {
+    final allSchedules = ref.watch(workoutSchedulesProvider);
+
+    // Filter schedules for selected date by priority
+    final mainWorkout = allSchedules.where((s) {
+      return s.scheduledDate.year == _selectedDate.year &&
+             s.scheduledDate.month == _selectedDate.month &&
+             s.scheduledDate.day == _selectedDate.day &&
+             s.priority == 'main';
+    }).firstOrNull;
+
+    final secondaryWorkout = allSchedules.where((s) {
+      return s.scheduledDate.year == _selectedDate.year &&
+             s.scheduledDate.month == _selectedDate.month &&
+             s.scheduledDate.day == _selectedDate.day &&
+             s.priority == 'secondary';
+    }).firstOrNull;
+
+    final tertiaryWorkout = allSchedules.where((s) {
+      return s.scheduledDate.year == _selectedDate.year &&
+             s.scheduledDate.month == _selectedDate.month &&
+             s.scheduledDate.day == _selectedDate.day &&
+             s.priority == 'tertiary';
+    }).firstOrNull;
+
+    // For backward compatibility: if no main schedule found, check committed workout
+    final isToday = _selectedDate.year == DateTime.now().year &&
+                    _selectedDate.month == DateTime.now().month &&
+                    _selectedDate.day == DateTime.now().day;
+    final committedWorkout = ref.watch(committedWorkoutProvider);
+
+    // Display the main workout: prefer schedule, fall back to committed workout for today
+    final mainDisplay = mainWorkout ?? (isToday ? committedWorkout : null);
+
+    return Column(
+      children: [
+        // CARD 1 - MAIN (Full width - existing code)
+        _buildHeroWorkoutCard(context, ref, mainDisplay),
+
+        const SizedBox(height: 16),
+
+        // CARDS 2 & 3 - Side by side
+        Row(
+          children: [
+            // CARD 2 - SECONDARY
+            Expanded(
+              child: _buildSmallHeroCard(
+                context: context,
+                ref: ref,
+                workout: secondaryWorkout,
+                priority: 'secondary',
+                emptyTitle: 'ACCESSORY',
+                emptyIcon: Icons.bolt,
+                gradient: const LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFFF59E0B), Color(0xFFEF4444)],
+                ),
+              ),
+            ),
+
+            const SizedBox(width: 12),
+
+            // CARD 3 - TERTIARY
+            Expanded(
+              child: _buildSmallHeroCard(
+                context: context,
+                ref: ref,
+                workout: tertiaryWorkout,
+                priority: 'tertiary',
+                emptyTitle: 'STRETCHING',
+                emptyIcon: Icons.self_improvement,
+                gradient: const LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFF8B5CF6), Color(0xFFEC4899)],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSmallHeroCard({
+    required BuildContext context,
+    required WidgetRef ref,
+    required WorkoutSchedule? workout,
+    required String priority,
+    required String emptyTitle,
+    required IconData emptyIcon,
+    required Gradient gradient,
+  }) {
+    if (workout == null) {
+      // EMPTY CARD
+      return GestureDetector(
+        onTap: () {
+          HapticFeedback.mediumImpact();
+          // Set which slot we want to commit to
+          ref.read(selectedCardSlotProvider.notifier).state = priority;
+          // Navigate to workouts tab
+          final navigator = context.findAncestorWidgetOfExactType<TabNavigator>();
+          if (navigator != null) {
+            (navigator as dynamic).changeTab(1); // Workouts tab
+          }
+        },
+        child: Container(
+          height: 180,
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                AppColors.white5,
+                AppColors.white10,
+              ],
+            ),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: AppColors.white20,
+              width: 1,
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: AppColors.white10,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Icon(
+                  emptyIcon,
+                  size: 32,
+                  color: AppColors.white50,
+                ),
+              ),
+
+              const SizedBox(height: 12),
+
+              Text(
+                emptyTitle,
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w900,
+                  color: AppColors.white60,
+                  letterSpacing: 1,
+                ),
+              ),
+
+              const SizedBox(height: 8),
+
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: AppColors.white10,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: AppColors.white20),
+                ),
+                child: const Text(
+                  '+ ADD',
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.white60,
+                    letterSpacing: 1,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    // FILLED CARD
+    // Get workout details
+    final WorkoutPreset? workoutPreset = _findWorkoutById(workout.workoutId);
+    final exerciseCount = workoutPreset?.exercises.where((e) => e.included).length ?? 0;
+    final totalSets = workoutPreset?.totalSets ?? 0;
+
+    return GestureDetector(
+      onTap: () async {
+        HapticFeedback.mediumImpact();
+        // Build LockedWorkout from schedule data
+        if (workoutPreset != null) {
+          final lockedWorkout = LockedWorkout.fromPreset(workoutPreset);
+
+          final result = await Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TrainingModeSelectionScreen(workout: lockedWorkout),
+              fullscreenDialog: true,
+            ),
+          );
+
+          // Handle mode selection result
+          if (result == 'auto') {
+            final navigator = context.findAncestorWidgetOfExactType<TabNavigator>();
+            if (navigator != null) {
+              (navigator as dynamic).changeTab(2); // Train tab
+            }
+          } else if (result == 'manual') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ManualTrainingScreen(workout: lockedWorkout),
+              ),
+            );
+          } else if (result == 'hevy_manual') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HevyManualWorkoutScreen(workout: lockedWorkout),
+              ),
+            );
+          }
+        }
+      },
+      child: Container(
+        height: 180,
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          gradient: gradient,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: Colors.white.withOpacity(0.1),
+            width: 1,
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // Workout name
+            Text(
+              workout.workoutName.toUpperCase(),
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w900,
+                color: Colors.white,
+                letterSpacing: 1,
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+
+            // Stats
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '$exerciseCount exercises',
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: Colors.white.withOpacity(0.8),
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  '$totalSets sets',
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: Colors.white.withOpacity(0.8),
+                  ),
+                ),
+              ],
+            ),
+
+            // START button (smaller)
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.3),
+                ),
+              ),
+              child: const Center(
+                child: Text(
+                  'START',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                    letterSpacing: 1.5,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
