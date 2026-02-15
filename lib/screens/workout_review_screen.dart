@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../utils/app_colors.dart';
 import '../widgets/glow_button.dart';
-import '../models/exercise.dart';
+import '../models/workout_data.dart';
 import '../widgets/exercise_animation_widget.dart';
 // ExerciseSettings lives in custom_workouts_screen.dart - import from there
 import 'custom_workouts_screen.dart' show ExerciseSettings;

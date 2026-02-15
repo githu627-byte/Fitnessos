@@ -13,6 +13,7 @@ import '../services/storage_service.dart';
 import '../data/exercise_gif_mapping.dart';
 import 'exercise_explanation_screen.dart';
 import 'exercise_config_screen.dart';
+import 'workout_review_screen.dart';
 
 class CustomWorkoutsScreen extends ConsumerStatefulWidget {
   const CustomWorkoutsScreen({super.key});
@@ -556,11 +557,6 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
     HapticFeedback.lightImpact();
   }
 
-  void _showSelectedExercisesScreen() {
-    // TODO: Navigate to full-screen selected exercises view
-    // Will show all selected exercises with edit/remove options
-  }
-
   void _updateExerciseSettings(String exerciseId, ExerciseSettings settings) {
     setState(() {
       _exerciseSettings[exerciseId] = settings;
@@ -885,29 +881,28 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Stack(
-        children: [
-          // Main content - now fully scrollable
-          SafeArea(
-            child: CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(child: _buildHeader()),
-                SliverToBoxAdapter(child: _buildCategoryFilter()),
-                SliverToBoxAdapter(child: _buildSearchBar()),
-                SliverPadding(
-                  padding: EdgeInsets.only(
-                    bottom: _selectedExercises.isNotEmpty ? MediaQuery.of(context).size.height * 0.25 : 0,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(child: _buildHeader()),
+                  SliverToBoxAdapter(child: _buildCategoryFilter()),
+                  SliverToBoxAdapter(child: _buildSearchBar()),
+                  SliverPadding(
+                    padding: EdgeInsets.only(
+                      bottom: _selectedExercises.isNotEmpty ? 80 : 20,
+                    ),
+                    sliver: _buildExerciseLibrarySliver(),
                   ),
-                  sliver: _buildExerciseLibrarySliver(),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-
-          // Floating workout builder panel
-          if (_selectedExercises.isNotEmpty)
-            _buildWorkoutBuilderPanel(),
-        ],
+            if (_selectedExercises.isNotEmpty)
+              _buildWorkoutFAB(),
+          ],
+        ),
       ),
     );
   }
@@ -1115,272 +1110,6 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
         }).toList(),
       ),
     );
-  }
-
-  Widget _buildTrainingPresets() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'TRAINING PRESETS',
-            style: TextStyle(
-              color: AppColors.cyberLime,
-              fontSize: 14,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 1,
-            ),
-          ),
-          const SizedBox(height: 12),
-          
-          // Weight Training Presets
-          const Text(
-            'WEIGHT TRAINING',
-            style: TextStyle(
-              color: AppColors.white70,
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 0.5,
-            ),
-          ),
-          const SizedBox(height: 8),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                _buildPresetButton(
-                  'STRENGTH',
-                  '1-5 reps • 3-5 sets • 3-5min rest',
-                  '💪',
-                  () => _applyStrengthPreset(),
-                ),
-                const SizedBox(width: 8),
-                _buildPresetButton(
-                  'HYPERTROPHY',
-                  '6-12 reps • 3-5 sets • 1-3min rest',
-                  '🔥',
-                  () => _applyHypertrophyPreset(),
-                ),
-                const SizedBox(width: 8),
-                _buildPresetButton(
-                  'ENDURANCE',
-                  '12-20 reps • 2-4 sets • 30-90s rest',
-                  '⚡',
-                  () => _applyEndurancePreset(),
-                ),
-              ],
-            ),
-          ),
-          
-          const SizedBox(height: 16),
-          
-          // Cardio Presets
-          const Text(
-            'CARDIO TRAINING',
-            style: TextStyle(
-              color: AppColors.white70,
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 0.5,
-            ),
-          ),
-          const SizedBox(height: 8),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                _buildPresetButton(
-                  'HIIT',
-                  '40s work • 20s rest',
-                  '🏃',
-                  () => _applyHIITPreset(),
-                ),
-                const SizedBox(width: 8),
-                _buildPresetButton(
-                  'TABATA',
-                  '20s work • 10s rest',
-                  '💥',
-                  () => _applyTabataPreset(),
-                ),
-              ],
-            ),
-          ),
-          
-          const SizedBox(height: 16),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPresetButton(String title, String description, String icon, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: () {
-        HapticFeedback.selectionClick();
-        onTap();
-      },
-      child: Container(
-        width: 160,
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: AppColors.white5,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: AppColors.white10,
-            width: 1,
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  icon,
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(width: 6),
-                Expanded(
-                  child: Text(
-                    title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 4),
-            Text(
-              description,
-              style: const TextStyle(
-                color: AppColors.white50,
-                fontSize: 10,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _applyStrengthPreset() {
-    setState(() {
-      for (final exercise in _selectedExercises) {
-        _exerciseSettings[exercise.id] = ExerciseSettings(
-          sets: 4, // 3-5 sets
-          reps: 3, // 1-5 reps
-          restSeconds: 240, // 4 minutes rest
-          timeSeconds: null, // Not time-based
-        );
-      }
-    });
-    
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('💪 Applied Strength preset: 3 reps, 4 sets, 4min rest'),
-          backgroundColor: AppColors.cyberLime,
-          duration: Duration(seconds: 2),
-        ),
-      );
-    }
-  }
-
-  void _applyHypertrophyPreset() {
-    setState(() {
-      for (final exercise in _selectedExercises) {
-        _exerciseSettings[exercise.id] = ExerciseSettings(
-          sets: 4, // 3-5 sets
-          reps: 10, // 6-12 reps
-          restSeconds: 120, // 2 minutes rest
-          timeSeconds: null, // Not time-based
-        );
-      }
-    });
-    
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('🔥 Applied Hypertrophy preset: 10 reps, 4 sets, 2min rest'),
-          backgroundColor: AppColors.cyberLime,
-          duration: Duration(seconds: 2),
-        ),
-      );
-    }
-  }
-
-  void _applyEndurancePreset() {
-    setState(() {
-      for (final exercise in _selectedExercises) {
-        _exerciseSettings[exercise.id] = ExerciseSettings(
-          sets: 3, // 2-4 sets
-          reps: 15, // 12-20 reps
-          restSeconds: 60, // 1 minute rest
-          timeSeconds: null, // Not time-based
-        );
-      }
-    });
-    
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('⚡ Applied Endurance preset: 15 reps, 3 sets, 1min rest'),
-          backgroundColor: AppColors.cyberLime,
-          duration: Duration(seconds: 2),
-        ),
-      );
-    }
-  }
-
-  void _applyHIITPreset() {
-    setState(() {
-      for (final exercise in _selectedExercises) {
-        _exerciseSettings[exercise.id] = ExerciseSettings(
-          sets: 1, // Circuit style
-          reps: 999, // Time-based (ignored)
-          restSeconds: 20, // 20s rest
-          timeSeconds: 40, // 40s work
-        );
-      }
-    });
-    
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('🏃 Applied HIIT preset: 40s work, 20s rest'),
-          backgroundColor: AppColors.cyberLime,
-          duration: Duration(seconds: 2),
-        ),
-      );
-    }
-  }
-
-  void _applyTabataPreset() {
-    setState(() {
-      for (final exercise in _selectedExercises) {
-        _exerciseSettings[exercise.id] = ExerciseSettings(
-          sets: 1, // Circuit style
-          reps: 999, // Time-based (ignored)
-          restSeconds: 10, // 10s rest
-          timeSeconds: 20, // 20s work
-        );
-      }
-    });
-    
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('💥 Applied Tabata preset: 20s work, 10s rest'),
-          backgroundColor: AppColors.cyberLime,
-          duration: Duration(seconds: 2),
-        ),
-      );
-    }
   }
 
   void _loadWorkout(WorkoutPreset workout) {
@@ -1722,413 +1451,117 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
     );
   }
 
-  Widget _buildWorkoutBuilderPanel() {
-    return DraggableScrollableSheet(
-      initialChildSize: 0.45,
-      minChildSize: 0.35,
-      maxChildSize: 0.85,
-      snap: true,
-      snapSizes: const [0.35, 0.45, 0.85],
-      builder: (context, scrollController) {
-        return Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xFF1a1a1a),
-                Colors.black,
-              ],
+  Widget _buildWorkoutFAB() {
+    return GestureDetector(
+      onTap: _openWorkoutReview,
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Color(0xFF1a1a1a), Color(0xFF111111)],
+          ),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: AppColors.cyberLime, width: 2),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.cyberLime.withOpacity(0.25),
+              blurRadius: 16,
+              offset: const Offset(0, -2),
             ),
-            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black54,
-                blurRadius: 20,
-                offset: Offset(0, -5),
-              ),
-            ],
-          ),
-          child: Column(
-            children: [
-              // Non-scrollable header - always draggable
-              Container(
-                color: Colors.transparent,
-                child: Column(
-                  children: [
-                    // Drag handle
-                    Container(
-                      margin: const EdgeInsets.symmetric(vertical: 12),
-                      width: 50,
-                      height: 5,
-                      decoration: BoxDecoration(
-                        color: AppColors.white40,
-                        borderRadius: BorderRadius.circular(3),
-                      ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Text(
+              _emojiController.text.isEmpty ? '💪' : _emojiController.text,
+              style: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    _workoutNameController.text.isEmpty
+                        ? 'My Custom Workout'
+                        : _workoutNameController.text,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w800,
                     ),
-
-                    // Workout name
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        children: [
-                          // Emoji input (limited to 2 characters)
-                          Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              color: Colors.transparent, // Make fully transparent
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: AppColors.cyberLime.withOpacity(0.3)),
-                            ),
-                            child: TextField(
-                              controller: _emojiController,
-                              textAlign: TextAlign.center,
-                              maxLength: 2,
-                              style: const TextStyle(
-                                fontSize: 32,
-                                color: Colors.white, // Ensure text is visible
-                              ),
-                              decoration: const InputDecoration(
-                                counterText: '', // Hide character counter
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.zero, // Remove padding
-                                hintText: '💪',
-                                hintStyle: TextStyle(
-                                  fontSize: 32,
-                                  color: Colors.white54,
-                                ),
-                                fillColor: Colors.transparent, // Ensure fill is transparent
-                                filled: false, // Don't fill background
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 16),
-                          // Workout name field
-                          Expanded(
-                            child: TextField(
-                              controller: _workoutNameController,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w900,
-                              ),
-                              decoration: const InputDecoration(
-                                hintText: 'Workout Name',
-                                hintStyle: TextStyle(color: AppColors.white40),
-                                border: InputBorder.none,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                  ],
-                ),
-              ),
-
-              // Scrollable exercise list with training presets at top
-              Expanded(
-                child: ListView(
-                  controller: scrollController,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  physics: const AlwaysScrollableScrollPhysics(), // Ensures it's always scrollable
-                  children: [
-                    // Training presets at top of scrollable area
-                    if (_selectedExercises.isNotEmpty) ...[
-                      _buildTrainingPresets(),
-                      const SizedBox(height: 16),
-                    ],
-                    
-                    // Exercise list
-                    ..._selectedExercises.asMap().entries.map((entry) {
-                      final index = entry.key;
-                      final exercise = entry.value;
-                      final settings = _exerciseSettings[exercise.id]!;
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: _buildSelectedExerciseItem(exercise, settings, index),
-                      );
-                    }).toList(),
-                  ],
-                ),
-              ),
-
-              // Action buttons
-              Container(
-                padding: const EdgeInsets.fromLTRB(20, 10, 20, 16),
-                decoration: const BoxDecoration(
-                  border: Border(
-                    top: BorderSide(color: AppColors.white10),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        if (_selectedExercises.isNotEmpty) {
-                          HapticFeedback.mediumImpact();
-                          _showSelectedExercisesScreen();
-                        }
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                        decoration: BoxDecoration(
-                          color: _selectedExercises.isEmpty ? AppColors.white5 : AppColors.cyberLime.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: _selectedExercises.isEmpty ? AppColors.white10 : AppColors.cyberLime,
-                            width: _selectedExercises.isEmpty ? 1 : 2,
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            // Exercise count badge
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                              decoration: BoxDecoration(
-                                color: _selectedExercises.isEmpty ? AppColors.white10 : AppColors.cyberLime,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Text(
-                                '${_selectedExercises.length}',
-                                style: TextStyle(
-                                  color: _selectedExercises.isEmpty ? AppColors.white60 : Colors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                              ),
-                            ),
-
-                            const SizedBox(width: 12),
-
-                            Text(
-                              '${_selectedExercises.length == 1 ? 'exercise' : 'exercises'}${_selectedExercises.isEmpty ? '' : ' \u2022 Tap to view'}',
-                              style: TextStyle(
-                                color: _selectedExercises.isEmpty ? AppColors.white50 : AppColors.cyberLime,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-
-                            const Spacer(),
-
-                            if (_selectedExercises.isNotEmpty)
-                              const Icon(
-                                Icons.arrow_forward_ios,
-                                size: 16,
-                                color: AppColors.cyberLime,
-                              ),
-
-                            if (_selectedExercises.isEmpty)
-                              TextButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _selectedExercises.clear();
-                                    _exerciseSettings.clear();
-                                  });
-                                },
-                                child: const Text(
-                                  'CLEAR',
-                                  style: TextStyle(
-                                    color: AppColors.white40,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ),
-                          ],
-                        ),
-                      ),
+                  const SizedBox(height: 2),
+                  Text(
+                    '${_selectedExercises.length} exercise${_selectedExercises.length == 1 ? '' : 's'} · Tap to review',
+                    style: const TextStyle(
+                      color: AppColors.cyberLime,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
                     ),
-                    const SizedBox(height: 16),
-                    GlowButton(
-                      text: '✅ COMMIT WORKOUT',
-                      onPressed: _commitWorkout,
-                      padding: const EdgeInsets.symmetric(vertical: 18),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _buildSelectedExerciseItem(Exercise exercise, ExerciseSettings settings, int index) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: AppColors.white5,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.white10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Text(
-                '${index + 1}.',
-                style: const TextStyle(
-                  color: AppColors.cyberLime,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w900,
-                ),
+            ),
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: AppColors.cyberLime,
+                borderRadius: BorderRadius.circular(12),
               ),
-              const SizedBox(width: 8),
-              Expanded(
+              child: Center(
                 child: Text(
-                  exercise.name,
+                  '${_selectedExercises.length}',
                   style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
               ),
-              IconButton(
-                onPressed: () => _removeExercise(exercise),
-                icon: const Icon(Icons.close, color: AppColors.white40, size: 20),
-                padding: EdgeInsets.zero,
-                constraints: const BoxConstraints(),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          Row(
-            children: [
-              Expanded(
-                child: _buildSettingControl(
-                  'Sets',
-                  settings.sets,
-                  (val) => _updateExerciseSettings(
-                    exercise.id,
-                    settings.copyWith(sets: val),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: _buildSettingControl(
-                  'Reps',
-                  settings.reps,
-                  (val) => _updateExerciseSettings(
-                    exercise.id,
-                    settings.copyWith(reps: val),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: _buildSettingControl(
-                  'Rest',
-                  settings.restSeconds ~/ 15, // Simplified to 15s increments
-                  (val) => _updateExerciseSettings(
-                    exercise.id,
-                    settings.copyWith(restSeconds: val * 15),
-                  ),
-                  suffix: 's',
-                  multiplier: 15,
-                ),
-              ),
-            ],
-          ),
-        ],
+            ),
+            const SizedBox(width: 8),
+            const Icon(Icons.chevron_right, color: AppColors.cyberLime, size: 24),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildSettingControl(
-    String label,
-    int value,
-    Function(int) onChanged, {
-    String suffix = '',
-    int multiplier = 1,
-  }) {
-    final displayValue = value * multiplier;
-    final controller = TextEditingController(text: displayValue.toString());
-    
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          label,
-          style: const TextStyle(
-            color: AppColors.white50,
-            fontSize: 11,
-            fontWeight: FontWeight.w600,
-          ),
+  Future<void> _openWorkoutReview() async {
+    HapticFeedback.mediumImpact();
+
+    final result = await Navigator.push<Map<String, dynamic>>(
+      context,
+      MaterialPageRoute(
+        builder: (context) => WorkoutReviewScreen(
+          selectedExercises: _selectedExercises,
+          exerciseSettings: _exerciseSettings,
+          workoutName: _workoutNameController.text.isEmpty
+              ? 'My Custom Workout'
+              : _workoutNameController.text,
+          workoutEmoji: _emojiController.text.isEmpty ? '💪' : _emojiController.text,
+          workoutMode: _workoutMode,
         ),
-        const SizedBox(height: 4),
-        Container(
-          width: 60,
-          height: 36,
-          decoration: BoxDecoration(
-            color: AppColors.cyberLime.withOpacity(0.2),
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: AppColors.cyberLime, width: 1),
-          ),
-          child: TextField(
-            controller: controller,
-            keyboardType: TextInputType.number,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: AppColors.cyberLime,
-              fontSize: 14,
-              fontWeight: FontWeight.w900,
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.zero,
-              suffix: suffix.isNotEmpty ? Text(
-                suffix,
-                style: const TextStyle(
-                  color: AppColors.cyberLime,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                ),
-              ) : null,
-            ),
-            inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-            ],
-            onTap: () {
-              // Select all text when tapped so user can immediately type new value
-              controller.selection = TextSelection(
-                baseOffset: 0,
-                extentOffset: controller.text.length,
-              );
-            },
-            onChanged: (text) {
-              if (text.isEmpty) return; // Allow empty while typing
-              
-              final parsed = int.tryParse(text);
-              if (parsed != null && parsed > 0) {
-                final actualValue = parsed ~/ multiplier;
-                onChanged(actualValue);
-                HapticFeedback.selectionClick();
-              }
-            },
-            onSubmitted: (text) {
-              if (text.isEmpty) {
-                controller.text = displayValue.toString();
-                return;
-              }
-              
-              final parsed = int.tryParse(text) ?? displayValue;
-              final clamped = parsed < 1 ? 1 : parsed;
-              controller.text = clamped.toString();
-              onChanged(clamped ~/ multiplier);
-            },
-          ),
-        ),
-      ],
+      ),
     );
+
+    if (result != null) {
+      setState(() {
+        _selectedExercises = List<Exercise>.from(result['exercises'] ?? []);
+        _exerciseSettings = Map<String, ExerciseSettings>.from(result['settings'] ?? {});
+      });
+
+      // If user hit COMMIT from the review screen
+      if (result['commit'] == true) {
+        _commitWorkout();
+      }
+    }
   }
 
   int _calculateCalories() {
