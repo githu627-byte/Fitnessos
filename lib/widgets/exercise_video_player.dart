@@ -128,9 +128,9 @@ class _ExerciseVideoPlayerState extends State<ExerciseVideoPlayer> {
             child: Opacity(
               opacity: 0.4,
               child: Image.asset(
-                'assets/images/logo/playstore_icon.png',
-                width: 32,
-                height: 32,
+                'assets/images/skeletal_logo.png',
+                height: 24,
+                fit: BoxFit.contain,
               ),
             ),
           ),
