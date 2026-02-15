@@ -239,8 +239,16 @@ class VoiceCoach {
   }
   
   Future<void> speakNow(String message) async {
+    if (!_isEnabled) return;
     if (!_initialized) await init();
     await _tts.speak(message);
+  }
+
+  /// Stop any currently playing speech and clear the queue
+  void stop() {
+    _tts.stop();
+    _speechQueue.clear();
+    _isSpeaking = false;
   }
   
   Future<void> dispose() async {

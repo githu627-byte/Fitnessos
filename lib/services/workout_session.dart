@@ -91,6 +91,9 @@ class WorkoutSession {
   /// Public: Set voice coach mute state
   void setVoiceMute(bool muted) {
     _voice.setEnabled(!muted);
+    if (muted) {
+      _voice.stop(); // Stop any currently playing speech immediately
+    }
   }
   
   /// Helper: Strip difficulty prefix from exercise ID
