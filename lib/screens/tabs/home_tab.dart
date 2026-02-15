@@ -336,17 +336,21 @@ class _HomeTabState extends ConsumerState<HomeTab> {
   // ═══════════════════════════════════════════════════════════════════════════
   Widget _buildHeader(BuildContext context, WorkoutStats stats) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(4, 16, 12, 0),
+      padding: const EdgeInsets.fromLTRB(0, 16, 12, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // New unified logo (no background, all-in-one)
-          Image.asset(
-            'assets/images/skeletal_logo.png',
-            height: 45,
-            fit: BoxFit.contain,
-            alignment: Alignment.centerLeft,
+          // New unified logo (no background, all-in-one) - spans from left edge to streak
+          Expanded(
+            child: Image.asset(
+              'assets/images/skeletal_logo.png',
+              height: 50,
+              fit: BoxFit.contain,
+              alignment: Alignment.centerLeft,
+            ),
           ),
+          
+          const SizedBox(width: 12),
           
           // Right: Streak Badge + Settings Icon
           Row(
