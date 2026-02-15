@@ -1575,7 +1575,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
               right: 0,
               child: Center(
                 child: Image.asset(
-                  'assets/images/skeletal_logo.png',
+                  'assets/images/logo/skeletal_logo.png',
                   height: 80,
                   fit: BoxFit.contain,
                 ),

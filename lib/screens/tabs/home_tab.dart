@@ -343,7 +343,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
           // New unified logo (no background, all-in-one) - spans from left edge to streak
           Expanded(
             child: Image.asset(
-              'assets/images/skeletal_logo.png',
+              'assets/images/logo/skeletal_logo.png',
               height: 50,
               fit: BoxFit.contain,
               alignment: Alignment.centerLeft,
