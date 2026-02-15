@@ -37,6 +37,11 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
   
   // Track difficulty selection for each workout (workoutId -> difficulty)
   final Map<String, String> _selectedDifficulties = {};
+
+  // Track user-edited presets (workoutId -> edited WorkoutPreset)
+  // When user edits exercises in WorkoutEditorScreen, store the result here
+  // so COMMIT uses the edited version, not the original template
+  final Map<String, WorkoutPreset> _editedPresets = {};
   
   // Cache user weight for accurate calorie calculations
   double? _cachedUserWeight;
@@ -723,9 +728,14 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
   Widget _buildPresetCard(WorkoutPreset preset) {
     // Get current difficulty (default to intermediate)
     final currentDifficulty = _selectedDifficulties[preset.id] ?? 'intermediate';
-    
-    // Get the exercises adjusted for the current difficulty
-    final adjustedExercises = _getAdjustedExercises(preset, currentDifficulty);
+
+    // Use edited exercises if user has customized, otherwise use difficulty template
+    final List<WorkoutExercise> adjustedExercises;
+    if (_editedPresets.containsKey(preset.id)) {
+      adjustedExercises = _editedPresets[preset.id]!.exercises.where((e) => e.included).toList();
+    } else {
+      adjustedExercises = _getAdjustedExercises(preset, currentDifficulty);
+    }
     // Show first 6 exercises on card (user can add/remove more in editor)
     final includedExercises = adjustedExercises.take(6).toList();
     
@@ -829,6 +839,7 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                     onTap: () {
                       setState(() {
                         _selectedDifficulties[preset.id] = 'beginner';
+                        _editedPresets.remove(preset.id); // Clear edits on difficulty change
                       });
                       HapticFeedback.lightImpact();
                     },
@@ -845,6 +856,7 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                     onTap: () {
                       setState(() {
                         _selectedDifficulties[preset.id] = 'intermediate';
+                        _editedPresets.remove(preset.id); // Clear edits on difficulty change
                       });
                       HapticFeedback.lightImpact();
                     },
@@ -861,6 +873,7 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                     onTap: () {
                       setState(() {
                         _selectedDifficulties[preset.id] = 'advanced';
+                        _editedPresets.remove(preset.id); // Clear edits on difficulty change
                       });
                       HapticFeedback.lightImpact();
                     },
@@ -1000,20 +1013,28 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
 
   Future<void> _commitWorkout(WorkoutPreset preset) async {
     HapticFeedback.mediumImpact();
-    
-    // Get the current difficulty and adjust exercises accordingly
-    final currentDifficulty = _selectedDifficulties[preset.id] ?? 'intermediate';
-    final adjustedExercises = _getAdjustedExercises(preset, currentDifficulty);
-    
-    // Create preset with adjusted exercises
-    final adjustedPreset = preset.copyWith(exercises: adjustedExercises);
+
+    // Use user-edited preset if available, otherwise use difficulty-adjusted template
+    final WorkoutPreset adjustedPreset;
+    if (_editedPresets.containsKey(preset.id)) {
+      adjustedPreset = _editedPresets[preset.id]!;
+    } else {
+      final currentDifficulty = _selectedDifficulties[preset.id] ?? 'intermediate';
+      final adjustedExercises = _getAdjustedExercises(preset, currentDifficulty);
+      adjustedPreset = preset.copyWith(exercises: adjustedExercises);
+    }
 
     // Check if user came from an empty card (has pre-selected slot)
     String? selectedSlot = ref.read(selectedCardSlotProvider);
 
     // If no pre-selected slot, show modal
+    // Manual-only workouts only go to secondary/tertiary cards
     if (selectedSlot == null) {
-      selectedSlot = await _showSlotSelectionModal();
+      if (preset.isManualOnly) {
+        selectedSlot = await _showManualSlotSelectionModal();
+      } else {
+        selectedSlot = await _showSlotSelectionModal();
+      }
       // If user cancelled, return
       if (selectedSlot == null) return;
     } else {
@@ -1348,27 +1369,89 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
     );
   }
 
+  Future<String?> _showManualSlotSelectionModal() async {
+    return showModalBottomSheet<String>(
+      context: context,
+      backgroundColor: Colors.black,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) {
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'COMMIT TO WHICH CARD?',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                    letterSpacing: 1.5,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  'Choose where to save this workout',
+                  style: TextStyle(fontSize: 14, color: AppColors.white60),
+                ),
+                const SizedBox(height: 24),
+                // Only secondary and tertiary for manual workouts
+                _buildSlotOption(
+                  context: context,
+                  slot: 'secondary',
+                  icon: Icons.bolt,
+                  title: 'ACCESSORY',
+                  subtitle: 'Secondary exercises, cardio',
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFFF59E0B), Color(0xFFEF4444)],
+                  ),
+                ),
+                const SizedBox(height: 12),
+                _buildSlotOption(
+                  context: context,
+                  slot: 'tertiary',
+                  icon: Icons.self_improvement,
+                  title: 'STRETCHING',
+                  subtitle: 'Mobility, flexibility, recovery',
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF8B5CF6), Color(0xFFEC4899)],
+                  ),
+                ),
+                const SizedBox(height: 16),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   Future<void> _editWorkout(WorkoutPreset preset) async {
     HapticFeedback.lightImpact();
-    
+
     // Get the current difficulty and adjust exercises accordingly
     final currentDifficulty = _selectedDifficulties[preset.id] ?? 'intermediate';
     final adjustedExercises = _getAdjustedExercises(preset, currentDifficulty);
-    
-    // Create preset with adjusted exercises
-    final adjustedPreset = preset.copyWith(exercises: adjustedExercises);
-    
+
+    // If user already edited this preset, use their edits as the starting point
+    final startingPreset = _editedPresets[preset.id] ?? preset.copyWith(exercises: adjustedExercises);
+
     // Navigate to editor
     final result = await Navigator.push<WorkoutPreset>(
       context,
       MaterialPageRoute(
-        builder: (context) => WorkoutEditorScreen(preset: adjustedPreset),
+        builder: (context) => WorkoutEditorScreen(preset: startingPreset),
       ),
     );
-    
-    // If user locked from editor, result will be returned
+
+    // Store the edited preset so COMMIT and the card display use it
     if (result != null) {
-      // Already locked in editor screen
+      setState(() {
+        _editedPresets[preset.id] = result;
+      });
     }
   }
 }
