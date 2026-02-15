@@ -128,21 +128,29 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
                     lower.contains('chest flye') ||
                     lower.contains('pec fly') ||
                     lower.contains('pec deck') ||
+                    lower.contains('pec') && lower.contains('fly') ||
                     (lower.contains('dip') && lower.contains('chest')) ||
                     lower.contains('push up') ||
                     lower.contains('pushup') ||
                     lower.contains('svend press') ||
-                    lower.contains('pullover')) &&
-                   // Exclude non-chest exercises
+                    lower.contains('landmine press') && lower.contains('chest') ||
+                    lower.contains('squeeze press') ||
+                    lower.contains('hex press') ||
+                    lower.contains('guillotine press') ||
+                    lower.contains('crossover') && !lower.contains('leg') ||
+                    lower.contains('pullover') && !lower.contains('tricep')) &&
+                   // Exclude non-chest exercises - STRICT
                    !lower.contains('shoulder press') &&
                    !lower.contains('overhead press') &&
                    !lower.contains('military press') &&
-                   !lower.contains('leg press');
+                   !lower.contains('leg press') &&
+                   !lower.contains('tricep') &&
+                   !lower.contains('upright row');
           }).toList();
         } else if (_selectedCategory == 'back') {
           exercises = exercises.where((e) {
             final lower = e.name.toLowerCase();
-            return (lower.contains('row') ||
+            return (lower.contains('row') && !lower.contains('upright row') ||
                     lower.contains('pulldown') ||
                     lower.contains('lat pull') ||
                     lower.contains('pull up') ||
@@ -150,103 +158,229 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
                     lower.contains('chin up') ||
                     lower.contains('chinup') ||
                     lower.contains('deadlift') ||
-                    lower.contains('shrug') ||
+                    lower.contains('shrug') && !lower.contains('shoulder') ||
                     lower.contains('back extension') ||
-                    (lower.contains('pull') && (lower.contains('back') || lower.contains('lat')))) &&
-                   // Exclude non-back exercises
+                    lower.contains('reverse fly') ||
+                    lower.contains('rear delt') && lower.contains('row') ||
+                    lower.contains('t-bar row') ||
+                    lower.contains('seal row') ||
+                    lower.contains('inverted row') ||
+                    lower.contains('pendlay') ||
+                    (lower.contains('pull') && (lower.contains('back') || lower.contains('lat'))) && !lower.contains('pullover')) &&
+                   // Exclude non-back exercises - STRICT
                    !lower.contains('hip thrust') &&
                    !lower.contains('pullover') && // pec exercise
-                   !lower.contains('leg');
+                   !lower.contains('leg') &&
+                   !lower.contains('calf') &&
+                   !lower.contains('chest') &&
+                   !lower.contains('tricep');
           }).toList();
         } else if (_selectedCategory == 'shoulders') {
           exercises = exercises.where((e) {
             final lower = e.name.toLowerCase();
-            return (lower.contains('shoulder') ||
-                    lower.contains('delt') ||
+            return (lower.contains('shoulder') && !lower.contains('blade') ||
+                    lower.contains('delt') && !lower.contains('deltoid stretch') ||
                     lower.contains('lateral raise') ||
                     lower.contains('front raise') ||
                     lower.contains('rear raise') ||
                     lower.contains('overhead press') ||
                     lower.contains('military press') ||
                     lower.contains('arnold press') ||
+                    lower.contains('bradford press') ||
                     lower.contains('upright row') ||
                     lower.contains('face pull') ||
-                    lower.contains('pike push')) &&
-                   // Exclude non-shoulder
-                   !lower.contains('chest') &&
-                   !lower.contains('bench');
+                    lower.contains('shrug') && !lower.contains('trap bar deadlift') ||
+                    lower.contains('reverse fly') && !lower.contains('chest')) &&
+                   // Exclude non-shoulder exercises - STRICT
+                   !lower.contains('bench press') &&
+                   !lower.contains('chest press') &&
+                   !lower.contains('tricep') &&
+                   !lower.contains('bicep') &&
+                   (lower.contains('upright row') || !lower.contains('row')) && // Allow upright row but exclude other rows
+                   !lower.contains('pulldown') &&
+                   !lower.contains('leg') &&
+                   !lower.contains('press up'); // exclude push ups
           }).toList();
         } else if (_selectedCategory == 'arms') {
           exercises = exercises.where((e) {
             final lower = e.name.toLowerCase();
-            return (lower.contains('curl') ||
-                    lower.contains('bicep') ||
-                    lower.contains('tricep') ||
-                    lower.contains('hammer') ||
-                    lower.contains('preacher') ||
-                    lower.contains('concentration') ||
-                    lower.contains('skull crusher') ||
-                    lower.contains('kickback') ||
-                    (lower.contains('extension') && (lower.contains('tricep') || lower.contains('arm') || lower.contains('overhead')))) &&
-                   // Exclude non-arm exercises
-                   !lower.contains('leg extension') &&
-                   !lower.contains('back extension') &&
-                   !lower.contains('hip extension') &&
-                   !lower.contains('wrist');
+            
+            // Include criteria
+            final hasArmKeyword = lower.contains('bicep') ||
+                                  lower.contains('tricep') ||
+                                  lower.contains('preacher') ||
+                                  lower.contains('concentration') ||
+                                  lower.contains('skull crusher') ||
+                                  lower.contains('hammer curl') ||
+                                  lower.contains('pushdown') ||
+                                  lower.contains('close grip bench') ||
+                                  lower.contains('french press') ||
+                                  lower.contains('drag curl') ||
+                                  lower.contains('zottman') ||
+                                  lower.contains('reverse curl') ||
+                                  (lower.contains('curl') && !lower.contains('leg') && !lower.contains('hamstring') && !lower.contains('wrist')) ||
+                                  (lower.contains('extension') && lower.contains('tricep')) ||
+                                  (lower.contains('overhead extension')) ||
+                                  (lower.contains('kickback') && lower.contains('tricep')) ||
+                                  (lower.contains('dip') && !lower.contains('hip') && !lower.contains('landmine'));
+            
+            // Exclude criteria
+            final isNotArm = lower.contains('leg extension') ||
+                            lower.contains('leg curl') ||
+                            lower.contains('back extension') ||
+                            lower.contains('hip extension') ||
+                            lower.contains('wrist') ||
+                            lower.contains('shoulder press') ||
+                            lower.contains('row') ||
+                            lower.contains('raise') ||
+                            lower.contains('shrug') ||
+                            lower.contains('lat pulldown');
+            
+            return hasArmKeyword && !isNotArm;
           }).toList();
         } else if (_selectedCategory == 'legs') {
           exercises = exercises.where((e) {
             final lower = e.name.toLowerCase();
-            return (lower.contains('squat') ||
-                    lower.contains('lunge') ||
-                    lower.contains('leg press') ||
-                    lower.contains('leg curl') ||
-                    lower.contains('leg extension') ||
-                    lower.contains('calf raise') ||
-                    lower.contains('calf press') ||
-                    lower.contains('hack squat') ||
-                    lower.contains('bulgarian') ||
-                    lower.contains('step up') ||
-                    lower.contains('wall sit') ||
-                    (lower.contains('glute') && !lower.contains('raise')) ||
-                    lower.contains('hip thrust') ||
-                    lower.contains('hip abduct') ||
-                    lower.contains('hip adduct')) &&
-                   // Exclude non-leg exercises  
-                   !lower.contains('leg raise') && // core exercise
-                   !lower.contains('pull') &&
-                   !lower.contains('row');
+            
+            // Include criteria
+            final hasLegKeyword = lower.contains('squat') ||
+                                 lower.contains('lunge') ||
+                                 lower.contains('leg press') ||
+                                 lower.contains('leg curl') ||
+                                 lower.contains('leg extension') ||
+                                 lower.contains('calf raise') ||
+                                 lower.contains('calf press') ||
+                                 lower.contains('hack squat') ||
+                                 lower.contains('bulgarian') ||
+                                 lower.contains('step up') ||
+                                 lower.contains('wall sit') ||
+                                 lower.contains('hip thrust') ||
+                                 lower.contains('hip abduct') ||
+                                 lower.contains('hip adduct') ||
+                                 lower.contains('romanian deadlift') ||
+                                 lower.contains('stiff leg') ||
+                                 lower.contains('sissy squat') ||
+                                 lower.contains('goblet squat') ||
+                                 lower.contains('sumo') && (lower.contains('squat') || lower.contains('deadlift')) ||
+                                 (lower.contains('glute') && !lower.contains('raise'));
+            
+            // Exclude criteria  
+            final isNotLeg = lower.contains('leg raise') || // core exercise
+                            lower.contains('pull') ||
+                            lower.contains('row') ||
+                            lower.contains('chest') ||
+                            lower.contains('bench') ||
+                            lower.contains('shoulder') ||
+                            lower.contains('bicep') ||
+                            lower.contains('tricep');
+            
+            return hasLegKeyword && !isNotLeg;
           }).toList();
         } else if (_selectedCategory == 'core') {
           exercises = exercises.where((e) {
             final lower = e.name.toLowerCase();
-            return (lower.contains('crunch') ||
-                    lower.contains('sit up') ||
-                    lower.contains('situp') ||
-                    lower.contains('plank') ||
-                    lower.contains('leg raise') ||
-                    lower.contains('knee raise') ||
-                    lower.contains('ab wheel') ||
-                    lower.contains('russian twist') ||
-                    lower.contains('bicycle') ||
-                    lower.contains('mountain climber') ||
-                    lower.contains('dead bug') ||
-                    lower.contains('bird dog') ||
-                    lower.contains('hollow') ||
-                    lower.contains('v-up') ||
-                    lower.contains('v up') ||
-                    lower.contains('toe touch') ||
-                    lower.contains('jackknife') ||
-                    lower.contains('wiper')) &&
-                   // Exclude non-core
-                   !lower.contains('bench') &&
-                   !lower.contains('squat');
+            
+            // Include criteria
+            final hasCoreKeyword = lower.contains('crunch') ||
+                                  lower.contains('sit up') ||
+                                  lower.contains('situp') ||
+                                  lower.contains('plank') ||
+                                  lower.contains('leg raise') ||
+                                  lower.contains('knee raise') ||
+                                  lower.contains('ab wheel') ||
+                                  lower.contains('russian twist') ||
+                                  lower.contains('bicycle') && !lower.contains('machine') ||
+                                  lower.contains('mountain climber') ||
+                                  lower.contains('dead bug') ||
+                                  lower.contains('bird dog') ||
+                                  lower.contains('hollow') ||
+                                  lower.contains('v-up') ||
+                                  lower.contains('v up') ||
+                                  lower.contains('toe touch') ||
+                                  lower.contains('jackknife') ||
+                                  lower.contains('wiper') ||
+                                  lower.contains('windshield') ||
+                                  lower.contains('hanging') && lower.contains('knee') ||
+                                  lower.contains('dragon flag') ||
+                                  lower.contains('oblique') ||
+                                  lower.contains('side bend') ||
+                                  lower.contains('wood chop') ||
+                                  lower.contains('pallof') ||
+                                  lower.contains('abs') ||
+                                  lower.contains('abdominal');
+            
+            // Exclude non-core
+            final isNotCore = lower.contains('bench') ||
+                             lower.contains('squat') ||
+                             lower.contains('press') && !lower.contains('pallof') ||
+                             lower.contains('row') ||
+                             lower.contains('pull up') ||
+                             lower.contains('chin up');
+            
+            return hasCoreKeyword && !isNotCore;
           }).toList();
         } else if (_selectedCategory == 'home') {
-          // For manual mode home, just use bodyweight equipment
-          exercises = exercises.where((e) => 
-            e.equipment.toLowerCase() == 'bodyweight'
-          ).toList();
+          // For manual mode home, STRICT bodyweight only - NO equipment in name at all
+          exercises = exercises.where((e) {
+            final lower = e.name.toLowerCase();
+            // MUST NOT contain ANY equipment indicators
+            return !lower.contains('(barbell)') &&
+                   !lower.contains('(dumbbell)') &&
+                   !lower.contains('(cable)') &&
+                   !lower.contains('(kettlebell)') &&
+                   !lower.contains('(machine)') &&
+                   !lower.contains('(lever)') &&
+                   !lower.contains('(smith)') &&
+                   !lower.contains('(band)') &&
+                   !lower.contains('(ez barbell)') &&
+                   !lower.contains('(trap bar)') &&
+                   // Additional exclusions for weighted exercises
+                   !lower.contains('weighted') &&
+                   !lower.contains('plate') &&
+                   // MUST be truly bodyweight movements
+                   (lower.contains('push up') ||
+                    lower.contains('pushup') ||
+                    lower.contains('pull up') ||
+                    lower.contains('pullup') ||
+                    lower.contains('chin up') ||
+                    lower.contains('chinup') ||
+                    lower.contains('dip') ||
+                    lower.contains('squat') && !lower.contains('(') || // bodyweight squat only
+                    lower.contains('lunge') && !lower.contains('(') ||
+                    lower.contains('plank') ||
+                    lower.contains('crunch') ||
+                    lower.contains('sit up') ||
+                    lower.contains('situp') ||
+                    lower.contains('burpee') ||
+                    lower.contains('mountain climber') ||
+                    lower.contains('jumping jack') ||
+                    lower.contains('high knee') ||
+                    lower.contains('butt kick') ||
+                    lower.contains('leg raise') ||
+                    lower.contains('knee raise') ||
+                    lower.contains('pike') ||
+                    lower.contains('bear crawl') ||
+                    lower.contains('crab walk') ||
+                    lower.contains('inchworm') ||
+                    lower.contains('jump') && !lower.contains('rope') ||
+                    lower.contains('step up') && !lower.contains('(') ||
+                    lower.contains('wall sit') ||
+                    lower.contains('handstand') ||
+                    lower.contains('l-sit') ||
+                    lower.contains('tuck') ||
+                    lower.contains('bridge') ||
+                    lower.contains('reverse crunch') ||
+                    lower.contains('bicycle') ||
+                    lower.contains('flutter kick') ||
+                    lower.contains('scissor kick') ||
+                    lower.contains('v-up') ||
+                    lower.contains('v up') ||
+                    lower.contains('hollow') ||
+                    lower.contains('superman') ||
+                    lower.contains('bird dog') ||
+                    lower.contains('dead bug') ||
+                    lower.contains('glute bridge') && !lower.contains('('));
+          }).toList();
         }
       } else {
         // AI mode: use original filtering with WorkoutData
