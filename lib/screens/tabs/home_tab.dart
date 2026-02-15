@@ -264,7 +264,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                         // ═══════════════════════════════════════════════
                         _buildHeader(context, stats),
 
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 8),
 
                         Column(
                           children: [
@@ -340,7 +340,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
   // ═══════════════════════════════════════════════════════════════════════════
   Widget _buildHeader(BuildContext context, WorkoutStats stats) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 16, 12, 0),
+      padding: const EdgeInsets.fromLTRB(0, 8, 12, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -620,85 +620,47 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     required Gradient gradient,
   }) {
     if (workout == null) {
-      // EMPTY CARD
-      return GestureDetector(
-        onTap: () {
-          HapticFeedback.mediumImpact();
-          // Set which slot we want to commit to
-          ref.read(selectedCardSlotProvider.notifier).state = priority;
-          // Navigate to workouts tab
-          final navigator = context.findAncestorWidgetOfExactType<TabNavigator>();
-          if (navigator != null) {
-            (navigator as dynamic).changeTab(1); // Workouts tab
-          }
-        },
-        child: Container(
-          height: 180,
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                AppColors.white5,
-                AppColors.white10,
-              ],
+      // EMPTY CARD — informational only, no tap action
+      return Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: AppColors.white5,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: AppColors.white10, width: 1),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Icon
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                color: AppColors.white10,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(emptyIcon, color: AppColors.cyberLime, size: 24),
             ),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: AppColors.white20,
-              width: 1,
+            const SizedBox(height: 14),
+            // Title
+            Text(
+              emptyTitle,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 0.5,
+              ),
             ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: AppColors.white10,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Icon(
-                  emptyIcon,
-                  size: 32,
-                  color: AppColors.white50,
-                ),
+            const SizedBox(height: 4),
+            Text(
+              'Add via workout',
+              style: TextStyle(
+                color: AppColors.white40,
+                fontSize: 11,
               ),
-
-              const SizedBox(height: 12),
-
-              Text(
-                emptyTitle,
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w900,
-                  color: AppColors.white60,
-                  letterSpacing: 1,
-                ),
-              ),
-
-              const SizedBox(height: 8),
-
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  color: AppColors.white10,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: AppColors.white20),
-                ),
-                child: const Text(
-                  '+ ADD',
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.white60,
-                    letterSpacing: 1,
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       );
     }
