@@ -1570,7 +1570,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
           // Skelatal-PT Logo at top left (VISIBLE when UI hidden)
           if (_isUIHidden)
             Positioned(
-              top: 30, // Pushed higher
+              top: 30,
               left: 20,
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -1582,36 +1582,10 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                     width: 1,
                   ),
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Image.asset(
-                      'assets/images/logo/playstore_icon.png',
-                      width: 48,
-                      height: 48,
-                    ),
-                    const SizedBox(width: 12),
-                    ShaderMask(
-                      shaderCallback: (bounds) => const LinearGradient(
-                        colors: [
-                          Color(0xFF39FF14), // Cyber lime
-                          Color(0xFF00D9FF), // Electric cyan
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ).createShader(bounds),
-                      child: const Text(
-                        'SKELATAL-PT',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w900,
-                          color: Colors.white,
-                          letterSpacing: 1.5,
-                          fontFamily: 'monospace',
-                        ),
-                      ),
-                    ),
-                  ],
+                child: Image.asset(
+                  'assets/images/skeletal_logo.png',
+                  height: 40,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),

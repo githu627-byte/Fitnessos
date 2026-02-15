@@ -41,8 +41,6 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
   int _totalElapsedSeconds = 0;
   bool _isPaused = false;
 
-  String _weightUnit = 'lbs'; // 'lbs' or 'kg'
-
   DateTime? _workoutStartTime;
   final Map<String, List<Map<String, dynamic>>> _workoutLog = {}; // exerciseId -> list of sets
   
@@ -99,20 +97,6 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
     final mins = seconds ~/ 60;
     final secs = seconds % 60;
     return '${mins.toString().padLeft(2, '0')}:${secs.toString().padLeft(2, '0')}';
-  }
-
-  void _toggleWeightUnit() {
-    setState(() {
-      if (_weightUnit == 'lbs') {
-        _weightUnit = 'kg';
-        _currentWeight = _currentWeight / 2.20462;
-      } else {
-        _weightUnit = 'lbs';
-        _currentWeight = _currentWeight * 2.20462;
-      }
-      _weightController.text = _currentWeight > 0 ? _currentWeight.toStringAsFixed(1) : '';
-    });
-    HapticFeedback.selectionClick();
   }
 
   void _completeSet() {
@@ -210,23 +194,9 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
 
   void _moveToNextExercise() {
     if (_currentExerciseIndex < widget.workout.exercises.length - 1) {
-      // Start rest period between exercises (60 seconds)
       setState(() {
-        _isResting = true;
-        _restTimeRemaining = 60;
-      });
-
-      _restTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (_restTimeRemaining > 0) {
-          setState(() => _restTimeRemaining--);
-        } else {
-          _restTimer?.cancel();
-          setState(() {
-            _isResting = false;
-            _currentExerciseIndex++;
-            _initializeExercise();
-          });
-        }
+        _currentExerciseIndex++;
+        _initializeExercise();
       });
     } else {
       _completeWorkout();
@@ -802,6 +772,11 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
                 fontSize: 36,
                 fontWeight: FontWeight.w900,
               ),
+              suffixText: 'lbs',
+              suffixStyle: const TextStyle(
+                color: AppColors.white40,
+                fontSize: 16,
+              ),
               border: InputBorder.none,
               contentPadding: EdgeInsets.zero,
             ),
@@ -810,31 +785,6 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
                 _currentWeight = double.tryParse(value) ?? 0.0;
               });
             },
-          ),
-
-          const SizedBox(height: 8),
-
-          // Tappable kg/lbs toggle
-          GestureDetector(
-            onTap: _toggleWeightUnit,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              decoration: BoxDecoration(
-                color: AppColors.cyberLime.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: AppColors.cyberLime.withOpacity(0.3),
-                ),
-              ),
-              child: Text(
-                _weightUnit,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: AppColors.cyberLime,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
           ),
         ],
       ),

@@ -340,27 +340,12 @@ class _HomeTabState extends ConsumerState<HomeTab> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Left: Logo + App Name
-          Row(
-            children: [
-              // Logo (BIGGER)
-              Image.asset(
-                'assets/images/logo/playstore_icon.png',
-                width: 48,
-                height: 48,
-              ),
-              const SizedBox(width: 8),
-              // App Name (LIME GREEN)
-              const Text(
-                'Skelatal-PT',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w900,
-                  color: AppColors.cyberLime,
-                  letterSpacing: 1.2,
-                ),
-              ),
-            ],
+          // New unified logo (no background, all-in-one)
+          Image.asset(
+            'assets/images/skeletal_logo.png',
+            height: 45,
+            fit: BoxFit.contain,
+            alignment: Alignment.centerLeft,
           ),
           
           // Right: Streak Badge + Settings Icon
