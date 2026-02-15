@@ -264,7 +264,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                         // ═══════════════════════════════════════════════
                         _buildHeader(context, stats),
 
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 4),
 
                         Column(
                           children: [
@@ -284,7 +284,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                                     accentColor: AppColors.cyberLime,
                                   ),
 
-                                  const SizedBox(height: 20),
+                                  const SizedBox(height: 12),
 
                                   // 3 HERO WORKOUT CARDS
                                   _build3HeroCards(context, ref),
@@ -292,7 +292,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                               ),
                             ),
 
-                            const SizedBox(height: 20),
+                            const SizedBox(height: 12),
 
                             // ═══════════════════════════════════════════════
                             // RECOVERY BODY: Full width like profile cards
@@ -340,17 +340,20 @@ class _HomeTabState extends ConsumerState<HomeTab> {
   // ═══════════════════════════════════════════════════════════════════════════
   Widget _buildHeader(BuildContext context, WorkoutStats stats) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 8, 12, 0),
+      padding: const EdgeInsets.fromLTRB(0, 4, 12, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // New unified logo (no background, all-in-one) - spans from left edge to streak
           Expanded(
-            child: Image.asset(
-              'assets/images/logo/skeletal_logo.png',
-              height: 180,
-              fit: BoxFit.cover,
-              alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 4),
+              child: Image.asset(
+                'assets/images/logo/skeletal_logo.png',
+                height: 42,
+                fit: BoxFit.contain,
+                alignment: Alignment.centerLeft,
+              ),
             ),
           ),
           
@@ -578,10 +581,13 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                 priority: 'secondary',
                 emptyTitle: 'ACCESSORY',
                 emptyIcon: Icons.bolt,
-                gradient: const LinearGradient(
+                gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [Color(0xFFF59E0B), Color(0xFFEF4444)],
+                  colors: [
+                    AppColors.cyberLime.withOpacity(0.15),
+                    AppColors.cyberLime.withOpacity(0.05),
+                  ],
                 ),
               ),
             ),
@@ -597,10 +603,13 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                 priority: 'tertiary',
                 emptyTitle: 'STRETCHING',
                 emptyIcon: Icons.self_improvement,
-                gradient: const LinearGradient(
+                gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [Color(0xFF8B5CF6), Color(0xFFEC4899)],
+                  colors: [
+                    AppColors.cyberLime.withOpacity(0.15),
+                    AppColors.cyberLime.withOpacity(0.05),
+                  ],
                 ),
               ),
             ),
@@ -716,7 +725,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
           gradient: gradient,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: Colors.white.withOpacity(0.1),
+            color: AppColors.cyberLime.withOpacity(0.2),
             width: 1,
           ),
         ),
@@ -743,17 +752,17 @@ class _HomeTabState extends ConsumerState<HomeTab> {
               children: [
                 Text(
                   '$exerciseCount exercises',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 11,
-                    color: Colors.white.withOpacity(0.8),
+                    color: AppColors.white60,
                   ),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   '$totalSets sets',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 11,
-                    color: Colors.white.withOpacity(0.8),
+                    color: AppColors.white60,
                   ),
                 ),
               ],
@@ -764,20 +773,18 @@ class _HomeTabState extends ConsumerState<HomeTab> {
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 10),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: AppColors.white10,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: Colors.white.withOpacity(0.3),
-                ),
+                border: Border.all(color: AppColors.white20),
               ),
               child: const Center(
                 child: Text(
                   'START',
                   style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w900,
                     color: Colors.white,
-                    letterSpacing: 1.5,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 1,
                   ),
                 ),
               ),
