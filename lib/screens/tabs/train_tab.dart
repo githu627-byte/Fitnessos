@@ -129,9 +129,9 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
   // NEW: Voice coaching mute
   bool _isVoiceMuted = false;
 
-  // Inline weight input during rest
-  final TextEditingController _restWeightController = TextEditingController();
-  bool _weightSubmitted = false;
+  // Multi-set weight input (shown only on last set of exercise)
+  final List<TextEditingController> _setWeightControllers = [];
+  bool _weightsSubmitted = false;
 
   // HIIT/Circuit mode tracking
   bool _isCircuitMode = false;
@@ -153,7 +153,9 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
   @override
   void dispose() {
     WakelockPlus.disable(); // Safety: ensure wakelock is released
-    _restWeightController.dispose();
+    for (final c in _setWeightControllers) {
+      c.dispose();
+    }
     _restTimer?.cancel();
     _countdownTimer?.cancel();
     _setTimer?.cancel();
@@ -816,9 +818,12 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
     final exercise = _committedWorkout!.exercises[_currentExerciseIndex];
     final actualRestTime = exercise.restSeconds ?? 60;
 
-    // Reset inline weight input for this rest period
-    _restWeightController.clear();
-    _weightSubmitted = false;
+    // Reset weight input state
+    for (final c in _setWeightControllers) {
+      c.dispose();
+    }
+    _setWeightControllers.clear();
+    _weightsSubmitted = false;
 
     debugPrint('⏸️ Starting rest: ${actualRestTime}s (exercise.restSeconds: ${exercise.restSeconds})');
 
@@ -892,32 +897,43 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
     _endRest();
   }
   
-  /// Compact inline weight card — sits at top of rest screen
-  Widget _buildInlineWeightCard() {
+  /// Multi-set weight card — shown ONLY after the LAST set of an exercise
+  /// User enters weight for each set at once
+  Widget _buildMultiSetWeightCard() {
     if (_committedWorkout == null) return const SizedBox.shrink();
 
     final exercise = _committedWorkout!.exercises[_currentExerciseIndex];
-    final currentSet = _session?.currentSet ?? 1;
+    final totalSets = exercise.sets;
 
-    if (_weightSubmitted) {
-      // Show confirmed state — tiny green tick
+    // Initialize controllers if needed
+    if (_setWeightControllers.length != totalSets) {
+      for (final c in _setWeightControllers) {
+        c.dispose();
+      }
+      _setWeightControllers.clear();
+      for (int i = 0; i < totalSets; i++) {
+        _setWeightControllers.add(TextEditingController());
+      }
+    }
+
+    if (_weightsSubmitted) {
       return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 32),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
           color: AppColors.cyberLime.withOpacity(0.1),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(color: AppColors.cyberLime.withOpacity(0.3)),
         ),
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.check_circle, color: AppColors.cyberLime, size: 16),
-            const SizedBox(width: 8),
+            Icon(Icons.check_circle, color: AppColors.cyberLime, size: 16),
+            SizedBox(width: 8),
             Text(
-              '${_restWeightController.text} lbs logged',
-              style: const TextStyle(
+              'Weights logged',
+              style: TextStyle(
                 color: AppColors.cyberLime,
                 fontSize: 13,
                 fontWeight: FontWeight.w700,
@@ -929,139 +945,168 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
     }
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-      padding: const EdgeInsets.fromLTRB(16, 12, 8, 12),
+      margin: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.white5,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.white20),
+        border: Border.all(color: AppColors.white10),
       ),
-      child: Row(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          // Label
-          Expanded(
-            flex: 3,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  exercise.name.toUpperCase(),
-                  style: const TextStyle(
-                    color: AppColors.white40,
-                    fontSize: 9,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 0.5,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Text(
-                  'Set $currentSet weight',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
+          // Header
+          Text(
+            exercise.name.toUpperCase(),
+            style: const TextStyle(
+              color: AppColors.white40,
+              fontSize: 10,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 0.5,
             ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
+          const SizedBox(height: 10),
 
-          // Weight input field
-          Expanded(
-            flex: 3,
-            child: Container(
-              height: 42,
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: AppColors.white20),
-              ),
-              child: TextField(
-                controller: _restWeightController,
-                keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w900,
-                ),
-                decoration: InputDecoration(
-                  hintText: '0',
-                  hintStyle: TextStyle(
-                    color: AppColors.white20,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w900,
+          // Set rows
+          ...List.generate(totalSets, (i) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Row(
+                children: [
+                  // Set label
+                  SizedBox(
+                    width: 50,
+                    child: Text(
+                      'Set ${i + 1}',
+                      style: const TextStyle(
+                        color: AppColors.white50,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
                   ),
-                  suffixText: 'lbs',
-                  suffixStyle: const TextStyle(
-                    color: AppColors.white40,
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
+
+                  // Weight field
+                  Expanded(
+                    child: Container(
+                      height: 36,
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: AppColors.white20),
+                      ),
+                      child: TextField(
+                        controller: _setWeightControllers[i],
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w800,
+                        ),
+                        decoration: InputDecoration(
+                          hintText: '0',
+                          hintStyle: TextStyle(color: AppColors.white20, fontSize: 15),
+                          suffixText: 'lbs',
+                          suffixStyle: const TextStyle(color: AppColors.white30, fontSize: 10),
+                          border: InputBorder.none,
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                        ),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,1}')),
+                        ],
+                        // Auto-fill subsequent sets when first set is entered
+                        onChanged: (value) {
+                          if (i == 0 && value.isNotEmpty) {
+                            // Auto-fill empty subsequent sets with same weight
+                            for (int j = 1; j < totalSets; j++) {
+                              if (_setWeightControllers[j].text.isEmpty) {
+                                _setWeightControllers[j].text = value;
+                              }
+                            }
+                          }
+                        },
+                      ),
+                    ),
                   ),
-                  border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                ),
-                inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,1}')),
                 ],
               ),
-            ),
-          ),
+            );
+          }),
 
-          const SizedBox(width: 8),
+          const SizedBox(height: 4),
 
-          // Confirm tick button
-          GestureDetector(
-            onTap: () {
-              final weight = double.tryParse(_restWeightController.text);
-              if (weight != null && weight > 0) {
-                // Store weight for analytics
-                final exerciseId = exercise.id;
-                if (!_exerciseWeights.containsKey(exerciseId)) {
-                  _exerciseWeights[exerciseId] = [];
-                }
-                _exerciseWeights[exerciseId]!.add(weight);
+          // Confirm row
+          Row(
+            children: [
+              // Confirm all button
+              Expanded(
+                child: GestureDetector(
+                  onTap: () {
+                    final exerciseId = exercise.id;
+                    if (!_exerciseWeights.containsKey(exerciseId)) {
+                      _exerciseWeights[exerciseId] = [];
+                    }
+                    _exerciseWeights[exerciseId]!.clear();
 
-                setState(() => _weightSubmitted = true);
-                HapticFeedback.lightImpact();
+                    for (final c in _setWeightControllers) {
+                      final w = double.tryParse(c.text) ?? 0.0;
+                      _exerciseWeights[exerciseId]!.add(w);
+                    }
 
-                debugPrint('💪 Weight logged inline: $weight lbs for ${exercise.name} set $currentSet');
-              } else {
-                HapticFeedback.heavyImpact();
-              }
-            },
-            child: Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: AppColors.cyberLime,
-                borderRadius: BorderRadius.circular(10),
+                    setState(() => _weightsSubmitted = true);
+                    HapticFeedback.lightImpact();
+                    debugPrint('💪 All weights logged for ${exercise.name}: ${_exerciseWeights[exerciseId]}');
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    decoration: BoxDecoration(
+                      color: AppColors.cyberLime,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.check, color: Colors.black, size: 18),
+                        SizedBox(width: 6),
+                        Text(
+                          'LOG ALL',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 0.5,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-              child: const Icon(Icons.check, color: Colors.black, size: 22),
-            ),
-          ),
 
-          const SizedBox(width: 4),
+              const SizedBox(width: 8),
 
-          // Skip (X) button
-          GestureDetector(
-            onTap: () {
-              setState(() => _weightSubmitted = true);
-              _restWeightController.text = '—';
-              HapticFeedback.selectionClick();
-              debugPrint('⏭️ Weight skipped for this set');
-            },
-            child: Container(
-              width: 32,
-              height: 32,
-              decoration: BoxDecoration(
-                color: AppColors.white10,
-                borderRadius: BorderRadius.circular(8),
+              // Skip button
+              GestureDetector(
+                onTap: () {
+                  setState(() => _weightsSubmitted = true);
+                  HapticFeedback.selectionClick();
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                  decoration: BoxDecoration(
+                    color: AppColors.white10,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Text(
+                    'SKIP',
+                    style: TextStyle(color: AppColors.white40, fontSize: 12, fontWeight: FontWeight.w700),
+                  ),
+                ),
               ),
-              child: const Icon(Icons.close, color: AppColors.white40, size: 16),
-            ),
+            ],
           ),
         ],
       ),
@@ -2162,184 +2207,186 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
   }
 
   Widget _buildRestScreen() {
-    // Check if the session is complete (all sets done for current exercise)
-    // If session.isExerciseComplete is true, we've finished all sets and should show next exercise
-    // Otherwise, we're just resting between sets of the SAME exercise
     final isExerciseComplete = _session?.isExerciseComplete ?? false;
     final hasNextExercise = _currentExerciseIndex < (_committedWorkout?.exercises.length ?? 0) - 1;
     final showNextExercisePreview = isExerciseComplete && hasNextExercise;
 
+    // Only show weight card on LAST set (between-exercise rest)
+    final showWeightCard = _isBetweenExerciseRest;
+
     return Material(
-      child: Container(
-      color: Colors.black.withOpacity(0.95),
-      child: Stack(
-        children: [
-          // Main content — weight card at top, timer centered, buttons at bottom
-          SafeArea(
-            child: Column(
-              children: [
-                const SizedBox(height: 16),
-                // Inline weight card at top
-                _buildInlineWeightCard(),
-                // Push rest timer to center
-                const Spacer(),
-                // Show next exercise GIF if on last set
-                if (showNextExercisePreview && _committedWorkout != null) ...[
-                  const Text(
-                    'NEXT UP',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w900,
-                      color: AppColors.white40,
-                      letterSpacing: 2,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: ExerciseAnimationWidget(
-                      exerciseId: _committedWorkout!.exercises[_currentExerciseIndex + 1].id,
-                      size: 200,
-                      showWatermark: true,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    _committedWorkout!.exercises[_currentExerciseIndex + 1].name.toUpperCase(),
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w900,
-                      color: AppColors.cyberLime,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 12),
-                ],
-
-                const Text(
-                  'REST',
-                  style: TextStyle(fontSize: 48, fontWeight: FontWeight.w900, color: AppColors.white40),
-                ),
-                const SizedBox(height: 32),
-                Text(
-                  '$_restTimeRemaining',
-                  style: const TextStyle(
-                    fontSize: 140,
-                    fontWeight: FontWeight.w900,
-                    color: AppColors.cyberLime,
-                  ),
-                ),
-                const Spacer(),
-
-                // Quick Swap button
-                GestureDetector(
-                  onTap: () async {
-                    HapticFeedback.mediumImpact();
-                    await _showQuickSwapDuringRest();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [AppColors.cyberLime.withOpacity(0.8), AppColors.cyberLime],
-                      ),
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.cyberLime.withOpacity(0.3),
-                          blurRadius: 12,
-                          spreadRadius: 2,
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Icon(Icons.swap_horiz, color: Colors.black, size: 20),
-                        SizedBox(width: 8),
-                        Text(
-                          'QUICK SWAP',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 24),
-
-                GestureDetector(
-                  onTap: _skipRest,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                    decoration: BoxDecoration(
-                      color: AppColors.white10,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppColors.white20),
-                    ),
-                    child: const Text(
-                      'SKIP REST',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 40),
-              ],
-            ),
-          ),
-          
-          // Finish workout button - top right
-          Positioned(
-            top: 60,
-            right: 20,
-            child: GestureDetector(
-              onTap: _completeWorkout,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                decoration: BoxDecoration(
-                  color: AppColors.cyberLime.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: AppColors.cyberLime.withOpacity(0.4),
-                    width: 1,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.cyberLime.withOpacity(0.2),
-                      blurRadius: 8,
-                      spreadRadius: 1,
-                    ),
-                  ],
-                ),
-                child: const Row(
-                  mainAxisSize: MainAxisSize.min,
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: SafeArea(
+          child: Column(
+            children: [
+              // ─── TOP BAR: Weight confirmed + FINISH ───
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
-                      Icons.check_circle,
-                      color: AppColors.cyberLime,
-                      size: 18,
-                    ),
-                    SizedBox(width: 6),
-                    Text(
-                      'FINISH',
-                      style: TextStyle(
-                        color: AppColors.cyberLime,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.5,
+                    // Left: empty or weight confirmed badge
+                    if (showWeightCard && _weightsSubmitted)
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: AppColors.cyberLime.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: AppColors.cyberLime.withOpacity(0.3)),
+                        ),
+                        child: const Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.check_circle, color: AppColors.cyberLime, size: 14),
+                            SizedBox(width: 6),
+                            Text('Weights logged', style: TextStyle(color: AppColors.cyberLime, fontSize: 11, fontWeight: FontWeight.w700)),
+                          ],
+                        ),
+                      )
+                    else
+                      const SizedBox(width: 48),
+
+                    // Right: FINISH button
+                    GestureDetector(
+                      onTap: _completeWorkout,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: AppColors.cyberLime.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: AppColors.cyberLime.withOpacity(0.4)),
+                        ),
+                        child: const Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.check_circle, color: AppColors.cyberLime, size: 18),
+                            SizedBox(width: 6),
+                            Text('FINISH', style: TextStyle(color: AppColors.cyberLime, fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 0.5)),
+                          ],
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
+
+              // ─── WEIGHT CARD (only on last set of exercise) ───
+              if (showWeightCard && !_weightsSubmitted) ...[
+                const SizedBox(height: 12),
+                _buildMultiSetWeightCard(),
+              ],
+
+              // ─── CENTERED REST CONTENT ───
+              const Spacer(),
+
+              // REST label
+              const Text(
+                'REST',
+                style: TextStyle(
+                  color: AppColors.white40,
+                  fontSize: 32,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 4,
+                ),
+                textAlign: TextAlign.center,
+              ),
+
+              const SizedBox(height: 24),
+
+              // Big countdown number — centered
+              Text(
+                '$_restTimeRemaining',
+                style: TextStyle(
+                  color: AppColors.cyberLime,
+                  fontSize: 120,
+                  fontWeight: FontWeight.w900,
+                  height: 1.0,
+                  shadows: [
+                    Shadow(
+                      color: AppColors.cyberLime.withOpacity(0.5),
+                      blurRadius: 40,
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.center,
+              ),
+
+              // Next exercise preview (only if between exercises)
+              if (showNextExercisePreview) ...[
+                const SizedBox(height: 16),
+                Text(
+                  'NEXT: ${_committedWorkout!.exercises[_currentExerciseIndex + 1].name.toUpperCase()}',
+                  style: const TextStyle(
+                    color: AppColors.white50,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.5,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+
+              const Spacer(),
+
+              // ─── BOTTOM BUTTONS ───
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
+                child: Column(
+                  children: [
+                    // Quick Swap
+                    GestureDetector(
+                      onTap: () async {
+                        HapticFeedback.mediumImpact();
+                        await _showQuickSwapDuringRest();
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [AppColors.cyberLime.withOpacity(0.8), AppColors.cyberLime],
+                          ),
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.swap_horiz, color: Colors.black, size: 18),
+                            SizedBox(width: 8),
+                            Text('QUICK SWAP', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: Colors.black)),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    // Skip Rest
+                    GestureDetector(
+                      onTap: _skipRest,
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        decoration: BoxDecoration(
+                          color: AppColors.white10,
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(color: AppColors.white20),
+                        ),
+                        child: const Text(
+                          'SKIP REST',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
-    ),
     );
   }
 
