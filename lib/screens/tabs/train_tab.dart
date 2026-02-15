@@ -1732,13 +1732,23 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
           // Skeletal-PT Logo at top (VISIBLE when UI hidden) - BIG with no background
           if (_isUIHidden)
             Positioned(
-              top: 10,
-              left: 20,
-              right: 20,
-              child: Image.asset(
-                'assets/images/logo/skeletal_logo.png',
-                height: 220,
-                fit: BoxFit.contain,
+              top: 16,
+              left: 12,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(
+                    color: AppColors.cyberLime.withOpacity(0.3),
+                    width: 1,
+                  ),
+                ),
+                child: Image.asset(
+                  'assets/images/logo/skeletal_logo.png',
+                  height: 52,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
 

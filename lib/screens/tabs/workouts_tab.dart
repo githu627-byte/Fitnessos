@@ -113,15 +113,17 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                       child: Row(
                         children: [
                           Flexible(
-                            flex: 2,
+                            flex: 1,
                             child: _buildToggleButton('GYM', 'gym', Icons.fitness_center),
                           ),
+                          const SizedBox(width: 4),
                           Flexible(
-                            flex: 2,
+                            flex: 1,
                             child: _buildToggleButton('HOME', 'home', Icons.home),
                           ),
+                          const SizedBox(width: 4),
                           Flexible(
-                            flex: 3,
+                            flex: 1,
                             child: _buildToggleButton('CUSTOM', 'custom', Icons.edit_note),
                           ),
                         ],
@@ -167,32 +169,6 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
             ),
           ),
 
-          // AI + Manual subtitle
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(24, 0, 20, 8),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.auto_awesome,
-                    size: 13,
-                    color: AppColors.cyberLime.withOpacity(0.8),
-                  ),
-                  const SizedBox(width: 6),
-                  Text(
-                    'AI Tracked & Manual Logging Available',
-                    style: TextStyle(
-                      fontSize: 11.5,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.white50,
-                      letterSpacing: 0.2,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-
           // Category Cards
           SliverPadding(
             padding: const EdgeInsets.only(left: 20, right: 20, bottom: 100),
@@ -231,44 +207,23 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
           child: Row(
             children: [
               Flexible(
-                flex: 2,
+                flex: 1,
                 child: _buildToggleButton('GYM', 'gym', Icons.fitness_center),
               ),
+              const SizedBox(width: 4),
               Flexible(
-                flex: 2,
+                flex: 1,
                 child: _buildToggleButton('HOME', 'home', Icons.home),
               ),
+              const SizedBox(width: 4),
               Flexible(
-                flex: 3,
+                flex: 1,
                 child: _buildToggleButton('CUSTOM', 'custom', Icons.edit_note),
               ),
             ],
           ),
         ),
-        const SizedBox(height: 8),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Row(
-            children: [
-              Icon(
-                Icons.auto_awesome,
-                size: 13,
-                color: AppColors.cyberLime.withOpacity(0.8),
-              ),
-              const SizedBox(width: 6),
-              Text(
-                'AI Tracked & Manual Logging Available',
-                style: TextStyle(
-                  fontSize: 11.5,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.white50,
-                  letterSpacing: 0.2,
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 16),
       ],
     );
   }
@@ -276,10 +231,9 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
 
   Widget _buildToggleButton(String label, String mode, IconData icon) {
     final isActive = _selectedMode == mode;
-    
+
     return GestureDetector(
       onTap: () {
-        // Switch mode (same behavior for all modes now)
         setState(() {
           _selectedMode = mode;
           _selectedCategory = null;
@@ -287,19 +241,10 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
         HapticFeedback.lightImpact();
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 16),
+        padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
           color: isActive ? AppColors.cyberLime : Colors.transparent,
           borderRadius: BorderRadius.circular(12),
-          boxShadow: isActive
-              ? [
-                  BoxShadow(
-                    color: AppColors.cyberLime.withOpacity(0.4),
-                    blurRadius: 20,
-                    spreadRadius: 0,
-                  ),
-                ]
-              : null,
         ),
         child: Center(
           child: Row(
@@ -307,17 +252,17 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
             children: [
               Icon(
                 icon,
-                color: isActive ? Colors.black : AppColors.white60,
-                size: 18,
+                color: isActive ? Colors.black : AppColors.white50,
+                size: 16,
               ),
               const SizedBox(width: 6),
               Text(
                 label,
                 style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 1.2,
-                  color: isActive ? Colors.black : AppColors.white60,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 0.8,
+                  color: isActive ? Colors.black : AppColors.white50,
                 ),
               ),
             ],
