@@ -27,7 +27,6 @@ import '../home_screen.dart' show TabNavigator;
 import '../tabs/settings_tab.dart';
 import '../../features/form_checking/form_check_exercise_picker_screen.dart';
 import '../tabs/train_tab.dart';
-import '../../providers/selected_card_slot_provider.dart';
 import '../training_mode_selection_screen.dart';
 import '../manual_training_screen.dart';
 import '../hevy_manual_workout_screen.dart';
@@ -286,8 +285,160 @@ class _HomeTabState extends ConsumerState<HomeTab> {
 
                                   const SizedBox(height: 12),
 
-                                  // 3 HERO WORKOUT CARDS
-                                  _build3HeroCards(context, ref),
+                                  // Hero Workout Card
+                                  _buildHeroWorkoutCard(context, ref, displayWorkout),
+                                ],
+                              ),
+                            ),
+
+                            const SizedBox(height: 16),
+
+                            // Accessory workout cards
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        HapticFeedback.mediumImpact();
+                                        final navigator = context.findAncestorWidgetOfExactType<TabNavigator>();
+                                        if (navigator != null) {
+                                          (navigator as dynamic).changeTab(1);
+                                        }
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.all(20),
+                                        decoration: BoxDecoration(
+                                          gradient: const LinearGradient(
+                                            colors: [Color(0xFF0D4F4F), Color(0xFF0A3D3D)],
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight,
+                                          ),
+                                          borderRadius: BorderRadius.circular(20),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black.withOpacity(0.3),
+                                              blurRadius: 12,
+                                              offset: const Offset(0, 4),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'CHEST',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 8),
+                                            Text(
+                                              '4 exercises\n13 sets',
+                                              style: TextStyle(
+                                                color: Colors.white.withOpacity(0.7),
+                                                fontSize: 12,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 16),
+                                            Container(
+                                              width: double.infinity,
+                                              padding: const EdgeInsets.symmetric(vertical: 10),
+                                              decoration: BoxDecoration(
+                                                color: Colors.white.withOpacity(0.15),
+                                                borderRadius: BorderRadius.circular(12),
+                                              ),
+                                              child: const Center(
+                                                child: Text(
+                                                  'START',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 13,
+                                                    fontWeight: FontWeight.w800,
+                                                    letterSpacing: 1,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 12),
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        HapticFeedback.mediumImpact();
+                                        final navigator = context.findAncestorWidgetOfExactType<TabNavigator>();
+                                        if (navigator != null) {
+                                          (navigator as dynamic).changeTab(1);
+                                        }
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.all(20),
+                                        decoration: BoxDecoration(
+                                          gradient: const LinearGradient(
+                                            colors: [Color(0xFF0D4F4F), Color(0xFF0A3D3D)],
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight,
+                                          ),
+                                          borderRadius: BorderRadius.circular(20),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black.withOpacity(0.3),
+                                              blurRadius: 12,
+                                              offset: const Offset(0, 4),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'UPPER BODY',
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w900,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 8),
+                                            Text(
+                                              '7 exercises\n23 sets',
+                                              style: TextStyle(
+                                                color: Colors.white.withOpacity(0.7),
+                                                fontSize: 12,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 16),
+                                            Container(
+                                              width: double.infinity,
+                                              padding: const EdgeInsets.symmetric(vertical: 10),
+                                              decoration: BoxDecoration(
+                                                color: Colors.white.withOpacity(0.15),
+                                                borderRadius: BorderRadius.circular(12),
+                                              ),
+                                              child: const Center(
+                                                child: Text(
+                                                  'START',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 13,
+                                                    fontWeight: FontWeight.w800,
+                                                    letterSpacing: 1,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -525,275 +676,6 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     );
   }
 
-  // ═══════════════════════════════════════════════════════════════════════════
-  // 3 HERO CARDS LAYOUT
-  // ═══════════════════════════════════════════════════════════════════════════
-  Widget _build3HeroCards(BuildContext context, WidgetRef ref) {
-    final allSchedules = ref.watch(workoutSchedulesProvider);
-
-    // Filter schedules for selected date by priority
-    final mainWorkout = allSchedules.where((s) {
-      return s.scheduledDate.year == _selectedDate.year &&
-             s.scheduledDate.month == _selectedDate.month &&
-             s.scheduledDate.day == _selectedDate.day &&
-             s.priority == 'main';
-    }).firstOrNull;
-
-    final secondaryWorkout = allSchedules.where((s) {
-      return s.scheduledDate.year == _selectedDate.year &&
-             s.scheduledDate.month == _selectedDate.month &&
-             s.scheduledDate.day == _selectedDate.day &&
-             s.priority == 'secondary';
-    }).firstOrNull;
-
-    final tertiaryWorkout = allSchedules.where((s) {
-      return s.scheduledDate.year == _selectedDate.year &&
-             s.scheduledDate.month == _selectedDate.month &&
-             s.scheduledDate.day == _selectedDate.day &&
-             s.priority == 'tertiary';
-    }).firstOrNull;
-
-    // For backward compatibility: if no main schedule found, check committed workout
-    final isToday = _selectedDate.year == DateTime.now().year &&
-                    _selectedDate.month == DateTime.now().month &&
-                    _selectedDate.day == DateTime.now().day;
-    final committedWorkout = ref.watch(committedWorkoutProvider);
-
-    // Display the main workout: prefer schedule, fall back to committed workout for today
-    final mainDisplay = mainWorkout ?? (isToday ? committedWorkout : null);
-
-    return Column(
-      children: [
-        // CARD 1 - MAIN (Full width - existing code)
-        _buildHeroWorkoutCard(context, ref, mainDisplay),
-
-        const SizedBox(height: 16),
-
-        // CARDS 2 & 3 - Side by side
-        Row(
-          children: [
-            // CARD 2 - SECONDARY
-            Expanded(
-              child: _buildSmallHeroCard(
-                context: context,
-                ref: ref,
-                workout: secondaryWorkout,
-                priority: 'secondary',
-                emptyTitle: 'ACCESSORY',
-                emptyIcon: Icons.bolt,
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    AppColors.cyberLime.withOpacity(0.15),
-                    AppColors.cyberLime.withOpacity(0.05),
-                  ],
-                ),
-              ),
-            ),
-
-            const SizedBox(width: 12),
-
-            // CARD 3 - TERTIARY
-            Expanded(
-              child: _buildSmallHeroCard(
-                context: context,
-                ref: ref,
-                workout: tertiaryWorkout,
-                priority: 'tertiary',
-                emptyTitle: 'STRETCHING',
-                emptyIcon: Icons.self_improvement,
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    AppColors.cyberLime.withOpacity(0.15),
-                    AppColors.cyberLime.withOpacity(0.05),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSmallHeroCard({
-    required BuildContext context,
-    required WidgetRef ref,
-    required WorkoutSchedule? workout,
-    required String priority,
-    required String emptyTitle,
-    required IconData emptyIcon,
-    required Gradient gradient,
-  }) {
-    if (workout == null) {
-      // EMPTY CARD — informational only, no tap action
-      return Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: AppColors.white5,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: AppColors.white10, width: 1),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Icon
-            Container(
-              width: 44,
-              height: 44,
-              decoration: BoxDecoration(
-                color: AppColors.white10,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Icon(emptyIcon, color: AppColors.cyberLime, size: 24),
-            ),
-            const SizedBox(height: 14),
-            // Title
-            Text(
-              emptyTitle,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 15,
-                fontWeight: FontWeight.w900,
-                letterSpacing: 0.5,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              'Add via workout',
-              style: TextStyle(
-                color: AppColors.white40,
-                fontSize: 11,
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-
-    // FILLED CARD
-    // Get workout details
-    final WorkoutPreset? workoutPreset = _findWorkoutById(workout.workoutId);
-    final exerciseCount = workoutPreset?.exercises.where((e) => e.included).length ?? 0;
-    final totalSets = workoutPreset?.totalSets ?? 0;
-
-    return GestureDetector(
-      onTap: () async {
-        HapticFeedback.mediumImpact();
-        // Build LockedWorkout from schedule data
-        if (workoutPreset != null) {
-          final lockedWorkout = LockedWorkout.fromPreset(workoutPreset);
-
-          final result = await Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => TrainingModeSelectionScreen(workout: lockedWorkout),
-              fullscreenDialog: true,
-            ),
-          );
-
-          // Handle mode selection result
-          if (result == 'auto') {
-            final navigator = context.findAncestorWidgetOfExactType<TabNavigator>();
-            if (navigator != null) {
-              (navigator as dynamic).changeTab(2); // Train tab
-            }
-          } else if (result == 'manual') {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ManualTrainingScreen(workout: lockedWorkout),
-              ),
-            );
-          } else if (result == 'hevy_manual') {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => HevyManualWorkoutScreen(workout: lockedWorkout),
-              ),
-            );
-          }
-        }
-      },
-      child: Container(
-        height: 180,
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          gradient: gradient,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: AppColors.cyberLime.withOpacity(0.2),
-            width: 1,
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // Workout name
-            Text(
-              workout.workoutName.toUpperCase(),
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w900,
-                color: Colors.white,
-                letterSpacing: 1,
-              ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-
-            // Stats
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '$exerciseCount exercises',
-                  style: const TextStyle(
-                    fontSize: 11,
-                    color: AppColors.white60,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  '$totalSets sets',
-                  style: const TextStyle(
-                    fontSize: 11,
-                    color: AppColors.white60,
-                  ),
-                ),
-              ],
-            ),
-
-            // START button (smaller)
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              decoration: BoxDecoration(
-                color: AppColors.white10,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: AppColors.white20),
-              ),
-              child: const Center(
-                child: Text(
-                  'START',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 1,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   // ═══════════════════════════════════════════════════════════════════════════
   // HERO WORKOUT CARD (Glassmorphism design inspired by FutureYou)
