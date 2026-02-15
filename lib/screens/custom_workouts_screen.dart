@@ -614,30 +614,40 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
       }
     }
 
-    // Commit the workout
-    await ref.read(committedWorkoutProvider.notifier).commitWorkout(customPreset);
+    // ═══════════════════════════════════════════════════════════════════════════
+    // Ask user which card to commit to (same as workouts_tab does)
+    // ═══════════════════════════════════════════════════════════════════════════
+    if (!mounted) return;
 
-    // ═══════════════════════════════════════════════════════════════════════════
-    // FIX: Create a schedule for TODAY so the hero card shows the workout
-    // ═══════════════════════════════════════════════════════════════════════════
+    // For manual workouts, only show card 2 and 3 (no main/hero)
+    final selectedSlot = await _showSlotSelectionModal(isManual: _workoutMode == 'manual');
+    if (selectedSlot == null) return; // User cancelled
+
+    // Only commit to committedWorkoutProvider if user chose 'main' (hero card)
+    if (selectedSlot == 'main') {
+      await ref.read(committedWorkoutProvider.notifier).commitWorkout(customPreset);
+    }
+
+    // Create schedule for TODAY with the correct priority
     final now = DateTime.now();
     final todayDate = DateTime(now.year, now.month, now.day);
 
-    // Check if there's already a schedule for today
+    // Check if there's already a schedule for today with this priority
     final allSchedules = ref.read(workoutSchedulesProvider);
     WorkoutSchedule? existingTodaySchedule;
     for (final s in allSchedules) {
       if (s.scheduledDate.year == todayDate.year &&
           s.scheduledDate.month == todayDate.month &&
-          s.scheduledDate.day == todayDate.day) {
+          s.scheduledDate.day == todayDate.day &&
+          s.priority == selectedSlot) {
         existingTodaySchedule = s;
         break;
       }
     }
 
-    // Create or update schedule for today
+    // Create schedule with correct priority
     final todaySchedule = WorkoutSchedule(
-      id: existingTodaySchedule?.id ?? '${DateTime.now().millisecondsSinceEpoch}_${todayDate.millisecondsSinceEpoch}',
+      id: existingTodaySchedule?.id ?? '${DateTime.now().millisecondsSinceEpoch}_${todayDate.millisecondsSinceEpoch}_$selectedSlot',
       workoutId: customPreset.id,
       workoutName: customPreset.name,
       scheduledDate: todayDate,
@@ -645,12 +655,12 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
       hasAlarm: existingTodaySchedule?.hasAlarm ?? false,
       createdAt: existingTodaySchedule?.createdAt ?? DateTime.now(),
       repeatDays: existingTodaySchedule?.repeatDays ?? [],
+      priority: selectedSlot, // ← THIS IS THE KEY FIX
     );
 
     // Save schedule for today
     await ref.read(workoutSchedulesProvider.notifier).saveSchedule(todaySchedule);
-    debugPrint('📅 Auto-created schedule for TODAY when committing custom: ${customPreset.name}');
-    // ═══════════════════════════════════════════════════════════════════════════
+    debugPrint('📅 Custom workout committed to $selectedSlot: ${customPreset.name}');
 
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -682,6 +692,137 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
       // Navigate back with success = true, so workouts tab shows custom workouts list
       Navigator.of(context).pop(true);
     }
+  }
+
+  Future<String?> _showSlotSelectionModal({bool isManual = false}) async {
+    return showModalBottomSheet<String>(
+      context: context,
+      backgroundColor: Colors.black,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) {
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'COMMIT TO WHICH CARD?',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                    letterSpacing: 1.5,
+                  ),
+                ),
+
+                const SizedBox(height: 24),
+
+                // Card 1 - Main (ONLY for AI-tracked, hidden for manual)
+                if (!isManual) ...[
+                  _buildSlotOption(
+                    context: context,
+                    slot: 'main',
+                    icon: Icons.fitness_center,
+                    title: 'MAIN WORKOUT',
+                    subtitle: 'Your primary training session',
+                    color: const Color(0xFF0EA5E9),
+                  ),
+                  const SizedBox(height: 12),
+                ],
+
+                // Card 2 - Secondary
+                _buildSlotOption(
+                  context: context,
+                  slot: 'secondary',
+                  icon: Icons.bolt,
+                  title: 'ACCESSORY',
+                  subtitle: 'Secondary exercises',
+                  color: const Color(0xFF0D4F4F),
+                ),
+
+                const SizedBox(height: 12),
+
+                // Card 3 - Tertiary
+                _buildSlotOption(
+                  context: context,
+                  slot: 'tertiary',
+                  icon: Icons.self_improvement,
+                  title: 'STRETCHING',
+                  subtitle: 'Mobility & recovery',
+                  color: const Color(0xFF0D4F4F),
+                ),
+
+                const SizedBox(height: 16),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildSlotOption({
+    required BuildContext context,
+    required String slot,
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required Color color,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        HapticFeedback.lightImpact();
+        Navigator.of(context).pop(slot);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: color.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: color.withOpacity(0.4)),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.3),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, color: Colors.white, size: 24),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    subtitle,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: AppColors.white60,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Icon(Icons.arrow_forward_ios, color: AppColors.white40, size: 16),
+          ],
+        ),
+      ),
+    );
   }
 
   Future<bool?> _showSaveDialog() async {
