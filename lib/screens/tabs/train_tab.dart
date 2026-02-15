@@ -1571,14 +1571,12 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
           if (_isUIHidden)
             Positioned(
               top: 30,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: Image.asset(
-                  'assets/images/logo/skeletal_logo.png',
-                  height: 80,
-                  fit: BoxFit.contain,
-                ),
+              left: 20,
+              right: 20,
+              child: Image.asset(
+                'assets/images/logo/skeletal_logo.png',
+                height: 150,
+                fit: BoxFit.contain,
               ),
             ),
 
