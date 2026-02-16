@@ -12,6 +12,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'utils/app_theme.dart';
 import 'screens/home_screen.dart';
 import 'screens/onboarding/v2_onboarding_main.dart';
+import 'screens/onboarding/v3_onboarding_main.dart';
 import 'screens/auth/sign_in_screen.dart';
 import 'services/workout_alarm_service.dart';
 import 'providers/user_provider.dart';
@@ -84,7 +85,7 @@ class MyApp extends ConsumerWidget {
       home: const AppInitializer(), // Check onboarding state on startup
       routes: {
         '/home': (context) => const HomeScreen(),
-        '/onboarding': (context) => const V2OnboardingMain(),
+        '/onboarding': (context) => const V3OnboardingMain(),
         '/signin': (context) => const SignInScreen(),
       },
     );
@@ -107,21 +108,14 @@ class _AppInitializerState extends ConsumerState<AppInitializer> {
   }
 
   Future<void> _checkOnboardingStatus() async {
-    // TEMPORARILY BYPASSING ONBOARDING FOR TESTING
-    // Onboarding code kept intact below - uncomment when ready
-    
-    // final storage = await ref.read(storageServiceProvider.future);
-    // final hasCompletedOnboarding = storage.hasCompletedOnboarding;
-    // if (!mounted) return;
-    // if (hasCompletedOnboarding) {
-    //   Navigator.of(context).pushReplacementNamed('/home');
-    // } else {
-    //   Navigator.of(context).pushReplacementNamed('/onboarding');
-    // }
-    
-    // TEMPORARY: Go straight to home screen for testing
+    final storage = await ref.read(storageServiceProvider.future);
+    final hasCompletedOnboarding = storage.hasCompletedOnboarding;
     if (!mounted) return;
-    Navigator.of(context).pushReplacementNamed('/home');
+    if (hasCompletedOnboarding) {
+      Navigator.of(context).pushReplacementNamed('/home');
+    } else {
+      Navigator.of(context).pushReplacementNamed('/onboarding');
+    }
   }
 
   @override

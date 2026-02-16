@@ -34,6 +34,18 @@ class WorkoutSchedulesNotifier extends StateNotifier<List<WorkoutSchedule>> {
       debugPrint('   - Time: ${schedule.scheduledTime ?? "N/A"}');
       debugPrint('   - Repeat Days: ${schedule.repeatDays}');
       
+      // Conflict resolution: remove existing schedules on same date with same priority
+      final dateOnly = DateTime(schedule.scheduledDate.year, schedule.scheduledDate.month, schedule.scheduledDate.day);
+      final conflicts = _schedulesBox.values.where((existing) {
+        final existingDate = DateTime(existing.scheduledDate.year, existing.scheduledDate.month, existing.scheduledDate.day);
+        return existingDate == dateOnly && existing.priority == schedule.priority && existing.id != schedule.id;
+      }).toList();
+      for (final conflict in conflicts) {
+        debugPrint('   🔄 Removing conflicting schedule: ${conflict.workoutName} (${conflict.id})');
+        await WorkoutAlarmService.cancelAlarm(conflict.id);
+        await _schedulesBox.delete(conflict.id);
+      }
+
       // Save to Hive
       await _schedulesBox.put(schedule.id, schedule);
       debugPrint('   ✅ Schedule saved to Hive');
