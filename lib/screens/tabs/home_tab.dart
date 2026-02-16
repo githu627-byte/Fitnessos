@@ -346,28 +346,18 @@ class _HomeTabState extends ConsumerState<HomeTab> {
   // HEADER COMPONENT
   // ═══════════════════════════════════════════════════════════════════════════
   Widget _buildHeader(BuildContext context, WorkoutStats stats) {
-    return Container(
-      color: AppColors.cyberLime.withOpacity(0.10), // Cyber lime tint
-      padding: const EdgeInsets.fromLTRB(0, 8, 12, 8),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 8, 16, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // New unified logo (no background, all-in-one) - spans from left edge to streak
+          // Logo — clean, no background, directly on black
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 4),
-              child: ShaderMask(
-                shaderCallback: (bounds) => const LinearGradient(
-                  colors: [Colors.white, Colors.white],
-                ).createShader(bounds),
-                blendMode: BlendMode.srcATop,
-                child: Image.asset(
-                  'assets/images/logo/skeletal_logo.png',
-                  height: 52,
-                  fit: BoxFit.contain,
-                  alignment: Alignment.centerLeft,
-                ),
-              ),
+            child: Image.asset(
+              'assets/images/logo/skeletal_logo.png',
+              height: 42,
+              fit: BoxFit.contain,
+              alignment: Alignment.centerLeft,
             ),
           ),
           
@@ -661,15 +651,30 @@ class _HomeTabState extends ConsumerState<HomeTab> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Icon
-            Container(
-              width: 44,
-              height: 44,
-              decoration: BoxDecoration(
-                color: AppColors.white10,
-                borderRadius: BorderRadius.circular(12),
+            // Icon — neon skeleton icon with fallback
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                _getHeroCardIcon(priority),
+                width: 40,
+                height: 40,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      color: AppColors.white10,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Icon(
+                      _getHeroCardFallbackIcon(priority),
+                      color: AppColors.cyberLime,
+                      size: 24,
+                    ),
+                  );
+                },
               ),
-              child: Icon(emptyIcon, color: AppColors.cyberLime, size: 24),
             ),
             const SizedBox(height: 14),
             // Title
@@ -766,28 +771,58 @@ class _HomeTabState extends ConsumerState<HomeTab> {
         height: 180,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          gradient: gradient,
+          color: AppColors.white5,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: AppColors.cyberLime.withOpacity(0.2),
-            width: 1,
+            width: 1.5,
           ),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.cyberLime.withOpacity(0.05),
+              blurRadius: 12,
+              spreadRadius: 0,
+            ),
+          ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // Workout name
-            Text(
-              workout.workoutName.toUpperCase(),
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w900,
-                color: Colors.white,
-                letterSpacing: 1,
-              ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+            // Icon + Workout name
+            Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    _getHeroCardIcon(priority),
+                    width: 40,
+                    height: 40,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Icon(
+                        _getHeroCardFallbackIcon(priority),
+                        color: AppColors.cyberLime,
+                        size: 20,
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    workout.workoutName.toUpperCase(),
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.white,
+                      letterSpacing: 0.5,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
             ),
 
             // Stats
@@ -964,7 +999,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Header: Workout Name + Streak
+                  // Header: Icon + Workout Name + Streak
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -972,14 +1007,39 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              workoutName.toUpperCase(),
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w900,
-                                letterSpacing: 1,
-                              ),
+                            Row(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    _getHeroCardIcon('main'),
+                                    width: 40,
+                                    height: 40,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Icon(
+                                        _getHeroCardFallbackIcon('main'),
+                                        color: AppColors.cyberLime,
+                                        size: 20,
+                                      );
+                                    },
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: Text(
+                                    workoutName.toUpperCase(),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w900,
+                                      letterSpacing: 1,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
                             ),
                             const SizedBox(height: 4),
                             Text(
@@ -2378,6 +2438,34 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     {'days': 1000, 'emoji': '🌠', 'title': 'Immortal', 'color': Color(0xFFB7FF00)},
     {'days': 1500, 'emoji': '⭐', 'title': 'Transcendent', 'color': Color(0xFFFFD60A)},
   ];
+
+  /// Returns the neon skeleton icon path for a hero card slot type
+  String _getHeroCardIcon(String slotType) {
+    switch (slotType) {
+      case 'main':
+        return 'assets/images/icons/icon_muscle_splits.png';
+      case 'secondary':
+        return 'assets/images/icons/icon_gym_circuits.png';
+      case 'tertiary':
+        return 'assets/images/icons/icon_bodyweight.png';
+      default:
+        return 'assets/images/icons/icon_muscle_splits.png';
+    }
+  }
+
+  /// Returns the fallback Material icon for a hero card slot type
+  IconData _getHeroCardFallbackIcon(String slotType) {
+    switch (slotType) {
+      case 'main':
+        return Icons.fitness_center;
+      case 'secondary':
+        return Icons.bolt;
+      case 'tertiary':
+        return Icons.self_improvement;
+      default:
+        return Icons.fitness_center;
+    }
+  }
 
   /// Helper method to find workout preset by ID
   WorkoutPreset? _findWorkoutById(String workoutId) {
