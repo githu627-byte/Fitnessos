@@ -9,9 +9,9 @@ import '../utils/app_colors.dart';
 /// Everything else is dimmed to near-invisible.
 ///
 /// Usage:
-///   BodyPartIcon(bodyPart: 'chest', size: 52)
-///   BodyPartIcon(bodyPart: 'glutes', size: 52, highlightColor: Color(0xFFEC4899))
-///   BodyPartIcon(bodyPart: 'full_body', size: 52) // Everything lit
+///   BodyPartIcon(bodyPart: 'chest', size: 80)
+///   BodyPartIcon(bodyPart: 'glutes', size: 80, highlightColor: Color(0xFFEC4899))
+///   BodyPartIcon(bodyPart: 'full_body', size: 80) // Everything lit
 class BodyPartIcon extends StatefulWidget {
   final String bodyPart;
   final double size;
@@ -23,7 +23,7 @@ class BodyPartIcon extends StatefulWidget {
   const BodyPartIcon({
     super.key,
     required this.bodyPart,
-    this.size = 52,
+    this.size = 80,
     this.highlightColor = AppColors.cyberLime,
     this.dimColor = const Color(0x0FFFFFFF), // rgba(255,255,255,0.06)
     this.gender = 'male',
@@ -98,56 +98,70 @@ class _BodyPartIconState extends State<BodyPartIcon> {
   }
 
   /// Colorize the SVG:
-  /// Step 1: Replace ALL fill colors with dim color
+  /// Step 1: Nuclear dim — replace ALL colors with near-black
   /// Step 2: Re-color ONLY the target muscle IDs with highlightColor
   String _colorize(String svg, bool isFront) {
     final targetMuscleIds = _getTargetMuscleIds(isFront);
     final highlightHex = _colorToHex(widget.highlightColor);
-    final dimHex = _colorToHex(widget.dimColor);
-    final outlineDimHex = _colorToHex(const Color(0x1AFFFFFF)); // rgba(255,255,255,0.10)
+
+    // ═══════════════════════════════════════════════════════════════════
+    // STEP 1: DIM ENTIRE SVG
+    // Replace ALL color values with dim grey - this catches everything:
+    // skin, outlines, muscles, gradients, strokes, EVERYTHING
+    // ═══════════════════════════════════════════════════════════════════
 
     String result = svg;
 
-    // Step 1: Dim everything — replace ALL fill colors
-    result = result.replaceAllMapped(
-      RegExp(r'fill="(?!none)(?!url)[^"]*"'),
-      (match) => 'fill="$outlineDimHex"',
-    );
+    // Dim color for body silhouette (very subtle, barely visible)
+    const dimFill = '#1A1A1A';      // Near-black fill for body shape
+    const dimStroke = '#222222';     // Very dark stroke for outlines
+
+    // Replace ALL hex colors in fill attributes
+    result = result.replaceAll(RegExp(r'fill="#[0-9A-Fa-f]{3,8}"'), 'fill="$dimFill"');
+
+    // Replace ALL rgb/rgba fills
+    result = result.replaceAll(RegExp(r'fill="rgb\([^)]+\)"'), 'fill="$dimFill"');
+    result = result.replaceAll(RegExp(r'fill="rgba\([^)]+\)"'), 'fill="$dimFill"');
 
     // Replace gradient stop colors
-    result = result.replaceAllMapped(
-      RegExp(r'stop-color="[^"]*"'),
-      (match) => 'stop-color="$outlineDimHex"',
-    );
+    result = result.replaceAll(RegExp(r'stop-color:#[0-9A-Fa-f]{3,8}'), 'stop-color:$dimFill');
+    result = result.replaceAll(RegExp(r'stop-color="#[0-9A-Fa-f]{3,8}"'), 'stop-color="$dimFill"');
 
-    // Dim stroke colors
-    result = result.replaceAllMapped(
-      RegExp(r'stroke="(?!none)[^"]*"'),
-      (match) => 'stroke="$dimHex"',
-    );
+    // Replace stroke colors
+    result = result.replaceAll(RegExp(r'stroke="#[0-9A-Fa-f]{3,8}"'), 'stroke="$dimStroke"');
+    result = result.replaceAll(RegExp(r'stroke="rgb\([^)]+\)"'), 'stroke="$dimStroke"');
 
-    // Step 2: Highlight target muscles
-    for (final id in targetMuscleIds) {
-      result = _replaceMuscleColor(result, id, highlightHex);
+    // Also handle style="fill:#XXXXX" inline styles
+    result = result.replaceAll(RegExp(r'fill:\s*#[0-9A-Fa-f]{3,8}'), 'fill:$dimFill');
+    result = result.replaceAll(RegExp(r'stroke:\s*#[0-9A-Fa-f]{3,8}'), 'stroke:$dimStroke');
+
+    // Handle url() gradient references — replace with dim
+    result = result.replaceAll(RegExp(r'fill="url\(#[^)]+\)"'), 'fill="$dimFill"');
+
+    // ═══════════════════════════════════════════════════════════════════
+    // STEP 2: HIGHLIGHT ONLY TARGET MUSCLE IDS
+    // Now go through ONLY the specific muscle path IDs and color them
+    // ═══════════════════════════════════════════════════════════════════
+
+    for (final muscleId in targetMuscleIds) {
+      // Handle: <path id="muscle-X" ... fill="..." ...>
+      result = result.replaceAllMapped(
+        RegExp('(<[^>]*id="$muscleId"[^>]*?)fill="[^"]*"'),
+        (match) => '${match.group(1)}fill="$highlightHex"',
+      );
+
+      // Handle: <path fill="..." ... id="muscle-X" ...> (fill comes before id)
+      result = result.replaceAllMapped(
+        RegExp('(<[^>]*?)fill="[^"]*"([^>]*id="$muscleId")'),
+        (match) => '${match.group(1)}fill="$highlightHex"${match.group(2)}',
+      );
+
+      // Handle inline style: style="fill:#XXXXX" on muscle elements
+      result = result.replaceAllMapped(
+        RegExp('(<[^>]*id="$muscleId"[^>]*?)style="([^"]*?)fill:[^;"]*'),
+        (match) => '${match.group(1)}style="${match.group(2)}fill:$highlightHex',
+      );
     }
-
-    return result;
-  }
-
-  String _replaceMuscleColor(String svg, String muscleId, String colorHex) {
-    String result = svg;
-
-    // Pattern 1: id="muscle-X" ... fill="..."
-    final pattern1 = RegExp('(id="$muscleId"[^>]*)fill="[^"]*"');
-    result = result.replaceAllMapped(pattern1, (match) {
-      return '${match.group(1)}fill="$colorHex"';
-    });
-
-    // Pattern 2: fill="..." ... id="muscle-X" (fill before id)
-    final pattern2 = RegExp('(fill="[^"]*"[^>]*id="$muscleId")');
-    result = result.replaceAllMapped(pattern2, (match) {
-      return match.group(0)!.replaceAll(RegExp('fill="[^"]*"'), 'fill="$colorHex"');
-    });
 
     return result;
   }
@@ -195,7 +209,11 @@ class _BodyPartIconState extends State<BodyPartIcon> {
 
   static const _backMuscleMap = {
     'traps': ['bMuscle-0', 'bMuscle-18', 'bMuscle-1', 'bMuscle-2'],
-    'back': ['bMuscle-3', 'bMuscle-4', 'bMuscle-19', 'bMuscle-30', 'bMuscle-31', 'bMuscle-0', 'bMuscle-18', 'bMuscle-1', 'bMuscle-2'],
+    'back': [
+      'bMuscle-0', 'bMuscle-18', 'bMuscle-1', 'bMuscle-2',           // traps
+      'bMuscle-3', 'bMuscle-4', 'bMuscle-19', 'bMuscle-30', 'bMuscle-31', // lats
+      'bMuscle-10', 'bMuscle-11', 'bMuscle-12', 'bMuscle-36', 'bMuscle-37', // lower back
+    ],
     'lats': ['bMuscle-3', 'bMuscle-4', 'bMuscle-19', 'bMuscle-30', 'bMuscle-31'],
     'shoulders': ['bMuscle-5', 'bMuscle-6', 'bMuscle-20', 'bMuscle-32', 'bMuscle-33'],
     'rear_delts': ['bMuscle-5', 'bMuscle-6', 'bMuscle-20', 'bMuscle-32', 'bMuscle-33'],
