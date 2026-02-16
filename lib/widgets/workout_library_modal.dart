@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import '../utils/app_colors.dart';
 import '../models/workout_data.dart';
 import '../screens/custom_workouts_screen.dart';
+import 'body_part_icon.dart';
 
 /// Modal for selecting a workout from the library
 class WorkoutLibraryModal extends StatefulWidget {
@@ -65,9 +66,9 @@ class _WorkoutLibraryModalState extends State<WorkoutLibraryModal> {
 
   Widget _buildCategoryTabs() {
     final categories = [
-      {'id': 'gym', 'label': 'GYM TRAINING', 'icon': '💪'},
-      {'id': 'home', 'label': 'HOME TRAINING', 'icon': '🏠'},
-      {'id': 'custom', 'label': 'CUSTOM', 'icon': '✨'},
+      {'id': 'gym', 'label': 'GYM TRAINING', 'bodyPart': 'chest'},
+      {'id': 'home', 'label': 'HOME TRAINING', 'bodyPart': 'full_body'},
+      {'id': 'custom', 'label': 'CUSTOM', 'bodyPart': 'full_body'},
     ];
 
     return SizedBox(
@@ -115,9 +116,10 @@ class _WorkoutLibraryModalState extends State<WorkoutLibraryModal> {
               ),
               child: Row(
                 children: [
-                  Text(
-                    category['icon'] as String,
-                    style: const TextStyle(fontSize: 16),
+                  BodyPartIcon(
+                    bodyPart: category['bodyPart'] as String,
+                    size: 24,
+                    highlightColor: isSelected ? Colors.black : AppColors.cyberLime,
                   ),
                   const SizedBox(width: 8),
                   Text(
