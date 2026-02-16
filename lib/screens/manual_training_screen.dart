@@ -35,7 +35,6 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
   bool _isResting = false;
   int _restTimeRemaining = 60;
   Timer? _restTimer;
-  bool _isBetweenExerciseRest = false;
   
   // Workout timer
   Timer? _workoutTimer;
@@ -167,7 +166,6 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
 
     setState(() {
       _isResting = true;
-      _isBetweenExerciseRest = false;
       _restTimeRemaining = actualRestTime;
     });
 
@@ -191,45 +189,14 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
 
   void _skipRest() {
     _restTimer?.cancel();
-    if (_isBetweenExerciseRest) {
-      // Skip rest between exercises — move to next exercise
-      setState(() {
-        _isResting = false;
-        _isBetweenExerciseRest = false;
-        _currentExerciseIndex++;
-        _initializeExercise();
-      });
-    } else {
-      _endRest();
-    }
+    _endRest();
   }
 
   void _moveToNextExercise() {
     if (_currentExerciseIndex < widget.workout.exercises.length - 1) {
-      // REST between exercises before moving on
-      final currentExercise = widget.workout.exercises[_currentExerciseIndex];
-      final restTime = (currentExercise.restSeconds != null && currentExercise.restSeconds! > 0)
-          ? currentExercise.restSeconds!
-          : 60;
-
       setState(() {
-        _isResting = true;
-        _isBetweenExerciseRest = true;
-        _restTimeRemaining = restTime;
-      });
-
-      _restTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (_restTimeRemaining > 0) {
-          setState(() => _restTimeRemaining--);
-        } else {
-          _restTimer?.cancel();
-          setState(() {
-            _isResting = false;
-            _isBetweenExerciseRest = false;
-            _currentExerciseIndex++;
-            _initializeExercise();
-          });
-        }
+        _currentExerciseIndex++;
+        _initializeExercise();
       });
     } else {
       _completeWorkout();
@@ -972,9 +939,7 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
               child: Column(
                 children: [
                   Text(
-                    _isBetweenExerciseRest
-                        ? 'NEXT EXERCISE'
-                        : 'NEXT: SET ${_currentSet + 1} / ${exercise.sets}',
+                    'NEXT: SET ${_currentSet + 1} / ${exercise.sets}',
                     style: const TextStyle(
                       color: AppColors.white60,
                       fontSize: 12,
@@ -984,9 +949,7 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    _isBetweenExerciseRest && _currentExerciseIndex < widget.workout.exercises.length - 1
-                        ? widget.workout.exercises[_currentExerciseIndex + 1].name.toUpperCase()
-                        : exercise.name.toUpperCase(),
+                    exercise.name.toUpperCase(),
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
