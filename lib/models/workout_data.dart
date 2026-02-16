@@ -374,12 +374,12 @@ class WorkoutData {
   ];
 
   static const Map<String, String> muscleSplitInfo = {
-    'chest': 'CHEST 🦾',
-    'back': 'BACK 🔙',
-    'shoulders': 'SHOULDERS 💪',
-    'legs': 'LEGS 🦵',
-    'arms': 'ARMS 💪',
-    'core': 'CORE 🎯',
+    'chest': 'CHEST',
+    'back': 'BACK',
+    'shoulders': 'SHOULDERS',
+    'legs': 'LEGS',
+    'arms': 'ARMS',
+    'core': 'CORE',
   };
 
   // ==================== WORKOUT PRESETS ====================

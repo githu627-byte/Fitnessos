@@ -137,6 +137,7 @@ flutter:
     - assets/images/man-back.svg
     - assets/images/woman-front.svg
     - assets/images/woman-back.svg
+    - assets/images/icons/
     - assets/wake_word/
     - assets/exercise_videos/
 
