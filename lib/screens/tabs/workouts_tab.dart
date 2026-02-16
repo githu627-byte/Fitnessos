@@ -10,6 +10,8 @@ import '../../utils/text_styles.dart';
 import '../../widgets/glassmorphism_card.dart';
 import '../../widgets/glow_button.dart';
 import '../../widgets/exercise_animation_widget.dart';
+import '../../widgets/body_part_icon.dart';
+import '../../services/exercise_video_service.dart';
 import '../../providers/workout_provider.dart';
 import '../../providers/workout_schedule_provider.dart';
 import '../../providers/schedule_date_provider.dart';
@@ -283,31 +285,31 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
         {
           'id': 'muscle_splits',
           'name': 'MUSCLE SPLITS',
-          'icon': '💪',
+          'bodyPart': 'full_body',
           'desc': 'Target specific muscle groups',
         },
         {
           'id': 'muscle_groupings',
           'name': 'MUSCLE GROUPINGS',
-          'icon': '🎯',
+          'bodyPart': 'chest',
           'desc': 'Pre-built workout combinations',
         },
         {
           'id': 'gym_circuits',
           'name': 'GYM CIRCUITS',
-          'icon': '⚡',
+          'bodyPart': 'full_body',
           'desc': 'High-intensity timed workouts',
         },
         {
           'id': 'booty_builder',
           'name': 'BOOTY BUILDER',
-          'icon': '🍑',
+          'bodyPart': 'glutes',
           'desc': "Women's glute-focused workouts",
         },
         {
           'id': 'girl_power',
           'name': 'GIRL POWER',
-          'icon': '👑',
+          'bodyPart': 'full_body',
           'desc': 'Elite women-focused training programs',
         },
       ];
@@ -316,31 +318,31 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
         {
           'id': 'bodyweight_basics',
           'name': 'BODYWEIGHT BASICS',
-          'icon': '🏠',
+          'bodyPart': 'full_body',
           'desc': 'No equipment needed',
         },
         {
           'id': 'hiit_circuits',
           'name': 'HIIT CIRCUITS',
-          'icon': '⚡',
+          'bodyPart': 'full_body',
           'desc': 'High intensity, no equipment',
         },
         {
           'id': 'home_booty',
           'name': 'HOME BOOTY',
-          'icon': '🍑',
+          'bodyPart': 'glutes',
           'desc': 'Glute workouts at home',
         },
         // {
         //   'id': 'recovery',
         //   'name': 'RECOVERY & MOBILITY',
-        //   'icon': '🧘',
+        //   'bodyPart': 'full_body',
         //   'desc': 'Stretching and mobility work',
         // },
         {
           'id': 'girl_power',
           'name': 'GIRL POWER',
-          'icon': '👑',
+          'bodyPart': 'full_body',
           'desc': 'Elite women-focused home training',
         },
       ];
@@ -349,19 +351,19 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
         {
           'id': 'ai_workouts',
           'name': 'MY AI WORKOUTS',
-          'icon': '🤖',
+          'bodyPart': 'full_body',
           'desc': 'AI-tracked custom workouts',
         },
         {
           'id': 'manual_workouts',
           'name': 'MY MANUAL WORKOUTS',
-          'icon': '📝',
+          'bodyPart': 'full_body',
           'desc': 'Manual log workouts',
         },
         {
           'id': 'create_new',
           'name': 'CREATE NEW WORKOUT',
-          'icon': '➕',
+          'bodyPart': 'full_body',
           'desc': 'Build a workout from scratch',
         },
       ];
@@ -397,9 +399,10 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
         padding: const EdgeInsets.all(24),
         child: Row(
           children: [
-            Text(
-              category['icon']!,
-              style: const TextStyle(fontSize: 56),
+            BodyPartIcon(
+              bodyPart: category['bodyPart'] ?? 'full_body',
+              size: 52,
+              highlightColor: _getCategoryColor(category['id']!),
             ),
             const SizedBox(width: 20),
             Expanded(
@@ -434,6 +437,49 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
         ),
       ),
     );
+  }
+
+  Color _getCategoryColor(String categoryId) {
+    switch (categoryId) {
+      case 'muscle_splits': return AppColors.cyberLime;
+      case 'muscle_groupings': return const Color(0xFF00F0FF); // cyan
+      case 'gym_circuits': return const Color(0xFFFF8C00); // orange
+      case 'booty_builder': return const Color(0xFFEC4899); // pink
+      case 'girl_power': return const Color(0xFFA855F7); // purple
+      case 'home_booty': return const Color(0xFFEC4899); // pink
+      case 'hiit_circuits': return const Color(0xFFFF8C00); // orange
+      default: return AppColors.cyberLime;
+    }
+  }
+
+  Widget _buildExerciseThumbnail(WorkoutExercise exercise) {
+    if (ExerciseVideoService.hasVideo(exercise.id)) {
+      return ExerciseAnimationWidget(
+        exerciseId: exercise.id,
+        size: 60,
+        showWatermark: false,
+      );
+    }
+    return BodyPartIcon(
+      bodyPart: _getBodyPartForExercise(exercise),
+      size: 48,
+    );
+  }
+
+  String _getBodyPartForExercise(WorkoutExercise exercise) {
+    final primary = exercise.primaryMuscles.firstOrNull ?? '';
+    switch (primary.toLowerCase()) {
+      case 'chest': return 'chest';
+      case 'back': return 'back';
+      case 'shoulders': return 'shoulders';
+      case 'legs': case 'quadriceps': case 'quads': return 'legs';
+      case 'arms': case 'biceps': case 'triceps': return 'arms';
+      case 'core': case 'abs': return 'core';
+      case 'glutes': return 'glutes';
+      case 'hamstrings': return 'hamstrings';
+      case 'calves': return 'calves';
+      default: return 'full_body';
+    }
   }
 
   Widget _buildPresetList() {
@@ -903,12 +949,8 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
             padding: const EdgeInsets.only(bottom: 12),
             child: Row(
               children: [
-                // Exercise Animation (left)
-                ExerciseAnimationWidget(
-                  exerciseId: ex.id,
-                  size: 60,
-                  showWatermark: false,
-                ),
+                // Exercise Animation (left) — video if available, body icon fallback
+                _buildExerciseThumbnail(ex),
                 const SizedBox(width: 12),
                 // Exercise Details (right)
                 Expanded(
