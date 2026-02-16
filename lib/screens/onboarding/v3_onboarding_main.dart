@@ -110,10 +110,10 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
     if (_wantsHelp) {
       try {
         final schedules = WorkoutScheduleGenerator.generateSmartSchedule(
+          gender: _gender,
           location: _location,
-          daysPerWeek: _daysPerWeek,
           focus: _focus,
-          difficulty: 'beginner',
+          daysPerWeek: _daysPerWeek,
         );
         for (final schedule in schedules) {
           await ref.read(workoutSchedulesProvider.notifier).saveSchedule(schedule);

@@ -1,333 +1,264 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../utils/app_colors.dart';
-import '../home_screen.dart';
 
-/// Dummy sign-in screen with FitnessOS styling
-/// Will be replaced with Supabase auth later
+/// ═══════════════════════════════════════════════════════════════════════════════
+/// SIGN IN SCREEN - Clean, minimal
+/// ═══════════════════════════════════════════════════════════════════════════════
+/// For now: just a Continue button that skips to the next screen.
+/// Later: Google Sign-In, Apple Sign-In, email.
+/// ═══════════════════════════════════════════════════════════════════════════════
+
 class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+  final VoidCallback onContinue;
+
+  const SignInScreen({super.key, required this.onContinue});
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  bool _isLoading = false;
-  bool _obscurePassword = true;
+class _SignInScreenState extends State<SignInScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _fadeController;
+
+  @override
+  void initState() {
+    super.initState();
+    _fadeController = AnimationController(
+      duration: const Duration(milliseconds: 800),
+      vsync: this,
+    )..forward();
+  }
 
   @override
   void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
+    _fadeController.dispose();
     super.dispose();
-  }
-
-  Future<void> _handleSignIn() async {
-    setState(() => _isLoading = true);
-    
-    // Simulate API call
-    await Future.delayed(const Duration(seconds: 1));
-    
-    if (mounted) {
-      setState(() => _isLoading = false);
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
-      );
-    }
-  }
-
-  Future<void> _handleSocialSignIn(String provider) async {
-    setState(() => _isLoading = true);
-    
-    // Simulate API call
-    await Future.delayed(const Duration(seconds: 1));
-    
-    if (mounted) {
-      setState(() => _isLoading = false);
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
-      );
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: AppColors.cyberGradient,
-          ),
-        ),
+      body: FadeTransition(
+        opacity: _fadeController,
         child: SafeArea(
-          child: _isLoading
-              ? const Center(
-                  child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation(AppColors.cyberLime),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: Column(
+              children: [
+                const Spacer(flex: 3),
+
+                // ═══════════════════════════════════════════
+                // LOGO
+                // ═══════════════════════════════════════════
+                Container(
+                  width: 120,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: RadialGradient(
+                      colors: [
+                        AppColors.cyberLime.withOpacity(0.2),
+                        AppColors.cyberLime.withOpacity(0.05),
+                        Colors.transparent,
+                      ],
+                    ),
                   ),
-                )
-              : SingleChildScrollView(
-                  padding: const EdgeInsets.all(32),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const SizedBox(height: 60),
-                      
-                      // Logo/Icon
-                      Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: AppColors.cyberLime, width: 4),
-                          color: AppColors.cyberLime.withOpacity(0.1),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            '💪',
-                            style: TextStyle(fontSize: 48),
-                          ),
-                        ),
-                      ),
-                      
-                      const SizedBox(height: 32),
-                      
-                      // Title
-                      const Text(
-                        'Welcome Back',
-                        style: TextStyle(
-                          fontSize: 36,
-                          fontWeight: FontWeight.w900,
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      
-                      const SizedBox(height: 8),
-                      
-                      const Text(
-                        'Sign in to continue your journey',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: AppColors.white60,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      
-                      const SizedBox(height: 60),
-                      
-                      // Email field
-                      TextField(
-                        controller: _emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        style: const TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          labelText: 'Email',
-                          labelStyle: const TextStyle(color: AppColors.white60),
-                          prefixIcon: const Icon(Icons.email_outlined, color: AppColors.white60),
-                          filled: true,
-                          fillColor: AppColors.white5,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: const BorderSide(color: AppColors.white20),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: const BorderSide(color: AppColors.white20),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: const BorderSide(color: AppColors.cyberLime, width: 2),
-                          ),
-                        ),
-                      ),
-                      
-                      const SizedBox(height: 20),
-                      
-                      // Password field
-                      TextField(
-                        controller: _passwordController,
-                        obscureText: _obscurePassword,
-                        style: const TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                          labelText: 'Password',
-                          labelStyle: const TextStyle(color: AppColors.white60),
-                          prefixIcon: const Icon(Icons.lock_outline, color: AppColors.white60),
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _obscurePassword ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-                              color: AppColors.white60,
-                            ),
-                            onPressed: () {
-                              setState(() => _obscurePassword = !_obscurePassword);
-                            },
-                          ),
-                          filled: true,
-                          fillColor: AppColors.white5,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: const BorderSide(color: AppColors.white20),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: const BorderSide(color: AppColors.white20),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: const BorderSide(color: AppColors.cyberLime, width: 2),
-                          ),
-                        ),
-                      ),
-                      
-                      const SizedBox(height: 12),
-                      
-                      // Forgot password
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          onPressed: () {
-                            // TODO: Implement forgot password
-                          },
-                          child: const Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                              color: AppColors.cyberLime,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ),
-                      
-                      const SizedBox(height: 24),
-                      
-                      // Sign in button
-                      SizedBox(
-                        height: 60,
-                        child: ElevatedButton(
-                          onPressed: _handleSignIn,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.cyberLime,
-                            foregroundColor: Colors.black,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            elevation: 0,
-                          ),
-                          child: const Text(
-                            'Sign In',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w900,
-                            ),
-                          ),
-                        ),
-                      ),
-                      
-                      const SizedBox(height: 32),
-                      
-                      // Divider
-                      Row(
-                        children: [
-                          Expanded(child: Divider(color: AppColors.white20, thickness: 1)),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16),
-                            child: Text(
-                              'OR',
-                              style: TextStyle(color: AppColors.white40, fontSize: 14),
-                            ),
-                          ),
-                          Expanded(child: Divider(color: AppColors.white20, thickness: 1)),
-                        ],
-                      ),
-                      
-                      const SizedBox(height: 32),
-                      
-                      // Social sign in buttons
-                      _buildSocialButton(
-                        icon: Icons.g_mobiledata,
-                        text: 'Continue with Google',
-                        onPressed: () => _handleSocialSignIn('google'),
-                      ),
-                      
-                      const SizedBox(height: 16),
-                      
-                      _buildSocialButton(
-                        icon: Icons.apple,
-                        text: 'Continue with Apple',
-                        onPressed: () => _handleSocialSignIn('apple'),
-                      ),
-                      
-                      const SizedBox(height: 40),
-                      
-                      // Sign up link
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "Don't have an account? ",
-                            style: TextStyle(color: AppColors.white60, fontSize: 14),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              // TODO: Navigate to sign up
-                            },
-                            child: const Text(
-                              'Sign Up',
-                              style: TextStyle(
-                                color: AppColors.cyberLime,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ],
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/logo/skeletal_logo.png',
+                      height: 60,
+                      fit: BoxFit.contain,
+                      errorBuilder: (_, __, ___) => const Text('\u{1F480}', style: TextStyle(fontSize: 48)),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 32),
+
+                // ═══════════════════════════════════════════
+                // TITLE
+                // ═══════════════════════════════════════════
+                Text(
+                  'SKELETAL-PT',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w900,
+                    color: AppColors.cyberLime,
+                    letterSpacing: 4,
+                    decoration: TextDecoration.none,
+                    shadows: [
+                      Shadow(
+                        color: AppColors.cyberLime.withOpacity(0.4),
+                        blurRadius: 24,
                       ),
                     ],
                   ),
                 ),
+
+                const SizedBox(height: 8),
+
+                Text(
+                  'Your AI Personal Trainer',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white.withOpacity(0.45),
+                    fontWeight: FontWeight.w500,
+                    decoration: TextDecoration.none,
+                  ),
+                ),
+
+                const Spacer(flex: 2),
+
+                // ═══════════════════════════════════════════
+                // SIGN IN BUTTONS (disabled for now)
+                // ═══════════════════════════════════════════
+
+                // Google Sign In (disabled — placeholder)
+                _signInButton(
+                  icon: Icons.g_mobiledata,
+                  label: 'Continue with Google',
+                  enabled: false,
+                ),
+
+                const SizedBox(height: 12),
+
+                // Apple Sign In (disabled — placeholder)
+                _signInButton(
+                  icon: Icons.apple,
+                  label: 'Continue with Apple',
+                  enabled: false,
+                ),
+
+                const SizedBox(height: 24),
+
+                // Divider
+                Row(
+                  children: [
+                    Expanded(child: Divider(color: AppColors.white15)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
+                        'or',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white.withOpacity(0.3),
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                    ),
+                    Expanded(child: Divider(color: AppColors.white15)),
+                  ],
+                ),
+
+                const SizedBox(height: 24),
+
+                // Continue button (WORKS — skips auth)
+                SizedBox(
+                  width: double.infinity,
+                  height: 56,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      HapticFeedback.mediumImpact();
+                      widget.onContinue();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.cyberLime,
+                      foregroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      elevation: 0,
+                    ),
+                    child: const Text(
+                      'CONTINUE',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 2,
+                      ),
+                    ),
+                  ),
+                ),
+
+                const Spacer(flex: 1),
+
+                // Legal
+                Text(
+                  'By continuing you agree to our Terms of Service\nand Privacy Policy',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Colors.white.withOpacity(0.2),
+                    height: 1.5,
+                    decoration: TextDecoration.none,
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+              ],
+            ),
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildSocialButton({
+  Widget _signInButton({
     required IconData icon,
-    required String text,
-    required VoidCallback onPressed,
+    required String label,
+    required bool enabled,
   }) {
     return SizedBox(
-      height: 56,
+      width: double.infinity,
+      height: 52,
       child: OutlinedButton(
-        onPressed: onPressed,
+        onPressed: enabled
+            ? () {
+                HapticFeedback.mediumImpact();
+                // TODO: Auth logic
+              }
+            : null,
         style: OutlinedButton.styleFrom(
-          side: const BorderSide(color: AppColors.white30, width: 1.5),
+          side: BorderSide(color: enabled ? AppColors.white30 : AppColors.white10),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(14),
           ),
+          backgroundColor: AppColors.white5,
+          disabledForegroundColor: AppColors.white30,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, color: Colors.white, size: 24),
-            const SizedBox(width: 12),
+            Icon(icon, size: 22, color: enabled ? Colors.white : AppColors.white30),
+            const SizedBox(width: 10),
             Text(
-              text,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 16,
+              label,
+              style: TextStyle(
+                fontSize: 14,
                 fontWeight: FontWeight.w600,
+                color: enabled ? Colors.white : AppColors.white30,
               ),
             ),
+            if (!enabled) ...[
+              const SizedBox(width: 8),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                decoration: BoxDecoration(
+                  color: AppColors.white10,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: const Text(
+                  'SOON',
+                  style: TextStyle(fontSize: 8, fontWeight: FontWeight.w800, color: AppColors.white40, letterSpacing: 1),
+                ),
+              ),
+            ],
           ],
         ),
       ),
     );
   }
 }
-

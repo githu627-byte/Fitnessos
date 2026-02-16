@@ -347,7 +347,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
   // ═══════════════════════════════════════════════════════════════════════════
   Widget _buildHeader(BuildContext context, WorkoutStats stats) {
     return Container(
-      color: const Color(0xFF0A0A0A), // Match app background — NOT pure black
+      color: AppColors.cyberLime.withOpacity(0.10), // Cyber lime tint
       padding: const EdgeInsets.fromLTRB(0, 8, 12, 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
