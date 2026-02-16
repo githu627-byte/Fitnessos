@@ -25,6 +25,8 @@ class WorkoutSchedulesNotifier extends StateNotifier<List<WorkoutSchedule>> {
   }
 
   /// Add or update a schedule (like FutureYou's addHabit)
+  /// Includes conflict resolution: removes existing schedules with the same
+  /// date + priority before saving to prevent overlaps.
   Future<void> saveSchedule(WorkoutSchedule schedule) async {
     try {
       debugPrint('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
@@ -33,7 +35,29 @@ class WorkoutSchedulesNotifier extends StateNotifier<List<WorkoutSchedule>> {
       debugPrint('   - Has Alarm: ${schedule.hasAlarm}');
       debugPrint('   - Time: ${schedule.scheduledTime ?? "N/A"}');
       debugPrint('   - Repeat Days: ${schedule.repeatDays}');
-      
+      debugPrint('   - Priority: ${schedule.priority}');
+
+      // Conflict resolution: delete existing schedules with same date + priority
+      final scheduleDate = DateTime(
+        schedule.scheduledDate.year,
+        schedule.scheduledDate.month,
+        schedule.scheduledDate.day,
+      );
+      final conflicts = _schedulesBox.values.where((existing) {
+        if (existing.id == schedule.id) return false;
+        final existingDate = DateTime(
+          existing.scheduledDate.year,
+          existing.scheduledDate.month,
+          existing.scheduledDate.day,
+        );
+        return existingDate == scheduleDate && existing.priority == schedule.priority;
+      }).toList();
+
+      for (final conflict in conflicts) {
+        debugPrint('   ⚠️ Removing conflict: ${conflict.workoutName} (${conflict.id})');
+        await _schedulesBox.delete(conflict.id);
+      }
+
       // Save to Hive
       await _schedulesBox.put(schedule.id, schedule);
       debugPrint('   ✅ Schedule saved to Hive');
