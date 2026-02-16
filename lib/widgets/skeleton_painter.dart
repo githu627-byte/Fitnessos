@@ -1,18 +1,19 @@
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_pose_detection/google_mlkit_pose_detection.dart';
 
-// =============================================================================
-// SKELETON STATE — Rep phase colors
-// =============================================================================
-
 enum SkeletonState {
-  normal, // White bones - default
-  success, // Blue bones - rep counted flash
+  normal,   // Cyber lime bones - default
+  success,  // Electric cyan flash - rep counted
 }
 
-// =============================================================================
-// SKELETON PAINTER — Form skeleton approach + EMA smoothing + phase colors
-// =============================================================================
+/// =============================================================================
+/// SKELETON PAINTER - Using FormSkeletonPainter rendering logic
+/// =============================================================================
+/// Takes List<PoseLandmark> from train_tab (same interface as before).
+/// Draws thick glowing bones and joints (same visual as Form Analysis).
+/// Confidence filtering at 0.5. No face landmarks.
+/// =============================================================================
 
 class SkeletonPainter extends CustomPainter {
   final List<PoseLandmark>? landmarks;
@@ -21,8 +22,9 @@ class SkeletonPainter extends CustomPainter {
   final SkeletonState skeletonState;
   final double chargeProgress;
 
-  // EMA smoothing state — static so it persists between frames
-  static final Map<PoseLandmarkType, Offset> _smoothed = {};
+  // Smoothing — keep LERP from original for stability
+  static final Map<PoseLandmarkType, Offset> _smoothedPositions = {};
+  static const double _lerpFactor = 0.35;
 
   SkeletonPainter({
     required this.landmarks,
@@ -36,15 +38,53 @@ class SkeletonPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     if (landmarks == null || landmarks!.isEmpty) return;
 
-    // Create map for quick lookup
+    // Build lookup map (same as before)
     final Map<PoseLandmarkType, PoseLandmark> landmarkMap = {};
     for (final landmark in landmarks!) {
       landmarkMap[landmark.type] = landmark;
     }
 
-    final Color color = _getPhaseColor();
+    // Get color based on state (cyber lime default, cyan on rep flash)
+    final Color baseColor = _getStateColor();
 
-    // Body connections — NO nose/face
+    // Draw using FormSkeletonPainter logic: thick bones, glow, big joints
+    _drawConnections(canvas, size, baseColor, landmarkMap);
+    _drawJoints(canvas, size, baseColor, landmarkMap);
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // POSITION: Same LERP smoothing as original + confidence filter
+  // ═══════════════════════════════════════════════════════════════════════════
+  Offset? _getPos(PoseLandmarkType type, Size size, Map<PoseLandmarkType, PoseLandmark> landmarkMap) {
+    final lm = landmarkMap[type];
+
+    // Confidence filter (same as FormSkeletonPainter)
+    if (lm == null || lm.likelihood < 0.5) {
+      return _smoothedPositions[type]; // Return last known good
+    }
+
+    // Coordinate transform (same as FormSkeletonPainter)
+    double x = lm.x * size.width / imageSize.width;
+    double y = lm.y * size.height / imageSize.height;
+    if (isFrontCamera) x = size.width - x;
+
+    final Offset target = Offset(x, y);
+
+    // LERP smoothing (kept from original for stability)
+    final Offset current = _smoothedPositions[type] ?? target;
+    final Offset smoothed = Offset(
+      current.dx + (target.dx - current.dx) * _lerpFactor,
+      current.dy + (target.dy - current.dy) * _lerpFactor,
+    );
+    _smoothedPositions[type] = smoothed;
+    return smoothed;
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // BONES: Thick glow + main bone + highlight (FROM FormSkeletonPainter)
+  // ═══════════════════════════════════════════════════════════════════════════
+  void _drawConnections(Canvas canvas, Size size, Color color, Map<PoseLandmarkType, PoseLandmark> landmarkMap) {
+    // Body connections only — NO FACE (same list as FormSkeletonPainter)
     final connections = [
       // Torso
       [PoseLandmarkType.leftShoulder, PoseLandmarkType.rightShoulder],
@@ -65,16 +105,51 @@ class SkeletonPainter extends CustomPainter {
       [PoseLandmarkType.rightKnee, PoseLandmarkType.rightAnkle],
     ];
 
-    // Draw bones
     for (final conn in connections) {
-      final p1 = _getPosition(conn[0], size, landmarkMap);
-      final p2 = _getPosition(conn[1], size, landmarkMap);
+      final p1 = _getPos(conn[0], size, landmarkMap);
+      final p2 = _getPos(conn[1], size, landmarkMap);
       if (p1 != null && p2 != null) {
         _drawBone(canvas, p1, p2, color);
       }
     }
+  }
 
-    // Draw joints — major joints only
+  /// Draw a thick bone with glow (EXACT copy from FormSkeletonPainter)
+  void _drawBone(Canvas canvas, Offset start, Offset end, Color color) {
+    final distance = (end - start).distance;
+    if (distance < 10) return;
+
+    // Glow layer
+    final glowPaint = Paint()
+      ..color = color.withOpacity(0.4)
+      ..strokeWidth = 16
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
+    canvas.drawLine(start, end, glowPaint);
+
+    // Main bone
+    final bonePaint = Paint()
+      ..color = color
+      ..strokeWidth = 8
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke;
+    canvas.drawLine(start, end, bonePaint);
+
+    // Inner highlight
+    final highlightPaint = Paint()
+      ..color = Colors.white.withOpacity(0.3)
+      ..strokeWidth = 3
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke;
+    canvas.drawLine(start, end, highlightPaint);
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // JOINTS: Glowing circles (FROM FormSkeletonPainter)
+  // ═══════════════════════════════════════════════════════════════════════════
+  void _drawJoints(Canvas canvas, Size size, Color color, Map<PoseLandmarkType, PoseLandmark> landmarkMap) {
+    // Body joints only — NO FACE
     final joints = [
       PoseLandmarkType.leftShoulder,
       PoseLandmarkType.rightShoulder,
@@ -91,98 +166,55 @@ class SkeletonPainter extends CustomPainter {
     ];
 
     for (final joint in joints) {
-      final pos = _getPosition(joint, size, landmarkMap);
+      final pos = _getPos(joint, size, landmarkMap);
       if (pos != null) {
-        _drawJoint(canvas, pos, color);
+        _drawJoint(canvas, pos, color, 10.0);
       }
     }
   }
 
-  /// Position with proper scaling, mirroring, and EMA smoothing (alpha 0.1)
-  Offset? _getPosition(PoseLandmarkType type, Size size, Map<PoseLandmarkType, PoseLandmark> landmarkMap) {
-    final landmark = landmarkMap[type];
-    if (landmark == null || landmark.likelihood < 0.5) return null;
+  /// Draw a glowing joint (EXACT copy from FormSkeletonPainter)
+  void _drawJoint(Canvas canvas, Offset pos, Color color, double radius) {
+    // Outer glow
+    final glowPaint = Paint()
+      ..color = color.withOpacity(0.5)
+      ..style = PaintingStyle.fill
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10);
+    canvas.drawCircle(pos, radius + 4, glowPaint);
 
-    double x = landmark.x * size.width / imageSize.width;
-    double y = landmark.y * size.height / imageSize.height;
+    // Main joint
+    final jointPaint = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(pos, radius, jointPaint);
 
-    if (isFrontCamera) {
-      x = size.width - x;
-    }
-
-    final raw = Offset(x, y);
-    final prev = _smoothed[type];
-    if (prev == null) {
-      _smoothed[type] = raw;
-      return raw;
-    }
-    final smoothed = Offset(
-      prev.dx + 0.1 * (raw.dx - prev.dx),
-      prev.dy + 0.1 * (raw.dy - prev.dy),
-    );
-    _smoothed[type] = smoothed;
-    return smoothed;
+    // Inner highlight
+    final highlightPaint = Paint()
+      ..color = Colors.white.withOpacity(0.4)
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(pos.translate(-2, -2), radius * 0.4, highlightPaint);
   }
 
-  /// Phase colors: White → Green → Blue
-  Color _getPhaseColor() {
-    if (skeletonState == SkeletonState.success) {
-      return const Color(0xFF00D9FF);
+  // ═══════════════════════════════════════════════════════════════════════════
+  // COLOR: Based on skeleton state (normal vs rep flash)
+  // ═══════════════════════════════════════════════════════════════════════════
+  Color _getStateColor() {
+    switch (skeletonState) {
+      case SkeletonState.normal:
+        return const Color(0xFFCCFF00); // Cyber lime — matches your brand
+      case SkeletonState.success:
+        return const Color(0xFF00F0FF); // Electric cyan — rep counted flash
     }
-    if (chargeProgress > 0.5) {
-      return const Color(0xFF00FF41);
-    }
-    return Colors.white.withOpacity(0.9);
-  }
-
-  /// Bone drawing — thin, single subtle glow
-  void _drawBone(Canvas canvas, Offset start, Offset end, Color color) {
-    final distance = (end - start).distance;
-    if (distance < 10) return;
-
-    // Subtle glow
-    canvas.drawLine(
-      start,
-      end,
-      Paint()
-        ..color = color.withOpacity(0.3)
-        ..strokeWidth = 10
-        ..strokeCap = StrokeCap.round
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
-    );
-
-    // Main bone
-    canvas.drawLine(
-      start,
-      end,
-      Paint()
-        ..color = color
-        ..strokeWidth = 5
-        ..strokeCap = StrokeCap.round,
-    );
-  }
-
-  /// Joint drawing — small dots, major joints only
-  void _drawJoint(Canvas canvas, Offset pos, Color color) {
-    // Small glow
-    canvas.drawCircle(
-      pos,
-      8,
-      Paint()
-        ..color = color.withOpacity(0.3)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
-    );
-    // Joint dot
-    canvas.drawCircle(pos, 5, Paint()..color = color);
   }
 
   @override
   bool shouldRepaint(SkeletonPainter oldDelegate) {
     return oldDelegate.skeletonState != skeletonState ||
-        oldDelegate.chargeProgress != chargeProgress;
+           oldDelegate.chargeProgress != chargeProgress ||
+           oldDelegate.landmarks != landmarks;
   }
 
   static void resetSmoothing() {
-    _smoothed.clear();
+    _smoothedPositions.clear();
   }
 }
