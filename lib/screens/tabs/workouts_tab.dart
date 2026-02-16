@@ -11,7 +11,6 @@ import '../../widgets/glassmorphism_card.dart';
 import '../../widgets/glow_button.dart';
 import '../../widgets/exercise_animation_widget.dart';
 import '../../widgets/body_part_icon.dart';
-import '../../services/exercise_video_service.dart';
 import '../../providers/workout_provider.dart';
 import '../../providers/workout_schedule_provider.dart';
 import '../../providers/schedule_date_provider.dart';
@@ -382,11 +381,10 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
               builder: (context) => const CustomWorkoutsScreen(),
             ),
           );
-          
+
           // If workout was saved, reload both workout lists
           if (result == true && mounted) {
             await _loadCustomWorkouts(); // Reload both lists
-            // Don't auto-switch - let user navigate to appropriate list
           }
         } else {
           setState(() {
@@ -395,16 +393,26 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
           HapticFeedback.lightImpact();
         }
       },
-      child: GlassmorphismCard(
-        padding: const EdgeInsets.all(24),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        decoration: BoxDecoration(
+          color: AppColors.white5,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: AppColors.white10),
+        ),
         child: Row(
           children: [
-            BodyPartIcon(
-              bodyPart: category['bodyPart'] ?? 'full_body',
-              size: 52,
-              highlightColor: _getCategoryColor(category['id']!),
+            // Body icon — BIG, 88px
+            SizedBox(
+              width: 70,  // Fixed width container
+              child: BodyPartIcon(
+                bodyPart: category['bodyPart'] ?? 'full_body',
+                size: 88,
+                highlightColor: _getCategoryColor(category['id']!),
+              ),
             ),
-            const SizedBox(width: 20),
+            const SizedBox(width: 16),
+            // Text
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -412,27 +420,25 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                   Text(
                     category['name']!,
                     style: const TextStyle(
-                      fontSize: 20,
+                      fontSize: 16,
                       fontWeight: FontWeight.w900,
                       color: Colors.white,
+                      letterSpacing: 1.5,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     category['desc']!,
-                    style: const TextStyle(
-                      fontSize: 13,
-                      color: AppColors.white60,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: AppColors.white50,
                     ),
                   ),
                 ],
               ),
             ),
-            const Icon(
-              Icons.chevron_right,
-              color: AppColors.white40,
-              size: 28,
-            ),
+            // Arrow
+            Icon(Icons.chevron_right, color: AppColors.white30, size: 24),
           ],
         ),
       ),
@@ -453,34 +459,29 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
   }
 
   Widget _buildExerciseThumbnail(WorkoutExercise exercise) {
-    if (ExerciseVideoService.hasVideo(exercise.id)) {
-      return ExerciseAnimationWidget(
-        exerciseId: exercise.id,
-        size: 60,
-        showWatermark: false,
-      );
-    }
-    return BodyPartIcon(
-      bodyPart: _getBodyPartForExercise(exercise),
-      size: 48,
+    // Always use GIF/animation thumbnail for exercise rows, never body icon
+    return ExerciseAnimationWidget(
+      exerciseId: exercise.id,
+      size: 60,
+      showWatermark: false,
     );
   }
 
-  String _getBodyPartForExercise(WorkoutExercise exercise) {
-    final primary = exercise.primaryMuscles.firstOrNull ?? '';
-    switch (primary.toLowerCase()) {
-      case 'chest': return 'chest';
-      case 'back': return 'back';
-      case 'shoulders': return 'shoulders';
-      case 'legs': case 'quadriceps': case 'quads': return 'legs';
-      case 'arms': case 'biceps': case 'triceps': return 'arms';
-      case 'core': case 'abs': return 'core';
-      case 'glutes': return 'glutes';
-      case 'hamstrings': return 'hamstrings';
-      case 'calves': return 'calves';
-      default: return 'full_body';
-    }
+  /// Derive body part from preset name for muscle split headers
+  String _getBodyPartForPreset(WorkoutPreset preset) {
+    final name = preset.name.toLowerCase();
+    if (name.contains('chest')) return 'chest';
+    if (name.contains('back')) return 'back';
+    if (name.contains('shoulder')) return 'shoulders';
+    if (name.contains('leg') || name.contains('quad')) return 'legs';
+    if (name.contains('arm') || name.contains('bicep') || name.contains('tricep')) return 'arms';
+    if (name.contains('core') || name.contains('abs')) return 'core';
+    if (name.contains('glute') || name.contains('booty')) return 'glutes';
+    if (name.contains('hamstring')) return 'hamstrings';
+    if (name.contains('calv')) return 'calves';
+    return 'full_body';
   }
+
 
   Widget _buildPresetList() {
     final presets = _getPresetsForCategory();
@@ -790,16 +791,15 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Preset name and icon
+          // Preset name and body icon
           Row(
             children: [
-              if (preset.icon != null) ...[
-                Text(
-                  preset.icon!,
-                  style: const TextStyle(fontSize: 32),
-                ),
-                const SizedBox(width: 12),
-              ],
+              BodyPartIcon(
+                bodyPart: _getBodyPartForPreset(preset),
+                size: 60,
+                highlightColor: AppColors.cyberLime,
+              ),
+              const SizedBox(width: 14),
               Expanded(
                 child: Text(
                   preset.name,
