@@ -271,7 +271,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                         // ═══════════════════════════════════════════════
                         _buildHeader(context, stats),
 
-                        const SizedBox(height: 4),
+                        const SizedBox(height: 12),
 
                         Column(
                           children: [
@@ -346,8 +346,9 @@ class _HomeTabState extends ConsumerState<HomeTab> {
   // HEADER COMPONENT
   // ═══════════════════════════════════════════════════════════════════════════
   Widget _buildHeader(BuildContext context, WorkoutStats stats) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 4, 12, 0),
+    return Container(
+      color: const Color(0xFF0A0A0A), // Match app background — NOT pure black
+      padding: const EdgeInsets.fromLTRB(0, 8, 12, 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -355,11 +356,17 @@ class _HomeTabState extends ConsumerState<HomeTab> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(left: 4),
-              child: Image.asset(
-                'assets/images/logo/skeletal_logo.png',
-                height: 42,
-                fit: BoxFit.contain,
-                alignment: Alignment.centerLeft,
+              child: ShaderMask(
+                shaderCallback: (bounds) => const LinearGradient(
+                  colors: [Colors.white, Colors.white],
+                ).createShader(bounds),
+                blendMode: BlendMode.srcATop,
+                child: Image.asset(
+                  'assets/images/logo/skeletal_logo.png',
+                  height: 52,
+                  fit: BoxFit.contain,
+                  alignment: Alignment.centerLeft,
+                ),
               ),
             ),
           ),
