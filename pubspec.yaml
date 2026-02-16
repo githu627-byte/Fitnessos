@@ -83,6 +83,7 @@ dependencies:
   flutter_timezone: ^3.0.0
   gal: ^2.3.0  # Save videos to gallery
   image_picker: ^1.0.4  # For progress photos
+  file_picker: ^8.0.0  # For CSV import in onboarding
   
   # Keep screen awake during workout
   wakelock_plus: ^1.2.8
