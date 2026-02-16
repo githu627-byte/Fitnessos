@@ -3035,10 +3035,10 @@ class WorkoutData {
             secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
-            id: 'reverse_lunge',
-            name: 'Reverse Lunge',
+            id: 'goblet_squat',
+            name: 'Goblet Squat',
             sets: 3,
-            reps: 15,
+            reps: 12,
             primaryMuscles: ['legs'],
             secondaryMuscles: ['glutes'],
           ),
@@ -3054,6 +3054,22 @@ class WorkoutData {
         break;
       case 'intermediate':
         exercises = [
+          WorkoutExercise(
+            id: 'barbell_hip_thrust',
+            name: 'Barbell Hip Thrust',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
           WorkoutExercise(
             id: 'single_leg_glute_bridge',
             name: 'Single Leg Glute Bridge',
@@ -3071,14 +3087,6 @@ class WorkoutData {
             secondaryMuscles: ['legs'],
           ),
           WorkoutExercise(
-            id: 'standing_glute_kickback',
-            name: 'Standing Glute Kickback',
-            sets: 4,
-            reps: 15,
-            primaryMuscles: ['glutes'],
-            secondaryMuscles: [],
-          ),
-          WorkoutExercise(
             id: 'sumo_squat',
             name: 'Sumo Squat',
             sets: 4,
@@ -3086,18 +3094,34 @@ class WorkoutData {
             primaryMuscles: ['legs'],
             secondaryMuscles: ['glutes'],
           ),
-          WorkoutExercise(
-            id: 'bird_dog',
-            name: 'Bird Dog',
-            sets: 4,
-            reps: 12,
-            primaryMuscles: ['core'],
-            secondaryMuscles: ['glutes'],
-          ),
         ];
         break;
       case 'advanced':
         exercises = [
+          WorkoutExercise(
+            id: 'barbell_hip_thrust',
+            name: 'Barbell Hip Thrust',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'bulgarian_split_squat',
+            name: 'Bulgarian Split Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
           WorkoutExercise(
             id: 'elevated_glute_bridge',
             name: 'Elevated Glute Bridge',
@@ -3107,44 +3131,20 @@ class WorkoutData {
             secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
-            id: 'pulse_curtsy_lunge',
-            name: 'Pulse Curtsy Lunge',
+            id: 'cable_kickback',
+            name: 'Cable Kickback',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'curtsy_lunge',
+            name: 'Curtsy Lunge',
             sets: 4,
             reps: 12,
             primaryMuscles: ['glutes'],
             secondaryMuscles: ['legs'],
-          ),
-          WorkoutExercise(
-            id: 'sumo_squat_pulse',
-            name: 'Sumo Squat Pulse',
-            sets: 4,
-            reps: 15,
-            primaryMuscles: ['legs'],
-            secondaryMuscles: ['glutes'],
-          ),
-          WorkoutExercise(
-            id: 'donkey_kick_pulse',
-            name: 'Donkey Kick Pulse',
-            sets: 4,
-            reps: 15,
-            primaryMuscles: ['glutes'],
-            secondaryMuscles: [],
-          ),
-          WorkoutExercise(
-            id: 'quadruped_hip_extension',
-            name: 'Quadruped Hip Extension',
-            sets: 4,
-            reps: 12,
-            primaryMuscles: ['glutes'],
-            secondaryMuscles: [],
-          ),
-          WorkoutExercise(
-            id: 'frog_pump',
-            name: 'Frog Pump',
-            sets: 4,
-            reps: 20,
-            primaryMuscles: ['glutes'],
-            secondaryMuscles: [],
           ),
           WorkoutExercise(
             id: 'single_leg_rdl',
@@ -3187,19 +3187,19 @@ class WorkoutData {
             secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
+            id: 'goblet_squat',
+            name: 'Goblet Squat',
+            sets: 3,
+            reps: 12,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
             id: 'sumo_squat',
             name: 'Sumo Squat',
             sets: 3,
             reps: 15,
             primaryMuscles: ['legs'],
-            secondaryMuscles: ['glutes'],
-          ),
-          WorkoutExercise(
-            id: 'bird_dog',
-            name: 'Bird Dog',
-            sets: 3,
-            reps: 15,
-            primaryMuscles: ['core'],
             secondaryMuscles: ['glutes'],
           ),
         ];
@@ -3207,16 +3207,16 @@ class WorkoutData {
       case 'intermediate':
         exercises = [
           WorkoutExercise(
-            id: 'single_leg_glute_bridge',
-            name: 'Single Leg Glute Bridge',
+            id: 'barbell_hip_thrust',
+            name: 'Barbell Hip Thrust',
             sets: 4,
-            reps: 12,
+            reps: 10,
             primaryMuscles: ['glutes'],
             secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
-            id: 'reverse_lunge',
-            name: 'Reverse Lunge',
+            id: 'leg_press',
+            name: 'Leg Press',
             sets: 4,
             reps: 12,
             primaryMuscles: ['legs'],
@@ -3231,12 +3231,12 @@ class WorkoutData {
             secondaryMuscles: ['glutes'],
           ),
           WorkoutExercise(
-            id: 'standing_glute_kickback',
-            name: 'Standing Glute Kickback',
+            id: 'single_leg_glute_bridge',
+            name: 'Single Leg Glute Bridge',
             sets: 4,
-            reps: 15,
+            reps: 12,
             primaryMuscles: ['glutes'],
-            secondaryMuscles: [],
+            secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
             id: 'frog_pump',
@@ -3251,7 +3251,66 @@ class WorkoutData {
       case 'advanced':
         exercises = [
           WorkoutExercise(
+            id: 'barbell_hip_thrust',
+            name: 'Barbell Hip Thrust',
+            sets: 4,
+            reps: 8,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'bulgarian_split_squat',
+            name: 'Bulgarian Split Squat',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'leg_press',
+            name: 'Leg Press',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['legs'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'cable_kickback',
+            name: 'Cable Kickback',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
             id: 'elevated_glute_bridge',
+            name: 'Elevated Glute Bridge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['hamstrings'],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump',
+            name: 'Frog Pump',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
             name: 'Elevated Glute Bridge',
             sets: 4,
             reps: 10,
@@ -3352,8 +3411,8 @@ class WorkoutData {
             secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
-            id: 'reverse_lunge',
-            name: 'Reverse Lunge',
+            id: 'goblet_squat',
+            name: 'Goblet Squat',
             sets: 3,
             reps: 12,
             primaryMuscles: ['legs'],
@@ -3372,19 +3431,19 @@ class WorkoutData {
       case 'intermediate':
         exercises = [
           WorkoutExercise(
-            id: 'single_leg_glute_bridge',
-            name: 'Single Leg Glute Bridge',
+            id: 'barbell_hip_thrust',
+            name: 'Barbell Hip Thrust',
             sets: 4,
-            reps: 12,
+            reps: 10,
             primaryMuscles: ['glutes'],
             secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
-            id: 'reverse_lunge',
-            name: 'Reverse Lunge',
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
             sets: 4,
-            reps: 12,
-            primaryMuscles: ['legs'],
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
             secondaryMuscles: ['glutes'],
           ),
           WorkoutExercise(
@@ -3404,8 +3463,8 @@ class WorkoutData {
             secondaryMuscles: ['glutes'],
           ),
           WorkoutExercise(
-            id: 'standing_glute_kickback',
-            name: 'Standing Glute Kickback',
+            id: 'cable_kickback',
+            name: 'Cable Kickback',
             sets: 4,
             reps: 15,
             primaryMuscles: ['glutes'],
@@ -3416,10 +3475,10 @@ class WorkoutData {
       case 'advanced':
         exercises = [
           WorkoutExercise(
-            id: 'elevated_glute_bridge',
-            name: 'Elevated Glute Bridge',
+            id: 'barbell_hip_thrust',
+            name: 'Barbell Hip Thrust',
             sets: 4,
-            reps: 10,
+            reps: 8,
             primaryMuscles: ['glutes'],
             secondaryMuscles: ['hamstrings'],
           ),
@@ -3428,6 +3487,54 @@ class WorkoutData {
             name: 'Bulgarian Split Squat',
             sets: 4,
             reps: 10,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'romanian_deadlift',
+            name: 'Romanian Deadlift',
+            sets: 4,
+            reps: 10,
+            primaryMuscles: ['hamstrings'],
+            secondaryMuscles: ['glutes'],
+          ),
+          WorkoutExercise(
+            id: 'curtsy_lunge',
+            name: 'Curtsy Lunge',
+            sets: 4,
+            reps: 12,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: ['legs'],
+          ),
+          WorkoutExercise(
+            id: 'cable_kickback',
+            name: 'Cable Kickback',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'donkey_kick_pulse',
+            name: 'Donkey Kick Pulse',
+            sets: 4,
+            reps: 15,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+          WorkoutExercise(
+            id: 'frog_pump',
+            name: 'Frog Pump',
+            sets: 4,
+            reps: 20,
+            primaryMuscles: ['glutes'],
+            secondaryMuscles: [],
+          ),
+        ];
+        break;
+      default:
+        exercises = [];
+    }
             primaryMuscles: ['legs'],
             secondaryMuscles: ['glutes'],
           ),
