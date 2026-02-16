@@ -74,6 +74,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
   int _restTimeRemaining = 60;
   Timer? _restTimer;
   bool _isBetweenExerciseRest = false; // Track if rest is between exercises or between sets
+  bool _isLastExerciseWeightInput = false; // Show weight input for last exercise before completion
   
   // Feedback display
   String _feedback = '';
@@ -798,16 +799,19 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
       setState(() {
         _currentExerciseIndex++;
       });
-      
+
       print('▶️ Moving to exercise ${_currentExerciseIndex + 1}: ${_committedWorkout!.exercises[_currentExerciseIndex].name}');
-      
+
       // Use the standard rest flow (which will call _startCurrentExercise via _endRest)
       _isBetweenExerciseRest = true;
+      _isLastExerciseWeightInput = false;
       _startRest();
     } else {
-      // Workout complete!
-      print('🏆 ALL EXERCISES COMPLETE!');
-      _completeWorkout();
+      // LAST EXERCISE — show rest/weight input screen BEFORE completing workout
+      print('🏆 ALL EXERCISES COMPLETE! Showing weight input for last exercise...');
+      _isBetweenExerciseRest = true;
+      _isLastExerciseWeightInput = true;
+      _startRest();
     }
   }
 
@@ -882,23 +886,32 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
         debugPrint('✅ HIIT work period complete, starting rest');
         HapticFeedback.heavyImpact();
 
-        // Move to next exercise or complete workout
+        // Move to next exercise or show weight input for last exercise
         if (_currentExerciseIndex < _committedWorkout!.exercises.length - 1) {
           _isBetweenExerciseRest = true;
+          _isLastExerciseWeightInput = false;
           _startRest();
         } else {
-          _completeWorkout();
+          // Last exercise — show weight input before completing
+          _isBetweenExerciseRest = true;
+          _isLastExerciseWeightInput = true;
+          _startRest();
         }
       }
     });
   }
 
   void _endRest() {
-    print('🟢 _endRest CALLED: isBetweenExerciseRest=$_isBetweenExerciseRest');
+    print('🟢 _endRest CALLED: isBetweenExerciseRest=$_isBetweenExerciseRest, isLastExerciseWeightInput=$_isLastExerciseWeightInput');
     _restTimer?.cancel();
     setState(() => _isResting = false);
-    
-    if (_isBetweenExerciseRest) {
+
+    if (_isLastExerciseWeightInput) {
+      // Last exercise weight input done — now complete the workout
+      print('🏆 END REST: Last exercise weight input done, completing workout');
+      _isLastExerciseWeightInput = false;
+      _completeWorkout();
+    } else if (_isBetweenExerciseRest) {
       // Between exercises - start the NEW exercise (resets set counter)
       print('🔄 END REST: Starting NEW exercise (calls startExercise)');
       _startCurrentExercise();
@@ -2329,13 +2342,28 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                 textAlign: TextAlign.center,
               ),
 
-              // Next exercise preview (only if between exercises)
+              // Next exercise preview (only if between exercises, not last)
               if (showNextExercisePreview) ...[
                 const SizedBox(height: 16),
                 Text(
                   'NEXT: ${_committedWorkout!.exercises[_currentExerciseIndex + 1].name.toUpperCase()}',
                   style: const TextStyle(
                     color: AppColors.white50,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.5,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+
+              // Last exercise — prompt to log weight before finishing
+              if (_isLastExerciseWeightInput) ...[
+                const SizedBox(height: 16),
+                const Text(
+                  'LOG YOUR WEIGHT, THEN FINISH',
+                  style: TextStyle(
+                    color: AppColors.electricCyan,
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 0.5,
@@ -2351,31 +2379,61 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                 padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
                 child: Column(
                   children: [
-                    // Quick Swap
-                    GestureDetector(
-                      onTap: () async {
-                        HapticFeedback.mediumImpact();
-                        await _showQuickSwapDuringRest();
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [AppColors.cyberLime.withOpacity(0.8), AppColors.cyberLime],
+                    if (_isLastExerciseWeightInput) ...[
+                      // COMPLETE WORKOUT button for last exercise
+                      GestureDetector(
+                        onTap: () {
+                          _restTimer?.cancel();
+                          setState(() => _isResting = false);
+                          _isLastExerciseWeightInput = false;
+                          _completeWorkout();
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [AppColors.cyberLime.withOpacity(0.8), AppColors.cyberLime],
+                            ),
+                            borderRadius: BorderRadius.circular(14),
                           ),
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.swap_horiz, color: Colors.black, size: 18),
-                            SizedBox(width: 8),
-                            Text('QUICK SWAP', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: Colors.black)),
-                          ],
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.check_circle, color: Colors.black, size: 18),
+                              SizedBox(width: 8),
+                              Text('COMPLETE WORKOUT', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: Colors.black)),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
+                    ] else ...[
+                      // Quick Swap (for non-last exercises)
+                      GestureDetector(
+                        onTap: () async {
+                          HapticFeedback.mediumImpact();
+                          await _showQuickSwapDuringRest();
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [AppColors.cyberLime.withOpacity(0.8), AppColors.cyberLime],
+                            ),
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.swap_horiz, color: Colors.black, size: 18),
+                              SizedBox(width: 8),
+                              Text('QUICK SWAP', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: Colors.black)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
 
                     const SizedBox(height: 12),
 
@@ -2390,10 +2448,10 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                           borderRadius: BorderRadius.circular(14),
                           border: Border.all(color: AppColors.white20),
                         ),
-                        child: const Text(
-                          'SKIP REST',
+                        child: Text(
+                          _isLastExerciseWeightInput ? 'SKIP & FINISH' : 'SKIP REST',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white),
+                          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white),
                         ),
                       ),
                     ),
