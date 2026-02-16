@@ -10,7 +10,7 @@ import '../../utils/text_styles.dart';
 import '../../widgets/glassmorphism_card.dart';
 import '../../widgets/glow_button.dart';
 import '../../widgets/exercise_animation_widget.dart';
-import '../../widgets/body_part_icon.dart';
+// body_part_icon.dart removed — now using neon skeleton JPG icons
 import '../../providers/workout_provider.dart';
 import '../../providers/workout_schedule_provider.dart';
 import '../../providers/schedule_date_provider.dart';
@@ -33,6 +33,7 @@ class WorkoutsTab extends ConsumerStatefulWidget {
 class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
   String _selectedMode = 'gym'; // 'gym' or 'home'
   String? _selectedCategory;
+  String? _selectedSplitKey; // For muscle splits inner navigation
   List<WorkoutPreset> _customWorkouts = []; // AI workouts
   List<WorkoutPreset> _manualWorkouts = []; // Manual workouts
   
@@ -89,6 +90,8 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
   Widget build(BuildContext context) {
     if (_selectedCategory == null) {
       return _buildMainScreen();
+    } else if (_selectedCategory == 'muscle_splits' && _selectedSplitKey == null) {
+      return _buildSplitSelectionList();
     } else {
       return _buildPresetList();
     }
@@ -181,12 +184,76 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: _buildCategoryCard(categories[index]),
-                  );
+                  return _buildCategoryCard(categories[index]);
                 },
                 childCount: categories.length,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSplitSelectionList() {
+    final splits = ['chest', 'back', 'shoulders', 'legs', 'arms', 'core'];
+    final splitNames = {
+      'chest': 'Chest',
+      'back': 'Back',
+      'shoulders': 'Shoulders',
+      'legs': 'Legs',
+      'arms': 'Arms',
+      'core': 'Core',
+    };
+
+    return SafeArea(
+      child: Column(
+        children: [
+          // Header with back button
+          Container(
+            padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _selectedCategory = null;
+                    });
+                    HapticFeedback.lightImpact();
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: AppColors.white10,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                      size: 24,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                const Expanded(
+                  child: Text(
+                    'MUSCLE SPLITS',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // Split cards
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 100),
+              child: Column(
+                children: splits.map((key) => _buildSplitCard(key, splitNames[key]!)).toList(),
               ),
             ),
           ),
@@ -243,6 +310,7 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
         setState(() {
           _selectedMode = mode;
           _selectedCategory = null;
+          _selectedSplitKey = null;
         });
         HapticFeedback.lightImpact();
       },
@@ -284,32 +352,32 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
         {
           'id': 'muscle_splits',
           'name': 'MUSCLE SPLITS',
-          'bodyPart': 'full_body',
-          'desc': 'Target specific muscle groups',
+          'icon': 'assets/images/icons/splits.jpg',
+          'desc': 'TARGET SPECIFIC MUSCLE GROUPS',
         },
         {
           'id': 'muscle_groupings',
           'name': 'MUSCLE GROUPINGS',
-          'bodyPart': 'chest',
-          'desc': 'Pre-built workout combinations',
+          'icon': 'assets/images/icons/groupings.jpg',
+          'desc': 'PRE-BUILT WORKOUT COMBINATIONS',
         },
         {
           'id': 'gym_circuits',
           'name': 'GYM CIRCUITS',
-          'bodyPart': 'full_body',
-          'desc': 'High-intensity timed workouts',
+          'icon': 'assets/images/icons/circuits.jpg',
+          'desc': 'HIGH-INTENSITY TIMED WORKOUTS',
         },
         {
           'id': 'booty_builder',
           'name': 'BOOTY BUILDER',
-          'bodyPart': 'glutes',
-          'desc': "Women's glute-focused workouts",
+          'icon': 'assets/images/icons/booty.jpg',
+          'desc': "WOMEN'S GLUTE-FOCUSED WORKOUTS",
         },
         {
           'id': 'girl_power',
           'name': 'GIRL POWER',
-          'bodyPart': 'full_body',
-          'desc': 'Elite women-focused training programs',
+          'icon': 'assets/images/icons/girlpower.jpg',
+          'desc': 'ELITE WOMEN-FOCUSED TRAINING',
         },
       ];
     } else if (_selectedMode == 'home') {
@@ -317,53 +385,47 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
         {
           'id': 'bodyweight_basics',
           'name': 'BODYWEIGHT BASICS',
-          'bodyPart': 'full_body',
-          'desc': 'No equipment needed',
+          'icon': 'assets/images/icons/bodyweight.jpg',
+          'desc': 'NO EQUIPMENT NEEDED',
         },
         {
           'id': 'hiit_circuits',
           'name': 'HIIT CIRCUITS',
-          'bodyPart': 'full_body',
-          'desc': 'High intensity, no equipment',
+          'icon': 'assets/images/icons/circuits.jpg',
+          'desc': 'HIGH INTENSITY, NO EQUIPMENT',
         },
         {
           'id': 'home_booty',
           'name': 'HOME BOOTY',
-          'bodyPart': 'glutes',
-          'desc': 'Glute workouts at home',
+          'icon': 'assets/images/icons/glutes.jpg',
+          'desc': 'GLUTE WORKOUTS AT HOME',
         },
-        // {
-        //   'id': 'recovery',
-        //   'name': 'RECOVERY & MOBILITY',
-        //   'bodyPart': 'full_body',
-        //   'desc': 'Stretching and mobility work',
-        // },
         {
           'id': 'girl_power',
           'name': 'GIRL POWER',
-          'bodyPart': 'full_body',
-          'desc': 'Elite women-focused home training',
+          'icon': 'assets/images/icons/girlpower.jpg',
+          'desc': 'ELITE WOMEN-FOCUSED HOME TRAINING',
         },
       ];
-    } else { // custom mode
+    } else {
       return [
         {
           'id': 'ai_workouts',
           'name': 'MY AI WORKOUTS',
-          'bodyPart': 'full_body',
-          'desc': 'AI-tracked custom workouts',
+          'icon': 'assets/images/icons/bodyweight.jpg',
+          'desc': 'AI-TRACKED CUSTOM WORKOUTS',
         },
         {
           'id': 'manual_workouts',
           'name': 'MY MANUAL WORKOUTS',
-          'bodyPart': 'full_body',
-          'desc': 'Manual log workouts',
+          'icon': 'assets/images/icons/splits.jpg',
+          'desc': 'MANUAL LOGGING WORKOUTS',
         },
         {
           'id': 'create_new',
-          'name': 'CREATE NEW WORKOUT',
-          'bodyPart': 'full_body',
-          'desc': 'Build a workout from scratch',
+          'name': 'CREATE NEW',
+          'icon': 'assets/images/icons/circuits.jpg',
+          'desc': 'BUILD A CUSTOM WORKOUT',
         },
       ];
     }
@@ -371,91 +433,217 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
 
   Widget _buildCategoryCard(Map<String, String> category) {
     return GestureDetector(
-      onTap: () async {
-        // Special handling for custom mode "create new" action
-        if (category['id'] == 'create_new') {
-          HapticFeedback.mediumImpact();
-          final result = await Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const CustomWorkoutsScreen(),
-            ),
-          );
-
-          // If workout was saved, reload both workout lists
-          if (result == true && mounted) {
-            await _loadCustomWorkouts(); // Reload both lists
-          }
-        } else {
-          setState(() {
-            _selectedCategory = category['id'];
-          });
-          HapticFeedback.lightImpact();
-        }
-      },
+      onTap: () => _navigateToCategory(category['id']!),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        margin: const EdgeInsets.only(bottom: 12),
+        height: 120, // Fixed height — icon fills top to bottom
         decoration: BoxDecoration(
-          color: AppColors.white5,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: AppColors.white10),
+          color: const Color(0xFF0D0D0D),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: Colors.white.withOpacity(0.06),
+            width: 1,
+          ),
         ),
         child: Row(
           children: [
-            // Body icon — BIG, 88px
-            SizedBox(
-              width: 70,  // Fixed width container
-              child: BodyPartIcon(
-                bodyPart: category['bodyPart'] ?? 'full_body',
-                size: 88,
-                highlightColor: _getCategoryColor(category['id']!),
+            // ═══════════════════════════════════════════
+            // ICON — Big square, fills card height
+            // ═══════════════════════════════════════════
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
+              ),
+              child: Image.asset(
+                category['icon']!,
+                width: 120, // Square: same as card height
+                height: 120,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    width: 120,
+                    height: 120,
+                    color: const Color(0xFF111111),
+                    child: Icon(
+                      Icons.fitness_center,
+                      color: AppColors.cyberLime,
+                      size: 32,
+                    ),
+                  );
+                },
               ),
             ),
-            const SizedBox(width: 16),
-            // Text
+
+            // ═══════════════════════════════════════════
+            // TEXT — Elite typography
+            // ═══════════════════════════════════════════
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    category['name']!,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                      letterSpacing: 1.5,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      category['name']!,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.white,
+                        letterSpacing: 2,
+                        height: 1.2,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    category['desc']!,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: AppColors.white50,
+                    const SizedBox(height: 8),
+                    Text(
+                      category['desc']!,
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.cyberLime.withOpacity(0.6),
+                        letterSpacing: 1.5,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
+
             // Arrow
-            Icon(Icons.chevron_right, color: AppColors.white30, size: 24),
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: Icon(
+                Icons.chevron_right,
+                color: Colors.white.withOpacity(0.15),
+                size: 24,
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Color _getCategoryColor(String categoryId) {
-    switch (categoryId) {
-      case 'muscle_splits': return AppColors.cyberLime;
-      case 'muscle_groupings': return const Color(0xFF00F0FF); // cyan
-      case 'gym_circuits': return const Color(0xFFFF8C00); // orange
-      case 'booty_builder': return const Color(0xFFEC4899); // pink
-      case 'girl_power': return const Color(0xFFA855F7); // purple
-      case 'home_booty': return const Color(0xFFEC4899); // pink
-      case 'hiit_circuits': return const Color(0xFFFF8C00); // orange
-      default: return AppColors.cyberLime;
+  Future<void> _navigateToCategory(String categoryId) async {
+    if (categoryId == 'create_new') {
+      HapticFeedback.mediumImpact();
+      final result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const CustomWorkoutsScreen(),
+        ),
+      );
+      if (result == true && mounted) {
+        await _loadCustomWorkouts();
+      }
+    } else {
+      setState(() {
+        _selectedCategory = categoryId;
+      });
+      HapticFeedback.lightImpact();
     }
+  }
+
+  String _getSplitIcon(String splitKey) {
+    switch (splitKey.toLowerCase()) {
+      case 'chest': return 'assets/images/icons/chest.jpg';
+      case 'back': return 'assets/images/icons/back.jpg';
+      case 'shoulders': return 'assets/images/icons/shoulders.jpg';
+      case 'legs': return 'assets/images/icons/legs.jpg';
+      case 'arms': return 'assets/images/icons/arms.jpg';
+      case 'core': return 'assets/images/icons/core.jpg';
+      default: return 'assets/images/icons/splits.jpg';
+    }
+  }
+
+  Widget _buildSplitCard(String splitKey, String splitName) {
+    return GestureDetector(
+      onTap: () => _navigateToSplit(splitKey),
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 12),
+        height: 100, // Slightly smaller for inner cards
+        decoration: BoxDecoration(
+          color: const Color(0xFF0D0D0D),
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(
+            color: AppColors.cyberLime.withOpacity(0.08),
+            width: 1,
+          ),
+        ),
+        child: Row(
+          children: [
+            // Icon — square
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(18),
+                bottomLeft: Radius.circular(18),
+              ),
+              child: Image.asset(
+                _getSplitIcon(splitKey),
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    width: 100,
+                    height: 100,
+                    color: const Color(0xFF111111),
+                    child: Icon(Icons.fitness_center, color: AppColors.cyberLime, size: 28),
+                  );
+                },
+              ),
+            ),
+            // Text
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      splitName.toUpperCase(),
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.white,
+                        letterSpacing: 2,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      '5 EXERCISES',
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.cyberLime.withOpacity(0.5),
+                        letterSpacing: 1.5,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 14),
+              child: Icon(
+                Icons.chevron_right,
+                color: Colors.white.withOpacity(0.15),
+                size: 22,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _navigateToSplit(String splitKey) {
+    setState(() {
+      _selectedSplitKey = splitKey;
+    });
+    HapticFeedback.lightImpact();
   }
 
   Widget _buildExerciseThumbnail(WorkoutExercise exercise) {
@@ -497,7 +685,11 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    _selectedCategory = null;
+                    if (_selectedSplitKey != null) {
+                      _selectedSplitKey = null; // Go back to split selection
+                    } else {
+                      _selectedCategory = null;
+                    }
                   });
                   HapticFeedback.lightImpact();
                 },
@@ -555,7 +747,15 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
       // GYM MODE - Use dynamic generation
       case 'muscle_splits':
         // We'll generate for 'intermediate' as base, then adjust per-preset in _getAdjustedExercises
-        return WorkoutData.getGymMuscleSplits('intermediate');
+        final allSplits = WorkoutData.getGymMuscleSplits('intermediate');
+        if (_selectedSplitKey != null) {
+          // Filter to just the selected split
+          return allSplits.where((p) {
+            final bodyPart = _getBodyPartForPreset(p);
+            return bodyPart == _selectedSplitKey;
+          }).toList();
+        }
+        return allSplits;
       case 'muscle_groupings':
         return WorkoutData.getGymMuscleGroupings('intermediate');
       case 'gym_circuits':
@@ -590,6 +790,10 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
   }
 
   String _getCategoryName() {
+    // When viewing a specific muscle split, show the split name
+    if (_selectedCategory == 'muscle_splits' && _selectedSplitKey != null) {
+      return _selectedSplitKey!.toUpperCase();
+    }
     final categories = _getCategoriesForMode();
     final category = categories.firstWhere(
       (c) => c['id'] == _selectedCategory,
@@ -791,13 +995,28 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Preset name and body icon
+          // Preset name and icon
           Row(
             children: [
-              BodyPartIcon(
-                bodyPart: _getBodyPartForPreset(preset),
-                size: 60,
-                highlightColor: AppColors.cyberLime,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  _getSplitIcon(_getBodyPartForPreset(preset)),
+                  width: 60,
+                  height: 60,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF111111),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Icon(Icons.fitness_center, color: AppColors.cyberLime, size: 24),
+                    );
+                  },
+                ),
               ),
               const SizedBox(width: 14),
               Expanded(
