@@ -59,10 +59,11 @@ class TermsOfServiceScreen extends StatelessWidget {
               color: AppColors.white50,
               fontSize: 14,
               fontStyle: FontStyle.italic,
+              decoration: TextDecoration.none,
             ),
           ),
           const SizedBox(height: 24),
-          
+
           _buildSection(
             '1. Acceptance of Terms',
             'By downloading, installing, or using Skeletal-PT ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the App.',
@@ -213,6 +214,7 @@ class TermsOfServiceScreen extends StatelessWidget {
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                   height: 1.5,
+                  decoration: TextDecoration.none,
                 ),
               ),
             ),
@@ -270,10 +272,11 @@ class PrivacyPolicyScreen extends StatelessWidget {
               color: AppColors.white50,
               fontSize: 14,
               fontStyle: FontStyle.italic,
+              decoration: TextDecoration.none,
             ),
           ),
           const SizedBox(height: 24),
-          
+
           _buildSection(
             'Introduction',
             'Skeletal-PT ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application.',
@@ -457,6 +460,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                   height: 1.5,
+                  decoration: TextDecoration.none,
                 ),
               ),
             ),
@@ -531,6 +535,7 @@ class AboutScreen extends StatelessWidget {
               fontWeight: FontWeight.w900,
               color: AppColors.cyberLime,
               letterSpacing: 2,
+              decoration: TextDecoration.none,
               shadows: [
                 Shadow(
                   color: AppColors.cyberLime.withOpacity(0.5),
@@ -545,10 +550,11 @@ class AboutScreen extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               color: AppColors.white60,
+              decoration: TextDecoration.none,
             ),
           ),
           const SizedBox(height: 32),
-          
+
           const Text(
             'Your AI Personal Trainer',
             textAlign: TextAlign.center,
@@ -556,10 +562,11 @@ class AboutScreen extends StatelessWidget {
               fontSize: 20,
               fontWeight: FontWeight.w700,
               color: Colors.white,
+              decoration: TextDecoration.none,
             ),
           ),
           const SizedBox(height: 16),
-          
+
           const Text(
             'Skeletal-PT uses advanced AI and computer vision to track your workouts, analyze your form in real-time, and provide professional coaching feedback - all from your phone\'s camera.',
             textAlign: TextAlign.center,
@@ -567,6 +574,7 @@ class AboutScreen extends StatelessWidget {
               fontSize: 14,
               color: AppColors.white70,
               height: 1.6,
+              decoration: TextDecoration.none,
             ),
           ),
           const SizedBox(height: 32),
@@ -593,6 +601,7 @@ class AboutScreen extends StatelessWidget {
                     fontSize: 14,
                     fontWeight: FontWeight.w900,
                     color: Colors.white,
+                    decoration: TextDecoration.none,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -601,6 +610,7 @@ class AboutScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 12,
                     color: AppColors.white60,
+                    decoration: TextDecoration.none,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -612,6 +622,7 @@ class AboutScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 12,
                     color: AppColors.white50,
+                    decoration: TextDecoration.none,
                   ),
                 ),
               ],
@@ -627,7 +638,7 @@ class AboutScreen extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 16),
       child: Row(
         children: [
-          Text(emoji, style: const TextStyle(fontSize: 32)),
+          Text(emoji, style: const TextStyle(fontSize: 32, decoration: TextDecoration.none)),
           const SizedBox(width: 16),
           Expanded(
             child: Column(
@@ -639,6 +650,7 @@ class AboutScreen extends StatelessWidget {
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
                     color: Colors.white,
+                    decoration: TextDecoration.none,
                   ),
                 ),
                 Text(
@@ -646,6 +658,7 @@ class AboutScreen extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 13,
                     color: AppColors.white60,
+                    decoration: TextDecoration.none,
                   ),
                 ),
               ],
@@ -728,6 +741,7 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                     color: Colors.white,
+                    decoration: TextDecoration.none,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -736,6 +750,7 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
                   style: const TextStyle(
                     fontSize: 12,
                     color: AppColors.white50,
+                    decoration: TextDecoration.none,
                   ),
                 ),
               ],
@@ -756,181 +771,4 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
   }
 }
 
-// Voice Coach Settings Screen
-class VoiceCoachSettingsScreen extends StatefulWidget {
-  const VoiceCoachSettingsScreen({super.key});
-
-  @override
-  State<VoiceCoachSettingsScreen> createState() => _VoiceCoachSettingsScreenState();
-}
-
-class _VoiceCoachSettingsScreenState extends State<VoiceCoachSettingsScreen> {
-  bool _enableVoice = true;
-  String _selectedVoice = 'hype';
-  double _volume = 0.8;
-
-  @override
-  Widget build(BuildContext context) {
-    return _DocumentScreen(
-      title: 'Voice Coach',
-      content: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Enable toggle
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: AppColors.white20),
-              borderRadius: BorderRadius.circular(16),
-              color: AppColors.white5,
-            ),
-            child: Row(
-              children: [
-                const Expanded(
-                  child: Text(
-                    'Enable Voice Coach',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                Switch(
-                  value: _enableVoice,
-                  onChanged: (value) {
-                    HapticFeedback.lightImpact();
-                    setState(() => _enableVoice = value);
-                  },
-                  activeColor: AppColors.cyberLime,
-                  activeTrackColor: AppColors.cyberLime.withOpacity(0.3),
-                ),
-              ],
-            ),
-          ),
-          
-          if (_enableVoice) ...[
-            const SizedBox(height: 24),
-            const Text(
-              'COACH PERSONALITY',
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w900,
-                color: AppColors.white50,
-                letterSpacing: 2,
-              ),
-            ),
-            const SizedBox(height: 12),
-            
-            _buildVoiceOption('hype', '🔥 Hype Man', 'YESSS! You\'re a BEAST!'),
-            _buildVoiceOption('sergeant', '🎖️ Drill Sergeant', 'PUSH! Don\'t quit on me!'),
-            _buildVoiceOption('zen', '🧘 Zen Master', 'Breathe. Focus. Perfect.'),
-            _buildVoiceOption('science', '🔬 Science Coach', 'Good form. 87% depth.'),
-            
-            const SizedBox(height: 24),
-            const Text(
-              'VOLUME',
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w900,
-                color: AppColors.white50,
-                letterSpacing: 2,
-              ),
-            ),
-            const SizedBox(height: 12),
-            
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                border: Border.all(color: AppColors.white20),
-                borderRadius: BorderRadius.circular(16),
-                color: AppColors.white5,
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      const Icon(Icons.volume_down, color: AppColors.white60),
-                      Expanded(
-                        child: Slider(
-                          value: _volume,
-                          onChanged: (value) {
-                            setState(() => _volume = value);
-                          },
-                          activeColor: AppColors.cyberLime,
-                          inactiveColor: AppColors.white20,
-                        ),
-                      ),
-                      const Icon(Icons.volume_up, color: AppColors.white60),
-                    ],
-                  ),
-                  Text(
-                    '${(_volume * 100).toInt()}%',
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ],
-      ),
-    );
-  }
-
-  Widget _buildVoiceOption(String id, String title, String example) {
-    final isSelected = _selectedVoice == id;
-    return GestureDetector(
-      onTap: () {
-        HapticFeedback.selectionClick();
-        setState(() => _selectedVoice = id);
-      },
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 12),
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: isSelected ? AppColors.cyberLime : AppColors.white20,
-            width: isSelected ? 2 : 1,
-          ),
-          borderRadius: BorderRadius.circular(16),
-          color: isSelected ? AppColors.cyberLime.withOpacity(0.1) : AppColors.white5,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: isSelected ? AppColors.cyberLime : Colors.white,
-                    ),
-                  ),
-                ),
-                if (isSelected)
-                  const Icon(Icons.check_circle, color: AppColors.cyberLime, size: 20),
-              ],
-            ),
-            const SizedBox(height: 4),
-            Text(
-              '"$example"',
-              style: const TextStyle(
-                fontSize: 12,
-                color: AppColors.white50,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
