@@ -86,7 +86,11 @@ class MyApp extends ConsumerWidget {
       routes: {
         '/home': (context) => const HomeScreen(),
         '/onboarding': (context) => const V3OnboardingMain(),
-        '/signin': (context) => const SignInScreen(),
+        '/signin': (context) => SignInScreen(
+          onContinue: () {
+            Navigator.of(context).pushReplacementNamed('/home');
+          },
+        ),
       },
     );
   }
