@@ -347,7 +347,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
   // ═══════════════════════════════════════════════════════════════════════════
   Widget _buildHeader(BuildContext context, WorkoutStats stats) {
     return Container(
-      color: AppColors.cyberLime.withOpacity(0.10), // Cyber lime tint
+      color: Colors.transparent,
       padding: const EdgeInsets.fromLTRB(0, 8, 12, 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -356,17 +356,11 @@ class _HomeTabState extends ConsumerState<HomeTab> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(left: 4),
-              child: ShaderMask(
-                shaderCallback: (bounds) => const LinearGradient(
-                  colors: [Colors.white, Colors.white],
-                ).createShader(bounds),
-                blendMode: BlendMode.srcATop,
-                child: Image.asset(
-                  'assets/images/logo/skeletal_logo.png',
-                  height: 52,
-                  fit: BoxFit.contain,
-                  alignment: Alignment.centerLeft,
-                ),
+              child: Image.asset(
+                'assets/images/logo/skeletal_logo.png',
+                height: 42,
+                fit: BoxFit.contain,
+                alignment: Alignment.centerLeft,
               ),
             ),
           ),

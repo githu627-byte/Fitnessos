@@ -261,7 +261,7 @@ class WorkoutData {
     TrainingSplit(
       id: 'ppl',
       name: 'PUSH/PULL/LEGS',
-      icon: '🔄',
+      icon: 'splits',
       days: [
         TrainingSplitDay(
           name: 'PUSH DAY',
@@ -280,7 +280,7 @@ class WorkoutData {
     TrainingSplit(
       id: 'upper_lower',
       name: 'UPPER/LOWER',
-      icon: '⬆️⬇️',
+      icon: 'splits',
       days: [
         TrainingSplitDay(
           name: 'UPPER BODY',
@@ -295,7 +295,7 @@ class WorkoutData {
     TrainingSplit(
       id: 'full_body',
       name: 'FULL BODY',
-      icon: '💯',
+      icon: 'splits',
       days: [
         TrainingSplitDay(
           name: 'FULL BODY A',
@@ -344,31 +344,31 @@ class WorkoutData {
     WorkoutCategory(
       id: 'splits',
       name: 'MUSCLE SPLITS',
-      icon: '💪',
+      icon: 'arms',
       description: 'Target specific muscle groups',
     ),
     WorkoutCategory(
       id: 'circuits',
       name: 'CIRCUITS',
-      icon: '⚡',
+      icon: 'circuits',
       description: 'High-intensity timed workouts',
     ),
     WorkoutCategory(
       id: 'training_splits',
       name: 'TRAINING SPLITS',
-      icon: '🏋️',
+      icon: 'splits',
       description: 'Classic workout splits',
     ),
     WorkoutCategory(
       id: 'at_home',
       name: 'AT HOME',
-      icon: '🏠',
+      icon: 'bodyweight',
       description: 'No equipment needed',
     ),
     WorkoutCategory(
       id: 'cardio',
       name: 'CARDIO ONLY',
-      icon: '🏃',
+      icon: 'circuits',
       description: 'Pure cardio exercises',
     ),
   ];
@@ -547,7 +547,7 @@ class WorkoutData {
       subcategory: 'muscle_splits',
       exercises: exercises,
       isCircuit: false,
-      icon: '🦾',
+      icon: 'chest',
     );
   }
 
@@ -699,7 +699,7 @@ class WorkoutData {
       subcategory: 'muscle_splits',
       exercises: exercises,
       isCircuit: false,
-      icon: '🔙',
+      icon: 'back',
     );
   }
 
@@ -851,7 +851,7 @@ class WorkoutData {
       subcategory: 'muscle_splits',
       exercises: exercises,
       isCircuit: false,
-      icon: '💪',
+      icon: 'arms',
     );
   }
 
@@ -1003,7 +1003,7 @@ class WorkoutData {
       subcategory: 'muscle_splits',
       exercises: exercises,
       isCircuit: false,
-      icon: '🦵',
+      icon: 'legs',
     );
   }
 
@@ -1155,7 +1155,7 @@ class WorkoutData {
       subcategory: 'muscle_splits',
       exercises: exercises,
       isCircuit: false,
-      icon: '💪',
+      icon: 'arms',
     );
   }
 
@@ -1307,7 +1307,7 @@ class WorkoutData {
       subcategory: 'muscle_splits',
       exercises: exercises,
       isCircuit: false,
-      icon: '🎯',
+      icon: 'core',
     );
   }
 
@@ -1471,7 +1471,7 @@ class WorkoutData {
       subcategory: 'muscle_groupings',
       exercises: exercises,
       isCircuit: false,
-      icon: '💪',
+      icon: 'arms',
     );
   }
 
@@ -1623,7 +1623,7 @@ class WorkoutData {
       subcategory: 'muscle_groupings',
       exercises: exercises,
       isCircuit: false,
-      icon: '🦵',
+      icon: 'legs',
     );
   }
 
@@ -1775,7 +1775,7 @@ class WorkoutData {
       subcategory: 'muscle_groupings',
       exercises: exercises,
       isCircuit: false,
-      icon: '🚀',
+      icon: 'circuits',
     );
   }
 
@@ -1927,7 +1927,7 @@ class WorkoutData {
       subcategory: 'muscle_groupings',
       exercises: exercises,
       isCircuit: false,
-      icon: '💪',
+      icon: 'arms',
     );
   }
 
@@ -2079,7 +2079,7 @@ class WorkoutData {
       subcategory: 'muscle_groupings',
       exercises: exercises,
       isCircuit: false,
-      icon: '⚡',
+      icon: 'circuits',
     );
   }
 
@@ -2226,12 +2226,12 @@ class WorkoutData {
 
     return WorkoutPreset(
       id: 'gym_glutes_legs',
-      name: 'GLUTES & LEGS 🍑',
+      name: 'GLUTES & LEGS',
       category: 'gym',
       subcategory: 'muscle_groupings',
       exercises: exercises,
       isCircuit: false,
-      icon: '🍑',
+      icon: 'glutes',
     );
   }
 
@@ -2455,7 +2455,7 @@ class WorkoutData {
       rounds: 3,
       duration: difficulty == 'beginner' ? '8 min' : difficulty == 'intermediate' ? '18 min' : '24 min',
       isCircuit: true,
-      icon: '💥',
+      icon: 'circuits',
     );
   }
 
@@ -2639,7 +2639,7 @@ class WorkoutData {
       rounds: 3,
       duration: difficulty == 'beginner' ? '8 min' : difficulty == 'intermediate' ? '15 min' : '20 min',
       isCircuit: true,
-      icon: '🔥',
+      icon: 'circuits',
     );
   }
 
@@ -2823,7 +2823,7 @@ class WorkoutData {
       rounds: 4,
       duration: difficulty == 'beginner' ? '10 min' : difficulty == 'intermediate' ? '20 min' : '28 min',
       isCircuit: true,
-      icon: '⚡',
+      icon: 'circuits',
     );
   }
 
@@ -3007,7 +3007,7 @@ class WorkoutData {
       rounds: 3,
       duration: difficulty == 'beginner' ? '8 min' : difficulty == 'intermediate' ? '15 min' : '22 min',
       isCircuit: true,
-      icon: '🎯',
+      icon: 'core',
     );
   }
 
@@ -3167,7 +3167,7 @@ class WorkoutData {
       subcategory: 'booty_builder',
       exercises: exercises,
       isCircuit: false,
-      icon: '🍑',
+      icon: 'glutes',
     );
   }
 
@@ -3319,7 +3319,7 @@ class WorkoutData {
       subcategory: 'booty_builder',
       exercises: exercises,
       isCircuit: false,
-      icon: '🍑',
+      icon: 'glutes',
     );
   }
 
@@ -3484,7 +3484,7 @@ class WorkoutData {
       subcategory: 'girl_power',
       exercises: exercises,
       isCircuit: false,
-      icon: '🍑',
+      icon: 'glutes',
     );
   }
 
@@ -3636,7 +3636,7 @@ class WorkoutData {
       subcategory: 'girl_power',
       exercises: exercises,
       isCircuit: false,
-      icon: '💪',
+      icon: 'arms',
     );
   }
 
@@ -3788,7 +3788,7 @@ class WorkoutData {
       subcategory: 'girl_power',
       exercises: exercises,
       isCircuit: false,
-      icon: '🦵',
+      icon: 'legs',
     );
   }
 
@@ -3941,7 +3941,7 @@ class WorkoutData {
       subcategory: 'girl_power',
       exercises: exercises,
       isCircuit: false,
-      icon: '⚡',
+      icon: 'circuits',
     );
   }
 
@@ -4093,7 +4093,7 @@ class WorkoutData {
       subcategory: 'girl_power',
       exercises: exercises,
       isCircuit: false,
-      icon: '🚀',
+      icon: 'circuits',
     );
   }
 
@@ -4245,7 +4245,7 @@ class WorkoutData {
       subcategory: 'girl_power',
       exercises: exercises,
       isCircuit: false,
-      icon: '💪',
+      icon: 'arms',
     );
   }
 
@@ -4397,7 +4397,7 @@ class WorkoutData {
       subcategory: 'girl_power',
       exercises: exercises,
       isCircuit: false,
-      icon: '🦵',
+      icon: 'legs',
     );
   }
 
@@ -4564,7 +4564,7 @@ class WorkoutData {
       subcategory: 'bodyweight_basics',
       exercises: exercises,
       isCircuit: false,
-      icon: '⚡',
+      icon: 'circuits',
     );
   }
 
@@ -4719,7 +4719,7 @@ class WorkoutData {
       subcategory: 'bodyweight_basics',
       exercises: exercises,
       isCircuit: false,
-      icon: '💪',
+      icon: 'arms',
     );
   }
 
@@ -4871,7 +4871,7 @@ class WorkoutData {
       subcategory: 'bodyweight_basics',
       exercises: exercises,
       isCircuit: false,
-      icon: '🦵',
+      icon: 'legs',
     );
   }
 
@@ -5029,7 +5029,7 @@ class WorkoutData {
       subcategory: 'bodyweight_basics',
       exercises: exercises,
       isCircuit: false,
-      icon: '🎯',
+      icon: 'core',
     );
   }
 
@@ -5190,7 +5190,7 @@ class WorkoutData {
       exercises: exercises,
       rounds: rounds,
       isCircuit: true,
-      icon: '💪',
+      icon: 'arms',
     );
   }
 
@@ -5419,7 +5419,7 @@ class WorkoutData {
       rounds: rounds,
       duration: '10 min',
       isCircuit: true,
-      icon: '⚡',
+      icon: 'circuits',
     );
   }
 
@@ -5638,7 +5638,7 @@ class WorkoutData {
       rounds: rounds,
       duration: '20 min',
       isCircuit: true,
-      icon: '🔥',
+      icon: 'circuits',
     );
   }
 
@@ -5797,7 +5797,7 @@ class WorkoutData {
       rounds: 1, // Already doing 8 sets per exercise
       duration: '15-20 min',
       isCircuit: false, // Not a circuit, each exercise done 8 times
-      icon: '💥',
+      icon: 'circuits',
     );
   }
 
@@ -5986,7 +5986,7 @@ class WorkoutData {
       rounds: rounds,
       duration: '15-20 min',
       isCircuit: true,
-      icon: '💨',
+      icon: 'circuits',
     );
   }
 
@@ -6147,7 +6147,7 @@ class WorkoutData {
       subcategory: 'home_booty',
       exercises: exercises,
       isCircuit: false,
-      icon: '🍑',
+      icon: 'glutes',
     );
   }
 
@@ -6299,7 +6299,7 @@ class WorkoutData {
       subcategory: 'home_booty',
       exercises: exercises,
       isCircuit: false,
-      icon: '🔥',
+      icon: 'circuits',
     );
   }
 
@@ -6451,7 +6451,7 @@ class WorkoutData {
       subcategory: 'home_booty',
       exercises: exercises,
       isCircuit: false,
-      icon: '💪',
+      icon: 'arms',
     );
   }
 
@@ -6616,7 +6616,7 @@ class WorkoutData {
       subcategory: 'girl_power',
       exercises: exercises,
       isCircuit: false,
-      icon: '🍑',
+      icon: 'glutes',
     );
   }
 
@@ -6771,7 +6771,7 @@ class WorkoutData {
       subcategory: 'girl_power',
       exercises: exercises,
       isCircuit: false,
-      icon: '💪',
+      icon: 'arms',
     );
   }
 
@@ -6958,7 +6958,7 @@ class WorkoutData {
       rounds: rounds,
       isCircuit: isCircuit,
       duration: difficulty == 'beginner' ? '15 min' : '20-25 min',
-      icon: '⚡',
+      icon: 'circuits',
     );
   }
 
@@ -7110,7 +7110,7 @@ class WorkoutData {
       subcategory: 'girl_power',
       exercises: exercises,
       isCircuit: false,
-      icon: '🚀',
+      icon: 'circuits',
     );
   }
 
@@ -7301,7 +7301,7 @@ class WorkoutData {
       rounds: rounds,
       isCircuit: isCircuit,
       duration: difficulty == 'beginner' ? '15 min' : '20-25 min',
-      icon: '🔥',
+      icon: 'circuits',
     );
   }
 
@@ -7318,7 +7318,7 @@ class WorkoutData {
       name: 'CHEST',
       category: 'gym',
       subcategory: 'muscle_splits',
-      icon: '🦾',
+      icon: 'chest',
       isCircuit: false,
       exercises: [
         WorkoutExercise(id: 'barbell_bench_press', name: 'Barbell Bench Press', sets: 4, reps: 8),
@@ -7336,7 +7336,7 @@ class WorkoutData {
       name: 'BACK',
       category: 'gym',
       subcategory: 'muscle_splits',
-      icon: '🔙',
+      icon: 'back',
       isCircuit: false,
       exercises: [
         WorkoutExercise(id: 'deadlift', name: 'Deadlift', sets: 4, reps: 5),
@@ -7354,7 +7354,7 @@ class WorkoutData {
       name: 'SHOULDERS',
       category: 'gym',
       subcategory: 'muscle_splits',
-      icon: '💪',
+      icon: 'arms',
       isCircuit: false,
       exercises: [
         WorkoutExercise(id: 'overhead_press', name: 'Overhead Press', sets: 4, reps: 8),
@@ -7372,7 +7372,7 @@ class WorkoutData {
       name: 'LEGS',
       category: 'gym',
       subcategory: 'muscle_splits',
-      icon: '🦵',
+      icon: 'legs',
       isCircuit: false,
       exercises: [
         WorkoutExercise(id: 'back_squat', name: 'Back Squat', sets: 4, reps: 8),
@@ -7382,8 +7382,8 @@ class WorkoutData {
         WorkoutExercise(id: 'bulgarian_split_squat', name: 'Bulgarian Split Squat', sets: 3, reps: 10, included: false),
         WorkoutExercise(id: 'leg_extension', name: 'Leg Extension', sets: 3, reps: 12, included: false),
         WorkoutExercise(id: 'leg_curl', name: 'Leg Curl', sets: 3, reps: 12, included: false),
-        WorkoutExercise(id: 'hip_thrust', name: 'Hip Thrust (GLUTE FOCUS 🍑)', sets: 4, reps: 10, included: false),
-        WorkoutExercise(id: 'glute_kickback', name: 'Glute Kickback Machine (GLUTE FOCUS 🍑)', sets: 3, reps: 12, included: false),
+        WorkoutExercise(id: 'hip_thrust', name: 'Hip Thrust (GLUTE FOCUS)', sets: 4, reps: 10, included: false),
+        WorkoutExercise(id: 'glute_kickback', name: 'Glute Kickback Machine (GLUTE FOCUS)', sets: 3, reps: 12, included: false),
         WorkoutExercise(id: 'standing_calf_raise', name: 'Standing Calf Raise', sets: 4, reps: 15, included: false),
       ],
     ),
@@ -7392,7 +7392,7 @@ class WorkoutData {
       name: 'ARMS',
       category: 'gym',
       subcategory: 'muscle_splits',
-      icon: '💪',
+      icon: 'arms',
       isCircuit: false,
       exercises: [
         WorkoutExercise(id: 'barbell_curl', name: 'Barbell Curl', sets: 3, reps: 10),
@@ -7412,7 +7412,7 @@ class WorkoutData {
       name: 'CORE',
       category: 'gym',
       subcategory: 'muscle_splits',
-      icon: '🎯',
+      icon: 'core',
       isCircuit: false,
       exercises: [
         WorkoutExercise(id: 'cable_crunch', name: 'Cable Crunch', sets: 3, reps: 15),
@@ -7435,7 +7435,7 @@ class WorkoutData {
       name: 'UPPER BODY',
       category: 'gym',
       subcategory: 'muscle_groupings',
-      icon: '💪',
+      icon: 'arms',
       isCircuit: false,
       duration: '~45 min',
       exercises: [
@@ -7453,7 +7453,7 @@ class WorkoutData {
       name: 'LOWER BODY',
       category: 'gym',
       subcategory: 'muscle_groupings',
-      icon: '🦵',
+      icon: 'legs',
       isCircuit: false,
       duration: '~50 min',
       exercises: [
@@ -7471,7 +7471,7 @@ class WorkoutData {
       name: 'PUSH DAY',
       category: 'gym',
       subcategory: 'muscle_groupings',
-      icon: '⬆️',
+      icon: 'chest',
       isCircuit: false,
       duration: '~40 min',
       exercises: [
@@ -7488,7 +7488,7 @@ class WorkoutData {
       name: 'PULL DAY',
       category: 'gym',
       subcategory: 'muscle_groupings',
-      icon: '⬇️',
+      icon: 'legs',
       isCircuit: false,
       duration: '~45 min',
       exercises: [
@@ -7506,7 +7506,7 @@ class WorkoutData {
       name: 'FULL BODY',
       category: 'gym',
       subcategory: 'muscle_groupings',
-      icon: '💯',
+      icon: 'splits',
       isCircuit: false,
       duration: '~50 min',
       exercises: [
@@ -7521,10 +7521,10 @@ class WorkoutData {
     ),
     WorkoutPreset(
       id: 'gym_glutes_legs',
-      name: 'GLUTES & LEGS 🍑',
+      name: 'GLUTES & LEGS',
       category: 'gym',
       subcategory: 'muscle_groupings',
-      icon: '🍑',
+      icon: 'glutes',
       isCircuit: false,
       duration: '~50 min',
       exercises: [
@@ -7547,7 +7547,7 @@ class WorkoutData {
       name: 'FULL BODY BLAST',
       category: 'gym',
       subcategory: 'gym_circuits',
-      icon: '⚡',
+      icon: 'circuits',
       isCircuit: true,
       rounds: 4,
       duration: '~20 min',
@@ -7564,7 +7564,7 @@ class WorkoutData {
       name: 'UPPER BODY BURNER',
       category: 'gym',
       subcategory: 'gym_circuits',
-      icon: '🔥',
+      icon: 'circuits',
       isCircuit: true,
       rounds: 4,
       duration: '~16 min',
@@ -7581,7 +7581,7 @@ class WorkoutData {
       name: 'LOWER BODY TORCH',
       category: 'gym',
       subcategory: 'gym_circuits',
-      icon: '🔥',
+      icon: 'circuits',
       isCircuit: true,
       rounds: 4,
       duration: '~16 min',
@@ -7598,7 +7598,7 @@ class WorkoutData {
       name: 'CORE DESTROYER',
       category: 'gym',
       subcategory: 'gym_circuits',
-      icon: '💥',
+      icon: 'circuits',
       isCircuit: true,
       rounds: 3,
       duration: '~10 min',
@@ -7620,7 +7620,7 @@ class WorkoutData {
       name: 'GLUTE SCULPT',
       category: 'gym',
       subcategory: 'booty_builder',
-      icon: '🍑',
+      icon: 'glutes',
       isCircuit: false,
       duration: '~45 min',
       exercises: [
@@ -7637,7 +7637,7 @@ class WorkoutData {
       name: 'PEACH PUMP',
       category: 'gym',
       subcategory: 'booty_builder',
-      icon: '🍑',
+      icon: 'glutes',
       isCircuit: false,
       duration: '~40 min',
       exercises: [
@@ -7658,7 +7658,7 @@ class WorkoutData {
       name: 'GLUTE SPECIALIZATION',
       category: 'gym',
       subcategory: 'girl_power',
-      icon: '🍑',
+      icon: 'glutes',
       isCircuit: false,
       duration: '~50 min',
       exercises: [
@@ -7676,7 +7676,7 @@ class WorkoutData {
       name: 'UPPER/LOWER SPLIT',
       category: 'gym',
       subcategory: 'girl_power',
-      icon: '💎',
+      icon: 'splits',
       isCircuit: false,
       duration: '~45 min',
       exercises: [
@@ -7697,7 +7697,7 @@ class WorkoutData {
       name: 'FULL BODY',
       category: 'gym',
       subcategory: 'girl_power',
-      icon: '✨',
+      icon: 'splits',
       isCircuit: false,
       duration: '~50 min',
       exercises: [
@@ -7715,7 +7715,7 @@ class WorkoutData {
       name: 'PUSH/PULL/LEGS',
       category: 'gym',
       subcategory: 'girl_power',
-      icon: '🌸',
+      icon: 'girlpower',
       isCircuit: false,
       duration: '~40 min',
       exercises: [
@@ -7739,7 +7739,7 @@ class WorkoutData {
       name: 'BRO SPLIT (MODIFIED)',
       category: 'gym',
       subcategory: 'girl_power',
-      icon: '👑',
+      icon: 'girlpower',
       isCircuit: false,
       duration: '~45 min',
       exercises: [
@@ -7761,7 +7761,7 @@ class WorkoutData {
       name: 'FULL BODY',
       category: 'home',
       subcategory: 'bodyweight_basics',
-      icon: '💪',
+      icon: 'arms',
       isCircuit: false,
       duration: '~30 min',
       exercises: [
@@ -7779,7 +7779,7 @@ class WorkoutData {
       name: 'BALANCED UPPER BODY',
       category: 'home',
       subcategory: 'bodyweight_basics',
-      icon: '🦾',
+      icon: 'chest',
       isCircuit: false,
       duration: '~25 min',
       exercises: [
@@ -7796,7 +7796,7 @@ class WorkoutData {
       name: 'LOWER BODY',
       category: 'home',
       subcategory: 'bodyweight_basics',
-      icon: '🦵',
+      icon: 'legs',
       isCircuit: false,
       duration: '~30 min',
       exercises: [
@@ -7814,7 +7814,7 @@ class WorkoutData {
       name: 'CORE',
       category: 'home',
       subcategory: 'bodyweight_basics',
-      icon: '🎯',
+      icon: 'core',
       isCircuit: false,
       duration: '~20 min',
       exercises: [
@@ -7837,7 +7837,7 @@ class WorkoutData {
       name: '10 MIN QUICK BURN',
       category: 'home',
       subcategory: 'hiit_circuits',
-      icon: '⚡',
+      icon: 'circuits',
       isCircuit: true,
       rounds: 2,
       duration: '10 min',
@@ -7854,7 +7854,7 @@ class WorkoutData {
       name: '20 MIN DESTROYER',
       category: 'home',
       subcategory: 'hiit_circuits',
-      icon: '💥',
+      icon: 'circuits',
       isCircuit: true,
       rounds: 4,
       duration: '20 min',
@@ -7871,7 +7871,7 @@ class WorkoutData {
       name: 'TABATA TORTURE',
       category: 'home',
       subcategory: 'hiit_circuits',
-      icon: '🔥',
+      icon: 'circuits',
       isCircuit: true,
       rounds: 8,
       duration: '16 min',
@@ -7887,7 +7887,7 @@ class WorkoutData {
       name: 'CARDIO BLAST',
       category: 'home',
       subcategory: 'hiit_circuits',
-      icon: '🏃',
+      icon: 'circuits',
       isCircuit: true,
       rounds: 3,
       duration: '15 min',
@@ -7909,7 +7909,7 @@ class WorkoutData {
       name: 'GLUTE ACTIVATION',
       category: 'home',
       subcategory: 'home_booty',
-      icon: '🍑',
+      icon: 'glutes',
       isCircuit: false,
       duration: '~25 min',
       exercises: [
@@ -7926,7 +7926,7 @@ class WorkoutData {
       name: 'BOOTY BURNER',
       category: 'home',
       subcategory: 'home_booty',
-      icon: '🔥',
+      icon: 'circuits',
       isCircuit: false,
       duration: '~30 min',
       exercises: [
@@ -7943,7 +7943,7 @@ class WorkoutData {
       name: 'BAND BOOTY',
       category: 'home',
       subcategory: 'home_booty',
-      icon: '🍑',
+      icon: 'glutes',
       isCircuit: false,
       duration: '~30 min',
       exercises: [
@@ -7965,7 +7965,7 @@ class WorkoutData {
       name: 'GLUTE SCULPT',
       category: 'home',
       subcategory: 'girl_power',
-      icon: '🍑',
+      icon: 'glutes',
       isCircuit: false,
       duration: '~35 min',
       exercises: [
@@ -7982,7 +7982,7 @@ class WorkoutData {
       name: 'UPPER/LOWER SPLIT',
       category: 'home',
       subcategory: 'girl_power',
-      icon: '💎',
+      icon: 'splits',
       isCircuit: false,
       duration: '~40 min',
       exercises: [
@@ -8002,7 +8002,7 @@ class WorkoutData {
       name: 'FULL BODY',
       category: 'home',
       subcategory: 'girl_power',
-      icon: '✨',
+      icon: 'splits',
       isCircuit: false,
       duration: '~35 min',
       exercises: [
@@ -8020,7 +8020,7 @@ class WorkoutData {
       name: 'PUSH/PULL/LEGS',
       category: 'home',
       subcategory: 'girl_power',
-      icon: '🌸',
+      icon: 'girlpower',
       isCircuit: false,
       duration: '~35 min',
       exercises: [
@@ -8041,7 +8041,7 @@ class WorkoutData {
       name: 'FULL BODY CIRCUIT',
       category: 'home',
       subcategory: 'girl_power',
-      icon: '🔥',
+      icon: 'circuits',
       isCircuit: false,
       duration: '~30 min',
       exercises: [
@@ -8061,7 +8061,7 @@ class WorkoutData {
       name: 'FULL BODY STRETCH',
       category: 'home',
       subcategory: 'recovery',
-      icon: '🧘',
+      icon: 'bodyweight',
       isCircuit: false,
       duration: '~20 min',
       exercises: [
@@ -8079,7 +8079,7 @@ class WorkoutData {
       name: 'HIP OPENER',
       category: 'home',
       subcategory: 'recovery',
-      icon: '🧘',
+      icon: 'bodyweight',
       isCircuit: false,
       duration: '~15 min',
       exercises: [
