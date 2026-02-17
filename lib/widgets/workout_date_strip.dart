@@ -208,7 +208,7 @@ class _WorkoutDateStripState extends State<WorkoutDateStrip> {
         
         // Scrollable date strip
         SizedBox(
-          height: 64,
+          height: 72,
           child: ListView.builder(
             controller: _scrollController,
             scrollDirection: Axis.horizontal,
@@ -223,8 +223,8 @@ class _WorkoutDateStripState extends State<WorkoutDateStrip> {
                 onTap: () => widget.onDateSelected(date),
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
-                  width: 48,
-                  height: 56,
+                  width: 52,
+                  height: 64,
                   margin: const EdgeInsets.only(right: 8),
                   decoration: BoxDecoration(
                     gradient: isSelected 
@@ -234,14 +234,14 @@ class _WorkoutDateStripState extends State<WorkoutDateStrip> {
                             end: Alignment.bottomCenter,
                           )
                         : null,
-                    color: isSelected ? null : AppColors.white5,
+                    color: isSelected ? null : const Color(0xFF141414),
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(
-                      color: isSelected 
-                          ? accentColor 
+                      color: isSelected
+                          ? accentColor
                           : isToday
                               ? accentColor.withOpacity(0.5)
-                              : AppColors.white10,
+                              : Colors.white.withOpacity(0.04),
                       width: isToday && !isSelected ? 2 : 1,
                     ),
                     boxShadow: isSelected 
@@ -261,22 +261,22 @@ class _WorkoutDateStripState extends State<WorkoutDateStrip> {
                       Text(
                         date.day.toString(),
                         style: TextStyle(
-                          color: isSelected 
-                              ? Colors.black 
-                              : AppColors.white90,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w900,
+                          color: isSelected
+                              ? Colors.black
+                              : Colors.white.withOpacity(0.4),
+                          fontSize: 22,
+                          fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
                         ),
                       ),
                       const SizedBox(height: 2),
                       Text(
                         DateFormat('EEE').format(date).toUpperCase(),
                         style: TextStyle(
-                          color: isSelected 
-                              ? Colors.black.withOpacity(0.7) 
-                              : AppColors.white50,
-                          fontSize: 9,
-                          fontWeight: FontWeight.w700,
+                          color: isSelected
+                              ? Colors.black
+                              : Colors.white.withOpacity(0.25),
+                          fontSize: 11,
+                          fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
                           letterSpacing: 0.5,
                         ),
                       ),
