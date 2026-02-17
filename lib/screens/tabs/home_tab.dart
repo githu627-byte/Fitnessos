@@ -630,25 +630,24 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     required Gradient gradient,
   }) {
     if (workout == null) {
-      // EMPTY CARD — dark with cyber lime accents
+      // EMPTY CARD — dark with subtle lime icon
       return Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: const Color(0xFF0D0D0D),
+          color: const Color(0xFF0A0A0A),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: const Color(0xFFCCFF00).withOpacity(0.08),
+            color: Colors.white.withOpacity(0.04),
             width: 1,
           ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Icon in a circle
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: const Color(0xFFCCFF00).withOpacity(0.08),
+                color: const Color(0xFFCCFF00).withOpacity(0.06),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Icon(emptyIcon, color: const Color(0xFFCCFF00), size: 22),
@@ -657,10 +656,10 @@ class _HomeTabState extends ConsumerState<HomeTab> {
             Text(
               emptyTitle,
               style: const TextStyle(
-                fontSize: 14,
+                fontSize: 13,
                 fontWeight: FontWeight.w900,
                 color: Colors.white,
-                letterSpacing: 1,
+                letterSpacing: 0.8,
               ),
             ),
             const SizedBox(height: 4),
@@ -668,7 +667,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
               'Add via workout',
               style: TextStyle(
                 fontSize: 10,
-                color: Colors.white.withOpacity(0.3),
+                color: Colors.white.withOpacity(0.25),
               ),
             ),
           ],
@@ -747,10 +746,10 @@ class _HomeTabState extends ConsumerState<HomeTab> {
         height: 180,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: const Color(0xFF0D0D0D),
+          color: const Color(0xFF0A0A0A),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: const Color(0xFFCCFF00).withOpacity(0.12),
+            color: Colors.white.withOpacity(0.04),
             width: 1,
           ),
         ),
@@ -897,307 +896,330 @@ class _HomeTabState extends ConsumerState<HomeTab> {
       scheduledTime = null;
     }
 
+    // Determine which icon to show based on workout name
+    String heroIcon = 'assets/images/icons/splits.jpg'; // default
+    final nameLower = workoutName.toLowerCase();
+    if (nameLower.contains('chest')) heroIcon = 'assets/images/icons/chest.jpg';
+    else if (nameLower.contains('back')) heroIcon = 'assets/images/icons/back.jpg';
+    else if (nameLower.contains('shoulder')) heroIcon = 'assets/images/icons/shoulders.jpg';
+    else if (nameLower.contains('leg') || nameLower.contains('lower')) heroIcon = 'assets/images/icons/legs.jpg';
+    else if (nameLower.contains('arm')) heroIcon = 'assets/images/icons/arms.jpg';
+    else if (nameLower.contains('core')) heroIcon = 'assets/images/icons/core.jpg';
+    else if (nameLower.contains('glute') || nameLower.contains('booty') || nameLower.contains('peach')) heroIcon = 'assets/images/icons/glutes.jpg';
+    else if (nameLower.contains('circuit') || nameLower.contains('hiit') || nameLower.contains('burn') || nameLower.contains('blast') || nameLower.contains('torch')) heroIcon = 'assets/images/icons/circuits.jpg';
+    else if (nameLower.contains('full body')) heroIcon = 'assets/images/icons/splits.jpg';
+    else if (nameLower.contains('push')) heroIcon = 'assets/images/icons/chest.jpg';
+    else if (nameLower.contains('pull')) heroIcon = 'assets/images/icons/back.jpg';
+    else if (nameLower.contains('upper')) heroIcon = 'assets/images/icons/chest.jpg';
+
     return Container(
-      padding: const EdgeInsets.all(24),
+      margin: const EdgeInsets.only(),
       decoration: BoxDecoration(
-        color: const Color(0xFF0D0D0D),
+        color: const Color(0xFF0A0A0A),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: const Color(0xFFCCFF00).withOpacity(0.15),
+          color: const Color(0xFFCCFF00).withOpacity(0.10),
           width: 1,
         ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Workout name + streak
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  workoutName.toUpperCase(),
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.white,
-                    letterSpacing: 1,
-                    height: 1.2,
+          // ═══════════════════════════════════════
+          // TOP SECTION — Icon + Workout Name side by side
+          // ═══════════════════════════════════════
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+            child: Row(
+              children: [
+                // Neon skeleton icon — large, flush with card edge
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(24),
+                  ),
+                  child: Image.asset(
+                    heroIcon,
+                    width: 110,
+                    height: 110,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        width: 110,
+                        height: 110,
+                        color: const Color(0xFF111111),
+                        child: const Icon(Icons.fitness_center, color: Color(0xFFCCFF00), size: 32),
+                      );
+                    },
                   ),
                 ),
-              ),
-              // Streak badge
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF1A1A1A),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: const Row(
-                  children: [
-                    Text('🔥', style: TextStyle(fontSize: 14)),
-                    SizedBox(width: 4),
-                    Text(
-                      '0',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                const SizedBox(width: 16),
+                // Workout name + info
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        workoutName.toUpperCase(),
+                        style: const TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white,
+                          letterSpacing: 1,
+                          height: 1.2,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 6),
-          // Exercise count
-          Text(
-            exerciseCount > 0
-                ? '$exerciseCount exercises \u2022 $totalSets total sets'
-                : 'Tap to view details',
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.white.withOpacity(0.4),
-            ),
-          ),
-
-          // Show alarm indicator if alarm is set
-          if (hasAlarm && scheduledTime != null) ...[
-            const SizedBox(height: 12),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-              decoration: BoxDecoration(
-                color: const Color(0xFFCCFF00).withOpacity(0.2),
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  color: const Color(0xFFCCFF00),
-                  width: 1.5,
-                ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(
-                    Icons.alarm,
-                    color: Color(0xFFCCFF00),
-                    size: 14,
-                  ),
-                  const SizedBox(width: 6),
-                  Text(
-                    scheduledTime,
-                    style: const TextStyle(
-                      color: Color(0xFFCCFF00),
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-
-          const SizedBox(height: 20),
-
-          // Stats row — 3 boxes
-          Row(
-            children: [
-              _buildStatBox('$exerciseCount', 'EXERCISES', Icons.fitness_center),
-              const SizedBox(width: 10),
-              _buildStatBox('$totalSets', 'SETS', Icons.format_list_numbered),
-              const SizedBox(width: 10),
-              _buildStatBox('$estimatedCalories', 'CALORIES', Icons.local_fire_department),
-            ],
-          ),
-          const SizedBox(height: 20),
-
-          // Buttons row
-          Row(
-            children: [
-              // Timer/Alarm button
-              GestureDetector(
-                onTap: () async {
-                  HapticFeedback.mediumImpact();
-
-                  if (displayWorkout != null) {
-                    final result = await showModalBottomSheet<Map<String, dynamic>>(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (context) => ScheduleWorkoutModal(
-                        selectedDate: _selectedDate,
+                      const SizedBox(height: 6),
+                      Text(
+                        '$exerciseCount exercises \u2022 $totalSets sets',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white.withOpacity(0.35),
+                          letterSpacing: 0.3,
+                        ),
                       ),
-                    );
-
-                    if (result != null && mounted) {
-                      final timeData = result['time'] as TimeOfDay?;
-
-                      if (timeData != null) {
-                        WorkoutSchedule? existingSchedule;
-                        String workoutName;
-                        String workoutId;
-
-                        if (displayWorkout is WorkoutSchedule) {
-                          existingSchedule = displayWorkout;
-                          workoutName = displayWorkout.workoutName;
-                          workoutId = displayWorkout.workoutId;
-                        } else if (displayWorkout is LockedWorkout) {
-                          workoutName = displayWorkout.name;
-                          workoutId = displayWorkout.id;
-                        } else {
-                          return;
-                        }
-
-                        final weekday = _selectedDate.weekday == 7 ? 0 : _selectedDate.weekday;
-
-                        final schedule = WorkoutSchedule(
-                          id: existingSchedule?.id ?? '${DateTime.now().millisecondsSinceEpoch}',
-                          workoutId: workoutId,
-                          workoutName: workoutName,
-                          scheduledDate: DateTime(_selectedDate.year, _selectedDate.month, _selectedDate.day),
-                          scheduledTime: '${timeData.hour.toString().padLeft(2, '0')}:${timeData.minute.toString().padLeft(2, '0')}',
-                          hasAlarm: true,
-                          createdAt: existingSchedule?.createdAt ?? DateTime.now(),
-                          repeatDays: [weekday],
-                        );
-
-                        await ref.read(workoutSchedulesProvider.notifier).saveSchedule(schedule);
-                        await WorkoutAlarmService.scheduleAlarm(schedule);
-                        debugPrint('🔔 Alarm scheduled for ${schedule.workoutName} at ${schedule.scheduledTime}');
-
-                        if (mounted) {
-                          final dateStr = DateFormat('MMM d').format(_selectedDate);
-                          final timeStr = timeData.format(context);
-
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                '⏰ Alarm set for $dateStr at $timeStr',
-                                style: const TextStyle(fontWeight: FontWeight.w700),
+                      // Show alarm indicator if alarm is set
+                      if (hasAlarm && scheduledTime != null) ...[
+                        const SizedBox(height: 8),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.alarm, color: Color(0xFFCCFF00), size: 14),
+                            const SizedBox(width: 4),
+                            Text(
+                              scheduledTime,
+                              style: const TextStyle(
+                                color: Color(0xFFCCFF00),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
                               ),
-                              backgroundColor: const Color(0xFFCCFF00),
-                              behavior: SnackBarBehavior.floating,
                             ),
+                          ],
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+                // Streak badge
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF151515),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('\u{1F525}', style: TextStyle(fontSize: 14)),
+                      SizedBox(width: 4),
+                      Text(
+                        '0',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // ═══════════════════════════════════════
+          // STATS ROW — Clean, no ugly borders
+          // ═══════════════════════════════════════
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+            child: Row(
+              children: [
+                _buildStatBox('$exerciseCount', 'EXERCISES'),
+                const SizedBox(width: 8),
+                _buildStatBox('$totalSets', 'SETS'),
+                const SizedBox(width: 8),
+                _buildStatBox('$estimatedCalories', 'CALORIES'),
+              ],
+            ),
+          ),
+
+          // ═══════════════════════════════════════
+          // BUTTONS ROW
+          // ═══════════════════════════════════════
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 20),
+            child: Row(
+              children: [
+                // Timer
+                GestureDetector(
+                  onTap: () async {
+                    HapticFeedback.mediumImpact();
+
+                    if (displayWorkout != null) {
+                      final result = await showModalBottomSheet<Map<String, dynamic>>(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        builder: (context) => ScheduleWorkoutModal(
+                          selectedDate: _selectedDate,
+                        ),
+                      );
+
+                      if (result != null && mounted) {
+                        final timeData = result['time'] as TimeOfDay?;
+
+                        if (timeData != null) {
+                          WorkoutSchedule? existingSchedule;
+                          String wName;
+                          String wId;
+
+                          if (displayWorkout is WorkoutSchedule) {
+                            existingSchedule = displayWorkout;
+                            wName = displayWorkout.workoutName;
+                            wId = displayWorkout.workoutId;
+                          } else if (displayWorkout is LockedWorkout) {
+                            wName = displayWorkout.name;
+                            wId = displayWorkout.id;
+                          } else {
+                            return;
+                          }
+
+                          final weekday = _selectedDate.weekday == 7 ? 0 : _selectedDate.weekday;
+
+                          final schedule = WorkoutSchedule(
+                            id: existingSchedule?.id ?? '${DateTime.now().millisecondsSinceEpoch}',
+                            workoutId: wId,
+                            workoutName: wName,
+                            scheduledDate: DateTime(_selectedDate.year, _selectedDate.month, _selectedDate.day),
+                            scheduledTime: '${timeData.hour.toString().padLeft(2, '0')}:${timeData.minute.toString().padLeft(2, '0')}',
+                            hasAlarm: true,
+                            createdAt: existingSchedule?.createdAt ?? DateTime.now(),
+                            repeatDays: [weekday],
                           );
+
+                          await ref.read(workoutSchedulesProvider.notifier).saveSchedule(schedule);
+                          await WorkoutAlarmService.scheduleAlarm(schedule);
+                          debugPrint('\u{1F514} Alarm scheduled for ${schedule.workoutName} at ${schedule.scheduledTime}');
+
+                          if (mounted) {
+                            final dateStr = DateFormat('MMM d').format(_selectedDate);
+                            final timeStr = timeData.format(context);
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  '\u23F0 Alarm set for $dateStr at $timeStr',
+                                  style: const TextStyle(fontWeight: FontWeight.w700),
+                                ),
+                                backgroundColor: const Color(0xFFCCFF00),
+                                behavior: SnackBarBehavior.floating,
+                              ),
+                            );
+                          }
                         }
                       }
+                    } else {
+                      await _openScheduleWorkoutFlow(_selectedDate);
                     }
-                  } else {
-                    await _openScheduleWorkoutFlow(_selectedDate);
-                  }
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(14),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF1A1A1A),
-                    borderRadius: BorderRadius.circular(14),
-                    border: Border.all(
-                      color: Colors.white.withOpacity(0.06),
-                      width: 1,
-                    ),
-                  ),
-                  child: Icon(
-                    Icons.timer_outlined,
-                    color: const Color(0xFFCCFF00).withOpacity(0.6),
-                    size: 22,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
-              // START WORKOUT — cyber lime filled
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    HapticFeedback.heavyImpact();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => TrainTab(
-                          onWorkoutStateChanged: (isActive) {},
-                        ),
-                        fullscreenDialog: true,
-                      ),
-                    );
                   },
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    padding: const EdgeInsets.all(14),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFCCFF00),
+                      color: const Color(0xFF151515),
                       borderRadius: BorderRadius.circular(14),
                     ),
-                    child: const Text(
-                      'START WORKOUT',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w900,
-                        color: Colors.black,
-                        letterSpacing: 1.5,
+                    child: Icon(
+                      Icons.timer_outlined,
+                      color: Colors.white.withOpacity(0.4),
+                      size: 22,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                // START WORKOUT — full width, cyber lime
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      HapticFeedback.heavyImpact();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => TrainTab(
+                            onWorkoutStateChanged: (isActive) {},
+                          ),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFCCFF00),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: const Text(
+                        'START WORKOUT',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.black,
+                          letterSpacing: 1.5,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(width: 10),
-              // Edit button
-              GestureDetector(
-                onTap: () {
-                  HapticFeedback.mediumImpact();
-                  ref.read(selectedScheduleDateProvider.notifier).state = _selectedDate;
-                  ref.read(isSchedulingModeProvider.notifier).state = true;
-                  final navigator = context.findAncestorWidgetOfExactType<TabNavigator>();
-                  if (navigator != null) {
-                    (navigator as dynamic).changeTab(1);
-                  }
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(14),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF1A1A1A),
-                    borderRadius: BorderRadius.circular(14),
-                    border: Border.all(
-                      color: Colors.white.withOpacity(0.06),
-                      width: 1,
+                const SizedBox(width: 10),
+                // Edit
+                GestureDetector(
+                  onTap: () {
+                    HapticFeedback.mediumImpact();
+                    ref.read(selectedScheduleDateProvider.notifier).state = _selectedDate;
+                    ref.read(isSchedulingModeProvider.notifier).state = true;
+                    final navigator = context.findAncestorWidgetOfExactType<TabNavigator>();
+                    if (navigator != null) {
+                      (navigator as dynamic).changeTab(1);
+                    }
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(14),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF151515),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: Icon(
+                      Icons.edit_outlined,
+                      color: Colors.white.withOpacity(0.4),
+                      size: 22,
                     ),
                   ),
-                  child: Icon(
-                    Icons.edit_outlined,
-                    color: Colors.white.withOpacity(0.4),
-                    size: 22,
-                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
     );
   }
 
-  // Stat box helper
-  Widget _buildStatBox(String value, String label, IconData icon) {
+  // ═══════════════════════════════════════
+  // STAT BOX — Clean, minimal, no ugly borders
+  // ═══════════════════════════════════════
+  Widget _buildStatBox(String value, String label) {
     return Expanded(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
           color: const Color(0xFF111111),
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(
-            color: const Color(0xFFCCFF00).withOpacity(0.08),
-            width: 1,
-          ),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
           children: [
-            Icon(
-              icon,
-              color: const Color(0xFFCCFF00).withOpacity(0.5),
-              size: 18,
-            ),
-            const SizedBox(height: 6),
             Text(
               value,
               style: const TextStyle(
-                fontSize: 20,
+                fontSize: 22,
                 fontWeight: FontWeight.w900,
                 color: Colors.white,
               ),
@@ -1208,8 +1230,8 @@ class _HomeTabState extends ConsumerState<HomeTab> {
               style: TextStyle(
                 fontSize: 9,
                 fontWeight: FontWeight.w700,
-                color: const Color(0xFFCCFF00).withOpacity(0.4),
-                letterSpacing: 1.5,
+                color: const Color(0xFFCCFF00).withOpacity(0.35),
+                letterSpacing: 1.2,
               ),
             ),
           ],
@@ -1219,57 +1241,49 @@ class _HomeTabState extends ConsumerState<HomeTab> {
   }
 
   Widget _buildNoWorkoutCard(BuildContext context) {
-    final isToday = _isSelectedDateToday();
-    final dateStr = isToday ? 'Today' : DateFormat('MMM d').format(_selectedDate);
-
     return Container(
-      padding: const EdgeInsets.all(28),
+      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
       decoration: BoxDecoration(
-        color: const Color(0xFF0D0D0D),
+        color: const Color(0xFF0A0A0A),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: const Color(0xFFCCFF00).withOpacity(0.12),
+          color: const Color(0xFFCCFF00).withOpacity(0.10),
           width: 1,
         ),
       ),
       child: Column(
         children: [
-          // Calendar icon
           Icon(
             Icons.calendar_today_outlined,
-            color: const Color(0xFFCCFF00).withOpacity(0.4),
-            size: 40,
+            color: const Color(0xFFCCFF00).withOpacity(0.25),
+            size: 36,
           ),
           const SizedBox(height: 16),
-          // Title
-          Text(
-            'No Workout on $dateStr',
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w900,
+          const Text(
+            'No Workout Today',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w800,
               color: Colors.white,
               letterSpacing: 0.5,
             ),
           ),
           const SizedBox(height: 8),
-          // Subtitle
           Text(
             'Schedule a workout for this date',
             style: TextStyle(
-              fontSize: 13,
-              color: Colors.white.withOpacity(0.35),
+              fontSize: 12,
+              color: Colors.white.withOpacity(0.3),
             ),
           ),
-          const SizedBox(height: 24),
-          // Buttons row
+          const SizedBox(height: 28),
           Row(
             children: [
-              // QUICK ADD — outlined
+              // QUICK ADD — subtle dark
               Expanded(
                 child: GestureDetector(
                   onTap: () {
                     HapticFeedback.mediumImpact();
-                    debugPrint('🚀 QUICK ADD tapped - setting schedule date and navigating to Workouts tab');
                     ref.read(selectedScheduleDateProvider.notifier).state = _selectedDate;
                     ref.read(isSchedulingModeProvider.notifier).state = true;
                     final navigator = context.findAncestorWidgetOfExactType<TabNavigator>();
@@ -1280,29 +1294,21 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     decoration: BoxDecoration(
-                      color: Colors.transparent,
+                      color: const Color(0xFF151515),
                       borderRadius: BorderRadius.circular(14),
-                      border: Border.all(
-                        color: const Color(0xFFCCFF00).withOpacity(0.25),
-                        width: 1,
-                      ),
                     ),
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          Icons.fitness_center,
-                          color: Color(0xFFCCFF00),
-                          size: 18,
-                        ),
-                        SizedBox(width: 8),
-                        Text(
+                        const Icon(Icons.add, color: Color(0xFFCCFF00), size: 18),
+                        const SizedBox(width: 8),
+                        const Text(
                           'QUICK ADD',
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w800,
                             color: Color(0xFFCCFF00),
-                            letterSpacing: 1,
+                            letterSpacing: 0.8,
                           ),
                         ),
                       ],
@@ -1310,13 +1316,12 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                   ),
                 ),
               ),
-              const SizedBox(width: 12),
-              // WITH ALARM — filled cyber lime
+              const SizedBox(width: 10),
+              // WITH ALARM — cyber lime filled
               Expanded(
                 child: GestureDetector(
                   onTap: () async {
                     HapticFeedback.heavyImpact();
-                    debugPrint('⏰ WITH ALARM tapped for date: $_selectedDate');
                     await _openScheduleWorkoutFlow(_selectedDate);
                   },
                   child: Container(
@@ -1328,11 +1333,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          Icons.alarm,
-                          color: Colors.black,
-                          size: 18,
-                        ),
+                        Icon(Icons.alarm, color: Colors.black, size: 18),
                         SizedBox(width: 8),
                         Text(
                           'WITH ALARM',
@@ -1340,7 +1341,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                             fontSize: 12,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
-                            letterSpacing: 1,
+                            letterSpacing: 0.8,
                           ),
                         ),
                       ],
