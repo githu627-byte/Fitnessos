@@ -55,9 +55,55 @@ class _MuscleBodyWidgetState extends State<MuscleBodyWidget>
         _backSvg = back;
         _isLoading = false;
       });
+      _debugSvgIds();
     } catch (e) {
       debugPrint('Error loading SVGs: $e');
       setState(() => _isLoading = false);
+    }
+  }
+
+  void _debugSvgIds() {
+    if (_frontSvg == null) return;
+
+    // Check front SVG
+    final frontMuscleMap = _getMuscleMap(true);
+    final frontIds = RegExp(r'id="(muscle-\d+)"').allMatches(_frontSvg!).map((m) => m.group(1)!).toSet();
+
+    debugPrint('🔍 SVG FRONT contains ${frontIds.length} muscle IDs');
+
+    for (final entry in frontMuscleMap.entries) {
+      for (final id in entry.value) {
+        if (!frontIds.contains(id)) {
+          debugPrint('❌ MISSING: $id (mapped to ${entry.key}) NOT FOUND in front SVG!');
+        }
+      }
+    }
+
+    final frontMappedIds = frontMuscleMap.values.expand((ids) => ids).toSet();
+    final frontUnmapped = frontIds.difference(frontMappedIds);
+    if (frontUnmapped.isNotEmpty) {
+      debugPrint('⚠️ UNMAPPED front SVG IDs: ${frontUnmapped.toList()..sort()}');
+    }
+
+    // Check back SVG
+    if (_backSvg == null) return;
+    final backMuscleMap = _getMuscleMap(false);
+    final backIds = RegExp(r'id="(bMuscle-\d+)"').allMatches(_backSvg!).map((m) => m.group(1)!).toSet();
+
+    debugPrint('🔍 SVG BACK contains ${backIds.length} muscle IDs');
+
+    for (final entry in backMuscleMap.entries) {
+      for (final id in entry.value) {
+        if (!backIds.contains(id)) {
+          debugPrint('❌ MISSING: $id (mapped to ${entry.key}) NOT FOUND in back SVG!');
+        }
+      }
+    }
+
+    final backMappedIds = backMuscleMap.values.expand((ids) => ids).toSet();
+    final backUnmapped = backIds.difference(backMappedIds);
+    if (backUnmapped.isNotEmpty) {
+      debugPrint('⚠️ UNMAPPED back SVG IDs: ${backUnmapped.toList()..sort()}');
     }
   }
 
@@ -97,39 +143,46 @@ class _MuscleBodyWidgetState extends State<MuscleBodyWidget>
       final muscleGroup = entry.key;
       final recovery = widget.muscleRecovery[muscleGroup] ?? 1.0;
       final color = _getColorForRecovery(recovery);
-      final colorHex = '#${color.value.toRadixString(16).substring(2, 8).toUpperCase()}';
+      final colorHex = '#${color.value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
 
       for (final muscleId in muscleIds) {
-        // 1. Replace fill="..." attribute (direct color or gradient URL)
-        final attrFillPattern = RegExp(
-          '((?:path|polygon|ellipse|rect|circle|g)[^>]*id="$muscleId"[^>]*)fill="[^"]*"'
+        // APPROACH: Find the ENTIRE element tag containing this id, then replace fill within it
+        // This handles ANY order of attributes and ANY fill format
+
+        final elementPattern = RegExp(
+          r'(<(?:path|polygon|ellipse|rect|circle|g)\b[^>]*\bid="' + RegExp.escape(muscleId) + r'"[^>]*>)',
+          caseSensitive: true,
         );
-        colorized = colorized.replaceAllMapped(attrFillPattern, (match) {
-          return '${match.group(1)}fill="$colorHex"';
+
+        colorized = colorized.replaceAllMapped(elementPattern, (match) {
+          String element = match.group(0)!;
+
+          // Replace fill="..." attribute (any value including url(...))
+          element = element.replaceAll(RegExp(r'fill="[^"]*"'), 'fill="$colorHex"');
+
+          // Replace fill inside style="..."
+          element = element.replaceAllMapped(
+            RegExp(r'(style="[^"]*?)fill\s*:\s*[^;"]*'),
+            (m) => '${m.group(1)}fill:$colorHex',
+          );
+
+          // If NO fill attribute exists at all, add one before the closing >
+          if (!element.contains('fill=')) {
+            element = element.replaceFirst('>', ' fill="$colorHex">');
+          }
+
+          return element;
         });
 
-        // 2. Replace fill inside style="..." attribute
-        final styleFillPattern = RegExp(
-          '((?:path|polygon|ellipse|rect|circle|g)[^>]*id="$muscleId"[^>]*style="[^"]*?)fill\\s*:\\s*[^;"]*'
+        // ALSO handle elements where id comes AFTER other attributes
+        // Pattern: <path fill="..." ... id="muscleId" ...>
+        final reversePattern = RegExp(
+          r'(<(?:path|polygon|ellipse|rect|circle|g)\b[^>]*?)fill="[^"]*"([^>]*\bid="' + RegExp.escape(muscleId) + r'"[^>]*>)',
+          caseSensitive: true,
         );
-        colorized = colorized.replaceAllMapped(styleFillPattern, (match) {
-          return '${match.group(1)}fill:$colorHex';
-        });
 
-        // 3. Handle case where id comes AFTER fill (id may not always be first)
-        final reverseFillPattern = RegExp(
-          '((?:path|polygon|ellipse|rect|circle|g)[^>]*?)fill="[^"]*"([^>]*id="$muscleId")'
-        );
-        colorized = colorized.replaceAllMapped(reverseFillPattern, (match) {
+        colorized = colorized.replaceAllMapped(reversePattern, (match) {
           return '${match.group(1)}fill="$colorHex"${match.group(2)}';
-        });
-
-        // 4. Handle reverse style fill (style before id)
-        final reverseStylePattern = RegExp(
-          '((?:path|polygon|ellipse|rect|circle|g)[^>]*?)style="([^"]*?)fill\\s*:\\s*[^;"]*([^"]*)"([^>]*id="$muscleId")'
-        );
-        colorized = colorized.replaceAllMapped(reverseStylePattern, (match) {
-          return '${match.group(1)}style="${match.group(2)}fill:$colorHex${match.group(3)}"${match.group(4)}';
         });
       }
     }
@@ -141,7 +194,7 @@ class _MuscleBodyWidgetState extends State<MuscleBodyWidget>
     if (isFront) {
       // Front view muscle mappings - ALL muscle IDs mapped for complete coverage
       return {
-        'chest': ['muscle-0', 'muscle-19', 'muscle-1', 'muscle-2', 'muscle-35', 'muscle-36'], // Pectorals
+        'chest': ['muscle-0', 'muscle-19', 'muscle-35', 'muscle-36'], // Pectorals
         'shoulders': ['muscle-3', 'muscle-17', 'muscle-18', 'muscle-4', 'muscle-5', 'muscle-6', 'muscle-37', 'muscle-38'], // Deltoids
         'biceps': ['muscle-7', 'muscle-8', 'muscle-9', 'muscle-39', 'muscle-40'], // Biceps
         'forearms': ['muscle-10', 'muscle-11', 'muscle-12', 'muscle-24', 'muscle-41', 'muscle-42'], // Forearms
@@ -153,7 +206,7 @@ class _MuscleBodyWidgetState extends State<MuscleBodyWidget>
     } else {
       // Back view muscle mappings - ALL bMuscle IDs for complete coverage
       return {
-        'traps': ['bMuscle-0', 'bMuscle-18', 'bMuscle-1', 'bMuscle-2'], // Trapezius (both sides)
+        'traps': ['bMuscle-0', 'bMuscle-18'], // Trapezius (both sides)
         'lats': ['bMuscle-3', 'bMuscle-4', 'bMuscle-19', 'bMuscle-30', 'bMuscle-31'], // Latissimus dorsi
         'shoulders': ['bMuscle-5', 'bMuscle-6', 'bMuscle-20', 'bMuscle-32', 'bMuscle-33'], // Rear deltoids
         'triceps': ['bMuscle-7', 'bMuscle-8', 'bMuscle-21', 'bMuscle-22', 'bMuscle-34', 'bMuscle-35'], // Triceps

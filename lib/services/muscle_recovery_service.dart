@@ -357,6 +357,11 @@ class MuscleRecoveryService {
 
   /// Get recovery percentages for all muscle groups
   static Future<Map<String, double>> getAllMuscleRecovery() async {
+    final prefs = await SharedPreferences.getInstance();
+    final lastTrained = _loadLastTrained(prefs);
+
+    debugPrint('🔍 Recovery data loaded: ${lastTrained.keys.join(", ")}');
+
     final allMuscles = [
       'chest',
       'shoulders',
@@ -378,6 +383,9 @@ class MuscleRecoveryService {
 
     for (final muscle in allMuscles) {
       recoveryMap[muscle] = await getMuscleRecovery(muscle);
+      if (recoveryMap[muscle]! < 1.0) {
+        debugPrint('  $muscle: ${(recoveryMap[muscle]! * 100).toInt()}%');
+      }
     }
 
     return recoveryMap;

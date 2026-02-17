@@ -54,6 +54,15 @@ class _ProfileAnalyticsViewState extends State<ProfileAnalyticsView>
     _loadAnalytics();
   }
   
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Refresh when tab becomes visible
+    if (_analyticsData != null) {
+      _loadAnalytics();
+    }
+  }
+
   Future<void> _loadUserData() async {
     final name = await StorageService.getUserName();
     if (mounted) {

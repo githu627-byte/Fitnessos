@@ -1804,26 +1804,15 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
               ),
             ),
 
-          // Skeletal-PT Logo at top (VISIBLE when UI hidden) - BIG with no background
+          // Skeletal-PT Logo at top (VISIBLE when UI hidden) - floating, no background
           if (_isUIHidden)
             Positioned(
               top: 16,
               left: 12,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(
-                    color: AppColors.cyberLime.withOpacity(0.3),
-                    width: 1,
-                  ),
-                ),
-                child: Image.asset(
-                  'assets/images/logo/skeletal_logo.png',
-                  height: 52,
-                  fit: BoxFit.contain,
-                ),
+              child: Image.asset(
+                'assets/images/logo/skeletal_logo.png',
+                height: 52,
+                fit: BoxFit.contain,
               ),
             ),
 
@@ -2081,7 +2070,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                 border: Border.all(
                   color: _isCircuitMode
                       ? AppColors.neonOrange.withOpacity(0.5)
-                      : AppColors.cyberLime.withOpacity(0.5),
+                      : const Color(0xFF00FF41).withOpacity(0.5),
                 ),
               ),
               child: Row(
@@ -2096,7 +2085,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                           : (_isTimerPaused ? Icons.play_arrow : Icons.pause),
                       color: _isCircuitMode
                           ? AppColors.neonOrange
-                          : (_isTimerPaused ? AppColors.cyberLime : AppColors.cyberLime),
+                          : (_isTimerPaused ? const Color(0xFF00FF41) : const Color(0xFF00FF41)),
                       size: 20,
                     ),
                   ),
@@ -2109,14 +2098,14 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w900,
-                      color: _isCircuitMode ? AppColors.neonOrange : AppColors.cyberLime,
+                      color: _isCircuitMode ? AppColors.neonOrange : const Color(0xFF00FF41),
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          
+
           // Rep counter - Bottom LEFT (ALWAYS VISIBLE)
           Positioned(
             bottom: 58,
@@ -2127,12 +2116,12 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                 color: Colors.black.withOpacity(0.7),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: AppColors.cyberLime.withOpacity(0.5),
+                  color: const Color(0xFF00FF41).withOpacity(0.5),
                   width: 2,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.cyberLime.withOpacity(0.3),
+                    color: const Color(0xFF00FF41).withOpacity(0.3),
                     blurRadius: 20,
                   ),
                 ],
@@ -2145,7 +2134,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                     style: const TextStyle(
                       fontSize: 48,
                       fontWeight: FontWeight.w900,
-                      color: AppColors.cyberLime,
+                      color: Color(0xFF00FF41),
                       height: 1,
                     ),
                   ),
