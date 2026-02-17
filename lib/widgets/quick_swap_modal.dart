@@ -22,15 +22,15 @@ class QuickSwapModal extends StatefulWidget {
 class _QuickSwapModalState extends State<QuickSwapModal> {
   String _selectedBodyPart = 'Chest';
   
-  final Map<String, String> bodyPartIcons = {
-    'Chest': '💪',
-    'Back': '🔙',
-    'Shoulders': '💪',
-    'Arms': '💪',
-    'Legs': '🦵',
-    'Core': '🔥',
-    'Cardio': '🏃',
-  };
+  final List<String> bodyParts = [
+    'Chest',
+    'Back',
+    'Shoulders',
+    'Arms',
+    'Legs',
+    'Core',
+    'Cardio',
+  ];
   
   final Map<String, List<WorkoutExercise>> exercisesByBodyPart = {
     'Chest': [
@@ -176,11 +176,11 @@ class _QuickSwapModalState extends State<QuickSwapModal> {
           
           // Body part filters
           SizedBox(
-            height: 80,
+            height: 50,
             child: ListView(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              children: bodyPartIcons.keys.map((bodyPart) {
+              children: bodyParts.map((bodyPart) {
                 final isSelected = _selectedBodyPart == bodyPart;
                 return GestureDetector(
                   onTap: () {
@@ -188,8 +188,8 @@ class _QuickSwapModalState extends State<QuickSwapModal> {
                     HapticFeedback.selectionClick();
                   },
                   child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8),
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    margin: const EdgeInsets.symmetric(horizontal: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
                     decoration: BoxDecoration(
                       gradient: isSelected
                           ? const LinearGradient(
@@ -202,24 +202,16 @@ class _QuickSwapModalState extends State<QuickSwapModal> {
                         color: isSelected ? Colors.transparent : AppColors.white20,
                       ),
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          bodyPartIcons[bodyPart]!,
-                          style: const TextStyle(fontSize: 24),
+                    child: Center(
+                      child: Text(
+                        bodyPart.toUpperCase(),
+                        style: TextStyle(
+                          color: isSelected ? Colors.black : Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 0.5,
                         ),
-                        const SizedBox(height: 4),
-                        Text(
-                          bodyPart.toUpperCase(),
-                          style: TextStyle(
-                            color: isSelected ? Colors.black : Colors.white,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w900,
-                            letterSpacing: 0.5,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 );

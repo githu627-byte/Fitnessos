@@ -2519,7 +2519,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                     _buildBodyPartButton('Chest', 'Chest', selectedBodyPart, (part) {
                       setModalState(() => selectedBodyPart = part);
                     }),
-                    _buildBodyPartButton('🦵 Legs', 'Legs', selectedBodyPart, (part) {
+                    _buildBodyPartButton('Legs', 'Legs', selectedBodyPart, (part) {
                       setModalState(() => selectedBodyPart = part);
                     }),
                     _buildBodyPartButton('Back', 'Back', selectedBodyPart, (part) {
@@ -2531,10 +2531,10 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                     _buildBodyPartButton('Arms', 'Arms', selectedBodyPart, (part) {
                       setModalState(() => selectedBodyPart = part);
                     }),
-                    _buildBodyPartButton('🧘 Core', 'Core', selectedBodyPart, (part) {
+                    _buildBodyPartButton('Core', 'Core', selectedBodyPart, (part) {
                       setModalState(() => selectedBodyPart = part);
                     }),
-                    _buildBodyPartButton('🏃 Cardio', 'Cardio', selectedBodyPart, (part) {
+                    _buildBodyPartButton('Cardio', 'Cardio', selectedBodyPart, (part) {
                       setModalState(() => selectedBodyPart = part);
                     }),
                   ],

@@ -202,11 +202,11 @@ class _WorkoutSummaryScreenState extends State<WorkoutSummaryScreen>
                     ),
                   ),
                   const SizedBox(height: 12),
-                  // Done button
+                  // Done button — pop all the way back to home
                   GestureDetector(
                     onTap: () {
                       HapticFeedback.lightImpact();
-                      Navigator.of(context).pop();
+                      Navigator.of(context).popUntil((route) => route.isFirst);
                     },
                     child: Container(
                       width: double.infinity,
