@@ -89,9 +89,7 @@ class _MuscleBodyWidgetState extends State<MuscleBodyWidget>
   }
 
   String _colorizedSvg(String svg, bool isFront) {
-    // Map muscle IDs to muscle groups
     final muscleMap = _getMuscleMap(isFront);
-
     String colorized = svg;
 
     for (final entry in muscleMap.entries) {
@@ -101,18 +99,37 @@ class _MuscleBodyWidgetState extends State<MuscleBodyWidget>
       final color = _getColorForRecovery(recovery);
       final colorHex = '#${color.value.toRadixString(16).substring(2, 8).toUpperCase()}';
 
-      // Replace fill colors for each muscle ID
       for (final muscleId in muscleIds) {
-        // Replace gradient fills with solid colors
-        final gradientPattern = RegExp('id="$muscleId"[^>]*fill="url\\([^)]+\\)"');
-        colorized = colorized.replaceAllMapped(gradientPattern, (match) {
-          return match.group(0)!.replaceAll(RegExp('fill="[^"]*"'), 'fill="$colorHex"');
+        // 1. Replace fill="..." attribute (direct color or gradient URL)
+        final attrFillPattern = RegExp(
+          '((?:path|polygon|ellipse|rect|circle|g)[^>]*id="$muscleId"[^>]*)fill="[^"]*"'
+        );
+        colorized = colorized.replaceAllMapped(attrFillPattern, (match) {
+          return '${match.group(1)}fill="$colorHex"';
         });
 
-        // Also replace any direct fill attributes
-        final fillPattern = RegExp('(<path[^>]*id="$muscleId"[^>]*)fill="[^"]*"');
-        colorized = colorized.replaceAllMapped(fillPattern, (match) {
-          return '${match.group(1)}fill="$colorHex"';
+        // 2. Replace fill inside style="..." attribute
+        final styleFillPattern = RegExp(
+          '((?:path|polygon|ellipse|rect|circle|g)[^>]*id="$muscleId"[^>]*style="[^"]*?)fill\\s*:\\s*[^;"]*'
+        );
+        colorized = colorized.replaceAllMapped(styleFillPattern, (match) {
+          return '${match.group(1)}fill:$colorHex';
+        });
+
+        // 3. Handle case where id comes AFTER fill (id may not always be first)
+        final reverseFillPattern = RegExp(
+          '((?:path|polygon|ellipse|rect|circle|g)[^>]*?)fill="[^"]*"([^>]*id="$muscleId")'
+        );
+        colorized = colorized.replaceAllMapped(reverseFillPattern, (match) {
+          return '${match.group(1)}fill="$colorHex"${match.group(2)}';
+        });
+
+        // 4. Handle reverse style fill (style before id)
+        final reverseStylePattern = RegExp(
+          '((?:path|polygon|ellipse|rect|circle|g)[^>]*?)style="([^"]*?)fill\\s*:\\s*[^;"]*([^"]*)"([^>]*id="$muscleId")'
+        );
+        colorized = colorized.replaceAllMapped(reverseStylePattern, (match) {
+          return '${match.group(1)}style="${match.group(2)}fill:$colorHex${match.group(3)}"${match.group(4)}';
         });
       }
     }
@@ -164,95 +181,99 @@ class _MuscleBodyWidgetState extends State<MuscleBodyWidget>
 
     return GestureDetector(
       onTap: _flip,
-      child: AnimatedBuilder(
-        animation: _flipAnimation,
-        builder: (context, child) {
-          final angle = _flipAnimation.value;
-          final isFrontVisible = angle < math.pi / 2;
+      child: SizedBox(
+        height: widget.height,
+        child: Stack(
+          children: [
+            // The rotating body diagram
+            AnimatedBuilder(
+              animation: _flipAnimation,
+              builder: (context, child) {
+                final angle = _flipAnimation.value;
+                final isFrontVisible = angle < math.pi / 2;
 
-          return Transform(
-            alignment: Alignment.center,
-            transform: Matrix4.identity()
-              ..setEntry(3, 2, 0.001)
-              ..rotateY(angle),
-            child: Container(
-              height: widget.height,
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: Colors.white.withOpacity(0.1),
-                  width: 2,
+                return Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.identity()
+                    ..setEntry(3, 2, 0.001)
+                    ..rotateY(angle),
+                  child: Container(
+                    height: widget.height,
+                    decoration: BoxDecoration(
+                      color: Colors.black.withOpacity(0.3),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color: Colors.white.withOpacity(0.1),
+                        width: 2,
+                      ),
+                    ),
+                    child: isFrontVisible && _frontSvg != null
+                        ? Center(
+                            child: SizedBox(
+                              height: widget.height * 0.9,
+                              child: _buildSvgWidget(_colorizedSvg(_frontSvg!, true)),
+                            ),
+                          )
+                        : (!isFrontVisible && _backSvg != null
+                            ? Transform(
+                                alignment: Alignment.center,
+                                transform: Matrix4.identity()..scale(-1.0, 1.0, 1.0),
+                                child: Center(
+                                  child: SizedBox(
+                                    height: widget.height * 0.9,
+                                    child: _buildSvgWidget(_colorizedSvg(_backSvg!, false)),
+                                  ),
+                                ),
+                              )
+                            : const SizedBox.shrink()),
+                  ),
+                );
+              },
+            ),
+
+            // Legend — NOT inside the rotating transform
+            Positioned(
+              bottom: 12,
+              left: 12,
+              right: 12,
+              child: _buildLegend(),
+            ),
+
+            // Flip indicator — NOT inside the rotating transform
+            Positioned(
+              top: 12,
+              left: 12,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.6),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: AppColors.cyberLime, width: 1),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.autorenew,
+                      color: AppColors.cyberLime,
+                      size: 16,
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      _showFront ? 'FRONT' : 'BACK',
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w800,
+                        color: AppColors.cyberLime,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              child: Stack(
-                children: [
-                  // Muscle diagram
-                  if (isFrontVisible && _frontSvg != null)
-                    Center(
-                      child: SizedBox(
-                        height: widget.height * 0.9,
-                        child: _buildSvgWidget(_colorizedSvg(_frontSvg!, true)),
-                      ),
-                    )
-                  else if (!isFrontVisible && _backSvg != null)
-                    Transform(
-                      alignment: Alignment.center,
-                      transform: Matrix4.identity()..rotateY(math.pi),
-                      child: Center(
-                        child: SizedBox(
-                          height: widget.height * 0.9,
-                          child: _buildSvgWidget(_colorizedSvg(_backSvg!, false)),
-                        ),
-                      ),
-                    ),
-
-                  // Legend
-                  Positioned(
-                    bottom: 12,
-                    left: 12,
-                    right: 12,
-                    child: _buildLegend(),
-                  ),
-
-                  // Flip indicator
-                  Positioned(
-                    top: 12,
-                    right: 12,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.6),
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: AppColors.cyberLime, width: 1),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.autorenew,
-                            color: AppColors.cyberLime,
-                            size: 16,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            isFrontVisible ? 'FRONT' : 'BACK',
-                            style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w800,
-                              color: AppColors.cyberLime,
-                              letterSpacing: 1,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }

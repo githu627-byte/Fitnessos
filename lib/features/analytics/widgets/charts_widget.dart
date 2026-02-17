@@ -732,7 +732,9 @@ class _VolumeChartWidgetState extends State<VolumeChartWidget>
   
   String _formatVolume(double volume) {
     if (volume >= 1000000) {
-      return '${(volume / 1000000).toStringAsFixed(1)}M kg';
+      return '${(volume / 1000).toStringAsFixed(1)} tons';
+    } else if (volume >= 10000) {
+      return '${(volume / 1000).toStringAsFixed(1)} tons';
     } else if (volume >= 1000) {
       return '${(volume / 1000).toStringAsFixed(1)}K kg';
     }

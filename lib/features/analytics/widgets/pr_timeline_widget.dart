@@ -799,8 +799,8 @@ class _ProgressionChartWidgetState extends State<ProgressionChartWidget>
               ),
               _buildProgressStat(
                 'Progress',
-                '${progress > 0 ? '+' : ''}${progress.toStringAsFixed(1)}%',
-                progress >= 0 ? AppColors.cyberLime : AppColors.neonCrimson,
+                data.length < 2 ? '—' : '${progress > 0 ? '+' : ''}${progress.toStringAsFixed(1)}%',
+                data.length < 2 ? Colors.white.withOpacity(0.5) : (progress >= 0 ? AppColors.cyberLime : AppColors.neonCrimson),
               ),
             ],
           ),
@@ -828,11 +828,13 @@ class _ProgressionChartWidgetState extends State<ProgressionChartWidget>
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  progress > 0
-                      ? 'You\'ve increased your max weight by ${progress.toStringAsFixed(1)}%!'
-                      : progress < 0
-                          ? 'Focus on progressive overload to get back on track'
-                          : 'Keep training to track your progress',
+                  data.length < 2
+                      ? 'Need 2+ sessions to calculate progress'
+                      : progress > 0
+                          ? 'You\'ve increased your max weight by ${progress.toStringAsFixed(1)}%!'
+                          : progress < 0
+                              ? 'Focus on progressive overload to get back on track'
+                              : 'Keep training to track your progress',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.white.withOpacity(0.7),

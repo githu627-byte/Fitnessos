@@ -1447,12 +1447,12 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                 ),
               ),
               const SizedBox(width: 10),
-              // WITH ALARM — cyber lime filled
+              // SET ALARM — cyber lime filled
               Expanded(
                 child: GestureDetector(
                   onTap: () async {
                     HapticFeedback.heavyImpact();
-                    await _openScheduleWorkoutFlow(_selectedDate);
+                    await _openAlarmOnlyFlow(_selectedDate);
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 14),
@@ -1466,7 +1466,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                         Icon(Icons.alarm, color: Colors.black, size: 18),
                         SizedBox(width: 8),
                         Text(
-                          'WITH ALARM',
+                          'SET ALARM',
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w800,
@@ -2065,6 +2065,67 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     debugPrint('═══════════════════════════════════════════════════');
   }
   
+  /// Open alarm-only flow (no workout selection popup)
+  /// User can choose a workout separately via the edit button
+  Future<void> _openAlarmOnlyFlow(DateTime date) async {
+    debugPrint('🔔 _openAlarmOnlyFlow STARTED for date: $date');
+
+    final result = await showModalBottomSheet<Map<String, dynamic>>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => ScheduleWorkoutModal(selectedDate: date),
+    );
+
+    debugPrint('📥 ScheduleWorkoutModal returned: $result');
+
+    if (result == null || !mounted) return;
+
+    final timeData = result['time'] as TimeOfDay?;
+    final hasAlarm = timeData != null;
+
+    if (!hasAlarm) return;
+
+    // Get the weekday for repeatDays
+    final weekday = date.weekday == 7 ? 0 : date.weekday;
+    final repeatDays = [weekday];
+
+    // Create schedule with alarm only (no specific workout)
+    final schedule = WorkoutSchedule(
+      id: '${DateTime.now().millisecondsSinceEpoch}',
+      workoutId: 'alarm_only',
+      workoutName: 'Workout',
+      scheduledDate: DateTime(date.year, date.month, date.day),
+      scheduledTime: '${timeData.hour.toString().padLeft(2, '0')}:${timeData.minute.toString().padLeft(2, '0')}',
+      hasAlarm: true,
+      createdAt: DateTime.now(),
+      repeatDays: repeatDays,
+    );
+
+    // Save schedule
+    await ref.read(workoutSchedulesProvider.notifier).saveSchedule(schedule);
+
+    // Schedule the alarm
+    await WorkoutAlarmService.scheduleAlarm(schedule);
+    debugPrint('🔔 Alarm scheduled for ${schedule.scheduledTime}');
+
+    if (mounted) {
+      final dateStr = DateFormat('MMM d').format(date);
+      final timeStr = timeData.format(context);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Alarm set for $dateStr at $timeStr',
+            style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 15),
+          ),
+          backgroundColor: AppColors.cyberLime,
+          duration: const Duration(seconds: 3),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
+  }
+
   /// Schedule a test alarm that fires in 1 minute
   Future<void> _scheduleTestAlarm() async {
     try {
