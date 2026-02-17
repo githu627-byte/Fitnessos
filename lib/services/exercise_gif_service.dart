@@ -1,5 +1,5 @@
 import '../data/exercise_gif_mapping.dart';
-import '../data/exercise_id_overrides.dart';
+import '../data/exercise_id_overrides_fixed.dart';
 
 /// Quality/resolution options for exercise GIFs
 enum GifQuality {
@@ -30,7 +30,7 @@ class ExerciseGifService {
   /// ```
   static String? getGifPath(String exerciseId, {GifQuality quality = GifQuality.medium}) {
     // First check for manual overrides
-    final overriddenId = ExerciseIdOverrides.getOverriddenId(exerciseId);
+    final overriddenId = ExerciseIdOverridesFix.getOverriddenId(exerciseId);
     
     // Normalize exercise ID
     final normalizedId = _normalizeExerciseId(overriddenId);
