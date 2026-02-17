@@ -59,7 +59,7 @@ class UnifiedWorkoutSaveService {
       
       // Calculate stats
       final duration = endTime.difference(startTime);
-      final durationMinutes = duration.inMinutes;
+      final durationMinutes = duration.inMinutes > 0 ? duration.inMinutes : (duration.inSeconds / 60.0).ceil().clamp(1, 999);
       final totalReps = exerciseSets.fold<int>(0, (sum, set) => sum + set.repsCompleted);
       final totalVolume = _calculateTotalVolume(exerciseSets);
       final caloriesBurned = await _calculateCalories(

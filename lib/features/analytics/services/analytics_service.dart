@@ -501,13 +501,13 @@ class AnalyticsService {
       final result = await db.rawQuery(
         startDate == null
             ? '''
-              SELECT SUM(es.weight * es.reps_completed) as volume
+              SELECT SUM(CASE WHEN es.weight > 0 THEN es.weight * es.reps_completed ELSE es.reps_completed END) as volume
               FROM exercise_sets es
               JOIN workout_sessions ws ON es.session_id = ws.id
               WHERE ws.status = ?
             '''
             : '''
-              SELECT SUM(es.weight * es.reps_completed) as volume
+              SELECT SUM(CASE WHEN es.weight > 0 THEN es.weight * es.reps_completed ELSE es.reps_completed END) as volume
               FROM exercise_sets es
               JOIN workout_sessions ws ON es.session_id = ws.id
               WHERE ws.status = ? AND ws.date >= ?
@@ -522,6 +522,7 @@ class AnalyticsService {
   
   static Future<double> _getTotalHours(Database db, DateTime? startDate) async {
     try {
+      // Primary: use duration_minutes from workout_sessions
       final result = await db.rawQuery(
         startDate == null
             ? 'SELECT SUM(duration_minutes) as total FROM workout_sessions WHERE status = ?'
@@ -529,7 +530,38 @@ class AnalyticsService {
         startDate == null ? ['complete'] : ['complete', startDate.toIso8601String()],
       );
       final totalMinutes = Sqflite.firstIntValue(result) ?? 0;
-      return totalMinutes / 60.0;
+
+      if (totalMinutes > 0) return totalMinutes / 60.0;
+
+      // Fallback: calculate from start_time and end_time
+      final timeResult = await db.rawQuery(
+        startDate == null
+            ? '''SELECT SUM(
+                  CAST((julianday(end_time) - julianday(start_time)) * 24 * 60 AS INTEGER)
+                ) as total
+                FROM workout_sessions
+                WHERE status = ? AND start_time IS NOT NULL AND end_time IS NOT NULL'''
+            : '''SELECT SUM(
+                  CAST((julianday(end_time) - julianday(start_time)) * 24 * 60 AS INTEGER)
+                ) as total
+                FROM workout_sessions
+                WHERE status = ? AND date >= ? AND start_time IS NOT NULL AND end_time IS NOT NULL''',
+        startDate == null ? ['complete'] : ['complete', startDate.toIso8601String()],
+      );
+      final calcMinutes = Sqflite.firstIntValue(timeResult) ?? 0;
+
+      if (calcMinutes > 0) return calcMinutes / 60.0;
+
+      // Last fallback: estimate from workout count (45 min average)
+      final countResult = await db.rawQuery(
+        startDate == null
+            ? 'SELECT COUNT(*) as count FROM workout_sessions WHERE status = ?'
+            : 'SELECT COUNT(*) as count FROM workout_sessions WHERE status = ? AND date >= ?',
+        startDate == null ? ['complete'] : ['complete', startDate.toIso8601String()],
+      );
+      final count = Sqflite.firstIntValue(countResult) ?? 0;
+
+      return count * 0.75; // 45 min average per workout
     } catch (e) {
       return 0.0;
     }
@@ -664,7 +696,21 @@ class AnalyticsService {
         final volume = (results[i]['volume'] as num?)?.toDouble() ?? 0.0;
         spots.add(FlSpot(i.toDouble(), volume));
       }
-      
+
+      // Ensure we have at least 2 points for the chart to render a line
+      if (spots.length == 1) {
+        final singleSpot = spots.first;
+        // Add zero point the day before
+        spots.insert(0, FlSpot(singleSpot.x - 1, 0));
+        // Add zero point the day after
+        spots.add(FlSpot(singleSpot.x + 1, 0));
+      }
+
+      // If still empty, return a default zero line
+      if (spots.isEmpty) {
+        return [FlSpot(0, 0), FlSpot(1, 0)];
+      }
+
       return spots;
     } catch (e) {
       return [];
@@ -824,19 +870,21 @@ class AnalyticsService {
   static Future<List<PersonalRecord>> _getPRsFromSets(Database db, int limit) async {
     try {
       final results = await db.rawQuery('''
-        SELECT es.exercise_name,
-               es.weight,
-               es.reps_completed as reps,
-               ws.date
-        FROM exercise_sets es
+        SELECT pr.exercise_name, pr.weight, es.reps_completed as reps, ws.date
+        FROM (
+            SELECT exercise_name, MAX(weight) as weight
+            FROM exercise_sets
+            WHERE weight > 0
+            GROUP BY exercise_name
+        ) pr
+        JOIN exercise_sets es ON es.exercise_name = pr.exercise_name AND es.weight = pr.weight
         JOIN workout_sessions ws ON es.session_id = ws.id
-        WHERE ws.status = 'complete' AND es.weight > 0
-        GROUP BY es.exercise_name
-        HAVING es.weight = MAX(es.weight)
+        WHERE ws.status = 'complete'
+        GROUP BY pr.exercise_name
         ORDER BY ws.date DESC
         LIMIT ?
       ''', [limit]);
-      
+
       return results.map((r) => PersonalRecord(
         exerciseName: r['exercise_name'] as String,
         weight: (r['weight'] as num).toDouble(),
@@ -851,18 +899,21 @@ class AnalyticsService {
   static Future<List<PersonalRecord>> _getAllTimePRs(Database db) async {
     try {
       final results = await db.rawQuery('''
-        SELECT es.exercise_name,
-               MAX(es.weight) as weight,
-               es.reps_completed as reps,
-               ws.date
-        FROM exercise_sets es
+        SELECT pr.exercise_name, pr.weight, es.reps_completed as reps, ws.date
+        FROM (
+            SELECT exercise_name, MAX(weight) as weight
+            FROM exercise_sets
+            WHERE weight > 0
+            GROUP BY exercise_name
+        ) pr
+        JOIN exercise_sets es ON es.exercise_name = pr.exercise_name AND es.weight = pr.weight
         JOIN workout_sessions ws ON es.session_id = ws.id
-        WHERE ws.status = 'complete' AND es.weight > 0
-        GROUP BY es.exercise_name
-        ORDER BY weight DESC
+        WHERE ws.status = 'complete'
+        GROUP BY pr.exercise_name
+        ORDER BY pr.weight DESC
         LIMIT 20
       ''');
-      
+
       return results.map((r) => PersonalRecord(
         exerciseName: r['exercise_name'] as String,
         weight: (r['weight'] as num).toDouble(),
@@ -880,35 +931,182 @@ class AnalyticsService {
   /// ═══════════════════════════════════════════════════════════════════════════
   
   static final _exerciseBodyPartMap = {
-    // Chest
-    'bench press': 'Chest', 'incline bench': 'Chest', 'decline bench': 'Chest',
-    'push ups': 'Chest', 'chest fly': 'Chest', 'dumbbell press': 'Chest',
-    'cable crossover': 'Chest', 'dips': 'Chest',
-    
-    // Back
-    'deadlift': 'Back', 'pull up': 'Back', 'pull ups': 'Back', 'lat pulldown': 'Back',
-    'row': 'Back', 'rows': 'Back', 'bent over row': 'Back', 'cable row': 'Back',
-    'face pull': 'Back', 't bar row': 'Back',
-    
-    // Shoulders
-    'overhead press': 'Shoulders', 'shoulder press': 'Shoulders', 'military press': 'Shoulders',
-    'lateral raise': 'Shoulders', 'front raise': 'Shoulders', 'rear delt': 'Shoulders',
-    'upright row': 'Shoulders', 'arnold press': 'Shoulders',
-    
-    // Arms
-    'bicep curl': 'Arms', 'hammer curl': 'Arms', 'preacher curl': 'Arms',
-    'tricep extension': 'Arms', 'tricep pushdown': 'Arms', 'skull crusher': 'Arms',
-    'concentration curl': 'Arms', 'cable curl': 'Arms',
-    
-    // Legs
-    'squat': 'Legs', 'leg press': 'Legs', 'lunge': 'Legs', 'lunges': 'Legs',
-    'leg extension': 'Legs', 'leg curl': 'Legs', 'calf raise': 'Legs',
-    'romanian deadlift': 'Legs', 'hip thrust': 'Legs', 'goblet squat': 'Legs',
-    
-    // Core
-    'plank': 'Core', 'crunch': 'Core', 'sit up': 'Core', 'russian twist': 'Core',
-    'leg raise': 'Core', 'ab wheel': 'Core', 'cable crunch': 'Core',
-    'mountain climber': 'Core', 'dead bug': 'Core',
+    // ═══════════════════════════════════════════════════════════════
+    // CHEST
+    // ═══════════════════════════════════════════════════════════════
+    'bench_press': 'Chest', 'bench press': 'Chest',
+    'incline_bench': 'Chest', 'incline bench': 'Chest',
+    'incline_press': 'Chest', 'incline press': 'Chest',
+    'incline_db': 'Chest',
+    'decline_bench': 'Chest', 'decline bench': 'Chest',
+    'decline_press': 'Chest', 'decline press': 'Chest',
+    'push_up': 'Chest', 'push up': 'Chest', 'pushup': 'Chest', 'push ups': 'Chest',
+    'chest_fly': 'Chest', 'chest fly': 'Chest',
+    'chest_flye': 'Chest', 'chest_flys': 'Chest',
+    'dumbbell_press': 'Chest', 'dumbbell press': 'Chest',
+    'dumbbell_bench': 'Chest',
+    'cable_crossover': 'Chest', 'cable crossover': 'Chest',
+    'cable_fly': 'Chest', 'cable_flye': 'Chest',
+    'pec_deck': 'Chest', 'pec deck': 'Chest',
+    'machine_chest': 'Chest',
+    'machine_fly': 'Chest',
+    'close_grip_bench': 'Chest',
+    'landmine_press': 'Chest',
+    'jm_press': 'Chest',
+    'dip': 'Chest', 'dips': 'Chest',
+    'chest_dip': 'Chest',
+
+    // ═══════════════════════════════════════════════════════════════
+    // BACK
+    // ═══════════════════════════════════════════════════════════════
+    'deadlift': 'Back', 'deadlifts': 'Back',
+    'pull_up': 'Back', 'pull up': 'Back', 'pullup': 'Back', 'pull ups': 'Back',
+    'chin_up': 'Back', 'chin up': 'Back', 'chinup': 'Back',
+    'lat_pulldown': 'Back', 'lat pulldown': 'Back',
+    'cable_pulldown': 'Back',
+    'row': 'Back', 'rows': 'Back',
+    'bent_over_row': 'Back', 'bent over row': 'Back',
+    'barbell_row': 'Back', 'barbell row': 'Back',
+    'dumbbell_row': 'Back', 'dumbbell row': 'Back',
+    'cable_row': 'Back', 'cable row': 'Back',
+    'seated_row': 'Back', 'seated_cable_row': 'Back',
+    'machine_row': 'Back',
+    'chest_supported_row': 'Back',
+    'tbar_row': 'Back', 't_bar_row': 'Back', 't bar row': 'Back',
+    'pendlay_row': 'Back',
+    'inverted_row': 'Back',
+    'renegade_row': 'Back',
+    'face_pull': 'Back', 'face pull': 'Back',
+    'straight_arm_pulldown': 'Back',
+    'muscle_up': 'Back',
+    'back_extension': 'Back', 'hyperextension': 'Back',
+    'reverse_hyper': 'Back',
+    'good_morning': 'Back',
+    'rack_pull': 'Back',
+
+    // ═══════════════════════════════════════════════════════════════
+    // SHOULDERS
+    // ═══════════════════════════════════════════════════════════════
+    'overhead_press': 'Shoulders', 'overhead press': 'Shoulders',
+    'shoulder_press': 'Shoulders', 'shoulder press': 'Shoulders',
+    'military_press': 'Shoulders', 'military press': 'Shoulders',
+    'lateral_raise': 'Shoulders', 'lateral raise': 'Shoulders',
+    'front_raise': 'Shoulders', 'front raise': 'Shoulders',
+    'rear_delt': 'Shoulders', 'rear delt': 'Shoulders',
+    'reverse_fly': 'Shoulders', 'reverse_flye': 'Shoulders',
+    'upright_row': 'Shoulders', 'upright row': 'Shoulders',
+    'arnold_press': 'Shoulders', 'arnold press': 'Shoulders',
+    'push_press': 'Shoulders',
+    'seated_db_press': 'Shoulders',
+    'seated_dumbbell_press': 'Shoulders',
+    'standing_dumbbell_press': 'Shoulders',
+    'db_overhead_press': 'Shoulders',
+    'machine_shoulder': 'Shoulders',
+    'shrug': 'Shoulders', 'shrugs': 'Shoulders',
+    'barbell_shrug': 'Shoulders',
+    'dumbbell_shrug': 'Shoulders',
+    'ohp': 'Shoulders',
+    'standing_ohp': 'Shoulders',
+    'pike_pushup': 'Shoulders', 'pike_push_up': 'Shoulders',
+
+    // ═══════════════════════════════════════════════════════════════
+    // ARMS
+    // ═══════════════════════════════════════════════════════════════
+    'bicep_curl': 'Arms', 'bicep curl': 'Arms',
+    'bicep': 'Arms',
+    'curl': 'Arms',
+    'curls': 'Arms',
+    'hammer_curl': 'Arms', 'hammer curl': 'Arms',
+    'preacher_curl': 'Arms', 'preacher curl': 'Arms',
+    'concentration_curl': 'Arms', 'concentration curl': 'Arms',
+    'cable_curl': 'Arms', 'cable curl': 'Arms',
+    'incline_curl': 'Arms',
+    'spider_curl': 'Arms',
+    'ez_bar_curl': 'Arms',
+    'barbell_curl': 'Arms',
+    'dumbbell_curl': 'Arms',
+    'reverse_curl': 'Arms',
+    'zottman_curl': 'Arms',
+    '21s': 'Arms',
+    'tricep_extension': 'Arms', 'tricep extension': 'Arms',
+    'tricep_pushdown': 'Arms', 'tricep pushdown': 'Arms',
+    'tricep': 'Arms',
+    'skull_crusher': 'Arms', 'skull crusher': 'Arms',
+    'overhead_tricep': 'Arms',
+    'rope_pushdown': 'Arms',
+    'cable_pushdown': 'Arms',
+    'tricep_kickback': 'Arms',
+    'dumbbell_kickback': 'Arms',
+    'cable_tricep': 'Arms',
+    'wrist_curl': 'Arms',
+    'reverse_wrist': 'Arms',
+
+    // ═══════════════════════════════════════════════════════════════
+    // LEGS
+    // ═══════════════════════════════════════════════════════════════
+    'squat': 'Legs', 'squats': 'Legs',
+    'back_squat': 'Legs',
+    'front_squat': 'Legs',
+    'goblet_squat': 'Legs', 'goblet squat': 'Legs',
+    'leg_press': 'Legs', 'leg press': 'Legs',
+    'lunge': 'Legs', 'lunges': 'Legs',
+    'split_squat': 'Legs', 'bulgarian': 'Legs',
+    'leg_extension': 'Legs', 'leg extension': 'Legs',
+    'leg_curl': 'Legs', 'leg curl': 'Legs',
+    'hamstring_curl': 'Legs', 'hamstring': 'Legs',
+    'calf_raise': 'Legs', 'calf raise': 'Legs',
+    'calf': 'Legs',
+    'romanian_deadlift': 'Legs', 'romanian deadlift': 'Legs',
+    'rdl': 'Legs',
+    'hip_thrust': 'Legs', 'hip thrust': 'Legs',
+    'glute_bridge': 'Legs', 'glute bridge': 'Legs',
+    'glute': 'Legs',
+    'step_up': 'Legs', 'step up': 'Legs',
+    'box_jump': 'Legs',
+    'jump_squat': 'Legs',
+    'pistol_squat': 'Legs',
+    'hack_squat': 'Legs',
+    'sumo_squat': 'Legs', 'sumo_deadlift': 'Legs',
+    'wall_sit': 'Legs',
+    'nordic_curl': 'Legs',
+    'donkey_kick': 'Legs',
+    'fire_hydrant': 'Legs',
+    'glute_kickback': 'Legs',
+    'cable_kickback': 'Legs',
+    'standing_glute_kickback': 'Legs',
+    'frog_pump': 'Legs',
+    'stiff_leg': 'Legs',
+    'single_leg': 'Legs',
+    'kettlebell_swing': 'Legs',
+    'kb_swing': 'Legs',
+    'cable_pull_through': 'Legs',
+
+    // ═══════════════════════════════════════════════════════════════
+    // CORE
+    // ═══════════════════════════════════════════════════════════════
+    'plank': 'Core', 'planks': 'Core',
+    'crunch': 'Core', 'crunches': 'Core',
+    'sit_up': 'Core', 'sit up': 'Core', 'situp': 'Core',
+    'russian_twist': 'Core', 'russian twist': 'Core',
+    'leg_raise': 'Core', 'leg raise': 'Core',
+    'ab_wheel': 'Core', 'ab wheel': 'Core',
+    'cable_crunch': 'Core', 'cable crunch': 'Core',
+    'mountain_climber': 'Core', 'mountain climber': 'Core',
+    'dead_bug': 'Core', 'dead bug': 'Core',
+    'v_up': 'Core', 'v up': 'Core',
+    'bicycle_crunch': 'Core',
+    'flutter_kick': 'Core',
+    'scissor_kick': 'Core',
+    'wood_chop': 'Core', 'woodchop': 'Core',
+    'pallof': 'Core',
+    'side_plank': 'Core',
+    'hollow': 'Core',
+    'superman': 'Core',
+    'bird_dog': 'Core',
+    'oblique': 'Core',
+    'hanging_leg_raise': 'Core',
+    'windmill': 'Core',
+    'l_sit': 'Core',
   };
   
   static Future<Map<String, double>> _getBodyPartVolumes(Database db, DateTime? startDate) async {
@@ -916,14 +1114,14 @@ class AnalyticsService {
       final results = await db.rawQuery(
         startDate == null
             ? '''
-              SELECT es.exercise_name, SUM(es.weight * es.reps_completed) as volume
+              SELECT es.exercise_name, SUM(CASE WHEN es.weight > 0 THEN es.weight * es.reps_completed ELSE es.reps_completed END) as volume
               FROM exercise_sets es
               JOIN workout_sessions ws ON es.session_id = ws.id
               WHERE ws.status = 'complete'
               GROUP BY es.exercise_name
             '''
             : '''
-              SELECT es.exercise_name, SUM(es.weight * es.reps_completed) as volume
+              SELECT es.exercise_name, SUM(CASE WHEN es.weight > 0 THEN es.weight * es.reps_completed ELSE es.reps_completed END) as volume
               FROM exercise_sets es
               JOIN workout_sessions ws ON es.session_id = ws.id
               WHERE ws.status = 'complete' AND ws.date >= ?
@@ -935,23 +1133,46 @@ class AnalyticsService {
       final bodyPartVolumes = <String, double>{
         'Chest': 0, 'Back': 0, 'Shoulders': 0, 'Arms': 0, 'Legs': 0, 'Core': 0,
       };
-      
+
       for (var r in results) {
         final exerciseName = (r['exercise_name'] as String).toLowerCase();
+        // Also create a space-separated version for matching
+        final exerciseNameSpaced = exerciseName.replaceAll('_', ' ');
         final volume = (r['volume'] as num?)?.toDouble() ?? 0.0;
-        
-        // Find matching body part
-        String bodyPart = 'Core'; // Default
+
+        if (volume <= 0) continue; // Skip zero-volume exercises
+
+        String? bodyPart;
+        int longestMatch = 0;
+
+        // Find the LONGEST matching key (most specific match wins)
         for (var entry in _exerciseBodyPartMap.entries) {
-          if (exerciseName.contains(entry.key)) {
+          if ((exerciseName.contains(entry.key) || exerciseNameSpaced.contains(entry.key))
+              && entry.key.length > longestMatch) {
             bodyPart = entry.value;
-            break;
+            longestMatch = entry.key.length;
           }
         }
-        
-        bodyPartVolumes[bodyPart] = (bodyPartVolumes[bodyPart] ?? 0) + volume;
+
+        // Fallback: try to infer from keywords
+        if (bodyPart == null) {
+          if (exerciseName.contains('press') || exerciseName.contains('fly') || exerciseName.contains('push')) {
+            bodyPart = 'Chest';
+          } else if (exerciseName.contains('row') || exerciseName.contains('pull')) {
+            bodyPart = 'Back';
+          } else if (exerciseName.contains('curl') || exerciseName.contains('tricep')) {
+            bodyPart = 'Arms';
+          } else if (exerciseName.contains('squat') || exerciseName.contains('lunge') || exerciseName.contains('leg')) {
+            bodyPart = 'Legs';
+          }
+        }
+
+        // Only add if we have a body part match
+        if (bodyPart != null) {
+          bodyPartVolumes[bodyPart] = (bodyPartVolumes[bodyPart] ?? 0) + volume;
+        }
       }
-      
+
       return bodyPartVolumes;
     } catch (e) {
       return {};
@@ -975,10 +1196,10 @@ class AnalyticsService {
         startDate == null
             ? '''
               SELECT es.exercise_name,
-                     SUM(es.weight * es.reps_completed) as volume,
+                     SUM(CASE WHEN es.weight > 0 THEN es.weight * es.reps_completed ELSE es.reps_completed END) as volume,
                      COUNT(*) as set_count,
                      SUM(es.reps_completed) as total_reps,
-                     AVG(es.weight) as avg_weight
+                     AVG(CASE WHEN es.weight > 0 THEN es.weight ELSE NULL END) as avg_weight
               FROM exercise_sets es
               JOIN workout_sessions ws ON es.session_id = ws.id
               WHERE ws.status = 'complete'
@@ -988,10 +1209,10 @@ class AnalyticsService {
             '''
             : '''
               SELECT es.exercise_name,
-                     SUM(es.weight * es.reps_completed) as volume,
+                     SUM(CASE WHEN es.weight > 0 THEN es.weight * es.reps_completed ELSE es.reps_completed END) as volume,
                      COUNT(*) as set_count,
                      SUM(es.reps_completed) as total_reps,
-                     AVG(es.weight) as avg_weight
+                     AVG(CASE WHEN es.weight > 0 THEN es.weight ELSE NULL END) as avg_weight
               FROM exercise_sets es
               JOIN workout_sessions ws ON es.session_id = ws.id
               WHERE ws.status = 'complete' AND ws.date >= ?
@@ -1049,26 +1270,40 @@ class AnalyticsService {
   
   static Future<Map<String, List<FlSpot>>> _getExerciseProgressions(Database db) async {
     try {
-      // Track Big 3 + some popular exercises
-      final exercises = [
-        'Bench Press', 'Squat', 'Deadlift',
-        'Overhead Press', 'Barbell Row',
-      ];
-      
+      // Dynamically find user's top exercises by frequency
+      final topExerciseResults = await db.rawQuery('''
+        SELECT es.exercise_name, COUNT(DISTINCT ws.id) as frequency
+        FROM exercise_sets es
+        JOIN workout_sessions ws ON es.session_id = ws.id
+        WHERE ws.status = 'complete' AND es.weight > 0
+        GROUP BY es.exercise_name
+        ORDER BY frequency DESC
+        LIMIT 6
+      ''');
+
+      final exercises = topExerciseResults
+          .map((r) => r['exercise_name'] as String)
+          .toList();
+
+      // Fallback to Big 3 if no data
+      if (exercises.isEmpty) {
+        exercises.addAll(['Bench Press', 'Squat', 'Deadlift', 'Overhead Press', 'Barbell Row']);
+      }
+
       final progressions = <String, List<FlSpot>>{};
-      
+
       for (var exercise in exercises) {
         final results = await db.rawQuery('''
           SELECT date(ws.date) as day,
                  MAX(es.weight) as max_weight
           FROM exercise_sets es
           JOIN workout_sessions ws ON es.session_id = ws.id
-          WHERE es.exercise_name LIKE ? AND ws.status = 'complete'
+          WHERE es.exercise_name = ? AND ws.status = 'complete'
           GROUP BY date(ws.date)
           ORDER BY date(ws.date)
           LIMIT 30
-        ''', ['%$exercise%']);
-        
+        ''', [exercise]);
+
         if (results.isNotEmpty) {
           final spots = <FlSpot>[];
           for (int i = 0; i < results.length; i++) {
@@ -1078,7 +1313,7 @@ class AnalyticsService {
           progressions[exercise] = spots;
         }
       }
-      
+
       return progressions;
     } catch (e) {
       return {};

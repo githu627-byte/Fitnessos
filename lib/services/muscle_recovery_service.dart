@@ -156,6 +156,30 @@ class MuscleRecoveryService {
     'box_jump': ['quadriceps', 'glutes', 'calves'],
   };
 
+  /// Normalize muscle names from exercise_muscle_database to canonical names
+  static String normalizeMuscle(String muscle) {
+    switch (muscle) {
+      case 'quads':
+        return 'quadriceps';
+      case 'core':
+        return 'abs';
+      case 'front_delts':
+        return 'shoulders';
+      case 'rear_delts':
+        return 'shoulders';
+      case 'upper_back':
+        return 'traps';
+      case 'upper_chest':
+        return 'chest';
+      case 'adductors':
+        return 'quadriceps';
+      case 'abductors':
+        return 'glutes';
+      default:
+        return muscle;
+    }
+  }
+
   /// Record that specific muscles were trained now
   static Future<void> recordMusclesTrained(List<String> muscleGroups) async {
     final prefs = await SharedPreferences.getInstance();
@@ -164,9 +188,10 @@ class MuscleRecoveryService {
     // Load existing data
     final Map<String, dynamic> lastTrained = _loadLastTrained(prefs);
 
-    // Update each muscle group
+    // Update each muscle group with normalized names
     for (final muscle in muscleGroups) {
-      lastTrained[muscle] = now;
+      final normalized = normalizeMuscle(muscle);
+      lastTrained[normalized] = now;
     }
 
     // Save back
@@ -184,7 +209,7 @@ class MuscleRecoveryService {
     for (final exercise in exerciseNames) {
       // First: Check if we have pre-mapped muscle data (most accurate)
       if (exerciseMuscleData != null && exerciseMuscleData.containsKey(exercise)) {
-        affectedMuscles.addAll(exerciseMuscleData[exercise]!);
+        affectedMuscles.addAll(exerciseMuscleData[exercise]!.map(normalizeMuscle));
         continue;
       }
 
