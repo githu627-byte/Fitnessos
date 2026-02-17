@@ -676,10 +676,28 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     }
 
     // FILLED CARD
-    // Get workout details
+    // Get workout details — use committed workout data if it matches (same as main hero card)
     final WorkoutPreset? workoutPreset = _findWorkoutById(workout.workoutId);
-    final exerciseCount = workoutPreset?.exercises.where((e) => e.included).length ?? 0;
-    final totalSets = workoutPreset?.totalSets ?? 0;
+
+    final isToday = _selectedDate.year == DateTime.now().year &&
+                    _selectedDate.month == DateTime.now().month &&
+                    _selectedDate.day == DateTime.now().day;
+    final committedWorkout = ref.read(committedWorkoutProvider);
+    final isSameWorkout = isToday && committedWorkout != null &&
+        (committedWorkout.id == workout.workoutId ||
+         committedWorkout.name == workout.workoutName);
+
+    int exerciseCount;
+    int totalSets;
+    if (isSameWorkout) {
+      // Use committed workout data — has correct difficulty-adjusted exercises
+      exerciseCount = committedWorkout.exercises.length;
+      totalSets = committedWorkout.totalSets;
+    } else {
+      // Fallback: look up by ID (for future dates or non-committed workouts)
+      exerciseCount = workoutPreset?.exercises.where((e) => e.included).length ?? 0;
+      totalSets = workoutPreset?.totalSets ?? 0;
+    }
 
     return GestureDetector(
       onTap: () async {
