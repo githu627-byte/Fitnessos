@@ -35,7 +35,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const SizedBox(height: 16),
+                const SizedBox(height: 8),
 
                 // ═══════════════════════════════════
                 // CLOSE BUTTON (top right)
@@ -59,7 +59,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
                     ),
                   ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 12),
 
                 // ═══════════════════════════════════
                 // LOGO
@@ -77,13 +77,13 @@ class _PaywallScreenState extends State<PaywallScreen> {
                     ),
                     child: Image.asset(
                       'assets/images/logo/skeletal_logo.png',
-                      height: 60,
+                      height: 50,
                       fit: BoxFit.contain,
                     ),
                   ),
                 ),
 
-                const SizedBox(height: 28),
+                const SizedBox(height: 20),
 
                 // ═══════════════════════════════════
                 // TITLE
@@ -117,10 +117,9 @@ class _PaywallScreenState extends State<PaywallScreen> {
                 _buildFeatureItem(Icons.accessibility_new, 'Skeleton Overlay Recording'),
                 _buildFeatureItem(Icons.share, 'Shareable Workout Clips'),
                 _buildFeatureItem(Icons.record_voice_over, 'Voice Coaching'),
-                _buildFeatureItem(Icons.insights, 'Form Quality Scoring'),
                 _buildFeatureItem(Icons.support_agent, 'Priority Support'),
 
-                const SizedBox(height: 32),
+                const SizedBox(height: 20),
 
                 // ═══════════════════════════════════
                 // PRICING TOGGLE — Monthly / Yearly
@@ -135,7 +134,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
                           setState(() => _isYearly = false);
                         },
                         child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          padding: const EdgeInsets.symmetric(vertical: 16),
                           decoration: BoxDecoration(
                             color: !_isYearly
                                 ? const Color(0xFFCCFF00).withOpacity(0.08)
@@ -160,12 +159,12 @@ class _PaywallScreenState extends State<PaywallScreen> {
                                       : Colors.white.withOpacity(0.5),
                                 ),
                               ),
-                              const SizedBox(height: 8),
+                              const SizedBox(height: 6),
                               // Price comes from store — placeholder for now
                               Text(
                                 '\$2.99', // PLACEHOLDER — replace with store price
                                 style: TextStyle(
-                                  fontSize: 26,
+                                  fontSize: 22,
                                   fontWeight: FontWeight.w900,
                                   color: !_isYearly ? Colors.white : Colors.white.withOpacity(0.5),
                                 ),
@@ -194,7 +193,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
                           setState(() => _isYearly = true);
                         },
                         child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          padding: const EdgeInsets.symmetric(vertical: 16),
                           decoration: BoxDecoration(
                             color: _isYearly
                                 ? const Color(0xFFCCFF00).withOpacity(0.08)
@@ -219,11 +218,11 @@ class _PaywallScreenState extends State<PaywallScreen> {
                                       : Colors.white.withOpacity(0.5),
                                 ),
                               ),
-                              const SizedBox(height: 8),
+                              const SizedBox(height: 6),
                               Text(
                                 '\$24.99', // PLACEHOLDER — replace with store price
                                 style: TextStyle(
-                                  fontSize: 26,
+                                  fontSize: 22,
                                   fontWeight: FontWeight.w900,
                                   color: _isYearly ? Colors.white : Colors.white.withOpacity(0.5),
                                 ),
@@ -247,7 +246,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
                   ],
                 ),
 
-                const SizedBox(height: 24),
+                const SizedBox(height: 16),
 
                 // ═══════════════════════════════════
                 // SUBSCRIBE BUTTON
@@ -280,7 +279,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
                   ),
                 ),
 
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
 
                 // ═══════════════════════════════════
                 // RESTORE PURCHASE
@@ -355,7 +354,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
                 // FREE FEATURES REMINDER
                 // ═══════════════════════════════════
                 Container(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: const Color(0xFF0D0D0D),
                     borderRadius: BorderRadius.circular(14),
@@ -369,17 +368,17 @@ class _PaywallScreenState extends State<PaywallScreen> {
                       Text(
                         'Already included FREE',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 10,
                           fontWeight: FontWeight.w700,
                           color: Colors.white.withOpacity(0.35),
                           letterSpacing: 1,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       Text(
                         '500+ exercises \u2022 Full analytics \u2022 Workout scheduling \u2022 Body tracking \u2022 Unlimited manual logging',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 10,
                           color: Colors.white.withOpacity(0.25),
                           height: 1.5,
                         ),
@@ -389,7 +388,7 @@ class _PaywallScreenState extends State<PaywallScreen> {
                   ),
                 ),
 
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
               ],
             ),
           ),
@@ -403,22 +402,22 @@ class _PaywallScreenState extends State<PaywallScreen> {
   // ═══════════════════════════════════
   Widget _buildFeatureItem(IconData icon, String text) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 14),
+      padding: const EdgeInsets.only(bottom: 10),
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
               color: const Color(0xFFCCFF00).withOpacity(0.08),
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Icon(icon, color: const Color(0xFFCCFF00), size: 20),
+            child: Icon(icon, color: const Color(0xFFCCFF00), size: 18),
           ),
           const SizedBox(width: 14),
           Text(
             text,
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: 13,
               fontWeight: FontWeight.w600,
               color: Colors.white,
             ),

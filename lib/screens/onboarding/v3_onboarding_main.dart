@@ -175,7 +175,7 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
                       borderRadius: BorderRadius.circular(10),
                       child: LinearProgressIndicator(
                         value: (_currentPage + 1) / _totalPages,
-                        backgroundColor: AppColors.white10,
+                        backgroundColor: Colors.white.withOpacity(0.06),
                         valueColor: const AlwaysStoppedAnimation(AppColors.cyberLime),
                         minHeight: 4,
                       ),
@@ -205,7 +205,7 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
                     _currentPage == 3
                         ? 'SKIP FOR NOW'
                         : _currentPage == _totalPages - 1
-                            ? (_wantsHelp ? "LET'S GO \u{1F525}" : 'GET STARTED')
+                            ? (_wantsHelp ? "LET'S GO" : 'GET STARTED')
                             : 'CONTINUE',
                     style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w900, letterSpacing: 1.5),
                   ),
@@ -252,7 +252,7 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
                       child: Image.asset(
                         'assets/images/logo/skeletal_logo.png',
                         height: 80, fit: BoxFit.contain,
-                        errorBuilder: (_, __, ___) => const Text('\u{1F480}', style: TextStyle(fontSize: 68)),
+                        errorBuilder: (_, __, ___) => const Icon(Icons.fitness_center, size: 68, color: AppColors.cyberLime),
                       ),
                     ),
                   ),
@@ -304,21 +304,31 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
               spacing: 8, runSpacing: 8,
               alignment: WrapAlignment.center,
               children: [
-                _featurePill('\u{1F4F7} CAMERA TRACKING', AppColors.cyberLime),
-                _featurePill('\u{1F9B4} SKELETON OVERLAY', AppColors.cyberLime),
-                _featurePill('\u{1F522} AUTO REP COUNT', AppColors.cyberLime),
-                _featurePill('\u{1F4E1} 100% OFFLINE', AppColors.cyberLime),
-                _featurePill('\u{1F3A5} SHAREABLE CLIPS', AppColors.neonPurple),
-                _featurePill('\u{1F3CB}\u{FE0F} 500+ EXERCISES', AppColors.neonOrange),
+                _featurePill('CAMERA TRACKING'),
+                _featurePill('SKELETON OVERLAY'),
+                _featurePill('AUTO REP COUNT'),
+                _featurePill('100% OFFLINE'),
+                _featurePill('SHAREABLE CLIPS'),
+                _featurePill('500+ EXERCISES'),
               ],
             ),
 
             const SizedBox(height: 28),
 
-            const Text(
-              'AI-POWERED TRACKING',
-              style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: Colors.white, letterSpacing: 2),
+            RichText(
               textAlign: TextAlign.center,
+              text: const TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'AI-POWERED\n',
+                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: Colors.white, letterSpacing: 2, height: 1.2),
+                  ),
+                  TextSpan(
+                    text: 'TRACKING',
+                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: AppColors.cyberLime, letterSpacing: 2, height: 1.2),
+                  ),
+                ],
+              ),
             ),
 
             const SizedBox(height: 12),
@@ -344,17 +354,17 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
     );
   }
 
-  Widget _featurePill(String text, Color color) {
+  Widget _featurePill(String text) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: color.withOpacity(0.25)),
-        color: color.withOpacity(0.06),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: const Color(0xFFCCFF00).withOpacity(0.15), width: 1),
+        color: const Color(0xFFCCFF00).withOpacity(0.06),
       ),
       child: Text(
         text,
-        style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: color.withOpacity(0.8)),
+        style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Color(0xFFCCFF00), letterSpacing: 0.8),
       ),
     );
   }
@@ -400,7 +410,7 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
             Wrap(
               spacing: 7, runSpacing: 7,
               alignment: WrapAlignment.center,
-              children: ['\u{1F3CB}\u{FE0F} GYM', '\u{1F3E0} HOME', '\u{1F4AA} ARMS', '\u{1F9B5} LEGS', '\u{1F3AF} CORE', '\u{1F525} HIIT', '\u{1F351} GLUTES', '\u{26A1} CARDIO']
+              children: ['GYM', 'HOME', 'ARMS', 'LEGS', 'CORE', 'HIIT', 'GLUTES', 'CARDIO']
                   .map((c) => _buildChip(c)).toList(),
             ),
 
@@ -450,7 +460,7 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
               ),
               child: Row(
                 children: [
-                  const Text('\u{26A1}', style: TextStyle(fontSize: 22)),
+                  const Icon(Icons.bolt, color: AppColors.cyberLime, size: 22),
                   const SizedBox(width: 10),
                   Text('POWER LEVEL', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 2, color: Colors.white.withOpacity(0.6))),
                   const Spacer(),
@@ -478,10 +488,10 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
               children: [
-                _statCard('\u{1F525}', '127', 'WORKOUTS'),
-                _statCard('\u{26A1}', '14.2K', 'REPS'),
-                _statCard('\u{1F4AA}', '82.4t', 'VOLUME'),
-                _statCard('\u{23F1}\u{FE0F}', '63.5', 'HOURS'),
+                _statCardIcon(Icons.fitness_center, '127', 'WORKOUTS'),
+                _statCardIcon(Icons.repeat, '14.2K', 'REPS'),
+                _statCardIcon(Icons.trending_up, '82.4t', 'VOLUME'),
+                _statCardIcon(Icons.timer_outlined, '63.5', 'HOURS'),
               ],
             ),
 
@@ -509,22 +519,22 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
     );
   }
 
-  Widget _statCard(String emoji, String value, String label) {
+  Widget _statCardIcon(IconData icon, String value, String label) {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: const Color(0xFF111111),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: Colors.white.withOpacity(0.08)),
+        border: Border.all(color: Colors.white.withOpacity(0.04)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(emoji, style: const TextStyle(fontSize: 17)),
+          Icon(icon, color: AppColors.cyberLime, size: 17),
           const SizedBox(height: 5),
-          Text(value, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
+          Text(value, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: AppColors.cyberLime)),
           const SizedBox(height: 3),
-          Text(label, style: TextStyle(fontSize: 9, fontWeight: FontWeight.w700, letterSpacing: 2, color: Colors.white.withOpacity(0.3))),
+          Text(label, style: TextStyle(fontSize: 9, fontWeight: FontWeight.w700, letterSpacing: 2, color: Colors.white.withOpacity(0.4))),
         ],
       ),
     );
@@ -549,15 +559,15 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
 
             const SizedBox(height: 28),
 
-            _importRow(
-              icon: '\u{1F4CA}',
+            _importRowIcon(
+              icon: Icons.upload_file,
               title: 'Import Workout History',
               subtitle: 'CSV file from any fitness app',
               onTap: _pickCSV,
             ),
             const SizedBox(height: 10),
-            _importRow(
-              icon: '\u{1F4C8}',
+            _importRowIcon(
+              icon: Icons.analytics_outlined,
               title: 'Your analytics will be filled',
               subtitle: 'Power Level, PRs, volume \u{2014} all populated',
               onTap: null,
@@ -587,7 +597,7 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
             ],
 
             const SizedBox(height: 12),
-            Text('You can always import later from Settings', style: TextStyle(fontSize: 11, color: Colors.white.withOpacity(0.2))),
+            Text('You can always import later from Settings', style: TextStyle(fontSize: 11, color: AppColors.cyberLime.withOpacity(0.35))),
 
             const Spacer(),
           ],
@@ -596,7 +606,7 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
     );
   }
 
-  Widget _importRow({required String icon, required String title, required String subtitle, VoidCallback? onTap}) {
+  Widget _importRowIcon({required IconData icon, required String title, required String subtitle, VoidCallback? onTap}) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -608,7 +618,14 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
         ),
         child: Row(
           children: [
-            Text(icon, style: const TextStyle(fontSize: 24)),
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: AppColors.cyberLime.withOpacity(0.08),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(icon, color: AppColors.cyberLime, size: 20),
+            ),
             const SizedBox(width: 14),
             Expanded(
               child: Column(
@@ -666,8 +683,10 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
                 hintText: 'Your name (optional)',
                 hintStyle: TextStyle(color: Colors.white.withOpacity(0.2)),
                 filled: true,
-                fillColor: Colors.white.withOpacity(0.06),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(13), borderSide: BorderSide.none),
+                fillColor: const Color(0xFF111111),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(13), borderSide: BorderSide(color: Colors.white.withOpacity(0.06))),
+                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(13), borderSide: BorderSide(color: Colors.white.withOpacity(0.06))),
+                focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(13), borderSide: const BorderSide(color: AppColors.cyberLime)),
                 contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 15),
               ),
             ),
@@ -738,9 +757,9 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
               const SizedBox(height: 10),
               Row(
                 children: [
-                  Expanded(child: _optionCard('\u{1F3CB}\u{FE0F}', 'GYM', _location == 'gym', () => setState(() => _location = 'gym'))),
+                  Expanded(child: _optionCardIcon(Icons.fitness_center, 'GYM', _location == 'gym', () => setState(() => _location = 'gym'))),
                   const SizedBox(width: 10),
-                  Expanded(child: _optionCard('\u{1F3E0}', 'HOME', _location == 'home', () => setState(() => _location = 'home'))),
+                  Expanded(child: _optionCardIcon(Icons.home_outlined, 'HOME', _location == 'home', () => setState(() => _location = 'home'))),
                 ],
               ),
 
@@ -760,13 +779,13 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
               _sectionLabel("WHAT'S YOUR FOCUS?"),
               const SizedBox(height: 10),
               ...[
-                ['\u{1F4AA}', 'BUILD MUSCLE', 'muscle'],
-                ['\u{1F525}', 'GET FIT', 'fitness'],
-                ['\u{1F351}', 'BOOTY & LEGS', 'booty'],
-                ['\u{26A1}', 'FULL BODY', 'fullbody'],
+                ['BUILD MUSCLE', 'muscle'],
+                ['GET FIT', 'fitness'],
+                ['BOOTY & LEGS', 'booty'],
+                ['FULL BODY', 'fullbody'],
               ].map((item) => Padding(
                 padding: const EdgeInsets.only(bottom: 7),
-                child: _focusBtn(item[0], item[1], item[2]),
+                child: _focusBtnClean(item[0], item[1]),
               )),
             ],
 
@@ -783,13 +802,13 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
 
   Widget _buildChip(String label) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 7),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.06),
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: Colors.white.withOpacity(0.1)),
+        color: const Color(0xFFCCFF00).withOpacity(0.06),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: const Color(0xFFCCFF00).withOpacity(0.15), width: 1),
       ),
-      child: Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
+      child: Text(label, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Color(0xFFCCFF00), letterSpacing: 0.8)),
     );
   }
 
@@ -799,12 +818,15 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15),
         decoration: BoxDecoration(
-          color: active ? AppColors.cyberLime.withOpacity(0.1) : Colors.white.withOpacity(0.05),
-          borderRadius: BorderRadius.circular(13),
-          border: Border.all(color: active ? AppColors.cyberLime : Colors.white.withOpacity(0.1), width: 2),
+          color: active ? const Color(0xFFCCFF00).withOpacity(0.08) : const Color(0xFF1A1A1A),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: active ? const Color(0xFFCCFF00).withOpacity(0.4) : Colors.white.withOpacity(0.06),
+            width: active ? 1.5 : 1,
+          ),
         ),
         child: Center(
-          child: Text(label, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800, letterSpacing: 1, color: active ? AppColors.cyberLime : Colors.white.withOpacity(0.45))),
+          child: Text(label, style: TextStyle(fontSize: 12, fontWeight: active ? FontWeight.w800 : FontWeight.w700, letterSpacing: 1, color: active ? const Color(0xFFCCFF00) : Colors.white.withOpacity(0.5))),
         ),
       ),
     );
@@ -815,7 +837,11 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
       onTap: onTap,
       child: Container(
         width: 34, height: 34,
-        decoration: BoxDecoration(color: Colors.white.withOpacity(0.08), borderRadius: BorderRadius.circular(8)),
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.08),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: AppColors.cyberLime.withOpacity(0.3)),
+        ),
         child: Center(child: Text(label, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700))),
       ),
     );
@@ -828,22 +854,25 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
     );
   }
 
-  Widget _optionCard(String emoji, String label, bool active, VoidCallback onTap) {
+  Widget _optionCardIcon(IconData icon, String label, bool active, VoidCallback onTap) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 22),
         decoration: BoxDecoration(
-          color: active ? AppColors.cyberLime.withOpacity(0.08) : Colors.white.withOpacity(0.05),
+          color: active ? const Color(0xFFCCFF00).withOpacity(0.08) : const Color(0xFF1A1A1A),
           borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: active ? AppColors.cyberLime : Colors.white.withOpacity(0.1), width: 2),
+          border: Border.all(
+            color: active ? const Color(0xFFCCFF00).withOpacity(0.4) : Colors.white.withOpacity(0.06),
+            width: active ? 1.5 : 1,
+          ),
           boxShadow: active ? [BoxShadow(color: AppColors.cyberLime.withOpacity(0.1), blurRadius: 25)] : null,
         ),
         child: Column(
           children: [
-            Text(emoji, style: const TextStyle(fontSize: 30)),
+            Icon(icon, size: 30, color: active ? AppColors.cyberLime : Colors.white),
             const SizedBox(height: 7),
-            Text(label, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800, letterSpacing: 1, color: active ? AppColors.cyberLime : Colors.white)),
+            Text(label, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800, letterSpacing: 1, color: active ? const Color(0xFFCCFF00) : Colors.white)),
           ],
         ),
       ),
@@ -857,33 +886,34 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 13),
         decoration: BoxDecoration(
-          color: active ? AppColors.cyberLime.withOpacity(0.1) : Colors.white.withOpacity(0.05),
+          color: active ? AppColors.cyberLime : const Color(0xFF1A1A1A),
           borderRadius: BorderRadius.circular(11),
-          border: Border.all(color: active ? AppColors.cyberLime : Colors.white.withOpacity(0.1), width: 2),
+          border: Border.all(color: active ? AppColors.cyberLime : Colors.white.withOpacity(0.06), width: active ? 2 : 1),
         ),
-        child: Center(child: Text('$d', style: TextStyle(fontSize: 19, fontWeight: FontWeight.w900, color: active ? AppColors.cyberLime : Colors.white))),
+        child: Center(child: Text('$d', style: TextStyle(fontSize: 19, fontWeight: FontWeight.w900, color: active ? Colors.black : Colors.white.withOpacity(0.5)))),
       ),
     );
   }
 
-  Widget _focusBtn(String emoji, String label, String value) {
+  Widget _focusBtnClean(String label, String value) {
     final active = _focus == value;
     return GestureDetector(
       onTap: () => setState(() => _focus = value),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
         decoration: BoxDecoration(
-          color: active ? AppColors.cyberLime.withOpacity(0.1) : Colors.white.withOpacity(0.05),
+          color: active ? const Color(0xFFCCFF00).withOpacity(0.08) : const Color(0xFF1A1A1A),
           borderRadius: BorderRadius.circular(13),
-          border: Border.all(color: active ? AppColors.cyberLime : Colors.white.withOpacity(0.1), width: 2),
+          border: Border.all(
+            color: active ? const Color(0xFFCCFF00).withOpacity(0.4) : Colors.white.withOpacity(0.06),
+            width: active ? 1.5 : 1,
+          ),
         ),
         child: Row(
           children: [
-            Text(emoji, style: const TextStyle(fontSize: 20)),
-            const SizedBox(width: 14),
-            Text(label, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800, letterSpacing: 0.5, color: active ? AppColors.cyberLime : Colors.white)),
+            Text(label, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800, letterSpacing: 0.5, color: active ? const Color(0xFFCCFF00) : Colors.white.withOpacity(0.5))),
             const Spacer(),
-            if (active) const Text('\u{2713}', style: TextStyle(color: AppColors.cyberLime, fontWeight: FontWeight.w900)),
+            if (active) const Icon(Icons.check, color: Color(0xFFCCFF00), size: 18),
           ],
         ),
       ),

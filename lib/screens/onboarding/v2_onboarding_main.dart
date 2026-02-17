@@ -191,7 +191,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Spacer(),
-          // Skull logo with glow effect
+          // Logo with glow effect
           SlideUpAnimation(
             delay: 100,
             child: Container(
@@ -201,37 +201,35 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.cyberLime.withOpacity(0.5),
-                    blurRadius: 40,
-                    spreadRadius: 10,
+                    color: AppColors.cyberLime.withOpacity(0.3),
+                    blurRadius: 50,
+                    spreadRadius: 15,
                   ),
                 ],
               ),
-              child: const Text(
-                '💀',
-                style: TextStyle(fontSize: 100),
-                textAlign: TextAlign.center,
+              child: Center(
+                child: Image.asset(
+                  'assets/images/logo/skeletal_logo.png',
+                  height: 100,
+                  fit: BoxFit.contain,
+                  errorBuilder: (_, __, ___) => const Icon(Icons.fitness_center, size: 80, color: AppColors.cyberLime),
+                ),
               ),
             ),
           ),
           const SizedBox(height: 40),
           SlideUpAnimation(
             delay: 200,
-            child: ShaderMask(
-              shaderCallback: (bounds) => const LinearGradient(
-                colors: [Color(0xFFFF6B35), Color(0xFFFFD60A)],
-              ).createShader(bounds),
-              child: const Text(
-                'Skelatal-PT',
-                style: TextStyle(
-                  fontSize: 48,
-                  fontWeight: FontWeight.w900,
-                  color: Colors.white,
-                  letterSpacing: -1,
-                  height: 1,
-                ),
-                textAlign: TextAlign.center,
+            child: const Text(
+              'Skeletal-PT',
+              style: TextStyle(
+                fontSize: 48,
+                fontWeight: FontWeight.w900,
+                color: Colors.white,
+                letterSpacing: -1,
+                height: 1,
               ),
+              textAlign: TextAlign.center,
             ),
           ),
           const SizedBox(height: 16),
@@ -252,17 +250,17 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
           // Feature highlights
           SlideUpAnimation(
             delay: 400,
-            child: _buildFeatureHighlight('🎯', 'Perfect Rep Counting'),
+            child: _buildFeatureHighlightIcon(Icons.check_circle, 'Perfect Rep Counting'),
           ),
           const SizedBox(height: 16),
           SlideUpAnimation(
             delay: 500,
-            child: _buildFeatureHighlight('📊', 'Real-Time Form Analysis'),
+            child: _buildFeatureHighlightIcon(Icons.check_circle, 'Real-Time Form Analysis'),
           ),
           const SizedBox(height: 16),
           SlideUpAnimation(
             delay: 600,
-            child: _buildFeatureHighlight('🔥', 'Voice Coaching'),
+            child: _buildFeatureHighlightIcon(Icons.check_circle, 'Voice Coaching'),
           ),
           const Spacer(),
           SlideUpAnimation(
@@ -283,24 +281,24 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
     );
   }
 
-  Widget _buildFeatureHighlight(String emoji, String text) {
+  Widget _buildFeatureHighlightIcon(IconData icon, String text) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       margin: const EdgeInsets.symmetric(horizontal: 48),
       decoration: BoxDecoration(
-        color: AppColors.white5,
+        color: const Color(0xFFCCFF00).withOpacity(0.06),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.white10),
+        border: Border.all(color: const Color(0xFFCCFF00).withOpacity(0.15)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(emoji, style: const TextStyle(fontSize: 28)),
+          Icon(icon, color: AppColors.cyberLime, size: 24),
           const SizedBox(width: 12),
           Text(
             text,
             style: const TextStyle(
-              color: Colors.white,
+              color: Color(0xFFCCFF00),
               fontSize: 16,
               fontWeight: FontWeight.w700,
             ),
@@ -329,10 +327,10 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
 
   Widget _buildGoalScreen() {
     final goals = [
-      {'id': 'lean', 'emoji': '📦', 'title': 'The Lean Machine', 'subtitle': 'Burn fat, build definition'},
-      {'id': 'strength', 'emoji': '💪', 'title': 'The Strength Beast', 'subtitle': 'Pure power and muscle'},
-      {'id': 'athletic', 'emoji': '🏃', 'title': 'The Athletic', 'subtitle': 'Functional fitness, agility'},
-      {'id': 'balanced', 'emoji': '🧘', 'title': 'The Balanced', 'subtitle': 'Strength + flexibility + endurance'},
+      {'id': 'lean', 'title': 'The Lean Machine', 'subtitle': 'Burn fat, build definition'},
+      {'id': 'strength', 'title': 'The Strength Beast', 'subtitle': 'Pure power and muscle'},
+      {'id': 'athletic', 'title': 'The Athletic', 'subtitle': 'Functional fitness, agility'},
+      {'id': 'balanced', 'title': 'The Balanced', 'subtitle': 'Strength + flexibility + endurance'},
     ];
 
     return _OnboardingScreenTemplate(
@@ -357,8 +355,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
               final isSelected = _selectedGoal == goal['id'];
               return Padding(
                 padding: const EdgeInsets.only(bottom: 16),
-                child: _buildSelectableCard(
-                  emoji: goal['emoji']!,
+                child: _buildSelectableCardClean(
                   title: goal['title']!,
                   subtitle: goal['subtitle']!,
                   isSelected: isSelected,
@@ -614,10 +611,10 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
 
   Widget _buildAccountabilityScreen() {
     final options = [
-      {'id': 'streaks', 'emoji': '🔥', 'title': 'Streaks', 'subtitle': "Don't break the chain"},
-      {'id': 'achievements', 'emoji': '🏆', 'title': 'Achievements', 'subtitle': 'Unlock rewards'},
-      {'id': 'progress', 'emoji': '📊', 'title': 'Progress', 'subtitle': 'See the numbers go up'},
-      {'id': 'competition', 'emoji': '👥', 'title': 'Competition', 'subtitle': 'Beat my friends'},
+      {'id': 'streaks', 'title': 'Streaks', 'subtitle': "Don't break the chain"},
+      {'id': 'achievements', 'title': 'Achievements', 'subtitle': 'Unlock rewards'},
+      {'id': 'progress', 'title': 'Progress', 'subtitle': 'See the numbers go up'},
+      {'id': 'competition', 'title': 'Competition', 'subtitle': 'Beat my friends'},
     ];
 
     return _OnboardingScreenTemplate(
@@ -645,8 +642,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
               final isSelected = false; // _accountability == option['id'];
               return Padding(
                 padding: const EdgeInsets.only(bottom: 16),
-                child: _buildSelectableCard(
-                  emoji: option['emoji']!,
+                child: _buildSelectableCardClean(
                   title: option['title']!,
                   subtitle: option['subtitle']!,
                   isSelected: isSelected,
@@ -670,10 +666,10 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
 
   Widget _buildCoachingStyleScreen() {
     final styles = [
-      {'id': 'sergeant', 'emoji': '🎖️', 'title': 'The Drill Sergeant', 'quote': "PUSH! Don't quit!"},
-      {'id': 'hype', 'emoji': '🔥', 'title': 'The Hype Man', 'quote': "You're a BEAST!"},
-      {'id': 'zen', 'emoji': '🧘', 'title': 'The Zen Master', 'quote': 'Breathe. Focus.'},
-      {'id': 'science', 'emoji': '🔬', 'title': 'The Science Coach', 'quote': 'Good form. 87% depth.'},
+      {'id': 'sergeant', 'title': 'The Drill Sergeant', 'quote': "PUSH! Don't quit!"},
+      {'id': 'hype', 'title': 'The Hype Man', 'quote': "You're a BEAST!"},
+      {'id': 'zen', 'title': 'The Zen Master', 'quote': 'Breathe. Focus.'},
+      {'id': 'science', 'title': 'The Science Coach', 'quote': 'Good form. 87% depth.'},
     ];
 
     return _OnboardingScreenTemplate(
@@ -701,8 +697,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
               final isSelected = false; // _coachingStyle == style['id'];
               return Padding(
                 padding: const EdgeInsets.only(bottom: 16),
-                child: _buildSelectableCard(
-                  emoji: style['emoji']!,
+                child: _buildSelectableCardClean(
                   title: style['title']!,
                   subtitle: style['quote']!,
                   isSelected: isSelected,
@@ -799,7 +794,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
           ),
           const SizedBox(height: 32),
           const Text(
-            'Ready for the\nmagic? 🎯',
+            'Ready for the\nmagic?',
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.w900,
@@ -857,7 +852,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
         children: [
           const SizedBox(height: 100),
           const Text(
-            'Let me see you 👁️',
+            'Let me see you',
             style: TextStyle(
               fontSize: 36,
               fontWeight: FontWeight.w900,
@@ -892,10 +887,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '💀',
-                      style: TextStyle(fontSize: 80),
-                    ),
+                    Icon(Icons.accessibility_new, color: AppColors.cyberLime, size: 80),
                     SizedBox(height: 16),
                     Text(
                       '[Camera Preview + Skeleton Overlay]',
@@ -931,9 +923,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFFFF6B35), Color(0xFFFFD60A)],
-              ),
+              color: AppColors.cyberLime,
               borderRadius: BorderRadius.circular(20),
             ),
             child: const Text(
@@ -941,7 +931,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w900,
-                color: Colors.white,
+                color: Colors.black,
                 letterSpacing: 2,
               ),
             ),
@@ -964,17 +954,17 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
               padding: const EdgeInsets.symmetric(horizontal: 32),
               child: Column(
                 children: [
-                  _buildPremiumFeature('🎯', 'Unlimited AI Rep Counting', 'Never miss a rep'),
+                  _buildPremiumFeatureIcon(Icons.videocam, 'Unlimited AI Rep Counting', 'Never miss a rep'),
                   const SizedBox(height: 20),
-                  _buildPremiumFeature('📊', 'Advanced Form Analytics', 'Perfect your technique'),
+                  _buildPremiumFeatureIcon(Icons.analytics, 'Advanced Form Analytics', 'Perfect your technique'),
                   const SizedBox(height: 20),
-                  _buildPremiumFeature('🔥', 'Voice Coaching', 'Real-time motivation'),
+                  _buildPremiumFeatureIcon(Icons.record_voice_over, 'Voice Coaching', 'Real-time motivation'),
                   const SizedBox(height: 20),
-                  _buildPremiumFeature('💪', 'Custom Workouts', 'Build your own programs'),
+                  _buildPremiumFeatureIcon(Icons.fitness_center, 'Custom Workouts', 'Build your own programs'),
                   const SizedBox(height: 20),
-                  _buildPremiumFeature('📈', 'Progress Tracking', 'See your gains'),
+                  _buildPremiumFeatureIcon(Icons.trending_up, 'Progress Tracking', 'See your gains'),
                   const SizedBox(height: 20),
-                  _buildPremiumFeature('⏱️', 'Rest Timers & Alerts', 'Perfect your timing'),
+                  _buildPremiumFeatureIcon(Icons.timer, 'Rest Timers & Alerts', 'Perfect your timing'),
                 ],
               ),
             ),
@@ -1065,7 +1055,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
     );
   }
 
-  Widget _buildPremiumFeature(String emoji, String title, String subtitle) {
+  Widget _buildPremiumFeatureIcon(IconData icon, String title, String subtitle) {
     return Row(
       children: [
         Container(
@@ -1073,11 +1063,11 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
           height: 56,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: AppColors.white5,
-            border: Border.all(color: AppColors.white10),
+            color: AppColors.cyberLime.withOpacity(0.08),
+            border: Border.all(color: AppColors.cyberLime.withOpacity(0.15)),
           ),
           child: Center(
-            child: Text(emoji, style: const TextStyle(fontSize: 28)),
+            child: Icon(icon, color: AppColors.cyberLime, size: 24),
           ),
         ),
         const SizedBox(width: 16),
@@ -1294,10 +1284,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
       child: Column(
         children: [
           const SizedBox(height: 100),
-          const Text(
-            '🎉',
-            style: TextStyle(fontSize: 64),
-          ),
+          const Icon(Icons.celebration, color: AppColors.cyberLime, size: 64),
           const SizedBox(height: 24),
           const Text(
             'NICE!',
@@ -1313,11 +1300,11 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
             style: TextStyle(color: AppColors.white70, fontSize: 16),
           ),
           const SizedBox(height: 32),
-          _buildStatRow('⭐', '87% form score'),
+          _buildStatRowIcon(Icons.star, '87% form score'),
           const SizedBox(height: 16),
-          _buildStatRow('🔥', '3 perfect reps'),
+          _buildStatRowIcon(Icons.local_fire_department, '3 perfect reps'),
           const SizedBox(height: 16),
-          _buildStatRow('⚡', '2-combo streak'),
+          _buildStatRowIcon(Icons.bolt, '2-combo streak'),
           const SizedBox(height: 60),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 48),
@@ -1445,10 +1432,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
               color: AppColors.cyberLime.withOpacity(0.1),
             ),
             child: const Center(
-              child: Text(
-                '💪',
-                style: TextStyle(fontSize: 64),
-              ),
+              child: Icon(Icons.fitness_center, color: AppColors.cyberLime, size: 64),
             ),
           ),
           const SizedBox(height: 32),
@@ -1635,7 +1619,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Spacer(),
-          // Skull with glow
+          // Logo with glow
           SlideUpAnimation(
             delay: 100,
             child: Container(
@@ -1645,37 +1629,35 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.cyberLime.withOpacity(0.6),
+                    color: AppColors.cyberLime.withOpacity(0.3),
                     blurRadius: 50,
                     spreadRadius: 15,
                   ),
                 ],
               ),
-              child: const Text(
-                '💀',
-                style: TextStyle(fontSize: 100),
-                textAlign: TextAlign.center,
+              child: Center(
+                child: Image.asset(
+                  'assets/images/logo/skeletal_logo.png',
+                  height: 100,
+                  fit: BoxFit.contain,
+                  errorBuilder: (_, __, ___) => const Icon(Icons.fitness_center, size: 80, color: AppColors.cyberLime),
+                ),
               ),
             ),
           ),
           const SizedBox(height: 40),
           SlideUpAnimation(
             delay: 200,
-            child: ShaderMask(
-              shaderCallback: (bounds) => const LinearGradient(
-                colors: [Color(0xFFFF6B35), Color(0xFFFFD60A)],
-              ).createShader(bounds),
-              child: const Text(
-                'Welcome to\nSkelatal-PT',
-                style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.w900,
-                  color: Colors.white,
-                  letterSpacing: -1,
-                  height: 1.1,
-                ),
-                textAlign: TextAlign.center,
+            child: const Text(
+              'Welcome to\nSkeletal-PT',
+              style: TextStyle(
+                fontSize: 40,
+                fontWeight: FontWeight.w900,
+                color: Colors.white,
+                letterSpacing: -1,
+                height: 1.1,
               ),
+              textAlign: TextAlign.center,
             ),
           ),
           const SizedBox(height: 24),
@@ -1699,7 +1681,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
           SlideUpAnimation(
             delay: 400,
             child: _buildPrimaryButton(
-              text: "Let's Go 🔥",
+              text: "Let's Go",
               onPressed: _skipToHome,
             ),
           ),
@@ -1767,8 +1749,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
     );
   }
 
-  Widget _buildSelectableCard({
-    required String emoji,
+  Widget _buildSelectableCardClean({
     required String title,
     required String subtitle,
     required bool isSelected,
@@ -1783,24 +1764,22 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           border: Border.all(
-            color: isSelected ? AppColors.cyberLime : AppColors.white20,
-            width: isSelected ? 2 : 1,
+            color: isSelected ? const Color(0xFFCCFF00).withOpacity(0.4) : Colors.white.withOpacity(0.06),
+            width: isSelected ? 1.5 : 1,
           ),
           borderRadius: BorderRadius.circular(16),
-          color: isSelected ? AppColors.cyberLime.withOpacity(0.1) : Colors.transparent,
+          color: isSelected ? const Color(0xFFCCFF00).withOpacity(0.08) : const Color(0xFF1A1A1A),
         ),
         child: Row(
           children: [
-            Text(emoji, style: const TextStyle(fontSize: 32)),
-            const SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                      color: Colors.white,
+                    style: TextStyle(
+                      color: isSelected ? const Color(0xFFCCFF00) : Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
@@ -1808,8 +1787,8 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
                   const SizedBox(height: 4),
                   Text(
                     subtitle,
-                    style: const TextStyle(
-                      color: AppColors.white60,
+                    style: TextStyle(
+                      color: isSelected ? Colors.white.withOpacity(0.6) : Colors.white.withOpacity(0.4),
                       fontSize: 14,
                     ),
                   ),
@@ -1817,7 +1796,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
               ),
             ),
             if (isSelected)
-              const Icon(Icons.check_circle, color: AppColors.cyberLime, size: 24),
+              const Icon(Icons.check_circle, color: Color(0xFFCCFF00), size: 24),
           ],
         ),
       ),
@@ -2034,7 +2013,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
     );
   }
 
-  Widget _buildStatRow(String emoji, String text) {
+  Widget _buildStatRowIcon(IconData icon, String text) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       margin: const EdgeInsets.symmetric(horizontal: 48),
@@ -2045,7 +2024,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(emoji, style: const TextStyle(fontSize: 24)),
+          Icon(icon, color: AppColors.cyberLime, size: 24),
           const SizedBox(width: 12),
           Text(
             text,
