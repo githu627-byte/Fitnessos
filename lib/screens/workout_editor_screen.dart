@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import '../models/workout_models.dart';
 import '../utils/app_colors.dart';
 import '../utils/text_styles.dart';
 import '../widgets/glassmorphism_card.dart';
 import '../widgets/glow_button.dart';
 import '../providers/workout_provider.dart';
-import '../services/exercise_animation_database.dart';
+import '../widgets/exercise_animation_widget.dart';
 import '../models/workout_data.dart';
 import 'exercise_explanation_screen.dart';
 
@@ -207,8 +206,6 @@ class _WorkoutEditorScreenState extends ConsumerState<WorkoutEditorScreen> {
   }
 
   Widget _buildExerciseCard(WorkoutExercise exercise, int index) {
-    final gifUrl = ExerciseAnimationDatabase.getAnimationUrl(exercise.id);
-    
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: GlassmorphismCard(
@@ -269,30 +266,10 @@ class _WorkoutEditorScreenState extends ConsumerState<WorkoutEditorScreen> {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: CachedNetworkImage(
-                      imageUrl: gifUrl,
-                      fit: BoxFit.cover,
-                      placeholder: (context, url) => Container(
-                        color: AppColors.white10,
-                        child: const Center(
-                          child: SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              color: AppColors.cyberLime,
-                            ),
-                          ),
-                        ),
-                      ),
-                      errorWidget: (context, url, error) => Container(
-                        color: AppColors.white10,
-                        child: const Icon(
-                          Icons.fitness_center,
-                          color: AppColors.white40,
-                          size: 24,
-                        ),
-                      ),
+                    child: ExerciseAnimationWidget(
+                      exerciseId: exercise.id,
+                      size: 60,
+                      showWatermark: false,
                     ),
                   ),
                 ),
