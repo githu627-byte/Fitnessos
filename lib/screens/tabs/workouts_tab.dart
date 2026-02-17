@@ -23,6 +23,98 @@ import '../training_mode_selection_screen.dart';
 import '../../providers/selected_card_slot_provider.dart';
 import 'settings_tab.dart';
 
+/// Maps every workout preset to the correct neon skeleton icon
+String getPresetIconPath(String presetId, String presetName, String subcategory) {
+  final id = presetId.toLowerCase();
+  final name = presetName.toLowerCase();
+
+  // GYM: MUSCLE SPLITS
+  if (subcategory == 'muscle_splits') {
+    if (id.contains('chest')) return 'assets/images/icons/chest.jpg';
+    if (id.contains('back')) return 'assets/images/icons/back.jpg';
+    if (id.contains('shoulder')) return 'assets/images/icons/shoulders.jpg';
+    if (id.contains('leg')) return 'assets/images/icons/legs.jpg';
+    if (id.contains('arm')) return 'assets/images/icons/arms.jpg';
+    if (id.contains('core')) return 'assets/images/icons/core.jpg';
+    return 'assets/images/icons/splits.jpg';
+  }
+
+  // GYM: MUSCLE GROUPINGS
+  if (subcategory == 'muscle_groupings') {
+    if (name.contains('pull')) return 'assets/images/icons/back.jpg';
+    if (name.contains('push')) return 'assets/images/icons/chest.jpg';
+    if (name.contains('upper')) return 'assets/images/icons/chest.jpg';
+    if (name.contains('lower')) return 'assets/images/icons/legs.jpg';
+    if (name.contains('full')) return 'assets/images/icons/splits.jpg';
+    if (name.contains('glute')) return 'assets/images/icons/glutes.jpg';
+    return 'assets/images/icons/splits.jpg';
+  }
+
+  // GYM: GYM CIRCUITS
+  if (subcategory == 'gym_circuits') {
+    if (name.contains('lower')) return 'assets/images/icons/legs.jpg';
+    if (name.contains('upper')) return 'assets/images/icons/chest.jpg';
+    if (name.contains('full')) return 'assets/images/icons/splits.jpg';
+    if (name.contains('core')) return 'assets/images/icons/core.jpg';
+    return 'assets/images/icons/circuits.jpg';
+  }
+
+  // GYM: BOOTY BUILDER
+  if (subcategory == 'booty_builder') {
+    return 'assets/images/icons/booty.jpg';
+  }
+
+  // GYM: GIRL POWER
+  if (subcategory == 'girl_power') {
+    if (name.contains('glute') || name.contains('peach') || name.contains('booty') || name.contains('sculpt')) return 'assets/images/icons/glutes.jpg';
+    if (name.contains('push')) return 'assets/images/icons/chest.jpg';
+    if (name.contains('pull')) return 'assets/images/icons/back.jpg';
+    if (name.contains('upper')) return 'assets/images/icons/shoulders.jpg';
+    if (name.contains('lower') || name.contains('leg')) return 'assets/images/icons/legs.jpg';
+    if (name.contains('full') && name.contains('circuit')) return 'assets/images/icons/circuits.jpg';
+    if (name.contains('full')) return 'assets/images/icons/splits.jpg';
+    if (name.contains('ppl')) return 'assets/images/icons/splits.jpg';
+    return 'assets/images/icons/girlpower.jpg';
+  }
+
+  // HOME: BODYWEIGHT BASICS
+  if (subcategory == 'bodyweight_basics') {
+    if (name.contains('upper')) return 'assets/images/icons/chest.jpg';
+    if (name.contains('lower')) return 'assets/images/icons/legs.jpg';
+    if (name.contains('core')) return 'assets/images/icons/core.jpg';
+    if (name.contains('bro') || name.contains('circuit')) return 'assets/images/icons/circuits.jpg';
+    if (name.contains('full')) return 'assets/images/icons/splits.jpg';
+    return 'assets/images/icons/bodyweight.jpg';
+  }
+
+  // HOME: HIIT CIRCUITS
+  if (subcategory == 'hiit_circuits') {
+    if (name.contains('cardio')) return 'assets/images/icons/bodyweight.jpg';
+    return 'assets/images/icons/circuits.jpg';
+  }
+
+  // HOME: HOME BOOTY
+  if (subcategory == 'home_booty') {
+    if (name.contains('burner') || name.contains('burn')) return 'assets/images/icons/booty.jpg';
+    return 'assets/images/icons/glutes.jpg';
+  }
+
+  // SMART FALLBACK
+  if (name.contains('chest') || name.contains('bench') || (name.contains('push') && !name.contains('pull'))) return 'assets/images/icons/chest.jpg';
+  if (name.contains('back') || name.contains('pull') || name.contains('row')) return 'assets/images/icons/back.jpg';
+  if (name.contains('shoulder') || name.contains('delt') || name.contains('ohp')) return 'assets/images/icons/shoulders.jpg';
+  if (name.contains('leg') || name.contains('squat') || name.contains('lunge') || name.contains('lower')) return 'assets/images/icons/legs.jpg';
+  if (name.contains('arm') || name.contains('bicep') || name.contains('tricep') || name.contains('curl')) return 'assets/images/icons/arms.jpg';
+  if (name.contains('core') || name.contains('ab') || name.contains('plank') || name.contains('crunch')) return 'assets/images/icons/core.jpg';
+  if (name.contains('glute') || name.contains('peach') || name.contains('booty') || name.contains('hip thrust')) return 'assets/images/icons/glutes.jpg';
+  if (name.contains('circuit') || name.contains('hiit') || name.contains('burn') || name.contains('blast') || name.contains('torch') || name.contains('destroyer') || name.contains('tabata')) return 'assets/images/icons/circuits.jpg';
+  if (name.contains('full body') || name.contains('total')) return 'assets/images/icons/splits.jpg';
+  if (name.contains('upper')) return 'assets/images/icons/chest.jpg';
+
+  // Ultimate fallback
+  return 'assets/images/icons/splits.jpg';
+}
+
 class WorkoutsTab extends ConsumerStatefulWidget {
   const WorkoutsTab({super.key});
 
@@ -488,22 +580,26 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                     Text(
                       category['name']!,
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: 14,
                         fontWeight: FontWeight.w900,
                         color: Colors.white,
-                        letterSpacing: 2,
-                        height: 1.2,
+                        letterSpacing: 0.8,
+                        height: 1.3,
                       ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 8),
                     Text(
                       category['desc']!,
                       style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.cyberLime.withOpacity(0.6),
-                        letterSpacing: 1.5,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.cyberLime.withOpacity(0.5),
+                        letterSpacing: 0.3,
                       ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
@@ -999,20 +1095,17 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
           Row(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(14),
                 child: Image.asset(
-                  _getSplitIcon(_getBodyPartForPreset(preset)),
-                  width: 60,
-                  height: 60,
+                  getPresetIconPath(preset.id, preset.name, preset.subcategory),
+                  width: 80,
+                  height: 80,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
-                      width: 60,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF111111),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                      width: 80,
+                      height: 80,
+                      color: const Color(0xFF111111),
                       child: Icon(Icons.fitness_center, color: AppColors.cyberLime, size: 24),
                     );
                   },
