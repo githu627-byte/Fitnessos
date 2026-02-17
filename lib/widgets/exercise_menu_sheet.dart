@@ -59,7 +59,7 @@ class ExerciseMenuSheet extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.info_outline, color: AppColors.electricCyan),
+              leading: const Icon(Icons.info_outline, color: AppColors.cyberLime),
               title: const Text(
                 'View Details',
                 style: TextStyle(color: Colors.white),

@@ -35,7 +35,7 @@ class PhonePositionGuide extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.95),
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.electricCyan.withOpacity(0.3)),
+        border: Border.all(color: AppColors.cyberLime.withOpacity(0.3)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -43,7 +43,7 @@ class PhonePositionGuide extends StatelessWidget {
           // Header
           Row(
             children: [
-              Icon(Icons.phone_android, color: AppColors.electricCyan, size: 28),
+              Icon(Icons.phone_android, color: AppColors.cyberLime, size: 28),
               const SizedBox(width: 12),
               const Text(
                 'PHONE SETUP',
@@ -213,11 +213,11 @@ class PhonePositionGuide extends StatelessWidget {
         SizedBox(
           width: 40,
           child: Divider(
-            color: AppColors.electricCyan,
+            color: AppColors.cyberLime,
             thickness: 2,
           ),
         ),
-        Icon(Icons.arrow_forward, color: AppColors.electricCyan, size: 16),
+        Icon(Icons.arrow_forward, color: AppColors.cyberLime, size: 16),
       ],
     );
   }

@@ -289,7 +289,7 @@ class _WeightInputDialogState extends State<WeightInputDialog>
                       gradient: _isListening
                           ? LinearGradient(
                               colors: [
-                                AppColors.electricCyan
+                                AppColors.cyberLime
                                     .withOpacity(0.3 + _pulseController.value * 0.3),
                                 AppColors.cyberLime
                                     .withOpacity(0.3 + _pulseController.value * 0.3),
@@ -299,7 +299,7 @@ class _WeightInputDialogState extends State<WeightInputDialog>
                       color: _isListening ? null : AppColors.white10,
                       borderRadius: BorderRadius.circular(16),
                       border: Border.all(
-                        color: _isListening ? AppColors.electricCyan : AppColors.white20,
+                        color: _isListening ? AppColors.cyberLime : AppColors.white20,
                         width: 2,
                       ),
                     ),
@@ -308,7 +308,7 @@ class _WeightInputDialogState extends State<WeightInputDialog>
                       children: [
                         Icon(
                           _isListening ? Icons.mic : Icons.mic_none,
-                          color: _isListening ? AppColors.electricCyan : AppColors.white60,
+                          color: _isListening ? AppColors.cyberLime : AppColors.white60,
                           size: 24,
                         ),
                         const SizedBox(width: 12),
@@ -319,7 +319,7 @@ class _WeightInputDialogState extends State<WeightInputDialog>
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w900,
-                            color: _isListening ? AppColors.electricCyan : AppColors.white60,
+                            color: _isListening ? AppColors.cyberLime : AppColors.white60,
                             letterSpacing: 0.5,
                           ),
                         ),
@@ -371,7 +371,7 @@ class _WeightInputDialogState extends State<WeightInputDialog>
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [AppColors.electricCyan, AppColors.cyberLime],
+                          colors: [AppColors.cyberLime, AppColors.cyberLime],
                         ),
                         borderRadius: BorderRadius.circular(12),
                         boxShadow: [

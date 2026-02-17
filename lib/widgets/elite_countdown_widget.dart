@@ -90,7 +90,7 @@ class _EliteCountdownWidgetState extends State<EliteCountdownWidget> {
   }
 
   Color _getColorForValue(int value) {
-    if (value >= 5) return const Color(0xFF00F0FF); // Electric cyan (6-5)
+    if (value >= 5) return const Color(0xFFCCFF00); // Electric cyan (6-5)
     if (value >= 3) return const Color(0xFFFFB800); // Orange (4-3)
     if (value >= 1) return AppColors.cyberLime; // Lime (2-1)
     return AppColors.cyberLime; // GO

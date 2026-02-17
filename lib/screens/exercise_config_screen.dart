@@ -351,7 +351,7 @@ class _ExerciseConfigScreenState extends State<ExerciseConfigScreen> {
           padding: const EdgeInsets.symmetric(vertical: 18),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
-              colors: [AppColors.electricCyan, AppColors.cyberLime],
+              colors: [AppColors.cyberLime, AppColors.cyberLime],
             ),
             borderRadius: BorderRadius.circular(16),
             boxShadow: [

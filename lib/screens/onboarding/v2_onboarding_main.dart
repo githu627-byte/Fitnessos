@@ -791,10 +791,10 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
             height: 120,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: AppColors.electricCyan, width: 3),
-              color: AppColors.electricCyan.withOpacity(0.1),
+              border: Border.all(color: AppColors.cyberLime, width: 3),
+              color: AppColors.cyberLime.withOpacity(0.1),
             ),
-            child: const Icon(Icons.camera_alt, color: AppColors.electricCyan, size: 60),
+            child: const Icon(Icons.camera_alt, color: AppColors.cyberLime, size: 60),
           ),
           const SizedBox(height: 32),
           const Text(
@@ -989,7 +989,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
                 end: Alignment.bottomRight,
                 colors: [
                   AppColors.cyberLime.withOpacity(0.1),
-                  AppColors.electricCyan.withOpacity(0.1),
+                  AppColors.cyberLime.withOpacity(0.1),
                 ],
               ),
               borderRadius: BorderRadius.circular(24),
@@ -1182,14 +1182,14 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
             margin: const EdgeInsets.symmetric(horizontal: 32),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: AppColors.electricCyan, width: 2),
+              border: Border.all(color: AppColors.cyberLime, width: 2),
               color: AppColors.white5,
             ),
             child: const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.camera, size: 64, color: AppColors.electricCyan),
+                  Icon(Icons.camera, size: 64, color: AppColors.cyberLime),
                   SizedBox(height: 16),
                   Text(
                     '[Camera Preview Here]',

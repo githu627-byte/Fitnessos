@@ -71,7 +71,7 @@ class _ProfileTabState extends ConsumerState<ProfileTab> {
           end: Alignment.bottomRight,
           colors: [
             AppColors.cyberLime.withOpacity(0.15),
-            AppColors.electricCyan.withOpacity(0.05),
+            AppColors.cyberLime.withOpacity(0.05),
           ],
         ),
       ),

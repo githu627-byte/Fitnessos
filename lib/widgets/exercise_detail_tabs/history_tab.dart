@@ -223,7 +223,7 @@ class ExerciseHistoryTab extends StatelessWidget {
                     _buildTotalStat(
                       label: 'Total Reps',
                       value: '${entry.totalReps}',
-                      color: AppColors.electricCyan,
+                      color: AppColors.cyberLime,
                     ),
                     _buildTotalStat(
                       label: 'Total Volume',
@@ -250,7 +250,7 @@ class ExerciseHistoryTab extends StatelessWidget {
         label = 'AUTO';
         break;
       case 'visual_guide':
-        color = AppColors.electricCyan;
+        color = AppColors.cyberLime;
         label = 'VISUAL';
         break;
       case 'pro_logger':
@@ -371,7 +371,7 @@ class ExerciseHistoryTab extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
-                color: AppColors.electricCyan,
+                color: AppColors.cyberLime,
               ),
             ),
           ),

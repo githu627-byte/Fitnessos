@@ -241,7 +241,7 @@ class _ParticleBurstPainter extends CustomPainter {
       // Alternate colors
       final colors = [
         const Color(0xFFCCFF00), // cyberLime
-        const Color(0xFF00F0FF), // electricCyan
+        const Color(0xFFCCFF00), // electricCyan
         const Color(0xFFFFFFFF), // white
       ];
       

@@ -1261,7 +1261,7 @@ class _FormCheckScreenState extends State<FormCheckScreen> {
       case FaultSeverity.medium:
         return const Color(0xFFFFDD00);
       case FaultSeverity.low:
-        return const Color(0xFF00F0FF);
+        return const Color(0xFFCCFF00);
     }
   }
 }

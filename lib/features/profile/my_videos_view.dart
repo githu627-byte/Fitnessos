@@ -92,7 +92,7 @@ class _MyVideosViewState extends State<MyVideosView> {
         child: Padding(
           padding: EdgeInsets.all(40),
           child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation(AppColors.electricCyan),
+            valueColor: AlwaysStoppedAnimation(AppColors.cyberLime),
           ),
         ),
       );
@@ -185,7 +185,7 @@ class _MyVideosViewState extends State<MyVideosView> {
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              AppColors.electricCyan.withOpacity(0.3),
+                              AppColors.cyberLime.withOpacity(0.3),
                               AppColors.cyberLime.withOpacity(0.3),
                             ],
                           ),

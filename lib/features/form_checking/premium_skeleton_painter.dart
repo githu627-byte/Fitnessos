@@ -13,7 +13,7 @@ class PremiumSkeletonPainter extends CustomPainter {
 
   PremiumSkeletonPainter({required this.landmarks, required this.imageSize, required this.isFrontCamera, required this.formScore, this.faults = const [], this.showAngles = false});
 
-  Color get _baseColor => formScore >= 90 ? const Color(0xFF00F0FF) : formScore >= 70 ? const Color(0xFFBFFF00) : formScore >= 50 ? const Color(0xFFFFB800) : const Color(0xFFFF003C);
+  Color get _baseColor => formScore >= 90 ? const Color(0xFFCCFF00) : formScore >= 70 ? const Color(0xFFBFFF00) : formScore >= 50 ? const Color(0xFFFFB800) : const Color(0xFFFF003C);
   double get _glowRadius => formScore >= 90 ? 12.0 : formScore >= 70 ? 10.0 : 8.0;
 
   @override

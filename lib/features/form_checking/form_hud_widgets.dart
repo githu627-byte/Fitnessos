@@ -5,7 +5,7 @@ class FormScoreHUD extends StatelessWidget {
   final int score;
   const FormScoreHUD({super.key, required this.score});
 
-  Color get _color => score >= 90 ? const Color(0xFF00F0FF) : score >= 70 ? AppColors.cyberLime : score >= 50 ? const Color(0xFFFFB800) : const Color(0xFFFF003C);
+  Color get _color => score >= 90 ? const Color(0xFFCCFF00) : score >= 70 ? AppColors.cyberLime : score >= 50 ? const Color(0xFFFFB800) : const Color(0xFFFF003C);
   String get _grade => score >= 95 ? 'S' : score >= 90 ? 'A+' : score >= 85 ? 'A' : score >= 80 ? 'B+' : score >= 70 ? 'B' : score >= 60 ? 'C' : score >= 50 ? 'D' : 'F';
 
   @override

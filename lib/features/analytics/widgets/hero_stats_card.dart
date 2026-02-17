@@ -167,7 +167,7 @@ class _HeroStatsCardState extends State<HeroStatsCard>
                       radius: 1.8,
                       colors: [
                         tierColor.withOpacity(0.2 * _glowAnimation.value),
-                        AppColors.electricCyan.withOpacity(0.08),
+                        AppColors.cyberLime.withOpacity(0.08),
                         Colors.black.withOpacity(0.3),
                       ],
                     ),
@@ -324,7 +324,7 @@ class _HeroStatsCardState extends State<HeroStatsCard>
                         icon: Icons.fitness_center_rounded,
                         value: '${widget.data.totalWorkouts}',
                         label: 'WORKOUTS',
-                        color: AppColors.electricCyan,
+                        color: AppColors.cyberLime,
                         delay: 100,
                       ),
                       _StatPill(
@@ -667,7 +667,7 @@ class _ParticleBurstPainter extends CustomPainter {
       // Alternate colors
       final colors = [
         color,
-        AppColors.electricCyan,
+        AppColors.cyberLime,
         Colors.white,
       ];
       

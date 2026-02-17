@@ -32,7 +32,7 @@ class SkeletonPainter extends CustomPainter {
         ? AppColors.cyberLime
         : formFeedback == 'ELBOWS IN'
             ? AppColors.neonCrimson
-            : AppColors.electricCyan;
+            : AppColors.cyberLime;
 
     // Line paint
     final linePaint = Paint()

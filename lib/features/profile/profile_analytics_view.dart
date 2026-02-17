@@ -413,12 +413,12 @@ class _ProfileAnalyticsViewState extends State<ProfileAnalyticsView>
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: AppColors.electricCyan.withOpacity(0.1),
+                color: AppColors.cyberLime.withOpacity(0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 Icons.videocam_outlined,
-                color: AppColors.electricCyan,
+                color: AppColors.cyberLime,
                 size: 64,
               ),
             ),
@@ -475,7 +475,7 @@ class _ProfileAnalyticsViewState extends State<ProfileAnalyticsView>
                 volumeData: data.weightData,
                 title: 'WEIGHT TREND',
                 subtitle: 'Last 60 days',
-                color: AppColors.electricCyan,
+                color: AppColors.cyberLime,
               ),
             
             // Latest Measurement Card
@@ -914,7 +914,7 @@ class _ProfileAnalyticsViewState extends State<ProfileAnalyticsView>
           end: Alignment.bottomRight,
           colors: [
             AppColors.cyberLime.withOpacity(0.15),
-            AppColors.electricCyan.withOpacity(0.05),
+            AppColors.cyberLime.withOpacity(0.05),
           ],
         ),
       ),

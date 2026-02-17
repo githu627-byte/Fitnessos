@@ -728,7 +728,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
                     icon: Icons.fitness_center,
                     title: 'MAIN WORKOUT',
                     subtitle: 'Your primary training session',
-                    color: const Color(0xFF0EA5E9),
+                    color: const Color(0xFFCCFF00),
                   ),
                   const SizedBox(height: 12),
                 ],
@@ -740,7 +740,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
                   icon: Icons.bolt,
                   title: 'ACCESSORY',
                   subtitle: 'Secondary exercises',
-                  color: const Color(0xFF0D4F4F),
+                  color: const Color(0xFFCCFF00),
                 ),
 
                 const SizedBox(height: 12),
@@ -752,7 +752,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
                   icon: Icons.self_improvement,
                   title: 'STRETCHING',
                   subtitle: 'Mobility & recovery',
-                  color: const Color(0xFF0D4F4F),
+                  color: const Color(0xFFCCFF00),
                 ),
 
                 const SizedBox(height: 16),
@@ -1145,7 +1145,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
                 ),
               ),
               child: Text(
-                '🤖 AI TRACKED',
+                'AI TRACKED',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: _workoutMode == 'ai' ? AppColors.cyberLime : Colors.white,
@@ -1177,7 +1177,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
                 ),
               ),
               child: Text(
-                '📝 MANUAL LOG',
+                'MANUAL LOG',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: _workoutMode == 'manual' ? AppColors.neonCrimson : Colors.white,
@@ -1195,11 +1195,11 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
 
   Widget _buildEquipmentFilters() {
     final equipmentTypes = [
-      {'id': 'all', 'name': 'ALL', 'icon': '💯'},
-      {'id': 'barbell', 'name': 'BARBELL', 'icon': '🏋️'},
-      {'id': 'dumbbell', 'name': 'DUMBBELL', 'icon': '💪'},
-      {'id': 'bands', 'name': 'BANDS', 'icon': '🔗'},
-      {'id': 'bodyweight', 'name': 'BODYWEIGHT', 'icon': '🤸'},
+      {'id': 'all', 'name': 'ALL', 'icon': ''},
+      {'id': 'barbell', 'name': 'BARBELL', 'icon': ''},
+      {'id': 'dumbbell', 'name': 'DUMBBELL', 'icon': ''},
+      {'id': 'bands', 'name': 'BANDS', 'icon': ''},
+      {'id': 'bodyweight', 'name': 'BODYWEIGHT', 'icon': ''},
     ];
 
     return SingleChildScrollView(
@@ -1226,24 +1226,14 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
                     width: isSelected ? 2 : 1,
                   ),
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      equipment['icon']!,
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    const SizedBox(width: 6),
-                    Text(
-                      equipment['name']!,
-                      style: TextStyle(
-                        color: isSelected ? AppColors.cyberLime : Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.5,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  equipment['name']!,
+                  style: TextStyle(
+                    color: isSelected ? AppColors.cyberLime : Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.5,
+                  ),
                 ),
               ),
             ),
@@ -1292,14 +1282,14 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
 
   Widget _buildCategoryFilter() {
     final categories = [
-      {'id': 'all', 'name': 'All', 'icon': '💯'},
-      {'id': 'chest', 'name': 'Chest', 'icon': '💪'},
-      {'id': 'back', 'name': 'Back', 'icon': '🔙'},
-      {'id': 'shoulders', 'name': 'Shoulders', 'icon': '🏋️'},
-      {'id': 'arms', 'name': 'Arms', 'icon': '💪'},
-      {'id': 'legs', 'name': 'Legs', 'icon': '🦵'},
-      {'id': 'core', 'name': 'Core', 'icon': '🔥'},
-      {'id': 'home', 'name': 'Home', 'icon': '🏠'},
+      {'id': 'all', 'name': 'All', 'icon': ''},
+      {'id': 'chest', 'name': 'Chest', 'icon': ''},
+      {'id': 'back', 'name': 'Back', 'icon': ''},
+      {'id': 'shoulders', 'name': 'Shoulders', 'icon': ''},
+      {'id': 'arms', 'name': 'Arms', 'icon': ''},
+      {'id': 'legs', 'name': 'Legs', 'icon': ''},
+      {'id': 'core', 'name': 'Core', 'icon': ''},
+      {'id': 'home', 'name': 'Home', 'icon': ''},
     ];
 
     return Container(
@@ -1328,23 +1318,15 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
                   width: isSelected ? 2 : 1,
                 ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    category['icon']!,
-                    style: const TextStyle(fontSize: 22),
+              child: Center(
+                child: Text(
+                  category['name']!,
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    color: isSelected ? AppColors.cyberLime : AppColors.white70,
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    category['name']!,
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                      color: isSelected ? AppColors.cyberLime : AppColors.white70,
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           );
@@ -1529,7 +1511,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
                       const SizedBox(height: 4),
                       Row(
                         children: [
-                          _buildBadge(exercise.equipment, AppColors.electricCyan),
+                          _buildBadge(exercise.equipment, AppColors.cyberLime),
                           const SizedBox(width: 8),
                           _buildBadge(exercise.difficulty, AppColors.white40),
                         ],

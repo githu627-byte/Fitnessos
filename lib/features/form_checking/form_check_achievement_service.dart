@@ -611,7 +611,7 @@ class AchievementInfo {
       case AchievementRarity.common:
         return const Color(0xFF888888);
       case AchievementRarity.rare:
-        return const Color(0xFF00F0FF);
+        return const Color(0xFFCCFF00);
       case AchievementRarity.epic:
         return const Color(0xFFAA66FF);
       case AchievementRarity.legendary:

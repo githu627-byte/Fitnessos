@@ -203,7 +203,7 @@ class SkeletonPainter extends CustomPainter {
       case SkeletonState.normal:
         return const Color(0xFFCCFF00); // Cyber lime — matches your brand
       case SkeletonState.success:
-        return const Color(0xFF00F0FF); // Electric cyan — rep counted flash
+        return const Color(0xFFCCFF00); // Electric cyan — rep counted flash
     }
   }
 

@@ -214,16 +214,16 @@ class _WorkoutVideoPlayerState extends State<WorkoutVideoPlayer> {
                           child: Container(
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: AppColors.electricCyan.withOpacity(0.2),
+                              color: AppColors.cyberLime.withOpacity(0.2),
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: AppColors.electricCyan,
+                                color: AppColors.cyberLime,
                                 width: 1.5,
                               ),
                             ),
                             child: Icon(
                               Icons.share,
-                              color: AppColors.electricCyan,
+                              color: AppColors.cyberLime,
                               size: 24,
                             ),
                           ),

@@ -20,11 +20,11 @@ class _FormCheckExercisePickerScreenState extends State<FormCheckExercisePickerS
   final List<_FloatingParticle> _particles = [];
   
   final List<_ExerciseData> _exercises = [
-    _ExerciseData(name: 'SQUAT', subtitle: 'KING OF LEGS', tag: 'BIG 3', icon: Icons.accessibility_new, gradient: [const Color(0xFF8B5CF6), const Color(0xFF6D28D9)]),
+    _ExerciseData(name: 'SQUAT', subtitle: 'KING OF LEGS', tag: 'BIG 3', icon: Icons.accessibility_new, gradient: [const Color(0xFFCCFF00), const Color(0xFFCCFF00)]),
     _ExerciseData(name: 'BENCH\nPRESS', subtitle: 'CHEST BUILDER', tag: 'BIG 3', icon: Icons.airline_seat_flat, gradient: [const Color(0xFF3B82F6), const Color(0xFF1D4ED8)]),
-    _ExerciseData(name: 'DEADLIFT', subtitle: 'KING OF LIFTS', tag: 'BIG 3', icon: Icons.fitness_center, gradient: [const Color(0xFFEF4444), const Color(0xFFDC2626)]),
+    _ExerciseData(name: 'DEADLIFT', subtitle: 'KING OF LIFTS', tag: 'BIG 3', icon: Icons.fitness_center, gradient: [const Color(0xFFCCFF00), const Color(0xFFCCFF00)]),
     _ExerciseData(name: 'OVERHEAD\nPRESS', subtitle: 'SHOULDER POWER', tag: 'COMPOUND', icon: Icons.arrow_upward, gradient: [const Color(0xFF10B981), const Color(0xFF059669)]),
-    _ExerciseData(name: 'BARBELL\nROW', subtitle: 'BACK THICKNESS', tag: 'COMPOUND', icon: Icons.rowing, gradient: [const Color(0xFFF59E0B), const Color(0xFFD97706)]),
+    _ExerciseData(name: 'BARBELL\nROW', subtitle: 'BACK THICKNESS', tag: 'COMPOUND', icon: Icons.rowing, gradient: [const Color(0xFFCCFF00), const Color(0xFFCCFF00)]),
   ];
 
   @override
@@ -80,7 +80,7 @@ class _FormCheckExercisePickerScreenState extends State<FormCheckExercisePickerS
                           ],
                         ),
                         const SizedBox(height: 32),
-                        ShaderMask(shaderCallback: (bounds) => LinearGradient(colors: [AppColors.cyberLime, const Color(0xFF00F0FF)]).createShader(bounds), child: const Text('FORM CHECK', style: TextStyle(fontSize: 36, fontWeight: FontWeight.w900, color: Colors.white, letterSpacing: 4))),
+                        ShaderMask(shaderCallback: (bounds) => LinearGradient(colors: [AppColors.cyberLime, const Color(0xFFCCFF00)]).createShader(bounds), child: const Text('FORM CHECK', style: TextStyle(fontSize: 36, fontWeight: FontWeight.w900, color: Colors.white, letterSpacing: 4))),
                         const SizedBox(height: 8),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

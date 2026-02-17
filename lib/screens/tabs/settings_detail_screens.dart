@@ -449,14 +449,14 @@ class PrivacyPolicyScreen extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                border: Border.all(color: AppColors.electricCyan.withOpacity(0.3)),
+                border: Border.all(color: AppColors.cyberLime.withOpacity(0.3)),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: const Text(
                 'YOUR PRIVACY IS IMPORTANT TO US. WE ARE COMMITTED TO PROTECTING YOUR DATA AND BEING TRANSPARENT ABOUT OUR PRACTICES.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: AppColors.electricCyan,
+                  color: AppColors.cyberLime,
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                   height: 1.5,

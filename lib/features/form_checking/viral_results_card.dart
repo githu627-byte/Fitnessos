@@ -152,7 +152,7 @@ class _ViralResultsCardState extends State<ViralResultsCard>
   Color _getGradeColor(int score) {
     if (score >= 95) return const Color(0xFFFFD700); // Gold for S
     if (score >= 85) return const Color(0xFF00FF66); // Green for A
-    if (score >= 70) return const Color(0xFF00F0FF); // Cyan for B
+    if (score >= 70) return const Color(0xFFCCFF00); // Cyan for B
     if (score >= 50) return const Color(0xFFFF9500); // Orange for C
     return const Color(0xFFFF003C); // Red for D
   }
@@ -752,7 +752,7 @@ class _ViralResultsCardState extends State<ViralResultsCard>
       case FaultSeverity.medium:
         return const Color(0xFFFFDD00);
       case FaultSeverity.low:
-        return const Color(0xFF00F0FF);
+        return const Color(0xFFCCFF00);
     }
   }
 }

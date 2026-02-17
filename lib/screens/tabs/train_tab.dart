@@ -1400,7 +1400,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                         height: 80,
                         child: CircularProgressIndicator(
                           strokeWidth: 4,
-                          color: AppColors.electricCyan,
+                          color: AppColors.cyberLime,
                         ),
                       ),
                       const SizedBox(height: 32),
@@ -1409,7 +1409,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.w900,
-                          color: AppColors.electricCyan,
+                          color: AppColors.cyberLime,
                           letterSpacing: 4,
                         ),
                       ),
@@ -2035,7 +2035,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: AppColors.electricCyan,
+                      color: AppColors.cyberLime,
                     ),
                   ),
                 ),
@@ -2081,7 +2081,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                 border: Border.all(
                   color: _isCircuitMode
                       ? AppColors.neonOrange.withOpacity(0.5)
-                      : AppColors.electricCyan.withOpacity(0.5),
+                      : AppColors.cyberLime.withOpacity(0.5),
                 ),
               ),
               child: Row(
@@ -2096,7 +2096,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                           : (_isTimerPaused ? Icons.play_arrow : Icons.pause),
                       color: _isCircuitMode
                           ? AppColors.neonOrange
-                          : (_isTimerPaused ? AppColors.cyberLime : AppColors.electricCyan),
+                          : (_isTimerPaused ? AppColors.cyberLime : AppColors.cyberLime),
                       size: 20,
                     ),
                   ),
@@ -2109,7 +2109,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w900,
-                      color: _isCircuitMode ? AppColors.neonOrange : AppColors.electricCyan,
+                      color: _isCircuitMode ? AppColors.neonOrange : AppColors.cyberLime,
                     ),
                   ),
                 ],
@@ -2363,7 +2363,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                 const Text(
                   'LOG YOUR WEIGHT, THEN FINISH',
                   style: TextStyle(
-                    color: AppColors.electricCyan,
+                    color: AppColors.cyberLime,
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 0.5,
@@ -2516,19 +2516,19 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   children: [
-                    _buildBodyPartButton('💪 Chest', 'Chest', selectedBodyPart, (part) {
+                    _buildBodyPartButton('Chest', 'Chest', selectedBodyPart, (part) {
                       setModalState(() => selectedBodyPart = part);
                     }),
                     _buildBodyPartButton('🦵 Legs', 'Legs', selectedBodyPart, (part) {
                       setModalState(() => selectedBodyPart = part);
                     }),
-                    _buildBodyPartButton('🔙 Back', 'Back', selectedBodyPart, (part) {
+                    _buildBodyPartButton('Back', 'Back', selectedBodyPart, (part) {
                       setModalState(() => selectedBodyPart = part);
                     }),
-                    _buildBodyPartButton('💪 Shoulders', 'Shoulders', selectedBodyPart, (part) {
+                    _buildBodyPartButton('Shoulders', 'Shoulders', selectedBodyPart, (part) {
                       setModalState(() => selectedBodyPart = part);
                     }),
-                    _buildBodyPartButton('💪 Arms', 'Arms', selectedBodyPart, (part) {
+                    _buildBodyPartButton('Arms', 'Arms', selectedBodyPart, (part) {
                       setModalState(() => selectedBodyPart = part);
                     }),
                     _buildBodyPartButton('🧘 Core', 'Core', selectedBodyPart, (part) {

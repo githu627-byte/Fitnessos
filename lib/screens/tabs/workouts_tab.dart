@@ -1610,9 +1610,6 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                   icon: Icons.fitness_center,
                   title: 'MAIN WORKOUT',
                   subtitle: 'Your primary training session',
-                  gradient: const LinearGradient(
-                    colors: [Color(0xFF0EA5E9), Color(0xFF06B6D4)],
-                  ),
                 ),
 
                 const SizedBox(height: 12),
@@ -1624,9 +1621,6 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                   icon: Icons.bolt,
                   title: 'ACCESSORY',
                   subtitle: 'Secondary exercises, cardio',
-                  gradient: const LinearGradient(
-                    colors: [Color(0xFFF59E0B), Color(0xFFEF4444)],
-                  ),
                 ),
 
                 const SizedBox(height: 12),
@@ -1638,9 +1632,6 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                   icon: Icons.self_improvement,
                   title: 'STRETCHING',
                   subtitle: 'Mobility, flexibility, recovery',
-                  gradient: const LinearGradient(
-                    colors: [Color(0xFF8B5CF6), Color(0xFFEC4899)],
-                  ),
                 ),
 
                 const SizedBox(height: 16),
@@ -1658,7 +1649,6 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
     required IconData icon,
     required String title,
     required String subtitle,
-    required Gradient gradient,
   }) {
     return GestureDetector(
       onTap: () {
@@ -1668,28 +1658,25 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          gradient: gradient,
+          color: const Color(0xFF0D0D0D),
           borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.3),
-              blurRadius: 8,
-              offset: const Offset(0, 4),
-            ),
-          ],
+          border: Border.all(
+            color: const Color(0xFFCCFF00).withOpacity(0.12),
+            width: 1,
+          ),
         ),
         child: Row(
           children: [
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: const Color(0xFFCCFF00).withOpacity(0.08),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Icon(icon, color: Colors.white, size: 28),
+              child: Icon(icon, color: const Color(0xFFCCFF00), size: 24),
             ),
 
-            const SizedBox(width: 16),
+            const SizedBox(width: 14),
 
             Expanded(
               child: Column(
@@ -1701,22 +1688,26 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                       fontSize: 16,
                       fontWeight: FontWeight.w900,
                       color: Colors.white,
-                      letterSpacing: 1,
+                      letterSpacing: 0.8,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     subtitle,
                     style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.white.withOpacity(0.9),
+                      fontSize: 12,
+                      color: Colors.white.withOpacity(0.35),
                     ),
                   ),
                 ],
               ),
             ),
 
-            const Icon(Icons.arrow_forward_ios, color: Colors.white, size: 18),
+            Icon(
+              Icons.chevron_right,
+              color: Colors.white.withOpacity(0.15),
+              size: 24,
+            ),
           ],
         ),
       ),
@@ -1759,9 +1750,6 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                   icon: Icons.bolt,
                   title: 'ACCESSORY',
                   subtitle: 'Secondary exercises, cardio',
-                  gradient: const LinearGradient(
-                    colors: [Color(0xFFF59E0B), Color(0xFFEF4444)],
-                  ),
                 ),
                 const SizedBox(height: 12),
                 _buildSlotOption(
@@ -1770,9 +1758,6 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                   icon: Icons.self_improvement,
                   title: 'STRETCHING',
                   subtitle: 'Mobility, flexibility, recovery',
-                  gradient: const LinearGradient(
-                    colors: [Color(0xFF8B5CF6), Color(0xFFEC4899)],
-                  ),
                 ),
                 const SizedBox(height: 16),
               ],

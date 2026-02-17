@@ -193,7 +193,7 @@ class ExerciseListThumbnail extends StatelessWidget {
       case 'chest':
         return AppColors.neonCrimson;
       case 'back':
-        return AppColors.electricCyan;
+        return AppColors.cyberLime;
       case 'shoulders':
         return AppColors.neonOrange;
       case 'legs':

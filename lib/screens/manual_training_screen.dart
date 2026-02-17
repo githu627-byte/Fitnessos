@@ -497,7 +497,7 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
                     Icon(
                       Icons.timer,
                       size: 16,
-                      color: _isPaused ? AppColors.neonOrange : AppColors.electricCyan,
+                      color: _isPaused ? AppColors.neonOrange : AppColors.cyberLime,
                     ),
                     const SizedBox(width: 6),
                     Text(
@@ -550,12 +550,12 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
                   color: isComplete
                       ? AppColors.cyberLime
                       : isCurrent
-                          ? AppColors.electricCyan
+                          ? AppColors.cyberLime
                           : AppColors.white20,
                   borderRadius: BorderRadius.circular(2),
                   boxShadow: isCurrent ? [
                     BoxShadow(
-                      color: AppColors.electricCyan.withOpacity(0.5),
+                      color: AppColors.cyberLime.withOpacity(0.5),
                       blurRadius: 6,
                     ),
                   ] : null,
@@ -569,7 +569,7 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
           Text(
             'SET $_currentSet / ${exercise.sets}',
             style: const TextStyle(
-              color: AppColors.electricCyan,
+              color: AppColors.cyberLime,
               fontSize: 11,
               fontWeight: FontWeight.w900,
               letterSpacing: 1,
@@ -688,7 +688,7 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
                     padding: const EdgeInsets.symmetric(vertical: 18),
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                        colors: [AppColors.electricCyan, AppColors.cyberLime],
+                        colors: [AppColors.cyberLime, AppColors.cyberLime],
                       ),
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
@@ -797,7 +797,7 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
       decoration: BoxDecoration(
         color: AppColors.white5,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.electricCyan.withOpacity(0.3), width: 2),
+        border: Border.all(color: AppColors.cyberLime.withOpacity(0.3), width: 2),
       ),
       child: Column(
         children: [
@@ -805,12 +805,12 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              Icon(Icons.repeat, color: AppColors.electricCyan, size: 18),
+              Icon(Icons.repeat, color: AppColors.cyberLime, size: 18),
               SizedBox(width: 6),
               Text(
                 'REPS',
                 style: TextStyle(
-                  color: AppColors.electricCyan,
+                  color: AppColors.cyberLime,
                   fontSize: 11,
                   fontWeight: FontWeight.w900,
                   letterSpacing: 1,
@@ -851,7 +851,7 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
                   Text(
                     '$_currentReps',
                     style: const TextStyle(
-                      color: AppColors.electricCyan,
+                      color: AppColors.cyberLime,
                       fontSize: 36,
                       fontWeight: FontWeight.w900,
                     ),
@@ -870,10 +870,10 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
                     child: Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: AppColors.electricCyan.withOpacity(0.2),
+                        color: AppColors.cyberLime.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Icon(Icons.add, color: AppColors.electricCyan, size: 18),
+                      child: const Icon(Icons.add, color: AppColors.cyberLime, size: 18),
                     ),
                   ),
                 ],
