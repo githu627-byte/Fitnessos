@@ -122,7 +122,7 @@ class TrainingModeSelectionScreen extends StatelessWidget {
                 subtitle: 'Detailed Manual Logger',
                 description: 'See all exercises at once\nTrack progress • Analytics & PRs',
                 gradient: const LinearGradient(
-                  colors: [Color(0xFFCCFF00), Color(0xFFCCFF00)],
+                  colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
                 ),
                 onTap: () {
                   HapticFeedback.mediumImpact();

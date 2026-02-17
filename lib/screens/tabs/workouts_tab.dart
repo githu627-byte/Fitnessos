@@ -197,7 +197,7 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
         slivers: [
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
+              padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
               child: Row(
                 children: [
                   Expanded(
@@ -217,12 +217,12 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                             flex: 1,
                             child: _buildToggleButton('GYM', 'gym', Icons.fitness_center),
                           ),
-                          const SizedBox(width: 4),
+                          const SizedBox(width: 6),
                           Flexible(
                             flex: 1,
                             child: _buildToggleButton('HOME', 'home', Icons.home),
                           ),
-                          const SizedBox(width: 4),
+                          const SizedBox(width: 6),
                           Flexible(
                             flex: 1,
                             child: _buildToggleButton('CUSTOM', 'custom', Icons.edit_note),
@@ -266,6 +266,22 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                     ),
                   ),
                 ],
+              ),
+            ),
+          ),
+
+          // AI tracking tagline
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 10, 16, 14),
+              child: Text(
+                'All presets can be tracked with AI Camera',
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                  color: const Color(0xFFCCFF00).withOpacity(0.35),
+                  letterSpacing: 0.5,
+                ),
               ),
             ),
           ),
@@ -583,10 +599,11 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                         fontSize: 18,
                         fontWeight: FontWeight.w900,
                         color: Colors.white,
-                        letterSpacing: 1.5,
+                        letterSpacing: 1.0,
                         height: 1.2,
                       ),
                       maxLines: 2,
+                      softWrap: true,
                       overflow: TextOverflow.visible,
                     ),
                     const SizedBox(height: 8),
@@ -596,9 +613,10 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
                         color: AppColors.cyberLime.withOpacity(0.6),
-                        letterSpacing: 1.2,
+                        letterSpacing: 0.8,
                       ),
                       maxLines: 2,
+                      softWrap: true,
                       overflow: TextOverflow.visible,
                     ),
                   ],

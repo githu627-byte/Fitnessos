@@ -688,57 +688,145 @@ class _HomeTabState extends ConsumerState<HomeTab> {
         if (workoutPreset != null) {
           final lockedWorkout = LockedWorkout.fromPreset(workoutPreset);
 
-          // If manual-only workout, skip mode selection → go straight to ProLogger
-          if (workoutPreset.isManualOnly) {
+          // Show simplified 2-option picker for secondary/tertiary cards
+          final selectedMode = await showModalBottomSheet<String>(
+            context: context,
+            backgroundColor: Colors.black,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+            ),
+            builder: (context) {
+              return SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(
+                        'CHOOSE TRAINING MODE',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white,
+                          letterSpacing: 1,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+
+                      // VISUAL GUIDE option
+                      GestureDetector(
+                        onTap: () {
+                          HapticFeedback.lightImpact();
+                          Navigator.of(context).pop('visual');
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF0D0D0D),
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(
+                              color: const Color(0xFFCCFF00).withOpacity(0.12),
+                              width: 1,
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFCCFF00).withOpacity(0.08),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: const Icon(Icons.play_circle_outline, color: Color(0xFFCCFF00), size: 24),
+                              ),
+                              const SizedBox(width: 14),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text('VISUAL GUIDE', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900, color: Colors.white, letterSpacing: 0.8)),
+                                    const SizedBox(height: 4),
+                                    Text('GIF demos \u2022 Exercise-by-exercise', style: TextStyle(fontSize: 11, color: Colors.white.withOpacity(0.35))),
+                                  ],
+                                ),
+                              ),
+                              Icon(Icons.chevron_right, color: Colors.white.withOpacity(0.15), size: 24),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 12),
+
+                      // PRO LOGGER option
+                      GestureDetector(
+                        onTap: () {
+                          HapticFeedback.lightImpact();
+                          Navigator.of(context).pop('pro_logger');
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF0D0D0D),
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(
+                              color: const Color(0xFFCCFF00).withOpacity(0.12),
+                              width: 1,
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFCCFF00).withOpacity(0.08),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: const Icon(Icons.grid_view, color: Color(0xFFCCFF00), size: 24),
+                              ),
+                              const SizedBox(width: 14),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text('PRO LOGGER', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900, color: Colors.white, letterSpacing: 0.8)),
+                                    const SizedBox(height: 4),
+                                    Text('All exercises at once \u2022 Track progress', style: TextStyle(fontSize: 11, color: Colors.white.withOpacity(0.35))),
+                                  ],
+                                ),
+                              ),
+                              Icon(Icons.chevron_right, color: Colors.white.withOpacity(0.15), size: 24),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 16),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+
+          if (selectedMode == null || !mounted) return; // User dismissed
+
+          if (selectedMode == 'visual') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ManualTrainingScreen(workout: lockedWorkout),
+              ),
+            );
+          } else if (selectedMode == 'pro_logger') {
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => HevyManualWorkoutScreen(workout: lockedWorkout),
               ),
             );
-            return;
-          }
-
-          final result = await Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => TrainingModeSelectionScreen(workout: lockedWorkout),
-              fullscreenDialog: true,
-            ),
-          );
-
-          // Handle mode selection result
-          if (result == 'auto') {
-            // Commit workout first so TrainTab picks it up
-            await ref.read(committedWorkoutProvider.notifier).commitWorkout(workoutPreset);
-            if (mounted) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => TrainTab(
-                    onWorkoutStateChanged: (isActive) {},
-                  ),
-                ),
-              );
-            }
-          } else if (result == 'manual') {
-            if (mounted) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ManualTrainingScreen(workout: lockedWorkout),
-                ),
-              );
-            }
-          } else if (result == 'hevy_manual') {
-            if (mounted) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => HevyManualWorkoutScreen(workout: lockedWorkout),
-                ),
-              );
-            }
           }
         }
       },
@@ -1116,17 +1204,64 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                 // START WORKOUT — full width, cyber lime
                 Expanded(
                   child: GestureDetector(
-                    onTap: () {
+                    onTap: () async {
                       HapticFeedback.heavyImpact();
-                      Navigator.push(
+                      // Build LockedWorkout from display workout
+                      LockedWorkout? lockedWorkout;
+                      if (displayWorkout is WorkoutSchedule) {
+                        final WorkoutPreset? preset = _findWorkoutById(displayWorkout.workoutId);
+                        if (preset != null) {
+                          lockedWorkout = LockedWorkout.fromPreset(preset);
+                        }
+                      } else if (displayWorkout is LockedWorkout) {
+                        lockedWorkout = displayWorkout;
+                      }
+
+                      final result = await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => TrainTab(
-                            onWorkoutStateChanged: (isActive) {},
-                          ),
+                          builder: (_) => TrainingModeSelectionScreen(workout: lockedWorkout),
                           fullscreenDialog: true,
                         ),
                       );
+
+                      if (result == 'auto') {
+                        // Commit workout first so TrainTab picks it up
+                        if (displayWorkout is WorkoutSchedule) {
+                          final WorkoutPreset? preset = _findWorkoutById(displayWorkout.workoutId);
+                          if (preset != null) {
+                            await ref.read(committedWorkoutProvider.notifier).commitWorkout(preset);
+                          }
+                        }
+                        if (mounted) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => TrainTab(
+                                onWorkoutStateChanged: (isActive) {},
+                              ),
+                            ),
+                          );
+                        }
+                      } else if (result == 'manual') {
+                        if (mounted && lockedWorkout != null) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ManualTrainingScreen(workout: lockedWorkout!),
+                            ),
+                          );
+                        }
+                      } else if (result == 'hevy_manual') {
+                        if (mounted && lockedWorkout != null) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HevyManualWorkoutScreen(workout: lockedWorkout!),
+                            ),
+                          );
+                        }
+                      }
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 16),
