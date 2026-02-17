@@ -9,6 +9,7 @@ import '../../providers/user_provider.dart';
 import '../../providers/workout_schedule_provider.dart';
 import '../../services/workout_schedule_generator.dart';
 import '../home_screen.dart';
+import '../auth/sign_in_screen.dart';
 import 'personal_info_screen.dart';
 
 /// Elite high-converting onboarding flow
@@ -110,7 +111,7 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
 
     if (mounted) {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
+        MaterialPageRoute(builder: (_) => const SignInScreen()),
       );
     }
   }
