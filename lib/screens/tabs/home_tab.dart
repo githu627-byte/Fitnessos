@@ -1902,15 +1902,6 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                     letterSpacing: 1,
                   ),
                 ),
-                const SizedBox(width: 4),
-                Text(
-                  '${(overallRecovery * 100).toInt()}%',
-                  style: TextStyle(
-                    color: statusColor.withOpacity(0.7),
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
               ],
             ),
           ),

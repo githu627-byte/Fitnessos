@@ -680,9 +680,9 @@ class AnalyticsService {
   static Future<List<FlSpot>> _getDailyVolumeData(Database db, int days) async {
     try {
       final startDate = DateTime.now().subtract(Duration(days: days));
-      
+
       final results = await db.rawQuery('''
-        SELECT date(ws.date) as day, 
+        SELECT date(ws.date) as day,
                SUM(es.weight * es.reps_completed) as volume
         FROM workout_sessions ws
         LEFT JOIN exercise_sets es ON ws.id = es.session_id
@@ -690,25 +690,22 @@ class AnalyticsService {
         GROUP BY date(ws.date)
         ORDER BY date(ws.date)
       ''', [startDate.toIso8601String()]);
-      
+
+      // Build a map of date -> volume
+      final volumeMap = <String, double>{};
+      for (final row in results) {
+        final day = row['day'] as String;
+        final volume = (row['volume'] as num?)?.toDouble() ?? 0.0;
+        volumeMap[day] = volume;
+      }
+
+      // Generate ALL days in the range, fill missing days with 0
       final spots = <FlSpot>[];
-      for (int i = 0; i < results.length; i++) {
-        final volume = (results[i]['volume'] as num?)?.toDouble() ?? 0.0;
+      for (int i = 0; i < days; i++) {
+        final date = startDate.add(Duration(days: i));
+        final dateKey = '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+        final volume = volumeMap[dateKey] ?? 0.0;
         spots.add(FlSpot(i.toDouble(), volume));
-      }
-
-      // Ensure we have at least 2 points for the chart to render a line
-      if (spots.length == 1) {
-        final singleSpot = spots.first;
-        // Add zero point the day before
-        spots.insert(0, FlSpot(singleSpot.x - 1, 0));
-        // Add zero point the day after
-        spots.add(FlSpot(singleSpot.x + 1, 0));
-      }
-
-      // If still empty, return a default zero line
-      if (spots.isEmpty) {
-        return [FlSpot(0, 0), FlSpot(1, 0)];
       }
 
       return spots;
