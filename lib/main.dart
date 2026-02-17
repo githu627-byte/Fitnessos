@@ -14,6 +14,7 @@ import 'screens/home_screen.dart';
 import 'screens/onboarding/v2_onboarding_main.dart';
 import 'screens/onboarding/v3_onboarding_main.dart';
 import 'screens/auth/sign_in_screen.dart';
+import 'screens/paywall/paywall_screen.dart';
 import 'services/workout_alarm_service.dart';
 import 'providers/user_provider.dart';
 import 'models/workout_schedule.dart';
@@ -86,11 +87,8 @@ class MyApp extends ConsumerWidget {
       routes: {
         '/home': (context) => const HomeScreen(),
         '/onboarding': (context) => const V3OnboardingMain(),
-        '/signin': (context) => SignInScreen(
-          onContinue: () {
-            Navigator.of(context).pushReplacementNamed('/home');
-          },
-        ),
+        '/signin': (context) => const SignInScreen(),
+        '/paywall': (context) => const PaywallScreen(),
       },
     );
   }

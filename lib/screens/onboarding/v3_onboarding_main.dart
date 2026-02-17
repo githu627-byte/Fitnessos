@@ -10,6 +10,7 @@ import '../../providers/user_provider.dart';
 import '../../providers/workout_schedule_provider.dart';
 import '../../services/workout_schedule_generator.dart';
 import '../home_screen.dart';
+import '../auth/sign_in_screen.dart';
 
 class V3OnboardingMain extends ConsumerStatefulWidget {
   const V3OnboardingMain({super.key});
@@ -125,7 +126,7 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
 
     if (mounted) {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
+        MaterialPageRoute(builder: (_) => const SignInScreen()),
       );
     }
   }
