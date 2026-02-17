@@ -55,8 +55,8 @@ class _WorkoutDateStripState extends State<WorkoutDateStrip> {
         _isSameDay(date, widget.selectedDate));
     
     if (selectedIndex != -1 && _scrollController.hasClients) {
-      final scrollOffset = (selectedIndex * 56.0) - 
-          (MediaQuery.of(context).size.width / 2) + 28;
+      final scrollOffset = (selectedIndex * 60.0) -
+          (MediaQuery.of(context).size.width / 2) + 30;
       final max = _scrollController.position.maxScrollExtent;
       final clamped = scrollOffset.isFinite
           ? scrollOffset.clamp(0.0, max)
@@ -102,7 +102,7 @@ class _WorkoutDateStripState extends State<WorkoutDateStrip> {
       children: [
         // Header with selected date info and navigation arrows
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -212,7 +212,7 @@ class _WorkoutDateStripState extends State<WorkoutDateStrip> {
           child: ListView.builder(
             controller: _scrollController,
             scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 0),
             itemCount: _dates.length,
             itemBuilder: (context, index) {
               final date = _dates[index];

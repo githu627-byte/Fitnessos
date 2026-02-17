@@ -279,7 +279,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                             // DATE STRIP & HERO CARD: With horizontal padding
                             // ═══════════════════════════════════════════════
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              padding: const EdgeInsets.symmetric(horizontal: 16),
                               child: Column(
                                 children: [
                                   // Date Strip
@@ -918,7 +918,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
         color: const Color(0xFF0A0A0A),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: const Color(0xFFCCFF00).withOpacity(0.10),
+          color: const Color(0xFFCCFF00).withOpacity(0.08),
           width: 1,
         ),
       ),
@@ -997,29 +997,6 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                           ],
                         ),
                       ],
-                    ],
-                  ),
-                ),
-                // Streak badge
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF151515),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('\u{1F525}', style: TextStyle(fontSize: 14)),
-                      SizedBox(width: 4),
-                      Text(
-                        '0',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white,
-                        ),
-                      ),
                     ],
                   ),
                 ),
@@ -1247,7 +1224,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
         color: const Color(0xFF0A0A0A),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: const Color(0xFFCCFF00).withOpacity(0.10),
+          color: const Color(0xFFCCFF00).withOpacity(0.08),
           width: 1,
         ),
       ),
