@@ -228,7 +228,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                       decoration: BoxDecoration(
-                        color: AppColors.electricCyan,
+                        color: AppColors.cyberLime,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: const Text(
@@ -255,7 +255,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                   _loadCustomWorkouts(), // Reload custom workouts for hero card
                 ]);
               },
-              color: AppColors.electricCyan,
+              color: AppColors.cyberLime,
               backgroundColor: Colors.black,
               child: Stack(
                 children: [
@@ -332,7 +332,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                       right: 0,
                       child: LinearProgressIndicator(
                         backgroundColor: Colors.transparent,
-                        valueColor: AlwaysStoppedAnimation(AppColors.electricCyan.withOpacity(0.5)),
+                        valueColor: AlwaysStoppedAnimation(AppColors.cyberLime.withOpacity(0.5)),
                       ),
                     ),
                 ],
@@ -346,101 +346,87 @@ class _HomeTabState extends ConsumerState<HomeTab> {
   // HEADER COMPONENT
   // ═══════════════════════════════════════════════════════════════════════════
   Widget _buildHeader(BuildContext context, WorkoutStats stats) {
-    return Container(
-      color: Colors.transparent,
-      padding: const EdgeInsets.fromLTRB(0, 8, 12, 8),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // New unified logo (no background, all-in-one) - spans from left edge to streak
+          // Logo — BIG, takes up most of the row
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 4),
-              child: Image.asset(
-                'assets/images/logo/skeletal_logo.png',
-                height: 42,
-                fit: BoxFit.contain,
-                alignment: Alignment.centerLeft,
+            child: Image.asset(
+              'assets/images/logo/skeletal_logo.png',
+              height: 52,
+              fit: BoxFit.contain,
+              alignment: Alignment.centerLeft,
+            ),
+          ),
+          const SizedBox(width: 12),
+          // Streak badge
+          GestureDetector(
+            onTap: () {
+              HapticFeedback.mediumImpact();
+              _showStreakAchievements(context, stats);
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              decoration: BoxDecoration(
+                color: const Color(0xFF1A1A1A),
+                borderRadius: BorderRadius.circular(14),
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.06),
+                  width: 1,
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text('🔥', style: TextStyle(fontSize: 16)),
+                  const SizedBox(width: 6),
+                  Text(
+                    '${stats.currentStreak}',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-          
-          const SizedBox(width: 12),
-          
-          // Right: Streak Badge + Settings Icon
-          Row(
-            children: [
-              // Streak Badge
-              GestureDetector(
-                onTap: () {
-                  HapticFeedback.mediumImpact();
-                  _showStreakAchievements(context, stats);
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  decoration: BoxDecoration(
-                    color: AppColors.white10,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: AppColors.white20,
-                      width: 1,
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      const Text('🔥', style: TextStyle(fontSize: 18)),
-                      const SizedBox(width: 6),
-                      Text(
-                        '${stats.currentStreak}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                    ],
-                  ),
+          const SizedBox(width: 8),
+          // Settings gear
+          GestureDetector(
+            onTap: () {
+              HapticFeedback.mediumImpact();
+              Navigator.of(context).push(
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) => const SettingsTab(),
+                  transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
+                  transitionDuration: const Duration(milliseconds: 200),
+                ),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: const Color(0xFF1A1A1A),
+                borderRadius: BorderRadius.circular(14),
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.06),
+                  width: 1,
                 ),
               ),
-              
-              const SizedBox(width: 12),
-              
-              // Settings Icon
-              GestureDetector(
-                onTap: () {
-                  HapticFeedback.mediumImpact();
-                  // Navigate to settings screen
-                  Navigator.of(context).push(
-                    PageRouteBuilder(
-                      pageBuilder: (context, animation, secondaryAnimation) => const SettingsTab(),
-                      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                        return FadeTransition(
-                          opacity: animation,
-                          child: child,
-                        );
-                      },
-                      transitionDuration: const Duration(milliseconds: 200),
-                    ),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: AppColors.white10,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: AppColors.white20,
-                      width: 1,
-                    ),
-                  ),
-                  child: const Icon(
-                    Icons.settings_outlined,
-                    color: Colors.white70,
-                    size: 20,
-                  ),
-                ),
+              child: Icon(
+                Icons.settings_outlined,
+                color: Colors.white.withOpacity(0.5),
+                size: 22,
               ),
-            ],
+            ),
           ),
         ],
       ),
@@ -644,44 +630,45 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     required Gradient gradient,
   }) {
     if (workout == null) {
-      // EMPTY CARD — informational only, no tap action
+      // EMPTY CARD — dark with cyber lime accents
       return Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: AppColors.white5,
+          color: const Color(0xFF0D0D0D),
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: AppColors.white10, width: 1),
+          border: Border.all(
+            color: const Color(0xFFCCFF00).withOpacity(0.08),
+            width: 1,
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Icon
+            // Icon in a circle
             Container(
-              width: 44,
-              height: 44,
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: AppColors.white10,
+                color: const Color(0xFFCCFF00).withOpacity(0.08),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Icon(emptyIcon, color: AppColors.cyberLime, size: 24),
+              child: Icon(emptyIcon, color: const Color(0xFFCCFF00), size: 22),
             ),
             const SizedBox(height: 14),
-            // Title
             Text(
               emptyTitle,
               style: const TextStyle(
-                color: Colors.white,
-                fontSize: 15,
+                fontSize: 14,
                 fontWeight: FontWeight.w900,
-                letterSpacing: 0.5,
+                color: Colors.white,
+                letterSpacing: 1,
               ),
             ),
             const SizedBox(height: 4),
             Text(
               'Add via workout',
               style: TextStyle(
-                color: AppColors.white40,
-                fontSize: 11,
+                fontSize: 10,
+                color: Colors.white.withOpacity(0.3),
               ),
             ),
           ],
@@ -760,10 +747,10 @@ class _HomeTabState extends ConsumerState<HomeTab> {
         height: 180,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          gradient: gradient,
+          color: const Color(0xFF0D0D0D),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: AppColors.cyberLime.withOpacity(0.2),
+            color: const Color(0xFFCCFF00).withOpacity(0.12),
             width: 1,
           ),
         ),
@@ -790,36 +777,35 @@ class _HomeTabState extends ConsumerState<HomeTab> {
               children: [
                 Text(
                   '$exerciseCount exercises',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 11,
-                    color: AppColors.white60,
+                    color: Colors.white.withOpacity(0.4),
                   ),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   '$totalSets sets',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 11,
-                    color: AppColors.white60,
+                    color: Colors.white.withOpacity(0.4),
                   ),
                 ),
               ],
             ),
 
-            // START button (smaller)
+            // START button — cyber lime
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 10),
               decoration: BoxDecoration(
-                color: AppColors.white10,
+                color: const Color(0xFFCCFF00),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: AppColors.white20),
               ),
               child: const Center(
                 child: Text(
                   'START',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 13,
                     fontWeight: FontWeight.w800,
                     letterSpacing: 1,
@@ -912,467 +898,318 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     }
 
     return Container(
+      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
+        color: const Color(0xFF0D0D0D),
         borderRadius: BorderRadius.circular(24),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.electricCyan.withOpacity(0.2),
-            blurRadius: 20,
-            spreadRadius: 0,
-            offset: const Offset(0, 8),
-          ),
-        ],
+        border: Border.all(
+          color: const Color(0xFFCCFF00).withOpacity(0.15),
+          width: 1,
+        ),
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(24),
-        child: Stack(
-          children: [
-            // Gradient Background
-            Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0xFF0ea5e9),
-                    Color(0xFF06b6d4),
-                    Color(0xFF0891b2),
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Workout name + streak
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  workoutName.toUpperCase(),
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                    letterSpacing: 1,
+                    height: 1.2,
+                  ),
                 ),
               ),
-            ),
-            
-            // Glass Overlay
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.4),
-              ),
-            ),
-            
-            // Animated Particles
-            ..._buildParticles(),
-            
-            // Content
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Header: Workout Name + Streak
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              workoutName.toUpperCase(),
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w900,
-                                letterSpacing: 1,
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              exerciseCount > 0 
-                                  ? '$exerciseCount exercises • $totalSets total sets'
-                                  : 'Tap to view details',
-                              style: TextStyle(
-                                color: Colors.white.withOpacity(0.8),
-                                fontSize: 13,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // Workout Streak Badge
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.15),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: Colors.white.withOpacity(0.3),
-                            width: 1,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Text('🔥', style: TextStyle(fontSize: 14)),
-                            const SizedBox(width: 4),
-                            Text(
-                              '0', // TODO: Get workout-specific streak
-                              style: TextStyle(
-                                color: Colors.white.withOpacity(0.95),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w900,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  
-                  // Show alarm indicator if alarm is set (positioned below workout name, slightly left)
-                  if (hasAlarm && scheduledTime != null) ...[
-                    const SizedBox(height: 12),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 0),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                        decoration: BoxDecoration(
-                          color: AppColors.cyberLime.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: AppColors.cyberLime,
-                            width: 1.5,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(
-                              Icons.alarm,
-                              color: AppColors.cyberLime,
-                              size: 14,
-                            ),
-                            const SizedBox(width: 6),
-                            Text(
-                              scheduledTime,
-                              style: const TextStyle(
-                                color: AppColors.cyberLime,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ],
-                        ),
+              // Streak badge
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF1A1A1A),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Row(
+                  children: [
+                    Text('🔥', style: TextStyle(fontSize: 14)),
+                    SizedBox(width: 4),
+                    Text(
+                      '0',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
                       ),
                     ),
                   ],
-                  
-                  const SizedBox(height: 20),
-                  
-                  // Workout Details Cards (removed GIFs, added info cards)
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color: Colors.white.withOpacity(0.2),
-                              width: 1,
-                            ),
-                          ),
-                          child: Column(
-                            children: [
-                              const Icon(
-                                Icons.fitness_center,
-                                color: Colors.white70,
-                                size: 20,
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                '$exerciseCount',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                              ),
-                              Text(
-                                'EXERCISES',
-                                style: TextStyle(
-                                  color: Colors.white.withOpacity(0.7),
-                                  fontSize: 9,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color: Colors.white.withOpacity(0.2),
-                              width: 1,
-                            ),
-                          ),
-                          child: Column(
-                            children: [
-                              const Icon(
-                                Icons.format_list_numbered,
-                                color: Colors.white70,
-                                size: 20,
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                '$totalSets',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                              ),
-                              Text(
-                                'SETS',
-                                style: TextStyle(
-                                  color: Colors.white.withOpacity(0.7),
-                                  fontSize: 9,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color: Colors.white.withOpacity(0.2),
-                              width: 1,
-                            ),
-                          ),
-                          child: Column(
-                            children: [
-                              const Icon(
-                                Icons.local_fire_department,
-                                color: AppColors.neonCrimson,
-                                size: 20,
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                '$estimatedCalories',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                              ),
-                              Text(
-                                'CALORIES',
-                                style: TextStyle(
-                                  color: Colors.white.withOpacity(0.7),
-                                  fontSize: 9,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          // Exercise count
+          Text(
+            exerciseCount > 0
+                ? '$exerciseCount exercises \u2022 $totalSets total sets'
+                : 'Tap to view details',
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.white.withOpacity(0.4),
+            ),
+          ),
+
+          // Show alarm indicator if alarm is set
+          if (hasAlarm && scheduledTime != null) ...[
+            const SizedBox(height: 12),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              decoration: BoxDecoration(
+                color: const Color(0xFFCCFF00).withOpacity(0.2),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: const Color(0xFFCCFF00),
+                  width: 1.5,
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(
+                    Icons.alarm,
+                    color: Color(0xFFCCFF00),
+                    size: 14,
                   ),
-                  
-                  const SizedBox(height: 16),
-                  
-                  // Action Buttons: ALARM + START + EDIT
-                  Row(
-                    children: [
-                      // ALARM Button - Opens schedule modal to set alarm for selected date
-                      GestureDetector(
-                        onTap: () async {
-                          HapticFeedback.mediumImpact();
-                          
-                          if (displayWorkout != null) {
-                            // Show schedule modal to set time
-                            final result = await showModalBottomSheet<Map<String, dynamic>>(
-                              context: context,
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              builder: (context) => ScheduleWorkoutModal(
-                                selectedDate: _selectedDate,
-                              ),
-                            );
-                            
-                            if (result != null && mounted) {
-                              final timeData = result['time'] as TimeOfDay?;
-                              
-                              if (timeData != null) {
-                                // Get existing schedule or create new one
-                                WorkoutSchedule? existingSchedule;
-                                String workoutName;
-                                String workoutId;
-                                
-                                if (displayWorkout is WorkoutSchedule) {
-                                  existingSchedule = displayWorkout;
-                                  workoutName = displayWorkout.workoutName;
-                                  workoutId = displayWorkout.workoutId;
-                                } else if (displayWorkout is LockedWorkout) {
-                                  workoutName = displayWorkout.name;
-                                  workoutId = displayWorkout.id;
-                                } else {
-                                  return;
-                                }
-                                
-                                // Get the weekday for repeatDays (0=Sunday, 1=Monday... 6=Saturday)
-                                final weekday = _selectedDate.weekday == 7 ? 0 : _selectedDate.weekday;
-                                
-                                // Create updated schedule with alarm
-                                final schedule = WorkoutSchedule(
-                                  id: existingSchedule?.id ?? '${DateTime.now().millisecondsSinceEpoch}',
-                                  workoutId: workoutId,
-                                  workoutName: workoutName,
-                                  scheduledDate: DateTime(_selectedDate.year, _selectedDate.month, _selectedDate.day),
-                                  scheduledTime: '${timeData.hour.toString().padLeft(2, '0')}:${timeData.minute.toString().padLeft(2, '0')}',
-                                  hasAlarm: true,
-                                  createdAt: existingSchedule?.createdAt ?? DateTime.now(),
-                                  repeatDays: [weekday], // Add weekday so alarm schedules!
-                                );
-                                
-                                // Save schedule
-                                await ref.read(workoutSchedulesProvider.notifier).saveSchedule(schedule);
-                                
-                                // ═══════════════════════════════════════════════════════════════════
-                                // 🔔 FIX 2: ACTUALLY SCHEDULE THE ALARM!
-                                // ═══════════════════════════════════════════════════════════════════
-                                await WorkoutAlarmService.scheduleAlarm(schedule);
-                                debugPrint('🔔 Alarm scheduled for ${schedule.workoutName} at ${schedule.scheduledTime}');
-                                // ═══════════════════════════════════════════════════════════════════
-                                
-                                if (mounted) {
-                                  final dateStr = DateFormat('MMM d').format(_selectedDate);
-                                  final timeStr = timeData.format(context);
-                                  
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        '⏰ Alarm set for $dateStr at $timeStr',
-                                        style: const TextStyle(fontWeight: FontWeight.w700),
-                                      ),
-                                      backgroundColor: AppColors.cyberLime,
-                                      behavior: SnackBarBehavior.floating,
-                                    ),
-                                  );
-                                }
-                              }
-                            }
-                          } else {
-                            // No workout on this date, open full schedule flow
-                            await _openScheduleWorkoutFlow(_selectedDate);
-                          }
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(14),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.15),
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(
-                              color: Colors.white.withOpacity(0.3),
-                              width: 1,
-                            ),
-                          ),
-                          child: const Icon(
-                            Icons.alarm,
-                            color: Colors.white,
-                            size: 22,
-                          ),
-                        ),
-                      ),
-                      
-                      const SizedBox(width: 10),
-                      
-                      // START WORKOUT Button (Big)
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            HapticFeedback.heavyImpact();
-                            // Navigate to TrainTab screen directly
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => TrainTab(
-                                  onWorkoutStateChanged: (isActive) {
-                                    // No bottom nav to hide in fullscreen mode
-                                  },
-                                ),
-                                fullscreenDialog: true,
-                              ),
-                            );
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(vertical: 14),
-                            decoration: BoxDecoration(
-                              color: AppColors.electricCyan,
-                              borderRadius: BorderRadius.circular(14),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: AppColors.electricCyan.withOpacity(0.5),
-                                  blurRadius: 16,
-                                  spreadRadius: 0,
-                                ),
-                              ],
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'START WORKOUT',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w900,
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      
-                      const SizedBox(width: 10),
-                      
-                      // EDIT Button - Goes to Workouts tab to schedule
-                      GestureDetector(
-                        onTap: () {
-                          HapticFeedback.mediumImpact();
-                          // Set the selected date for scheduling
-                          ref.read(selectedScheduleDateProvider.notifier).state = _selectedDate;
-                          ref.read(isSchedulingModeProvider.notifier).state = true;
-                          // Navigate to Workouts tab
-                          final navigator = context.findAncestorWidgetOfExactType<TabNavigator>();
-                          if (navigator != null) {
-                            (navigator as dynamic).changeTab(1); // Workouts tab
-                          }
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(14),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.15),
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(
-                              color: Colors.white.withOpacity(0.3),
-                              width: 1,
-                            ),
-                          ),
-                          child: const Icon(
-                            Icons.edit_outlined,
-                            color: Colors.white,
-                            size: 22,
-                          ),
-                        ),
-                      ),
-                    ],
+                  const SizedBox(width: 6),
+                  Text(
+                    scheduledTime,
+                    style: const TextStyle(
+                      color: Color(0xFFCCFF00),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ],
+              ),
+            ),
+          ],
+
+          const SizedBox(height: 20),
+
+          // Stats row — 3 boxes
+          Row(
+            children: [
+              _buildStatBox('$exerciseCount', 'EXERCISES', Icons.fitness_center),
+              const SizedBox(width: 10),
+              _buildStatBox('$totalSets', 'SETS', Icons.format_list_numbered),
+              const SizedBox(width: 10),
+              _buildStatBox('$estimatedCalories', 'CALORIES', Icons.local_fire_department),
+            ],
+          ),
+          const SizedBox(height: 20),
+
+          // Buttons row
+          Row(
+            children: [
+              // Timer/Alarm button
+              GestureDetector(
+                onTap: () async {
+                  HapticFeedback.mediumImpact();
+
+                  if (displayWorkout != null) {
+                    final result = await showModalBottomSheet<Map<String, dynamic>>(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (context) => ScheduleWorkoutModal(
+                        selectedDate: _selectedDate,
+                      ),
+                    );
+
+                    if (result != null && mounted) {
+                      final timeData = result['time'] as TimeOfDay?;
+
+                      if (timeData != null) {
+                        WorkoutSchedule? existingSchedule;
+                        String workoutName;
+                        String workoutId;
+
+                        if (displayWorkout is WorkoutSchedule) {
+                          existingSchedule = displayWorkout;
+                          workoutName = displayWorkout.workoutName;
+                          workoutId = displayWorkout.workoutId;
+                        } else if (displayWorkout is LockedWorkout) {
+                          workoutName = displayWorkout.name;
+                          workoutId = displayWorkout.id;
+                        } else {
+                          return;
+                        }
+
+                        final weekday = _selectedDate.weekday == 7 ? 0 : _selectedDate.weekday;
+
+                        final schedule = WorkoutSchedule(
+                          id: existingSchedule?.id ?? '${DateTime.now().millisecondsSinceEpoch}',
+                          workoutId: workoutId,
+                          workoutName: workoutName,
+                          scheduledDate: DateTime(_selectedDate.year, _selectedDate.month, _selectedDate.day),
+                          scheduledTime: '${timeData.hour.toString().padLeft(2, '0')}:${timeData.minute.toString().padLeft(2, '0')}',
+                          hasAlarm: true,
+                          createdAt: existingSchedule?.createdAt ?? DateTime.now(),
+                          repeatDays: [weekday],
+                        );
+
+                        await ref.read(workoutSchedulesProvider.notifier).saveSchedule(schedule);
+                        await WorkoutAlarmService.scheduleAlarm(schedule);
+                        debugPrint('🔔 Alarm scheduled for ${schedule.workoutName} at ${schedule.scheduledTime}');
+
+                        if (mounted) {
+                          final dateStr = DateFormat('MMM d').format(_selectedDate);
+                          final timeStr = timeData.format(context);
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                '⏰ Alarm set for $dateStr at $timeStr',
+                                style: const TextStyle(fontWeight: FontWeight.w700),
+                              ),
+                              backgroundColor: const Color(0xFFCCFF00),
+                              behavior: SnackBarBehavior.floating,
+                            ),
+                          );
+                        }
+                      }
+                    }
+                  } else {
+                    await _openScheduleWorkoutFlow(_selectedDate);
+                  }
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF1A1A1A),
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(
+                      color: Colors.white.withOpacity(0.06),
+                      width: 1,
+                    ),
+                  ),
+                  child: Icon(
+                    Icons.timer_outlined,
+                    color: const Color(0xFFCCFF00).withOpacity(0.6),
+                    size: 22,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              // START WORKOUT — cyber lime filled
+              Expanded(
+                child: GestureDetector(
+                  onTap: () {
+                    HapticFeedback.heavyImpact();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => TrainTab(
+                          onWorkoutStateChanged: (isActive) {},
+                        ),
+                        fullscreenDialog: true,
+                      ),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFCCFF00),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: const Text(
+                      'START WORKOUT',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.black,
+                        letterSpacing: 1.5,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              // Edit button
+              GestureDetector(
+                onTap: () {
+                  HapticFeedback.mediumImpact();
+                  ref.read(selectedScheduleDateProvider.notifier).state = _selectedDate;
+                  ref.read(isSchedulingModeProvider.notifier).state = true;
+                  final navigator = context.findAncestorWidgetOfExactType<TabNavigator>();
+                  if (navigator != null) {
+                    (navigator as dynamic).changeTab(1);
+                  }
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF1A1A1A),
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(
+                      color: Colors.white.withOpacity(0.06),
+                      width: 1,
+                    ),
+                  ),
+                  child: Icon(
+                    Icons.edit_outlined,
+                    color: Colors.white.withOpacity(0.4),
+                    size: 22,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Stat box helper
+  Widget _buildStatBox(String value, String label, IconData icon) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 14),
+        decoration: BoxDecoration(
+          color: const Color(0xFF111111),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(
+            color: const Color(0xFFCCFF00).withOpacity(0.08),
+            width: 1,
+          ),
+        ),
+        child: Column(
+          children: [
+            Icon(
+              icon,
+              color: const Color(0xFFCCFF00).withOpacity(0.5),
+              size: 18,
+            ),
+            const SizedBox(height: 6),
+            Text(
+              value,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w900,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 9,
+                fontWeight: FontWeight.w700,
+                color: const Color(0xFFCCFF00).withOpacity(0.4),
+                letterSpacing: 1.5,
               ),
             ),
           ],
@@ -1386,85 +1223,86 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     final dateStr = isToday ? 'Today' : DateFormat('MMM d').format(_selectedDate);
 
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(28),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            AppColors.cyberLime.withOpacity(0.2),
-            AppColors.cyberLime.withOpacity(0.05),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+        color: const Color(0xFF0D0D0D),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: AppColors.cyberLime.withOpacity(0.3),
-          width: 2,
+          color: const Color(0xFFCCFF00).withOpacity(0.12),
+          width: 1,
         ),
       ),
       child: Column(
         children: [
-          const Icon(
+          // Calendar icon
+          Icon(
             Icons.calendar_today_outlined,
-            color: AppColors.cyberLime,
-            size: 48,
+            color: const Color(0xFFCCFF00).withOpacity(0.4),
+            size: 40,
           ),
           const SizedBox(height: 16),
+          // Title
           Text(
             'No Workout on $dateStr',
             style: const TextStyle(
-              color: Colors.white,
               fontSize: 20,
               fontWeight: FontWeight.w900,
+              color: Colors.white,
+              letterSpacing: 0.5,
             ),
           ),
           const SizedBox(height: 8),
+          // Subtitle
           Text(
             'Schedule a workout for this date',
             style: TextStyle(
-              color: AppColors.white60,
-              fontSize: 14,
+              fontSize: 13,
+              color: Colors.white.withOpacity(0.35),
             ),
-            textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 20),
-
-          // Two buttons: Quick schedule (no alarm) + Schedule with alarm
+          const SizedBox(height: 24),
+          // Buttons row
           Row(
             children: [
-              // Quick schedule (no alarm) - Goes to Workouts tab
+              // QUICK ADD — outlined
               Expanded(
                 child: GestureDetector(
                   onTap: () {
                     HapticFeedback.mediumImpact();
                     debugPrint('🚀 QUICK ADD tapped - setting schedule date and navigating to Workouts tab');
-                    // Set the selected date for scheduling
                     ref.read(selectedScheduleDateProvider.notifier).state = _selectedDate;
                     ref.read(isSchedulingModeProvider.notifier).state = true;
-                    // Navigate to Workouts tab
                     final navigator = context.findAncestorWidgetOfExactType<TabNavigator>();
                     if (navigator != null) {
-                      (navigator as dynamic).changeTab(1); // Workouts tab
+                      (navigator as dynamic).changeTab(1);
                     }
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     decoration: BoxDecoration(
-                      color: AppColors.white10,
+                      color: Colors.transparent,
                       borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: AppColors.white20),
+                      border: Border.all(
+                        color: const Color(0xFFCCFF00).withOpacity(0.25),
+                        width: 1,
+                      ),
                     ),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.fitness_center, color: Colors.white, size: 18),
+                        Icon(
+                          Icons.fitness_center,
+                          color: Color(0xFFCCFF00),
+                          size: 18,
+                        ),
                         SizedBox(width: 8),
                         Text(
                           'QUICK ADD',
                           style: TextStyle(
-                            color: Colors.white,
                             fontSize: 12,
-                            fontWeight: FontWeight.w900,
+                            fontWeight: FontWeight.w800,
+                            color: Color(0xFFCCFF00),
+                            letterSpacing: 1,
                           ),
                         ),
                       ],
@@ -1472,10 +1310,8 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                   ),
                 ),
               ),
-
               const SizedBox(width: 12),
-
-              // Schedule with alarm
+              // WITH ALARM — filled cyber lime
               Expanded(
                 child: GestureDetector(
                   onTap: () async {
@@ -1486,20 +1322,25 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     decoration: BoxDecoration(
-                      color: AppColors.cyberLime,
+                      color: const Color(0xFFCCFF00),
                       borderRadius: BorderRadius.circular(14),
                     ),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.alarm, color: Colors.black, size: 18),
+                        Icon(
+                          Icons.alarm,
+                          color: Colors.black,
+                          size: 18,
+                        ),
                         SizedBox(width: 8),
                         Text(
                           'WITH ALARM',
                           style: TextStyle(
-                            color: Colors.black,
                             fontSize: 12,
-                            fontWeight: FontWeight.w900,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.black,
+                            letterSpacing: 1,
                           ),
                         ),
                       ],
@@ -1512,23 +1353,6 @@ class _HomeTabState extends ConsumerState<HomeTab> {
         ],
       ),
     );
-  }
-
-  List<Widget> _buildParticles() {
-    return List.generate(6, (index) {
-      return Positioned(
-        left: (index * 37) % 100 + 10,
-        top: (index * 53) % 100 + 10,
-        child: Container(
-          width: 3,
-          height: 3,
-          decoration: const BoxDecoration(
-            color: Colors.white54,
-            shape: BoxShape.circle,
-          ),
-        ),
-      );
-    });
   }
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -1561,7 +1385,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                 subtitle: 'total reps',
                 icon: Icons.all_inclusive,
                 gradient: const LinearGradient(
-                  colors: [Color(0xFF06B6D4), Color(0xFF0891B2)],
+                  colors: [Color(0xFFCCFF00), Color(0xFFCCFF00)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -1708,7 +1532,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
             label: 'Create\nCustom',
             icon: Icons.add_circle_outline,
             gradient: const LinearGradient(
-              colors: [Color(0xFF06B6D4), Color(0xFF0891B2)],
+              colors: [Color(0xFFCCFF00), Color(0xFFCCFF00)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -2119,7 +1943,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('🧪 Test alarm scheduled for 1 minute from now!'),
-            backgroundColor: AppColors.electricCyan,
+            backgroundColor: AppColors.cyberLime,
             duration: Duration(seconds: 2),
           ),
         );
@@ -2167,7 +1991,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
             topRight: Radius.circular(32),
           ),
           border: Border.all(
-            color: AppColors.electricCyan.withOpacity(0.3),
+            color: AppColors.cyberLime.withOpacity(0.3),
             width: 2,
           ),
         ),
@@ -2546,12 +2370,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                           height: 70,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            gradient: LinearGradient(
-                              colors: [
-                                AppColors.cyberLime.withOpacity(0.3),
-                                AppColors.electricCyan.withOpacity(0.2),
-                              ],
-                            ),
+                            color: const Color(0xFFCCFF00).withOpacity(0.1),
                             border: Border.all(
                               color: AppColors.cyberLime.withOpacity(0.5),
                               width: 2,
@@ -2612,7 +2431,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                         _buildFormStatPill(
                           icon: Icons.camera_alt,
                           label: 'REAL-TIME',
-                          color: AppColors.electricCyan,
+                          color: const Color(0xFFCCFF00),
                         ),
                         _buildFormStatPill(
                           icon: Icons.record_voice_over,
@@ -2650,12 +2469,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                             vertical: 12,
                           ),
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                AppColors.cyberLime,
-                                AppColors.electricCyan,
-                              ],
-                            ),
+                            color: const Color(0xFFCCFF00),
                             borderRadius: BorderRadius.circular(16),
                             boxShadow: [
                               BoxShadow(
