@@ -304,9 +304,9 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
               alignment: WrapAlignment.center,
               children: [
                 _featurePill('\u{1F4F7} CAMERA TRACKING', AppColors.cyberLime),
-                _featurePill('\u{1F9B4} SKELETON OVERLAY', AppColors.electricCyan),
+                _featurePill('\u{1F9B4} SKELETON OVERLAY', AppColors.cyberLime),
                 _featurePill('\u{1F522} AUTO REP COUNT', AppColors.cyberLime),
-                _featurePill('\u{1F4E1} 100% OFFLINE', AppColors.electricCyan),
+                _featurePill('\u{1F4E1} 100% OFFLINE', AppColors.cyberLime),
                 _featurePill('\u{1F3A5} SHAREABLE CLIPS', AppColors.neonPurple),
                 _featurePill('\u{1F3CB}\u{FE0F} 500+ EXERCISES', AppColors.neonOrange),
               ],

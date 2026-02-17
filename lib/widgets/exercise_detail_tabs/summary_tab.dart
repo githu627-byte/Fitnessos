@@ -138,12 +138,12 @@ class ExerciseSummaryTab extends StatelessWidget {
         color: AppColors.white5,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: AppColors.electricCyan.withOpacity(0.3),
+          color: AppColors.cyberLime.withOpacity(0.3),
         ),
       ),
       child: Row(
         children: [
-          const Icon(Icons.lightbulb_outline, color: AppColors.electricCyan),
+          const Icon(Icons.lightbulb_outline, color: AppColors.cyberLime),
           const SizedBox(width: 12),
           Expanded(
             child: Text(
@@ -169,7 +169,7 @@ class ExerciseSummaryTab extends StatelessWidget {
           end: Alignment.bottomRight,
           colors: [
             AppColors.cyberLime.withOpacity(0.05),
-            AppColors.electricCyan.withOpacity(0.05),
+            AppColors.cyberLime.withOpacity(0.05),
           ],
         ),
         borderRadius: BorderRadius.circular(16),
@@ -199,7 +199,7 @@ class ExerciseSummaryTab extends StatelessWidget {
                   color: AppColors.white10,
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: AppColors.electricCyan.withOpacity(0.5),
+                    color: AppColors.cyberLime.withOpacity(0.5),
                   ),
                 ),
                 child: const Text(
@@ -207,7 +207,7 @@ class ExerciseSummaryTab extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
-                    color: AppColors.electricCyan,
+                    color: AppColors.cyberLime,
                   ),
                 ),
               ),
@@ -231,7 +231,7 @@ class ExerciseSummaryTab extends StatelessWidget {
             children: [
               _buildLegendItem('Weight', AppColors.cyberLime),
               const SizedBox(width: 24),
-              _buildLegendItem('Reps', AppColors.electricCyan),
+              _buildLegendItem('Reps', AppColors.cyberLime),
             ],
           ),
         ],
@@ -394,8 +394,8 @@ class ExerciseSummaryTab extends StatelessWidget {
             isCurved: true,
             gradient: LinearGradient(
               colors: [
-                AppColors.electricCyan.withOpacity(0.8),
-                AppColors.electricCyan,
+                AppColors.cyberLime.withOpacity(0.8),
+                AppColors.cyberLime,
               ],
             ),
             barWidth: 3,
@@ -405,7 +405,7 @@ class ExerciseSummaryTab extends StatelessWidget {
               getDotPainter: (spot, percent, barData, index) {
                 return FlDotCirclePainter(
                   radius: 4,
-                  color: AppColors.electricCyan,
+                  color: AppColors.cyberLime,
                   strokeWidth: 2,
                   strokeColor: Colors.black,
                 );
@@ -415,8 +415,8 @@ class ExerciseSummaryTab extends StatelessWidget {
               show: true,
               gradient: LinearGradient(
                 colors: [
-                  AppColors.electricCyan.withOpacity(0.2),
-                  AppColors.electricCyan.withOpacity(0.0),
+                  AppColors.cyberLime.withOpacity(0.2),
+                  AppColors.cyberLime.withOpacity(0.0),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -439,7 +439,7 @@ class ExerciseSummaryTab extends StatelessWidget {
                 return LineTooltipItem(
                   '${displayValue.toStringAsFixed(1)} ${isWeight ? 'kg' : 'reps'}',
                   TextStyle(
-                    color: isWeight ? AppColors.cyberLime : AppColors.electricCyan,
+                    color: isWeight ? AppColors.cyberLime : AppColors.cyberLime,
                     fontWeight: FontWeight.w700,
                     fontSize: 12,
                   ),
@@ -484,7 +484,7 @@ class ExerciseSummaryTab extends StatelessWidget {
         gradient: LinearGradient(
           colors: [
             AppColors.cyberLime.withOpacity(0.1),
-            AppColors.electricCyan.withOpacity(0.1),
+            AppColors.cyberLime.withOpacity(0.1),
           ],
         ),
         borderRadius: BorderRadius.circular(16),
@@ -546,7 +546,7 @@ class ExerciseSummaryTab extends StatelessWidget {
           style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w700,
-            color: AppColors.electricCyan,
+            color: AppColors.cyberLime,
           ),
         ),
       ],

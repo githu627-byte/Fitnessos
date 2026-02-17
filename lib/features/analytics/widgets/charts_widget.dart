@@ -139,7 +139,7 @@ class _BodyRadarChartWidgetState extends State<BodyRadarChartWidget>
       color = AppColors.cyberLime;
       label = 'Excellent';
     } else if (balanceScore >= 60) {
-      color = AppColors.electricCyan;
+      color = AppColors.cyberLime;
       label = 'Good';
     } else if (balanceScore >= 40) {
       color = AppColors.neonOrange;
@@ -488,7 +488,7 @@ class _VolumeChartWidgetState extends State<VolumeChartWidget>
                     _buildStatChip(
                       'Average',
                       _formatVolume(avgVolume),
-                      AppColors.electricCyan,
+                      AppColors.cyberLime,
                     ),
                   ],
                 ),

@@ -61,10 +61,10 @@ class _PowerGaugeState extends State<PowerGauge> with SingleTickerProviderStateM
       return AppColors.cyberLime;
     } else if (widget.fillPercent >= 0.9) {
       // 90-99% - Transition from cyan to lime
-      return Color.lerp(AppColors.electricCyan, AppColors.cyberLime, (widget.fillPercent - 0.9) * 10)!;
+      return Color.lerp(AppColors.cyberLime, AppColors.cyberLime, (widget.fillPercent - 0.9) * 10)!;
     } else {
       // <90% - CYAN (still charging)
-      return AppColors.electricCyan;
+      return AppColors.cyberLime;
     }
   }
 

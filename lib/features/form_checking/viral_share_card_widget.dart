@@ -125,7 +125,7 @@ class ViralShareCardPreview extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [AppColors.cyberLime, Color(0xFF00F0FF)],
+          colors: [AppColors.cyberLime, Color(0xFFCCFF00)],
         ),
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
@@ -306,7 +306,7 @@ class ViralShareCardPreview extends StatelessWidget {
   Widget _buildBranding() {
     return ShaderMask(
       shaderCallback: (bounds) => const LinearGradient(
-        colors: [AppColors.cyberLime, Color(0xFF00F0FF)],
+        colors: [AppColors.cyberLime, Color(0xFFCCFF00)],
       ).createShader(bounds),
       child: const Text(
         'SKELETON',
@@ -429,7 +429,7 @@ class FullScreenShareCard extends StatelessWidget {
   Color get _scoreColor {
     if (score >= 95) return const Color(0xFFCCFF00);
     if (score >= 90) return const Color(0xFFFF9500);
-    if (score >= 85) return const Color(0xFF00F0FF);
+    if (score >= 85) return const Color(0xFFCCFF00);
     return const Color(0xFF888888);
   }
   
@@ -495,7 +495,7 @@ class FullScreenShareCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                        colors: [Color(0xFFCCFF00), Color(0xFF00F0FF)],
+                        colors: [Color(0xFFCCFF00), Color(0xFFCCFF00)],
                       ),
                       borderRadius: BorderRadius.circular(24),
                       boxShadow: [
@@ -676,7 +676,7 @@ class FullScreenShareCard extends StatelessWidget {
                 bottom: 28,
                 child: ShaderMask(
                   shaderCallback: (bounds) => const LinearGradient(
-                    colors: [Color(0xFFCCFF00), Color(0xFF00F0FF)],
+                    colors: [Color(0xFFCCFF00), Color(0xFFCCFF00)],
                   ).createShader(bounds),
                   child: const Text(
                     'SKELETON',

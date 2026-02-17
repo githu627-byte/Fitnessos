@@ -133,7 +133,7 @@ class _ExerciseExplanationScreenState extends State<ExerciseExplanationScreen>
         color: AppColors.white5,
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: AppColors.electricCyan.withOpacity(0.3),
+          color: AppColors.cyberLime.withOpacity(0.3),
           width: 1,
         ),
       ),
@@ -167,7 +167,7 @@ class _ExerciseExplanationScreenState extends State<ExerciseExplanationScreen>
       children: [
         _buildBadge(
           _getEquipmentLabel(widget.exercise.equipment),
-          AppColors.electricCyan,
+          AppColors.cyberLime,
         ),
         const SizedBox(width: 12),
         _buildBadge(

@@ -84,7 +84,7 @@ class TrainingModeSelectionScreen extends StatelessWidget {
                   subtitle: 'Auto Tracking',
                   description: 'Camera counts your reps automatically\nVoice coaching • No logging needed',
                   gradient: const LinearGradient(
-                    colors: [AppColors.electricCyan, AppColors.cyberLime],
+                    colors: [AppColors.cyberLime, AppColors.cyberLime],
                   ),
                   onTap: () {
                     HapticFeedback.mediumImpact();
@@ -122,7 +122,7 @@ class TrainingModeSelectionScreen extends StatelessWidget {
                 subtitle: 'Detailed Manual Logger',
                 description: 'See all exercises at once\nTrack progress • Analytics & PRs',
                 gradient: const LinearGradient(
-                  colors: [Color(0xFF9333EA), Color(0xFFEC4899)],
+                  colors: [Color(0xFFCCFF00), Color(0xFFCCFF00)],
                 ),
                 onTap: () {
                   HapticFeedback.mediumImpact();

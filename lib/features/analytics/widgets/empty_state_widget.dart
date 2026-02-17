@@ -27,7 +27,7 @@ class AnalyticsEmptyState extends StatelessWidget {
     required this.subtitle,
     this.buttonText,
     this.onButtonTap,
-    this.color = AppColors.electricCyan,
+    this.color = AppColors.cyberLime,
   });
 
   @override
@@ -421,7 +421,7 @@ class _PowerLevelShareCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _buildStat('${data.currentStreak}', 'STREAK', AppColors.neonOrange),
-              _buildStat('${data.totalWorkouts}', 'WORKOUTS', AppColors.electricCyan),
+              _buildStat('${data.totalWorkouts}', 'WORKOUTS', AppColors.cyberLime),
               _buildStat(_formatNumber(data.totalReps), 'REPS', AppColors.cyberLime),
             ],
           ),
@@ -619,7 +619,7 @@ class _WeeklySummaryShareCard extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: AppColors.electricCyan.withOpacity(0.5),
+          color: AppColors.cyberLime.withOpacity(0.5),
           width: 3,
         ),
       ),
@@ -666,7 +666,7 @@ class _WeeklySummaryShareCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildStatBox('${data.totalWorkouts}', 'Workouts', AppColors.electricCyan),
+              _buildStatBox('${data.totalWorkouts}', 'Workouts', AppColors.cyberLime),
               _buildStatBox(_formatNumber(data.totalReps), 'Reps', AppColors.cyberLime),
             ],
           ),

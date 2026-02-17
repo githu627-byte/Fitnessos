@@ -72,10 +72,10 @@ class _BioRingsState extends State<BioRings>
                 style: const TextStyle(
                   fontSize: 72,
                   fontWeight: FontWeight.w900,
-                  color: AppColors.electricCyan,
+                  color: AppColors.cyberLime,
                   shadows: [
                     Shadow(
-                      color: AppColors.electricCyan,
+                      color: AppColors.cyberLime,
                       blurRadius: 30,
                     ),
                   ],
@@ -136,7 +136,7 @@ class BioRingsPainter extends CustomPainter {
       center,
       140,
       16,
-      AppColors.electricCyan,
+      AppColors.cyberLime,
       outerProgress,
       AppColors.white5,
     );

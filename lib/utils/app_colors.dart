@@ -24,7 +24,7 @@ class AppColors {
 
   static const emeraldGradient = [
     Color(0xFF064E3B), // emerald-950
-    Color(0xFF134E4A), // teal-950
+    Color(0xFF0D0D0D), // dark grey
     Color(0xFF082F49), // sky-950
   ];
 
@@ -46,7 +46,7 @@ class AppColors {
 
   static const cyberGradient = [
     Color(0xFF000000), // black
-    Color(0xFF001a1a), // dark teal
+    Color(0xFF0D0D0D), // dark grey
     Color(0xFF000000), // black
   ];
 

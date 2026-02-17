@@ -201,7 +201,7 @@ class _WorkoutReviewScreenState extends State<WorkoutReviewScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           children: [
-            _buildPresetChip('strength', '💪', 'STRENGTH', '3 reps · 4 sets · 4min'),
+            _buildPresetChip('strength', '', 'STRENGTH', '3 reps · 4 sets · 4min'),
             const SizedBox(width: 8),
             _buildPresetChip('hypertrophy', '🔥', 'HYPERTROPHY', '10 reps · 4 sets · 2min'),
             const SizedBox(width: 8),
@@ -276,7 +276,7 @@ class _WorkoutReviewScreenState extends State<WorkoutReviewScreen> {
                       Text('${index + 1}. ${exercise.name}', style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w700), maxLines: 1, overflow: TextOverflow.ellipsis),
                       const SizedBox(height: 2),
                       Row(children: [
-                        _buildSmallBadge(exercise.equipment, AppColors.electricCyan),
+                        _buildSmallBadge(exercise.equipment, AppColors.cyberLime),
                         const SizedBox(width: 6),
                         _buildSmallBadge(exercise.difficulty, AppColors.white40),
                       ]),
@@ -301,7 +301,7 @@ class _WorkoutReviewScreenState extends State<WorkoutReviewScreen> {
     return Row(children: [
       Expanded(child: _buildEditableField(label: 'SETS', value: settings.sets, color: AppColors.cyberLime, onChanged: (val) => setState(() { _settings[exerciseId] = settings.copyWith(sets: val.clamp(1, 20)); }))),
       const SizedBox(width: 10),
-      Expanded(child: _buildEditableField(label: 'REPS', value: settings.reps, color: AppColors.electricCyan, onChanged: (val) => setState(() { _settings[exerciseId] = settings.copyWith(reps: val.clamp(1, 100)); }))),
+      Expanded(child: _buildEditableField(label: 'REPS', value: settings.reps, color: AppColors.cyberLime, onChanged: (val) => setState(() { _settings[exerciseId] = settings.copyWith(reps: val.clamp(1, 100)); }))),
       const SizedBox(width: 10),
       Expanded(child: _buildEditableField(label: 'REST', value: settings.restSeconds, suffix: 's', color: AppColors.white50, step: 15, onChanged: (val) => setState(() { _settings[exerciseId] = settings.copyWith(restSeconds: val.clamp(0, 600)); }))),
     ]);

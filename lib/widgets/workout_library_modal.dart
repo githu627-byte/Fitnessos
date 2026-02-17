@@ -105,13 +105,13 @@ class _WorkoutLibraryModalState extends State<WorkoutLibraryModal> {
               decoration: BoxDecoration(
                 gradient: isSelected
                     ? const LinearGradient(
-                        colors: [AppColors.electricCyan, AppColors.cyberLime],
+                        colors: [AppColors.cyberLime, AppColors.cyberLime],
                       )
                     : null,
                 color: isSelected ? null : AppColors.white5,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: isSelected ? AppColors.electricCyan : AppColors.white10,
+                  color: isSelected ? AppColors.cyberLime : AppColors.white10,
                 ),
               ),
               child: Text(
@@ -259,7 +259,7 @@ class _WorkoutLibraryModalState extends State<WorkoutLibraryModal> {
               height: 50,
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [AppColors.electricCyan, AppColors.cyberLime],
+                  colors: [AppColors.cyberLime, AppColors.cyberLime],
                 ),
                 borderRadius: BorderRadius.circular(12),
               ),

@@ -162,7 +162,7 @@ class _WorkoutEditorScreenState extends ConsumerState<WorkoutEditorScreen> {
         children: [
           const Icon(
             Icons.repeat,
-            color: AppColors.electricCyan,
+            color: AppColors.cyberLime,
             size: 24,
           ),
           const SizedBox(width: 12),

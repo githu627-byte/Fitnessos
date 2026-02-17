@@ -172,7 +172,7 @@ class _WorkoutSummaryScreenState extends State<WorkoutSummaryScreen>
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [AppColors.electricCyan, AppColors.cyberLime],
+                          colors: [AppColors.cyberLime, AppColors.cyberLime],
                         ),
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
@@ -307,7 +307,7 @@ class _WorkoutSummaryScreenState extends State<WorkoutSummaryScreen>
               end: Alignment.bottomRight,
               colors: [
                 AppColors.cyberLime.withOpacity(0.1),
-                AppColors.electricCyan.withOpacity(0.1),
+                AppColors.cyberLime.withOpacity(0.1),
               ],
             ),
             borderRadius: BorderRadius.circular(24),

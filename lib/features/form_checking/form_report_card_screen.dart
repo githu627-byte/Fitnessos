@@ -39,7 +39,7 @@ class _FormReportCardScreenState extends State<FormReportCardScreen> with Single
   @override
   void dispose() { _animController.dispose(); super.dispose(); }
 
-  Color get _scoreColor => widget.result.formScore >= 90 ? const Color(0xFF00F0FF) : widget.result.formScore >= 70 ? AppColors.cyberLime : widget.result.formScore >= 50 ? const Color(0xFFFFB800) : const Color(0xFFFF003C);
+  Color get _scoreColor => widget.result.formScore >= 90 ? const Color(0xFFCCFF00) : widget.result.formScore >= 70 ? AppColors.cyberLime : widget.result.formScore >= 50 ? const Color(0xFFFFB800) : const Color(0xFFFF003C);
   String get _grade => widget.result.formScore >= 95 ? 'S' : widget.result.formScore >= 90 ? 'A+' : widget.result.formScore >= 85 ? 'A' : widget.result.formScore >= 80 ? 'B+' : widget.result.formScore >= 70 ? 'B' : widget.result.formScore >= 60 ? 'C' : widget.result.formScore >= 50 ? 'D' : 'F';
   String get _verdict => widget.result.formScore >= 90 ? 'PERFECT FORM' : widget.result.formScore >= 70 ? 'GOOD FORM' : widget.result.formScore >= 50 ? 'NEEDS WORK' : 'FIX YOUR FORM';
 
@@ -141,7 +141,7 @@ class _FormReportCardScreenState extends State<FormReportCardScreen> with Single
                                   Container(
                                     padding: const EdgeInsets.all(16),
                                     decoration: BoxDecoration(border: Border(top: BorderSide(color: Colors.white.withOpacity(0.1)))),
-                                    child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.auto_awesome, color: _scoreColor.withOpacity(0.6), size: 16), const SizedBox(width: 8), Text('ANALYZED BY ', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.white.withOpacity(0.4), letterSpacing: 1)), ShaderMask(shaderCallback: (bounds) => LinearGradient(colors: [AppColors.cyberLime, const Color(0xFF00F0FF)]).createShader(bounds), child: const Text('FITNESSOS', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w900, color: Colors.white, letterSpacing: 2)))]),
+                                    child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.auto_awesome, color: _scoreColor.withOpacity(0.6), size: 16), const SizedBox(width: 8), Text('ANALYZED BY ', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.white.withOpacity(0.4), letterSpacing: 1)), ShaderMask(shaderCallback: (bounds) => LinearGradient(colors: [AppColors.cyberLime, const Color(0xFFCCFF00)]).createShader(bounds), child: const Text('FITNESSOS', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w900, color: Colors.white, letterSpacing: 2)))]),
                                   ),
                                 ],
                               ),

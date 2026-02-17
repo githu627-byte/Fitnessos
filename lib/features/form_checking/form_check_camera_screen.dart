@@ -177,7 +177,7 @@ class _FormCheckCameraScreenState extends State<FormCheckCameraScreen> with Tick
   @override
   Widget build(BuildContext context) {
     final score = _currentResult?.formScore ?? 100;
-    final color = score >= 90 ? const Color(0xFF00F0FF) : score >= 70 ? AppColors.cyberLime : score >= 50 ? const Color(0xFFFFB800) : const Color(0xFFFF003C);
+    final color = score >= 90 ? const Color(0xFFCCFF00) : score >= 70 ? AppColors.cyberLime : score >= 50 ? const Color(0xFFFFB800) : const Color(0xFFFF003C);
     return Scaffold(
       backgroundColor: const Color(0xFF0A0E1A),
       body: Stack(
@@ -242,7 +242,7 @@ class _FormCheckCameraScreenState extends State<FormCheckCameraScreen> with Tick
               color: Colors.black.withOpacity(0.7),
               child: Center(
                 child: TweenAnimationBuilder<double>(key: ValueKey(_countdownValue), tween: Tween(begin: 2.0, end: 1.0), duration: const Duration(milliseconds: 400), curve: Curves.elasticOut, builder: (c, scale, ch) {
-                  final col = _countdownValue == 3 ? const Color(0xFF00F0FF) : _countdownValue == 2 ? const Color(0xFFFFB800) : AppColors.cyberLime;
+                  final col = _countdownValue == 3 ? const Color(0xFFCCFF00) : _countdownValue == 2 ? const Color(0xFFFFB800) : AppColors.cyberLime;
                   return Transform.scale(scale: scale, child: Column(mainAxisSize: MainAxisSize.min, children: [Container(width: 150, height: 150, decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: col, width: 4), boxShadow: [BoxShadow(color: col.withOpacity(0.5), blurRadius: 30)]), child: Center(child: Text('$_countdownValue', style: TextStyle(fontSize: 80, fontWeight: FontWeight.w900, color: col)))), const SizedBox(height: 30), Text('GET READY...', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: Colors.white.withOpacity(0.7), letterSpacing: 3))]));
                 }),
               ),

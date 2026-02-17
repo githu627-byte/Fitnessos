@@ -10,7 +10,7 @@ class AppTheme {
       primaryColor: AppColors.cyberLime,
       colorScheme: const ColorScheme.dark(
         primary: AppColors.cyberLime,
-        secondary: AppColors.electricCyan,
+        secondary: AppColors.cyberLime,
         surface: AppColors.slate900,
         error: AppColors.neonCrimson,
       ),

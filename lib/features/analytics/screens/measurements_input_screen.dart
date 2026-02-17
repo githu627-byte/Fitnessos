@@ -483,12 +483,12 @@ class _MeasurementsInputScreenState extends State<MeasurementsInputScreen>
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            AppColors.electricCyan.withOpacity(0.1),
+            AppColors.cyberLime.withOpacity(0.1),
             AppColors.neonPurple.withOpacity(0.05),
           ],
         ),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.electricCyan.withOpacity(0.2)),
+        border: Border.all(color: AppColors.cyberLime.withOpacity(0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -501,12 +501,12 @@ class _MeasurementsInputScreenState extends State<MeasurementsInputScreen>
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: AppColors.electricCyan.withOpacity(0.2),
+                      color: AppColors.cyberLime.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: const Icon(
                       Icons.photo_camera,
-                      color: AppColors.electricCyan,
+                      color: AppColors.cyberLime,
                       size: 20,
                     ),
                   ),
@@ -532,7 +532,7 @@ class _MeasurementsInputScreenState extends State<MeasurementsInputScreen>
                         vertical: 6,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColors.electricCyan.withOpacity(0.2),
+                        color: AppColors.cyberLime.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Row(
@@ -540,7 +540,7 @@ class _MeasurementsInputScreenState extends State<MeasurementsInputScreen>
                           Icon(
                             Icons.camera_alt,
                             size: 16,
-                            color: AppColors.electricCyan,
+                            color: AppColors.cyberLime,
                           ),
                           const SizedBox(width: 6),
                           Text(
@@ -548,7 +548,7 @@ class _MeasurementsInputScreenState extends State<MeasurementsInputScreen>
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w700,
-                              color: AppColors.electricCyan,
+                              color: AppColors.cyberLime,
                             ),
                           ),
                         ],
@@ -639,7 +639,7 @@ class _MeasurementsInputScreenState extends State<MeasurementsInputScreen>
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: AppColors.electricCyan,
+                        color: AppColors.cyberLime,
                         width: 2,
                       ),
                     ),

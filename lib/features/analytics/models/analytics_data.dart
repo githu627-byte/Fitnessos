@@ -163,7 +163,7 @@ class AnalyticsData {
   static int getPowerLevelColor(int powerLevel) {
     if (powerLevel >= 800) return 0xFFFFD700; // Gold
     if (powerLevel >= 600) return 0xFFBF40FF; // Purple
-    if (powerLevel >= 400) return 0xFF00F0FF; // Cyan
+    if (powerLevel >= 400) return 0xFFCCFF00; // Cyan
     if (powerLevel >= 200) return 0xFFCCFF00; // Lime
     if (powerLevel >= 100) return 0xFFFF8C00; // Orange
     return 0xFF64748B; // Gray

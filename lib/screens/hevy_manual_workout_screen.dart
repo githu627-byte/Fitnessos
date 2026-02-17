@@ -319,7 +319,7 @@ class _HevyManualWorkoutScreenState extends ConsumerState<HevyManualWorkoutScree
         gradient: LinearGradient(
           colors: [
             AppColors.cyberLime.withOpacity(0.15),
-            AppColors.electricCyan.withOpacity(0.15),
+            AppColors.cyberLime.withOpacity(0.15),
           ],
         ),
         border: Border(
@@ -356,7 +356,7 @@ class _HevyManualWorkoutScreenState extends ConsumerState<HevyManualWorkoutScree
               icon: Icons.check_circle_outline,
               label: 'SETS',
               value: '${_getTotalCompletedSets()}/${_getTotalSets()}',
-              color: AppColors.electricCyan,
+              color: AppColors.cyberLime,
             ),
           ),
           
@@ -582,7 +582,7 @@ class _HevyManualWorkoutScreenState extends ConsumerState<HevyManualWorkoutScree
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(
-                            colors: [AppColors.cyberLime, AppColors.electricCyan],
+                            colors: [AppColors.cyberLime, AppColors.cyberLime],
                           ),
                           borderRadius: BorderRadius.circular(12),
                           boxShadow: [

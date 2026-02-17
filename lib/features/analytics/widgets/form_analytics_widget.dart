@@ -185,7 +185,7 @@ class _RepQualityDonutWidgetState extends State<RepQualityDonutWidget>
                           _buildLegendItem(
                             'Good',
                             widget.goodReps,
-                            AppColors.electricCyan,
+                            AppColors.cyberLime,
                             _touchedIndex == 1,
                           ),
                           const SizedBox(height: 16),
@@ -223,7 +223,7 @@ class _RepQualityDonutWidgetState extends State<RepQualityDonutWidget>
         badgePositionPercentageOffset: 1.3,
       ),
       PieChartSectionData(
-        color: AppColors.electricCyan,
+        color: AppColors.cyberLime,
         value: widget.goodReps.toDouble() * progress,
         title: '',
         radius: isTouched1 ? 35 : 28,
@@ -634,7 +634,7 @@ class _FormIQCardWidgetState extends State<FormIQCardWidget>
     } else if (formIQ >= 60) {
       return _FormIQTier(
         name: 'ADVANCED',
-        color: AppColors.electricCyan,
+        color: AppColors.cyberLime,
         tip: 'Good form! Focus on consistency.',
       );
     } else if (formIQ >= 40) {
@@ -891,7 +891,7 @@ class _FormScoreTimelineWidgetState extends State<FormScoreTimelineWidget>
                               curveSmoothness: 0.3,
                               gradient: LinearGradient(
                                 colors: [
-                                  AppColors.electricCyan,
+                                  AppColors.cyberLime,
                                   AppColors.cyberLime,
                                 ],
                               ),

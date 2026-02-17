@@ -109,7 +109,7 @@ class _FormCheckAchievementsScreenState extends State<FormCheckAchievementsScree
         gradient: LinearGradient(
           colors: [
             AppColors.cyberLime.withOpacity(0.2),
-            AppColors.electricCyan.withOpacity(0.1),
+            AppColors.cyberLime.withOpacity(0.1),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -195,7 +195,7 @@ class _FormCheckAchievementsScreenState extends State<FormCheckAchievementsScree
           const SizedBox(width: 8),
           _buildRarityChip('Common', const Color(0xFF888888), false),
           const SizedBox(width: 8),
-          _buildRarityChip('Rare', const Color(0xFF00F0FF), false),
+          _buildRarityChip('Rare', const Color(0xFFCCFF00), false),
           const SizedBox(width: 8),
           _buildRarityChip('Epic', const Color(0xFFAA66FF), false),
           const SizedBox(width: 8),

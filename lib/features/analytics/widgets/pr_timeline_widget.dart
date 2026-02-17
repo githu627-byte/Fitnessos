@@ -102,7 +102,7 @@ class _PRTimelineWidgetState extends State<PRTimelineWidget>
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
-                            color: AppColors.electricCyan,
+                            color: AppColors.cyberLime,
                           ),
                         ),
                       ),
@@ -386,12 +386,12 @@ class _TopExercisesWidgetState extends State<TopExercisesWidget>
                     Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: AppColors.electricCyan.withOpacity(0.2),
+                        color: AppColors.cyberLime.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Icon(
                         Icons.fitness_center,
-                        color: AppColors.electricCyan,
+                        color: AppColors.cyberLime,
                         size: 20,
                       ),
                     ),
@@ -437,7 +437,7 @@ class _TopExercisesWidgetState extends State<TopExercisesWidget>
     // Gradient colors for ranking
     final colors = [
       [AppColors.cyberLime, AppColors.cyberLime.withOpacity(0.7)],
-      [AppColors.electricCyan, AppColors.electricCyan.withOpacity(0.7)],
+      [AppColors.cyberLime, AppColors.cyberLime.withOpacity(0.7)],
       [AppColors.neonOrange, AppColors.neonOrange.withOpacity(0.7)],
       [AppColors.neonPurple, AppColors.neonPurple.withOpacity(0.7)],
       [Colors.white.withOpacity(0.5), Colors.white.withOpacity(0.3)],
@@ -790,7 +790,7 @@ class _ProgressionChartWidgetState extends State<ProgressionChartWidget>
               _buildProgressStat(
                 'Sessions',
                 '${data.length}',
-                AppColors.electricCyan,
+                AppColors.cyberLime,
               ),
               Container(
                 width: 1,

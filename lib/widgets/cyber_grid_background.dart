@@ -68,7 +68,7 @@ class CyberGridPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = AppColors.electricCyan.withOpacity(0.03)
+      ..color = AppColors.cyberLime.withOpacity(0.03)
       ..strokeWidth = 1
       ..style = PaintingStyle.stroke;
 
@@ -145,7 +145,7 @@ class _ParticleState extends State<_Particle>
             width: 2,
             height: 2,
             decoration: BoxDecoration(
-              color: AppColors.electricCyan.withOpacity(0.3),
+              color: AppColors.cyberLime.withOpacity(0.3),
               shape: BoxShape.circle,
             ),
           ),
