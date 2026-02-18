@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 import '../utils/app_colors.dart';
 import '../services/exercise_video_service.dart';
-import '../data/exercise_id_overrides_fixed.dart';
 
 /// =============================================================================
-/// EXERCISE LIST THUMBNAIL - STATIC IMAGE FOR LISTS
+/// EXERCISE LIST THUMBNAIL - STATIC FIRST FRAME FROM VIDEO
 /// =============================================================================
-/// This widget displays a static placeholder for exercises in lists.
-/// It does NOT load videos - that's the key to fixing the performance issues.
-/// 
-/// Real apps like Hevy/Strong use static thumbnails in lists, only showing
-/// video when you tap into the exercise detail screen.
+/// Loads the exercise video, grabs the first frame, displays it as a static
+/// image, then keeps the controller paused. No ongoing video playback.
 /// =============================================================================
 
-class ExerciseListThumbnail extends StatelessWidget {
+class ExerciseListThumbnail extends StatefulWidget {
   final String exerciseId;
   final double size;
   final String? exerciseName;
@@ -36,186 +33,131 @@ class ExerciseListThumbnail extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<ExerciseListThumbnail> createState() => _ExerciseListThumbnailState();
+}
+
+class _ExerciseListThumbnailState extends State<ExerciseListThumbnail> {
+  VideoPlayerController? _controller;
+  bool _isReady = false;
+  bool _hasError = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadFirstFrame();
+  }
+
+  @override
+  void didUpdateWidget(ExerciseListThumbnail oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.exerciseId != widget.exerciseId) {
+      _disposeController();
+      _loadFirstFrame();
+    }
+  }
+
+  Future<void> _loadFirstFrame() async {
+    try {
+      final videoPath = ExerciseVideoService.getVideoPath(
+        widget.exerciseId,
+        quality: VideoQuality.high, // Only 720p videos are available
+      );
+
+      if (videoPath == null) {
+        if (mounted) setState(() => _hasError = true);
+        return;
+      }
+
+      _controller = VideoPlayerController.asset(videoPath);
+      await _controller!.initialize();
+      // Seek to frame 0 and pause — we just want the first frame
+      await _controller!.seekTo(Duration.zero);
+      await _controller!.pause();
+      _controller!.setVolume(0);
+
+      if (mounted) {
+        setState(() => _isReady = true);
+      }
+    } catch (e) {
+      debugPrint('Thumbnail load error for ${widget.exerciseId}: $e');
+      if (mounted) setState(() => _hasError = true);
+    }
+  }
+
+  void _disposeController() {
+    _controller?.dispose();
+    _controller = null;
+    _isReady = false;
+    _hasError = false;
+  }
+
+  @override
+  void dispose() {
+    _disposeController();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // Check if we have a video for this exercise (for visual indicator)
-    final hasVideo = ExerciseVideoService.getVideoPath(exerciseId) != null;
-    
-    // Get muscle group color
-    final groupColor = _getMuscleGroupColor(muscleGroup);
-    
     return GestureDetector(
-      onTap: onTap,
+      onTap: widget.onTap,
       child: Container(
-        width: size,
-        height: size,
+        width: widget.size,
+        height: widget.size,
         decoration: BoxDecoration(
-          // Gradient background based on muscle group
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              groupColor.withOpacity(0.3),
-              groupColor.withOpacity(0.1),
-            ],
-          ),
-          borderRadius: BorderRadius.circular(size * 0.2),
-          border: showBorder
+          color: AppColors.white10,
+          borderRadius: BorderRadius.circular(widget.size * 0.2),
+          border: widget.showBorder
               ? Border.all(
-                  color: borderColor ?? groupColor.withOpacity(0.5),
-                  width: 2,
+                  color: widget.borderColor ??
+                      AppColors.cyberLime.withOpacity(0.3),
+                  width: 1,
                 )
               : null,
         ),
-        child: Stack(
-          children: [
-            // Main icon
-            Center(
-              child: Icon(
-                _getExerciseIcon(),
-                color: groupColor,
-                size: size * 0.45,
-              ),
-            ),
-            
-            // Video available indicator (small play icon)
-            if (hasVideo)
-              Positioned(
-                right: 4,
-                bottom: 4,
-                child: Container(
-                  padding: const EdgeInsets.all(2),
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.7),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Icon(
-                    Icons.play_arrow,
-                    color: AppColors.cyberLime,
-                    size: size * 0.18,
-                  ),
-                ),
-              ),
-            
-            // Equipment indicator
-            if (equipment != null)
-              Positioned(
-                left: 4,
-                top: 4,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.7),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Icon(
-                    _getEquipmentIcon(),
-                    color: AppColors.white70,
-                    size: size * 0.15,
-                  ),
-                ),
-              ),
-          ],
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(widget.size * 0.2),
+          child: _buildContent(),
         ),
       ),
     );
   }
 
-  IconData _getExerciseIcon() {
-    final id = exerciseId.toLowerCase();
-    final name = (exerciseName ?? '').toLowerCase();
-    
-    // CHEST
-    if (_matchesAny(id, name, ['bench', 'press', 'fly', 'chest', 'pec', 'pushup', 'push_up', 'dip'])) {
-      return Icons.fitness_center;
+  Widget _buildContent() {
+    // Show first frame of video
+    if (_isReady && _controller != null && _controller!.value.isInitialized) {
+      return FittedBox(
+        fit: BoxFit.cover,
+        child: SizedBox(
+          width: _controller!.value.size.width,
+          height: _controller!.value.size.height,
+          child: VideoPlayer(_controller!),
+        ),
+      );
     }
-    
-    // BACK
-    if (_matchesAny(id, name, ['row', 'pull', 'lat', 'deadlift', 'back', 'shrug'])) {
-      return Icons.straighten;
-    }
-    
-    // SHOULDERS
-    if (_matchesAny(id, name, ['shoulder', 'delt', 'raise', 'overhead', 'arnold', 'military'])) {
-      return Icons.accessibility_new;
-    }
-    
-    // LEGS
-    if (_matchesAny(id, name, ['squat', 'lunge', 'leg', 'calf', 'ham', 'quad', 'glute', 'hip'])) {
-      return Icons.directions_walk;
-    }
-    
-    // ARMS
-    if (_matchesAny(id, name, ['curl', 'bicep', 'tricep', 'arm', 'extension'])) {
-      return Icons.sports_gymnastics;
-    }
-    
-    // CORE
-    if (_matchesAny(id, name, ['crunch', 'sit', 'plank', 'core', 'ab', 'twist', 'leg_raise'])) {
-      return Icons.circle_outlined;
-    }
-    
-    // CARDIO
-    if (_matchesAny(id, name, ['burpee', 'jump', 'run', 'cardio', 'hiit', 'mountain', 'jack'])) {
-      return Icons.directions_run;
-    }
-    
-    // Default
-    return Icons.fitness_center;
-  }
 
-  IconData _getEquipmentIcon() {
-    final eq = (equipment ?? '').toLowerCase();
-    
-    if (eq.contains('barbell') || eq.contains('bar')) {
-      return Icons.fitness_center;
+    // Loading state
+    if (!_hasError) {
+      return Center(
+        child: SizedBox(
+          width: 16,
+          height: 16,
+          child: CircularProgressIndicator(
+            strokeWidth: 2,
+            color: AppColors.cyberLime,
+          ),
+        ),
+      );
     }
-    if (eq.contains('dumbbell') || eq.contains('db')) {
-      return Icons.fitness_center;
-    }
-    if (eq.contains('cable') || eq.contains('machine')) {
-      return Icons.settings_input_component;
-    }
-    if (eq.contains('bodyweight') || eq.contains('body') || eq.contains('none')) {
-      return Icons.accessibility_new;
-    }
-    if (eq.contains('band') || eq.contains('resistance')) {
-      return Icons.waves;
-    }
-    if (eq.contains('kettlebell') || eq.contains('kb')) {
-      return Icons.sports_handball;
-    }
-    
-    return Icons.fitness_center;
-  }
 
-  Color _getMuscleGroupColor(String? group) {
-    switch (group?.toLowerCase()) {
-      case 'chest':
-        return AppColors.neonCrimson;
-      case 'back':
-        return AppColors.cyberLime;
-      case 'shoulders':
-        return AppColors.neonOrange;
-      case 'legs':
-        return AppColors.neonPurple;
-      case 'arms':
-        return AppColors.cyberLime;
-      case 'core':
-        return AppColors.amber400;
-      case 'cardio':
-        return AppColors.rose400;
-      default:
-        return AppColors.cyberLime;
-    }
-  }
-
-  bool _matchesAny(String id, String name, List<String> patterns) {
-    for (final pattern in patterns) {
-      if (id.contains(pattern) || name.contains(pattern)) {
-        return true;
-      }
-    }
-    return false;
+    // Fallback — exercise icon (for exercises with no video)
+    return Center(
+      child: Icon(
+        Icons.fitness_center,
+        color: AppColors.white40,
+        size: widget.size * 0.4,
+      ),
+    );
   }
 }
 
