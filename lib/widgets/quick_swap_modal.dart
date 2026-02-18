@@ -43,7 +43,7 @@ class _QuickSwapModalState extends State<QuickSwapModal> {
       //const WorkoutExercise(id: 'pushups', name: 'Push-ups', sets: 3, reps: 15),  // DUPLICATE - use pushup
       //const WorkoutExercise(id: 'wide_pushups', name: 'Wide Push-ups', sets: 3, reps: 15),  // DUPLICATE - use wide_pushup
       //const WorkoutExercise(id: 'diamond_pushups', name: 'Diamond Push-ups', sets: 3, reps: 12),  // DUPLICATE - use diamond_pushup
-      const WorkoutExercise(id: 'chest_flyes', name: 'Dumbbell Flyes', sets: 3, reps: 12),
+      const WorkoutExercise(id: 'dumbbell_fly', name: 'Dumbbell Flyes', sets: 3, reps: 12),
     ],
     'Back': [
       const WorkoutExercise(id: 'deadlift', name: 'Deadlift', sets: 3, reps: 8),
@@ -53,7 +53,7 @@ class _QuickSwapModalState extends State<QuickSwapModal> {
       //const WorkoutExercise(id: 'lat_pulldowns', name: 'Lat Pulldowns', sets: 3, reps: 12),  // DUPLICATE - use lat_pulldown
       //const WorkoutExercise(id: 'cable_rows', name: 'Cable Rows', sets: 3, reps: 12),  // DUPLICATE - use cable_row
       const WorkoutExercise(id: 'dumbbell_row', name: 'Dumbbell Row', sets: 3, reps: 10),
-      const WorkoutExercise(id: 't_bar_rows', name: 'T-Bar Rows', sets: 3, reps: 10),
+      //const WorkoutExercise(id: 't_bar_rows', name: 'T-Bar Rows', sets: 3, reps: 10),  // DUPLICATE - use tbar_row
       //const WorkoutExercise(id: 'face_pulls', name: 'Face Pulls', sets: 3, reps: 15),  // DUPLICATE - use face_pull
       //const WorkoutExercise(id: 'reverse_flys', name: 'Reverse Flyes', sets: 3, reps: 12),  // DUPLICATE - use reverse_fly
     ],
@@ -78,7 +78,7 @@ class _QuickSwapModalState extends State<QuickSwapModal> {
       //const WorkoutExercise(id: 'tricep_pushdowns', name: 'Tricep Pushdowns', sets: 3, reps: 15),  // DUPLICATE - use tricep_pushdown
       const WorkoutExercise(id: 'overhead_tricep_extension', name: 'Overhead Tricep Extension', sets: 3, reps: 12),
       //const WorkoutExercise(id: 'skull_crushers', name: 'Skull Crushers', sets: 3, reps: 12),  // DUPLICATE - use skull_crusher
-      const WorkoutExercise(id: 'close_grip_bench', name: 'Close Grip Bench Press', sets: 3, reps: 10),
+      const WorkoutExercise(id: 'close_grip_bench_press', name: 'Close Grip Bench Press', sets: 3, reps: 10),
       //const WorkoutExercise(id: 'concentration_curls', name: 'Concentration Curls', sets: 3, reps: 12),  // DUPLICATE - use concentration_curl
     ],
     'Legs': [
@@ -95,15 +95,15 @@ class _QuickSwapModalState extends State<QuickSwapModal> {
     ],
     'Core': [
       //const WorkoutExercise(id: 'planks', name: 'Planks', sets: 3, reps: 60, timeSeconds: 60),  // DUPLICATE - use plank
-      const WorkoutExercise(id: 'crunches', name: 'Crunches', sets: 3, reps: 20),
+      const WorkoutExercise(id: 'crunch', name: 'Crunches', sets: 3, reps: 20),
       //const WorkoutExercise(id: 'russian_twists', name: 'Russian Twists', sets: 3, reps: 30),  // DUPLICATE - use russian_twist
       //const WorkoutExercise(id: 'leg_raises', name: 'Leg Raises', sets: 3, reps: 15),  // DUPLICATE - use leg_raise
       //const WorkoutExercise(id: 'mountain_climbers', name: 'Mountain Climbers', sets: 3, reps: 30),  // DUPLICATE - use mountain_climber
-      const WorkoutExercise(id: 'bicycle_crunches', name: 'Bicycle Crunches', sets: 3, reps: 30),
+      const WorkoutExercise(id: 'bicycle_crunch', name: 'Bicycle Crunches', sets: 3, reps: 30),
       //const WorkoutExercise(id: 'side_planks', name: 'Side Planks', sets: 3, reps: 45, timeSeconds: 45),  // DUPLICATE - use side_plank
       // const WorkoutExercise(id: 'ab_wheel', name: 'Ab Wheel Rollouts', sets: 3, reps: 12),
       //const WorkoutExercise(id: 'hanging_leg_raises', name: 'Hanging Leg Raises', sets: 3, reps: 12),  // DUPLICATE - use hanging_leg_raise
-      const WorkoutExercise(id: 'cable_crunches', name: 'Cable Crunches', sets: 3, reps: 15),
+      const WorkoutExercise(id: 'cable_crunch', name: 'Cable Crunches', sets: 3, reps: 15),
     ],
     'Cardio': [
       //const WorkoutExercise(id: 'burpees', name: 'Burpees', sets: 3, reps: 15),  // DUPLICATE - use burpee
