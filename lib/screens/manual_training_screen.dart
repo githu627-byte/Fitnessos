@@ -33,6 +33,7 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
   late TextEditingController _weightController;
   
   bool _isResting = false;
+  bool _isBetweenExerciseRest = false;
   int _restTimeRemaining = 60;
   Timer? _restTimer;
   
@@ -180,11 +181,21 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
 
   void _endRest() {
     _restTimer?.cancel();
-    setState(() {
-      _isResting = false;
-      _currentSet++;
-      _currentReps = widget.workout.exercises[_currentExerciseIndex].reps;
-    });
+    if (_isBetweenExerciseRest) {
+      // Coming from between exercises — initialize the new exercise
+      _isBetweenExerciseRest = false;
+      setState(() {
+        _isResting = false;
+        _initializeExercise(); // Resets set counter, reps, weight for new exercise
+      });
+    } else {
+      // Coming from between sets — just increment set
+      setState(() {
+        _isResting = false;
+        _currentSet++;
+        _currentReps = widget.workout.exercises[_currentExerciseIndex].reps;
+      });
+    }
   }
 
   void _skipRest() {
@@ -194,10 +205,13 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
 
   void _moveToNextExercise() {
     if (_currentExerciseIndex < widget.workout.exercises.length - 1) {
+      // Move index to NEXT exercise FIRST
       setState(() {
         _currentExerciseIndex++;
-        _initializeExercise();
       });
+      // Then start rest (rest screen will show "NEXT UP: [next exercise name]")
+      _isBetweenExerciseRest = true;
+      _startRest();
     } else {
       _completeWorkout();
     }
@@ -332,8 +346,97 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
             // Header
             _buildHeader(exercise),
             
-            // Main content - FULL SIZE ANIMATION
-            _buildExerciseDisplay(exercise),
+            // Main content - GIF with timer overlay
+            Expanded(
+              child: Stack(
+                children: [
+                  // GIF fills full space
+                  _buildExerciseDisplay(exercise),
+
+                  // Timer + set indicator overlaid at top of GIF
+                  Positioned(
+                    top: 8,
+                    left: 0,
+                    right: 0,
+                    child: Column(
+                      children: [
+                        // Timer row
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                              decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.6),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(Icons.timer_outlined, size: 14, color: AppColors.cyberLime),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    _formatTime(_totalElapsedSeconds),
+                                    style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            GestureDetector(
+                              onTap: _togglePause,
+                              child: Container(
+                                padding: const EdgeInsets.all(6),
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.6),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Icon(
+                                  _isPaused ? Icons.play_arrow : Icons.pause,
+                                  size: 18,
+                                  color: _isPaused ? AppColors.neonOrange : Colors.white70,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 6),
+                        // Set dots
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: List.generate(exercise.sets, (index) {
+                            final isComplete = index < _currentSet - 1;
+                            final isCurrent = index == _currentSet - 1;
+                            return Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 3),
+                              width: isCurrent ? 28 : 20,
+                              height: 4,
+                              decoration: BoxDecoration(
+                                color: isComplete ? AppColors.cyberLime
+                                    : isCurrent ? AppColors.electricCyan
+                                    : Colors.white.withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                            );
+                          }),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          'SET $_currentSet / ${exercise.sets}',
+                          style: TextStyle(
+                            color: AppColors.electricCyan,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 1,
+                            shadows: [Shadow(color: Colors.black, blurRadius: 4)],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
             
             // Bottom controls
             _buildControls(exercise, isGymWorkout),
@@ -478,141 +581,38 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
             ],
           ),
           
-          const SizedBox(height: 8),
-
-          // Workout timer with pause button
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  color: AppColors.white10,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: AppColors.white20),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.timer,
-                      size: 16,
-                      color: _isPaused ? AppColors.neonOrange : AppColors.cyberLime,
-                    ),
-                    const SizedBox(width: 6),
-                    Text(
-                      _formatTime(_totalElapsedSeconds),
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 8),
-              GestureDetector(
-                onTap: _togglePause,
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: _isPaused ? AppColors.neonOrange.withOpacity(0.2) : AppColors.white10,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
-                      color: _isPaused ? AppColors.neonOrange : AppColors.white20,
-                    ),
-                  ),
-                  child: Icon(
-                    _isPaused ? Icons.play_arrow : Icons.pause,
-                    size: 18,
-                    color: _isPaused ? AppColors.neonOrange : Colors.white70,
-                  ),
-                ),
-              ),
-            ],
-          ),
-
-          const SizedBox(height: 8),
-
-          // Set indicator - MOVED UP under exercise name
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(exercise.sets, (index) {
-              final isComplete = index < _currentSet - 1;
-              final isCurrent = index == _currentSet - 1;
-              
-              return Container(
-                margin: const EdgeInsets.symmetric(horizontal: 3),
-                width: isCurrent ? 28 : 20,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: isComplete
-                      ? AppColors.cyberLime
-                      : isCurrent
-                          ? AppColors.cyberLime
-                          : AppColors.white20,
-                  borderRadius: BorderRadius.circular(2),
-                  boxShadow: isCurrent ? [
-                    BoxShadow(
-                      color: AppColors.cyberLime.withOpacity(0.5),
-                      blurRadius: 6,
-                    ),
-                  ] : null,
-                ),
-              );
-            }),
-          ),
-          
-          const SizedBox(height: 4),
-          
-          Text(
-            'SET $_currentSet / ${exercise.sets}',
-            style: const TextStyle(
-              color: AppColors.cyberLime,
-              fontSize: 11,
-              fontWeight: FontWeight.w900,
-              letterSpacing: 1,
-            ),
-          ),
         ],
       ),
     );
   }
 
   Widget _buildExerciseDisplay(WorkoutExercise exercise) {
-    return Expanded(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24),
-          border: Border.all(
-            color: AppColors.cyberLime.withOpacity(0.3),
-            width: 2,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.cyberLime.withOpacity(0.1),
-              blurRadius: 30,
-              spreadRadius: 5,
-            ),
-          ],
+    // No Expanded wrapper — parent Stack is already inside an Expanded
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: AppColors.cyberLime.withOpacity(0.3),
+          width: 2,
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(22),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              // Use full available height and width
-              final size = constraints.maxHeight > constraints.maxWidth 
-                  ? constraints.maxWidth 
-                  : constraints.maxHeight;
-              return ExerciseAnimationWidget(
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(22),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            // Force SQUARE — use the smaller dimension
+            final size = constraints.maxWidth < constraints.maxHeight
+                ? constraints.maxWidth
+                : constraints.maxHeight;
+            return Center(
+              child: ExerciseAnimationWidget(
                 exerciseId: exercise.id,
                 size: size,
                 showWatermark: true,
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
@@ -652,63 +652,52 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
           // Action buttons
           Row(
             children: [
-              // Skip set
-              Expanded(
-                child: GestureDetector(
-                  onTap: _skipSet,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    decoration: BoxDecoration(
-                      color: AppColors.white10,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppColors.white20),
-                    ),
-                    child: const Text(
-                      'SKIP SET',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: AppColors.white60,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: 1,
-                      ),
+              // Skip Set — fixed narrow width
+              GestureDetector(
+                onTap: _skipSet,
+                child: Container(
+                  width: 100,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  decoration: BoxDecoration(
+                    color: AppColors.white10,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: AppColors.white20),
+                  ),
+                  child: const Text(
+                    'SKIP SET',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white60,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 1,
                     ),
                   ),
                 ),
               ),
-              
+
               const SizedBox(width: 12),
-              
-              // Complete set
+
+              // Complete Set — takes remaining space
               Expanded(
-                flex: 2,
                 child: GestureDetector(
                   onTap: _completeSet,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 18),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                     decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [AppColors.cyberLime, AppColors.cyberLime],
-                      ),
+                      color: AppColors.cyberLime,
                       borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.cyberLime.withOpacity(0.4),
-                          blurRadius: 20,
-                          spreadRadius: 2,
-                        ),
-                      ],
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.check_circle, color: Colors.black, size: 24),
+                        Icon(Icons.check_circle, color: Colors.black, size: 20),
                         const SizedBox(width: 8),
                         const Text(
                           'COMPLETE SET',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.w900,
                             letterSpacing: 1,
                           ),
@@ -727,7 +716,7 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
 
   Widget _buildWeightInputSquare() {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
         color: AppColors.white5,
         borderRadius: BorderRadius.circular(16),
@@ -793,7 +782,7 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
 
   Widget _buildRepsInputSquare() {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
         color: AppColors.white5,
         borderRadius: BorderRadius.circular(16),
@@ -938,25 +927,46 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
               ),
               child: Column(
                 children: [
-                  Text(
-                    'NEXT: SET ${_currentSet + 1} / ${exercise.sets}',
-                    style: const TextStyle(
-                      color: AppColors.white60,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 1,
+                  if (_isBetweenExerciseRest) ...[
+                    Text(
+                      'NEXT UP',
+                      style: const TextStyle(
+                        color: AppColors.white40,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    exercise.name.toUpperCase(),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 1,
+                    const SizedBox(height: 4),
+                    Text(
+                      exercise.name.toUpperCase(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                  ),
+                  ] else ...[
+                    Text(
+                      'NEXT: SET ${_currentSet + 1} / ${exercise.sets}',
+                      style: const TextStyle(
+                        color: AppColors.white60,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      exercise.name.toUpperCase(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
