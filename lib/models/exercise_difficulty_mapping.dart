@@ -452,7 +452,7 @@ class ExerciseDifficultyMapping {
     // Full Body Explosive
     ExerciseProgression(
       beginner: 'squat_reach',
-      intermediate: 'squat_jump',
+      intermediate: 'jump_squat',
       advanced: 'tuck_jump',
       muscleGroup: 'legs',
       movementPattern: 'cardio',

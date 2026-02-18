@@ -83,7 +83,7 @@ class _QuickSwapModalState extends State<QuickSwapModal> {
     ],
     'Legs': [
       //const WorkoutExercise(id: 'squats', name: 'Squats', sets: 3, reps: 10),  // DUPLICATE - use squat
-      const WorkoutExercise(id: 'front_squats', name: 'Front Squats', sets: 3, reps: 10),
+      const WorkoutExercise(id: 'front_squat', name: 'Front Squat', sets: 3, reps: 10),
       const WorkoutExercise(id: 'leg_press', name: 'Leg Press', sets: 3, reps: 12),
       //const WorkoutExercise(id: 'lunges', name: 'Lunges', sets: 3, reps: 12),  // DUPLICATE - use lunge
       //const WorkoutExercise(id: 'bulgarian_split_squats', name: 'Bulgarian Split Squats', sets: 3, reps: 10),  // DUPLICATE - use bulgarian_split_squat

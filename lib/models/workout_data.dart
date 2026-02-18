@@ -8114,12 +8114,12 @@ class WorkoutData {
   
   static const List<Exercise> allMovementEngineExercises = [
     // ===== SQUAT PATTERN =====
-    //Exercise(id: 'air_squat', name: 'Air Squat', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use squat
+    Exercise(id: 'air_squat', name: 'Air Squat', difficulty: 'beginner', equipment: 'bodyweight'),
     //Exercise(id: 'back_squat', name: 'Back Squat', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use barbell_squat
     Exercise(id: 'banded_lateral_walk', name: 'Banded Lateral Walk', difficulty: 'intermediate', equipment: 'bands'),
     Exercise(id: 'banded_squat', name: 'Banded Squat', difficulty: 'intermediate', equipment: 'bands'),
     //Exercise(id: 'barbell_back_squat', name: 'Barbell Back Squat', difficulty: 'intermediate', equipment: 'weights'),  // DUPLICATE - use barbell_squat
-    Exercise(id: 'barbell_squat', name: 'Barbell Squat', difficulty: 'intermediate', equipment: 'weights'),
+    //Exercise(id: 'barbell_squat', name: 'Barbell Squat', difficulty: 'intermediate', equipment: 'weights'),  // DUPLICATE - back_squat + barbell_back_squat cover this
     Exercise(id: 'barbell_squat_press', name: 'Barbell Squat Press', difficulty: 'intermediate', equipment: 'weights'),
     //Exercise(id: 'bear_crawl', name: 'Bear Crawl', difficulty: 'intermediate', equipment: 'bodyweight'),
     //Exercise(id: 'bodyweight_squat', name: 'Bodyweight Squat', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use squat
@@ -8220,10 +8220,10 @@ class WorkoutData {
     Exercise(id: 'decline_bench_press', name: 'Decline Bench Press', difficulty: 'intermediate', equipment: 'weights'),
     Exercise(id: 'decline_dumbbell_press', name: 'Decline Dumbbell Press', difficulty: 'intermediate', equipment: 'weights'),
     Exercise(id: 'decline_press', name: 'Decline Press', difficulty: 'intermediate', equipment: 'bodyweight'),
-    //Exercise(id: 'decline_push_up', name: 'Decline Push Up', difficulty: 'advanced', equipment: 'bodyweight'),  // DUPLICATE - use decline_pushup
-    Exercise(id: 'decline_pushup', name: 'Decline Pushup', difficulty: 'advanced', equipment: 'bodyweight'),
-    //Exercise(id: 'diamond_push_up', name: 'Diamond Push Up', difficulty: 'advanced', equipment: 'bodyweight'),  // DUPLICATE - use diamond_pushup
-    Exercise(id: 'diamond_pushup', name: 'Diamond Pushup', difficulty: 'advanced', equipment: 'bodyweight'),
+    Exercise(id: 'decline_push_up', name: 'Decline Push-Up', difficulty: 'advanced', equipment: 'bodyweight'),
+    //Exercise(id: 'decline_pushup', name: 'Decline Pushup', difficulty: 'advanced', equipment: 'bodyweight'),  // DUPLICATE - use decline_push_up
+    Exercise(id: 'diamond_push_up', name: 'Diamond Push-Up', difficulty: 'advanced', equipment: 'bodyweight'),
+    //Exercise(id: 'diamond_pushup', name: 'Diamond Pushup', difficulty: 'advanced', equipment: 'bodyweight'),  // DUPLICATE - use diamond_push_up
     Exercise(id: 'dip', name: 'Dip', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'dip_machine', name: 'Dip Machine', difficulty: 'intermediate', equipment: 'weights'),
     //Exercise(id: 'dips_chest', name: 'Dips Chest', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use chest_dips
@@ -8242,8 +8242,8 @@ class WorkoutData {
     Exercise(id: 'incline_dumbbell_press', name: 'Incline Dumbbell Press', difficulty: 'intermediate', equipment: 'weights'),
     Exercise(id: 'incline_fly', name: 'Incline Fly', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'incline_press', name: 'Incline Press', difficulty: 'intermediate', equipment: 'bodyweight'),
-    //Exercise(id: 'incline_push_up', name: 'Incline Push Up', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use incline_pushup
-    Exercise(id: 'incline_pushup', name: 'Incline Pushup', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'incline_push_up', name: 'Incline Push-Up', difficulty: 'beginner', equipment: 'bodyweight'),
+    //Exercise(id: 'incline_pushup', name: 'Incline Pushup', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use incline_push_up
     Exercise(id: 'jm_press', name: 'JM Press', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'landmine_press', name: 'Landmine Press', difficulty: 'intermediate', equipment: 'weights'),
     Exercise(id: 'lateral_raise', name: 'Lateral Raise', difficulty: 'intermediate', equipment: 'bodyweight'),
@@ -8262,8 +8262,8 @@ class WorkoutData {
     Exercise(id: 'plank_to_pushup', name: 'Plank To Pushup', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'plate_front_raise', name: 'Plate Front Raise', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'push_press', name: 'Push Press', difficulty: 'intermediate', equipment: 'bodyweight'),
-    //Exercise(id: 'push_up', name: 'Push Up', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use pushup
-    Exercise(id: 'pushup', name: 'Pushup', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'push_up', name: 'Push-Up', difficulty: 'intermediate', equipment: 'bodyweight'),
+    //Exercise(id: 'pushup', name: 'Pushup', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use push_up
     Exercise(id: 'ring_dip', name: 'Ring Dip', difficulty: 'advanced', equipment: 'bodyweight'),
     //Exercise(id: 'seated_db_press', name: 'Seated DB Press', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use seated_dumbbell_press
     Exercise(id: 'seated_dumbbell_press', name: 'Seated Dumbbell Press', difficulty: 'intermediate', equipment: 'weights'),
