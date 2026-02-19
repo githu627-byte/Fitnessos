@@ -11,6 +11,7 @@ import '../providers/workout_provider.dart';
 import '../providers/workout_schedule_provider.dart';
 import '../services/storage_service.dart';
 import '../data/exercise_gif_mapping.dart';
+import '../data/exercise_display_names.dart';
 import 'exercise_explanation_screen.dart';
 import 'exercise_config_screen.dart';
 import 'workout_review_screen.dart';
@@ -39,57 +40,29 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
   // Get all manual exercises from GIF library
   List<Exercise> _getAllManualExercises() {
     final List<Exercise> manualExercises = [];
-    
-    // Equipment prefixes to move to end
-    final equipmentPrefixes = [
-      'barbell', 'dumbbell', 'cable', 'band', 'kettlebell', 
-      'ez_bar', 'trap_bar', 'smith', 'lever', 'sled', 'machine'
-    ];
 
     // Load from ExerciseGifMapping (534 exercises)
     ExerciseGifMapping.exerciseGifs.forEach((id, gifInfo) {
       try {
         // Skip duplicate versions
-        if (id.contains('_version_') || 
-            id.endsWith('_ii') || 
-            id.endsWith('_iii') || 
+        if (id.contains('_version_') ||
+            id.endsWith('_ii') ||
+            id.endsWith('_iii') ||
             id.endsWith('_iv')) {
           return; // Skip this exercise
         }
-        
-        // Split and capitalize
-        final words = id.split('_').where((word) => word.isNotEmpty).toList();
-        
-        // Check if first word is equipment
-        String equipment = '';
-        List<String> nameWords = [];
-        
-        if (words.isNotEmpty && equipmentPrefixes.contains(words[0].toLowerCase())) {
-          equipment = words[0][0].toUpperCase() + words[0].substring(1);
-          nameWords = words.sublist(1);
-        } else {
-          nameWords = words;
-        }
-        
-        // Build name
-        String name = nameWords.map((word) => 
-          word[0].toUpperCase() + word.substring(1)
-        ).join(' ');
-        
-        // Add equipment at end if exists
-        if (equipment.isNotEmpty) {
-          name = '$name ($equipment)';
-        }
-        
+
+        final name = ExerciseDisplayNames.getName(id);
+
         manualExercises.add(Exercise(
           id: id,
-          name: name.isEmpty ? id : name,
+          name: name,
           difficulty: 'intermediate',
-          equipment: _inferEquipment(equipment.isEmpty ? name : equipment),
+          equipment: _inferEquipment(id),
         ));
       } catch (e) {
         // Skip any exercise that crashes during name conversion
-        debugPrint('⚠️ Skipped exercise: $id - $e');
+        debugPrint('Skipped exercise: $id - $e');
       }
     });
 
