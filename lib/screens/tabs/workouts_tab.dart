@@ -1248,22 +1248,6 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
             const SizedBox(height: 12),
           ],
 
-          // TEMPORARY DEBUG - shows what difficulty is active and first 2 exercise IDs
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(6),
-            margin: const EdgeInsets.only(bottom: 8),
-            decoration: BoxDecoration(
-              color: Colors.red.withOpacity(0.15),
-              borderRadius: BorderRadius.circular(4),
-              border: Border.all(color: Colors.red.withOpacity(0.3)),
-            ),
-            child: Text(
-              'DBG: $currentDifficulty | ${adjustedExercises.length} ex | ${adjustedExercises.take(2).map((e) => e.id).join(", ")}',
-              style: const TextStyle(fontSize: 8, color: Colors.redAccent, fontFamily: 'monospace'),
-            ),
-          ),
-
           // Exercise count and calories
           Row(
             children: [
