@@ -962,70 +962,58 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
     );
   }
 
-  /// Adjust exercises based on difficulty
-  /// Now uses dynamic generation from WorkoutTemplateService
-  List<WorkoutExercise> _getAdjustedExercises(WorkoutPreset preset, String difficulty) {
-    // Since we're now using dynamic generation, we need to regenerate the preset
-    // based on the selected difficulty level
-    
-    // Extract the base preset ID (without the _difficulty suffix if present)
-    final baseId = preset.id.replaceAll(RegExp(r'_(beginner|intermediate|advanced)$'), '');
-    
-    // Regenerate the workout for the selected difficulty
-    WorkoutPreset adjustedPreset;
-    
-    // Determine workout type and muscle groups from the original preset
-    switch (preset.subcategory) {
+  /// Get all presets for the current category at a specific difficulty level.
+  /// Uses _selectedCategory (navigation state) to ensure consistency with _getPresetsForCategory().
+  List<WorkoutPreset> _getPresetsAtDifficulty(String difficulty) {
+    switch (_selectedCategory) {
       case 'muscle_splits':
-        if (_selectedMode == 'gym') {
-          adjustedPreset = WorkoutData.getGymMuscleSplits(difficulty)
-              .firstWhere((p) => p.id.startsWith(baseId), orElse: () => preset);
-        } else {
-          adjustedPreset = preset; // Fallback
-        }
-        break;
+        return WorkoutData.getGymMuscleSplits(difficulty);
       case 'muscle_groupings':
-        adjustedPreset = WorkoutData.getGymMuscleGroupings(difficulty)
-            .firstWhere((p) => p.id.startsWith(baseId), orElse: () => preset);
-        break;
+        return WorkoutData.getGymMuscleGroupings(difficulty);
       case 'gym_circuits':
-        adjustedPreset = WorkoutData.getGymCircuits(difficulty)
-            .firstWhere((p) => p.id.startsWith(baseId), orElse: () => preset);
-        break;
+        return WorkoutData.getGymCircuits(difficulty);
       case 'booty_builder':
-        adjustedPreset = WorkoutData.getGymBootyBuilder(difficulty)
-            .firstWhere((p) => p.id.startsWith(baseId), orElse: () => preset);
-        break;
+        return WorkoutData.getGymBootyBuilder(difficulty);
       case 'girl_power':
         if (_selectedMode == 'gym') {
-          adjustedPreset = WorkoutData.getGymGirlPower(difficulty)
-              .firstWhere((p) => p.id.startsWith(baseId), orElse: () => preset);
+          return WorkoutData.getGymGirlPower(difficulty);
         } else {
-          adjustedPreset = WorkoutData.getHomeGirlPower(difficulty)
-              .firstWhere((p) => p.id.startsWith(baseId), orElse: () => preset);
+          return WorkoutData.getHomeGirlPower(difficulty);
         }
-        break;
       case 'bodyweight_basics':
-        adjustedPreset = WorkoutData.getHomeBodyweightBasics(difficulty)
-            .firstWhere((p) => p.id.startsWith(baseId), orElse: () => preset);
-        break;
+        return WorkoutData.getHomeBodyweightBasics(difficulty);
       case 'hiit_circuits':
-        adjustedPreset = WorkoutData.getHomeHIITCircuits(difficulty)
-            .firstWhere((p) => p.id.startsWith(baseId), orElse: () => preset);
-        break;
+        return WorkoutData.getHomeHIITCircuits(difficulty);
       case 'home_booty':
-        adjustedPreset = WorkoutData.getHomeBooty(difficulty)
-            .firstWhere((p) => p.id.startsWith(baseId), orElse: () => preset);
-        break;
+        return WorkoutData.getHomeBooty(difficulty);
       case 'recovery':
-        // Recovery workouts are not difficulty-dependent
-        return preset.exercises;
+        return WorkoutData.getHomeRecovery();
       default:
-        // For custom or unknown types, return original
-        return preset.exercises;
+        return [];
     }
-    
-    return adjustedPreset.exercises;
+  }
+
+  /// Adjust exercises based on difficulty.
+  /// Completely replaces exercises by fetching a fresh preset at the selected
+  /// difficulty from WorkoutData, matching by exact preset ID.
+  List<WorkoutExercise> _getAdjustedExercises(WorkoutPreset preset, String difficulty) {
+    // Recovery and custom workouts are not difficulty-dependent
+    if (_selectedCategory == 'recovery' ||
+        _selectedCategory == 'ai_workouts' ||
+        _selectedCategory == 'manual_workouts') {
+      return preset.exercises;
+    }
+
+    // Get fresh presets at the selected difficulty
+    final presetsAtDifficulty = _getPresetsAtDifficulty(difficulty);
+
+    // Find the matching preset by exact ID and return its exercises
+    final matchingPreset = presetsAtDifficulty.firstWhere(
+      (p) => p.id == preset.id,
+      orElse: () => preset,
+    );
+
+    return matchingPreset.exercises;
   }
 
   /// Get accurate calorie estimate using science-based MET formula
