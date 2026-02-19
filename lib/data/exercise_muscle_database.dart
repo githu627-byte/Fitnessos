@@ -5370,4 +5370,3271 @@ const Map<String, ExerciseMuscleData> exerciseMuscleDatabase = {
     },
     description: 'HOW TO: Hold a jump rope handle in each hand with the rope behind you. Stand with feet together, knees slightly bent. Swing the rope over your head using wrist rotation, not large arm movements. Jump just high enough for the rope to pass under your feet (1-2 inches off ground). Land softly on the balls of your feet with knees slightly bent. Keep your core engaged and stay light on your feet. Maintain a steady rhythm. Jump rope is an exceptional cardio exercise that builds calf endurance, coordination, footwork, and cardiovascular fitness while burning massive calories.',
   ),
+  
+  // ============================================================================
+  // BATCH 1: NEW EXERCISE DESCRIPTIONS (1-50 of 341)
+  // ============================================================================
+  
+  'air_bike_m': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+      'hip_flexors': 0.0,
+    },
+    secondaryMuscles: {
+      'quads': 0.6,
+    },
+    description: 'HOW TO: Lie on your back with hands behind your head, elbows wide. Lift your shoulders off the ground and raise your legs so your thighs are perpendicular to the floor. Simultaneously bring your right elbow toward your left knee while extending your right leg straight out. Then switch sides, bringing your left elbow to your right knee while extending your left leg. Continue alternating in a pedaling motion. Keep your core engaged throughout and avoid pulling on your neck. This dynamic movement torches calories while sculpting your entire core.',
+  ),
+  'barbell_behind_back_finger_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.6,
+    },
+    description: 'HOW TO: Stand upright holding a barbell behind your back with palms facing away from your body. Let the barbell roll down to your fingertips with arms fully extended. Keep your wrists neutral and elbows locked. Using only your fingers and grip strength, curl the bar back up into your palms by flexing your fingers closed. Hold briefly at the top. Lower back to fingertips with control. This exercise builds exceptional finger and grip strength, crucial for deadlifts and pulling movements.',
+  ),
+  'barbell_bench_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'lower_back': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Position a bench behind you. Hold a barbell across your upper back and shoulders. Stand with feet shoulder-width apart in front of the bench. Lower down by pushing your hips back and bending your knees until you lightly touch the bench with your glutes. Keep your chest up and core braced. Do not sit or relax on the bench. Immediately drive through your heels to stand back up. The bench acts as a depth gauge, ensuring consistent squat depth and building explosive power from the bottom position.',
+  ),
+  'barbell_bent_arm_pullover': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie on a flat bench with head supported. Hold a barbell above your chest with arms bent at roughly 90 degrees. Keep your elbows at this angle throughout. Lower the barbell back over and behind your head in an arc, feeling a stretch through your lats and chest. Go as far as comfortable without pain. Pull the barbell back up over your chest using your lats and chest. The bent arm position emphasizes the lats more than a straight-arm pullover, building width and thickness in your back.',
+  ),
+  'barbell_decline_bent_arm_pullover': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+      'lats': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie on a decline bench with your feet secured at the top and head lower than your hips. Hold a barbell above your chest with arms bent at 90 degrees. Keeping elbows bent, lower the barbell back in an arc over and behind your head until you feel a deep stretch in your lats and chest. Pull the bar back up over your chest. The decline angle increases the stretch on the lower chest and creates constant tension throughout the movement, building exceptional upper body development.',
+  ),
+  'barbell_decline_close_grip_to_skull_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'chest': 0.5,
+      'front_delts': 0.6,
+    },
+    description: 'HOW TO: Lie on a decline bench with feet secured. Hold a barbell with a close grip (hands 6-8 inches apart) above your chest. Lower the bar toward your forehead by bending only at the elbows while keeping upper arms stationary. When the bar reaches your forehead, press it back up and forward toward your chest using your triceps. The decline angle increases the stretch on the triceps while the close grip maximizes triceps activation throughout the entire range of motion.',
+  ),
+  'barbell_decline_pullover': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie on a decline bench with feet secured and head lower than hips. Hold a barbell above your chest with arms nearly straight, elbows slightly bent. Lower the barbell back in an arc over and behind your head, keeping arms relatively straight. Feel an intense stretch through your lats and chest. Pull the bar back up over your chest using your lats. The decline position intensifies the stretch and increases time under tension, building powerful lats and a thick chest.',
+  ),
+  'barbell_decline_wide_grip_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+      'triceps': 0.5,
+    },
+    description: 'HOW TO: Lie on a decline bench with feet secured at the top. Grip the barbell with hands wider than shoulder-width (about 1.5x shoulder width). Unrack the bar and position it above your lower chest. Lower the bar with control to your lower chest, elbows flaring out at about 45 degrees. Press the bar back up powerfully until arms are extended. The wide grip emphasizes outer chest development while the decline angle targets the lower chest fibers for complete pec development.',
+  ),
+  'barbell_decline_wide_grip_pullover': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+      'triceps': 0.6,
+    },
+    description: 'HOW TO: Lie on a decline bench with feet secured. Hold a barbell with a wide grip (wider than shoulder-width) above your chest with arms nearly straight. Lower the bar back in an arc over and behind your head, maintaining the wide grip. Feel a massive stretch across your entire upper back and chest. Pull the bar back up over your chest. The wide grip increases lat activation across a broader range while the decline maximizes the stretch for exceptional upper body expansion.',
+  ),
+  'barbell_drag_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand holding a barbell with a shoulder-width grip, arms extended. Instead of curling the bar in an arc away from your body, drag the bar up along your torso by pulling your elbows back behind your body. The bar should stay in contact with or very close to your abs and chest as it travels up. Squeeze your biceps hard at the top. Lower with the same dragging motion. This eliminates front delt involvement and creates intense peak contraction in the biceps.',
+  ),
+  'barbell_full_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'lower_back': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Position a barbell across your upper back. Stand with feet shoulder-width apart. Squat down as deep as possible, going well below parallel until your hamstrings touch your calves. Keep your chest up, core tight, and knees tracking over toes. Drive through your heels to stand back up. Full squats require excellent mobility and build incredible leg development, but only go as deep as you can maintain proper form. Ass to grass for maximum gains.',
+  ),
+  'barbell_high_bar_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Position the barbell high on your traps (on top of your shoulders), not on your rear delts. Grip the bar with a narrower grip than low bar squats. Stand with feet shoulder-width apart. Keep your torso more upright than low bar squats. Squat down by bending your knees forward while keeping chest up. Go to at least parallel depth. Drive straight up through your heels. High bar squats emphasize quad development and allow for a more upright torso position, building powerful legs with proper Olympic lifting mechanics.',
+  ),
+  'barbell_incline_reverse_grip_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+      'biceps': 0.6,
+    },
+    description: 'HOW TO: Lie on an incline bench set to 30-45 degrees. Grip the barbell with an underhand grip (palms facing your face) at shoulder-width. Unrack the bar and position it above your upper chest. Lower the bar with control to your upper chest, keeping elbows relatively close to your body. Press back up powerfully. The reverse grip shifts emphasis to the upper chest and increases biceps activation while reducing shoulder strain compared to regular incline press.',
+  ),
+  'barbell_incline_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+      'lower_back': 0.6,
+    },
+    description: 'HOW TO: Set an incline bench to 45 degrees. Lie face-down on the bench with chest supported and feet on the floor. Hold a barbell with an overhand grip, arms hanging straight down. Pull the bar up toward the underside of the bench by driving your elbows back and squeezing your shoulder blades together. Keep your chest pressed into the bench. Lower with control. The chest support eliminates momentum and lower back strain, allowing you to isolate your back muscles with perfect form.',
+  ),
+  'barbell_incline_wide_reverse_grip_bench_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+      'triceps': 0.5,
+      'biceps': 0.6,
+    },
+    description: 'HOW TO: Lie on an incline bench set to 30-45 degrees. Grip the barbell with an underhand grip (palms up) wider than shoulder-width. Unrack and position the bar above your upper chest. Lower the bar to your upper chest with control, elbows flaring out slightly. Press back up powerfully. The combination of incline angle, reverse grip, and wide grip creates unique upper chest activation while also engaging the biceps, building complete upper body strength.',
+  ),
+  'barbell_low_bar_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'glutes': 0.0,
+      'quads': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'lower_back': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Position the barbell lower on your back, resting on your rear delts (not on top of your traps). Use a wider grip. Stand with feet shoulder-width apart or slightly wider. Your torso will lean forward more than high bar squats. Push your hips back and squat down to at least parallel. Drive through your heels to stand up. Low bar squats allow for heavier loads and emphasize posterior chain development (glutes, hamstrings, lower back), making it the preferred powerlifting variation.',
+  ),
+  'barbell_low_bar_squat_with_rack': ExerciseMuscleData(
+    primaryMuscles: {
+      'glutes': 0.0,
+      'quads': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'lower_back': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Set the safety bars in a squat rack at your desired depth (parallel or slightly below). Position the barbell low on your rear delts. Stand with feet shoulder-width apart. Squat down until the bar lightly touches the safety bars. Pause briefly, then drive back up. The safety bars provide a consistent depth cue and allow you to push harder without fear of getting stuck, building confidence and strength at the bottom position of the squat.',
+  ),
+  'barbell_lying_back_of_the_head_tricep_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie on a flat bench holding a barbell with a close to medium grip. Extend your arms straight up, then angle them back slightly so the bar is above your forehead (not straight up from shoulders). Keeping your upper arms stationary and angled back, lower the bar behind and past your head by bending only at the elbows. Feel a deep stretch in your triceps. Extend back to start. This variation maximizes triceps stretch and long head activation for complete arm development.',
+  ),
+  'barbell_lying_close_grip_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'chest': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie on a flat bench holding a barbell with hands 6-8 inches apart. Extend your arms straight up above your chest. Keeping your upper arms perpendicular to the floor and locked in position, lower the bar down toward your forehead or just past your head by bending only at the elbows. Extend back up using only your triceps. Keep your elbows tucked in, not flaring out. The close grip maximizes triceps activation while minimizing shoulder and chest involvement.',
+  ),
+  'barbell_lying_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie on a flat bench with a barbell held at arm\'s length above your chest. Lock your upper arms in a vertical position. Bend only at your elbows to lower the bar down toward your forehead, keeping upper arms stationary. Your forearms should be the only part moving. Extend back up by contracting your triceps. The key is keeping your upper arms perfectly still - all movement comes from the elbow joint. This isolation builds powerful triceps without shoulder strain.',
+  ),
+  'barbell_lying_lifting_on_hip': ExerciseMuscleData(
+    primaryMuscles: {
+      'glutes': 0.0,
+      'hamstrings': 0.0,
+    },
+    secondaryMuscles: {
+      'lower_back': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie on your back with knees bent and feet flat on the floor. Position a barbell across your hips, holding it in place with both hands. Drive through your heels and squeeze your glutes to lift your hips up toward the ceiling, raising the barbell. Lift until your body forms a straight line from shoulders to knees. Hold the top position, squeezing your glutes hard. Lower with control. This hip thrust variation builds exceptional glute strength and power.',
+  ),
+  'barbell_olympic_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Position the barbell high on your traps with a clean grip (hands at shoulder-width or slightly wider). Stand with feet shoulder-width apart, toes slightly out. Keep your torso extremely upright throughout. Squat down as deep as possible (ass to grass) by driving your knees forward while keeping chest up. Your elbows should point forward. Drive straight up explosively. Olympic squats build the leg strength and mobility required for Olympic weightlifting while maximizing quad development.',
+  ),
+  'barbell_one_leg_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.5,
+    },
+    description: 'HOW TO: Hold a barbell across your upper back. Stand on one leg with the other leg extended straight out in front (not touching the ground). Squat down on your working leg as far as possible while keeping your other leg extended forward. Your extended leg helps with balance. Keep your chest up and core tight. Drive through your working heel to stand back up. Complete all reps on one side, then switch. This advanced unilateral movement builds exceptional single-leg strength and balance.',
+  ),
+  'barbell_quarter_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+    },
+    secondaryMuscles: {
+      'glutes': 0.5,
+      'lower_back': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Position a barbell across your upper back. Stand with feet shoulder-width apart. Squat down only about one-quarter of the way (roughly 45 degrees of knee bend), not reaching parallel. Drive back up explosively. Quarter squats allow you to use significantly more weight than full squats and build explosive power, athletic performance, and tendon strength. They\'re excellent for powerlifting lockout strength and sports performance, though they should complement, not replace, full squats.',
+  ),
+  'barbell_rear_delt_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'rear_delts': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'lats': 0.5,
+      'biceps': 0.6,
+    },
+    description: 'HOW TO: Bend forward at the hips until your torso is roughly parallel to the floor. Hold a barbell with an overhand grip at shoulder-width. Let the bar hang at arm\'s length. Pull the bar up toward your upper chest/lower neck by driving your elbows up and out to the sides at roughly 90 degrees from your body. Focus on squeezing your rear delts and upper back at the top. Lower with control. This row variation specifically targets rear delts for complete shoulder development.',
+  ),
+  'barbell_rear_lunge': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Hold a barbell across your upper back. Stand with feet together. Step one leg backward, landing on the ball of your foot. Lower your back knee toward the floor until your front thigh is parallel to the ground. Your front knee should stay behind your toes. Push through your front heel to return to standing, bringing your back leg forward. Alternate legs. Rear lunges are easier on the knees than forward lunges while building powerful legs and glutes.',
+  ),
+  'barbell_reverse_grip_incline_bench_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.6,
+    },
+    description: 'HOW TO: Lie face-down on an incline bench set to 45 degrees with chest supported. Hold a barbell with an underhand grip (palms facing up), arms hanging straight down. Pull the bar up toward the underside of the bench by driving your elbows back. Focus on squeezing your lats and upper back. The reverse grip increases biceps involvement while the incline provides chest support for perfect isolation. Lower with control. This variation builds thick lats and strong biceps simultaneously.',
+  ),
+  'barbell_reverse_grip_skullcrusher': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.5,
+      'chest': 0.6,
+    },
+    description: 'HOW TO: Lie on a flat bench holding a barbell with an underhand grip (palms facing toward your head). Extend your arms straight up above your chest. Keeping your upper arms stationary, lower the bar toward your forehead by bending at the elbows. The reverse grip will feel awkward at first. Extend back up using your triceps. The underhand grip changes the angle of stress on the triceps and increases forearm activation, providing a unique stimulus for arm growth.',
+  ),
+  'barbell_seated_behind_head_military_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'shoulders': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench with back support. Position a barbell behind your head resting on your upper traps. Grip slightly wider than shoulder-width. Press the bar straight up overhead until arms are fully extended. Lower with control back to the starting position behind your head. Keep your core tight and avoid excessive arching. This variation requires good shoulder mobility and provides a deeper stretch, building complete shoulder development. Use with caution if you have shoulder issues.',
+  ),
+  'barbell_seated_close_grip_behind_neck_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'shoulders': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench with back support. Hold a barbell overhead with a close grip (hands 6-8 inches apart), arms fully extended. Keeping your upper arms vertical and stationary, lower the bar behind your head by bending only at the elbows. Go until you feel a deep stretch in your triceps. Press back up to full extension. Keep your elbows pointing up, not flaring out. This seated position provides stability while maximizing triceps stretch for exceptional arm development.',
+  ),
+  'barbell_seated_close_grip_concentration_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Sit on the end of a bench with feet flat on the floor, leaning forward slightly. Hold a barbell with a narrow grip (hands 6-8 inches apart). Rest your elbows on the inside of your thighs for support. Curl the bar up toward your chest using only your biceps while keeping your upper arms stationary against your thighs. Squeeze hard at the top. Lower with control. The close grip emphasizes the inner biceps while the seated position with elbow support eliminates momentum for strict isolation.',
+  ),
+  'barbell_seated_military_press_inside_squat_cage': ExerciseMuscleData(
+    primaryMuscles: {
+      'shoulders': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'upper_back': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench positioned inside a squat rack with safety bars set just above head height. Position the barbell on the safety bars at forehead level. Grip the bar just outside shoulder-width. Press the bar straight up overhead until arms are fully extended. Lower back down to the safety bars and pause. Press again. The safety bars allow you to train to failure safely without a spotter, building maximum shoulder strength and power.',
+  ),
+  'barbell_seated_overhead_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'shoulders': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench with back support. Hold a barbell overhead with arms fully extended, using a shoulder-width grip. Keeping your upper arms vertical and stationary, lower the bar behind your head by bending at the elbows. Go down until you feel a deep triceps stretch. Press back up by extending your elbows. Keep your core tight and avoid leaning back. The overhead position maximizes triceps long head activation for complete arm development.',
+  ),
+  'barbell_side_bent_ii': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'lower_back': 0.6,
+    },
+    description: 'HOW TO: Hold a barbell across your upper back and shoulders. Stand with feet shoulder-width apart, core braced. Keeping your hips facing forward and legs straight, bend to one side as far as comfortable, letting the bar dip to that side. Keep the movement in your torso only - don\'t bend forward or backward. Return to upright, then bend to the other side. This targets your obliques and builds core strength, though it should be used carefully as it can compress the spine under heavy loads.',
+  ),
+  'barbell_standing_close_grip_military_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'shoulders': 0.0,
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand with feet shoulder-width apart. Hold a barbell at shoulder level with a close grip (hands 6-8 inches apart). Press the bar straight up overhead until arms are fully extended, shifting your head back slightly to let the bar pass. Lock out at the top. Lower with control back to shoulders. The close grip increases triceps involvement compared to standard military press while still building powerful shoulders. Keep your core extremely tight throughout.',
+  ),
+  'barbell_standing_overhead_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'shoulders': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand with feet shoulder-width apart. Hold a barbell overhead with arms fully extended, using a shoulder-width or slightly narrower grip. Keep your upper arms vertical and locked in position. Lower the bar behind your head by bending only at the elbows until you feel a deep triceps stretch. Press back up to full extension. Keep your elbows pointing up and core tight. The standing position engages more stabilizer muscles while building powerful triceps.',
+  ),
+  'barbell_standing_reverse_grip_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {
+      'brachialis': 0.5,
+    },
+    description: 'HOW TO: Stand holding a barbell with an overhand grip (palms facing down) at shoulder-width. Let the bar hang at arm\'s length. Keep your elbows close to your sides. Curl the bar up toward your shoulders using your biceps and forearms. Squeeze at the top. Lower with control. The reverse grip shifts emphasis to the brachialis (underneath the biceps) and forearms, building thicker upper arms and exceptional grip strength.',
+  ),
+  'barbell_standing_twist': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'lower_back': 0.6,
+    },
+    description: 'HOW TO: Stand with feet shoulder-width apart. Hold a barbell across your upper back and shoulders (use light weight or empty bar). Keep your hips and legs stationary, facing forward. Rotate your torso to the left as far as comfortable, then rotate to the right. The bar should move horizontally. Keep the movement controlled and smooth - no jerking. This builds rotational core strength and oblique development. Avoid this exercise if you have lower back issues.',
+  ),
+  'barbell_standing_wide_grip_biceps_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand holding a barbell with a wide grip (hands significantly wider than shoulder-width). Let the bar hang at arm\'s length with elbows close to your sides. Curl the bar up toward your shoulders by contracting your biceps. Keep your upper arms stationary. Squeeze hard at the top. Lower with control. The wide grip emphasizes the short head (inner biceps), building thickness in the middle of your arms for that peaked look.',
+  ),
+  'barbell_standing_wide_grip_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand holding a barbell with hands positioned well outside shoulder-width. Let the bar hang at arm\'s length. Keep your elbows locked in position at your sides. Curl the bar up toward your chest using your biceps. Focus on squeezing your biceps hard at the peak contraction. Lower the bar with control. The extra-wide grip targets the inner biceps and builds that dramatic peak when flexing your arms.',
+  ),
+  'barbell_standing_wide_military_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'shoulders': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'upper_back': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand with feet shoulder-width apart. Hold a barbell at shoulder level with a wide grip (hands positioned outside shoulder-width). Press the bar straight up overhead until arms are fully extended. Lower back to shoulders with control. The wide grip increases the range of motion and emphasizes the lateral delts more than a standard grip, building wider shoulders and exceptional pressing strength. Keep your core braced throughout.',
+  ),
+  'barbell_stiff_leg_good_morning': ExerciseMuscleData(
+    primaryMuscles: {
+      'hamstrings': 0.0,
+      'lower_back': 0.0,
+    },
+    secondaryMuscles: {
+      'glutes': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Place a barbell across your upper back. Stand with feet hip-width apart. Keep your legs nearly straight (slight knee bend only) throughout. Push your hips back and bend forward at the waist until your torso is roughly parallel to the floor. Keep your back flat and core tight. Feel an intense stretch in your hamstrings. Drive your hips forward to return to standing. This variation maximizes hamstring stretch and development while building a strong lower back.',
+  ),
+  'barbell_straight_leg_deadlift': ExerciseMuscleData(
+    primaryMuscles: {
+      'hamstrings': 0.0,
+      'lower_back': 0.0,
+    },
+    secondaryMuscles: {
+      'glutes': 0.5,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Stand holding a barbell with an overhand grip at hip level. Keep your legs nearly straight (slight knee bend only) throughout. Push your hips back and lower the bar by bending at the waist, keeping the bar close to your legs. Keep your back flat. Lower until you feel a strong hamstring stretch (bar around mid-shin). Drive your hips forward to return to standing. This Romanian deadlift variation emphasizes hamstring and lower back development with minimal quad involvement.',
+  ),
+  'barbell_wide_reverse_grip_bench_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Lie on a flat bench. Grip the barbell with an underhand grip (palms facing your face) with hands wider than shoulder-width. Unrack the bar and position it above your chest. Lower the bar to your mid-chest, keeping elbows at roughly 45 degrees from your body. Press back up powerfully. The wide reverse grip creates unique chest activation patterns while also engaging the biceps and reducing shoulder strain, offering a fresh stimulus for chest growth.',
+  ),
+  'bench_dip_knees_bent': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'chest': 0.5,
+      'front_delts': 0.6,
+    },
+    description: 'HOW TO: Sit on the edge of a bench with hands gripping the edge next to your hips. Slide your hips off the bench with knees bent at 90 degrees and feet flat on the floor. Lower your body by bending your elbows until your upper arms are roughly parallel to the floor. Press back up by extending your elbows. Keep your back close to the bench. Bent knees make this easier than straight-leg bench dips, making it perfect for beginners building triceps strength.',
+  ),
+  'butt_ups': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+      'hip_flexors': 0.0,
+    },
+    secondaryMuscles: {
+      'lower_back': 0.6,
+    },
+    description: 'HOW TO: Lie on your back with legs extended straight up toward the ceiling, perpendicular to your body. Place your arms at your sides on the floor. Keep your legs straight and together. Use your lower abs to lift your hips up off the floor, pressing your feet toward the ceiling. Your hips should come 3-6 inches off the ground. Lower with control. Focus on using your abs to drive the movement, not momentum. This movement isolates the lower abs intensely.',
+  ),
+  'cable_alternate_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand facing away from a cable machine with a rope or handle attached to the high pulley. Hold one end in each hand with arms bent and hands at head level. Step forward to create tension. Extend one arm straight out in front of you by straightening at the elbow. Return to start, then extend the other arm. Continue alternating. Keep your elbows in a fixed position. The alternating pattern allows you to focus on each arm individually while maintaining constant tension.',
+  ),
+  'cable_bar_lateral_pulldown': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Sit at a lat pulldown machine with a straight bar attached. Grip the bar with hands at shoulder-width or slightly wider. Lean back slightly and keep your chest up. Pull the bar down to your upper chest by driving your elbows down and back. Squeeze your lats hard. Control the bar back up with tension. Focus on pulling with your back muscles, not your arms. This classic exercise builds wide, powerful lats and a V-taper physique.',
+  ),
+  'cable_biceps_curl_sz_bar': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Attach an SZ curl bar (EZ bar) to the low pulley of a cable machine. Stand facing the machine, grab the bar with an underhand grip. Step back to create tension. Keep your elbows close to your sides. Curl the bar up toward your shoulders by contracting your biceps. Squeeze at the top. Lower with control. The SZ bar reduces wrist strain compared to a straight bar while the cable provides constant tension throughout the movement for maximum biceps activation.',
+  ),
+  'cable_close_grip_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Attach a straight bar or close-grip handle to the low pulley of a cable machine. Stand facing the machine, grab the handle with hands close together (4-6 inches apart). Step back to create tension. Keep your elbows pinned to your sides. Curl the handle up toward your chest by contracting your biceps. Squeeze hard at the top. Lower with control. The close grip emphasizes the outer biceps (long head) for better peak development.',
+  ),
+  'cable_close_grip_front_lat_pulldown': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Sit at a lat pulldown machine with a close-grip handle or V-bar attached. Grip with hands 4-6 inches apart, palms facing each other. Lean back slightly and pull the handle down to your upper chest by driving your elbows down and back. Focus on squeezing your lats, not just pulling with your arms. Control the weight back up. The close grip allows for a greater range of motion and increased lat stretch, building thickness in your mid and lower lats.',
+  ),
+  'cable_concentration_extension_on_knee': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Kneel on one knee beside a low cable pulley. Attach a single handle. Grab the handle with one hand and position your elbow on your raised knee (same side), upper arm vertical. Your elbow should be supported and stationary. Extend your forearm down by straightening your elbow, contracting your tricep. Squeeze at full extension. Return with control. The supported position eliminates momentum and isolates the triceps perfectly for detailed arm development.',
+  ),
+  'cable_cross_over_lateral_pulldown': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.6,
+    },
+    description: 'HOW TO: Stand between two high cable pulleys. Grab the left handle with your right hand and the right handle with your left hand, crossing your arms. Step forward slightly to create tension. Pull both handles down and across your body in an arc motion, bringing them to your sides. Squeeze your lats hard. Return with control. The crossover angle creates unique lat activation and increases the range of motion for exceptional back width development.',
+  ),
+  'cable_cross_over_revers_fly': ExerciseMuscleData(
+    primaryMuscles: {
+      'rear_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Stand between two high cable pulleys. Grab the left handle with your right hand and right handle with your left hand, arms crossed in front of you. Step back slightly. Pull both handles apart in a wide arc, bringing them to your sides with arms extended. Focus on squeezing your rear delts and upper back. Return with control. The constant cable tension throughout the movement builds well-developed rear delts and improves posture.',
+  ),
+  'cable_curl_with_multipurpose_v_bar': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+      'brachialis': 0.6,
+    },
+    description: 'HOW TO: Attach a V-bar handle to the low pulley of a cable machine. Stand facing the machine, grab the V-bar with palms facing each other (neutral grip). Step back to create tension. Keep your elbows close to your sides. Curl the bar up toward your shoulders. Squeeze your biceps at the top. Lower with control. The neutral grip reduces wrist strain and emphasizes the brachialis, building thicker overall arm development.',
+  ),
+  'cable_front_shoulder_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'front_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand facing away from a low cable pulley with a straight bar or rope attached. Grab the handle and step forward to create tension, starting with the cable behind you. Keep your arms straight with a slight elbow bend. Raise your arms forward and up to shoulder height or slightly above. Control the cable back down. Keep your core tight and avoid using momentum. The cable provides constant tension throughout the movement, building powerful front delts.',
+  ),
+  'cable_hammer_curl_with_rope_attachment_male': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+      'brachialis': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.5,
+    },
+    description: 'HOW TO: Attach a rope to the low pulley of a cable machine. Stand facing the machine, grab each end of the rope with palms facing each other. Step back to create tension. Keep your elbows pinned to your sides. Curl the rope up toward your shoulders while maintaining the neutral grip throughout. Squeeze hard at the top, even trying to pull the rope ends apart. Lower with control. The rope allows for natural wrist positioning while building thick biceps and forearms.',
+  ),
+  'cable_high_pulley_overhead_tricep_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Attach a rope to a high cable pulley. Stand facing away from the machine, grab the rope with both hands overhead. Step forward and lean slightly forward with arms bent behind your head. Extend your arms forward and down by straightening your elbows, bringing the rope over your head. Keep your upper arms stationary. Return with control. The high pulley angle creates maximum stretch in the triceps long head for complete arm development.',
+  ),
+  'cable_hip_adduction': ExerciseMuscleData(
+    primaryMuscles: {
+      'hip_adductors': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Attach an ankle cuff to a low cable pulley. Stand perpendicular to the machine with the cuffed leg closest to the machine. Step away to create tension. Balance on your outside leg. Pull your cuffed leg across your body in front of your standing leg by contracting your inner thigh. Control it back to start. Complete all reps, then switch sides. This isolates the inner thigh muscles for leg development and hip stability.',
+  ),
+  'cable_horizontal_pallof_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'shoulders': 0.6,
+    },
+    description: 'HOW TO: Set a cable pulley at chest height. Stand perpendicular to the machine, feet shoulder-width apart. Hold the handle with both hands at your chest. Step away to create tension. Press the handle straight out in front of you, fully extending your arms. The cable will try to rotate your torso - resist this with your core. Pull back to chest. The anti-rotation aspect builds exceptional core stability and strength for all athletic movements.',
+  ),
+  'cable_incline_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'chest': 0.6,
+    },
+    description: 'HOW TO: Set an incline bench in front of a low cable pulley. Lie face-up on the bench with head at the high end. Grab a straight bar or rope attachment with arms extended overhead toward the cable machine. Keep your upper arms stationary and angled back toward the pulley. Bend at the elbows to bring the handle toward your forehead. Extend back up. The incline angle increases the stretch on the triceps while providing constant tension for maximum growth.',
+  ),
+  'cable_kneeling_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Attach a rope to a high cable pulley. Kneel facing the machine and grab the rope with both hands. Pull the rope down until your hands are beside your head, elbows bent and pointing up. Keep your upper arms stationary. Extend your forearms down by straightening your elbows until arms are fully extended. Squeeze your triceps. Return with control. The kneeling position stabilizes your body and allows for strict form without using momentum.',
+  ),
+  'cable_kneeling_triceps_extension_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+      'lats': 0.6,
+    },
+    description: 'HOW TO: Attach a rope to a high cable pulley. Kneel facing the machine, grab the rope, and pull it down overhead so it\'s behind your head. Lean forward slightly with your torso at a 45-degree angle. Keep your upper arms close to your head. Extend your forearms forward and down by straightening your elbows. Full extension, then return with control. This variation increases the range of motion and stretch on the triceps long head.',
+  ),
+  'cable_lat_pulldown_full_range_of_motion': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Sit at a lat pulldown machine with a wide grip bar. Grab the bar with hands wide, lean back slightly, chest up. Pull the bar down to your upper chest by driving your elbows down and back. Get full contraction with the bar touching your chest. Then let the bar rise all the way up until your arms are fully extended and you feel a complete lat stretch. This full range of motion maximizes muscle activation and builds exceptional back width and thickness.',
+  ),
+  'cable_lying_extension_pullover_with_rope_attachment': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+      'lats': 0.0,
+    },
+    secondaryMuscles: {
+      'chest': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie on a flat bench with your head near a low cable pulley. Attach a rope and grab each end with arms extended overhead toward the pulley. In one motion, pull the rope over your chest in an arc while simultaneously extending your elbows. The movement combines a pullover and triceps extension. Return with control. This hybrid exercise hits both lats and triceps, building impressive upper body strength and size.',
+  ),
+  'cable_lying_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie on a flat bench positioned in front of a low cable pulley. Grab a straight bar or rope attachment with arms extended overhead toward the cable. Keep your upper arms stationary and angled slightly back. Bend at the elbows to bring the handle toward your forehead. Extend back up by contracting your triceps. The constant cable tension throughout the movement provides a superior stimulus compared to free weights for building horseshoe triceps.',
+  ),
+  'cable_one_arm_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Attach a single handle to a low cable pulley. Stand facing the machine, grab the handle with one hand. Step back to create tension. Keep your elbow close to your side. Curl the handle up toward your shoulder by contracting your bicep. Squeeze hard at the top. Lower with control. Complete all reps, then switch arms. The unilateral focus allows you to address strength imbalances while the cable provides constant tension.',
+  ),
+  'cable_one_arm_inner_biceps_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand perpendicular to a low cable pulley with your working arm closest to the machine. Attach a single handle and grab it. Step away to create tension with your arm across your body. Curl the handle up and across toward your opposite shoulder, bringing your hand to the center of your chest. Squeeze the peak. Lower with control. This angle emphasizes the short head (inner biceps) for maximum peak development.',
+  ),
+  'cable_one_arm_lateral_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'side_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand perpendicular to a low cable pulley. Attach a single handle and grab it with the hand farthest from the machine. Let your arm hang across your body. Raise your arm out to the side and up to shoulder height, keeping a slight bend in your elbow. Lead with your elbow, not your hand. Lower with control. Complete all reps, then switch sides. The cable provides constant tension throughout the movement, superior to dumbbells for building capped shoulders.',
+  ),
+  'cable_one_arm_side_triceps_pushdown': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Stand perpendicular to a high cable pulley. Attach a single handle and grab it with one hand at shoulder height, elbow bent. Your working arm should be closest to the machine. Push the handle down and slightly across your body by extending your elbow. Keep your upper arm stationary. Full extension, squeeze your tricep. Return with control. This angled pushdown hits the triceps from a unique angle for complete arm development.',
+  ),
+  'cable_overhead_triceps_extension_rope_attachment': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'shoulders': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Attach a rope to a low cable pulley. Stand facing away from the machine, grab the rope with both hands overhead. Step forward and lean slightly forward. Your hands should be behind your head with elbows bent and pointing up. Extend your arms forward and up by straightening your elbows. Keep your upper arms stationary. Return with control. The rope allows you to pull the ends apart at full extension for maximum triceps contraction.',
+  ),
+  'cable_pushdown_straight_arm_ii': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand facing a high cable pulley with a straight bar attached. Grab the bar with an overhand grip, hands shoulder-width apart. Step back slightly with arms extended at shoulder height. Keep your arms straight (slight elbow bend only). Pull the bar down in an arc toward your thighs by contracting your lats. Keep your core tight and don\'t bend your elbows. Return with control. This isolates the lats without biceps involvement, building impressive back width.',
+  ),
+  'cable_rear_pulldown': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'rear_delts': 0.5,
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Sit at a lat pulldown machine with a wide grip bar. Grab the bar with a wide grip and lean back more than usual (about 30-45 degrees). Pull the bar down behind your head to the base of your neck. Drive your elbows down and back. Squeeze your shoulder blades together. Return with control. This variation requires good shoulder mobility and emphasizes the upper back and rear delts more than front pulldowns. Use caution if you have shoulder issues.',
+  ),
+  'cable_reverse_grip_straight_back_seated_high_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.6,
+    },
+    description: 'HOW TO: Sit at a cable row machine with your torso upright (not leaning back or forward). Attach a straight bar and grab it with an underhand grip (palms up). Pull the bar to your lower chest by driving your elbows straight back, keeping them close to your body. Squeeze your lats and upper back. Return with control. The reverse grip increases biceps and lower lat involvement while the upright position keeps strict form for maximum back development.',
+  ),
+  'cable_reverse_grip_triceps_pushdown_sz_bar': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.5,
+    },
+    description: 'HOW TO: Attach an SZ bar (EZ curl bar) to a high cable pulley. Stand facing the machine, grab the bar with an underhand grip (palms facing up). Keep your elbows close to your sides. Push the bar down by extending your elbows until arms are straight. Squeeze your triceps at the bottom. Return with control. The reverse grip shifts emphasis to the medial head of the triceps and increases forearm activation for complete arm development.',
+  ),
+  'cable_reverse_preacher_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'brachialis': 0.0,
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Set up at a preacher bench positioned in front of a low cable pulley. Attach a straight bar. Rest your arms on the pad with an overhand grip (palms down). Keep your chest against the pad. Curl the bar up toward your shoulders using your brachialis and forearms. Squeeze at the top. Lower with control. The preacher position eliminates cheating while the reverse grip targets the brachialis and forearms for thicker, more complete arm development.',
+  ),
+  'cable_seated_chest_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+      'triceps': 0.5,
+    },
+    description: 'HOW TO: Sit on a bench positioned between two mid-height cable pulleys. Grab a handle in each hand at chest level. Press both handles forward by extending your arms, bringing the handles together in front of you. Squeeze your chest. Return with control. The seated position provides stability while the cables maintain constant tension throughout the movement, making this an excellent chest builder that reduces joint stress compared to barbell pressing.',
+  ),
+  'cable_seated_neck_extension_with_head_harness': ExerciseMuscleData(
+    primaryMuscles: {
+      'neck': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench facing away from a low cable pulley. Attach a head harness to the cable and secure it on your head. Lean forward slightly with your chin toward your chest. Extend your neck by lifting your head up and back against the resistance. Return with control. Use light weight and smooth movements. Building neck strength is important for injury prevention in contact sports and provides aesthetic neck development.',
+  ),
+  'cable_seated_neck_flexion_with_head_harness': ExerciseMuscleData(
+    primaryMuscles: {
+      'neck': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit on a bench facing a low cable pulley. Attach a head harness to the cable and secure it on your head. Start with your head tilted back. Flex your neck by bringing your chin down toward your chest against the resistance. Return with control. Use light weight and controlled movements. Never jerk the weight. This builds the front neck muscles, crucial for combat sports and aesthetic neck development.',
+  ),
+  'cable_seated_rear_lateral_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'rear_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench positioned between two low cable pulleys. Lean forward until your torso is nearly parallel to the floor. Grab the left handle with your right hand and right handle with your left hand, crossing cables. Pull the handles out and up to your sides in a reverse fly motion with arms relatively straight. Squeeze your rear delts and upper back. Return with control. The cables provide constant tension for building well-rounded shoulders.',
+  ),
+  'cable_seated_shoulder_internal_rotation': ExerciseMuscleData(
+    primaryMuscles: {
+      'rotator_cuff': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench perpendicular to a cable machine set at elbow height. Grab the handle with your near arm. Position your elbow at 90 degrees, upper arm at your side, and forearm pointing toward the machine. Pull the handle across your body by rotating at your shoulder, moving your hand toward your opposite hip. Your upper arm stays still. Return with control. This strengthens the internal rotator muscles, crucial for shoulder health and injury prevention.',
+  ),
+  'cable_shrug': ExerciseMuscleData(
+    primaryMuscles: {
+      'traps': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Stand between two low cable pulleys or facing a low pulley. Attach handles or a straight bar. Grab the attachment and stand upright with arms hanging at your sides. Shrug your shoulders straight up toward your ears as high as possible by contracting your traps. Hold briefly at the top. Lower with control. Don\'t roll your shoulders. The constant cable tension provides superior trap activation compared to dumbbells, building impressive trap development.',
+  ),
+  'cable_side_bend': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Stand perpendicular to a low cable pulley. Attach a single handle and grab it with the hand closest to the machine. Step away to create tension. Place your other hand behind your head. Keep your hips forward and legs straight. Bend to the side away from the cable by contracting your obliques on that side. Return to upright with control. Complete all reps, then switch sides. This isolates the obliques for defined core development.',
+  ),
+  'cable_standing_cross_over_high_reverse_fly': ExerciseMuscleData(
+    primaryMuscles: {
+      'rear_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Stand between two high cable pulleys. Grab the left handle with your right hand and right handle with your left hand, arms crossed and extended in front. Bend forward at the hips to about 45 degrees. Pull both handles back and out to your sides with arms straight. Focus on squeezing your rear delts and upper back together. Return with control. The high pulley angle and forward lean maximizes rear delt activation for complete shoulder development.',
+  ),
+  'cable_standing_crunch_with_rope_attachment': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'hip_flexors': 0.6,
+    },
+    description: 'HOW TO: Attach a rope to a high cable pulley. Stand facing the machine, grab the rope with both hands. Hold the rope behind your head at neck level. Step back to create tension. Crunch down by flexing your spine and bringing your elbows toward your knees. Contract your abs hard at the bottom. Return with control, keeping tension on your abs. Standing crunches allow you to use more weight than floor crunches while the cable provides constant resistance.',
+  ),
+  'cable_standing_hip_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'glutes': 0.0,
+      'hamstrings': 0.0,
+    },
+    secondaryMuscles: {
+      'lower_back': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Attach an ankle cuff to a low cable pulley. Face the machine and secure the cuff on one ankle. Hold onto the machine for balance. With a slight bend in your knee, kick your cuffed leg straight back by contracting your glutes and hamstrings. Keep your torso upright - don\'t lean forward. Squeeze your glutes hard at full extension. Return with control. Complete all reps, then switch legs. This isolates the glutes for superior development.',
+  ),
+  'cable_standing_inner_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand perpendicular to a low cable pulley with your working arm farthest from the machine. Attach a single handle and grab it so the cable runs across your body. Step away to create tension with your arm extended across your body. Curl the handle up and across toward the opposite shoulder. Squeeze hard at the peak. Lower with control. This angle specifically targets the short head (inner biceps) for maximum peak development.',
+  ),
+  'cable_standing_leg_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'hamstrings': 0.0,
+    },
+    secondaryMuscles: {
+      'calves': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Attach an ankle cuff to a low cable pulley. Face the machine and secure the cuff on one ankle. Hold onto the machine for balance. With your working leg slightly behind you, curl your foot up toward your glutes by bending your knee. Keep your thigh stationary. Squeeze your hamstring at the top. Lower with control. Complete all reps, then switch legs. This unilateral exercise builds hamstring strength and addresses muscle imbalances.',
+  ),
+  'cable_standing_reverse_curl_sz_bar': ExerciseMuscleData(
+    primaryMuscles: {
+      'brachialis': 0.0,
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Attach an SZ bar (EZ curl bar) to a low cable pulley. Stand facing the machine, grab the bar with an overhand grip (palms down). Step back to create tension. Keep your elbows close to your sides. Curl the bar up toward your shoulders. Squeeze at the top. Lower with control. The SZ bar reduces wrist strain compared to a straight bar while the reverse grip targets the brachialis and forearms for thicker, more complete arm development.',
+  ),
+  'cable_standing_shoulder_external_rotation': ExerciseMuscleData(
+    primaryMuscles: {
+      'rotator_cuff': 0.0,
+    },
+    secondaryMuscles: {
+      'rear_delts': 0.6,
+    },
+    description: 'HOW TO: Stand perpendicular to a cable machine set at elbow height. Grab the handle with your far hand. Position your elbow at 90 degrees close to your side, forearm pointing toward the machine. Rotate your forearm away from your body by rotating at your shoulder, keeping your elbow pinned to your side. Your upper arm stays still. Return with control. This strengthens the external rotators, crucial for shoulder health, injury prevention, and throwing sports.',
+  ),
+  'cable_standing_up_straight_crossovers': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Stand between two high cable pulleys with handles attached. Grab the handles and step forward with arms extended to your sides at shoulder height. Keep your torso upright (don\'t lean forward). Bring both handles down and together in front of your hips in an arc motion. Squeeze your chest hard. Return with control. The upright position and downward angle targets the lower chest fibers for complete chest development.',
+  ),
+  'cable_supine_reverse_fly': ExerciseMuscleData(
+    primaryMuscles: {
+      'rear_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Lie face-up on a bench positioned between two low cable pulleys. Grab the left handle with your right hand and right handle with your left hand, arms crossed above your chest. Pull the handles apart and out to your sides in a wide arc with arms relatively straight. Squeeze your rear delts and upper back. Return with control. The supine position provides stability while allowing for a deep stretch and strong contraction in the rear delts.',
+  ),
+  'cable_triceps_pushdown_sz_bar': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Attach an SZ bar (EZ curl bar) to a high cable pulley. Stand facing the machine, grab the bar with an overhand grip. Keep your elbows tucked close to your sides and upper arms stationary. Push the bar down by extending your elbows until your arms are fully straight. Squeeze your triceps hard at full extension. Return with control, stopping when forearms are parallel to the floor. The SZ bar reduces wrist strain while maintaining maximum triceps activation.',
+  ),
+  'cable_triceps_pushdown_v_bar_attachment': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Attach a V-bar handle to a high cable pulley. Stand facing the machine, grab the V-bar with palms facing each other. Keep your elbows tucked at your sides. Push the bar down by extending your elbows until arms are fully straight. Squeeze your triceps at full extension. Return with control. The neutral grip V-bar is comfortable on the wrists and allows for a natural pressing motion while maximizing triceps development.',
+  ),
+  'cable_tuck_reverse_crunch': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'hip_flexors': 0.6,
+    },
+    description: 'HOW TO: Attach ankle straps to a low cable pulley. Lie on your back with feet toward the machine. Pull your knees toward your chest so there\'s tension on the cable. Place hands on the floor for support. Contract your lower abs to curl your hips and knees further toward your chest, lifting your glutes off the floor. Hold and squeeze your lower abs. Return with control. The cable adds resistance to reverse crunches for advanced core development.',
+  ),
+  'cable_twist': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Set a cable pulley at chest height. Stand perpendicular to the machine with feet shoulder-width apart. Hold the handle with both hands at chest level, arms extended. Step away to create tension. Keep your hips and legs facing forward. Rotate your torso away from the machine, pivoting at your waist and bringing the handle across your body. Return with control. This rotational movement builds powerful obliques and functional core strength for sports and daily activities.',
+  ),
+  'cable_two_arm_tricep_kickback': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'rear_delts': 0.6,
+    },
+    description: 'HOW TO: Stand facing a low cable pulley with a rope or two handles attached. Grab the attachment and step back. Bend forward at the hips until your torso is nearly parallel to the floor. Start with elbows bent at 90 degrees, upper arms parallel to the floor. Extend both arms straight back by straightening your elbows. Squeeze your triceps at full extension. Return with control. The cable provides constant tension throughout the entire range of motion.',
+  ),
+  'cable_underhand_pulldown': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'lower_lats': 0.5,
+    },
+    description: 'HOW TO: Sit at a lat pulldown machine with a straight bar attached. Grab the bar with an underhand grip (palms facing you) at shoulder-width. Lean back slightly. Pull the bar down to your upper chest by driving your elbows down and back. Keep your chest up. Squeeze your lats hard. Control the bar back up. The underhand grip increases biceps involvement and emphasizes the lower lats for complete back development and impressive width.',
+  ),
+  'cable_upper_chest_crossovers': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Stand between two low cable pulleys with handles attached. Grab the handles and step forward with arms extended down and behind you. Lean forward slightly. Bring both handles up and together in front of your upper chest in an upward arc motion. Squeeze your chest at the top. Return with control. The low-to-high angle specifically targets the upper chest fibers (clavicular head) for complete chest development and a fuller look.',
+  ),
+  'cable_upper_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'upper_back': 0.0,
+      'rear_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'lats': 0.5,
+      'biceps': 0.6,
+    },
+    description: 'HOW TO: Sit or stand at a cable station with a straight bar or rope attached at upper chest height. Grab the attachment with hands at shoulder-width. Pull the handle toward your upper chest/face by driving your elbows back and up at roughly shoulder height. Focus on squeezing your upper back and rear delts together. Return with control. This high row variation builds thickness in the upper back and rear delts for improved posture and complete back development.',
+  ),
+  'cable_upright_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'side_delts': 0.0,
+      'traps': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+      'biceps': 0.6,
+    },
+    description: 'HOW TO: Attach a straight bar to a low cable pulley. Stand facing the machine, grab the bar with an overhand grip at shoulder-width or slightly narrower. Let the bar hang at arm\'s length. Pull the bar straight up along your body toward your chin by raising your elbows out to the sides. Keep the bar close to your body. Your elbows should rise higher than your hands. Lower with control. This builds powerful traps and side delts but use caution if you have shoulder issues.',
+  ),
+  'cable_vertical_pallof_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'shoulders': 0.6,
+    },
+    description: 'HOW TO: Set a cable pulley at floor level. Stand facing away from the machine with feet shoulder-width apart. Hold the handle with both hands at chest level. Step away to create tension. Press the handle straight up overhead, fully extending your arms. The cable will try to pull you backward - resist this with your core. Pull back down to chest level. This vertical anti-extension pattern builds exceptional core stability and overhead strength.',
+  ),
+  'cable_wide_grip_behind_neck_pulldown': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'rear_delts': 0.5,
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Sit at a lat pulldown machine with a wide grip bar. Grab the bar with hands positioned wide (1.5-2x shoulder width). Pull the bar down behind your head to the base of your neck. Drive your elbows down and back. Squeeze your shoulder blades together. Return with control. This variation requires excellent shoulder mobility and emphasizes the upper back and lats. Only perform if you have healthy shoulders and good mobility.',
+  ),
+  'cable_wide_pulldown': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Sit at a lat pulldown machine with a wide grip bar. Grab the bar with hands positioned wide (1.5-2x shoulder width). Lean back slightly with chest up. Pull the bar down to your upper chest by driving your elbows down and out to the sides. Focus on squeezing your lats, thinking about pulling your elbows to your hips. Return with control. The wide grip maximizes lat width development for that coveted V-taper physique.',
+  ),
+  'cable_wrist_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Attach a straight bar to a low cable pulley. Kneel or sit facing the machine. Rest your forearms on a bench or your thighs with palms facing up, wrists hanging off the edge. Grab the bar and let it roll down to your fingers. Curl your wrists up by contracting your forearms, bringing the bar as high as possible. Hold the squeeze. Lower with control. The constant cable tension provides superior forearm development compared to dumbbells or barbells.',
+  ),
+  'chest_dip': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Grip parallel bars and support yourself at arm\'s length. Lean your torso forward at roughly 30-45 degrees. Lower yourself by bending your elbows, letting them flare out slightly, until you feel a stretch in your chest. Go as deep as comfortable. Press back up by contracting your chest and triceps. The forward lean shifts emphasis to the chest. Dips are one of the best bodyweight chest builders and can be loaded with a weight belt for progression.',
+  ),
+  'chin_ups_narrow_parallel_grip': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Hang from parallel grip handles (palms facing each other) positioned close together. Start from a dead hang with arms fully extended. Pull yourself up by driving your elbows down and back until your chin clears the bar. Keep your chest up. Lower with control to full extension. The narrow parallel grip is extremely biceps-dominant while still hitting the lats, and is easier on the wrists and shoulders than wide grip pull-ups.',
+  ),
+  'close_grip_chin_up': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Hang from a pull-up bar with an underhand grip (palms facing you) and hands positioned close together (6-8 inches apart). Start from a dead hang. Pull yourself up by driving your elbows down until your chin clears the bar. Keep your chest up. Lower with control. The close underhand grip maximizes biceps activation while still building powerful lats, making this an exceptional compound movement for upper body pulling strength.',
+  ),
+  'cocoons': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+      'hip_flexors': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Lie flat on your back with arms extended overhead and legs straight. In one motion, simultaneously crunch your upper body up while bringing your knees to your chest, wrapping your arms around your legs into a tight ball (like a cocoon). Squeeze your abs hard in this tucked position. Extend back out to the starting position with control. This dynamic movement hits the entire core through a full range of motion for exceptional ab development.',
+  ),
+  'cross_body_crunch': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'hip_flexors': 0.6,
+    },
+    description: 'HOW TO: Lie on your back with hands behind your head, elbows wide. Bend your knees with feet flat on the floor. Crunch your upper body up while simultaneously bringing your right knee toward your chest and rotating your left elbow to meet your right knee. Return to start. Repeat on the other side, left knee to right elbow. Continue alternating. This rotational crunch targets the obliques and entire core for defined, functional midsection development.',
+  ),
+  'crunch_floor_m': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'hip_flexors': 0.6,
+    },
+    description: 'HOW TO: Lie on your back on the floor with knees bent and feet flat. Place your hands behind your head, elbows out to the sides. Engage your abs and curl your upper back off the floor, lifting your shoulders toward your hips. Only your shoulder blades should come off the floor. Keep your lower back pressed down. Hold briefly at the top, squeezing your abs hard. Lower with control. Basic floor crunches are a fundamental core exercise that never goes out of style.',
+  ),
+  'crunch_on_stability_ball': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'hip_flexors': 0.6,
+    },
+    description: 'HOW TO: Sit on a stability ball and walk your feet forward until your lower back is supported on the ball. Place your hands behind your head. Your body should be in a slight arch over the ball. Crunch forward by contracting your abs, curling your upper body up. Go until your abs are fully contracted. Return to the stretched position over the ball. The ball increases the range of motion and engages stabilizer muscles for superior core development.',
+  ),
+  'decline_push_up_m': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+      'triceps': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Place your feet on an elevated surface (bench, box, or stairs) and hands on the floor in push-up position. Your body should form a straight line from head to heels at a decline angle. Lower your chest to the floor by bending your elbows. Push back up to full extension. The decline angle increases the difficulty and shifts emphasis to the upper chest and front delts, building impressive upper body pressing strength.',
+  ),
+  'dumbbell_alternate_biceps_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells at your sides with palms facing your thighs. Keep your elbows close to your sides. Curl one dumbbell up toward your shoulder while rotating your wrist so your palm faces up at the top. Squeeze your bicep. Lower with control while simultaneously curling the other arm. Continue alternating. The alternating pattern allows you to focus on each arm individually and use slightly heavier weight than simultaneous curls.',
+  ),
+  'dumbbell_arnold_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'shoulders': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Sit or stand holding dumbbells at shoulder height with palms facing you (like the top of a curl). Press the dumbbells up while simultaneously rotating your hands so your palms face forward at the top. Reverse the motion on the way down, ending with palms facing you again. This rotation engages all three delt heads through a greater range of motion than standard presses, building complete 3D shoulder development.',
+  ),
+  'dumbbell_arnold_press_ii': ExerciseMuscleData(
+    primaryMuscles: {
+      'shoulders': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Stand or sit on a bench with back support. Hold dumbbells at shoulder level with palms facing your body. Press the weights up overhead while rotating your palms to face forward at the top. At the peak, your arms should be fully extended with palms facing away. Reverse the rotation as you lower. This variation of the Arnold Press provides constant tension and hits all three delt heads for complete shoulder development.',
+  ),
+  'dumbbell_bench_seated_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'shoulders': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench with back support. Hold dumbbells at shoulder level with palms facing forward, elbows bent at 90 degrees. Press both dumbbells straight up overhead until arms are fully extended. Dumbbells can touch at the top or stay slightly apart. Lower with control back to shoulder level. The seated position with back support provides stability, allowing you to focus purely on shoulder strength and lift heavier weight safely.',
+  ),
+  'dumbbell_bench_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Hold dumbbells at your sides. Stand in front of a bench. Squat down by pushing your hips back and bending your knees until you lightly touch the bench with your glutes. Don\'t sit or relax on the bench. Immediately drive through your heels to stand back up. The bench serves as a depth marker for consistent squats while the dumbbells provide resistance. This builds powerful legs with less spinal loading than barbell squats.',
+  ),
+  'dumbbell_bent_over_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+      'lower_back': 0.6,
+    },
+    description: 'HOW TO: Hold dumbbells with arms hanging straight down. Bend forward at the hips until your torso is roughly parallel to the floor. Keep your back flat and core tight. Pull both dumbbells up to your sides by driving your elbows back. Squeeze your shoulder blades together at the top. Lower with control. This bent-over row variation builds thick lats and upper back while allowing each side to work independently for balanced development.',
+  ),
+  'dumbbell_biceps_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells at your sides with palms facing forward. Keep your elbows close to your sides and upper arms stationary. Curl both dumbbells up toward your shoulders by contracting your biceps. Squeeze hard at the top. Lower with control. Don\'t let your elbows drift forward or use momentum. Standard dumbbell curls are a foundational biceps exercise that allows for full range of motion and natural wrist rotation.',
+  ),
+  'dumbbell_biceps_curl_reverse': ExerciseMuscleData(
+    primaryMuscles: {
+      'brachialis': 0.0,
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Stand holding dumbbells with an overhand grip (palms facing down). Keep your elbows close to your sides. Curl the dumbbells up toward your shoulders, maintaining the overhand grip throughout. Squeeze at the top. Lower with control. The reverse grip shifts emphasis to the brachialis (underneath the biceps) and forearms, building thicker upper arms and exceptional grip strength for pulling movements.',
+  ),
+  'dumbbell_close_grip_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Lie on a flat bench holding two dumbbells. Press them together at arm\'s length above your chest, palms facing each other. Keep the dumbbells pressed together throughout. Lower them to your chest by bending your elbows, keeping them close to your body. Press back up while maintaining pressure between the dumbbells. The close grip and inward pressure maximizes triceps and inner chest activation.',
+  ),
+  'dumbbell_concentration_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench with legs spread. Hold a dumbbell in one hand, arm hanging down. Brace your elbow against the inside of your thigh for support. Curl the dumbbell up toward your shoulder, focusing purely on your bicep. Squeeze hard at the peak contraction. Lower with control. The supported position eliminates momentum and isolates the biceps completely. This exercise is legendary for building the biceps peak.',
+  ),
+  'dumbbell_cross_body_hammer_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+      'brachialis': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.5,
+    },
+    description: 'HOW TO: Stand holding a dumbbell in one hand at your side with palm facing your body. Keep your elbow close to your side. Curl the dumbbell up and across your body toward your opposite shoulder, maintaining the neutral grip. Squeeze at the top. Lower with control. Complete all reps, then switch arms. The cross-body path increases the range of motion and builds the brachialis and biceps peak.',
+  ),
+  'dumbbell_cross_body_hammer_curl_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+      'brachialis': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.5,
+    },
+    description: 'HOW TO: Stand with dumbbells at your sides, palms facing your body. Alternately curl each dumbbell up and across your torso toward the opposite shoulder while keeping the neutral grip. As you curl one arm, the other stays at your side. The alternating cross-body motion maximizes brachialis engagement and allows you to focus on squeezing each bicep individually for peak development.',
+  ),
+  'dumbbell_deadlift': ExerciseMuscleData(
+    primaryMuscles: {
+      'hamstrings': 0.0,
+      'glutes': 0.0,
+      'lower_back': 0.0,
+    },
+    secondaryMuscles: {
+      'quads': 0.5,
+      'upper_back': 0.5,
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand with feet hip-width apart, holding dumbbells at your sides. Push your hips back and bend your knees slightly, lowering the dumbbells along your legs. Keep your back flat and chest up. Lower until you feel a hamstring stretch or the dumbbells reach mid-shin. Drive through your heels and thrust your hips forward to stand up. Dumbbells allow for a more natural movement path than barbells while building total body strength and power.',
+  ),
+  'dumbbell_decline_bench_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Lie on a decline bench (feet higher than head) holding dumbbells at chest level. Press both dumbbells up until arms are fully extended above your lower chest. Lower with control, allowing dumbbells to travel slightly wider and deeper than barbell would allow. The decline angle targets the lower chest fibers while the dumbbells provide greater range of motion and allow each side to work independently.',
+  ),
+  'dumbbell_decline_fly': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.6,
+    },
+    description: 'HOW TO: Lie on a decline bench holding dumbbells above your chest with arms slightly bent, palms facing each other. Lower the dumbbells out to the sides in a wide arc, keeping the same elbow bend throughout. Go until you feel a deep stretch across your chest. Bring the dumbbells back together above your chest, squeezing your chest hard. The decline angle emphasizes lower chest development for complete pec development.',
+  ),
+  'dumbbell_decline_hammer_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Lie on a decline bench holding dumbbells with a neutral grip (palms facing each other). Press the dumbbells up from your chest until arms are fully extended, maintaining the neutral grip throughout. Lower with control. The neutral grip is easier on the shoulders and allows for a more natural pressing path while the decline angle targets the lower chest for complete chest development.',
+  ),
+  'dumbbell_decline_shrug': ExerciseMuscleData(
+    primaryMuscles: {
+      'traps': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Lie face-down on a decline bench with dumbbells hanging straight down toward the floor. Keep your arms straight. Shrug your shoulders up by contracting your traps, bringing your shoulder blades together. Hold at the top. Lower with control. The decline position provides a unique angle on the traps and eliminates momentum, forcing your traps to work throughout the entire range of motion.',
+  ),
+  'dumbbell_decline_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'chest': 0.6,
+    },
+    description: 'HOW TO: Lie on a decline bench with head at the low end. Hold dumbbells with arms extended above your chest. Keep your upper arms stationary. Bend at the elbows to lower the dumbbells toward your ears or temples. Extend back up by contracting your triceps. The decline angle increases the stretch on the triceps while providing a different stimulus than flat or incline variations for complete triceps development.',
+  ),
+  'dumbbell_finger_curls': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit on a bench holding dumbbells with palms facing up. Rest your forearms on your thighs with wrists hanging off your knees. Let the dumbbells roll down to your fingertips with fingers extended. Using only your fingers and grip, curl the dumbbells back up into your palms by flexing your fingers closed. Hold the squeeze. Lower with control. This isolation exercise builds exceptional finger strength and forearm development.',
+  ),
+  'dumbbell_goblet_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Hold a single dumbbell vertically at chest height with both hands cupping the top weight. Stand with feet shoulder-width apart. Keep the weight close to your chest with elbows pointing down. Squat down by pushing hips back and bending knees, keeping your chest up and core tight. Go as deep as possible while maintaining form. Drive through your heels to stand. The front-loaded weight naturally keeps you upright, making this excellent for learning proper squat mechanics.',
+  ),
+  'dumbbell_hammer_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+      'brachialis': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.5,
+    },
+    description: 'HOW TO: Stand holding dumbbells at your sides with palms facing each other (neutral grip). Keep your elbows close to your sides. Curl both dumbbells up toward your shoulders while maintaining the neutral grip throughout. Squeeze at the top. Lower with control. Hammer curls target the brachialis and brachioradialis more than standard curls, building thicker overall arm development and exceptional grip strength.',
+  ),
+  'dumbbell_hammer_curl_ii': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+      'brachialis': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.5,
+    },
+    description: 'HOW TO: Stand with dumbbells at your sides, palms facing your thighs. Keep your upper arms locked at your sides. Curl the dumbbells simultaneously toward your shoulders, keeping the neutral hammer grip throughout the movement. Focus on squeezing at the top. Lower with control. This variation builds the brachialis underneath the biceps, pushing your biceps up and out for thicker, more impressive arms.',
+  ),
+  'dumbbell_high_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells and raise your arms out to your sides at shoulder height with elbows bent at 90 degrees, like a double biceps pose. Curl one dumbbell up toward your head by moving only your forearm. Your upper arm stays parallel to the floor. Lower with control, then curl the other side. The high elbow position creates peak contraction in the biceps and engages the front delts for a complete upper arm pump.',
+  ),
+  'dumbbell_incline_bench_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+      'triceps': 0.5,
+    },
+    description: 'HOW TO: Lie on an incline bench set to 30-45 degrees. Hold dumbbells at chest level with arms bent. Press both dumbbells up until arms are fully extended above your upper chest. Lower with control, allowing dumbbells to go deeper than a barbell would. The incline angle targets the upper chest (clavicular head) while dumbbells provide greater range of motion and allow each side to work independently for balanced development.',
+  ),
+  'dumbbell_incline_fly': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.6,
+    },
+    description: 'HOW TO: Lie on an incline bench set to 30-45 degrees. Hold dumbbells above your chest with arms slightly bent, palms facing each other. Lower the dumbbells out to the sides in a wide arc, maintaining the elbow bend. Go until you feel a deep stretch across your upper chest. Bring the dumbbells back together above your chest by squeezing your chest. The incline angle specifically targets the upper chest for complete pec development.',
+  ),
+  'dumbbell_incline_front_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'front_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie back on an incline bench set to 45 degrees holding dumbbells at your sides. With arms straight (slight elbow bend), raise both dumbbells forward and up in an arc until they\'re above your head. Keep your arms relatively straight throughout. Lower with control. The incline position provides constant tension and eliminates the ability to cheat, forcing your front delts to work through the entire range of motion.',
+  ),
+  'dumbbell_incline_inner_biceps_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Lie back on an incline bench set to 45-60 degrees. Let dumbbells hang at your sides with arms fully extended and palms facing forward. Curl the dumbbells up toward your shoulders, keeping your elbows back and pinned to your sides. Squeeze hard at the top. Lower with control to full stretch. The incline creates an intense stretch on the biceps and emphasizes the short head (inner biceps) for peak development.',
+  ),
+  'dumbbell_incline_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'front_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Lie chest-down on an incline bench set to 30-45 degrees. Hold dumbbells with arms hanging straight down. Raise both dumbbells forward and up in an arc until your arms are roughly parallel to the floor. Keep your arms relatively straight. Lower with control. This variation eliminates momentum and isolates the front delts from a unique angle, building powerful shoulders with constant tension.',
+  ),
+  'dumbbell_incline_rear_lateral_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'rear_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Lie face-down on an incline bench set to 30-45 degrees with chest supported. Hold dumbbells with arms hanging straight down. Raise both dumbbells out to your sides in a wide arc with arms relatively straight until they reach shoulder height. Focus on squeezing your rear delts and upper back. Lower with control. The incline position eliminates momentum and provides chest support for perfect rear delt isolation.',
+  ),
+  'dumbbell_incline_reverse_grip_30_degrees_bench_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Lie on an incline bench set to 30 degrees. Hold dumbbells with an underhand grip (palms facing your face). Press the dumbbells up from chest level until arms are fully extended. Lower with control. The reverse grip combined with the 30-degree incline creates unique upper chest activation while engaging the biceps more than standard pressing, providing a fresh stimulus for chest growth.',
+  ),
+  'dumbbell_incline_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+    },
+    description: 'HOW TO: Lie face-down on an incline bench set to 30-45 degrees with chest supported. Hold dumbbells with arms hanging straight down. Pull both dumbbells up to your sides by driving your elbows back. Squeeze your shoulder blades together at the top. Lower with control. The chest support eliminates lower back strain and momentum, allowing pure lat and upper back work with perfect form.',
+  ),
+  'dumbbell_incline_shrug': ExerciseMuscleData(
+    primaryMuscles: {
+      'traps': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Lie face-down on an incline bench with dumbbells hanging straight down. Keep your arms straight. Shrug your shoulders up toward your ears by contracting your traps, bringing your shoulder blades together. Hold at the top. Lower with control. The incline position targets the upper and middle traps from a unique angle while eliminating momentum, building impressive trap development and upper back thickness.',
+  ),
+  'dumbbell_incline_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie back on an incline bench holding dumbbells with arms extended above your head toward the ceiling. Keep your upper arms stationary and angled back slightly. Bend at the elbows to lower the dumbbells toward your temples or behind your head. Extend back up by contracting your triceps. The incline provides constant tension on the triceps throughout the movement for exceptional arm development.',
+  ),
+  'dumbbell_lunge': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells at your sides. Step forward with one leg, landing heel first. Lower your back knee toward the floor until your front thigh is parallel to the ground. Your front knee should stay behind your toes. Push through your front heel to return to standing. Alternate legs or complete all reps on one side first. Dumbbell lunges build unilateral leg strength, balance, and explosive power while addressing muscle imbalances.',
+  ),
+  'dumbbell_lying_elbow_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Lie on a flat bench holding dumbbells. Start with your elbows bent at 90 degrees, upper arms parallel to the floor, and dumbbells at chest level. Press the dumbbells up by extending your arms until fully extended above your chest. Lower back down with control. The focus on elbow extension emphasizes triceps while still engaging the chest, providing a unique stimulus for upper body pressing strength.',
+  ),
+  'dumbbell_lying_femoral': ExerciseMuscleData(
+    primaryMuscles: {
+      'hamstrings': 0.0,
+    },
+    secondaryMuscles: {
+      'calves': 0.6,
+    },
+    description: 'HOW TO: Lie face-down on a flat bench. Secure a dumbbell between your feet (squeeze it with both feet). With legs straight, curl your feet up toward your glutes by bending your knees. Squeeze your hamstrings hard at the top. Lower with control. This makeshift leg curl builds hamstring strength when no leg curl machine is available, though balance and coordination are required.',
+  ),
+  'dumbbell_lying_hammer_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Lie on a flat bench holding dumbbells with a neutral grip (palms facing each other). Press the dumbbells up from your chest until arms are fully extended, maintaining the neutral grip throughout. Lower with control. The neutral grip is easier on the shoulders and allows for a natural pressing motion while still building powerful chest development. This variation also increases triceps involvement.',
+  ),
+  'dumbbell_lying_hammer_press_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Lie flat on a bench with dumbbells held above your chest, palms facing each other in a neutral grip. Keep the dumbbells close together throughout. Press up to full extension, then lower the weights down toward the center of your chest while maintaining the hammer grip. The close neutral grip path emphasizes the inner chest and triceps while being shoulder-friendly.',
+  ),
+  'dumbbell_lying_rear_delt_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'rear_delts': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Lie face-down on a flat bench with dumbbells hanging straight down. Pull both dumbbells up toward your sides with elbows flaring out wide at roughly 90 degrees from your body. Focus on squeezing your rear delts and upper back together. Lower with control. The lying position eliminates momentum and lower back strain, allowing perfect rear delt and upper back isolation.',
+  ),
+  'dumbbell_lying_single_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie on a flat bench holding one dumbbell overhead with one arm extended. Keep your upper arm vertical and stationary. Bend at the elbow to lower the dumbbell toward the opposite shoulder or behind your head. Extend back up by contracting your tricep. Complete all reps, then switch arms. The unilateral focus addresses strength imbalances while the lying position provides stability for strict form.',
+  ),
+  'dumbbell_lying_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie on a flat bench holding dumbbells with arms extended above your chest. Keep your upper arms perpendicular to the floor and locked in position. Bend at the elbows to lower the dumbbells toward your ears or temples. Extend back up by contracting your triceps. The dumbbells allow for natural wrist positioning and independent arm work, building symmetrical triceps development.',
+  ),
+  'dumbbell_one_arm_kickback': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Place one knee and hand on a bench for support. Hold a dumbbell in your free hand. Position your upper arm parallel to the floor with elbow bent at 90 degrees. Extend your forearm back by straightening your elbow until your arm is fully extended. Squeeze your tricep hard. Return with control. Complete all reps, then switch sides. This isolation exercise perfectly targets the triceps with zero momentum.',
+  ),
+  'dumbbell_one_arm_revers_wrist_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit on a bench holding a dumbbell in one hand with an overhand grip (palm facing down). Rest your forearm on your thigh with wrist hanging off your knee. Lower the dumbbell by extending your wrist down. Curl your wrist up by contracting your forearm extensors. Hold the squeeze. Lower with control. Complete all reps, then switch arms. This builds the top of the forearms for balanced arm development.',
+  ),
+  'dumbbell_one_arm_row_rack_support': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+    },
+    description: 'HOW TO: Place one hand on a squat rack or sturdy support at roughly waist height. Bend forward at the hips with your back flat. Hold a dumbbell in your free hand, arm hanging straight down. Pull the dumbbell up to your side by driving your elbow back. Focus on squeezing your lat and upper back. Lower with control. The rack support provides stability for heavy rowing.',
+  ),
+  'dumbbell_one_arm_seated_neutral_wrist_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit on a bench holding a dumbbell in one hand with a neutral grip (thumb up). Rest your forearm on your thigh with wrist hanging off your knee. Let the dumbbell drop by flexing your wrist down. Curl your wrist up by contracting your forearm. Hold the squeeze. Lower with control. The neutral grip targets different forearm muscles than pronated or supinated curls for complete forearm development.',
+  ),
+  'dumbbell_one_arm_wrist_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit on a bench holding a dumbbell in one hand with an underhand grip (palm facing up). Rest your forearm on your thigh with wrist hanging off your knee. Let the dumbbell roll down to your fingertips. Curl your wrist up by contracting your forearm flexors. Hold the squeeze. Lower with control. Complete all reps, then switch arms. The unilateral focus ensures balanced forearm development.',
+  ),
+  'dumbbell_over_bench_neutral_wrist_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Kneel behind a flat bench holding dumbbells with a neutral grip (palms facing each other). Rest your forearms on the bench with wrists hanging off the edge. Let the dumbbells drop by flexing your wrists down. Curl your wrists up by contracting your forearms. Hold the squeeze. Lower with control. This position allows for heavy loading and builds the side forearm muscles for complete arm development.',
+  ),
+  'dumbbell_over_bench_one_arm__neutral_wrist_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Kneel beside a flat bench. Hold a dumbbell in one hand with a neutral grip (thumb up). Rest your forearm on the bench with wrist hanging off the edge. Lower the dumbbell by flexing your wrist down. Curl your wrist up by contracting your forearm. Hold at the top. Lower with control. Complete all reps, then switch arms. This unilateral variation ensures no strength imbalances in forearm development.',
+  ),
+  'dumbbell_over_bench_one_arm_reverse_wrist_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Kneel beside a flat bench. Hold a dumbbell in one hand with an overhand grip (palm down). Rest your forearm on the bench with wrist hanging off the edge. Lower the dumbbell by dropping your wrist. Curl your wrist up by contracting your forearm extensors. Hold the squeeze. Lower with control. Complete all reps, then switch. This builds the top of the forearms for balanced arm aesthetics.',
+  ),
+  'dumbbell_over_bench_one_arm_wrist_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Kneel beside a flat bench. Hold a dumbbell in one hand with an underhand grip (palm up). Rest your forearm on the bench with wrist hanging off the edge. Let the dumbbell roll to your fingertips. Curl your wrist up by contracting your forearm flexors, bringing the dumbbell back into your palm. Hold at the top. Lower with control. Complete all reps, then switch arms.',
+  ),
+  'dumbbell_over_bench_revers_wrist_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Kneel behind a flat bench holding dumbbells with an overhand grip (palms down). Rest your forearms on the bench with wrists hanging off the edge. Lower the dumbbells by dropping your wrists down. Curl your wrists up by contracting your forearm extensors. Hold the squeeze at the top. Lower with control. This builds the extensor muscles on top of the forearms for complete balanced development.',
+  ),
+  'dumbbell_over_bench_wrist_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Kneel behind a flat bench holding dumbbells with an underhand grip (palms up). Rest your forearms on the bench with wrists hanging off the edge. Let the dumbbells roll down to your fingertips. Curl your wrists up by contracting your forearm flexors, bringing the dumbbells back into your palms. Hold the squeeze. Lower with control. This position allows for maximum range of motion and heavy loading.',
+  ),
+  'dumbbell_palm_rotational_bent_over_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+    },
+    description: 'HOW TO: Bend forward at the hips with dumbbells hanging straight down, palms facing your body. Pull both dumbbells up to your sides while simultaneously rotating your wrists so your palms face backward at the top. Squeeze your lats and upper back. Lower while rotating palms back to starting position. The rotation adds an extra dimension to the row, increasing back activation and building functional pulling strength.',
+  ),
+  'dumbbell_palms_in_incline_bench_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Lie on an incline bench set to 30-45 degrees. Hold dumbbells with a neutral grip (palms facing each other). Press the dumbbells up from chest level until arms are fully extended, maintaining the neutral grip throughout. Lower with control. The neutral grip combined with incline angle targets the upper chest while being extremely shoulder-friendly, making this ideal for those with shoulder issues.',
+  ),
+  'dumbbell_peacher_hammer_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'brachialis': 0.0,
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.5,
+    },
+    description: 'HOW TO: Sit at a preacher bench with chest against the pad. Hold dumbbells with a neutral grip (palms facing each other), arms extended down the pad. Curl both dumbbells up toward your shoulders while maintaining the neutral grip. Squeeze at the top. Lower with control. The preacher position eliminates momentum while the hammer grip emphasizes the brachialis for thicker overall arm development.',
+  ),
+  'dumbbell_pullover': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie perpendicular on a flat bench with only your upper back supported. Hold a single dumbbell with both hands above your chest, arms extended. Lower the dumbbell back in an arc over and behind your head until you feel a deep stretch in your lats and chest. Pull the dumbbell back up over your chest. This classic exercise expands the rib cage and builds both lat width and chest thickness.',
+  ),
+  'dumbbell_rear_delt_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'rear_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Bend forward at the hips until your torso is nearly parallel to the floor. Hold dumbbells with arms hanging down. Raise both dumbbells out to your sides in a wide arc with arms relatively straight until they reach shoulder height. Focus on leading with your elbows and squeezing your rear delts. Lower with control. This fundamental exercise builds well-rounded shoulders and improves posture.',
+  ),
+  'dumbbell_rear_delt_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'rear_delts': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Bend forward at the hips with dumbbells hanging straight down. Pull both dumbbells up toward your sides with elbows flaring out wide at roughly 90 degrees from your body. Focus on driving through your elbows and squeezing your rear delts and upper back. Lower with control. The wide elbow angle specifically targets the rear delts more than standard rows for complete shoulder development.',
+  ),
+  'dumbbell_rear_fly': ExerciseMuscleData(
+    primaryMuscles: {
+      'rear_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Bend forward at the hips until your torso is nearly parallel to the floor. Hold dumbbells with arms hanging down and palms facing each other. Raise both dumbbells out to your sides in a wide arc with arms relatively straight. Focus on squeezing your rear delts and upper back together. Lower with control. This isolation exercise is essential for balanced shoulder development and preventing injuries.',
+  ),
+  'dumbbell_rear_lateral_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'rear_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Stand or sit bent forward at the hips, torso nearly parallel to the floor. Hold dumbbells with arms hanging straight down. Raise both dumbbells out to your sides with arms straight until they reach shoulder height. Lead with your elbows, keeping a slight bend. Squeeze your rear delts hard. Lower with control. Building strong rear delts is crucial for shoulder health, posture, and complete development.',
+  ),
+  'dumbbell_rear_lunge': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells at your sides. Step one leg backward, landing on the ball of your back foot. Lower your back knee toward the floor until your front thigh is parallel to the ground. Push through your front heel to return to standing. Alternate legs. Rear lunges are easier on the knees than forward lunges while building powerful quads, glutes, and unilateral leg strength.',
+  ),
+  'dumbbell_revers_grip_biceps_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'brachialis': 0.0,
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Stand holding dumbbells with an overhand grip (palms facing down). Keep your elbows close to your sides. Curl both dumbbells up toward your shoulders, maintaining the overhand grip throughout. Squeeze at the top. Lower with control. The reverse grip shifts emphasis to the brachialis and forearm extensors, building thicker arms and exceptional grip strength.',
+  ),
+  'dumbbell_reverse_bench_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'biceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Lie on a flat bench holding dumbbells with an underhand grip (palms facing your face). Press the dumbbells up from your chest until arms are fully extended. Lower with control. The reverse grip creates unique chest activation patterns while engaging the biceps more than standard pressing, reduces shoulder strain, and provides a novel stimulus for chest growth.',
+  ),
+  'dumbbell_reverse_grip_incline_bench_two_arm_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.6,
+    },
+    description: 'HOW TO: Lie face-down on an incline bench with chest supported. Hold dumbbells with an underhand grip (palms facing up), arms hanging straight down. Pull both dumbbells up to your sides by driving your elbows back, keeping them close to your body. Squeeze your lats. Lower with control. The reverse grip increases biceps and lower lat involvement while the incline provides perfect support for isolation.',
+  ),
+  'dumbbell_reverse_preacher_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'brachialis': 0.0,
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Sit at a preacher bench with chest against the pad. Hold dumbbells with an overhand grip (palms facing down), arms extended down the pad. Curl the dumbbells up toward your shoulders, maintaining the overhand grip. Squeeze at the top. Lower with control. The preacher position eliminates cheating while the reverse grip targets the brachialis and forearms for complete arm development.',
+  ),
+  'dumbbell_reverse_wrist_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit on a bench holding dumbbells with an overhand grip (palms facing down). Rest your forearms on your thighs with wrists hanging off your knees. Lower the dumbbells by dropping your wrists down. Curl your wrists up by contracting your forearm extensors. Hold the squeeze. Lower with control. This builds the extensor muscles on top of the forearms for balanced arm development and grip strength.',
+  ),
+  'dumbbell_romanian_deadlift': ExerciseMuscleData(
+    primaryMuscles: {
+      'hamstrings': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'lower_back': 0.5,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells in front of your thighs. Keep your legs nearly straight with a slight knee bend. Push your hips back and lower the dumbbells down the front of your legs by hinging at the hips. Keep your back flat. Lower until you feel a strong hamstring stretch (around mid-shin). Drive your hips forward to stand up. RDLs are one of the best hamstring and glute builders available.',
+  ),
+  'dumbbell_seated_bench_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'shoulders': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench holding a single dumbbell with both hands overhead, arms fully extended. Keep your upper arms vertical and stationary. Lower the dumbbell behind your head by bending at the elbows. Go until you feel a deep triceps stretch. Extend back up by contracting your triceps. The seated position provides stability while the overhead position maximizes triceps long head activation.',
+  ),
+  'dumbbell_seated_bent_arm_lateral_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'side_delts': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit on a bench holding dumbbells at your sides with elbows bent at 90 degrees. Keep your elbows bent throughout. Raise your elbows out to the sides until they reach shoulder height. Lead with your elbows, not your hands. Squeeze your side delts at the top. Lower with control. The bent arm position allows for heavier weight and reduces strain on the elbow joints.',
+  ),
+  'dumbbell_seated_bicep_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench with dumbbells at your sides, palms facing forward. Keep your back straight and elbows close to your sides. Curl both dumbbells up toward your shoulders. Squeeze hard at the top. Lower with control. The seated position eliminates leg drive and lower body momentum, forcing your biceps to do all the work for strict isolation and maximum growth.',
+  ),
+  'dumbbell_seated_front_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'front_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench holding dumbbells in front of your thighs with palms facing your legs. Keep your arms relatively straight with a slight elbow bend. Raise both dumbbells forward and up to shoulder height. Lower with control. The seated position eliminates momentum and forces strict form, making your front delts do all the work for targeted shoulder development.',
+  ),
+  'dumbbell_seated_hammer_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+      'brachialis': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.5,
+    },
+    description: 'HOW TO: Sit on a bench holding dumbbells at your sides with palms facing each other (neutral grip). Keep your back straight and elbows at your sides. Curl both dumbbells up toward your shoulders while maintaining the neutral grip. Squeeze at the top. Lower with control. The seated position ensures strict form while the hammer grip builds the brachialis for thicker arms.',
+  ),
+  'dumbbell_seated_kickback': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit on the edge of a bench leaning forward with your torso at 45 degrees. Hold dumbbells with upper arms parallel to the floor and elbows bent at 90 degrees. Extend both forearms back simultaneously by straightening your elbows. Squeeze your triceps at full extension. Return with control. The seated position provides stability for strict triceps isolation.',
+  ),
+  'dumbbell_seated_lateral_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'side_delts': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit on a bench holding dumbbells at your sides with arms hanging down. Keep a slight bend in your elbows. Raise both dumbbells out to your sides until they reach shoulder height. Lead with your elbows, not your hands. Pause at the top, squeezing your side delts. Lower with control. The seated position eliminates momentum for perfect side delt isolation and capped shoulder development.',
+  ),
+  'dumbbell_seated_neutral_wrist_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit on a bench holding dumbbells with a neutral grip (thumbs up). Rest your forearms on your thighs with wrists hanging off your knees. Let the dumbbells drop by flexing your wrists down. Curl your wrists up by contracting your forearms. Hold the squeeze. Lower with control. The neutral grip targets different forearm fibers than supinated or pronated grips for complete forearm development.',
+  ),
+  'dumbbell_seated_palms_up_wrist_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit on a bench holding dumbbells with an underhand grip (palms facing up). Rest your forearms on your thighs with wrists hanging off your knees. Let the dumbbells roll down to your fingertips. Curl your wrists up by contracting your forearm flexors. Hold the squeeze. Lower with control. This fundamental forearm exercise builds the flexor muscles on the underside of your forearms.',
+  ),
+  'dumbbell_seated_preacher_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Sit at a preacher bench with your chest against the pad. Hold dumbbells with palms facing up, arms extended down the pad. Curl both dumbbells up toward your shoulders. Squeeze your biceps hard at the peak. Lower with control to full extension. The preacher position eliminates momentum and provides constant tension throughout the entire range of motion for maximum biceps development.',
+  ),
+  'dumbbell_seated_revers_grip_concentration_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'brachialis': 0.0,
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Sit on a bench with legs spread. Hold a dumbbell in one hand with an overhand grip (palm down). Brace your elbow against the inside of your thigh. Curl the dumbbell up toward your shoulder while maintaining the overhand grip. Squeeze at the top. Lower with control. Complete all reps, then switch. The reverse grip concentration curl builds the brachialis and forearms with zero momentum.',
+  ),
+  'dumbbell_seated_shoulder_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'shoulders': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench with back support. Hold dumbbells at shoulder level with elbows bent at 90 degrees, palms facing forward. Press both dumbbells straight up overhead until arms are fully extended. Lower with control back to shoulder level. The seated position with back support provides stability, allowing you to lift heavier weight safely and focus purely on building massive shoulders.',
+  ),
+  'dumbbell_seated_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'shoulders': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench holding a single dumbbell with both hands overhead, arms fully extended. Keep your upper arms vertical and stationary. Lower the dumbbell behind your head by bending at the elbows until you feel a deep triceps stretch. Extend back up by contracting your triceps. The seated position provides stability while maximizing triceps long head activation for horseshoe arms.',
+  ),
+  'dumbbell_shrug': ExerciseMuscleData(
+    primaryMuscles: {
+      'traps': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells at your sides with arms hanging straight down. Shrug your shoulders straight up toward your ears as high as possible by contracting your traps. Hold briefly at the top. Lower with control. Don\'t roll your shoulders. Keep the movement straight up and down. Dumbbell shrugs allow for a natural movement path and build impressive trap development for a powerful physique.',
+  ),
+  'dumbbell_side_bend': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Stand holding a dumbbell in one hand at your side. Place your other hand behind your head or on your hip. Keep your legs straight and hips facing forward. Bend to the side with the dumbbell, lowering it down your leg. Return to upright by contracting your obliques on the opposite side. Complete all reps, then switch sides. This isolates the obliques for core strength and definition.',
+  ),
+  'dumbbell_single_leg_split_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Hold dumbbells at your sides. Place your rear foot on a bench behind you. Your front foot should be far enough forward that your knee stays behind your toes when you lower down. Lower your back knee toward the floor until your front thigh is parallel to the ground. Push through your front heel to stand up. Complete all reps, then switch legs. Bulgarian split squats build unilateral leg strength and address imbalances.',
+  ),
+  'dumbbell_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells at your sides with feet shoulder-width apart. Keep your chest up and core tight. Squat down by pushing your hips back and bending your knees until thighs are at least parallel to the floor. Keep your weight on your heels. Drive through your heels to stand back up. Dumbbells allow for a natural squatting motion and are easier on the back than barbells, making them perfect for home training.',
+  ),
+  'dumbbell_standing_alternate_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'front_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells in front of your thighs with palms facing your legs. Keep your arms relatively straight with a slight elbow bend. Raise one dumbbell forward and up to shoulder height or slightly above. Lower it with control while simultaneously raising the other arm. Continue alternating. The alternating pattern allows you to use slightly heavier weight and maintain better balance throughout the set.',
+  ),
+  'dumbbell_standing_bent_over_two_arm_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'rear_delts': 0.6,
+      'lower_back': 0.6,
+    },
+    description: 'HOW TO: Bend forward at the hips until your torso is nearly parallel to the floor. Hold dumbbells with upper arms parallel to the floor and elbows bent at 90 degrees. Extend both forearms back simultaneously by straightening your elbows until arms are fully extended. Squeeze your triceps hard. Return with control. This bent-over position maximizes triceps activation while engaging core and lower back stabilizers.',
+  ),
+  'dumbbell_standing_biceps_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells at your sides with palms facing forward. Keep your feet shoulder-width apart and core tight. Curl both dumbbells up toward your shoulders by contracting your biceps. Keep your elbows stationary at your sides. Squeeze hard at the top. Lower with control. Standing curls engage more stabilizer muscles than seated variations, building functional strength and bigger biceps.',
+  ),
+  'dumbbell_standing_calf_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'calves': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand on an elevated surface with the balls of your feet on the edge and heels hanging off. Hold dumbbells at your sides. Lower your heels below the platform to stretch your calves fully. Push up onto your toes as high as possible by contracting your calves. Squeeze maximally at the top. Lower with control. Standing calf raises build the gastrocnemius (upper calf) for explosive lower leg power.',
+  ),
+  'dumbbell_standing_concentration_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand with feet wider than shoulder-width. Bend forward slightly and brace your elbow against the inside of your thigh with arm hanging down. Hold a dumbbell in that hand. Curl the dumbbell up toward your shoulder while keeping your elbow pressed against your thigh. Squeeze your bicep hard. Lower with control. Complete all reps, then switch arms. The standing position adds a core challenge to the traditional concentration curl.',
+  ),
+  'dumbbell_standing_inner_biceps_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells with a wide stance, arms hanging at your sides. As you curl, bring the dumbbells up and inward toward the center of your chest rather than straight up. This inward path emphasizes the short head (inner biceps). Squeeze hard at the peak. Lower with control. This curl variation builds the inner biceps for that dramatic peak when flexing.',
+  ),
+  'dumbbell_standing_inner_biceps_curl_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand with dumbbells at your sides. Curl both dumbbells simultaneously while rotating your wrists outward and bringing the weights toward the center of your body. At the top, your palms should be facing up and the dumbbells close to your chest. This supination and inward path maximizes short head (inner biceps) activation for peak development.',
+  ),
+  'dumbbell_standing_kickback': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+      'lower_back': 0.6,
+    },
+    description: 'HOW TO: Stand in a staggered stance, bent forward at the hips. Hold dumbbells with upper arms parallel to your torso and elbows bent. Extend both forearms back simultaneously by straightening your elbows. Squeeze your triceps at full extension. Return with control. The standing position requires more core stability than the bench-supported version, building functional triceps strength.',
+  ),
+  'dumbbell_standing_one_arm_concentration_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand with legs wide. Bend forward and brace your non-working hand on your thigh for support. Let your working arm hang with a dumbbell. Brace your elbow against your inner thigh. Curl the dumbbell up toward your shoulder. Squeeze your bicep intensely. Lower with control. The standing position engages your core while the braced elbow eliminates momentum for pure biceps isolation.',
+  ),
+  'dumbbell_standing_one_arm_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'shoulders': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand holding a dumbbell overhead in one hand with arm fully extended. Keep your upper arm vertical and stationary. Lower the dumbbell behind your head by bending at the elbow. Go until you feel a deep triceps stretch. Extend back up by contracting your tricep. Complete all reps, then switch arms. The unilateral overhead position maximizes triceps long head activation.',
+  ),
+  'dumbbell_standing_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'shoulders': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand holding a single dumbbell with both hands overhead, arms fully extended. Keep your upper arms vertical and stationary. Lower the dumbbell behind your head by bending at the elbows. Go until you feel a deep triceps stretch. Extend back up by contracting your triceps. The standing position engages core stabilizers while building powerful triceps.',
+  ),
+  'dumbbell_step_up': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand facing a bench or box holding dumbbells at your sides. Step up onto the box with one foot, driving through your heel to lift your body up. Bring your other foot up to meet it. Step back down with control. Alternate leading legs or complete all reps on one leg first. Step-ups build unilateral leg strength, power, and address muscle imbalances while being easier on the back than squats.',
+  ),
+  'dumbbell_stiff_leg_deadlift': ExerciseMuscleData(
+    primaryMuscles: {
+      'hamstrings': 0.0,
+      'lower_back': 0.0,
+    },
+    secondaryMuscles: {
+      'glutes': 0.5,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells in front of your thighs. Keep your legs nearly straight with only a slight knee bend. Push your hips back and lower the dumbbells by bending at the waist. Keep your back flat and dumbbells close to your legs. Lower until you feel an intense hamstring stretch. Drive your hips forward to stand up. This variation maximizes hamstring stretch and development.',
+  ),
+  'dumbbell_straight_arm_pullover': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie on a flat bench holding a dumbbell with both hands above your chest. Keep your arms nearly straight with just a slight elbow bend throughout. Lower the dumbbell back in an arc over and behind your head until you feel a deep stretch. Pull the dumbbell back up over your chest. Straight-arm pullovers emphasize the lats more than bent-arm versions, building impressive back width.',
+  ),
+  'dumbbell_upright_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'side_delts': 0.0,
+      'traps': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+      'biceps': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells in front of your thighs with palms facing your body. Pull both dumbbells straight up along your body toward your chin by raising your elbows out to the sides. Your elbows should rise higher than your hands. Keep the dumbbells close to your body. Lower with control. This builds powerful traps and side delts but use caution if you have shoulder issues.',
+  ),
+  'dumbbell_upright_row_back_pov': ExerciseMuscleData(
+    primaryMuscles: {
+      'traps': 0.0,
+      'side_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'rear_delts': 0.5,
+      'biceps': 0.6,
+    },
+    description: 'HOW TO: Stand holding dumbbells in front of your thighs. Pull the dumbbells straight up by raising your elbows high and out to the sides. Focus on driving your elbows up and back, squeezing your shoulder blades together at the top. This back-focused variation emphasizes the upper back and rear delts more than standard upright rows, building complete shoulder and trap development.',
+  ),
+  'dumbbell_upright_shoulder_external_rotation': ExerciseMuscleData(
+    primaryMuscles: {
+      'rotator_cuff': 0.0,
+    },
+    secondaryMuscles: {
+      'rear_delts': 0.6,
+    },
+    description: 'HOW TO: Stand holding light dumbbells with elbows bent at 90 degrees and upper arms at your sides. Your forearms should point straight ahead. Rotate your forearms up and out to the sides by externally rotating at your shoulders. Keep your elbows pinned at your sides. Your forearms should end up pointing toward the ceiling. Return with control. This strengthens the rotator cuff for shoulder health and injury prevention.',
+  ),
+  'dumbbell_zottman_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {
+      'brachialis': 0.5,
+    },
+    description: 'HOW TO: Stand holding dumbbells at your sides with palms facing forward. Curl the dumbbells up toward your shoulders with an underhand grip. At the top, rotate your wrists so palms face down. Lower the dumbbells with this overhand grip. At the bottom, rotate palms back to facing forward. The rotation combines a standard curl on the way up with a reverse curl on the way down for complete arm development.',
+  ),
+  'dumbbells_seated_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'shoulders': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench holding dumbbells overhead with arms fully extended. Keep your upper arms vertical and close to your head. Lower both dumbbells behind your head by bending at the elbows. Go until you feel a deep triceps stretch. Extend back up by contracting your triceps. Using two dumbbells allows each arm to work independently, ensuring balanced triceps development.',
+  ),
+  'elbow_to_knee': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'hip_flexors': 0.6,
+    },
+    description: 'HOW TO: Stand with feet shoulder-width apart, hands behind your head. Lift your right knee up while simultaneously crunching your left elbow down to meet it. Return to start. Repeat on the other side, left knee to right elbow. Continue alternating. This standing core exercise builds obliques and coordination while providing a cardio element. Keep the movement controlled, not rushed.',
+  ),
+  'extra_decline_sit_up': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+      'hip_flexors': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Lie on a steep decline bench with feet secured at the top. Place hands behind your head or across chest. Curl your torso up against gravity until you\'re sitting upright. The steep decline increases resistance significantly. Lower back down with control, using your abs to resist the downward pull. This advanced variation builds exceptional core strength and should only be attempted after mastering regular decline sit-ups.',
+  ),
+  'ez_bar_reverse_grip_bent_over_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.6,
+    },
+    description: 'HOW TO: Hold an EZ curl bar with an underhand grip. Bend forward at the hips until your torso is roughly parallel to the floor. Let the bar hang at arm\'s length. Pull the bar up to your lower chest by driving your elbows back, keeping them close to your body. Squeeze your lats and upper back. Lower with control. The EZ bar provides a comfortable wrist angle while the reverse grip increases biceps and lower lat involvement.',
+  ),
+  'ez_bar_seated_close_grip_concentration_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench leaning forward. Hold an EZ curl bar with a close grip (hands close together on the inner angles). Rest your elbows on your inner thighs. Curl the bar up toward your chest using only your biceps. Squeeze hard at the top. Lower with control. The close grip emphasizes the outer biceps while the EZ bar provides a natural wrist angle and the seated position eliminates momentum.',
+  ),
+  'ez_barbell_close_grip_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand holding an EZ curl bar with a close grip (hands positioned on the inner angled portion). Let the bar hang at arm\'s length. Keep your elbows close to your sides. Curl the bar up toward your shoulders. Squeeze your biceps at the top. Lower with control. The close grip emphasizes the outer biceps (long head) while the EZ bar reduces wrist strain compared to a straight bar.',
+  ),
+  'ez_barbell_close_grip_preacher_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Sit at a preacher bench with your chest against the pad. Hold an EZ curl bar with a close grip on the inner angles. Rest your arms on the pad with arms extended. Curl the bar up toward your shoulders. Squeeze your biceps hard. Lower with control to full extension. The preacher position eliminates cheating while the close grip targets the outer biceps for peak development.',
+  ),
+  'ez_barbell_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand holding an EZ curl bar at the angled grips, arms hanging at your sides. Keep your elbows close to your sides and upper arms stationary. Curl the bar up toward your shoulders by contracting your biceps. Squeeze hard at the top. Lower with control. The EZ bar\'s angled grip reduces wrist and forearm strain compared to straight bars, allowing you to lift heavier and build bigger biceps.',
+  ),
+  'ez_barbell_decline_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'chest': 0.6,
+    },
+    description: 'HOW TO: Lie on a decline bench holding an EZ curl bar with arms extended above your chest. Keep your upper arms stationary. Bend at the elbows to lower the bar toward your forehead or past your head. Extend back up by contracting your triceps. The decline angle increases the stretch on the triceps while the EZ bar provides a comfortable wrist angle for heavy pressing.',
+  ),
+  'ez_barbell_incline_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Lie on an incline bench holding an EZ curl bar with arms extended overhead. Keep your upper arms stationary and angled back. Bend at the elbows to lower the bar toward your head or behind. Extend back up by contracting your triceps. The incline provides constant tension throughout the movement while the EZ bar allows for a natural wrist angle.',
+  ),
+  'ez_barbell_reverse_grip_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'brachialis': 0.0,
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Stand holding an EZ curl bar with an overhand grip (palms facing down) at the angled sections. Let the bar hang at arm\'s length. Keep your elbows close to your sides. Curl the bar up toward your shoulders. Squeeze at the top. Lower with control. The reverse grip targets the brachialis and forearms while the EZ bar makes the movement more comfortable than a straight bar.',
+  ),
+  'ez_barbell_reverse_grip_preacher_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'brachialis': 0.0,
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Sit at a preacher bench with chest against the pad. Hold an EZ curl bar with an overhand grip (palms down), arms extended down the pad. Curl the bar up toward your shoulders while maintaining the overhand grip. Squeeze at the top. Lower with control. The preacher position eliminates momentum while the reverse grip builds the brachialis and forearms for thicker arms.',
+  ),
+  'ez_barbell_seated_curls': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench with feet flat on the floor. Hold an EZ curl bar at the angled grips, arms hanging down. Keep your elbows at your sides. Curl the bar up toward your shoulders by contracting your biceps. Squeeze hard at the top. Lower with control. The seated position eliminates leg drive and momentum, forcing your biceps to do all the work.',
+  ),
+  'ez_barbell_seated_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'shoulders': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Sit on a bench holding an EZ curl bar overhead with arms fully extended. Keep your upper arms vertical and stationary. Lower the bar behind your head by bending at the elbows. Go until you feel a deep triceps stretch. Extend back up by contracting your triceps. The EZ bar provides a comfortable wrist angle while the seated position ensures strict form.',
+  ),
+  'finger_curls': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit holding a barbell or dumbbells with palms facing up. Rest your forearms on your thighs with wrists hanging off your knees. Let the weight roll down to your fingertips with fingers extended. Using only your fingers, curl the weight back up into your palms by flexing your fingers closed. Hold the squeeze. Lower with control. This builds exceptional finger strength and forearm development for crushing grip strength.',
+  ),
+  'flutter_kicks_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+      'hip_flexors': 0.0,
+    },
+    secondaryMuscles: {
+      'quads': 0.6,
+    },
+    description: 'HOW TO: Lie flat on your back with hands under your glutes for support. Lift both legs slightly off the ground. Alternately kick your legs up and down in a flutter motion, keeping legs straight. Keep your lower back pressed to the floor and core engaged. The kicks should be small and rapid. This variation burns the lower abs and hip flexors while building endurance.',
+  ),
+  'flutter_kicks_version_3': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+      'hip_flexors': 0.0,
+    },
+    secondaryMuscles: {
+      'quads': 0.6,
+    },
+    description: 'HOW TO: Lie on your back with hands under your glutes. Lift your legs 6-12 inches off the ground. Perform quick alternating up and down kicks with straight legs. Keep your core tight and lower back pressed down. Focus on controlled movements from the hip, not swinging legs. Continue for time or reps. This advanced variation maintains constant tension on the lower abs and hip flexors.',
+  ),
+  'front_plank': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'shoulders': 0.5,
+      'glutes': 0.6,
+    },
+    description: 'HOW TO: Start in a push-up position but with forearms on the ground instead of hands. Your elbows should be directly under your shoulders. Form a straight line from head to heels. Engage your core, squeeze your glutes, and keep your back flat. Don\'t let your hips sag or pike up. Hold this position. The plank is a fundamental core exercise that builds incredible anterior core strength and full-body stability.',
+  ),
+  'hack_calf_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'calves': 0.0,
+    },
+    secondaryMuscles: {
+      'quads': 0.6,
+    },
+    description: 'HOW TO: Position yourself in a hack squat machine with shoulders under the pads and back against the support. Place the balls of your feet on the edge of the platform with heels hanging off. Lower your heels below the platform to stretch your calves fully. Push up onto your toes as high as possible by contracting your calves. Squeeze hard at the top. Lower with control. The machine allows for heavy loading and stable calf training.',
+  ),
+  'half_wipers_bent_leg': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'hip_flexors': 0.6,
+    },
+    description: 'HOW TO: Lie on your back with arms extended out to the sides for stability. Bend your knees at 90 degrees and lift them so your thighs are perpendicular to the floor. Keep your knees bent throughout. Rotate your legs to one side, lowering your knees toward the floor while keeping your shoulders flat. Return to center, then rotate to the other side. This builds obliques and rotational core strength.',
+  ),
+  'hammer_grip_pull_up_on_dip_cage': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Grab the parallel bars of a dip cage with palms facing each other (neutral grip). Hang from the bars with arms fully extended. Pull yourself up by driving your elbows down until your chin clears the bars. Lower with control to full extension. The neutral grip is easier on the shoulders and wrists while maximizing biceps involvement and building a powerful back.',
+  ),
+  'hanging_leg_hip_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+      'hip_flexors': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Hang from a pull-up bar with arms fully extended. Keep your legs straight. Lift your legs up by flexing your hips and engaging your lower abs until your legs are roughly parallel to the floor or higher. At the top, curl your pelvis up slightly by contracting your abs. Lower with control. This advanced exercise builds exceptional lower ab and hip flexor strength while challenging grip endurance.',
+  ),
+  'hanging_oblique_knee_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'hip_flexors': 0.6,
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Hang from a pull-up bar with arms extended. Bring your knees up toward one shoulder by rotating your torso and contracting your obliques. Lower with control. Bring your knees up toward the opposite shoulder. Continue alternating. This rotational movement targets the obliques intensely while building grip strength and core control.',
+  ),
+  'hanging_straight_leg_hip_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+      'hip_flexors': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Hang from a pull-up bar with arms extended and legs straight. Lift your legs up until they\'re parallel to the floor or higher, keeping them completely straight. At the top, tilt your pelvis up by contracting your lower abs. Lower with control. This is one of the most challenging ab exercises, building incredible core strength and requiring substantial grip endurance.',
+  ),
+  'hanging_straight_twisting_leg_hip_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+      'hip_flexors': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Hang from a pull-up bar with legs straight. Lift your legs up while simultaneously twisting your hips to one side. Your legs should end up parallel to the floor but rotated. Lower with control. Repeat to the other side. This advanced movement combines leg raises with rotation for complete core development, building the abs, obliques, and hip flexors while testing grip strength.',
+  ),
+  'hip_raise_bent_knee': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'hip_flexors': 0.6,
+    },
+    description: 'HOW TO: Lie on your back with knees bent and feet flat on the floor close to your glutes. Place your arms at your sides. Contract your lower abs to lift your hips off the floor, bringing your knees toward your chest. Your lower back should curl up off the floor. Hold and squeeze your abs. Lower with control. This bent-knee variation is easier than straight-leg raises while still building strong lower abs.',
+  ),
+  'hyperextension_on_bench': ExerciseMuscleData(
+    primaryMuscles: {
+      'lower_back': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+    },
+    description: 'HOW TO: Lie face-down on a flat bench positioned so your hips are at the edge and your upper body hangs off. Have a partner hold your legs or secure your feet. Cross your arms over your chest. Lower your torso down toward the floor by bending at the hips. Raise back up by contracting your lower back and glutes until your body forms a straight line. This builds exceptional lower back and glute strength.',
+  ),
+  'hyperextension_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'lower_back': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+    },
+    description: 'HOW TO: Position yourself in a hyperextension bench with ankles secured and hips supported by the pad. Cross your arms over your chest or behind your head. Lower your torso down by bending at the hips until you feel a stretch in your hamstrings and lower back. Raise back up by contracting your lower back, glutes, and hamstrings until your body is straight. Don\'t hyperextend at the top.',
+  ),
+  'incline_leg_hip_raise_leg_straight': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+      'hip_flexors': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Lie on an incline bench with your head at the high end. Grab the top of the bench for support. Keep your legs straight and together. Lift your legs up by contracting your lower abs until they\'re perpendicular to your body or higher. Curl your pelvis up at the top. Lower with control. The incline increases the difficulty and range of motion for advanced ab development.',
+  ),
+  'incline_reverse_grip_push_up': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Place your hands on an elevated surface (bench or box) with fingers pointing backward toward your feet. Assume a push-up position with feet on the ground. Lower your chest to the elevated surface by bending your elbows. Press back up. The reverse grip is awkward but creates unique forearm and wrist strength while the incline makes it more manageable than flat-ground reverse grip push-ups.',
+  ),
+  'incline_twisting_sit_up_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'hip_flexors': 0.6,
+    },
+    description: 'HOW TO: Lie on an incline bench with feet secured at the top. Place hands behind your head. Sit up and simultaneously twist your torso to one side, bringing your elbow toward the opposite knee. Lower back down. On the next rep, twist to the other side. Continue alternating. The incline increases resistance while the twist targets the obliques for complete core development.',
+  ),
+  'incline_twisting_situp': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'hip_flexors': 0.6,
+    },
+    description: 'HOW TO: Lie on an incline bench with feet secured. Place hands behind your head. Sit up while twisting your torso, bringing your right elbow toward your left knee. Lower back down. Next rep, twist the other direction. The combination of incline and rotation builds powerful abs and obliques while challenging your entire core through a full range of motion.',
+  ),
+  'inverse_leg_curl_on_pull_up_cable_machine': ExerciseMuscleData(
+    primaryMuscles: {
+      'hamstrings': 0.0,
+    },
+    secondaryMuscles: {
+      'calves': 0.6,
+      'glutes': 0.6,
+    },
+    description: 'HOW TO: Stand facing a cable machine. Attach an ankle cuff to a low pulley and secure it to one ankle. Step back to create tension. Curl your foot up toward your glutes by bending your knee against the cable resistance. Keep your thigh stationary. Squeeze your hamstring at the top. Lower with control. Complete all reps, then switch legs. This cable variation provides constant tension for hamstring development.',
+  ),
+  'inverted_row_bent_knees': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Set a bar at waist height. Lie underneath it with knees bent and feet flat on the floor. Grab the bar with an overhand grip, hands shoulder-width apart. Keep your body straight from knees to shoulders. Pull your chest up to the bar by driving your elbows back. Lower with control. Bent knees make this easier than straight-leg inverted rows while still building powerful back strength.',
+  ),
+  'jackknife_sit_up': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+      'hip_flexors': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Lie flat on your back with arms extended overhead and legs straight. Simultaneously lift your legs and upper body, reaching your hands toward your feet. Try to touch your toes at the top, forming a V-shape with your body. Lower back down with control. This dynamic movement hits the entire core through a full range of motion for exceptional ab development.',
+  ),
+  'lever_alternate_biceps_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Sit at a lever biceps curl machine with arms extended on the pads. Grip the handles with palms up. Curl one handle up toward your shoulder by contracting your bicep while the other arm stays extended. Lower it, then curl the other arm. Continue alternating. The machine provides a fixed path and constant tension while the alternating pattern allows you to focus on each arm individually.',
+  ),
+  'lever_alternate_leg_extension_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a plate-loaded leg extension machine with back against the pad. Hook one shin behind the lever arm pad. Extend that leg straight out by contracting your quad. Squeeze at the top. Lower with control. Complete all reps, then switch legs. The alternating unilateral approach addresses strength imbalances while the plate-loaded machine provides smooth, adjustable resistance.',
+  ),
+  'lever_bicep_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Sit at a lever biceps curl machine with your upper arms resting on the pads. Grip the handles with palms up. Curl the handles up toward your shoulders by contracting your biceps. Squeeze hard at the top. Lower with control. The machine provides a stable, fixed path that isolates the biceps perfectly, allowing you to focus purely on contraction without worrying about stabilization.',
+  ),
+  'lever_calf_press_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'calves': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a plate-loaded calf press machine. Place the balls of your feet on the platform with heels hanging off. Lower your heels below the platform to fully stretch your calves. Press through the balls of your feet to raise your heels as high as possible. Squeeze your calves hard at the top. Lower with control. The machine allows for heavy loading in a stable position for maximum calf development.',
+  ),
+  'lever_calf_raise_bench_press_machine': ExerciseMuscleData(
+    primaryMuscles: {
+      'calves': 0.0,
+    },
+    secondaryMuscles: {
+      'quads': 0.6,
+    },
+    description: 'HOW TO: Position yourself in a bench press or leg press machine specifically designed for calf raises. Place the balls of your feet on the edge of the platform with heels hanging off. Lower your heels to stretch your calves fully. Press up onto your toes as high as possible. Squeeze hard at the top. Lower with control. The machine provides stable support for heavy calf training.',
+  ),
+  'lever_chair_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Sit in a lever squat machine with back against the pad and shoulders under the supports. Place feet shoulder-width apart on the platform. Release the safety and lower down by bending your knees, descending as if sitting in a chair. Go at least to parallel. Drive through your heels to press back up. The machine provides a guided path, making it safer than free weight squats while still building powerful legs.',
+  ),
+  'lever_chest_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+      'triceps': 0.5,
+    },
+    description: 'HOW TO: Sit in a lever chest press machine with back against the pad. Grip the handles at chest level. Press the handles forward until your arms are fully extended. Squeeze your chest. Return with control. The machine provides a stable pressing path and allows you to safely train to failure without a spotter, making it excellent for building chest strength and size.',
+  ),
+  'lever_chest_press_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+      'triceps': 0.5,
+    },
+    description: 'HOW TO: Sit in a plate-loaded chest press machine with back supported. Grab the handles at chest level. Press forward until arms are fully extended. Squeeze your chest hard. Return with control. Plate-loaded machines provide a smooth, natural feel similar to free weights while offering the stability and safety of a machine, perfect for heavy chest pressing.',
+  ),
+  'lever_chest_press_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Sit at a lever chest press machine with your back against the pad. Position the handles at mid-chest level. Press the levers forward by extending your arms until fully straight. Focus on squeezing your chest throughout. Return with control. This machine variation provides a slightly different angle or grip than standard machines, offering fresh stimulus for chest growth.',
+  ),
+  'lever_chest_press_version_4': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Position yourself in a lever chest press machine with back firmly against the pad. Grip the handles and press forward until arms are extended. Return with control. This particular machine variation may offer a unique grip, angle, or movement path that targets the chest differently than other chest press machines, providing variety in your pressing movements.',
+  ),
+  'lever_deadlift_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'hamstrings': 0.0,
+      'glutes': 0.0,
+      'lower_back': 0.0,
+    },
+    secondaryMuscles: {
+      'quads': 0.5,
+      'upper_back': 0.5,
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Stand on the platform of a plate-loaded deadlift machine. Grip the handles with feet hip-width apart. Keep your back flat and chest up. Drive through your heels and extend your hips to stand up straight, pulling the weight up. Lower with control by pushing your hips back. The machine provides a guided path while still requiring full-body coordination, building total posterior chain strength.',
+  ),
+  'lever_decline_chest_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Position yourself on a decline lever chest press machine with your body angled downward. Grip the handles at upper chest level. Press forward and down until arms are fully extended. Squeeze your lower chest. Return with control. The decline angle specifically targets the lower chest fibers for complete pec development while the machine ensures safety and proper form.',
+  ),
+  'lever_decline_chest_press_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Sit in a decline lever press machine with body positioned on a downward angle. Press the handles away from you until arms are straight. Focus on contracting your lower chest throughout. Return with control. This variation may offer a different decline angle or grip compared to other machines, providing unique stimulus for lower chest development.',
+  ),
+  'lever_donkey_calf_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'calves': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.6,
+    },
+    description: 'HOW TO: Position yourself in a donkey calf raise machine bent forward at the hips with the pad across your lower back. Place the balls of your feet on the platform with heels hanging off. Lower your heels to fully stretch your calves. Press up onto your toes as high as possible. Squeeze hard. The bent-over position and machine loading allows for exceptional calf stretch and heavy resistance for maximum development.',
+  ),
+  'lever_front_pulldown': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Sit at a lever pulldown machine. Grip the handles overhead. Pull the levers down in front of you to your upper chest by driving your elbows down and back. Squeeze your lats. Return with control. Lever machines provide smooth, consistent resistance throughout the entire range of motion, making them excellent for building lat width and back thickness.',
+  ),
+  'lever_full_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Position yourself in a lever squat machine with shoulders under the pads. Place feet shoulder-width apart. Descend as deep as possible, going well below parallel until your hamstrings touch your calves. Drive through your heels to stand back up. The machine guides the movement while allowing for ass-to-grass depth, building maximum leg development with reduced injury risk.',
+  ),
+  'lever_gripless_shrug': ExerciseMuscleData(
+    primaryMuscles: {
+      'traps': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Stand in a lever shrug machine with shoulder pads resting on your shoulders (no need to grip handles). Keep your arms relaxed at your sides. Shrug your shoulders straight up toward your ears by contracting your traps. Hold at the top. Lower with control. The gripless design eliminates forearm fatigue, allowing you to focus purely on building massive traps.',
+  ),
+  'lever_gripless_shrug_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'traps': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Position yourself under the shoulder pads of a gripless shrug machine. Stand upright with pads on your shoulders. Shrug straight up as high as possible by contracting your traps. Squeeze hard at the top. Lower with control. This variation may offer a different pad angle or machine design, but the principle remains the same: isolate the traps without grip fatigue.',
+  ),
+  'lever_gripper_hands_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit at a plate-loaded gripper machine. Place your hands in the gripper handles with palms facing each other. Squeeze the handles together by contracting your forearms and grip muscles. Hold the squeeze. Release with control. Plate-loaded grippers allow for progressive overload of grip strength, building exceptional crushing power and forearm development.',
+  ),
+  'lever_hammer_grip_preacher_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'brachialis': 0.0,
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.5,
+    },
+    description: 'HOW TO: Sit at a lever preacher curl machine with arms on the pad. Grip the handles with a neutral grip (palms facing each other). Curl the handles up toward your shoulders. Squeeze at the top. Lower with control. The hammer grip emphasizes the brachialis while the preacher position eliminates momentum, building thicker arms with perfect isolation.',
+  ),
+  'lever_high_row_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'upper_back': 0.0,
+      'rear_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'lats': 0.5,
+      'biceps': 0.6,
+    },
+    description: 'HOW TO: Sit at a plate-loaded high row machine with chest against the pad. Grip the handles at or above shoulder height. Pull the handles toward your upper chest/face by driving your elbows back and up. Squeeze your shoulder blades together. Return with control. High rows build thickness in the upper back and rear delts for improved posture and complete back development.',
+  ),
+  'lever_hip_extension_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'glutes': 0.0,
+      'hamstrings': 0.0,
+    },
+    secondaryMuscles: {
+      'lower_back': 0.6,
+    },
+    description: 'HOW TO: Position yourself in a lever hip extension machine with your hips against the pad. Secure your ankles under the support. With a slight bend in your knees, push your hips forward and up by contracting your glutes and hamstrings. Squeeze hard at full extension. Return with control. This machine isolates the posterior chain for building powerful glutes and hamstrings.',
+  ),
+  'lever_incline_chest_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+      'triceps': 0.5,
+    },
+    description: 'HOW TO: Sit in an incline lever chest press machine with back against the angled pad. Grip the handles at upper chest level. Press the handles up and forward until arms are fully extended. Squeeze your upper chest. Return with control. The incline angle targets the upper chest (clavicular head) while the machine provides stability for safe, heavy pressing.',
+  ),
+  'lever_incline_hammer_chest_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Sit in an incline chest press machine with neutral grip handles (palms facing each other). Press the handles forward and up until arms are extended. Squeeze your upper chest. Return with control. The neutral hammer grip is easier on the shoulders while the incline angle builds the upper chest for a full, rounded pec development.',
+  ),
+  'lever_kneeling_leg_curl_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'hamstrings': 0.0,
+    },
+    secondaryMuscles: {
+      'calves': 0.6,
+    },
+    description: 'HOW TO: Kneel on the pad of a plate-loaded leg curl machine with one knee. Secure your ankle under the lever arm. Curl your foot up toward your glutes by contracting your hamstring. Keep your thigh vertical. Squeeze at the top. Lower with control. Complete all reps, then switch legs. The kneeling position provides a unique angle for hamstring development.',
+  ),
+  'lever_lateral_pulldown_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Sit at a plate-loaded lat pulldown machine. Grip the handles overhead. Pull the levers down to your upper chest by driving your elbows down and back. Focus on squeezing your lats. Return with control. Plate-loaded pulldowns provide smooth, natural resistance similar to free weights while ensuring proper form and allowing safe training to failure.',
+  ),
+  'lever_lateral_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'side_delts': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a lever lateral raise machine with arms at your sides against the pads. Press your arms out and up to the sides until they reach shoulder height. Lead with your elbows. Squeeze your side delts at the top. Lower with control. The machine provides consistent resistance throughout the movement, making it superior to dumbbells for isolating the side delts.',
+  ),
+  'lever_lateral_raise_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'side_delts': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit at a plate-loaded lateral raise machine with your arms positioned against the pads. Press outward and upward until your arms reach shoulder height. Focus on leading with your elbows and squeezing your side delts. Lower with control. Plate-loaded machines offer smooth, adjustable resistance for building capped shoulders with perfect isolation.',
+  ),
+  'lever_leg_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a lever leg extension machine with back against the pad. Hook your shins under the padded lever arm. Extend your legs straight out by contracting your quads. Squeeze hard at full extension. Lower with control. Leg extensions provide pure quad isolation, building strength and definition in all four quad muscles, especially the vastus medialis (teardrop).',
+  ),
+  'lever_leg_extension_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a plate-loaded leg extension machine with your back supported. Position your shins behind the pad. Extend both legs straight out by contracting your quads. Squeeze maximally at the top. Lower with control. Plate-loaded machines provide smooth resistance and allow for micro-loading, perfect for progressive quad development.',
+  ),
+  'lever_lying_chest_press_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Lie on your back in a plate-loaded chest press machine. Grip the handles at chest level. Press the levers up until your arms are fully extended. Squeeze your chest. Return with control. The lying position changes the angle of chest activation compared to seated presses, providing variety in your chest training while the machine ensures safety.',
+  ),
+  'lever_lying_crunch': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Lie back in a lever crunch machine with the pad positioned across your chest. Crunch forward by flexing your spine and bringing the pad down toward your hips. Contract your abs hard. Return with control. The machine provides consistent resistance throughout the crunch movement, making it superior to bodyweight crunches for building defined, strong abs.',
+  ),
+  'lever_lying_leg_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'hamstrings': 0.0,
+    },
+    secondaryMuscles: {
+      'calves': 0.6,
+    },
+    description: 'HOW TO: Lie face-down on a lever leg curl machine with your knees just off the edge of the bench. Hook your ankles under the padded lever arm. Curl your feet toward your glutes by contracting your hamstrings. Squeeze hard at the top. Lower with control. This is the gold standard for hamstring isolation, building strength and size in all three hamstring muscles.',
+  ),
+  'lever_lying_t_bar_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+    },
+    description: 'HOW TO: Lie face-down on a lever T-bar row machine with chest supported on the pad. Grip the handles with both hands. Pull the handles up toward your chest by driving your elbows back. Squeeze your lats and upper back together. Lower with control. The chest support eliminates lower back strain while allowing you to focus purely on back muscle contraction.',
+  ),
+  'lever_military_press_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'shoulders': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Sit in a plate-loaded military press machine with back against the pad. Grip the handles at shoulder height. Press straight up overhead until arms are fully extended. Lower with control back to shoulder level. Plate-loaded machines provide a smooth, natural pressing motion while offering the stability needed to safely train heavy for massive shoulder development.',
+  ),
+  'lever_neck_extension_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'neck': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Position yourself in a plate-loaded neck extension machine with the pad against the back of your head. Start with your head flexed forward. Extend your neck by pushing your head back against the pad. Return with control. Use light weight and smooth movements. Building neck strength is crucial for contact sports and provides aesthetic neck development.',
+  ),
+  'lever_neck_left_side_flexion_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'neck': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a plate-loaded neck flexion machine with the pad positioned against the left side of your head. Start with your head tilted to the right. Flex your neck to the left by pushing against the pad. Return with control. Use light weight. Neck side flexion builds the sternocleidomastoid and other neck muscles for strength, injury prevention, and aesthetic development.',
+  ),
+  'lever_neck_right_side_flexion_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'neck': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a plate-loaded neck flexion machine with the pad against the right side of your head. Start with your head tilted to the left. Flex your neck to the right by pushing against the pad. Return with control. Use light weight and controlled movements. Training both sides ensures balanced neck development and reduces injury risk.',
+  ),
+  'lever_neutral_grip_seated_row_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+    },
+    description: 'HOW TO: Sit at a plate-loaded row machine with chest against the pad. Grip the handles with a neutral grip (palms facing each other). Pull the handles toward your chest by driving your elbows straight back. Squeeze your shoulder blades together. Return with control. The neutral grip is comfortable on the wrists and provides excellent lat and mid-back development.',
+  ),
+  'lever_overhand_triceps_dip': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'chest': 0.5,
+      'front_delts': 0.6,
+    },
+    description: 'HOW TO: Position yourself in a lever-assisted dip machine. Grip the handles with palms facing down (overhand grip). Keep your torso upright. Lower yourself by bending your elbows until upper arms are parallel to the floor. Press back up by extending your elbows. The overhand grip and upright position maximize triceps activation while the machine assistance helps you complete more reps.',
+  ),
+  'lever_parallel_chest_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Sit in a lever chest press machine with handles positioned parallel to each other (neutral grip). Press the handles forward until arms are fully extended. Squeeze your chest. Return with control. The parallel grip path provides a unique angle of chest activation and is extremely comfortable on the shoulders, allowing for heavy, safe pressing.',
+  ),
+  'lever_pec_deck_fly': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.6,
+    },
+    description: 'HOW TO: Sit in a pec deck machine with back against the pad. Place your forearms against the pads or grip the handles. Bring the pads/handles together in front of your chest by contracting your chest. Squeeze hard at peak contraction. Return with control. The pec deck provides perfect chest isolation without involving triceps, building exceptional inner chest development.',
+  ),
+  'lever_pistol_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand on one leg in a lever squat machine with your other leg extended forward. Hold onto the handles for balance. Squat down on your single leg as deep as possible while keeping your extended leg off the ground. Drive through your heel to stand back up. The machine provides support and balance assistance while you build exceptional unilateral leg strength.',
+  ),
+  'lever_preacher_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Sit at a lever preacher curl machine with your upper arms resting on the pad. Grip the handles with palms up. Curl the handles up toward your shoulders by contracting your biceps. Squeeze hard at peak contraction. Lower with control to full extension. The preacher position locks your arms in place, eliminating momentum and providing perfect biceps isolation for maximum growth.',
+  ),
+  'lever_preacher_curl_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Position yourself at a plate-loaded preacher curl machine with arms on the pad. Grip the handles with palms facing up. Curl the handles up by contracting your biceps. Squeeze at the top. Lower with control. Plate-loaded machines provide smooth, natural resistance with the added benefit of micro-loading for progressive overload and consistent biceps growth.',
+  ),
+  'lever_preacher_curl_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'biceps': 0.0,
+    },
+    secondaryMuscles: {
+      'forearms': 0.6,
+    },
+    description: 'HOW TO: Sit at a lever preacher curl machine with arms supported on the pad. Curl the levers up toward your shoulders. Squeeze your biceps intensely at the top. Lower with control. This variation may offer a different arm angle, handle position, or resistance curve compared to standard preacher curl machines, providing fresh stimulus for biceps development.',
+  ),
+  'lever_pullover_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+    },
+    secondaryMuscles: {
+      'chest': 0.5,
+      'triceps': 0.6,
+    },
+    description: 'HOW TO: Sit at a plate-loaded pullover machine with the pad positioned across your upper chest. Grip the handles overhead. Pull the handles down in an arc toward your chest by contracting your lats. Squeeze your lats hard. Return with control. The machine provides a fixed path and constant tension, making it superior to dumbbell pullovers for lat isolation and rib cage expansion.',
+  ),
+  'lever_reverse_grip_preacher_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'brachialis': 0.0,
+      'forearms': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+    },
+    description: 'HOW TO: Sit at a lever preacher curl machine. Grip the handles with an overhand grip (palms facing down). Rest your arms on the pad. Curl the handles up toward your shoulders while maintaining the reverse grip. Squeeze at the top. Lower with control. The preacher position eliminates cheating while the reverse grip builds the brachialis and forearms for complete arm development.',
+  ),
+  'lever_reverse_grip_vertical_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.6,
+    },
+    description: 'HOW TO: Sit at a lever row machine. Grip the handles with an underhand grip (palms facing up). Pull the handles toward your lower chest by driving your elbows straight back and down. Keep your torso upright. Squeeze your lats and upper back. Return with control. The reverse grip increases biceps and lower lat involvement for complete back development.',
+  ),
+  'lever_reverse_t_bar_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+    },
+    description: 'HOW TO: Position yourself on a lever T-bar row machine with chest supported. Grip the handles with an underhand grip (palms up). Pull the handles toward your chest by driving your elbows back. Keep your elbows close to your body. Squeeze your lats. Return with control. The reverse grip emphasizes the lower lats and biceps for thick back development.',
+  ),
+  'lever_rotary_calf': ExerciseMuscleData(
+    primaryMuscles: {
+      'calves': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Position yourself in a rotary calf machine with pads on your shoulders or a seat supporting you. Place the balls of your feet on the platform with heels hanging off. Lower your heels to stretch your calves fully. Press up onto your toes as high as possible by contracting your calves. Squeeze maximally at the top. The rotary design provides a unique resistance curve for maximum calf activation.',
+  ),
+  'lever_row_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+    },
+    description: 'HOW TO: Sit at a plate-loaded row machine with chest against the pad. Grip the handles. Pull the handles toward your chest by driving your elbows straight back. Squeeze your shoulder blades together. Return with control. Plate-loaded rows provide natural, smooth resistance that feels similar to free weights while offering the stability and safety of a machine.',
+  ),
+  'lever_seated_calf_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'calves': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a lever calf press machine with the pad across your thighs. Place the balls of your feet on the platform with heels hanging off. Lower your heels below the platform to stretch your calves. Press up onto your toes as high as possible. Squeeze hard at the top. The seated position with bent knees emphasizes the soleus (lower calf) for complete calf development.',
+  ),
+  'lever_seated_calf_raise_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'calves': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a plate-loaded seated calf raise machine with the pad across your thighs. Place the balls of your feet on the platform with heels off the edge. Lower your heels to fully stretch your calves. Press up onto your toes as high as possible. Squeeze maximally. The seated bent-knee position targets the soleus muscle for building thickness in the lower calf.',
+  ),
+  'lever_seated_crunch': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a lever crunch machine with the pad positioned across your upper chest. Crunch forward by flexing your spine, bringing the pad down toward your hips. Contract your abs hard at the bottom. Return with control. The seated position and machine resistance provide constant tension throughout the movement, making it superior to floor crunches for building defined abs.',
+  ),
+  'lever_seated_crunch_chest_pad': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a lever crunch machine with a chest pad positioned across your upper torso. Grip the handles if available. Crunch forward by contracting your abs, bringing your chest down toward your pelvis. Squeeze your abs maximally. Return with control. The chest pad provides comfortable support while the machine ensures consistent resistance for building rock-solid abs.',
+  ),
+  'lever_seated_dip': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'chest': 0.5,
+      'front_delts': 0.6,
+    },
+    description: 'HOW TO: Sit in a lever-assisted dip machine. Grip the handles at your sides. Press down on the handles by extending your elbows until arms are straight. Keep your torso upright to emphasize triceps. Return with control. The seated position provides stability while the machine assistance allows you to perform more reps for building powerful triceps.',
+  ),
+  'lever_seated_fly': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.6,
+    },
+    description: 'HOW TO: Sit in a lever fly machine with back against the pad. Place your arms against the pads or grip the handles with arms extended. Bring the pads together in front of your chest by contracting your chest. Squeeze hard at peak contraction. Return with control. This machine isolates the chest perfectly without triceps involvement, building exceptional inner chest development.',
+  ),
+  'lever_seated_hip_abduction': ExerciseMuscleData(
+    primaryMuscles: {
+      'hip_abductors': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a lever hip abduction machine with the pads positioned on the outside of your thighs. Press your legs outward against the pads by contracting your hip abductors and glutes. Squeeze hard at maximum abduction. Return with control. This machine isolates the outer hip and glute muscles, building strength, stability, and aesthetic hip development.',
+  ),
+  'lever_seated_hip_abduction_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'hip_abductors': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a seated hip abduction machine with pads on the outside of your knees. Push your knees outward against the resistance by contracting your outer hips and glutes. Hold the peak contraction. Return with control. This variation may offer a different seat angle or pad position, but the movement remains focused on building strong, shapely hips and glutes.',
+  ),
+  'lever_seated_hip_adduction': ExerciseMuscleData(
+    primaryMuscles: {
+      'hip_adductors': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a lever hip adduction machine with the pads positioned on the inside of your thighs. Press your legs together against the pads by contracting your inner thighs. Squeeze hard at peak contraction. Return with control. This machine isolates the inner thigh adductor muscles for leg development, hip stability, and injury prevention.',
+  ),
+  'lever_seated_hip_adduction_version_2': ExerciseMuscleData(
+    primaryMuscles: {
+      'hip_adductors': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a seated hip adduction machine with pads on the inside of your knees. Squeeze your knees together by contracting your inner thigh muscles. Hold the squeeze at peak contraction. Return with control. Different machines may offer varying seat angles or resistance curves, but all effectively build the inner thigh adductors.',
+  ),
+  'lever_seated_leg_curl': ExerciseMuscleData(
+    primaryMuscles: {
+      'hamstrings': 0.0,
+    },
+    secondaryMuscles: {
+      'calves': 0.6,
+    },
+    description: 'HOW TO: Sit in a lever leg curl machine with back against the pad. Position your lower legs on top of the padded lever arm. Curl your feet down toward your glutes by contracting your hamstrings. Squeeze hard at peak contraction. Return with control. The seated position provides a different angle than lying leg curls, hitting the hamstrings from a unique position for complete development.',
+  ),
+  'lever_seated_leg_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'calves': 0.6,
+    },
+    description: 'HOW TO: Sit in a lever leg press machine with back against the pad. Place feet shoulder-width apart on the platform. Release the safety and press the platform away by extending your knees and hips. Go to just short of locking out. Lower with control until knees are at 90 degrees or slightly deeper. Leg presses allow for heavy loading with reduced spinal stress.',
+  ),
+  'lever_seated_one_leg_calf_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'calves': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a seated calf raise machine. Place one foot on the platform with heel hanging off. Position the pad across your thigh. Lower your heel to fully stretch your calf. Press up onto your toes as high as possible. Squeeze hard at the top. Complete all reps, then switch legs. The unilateral approach addresses strength imbalances and builds symmetrical calf development.',
+  ),
+  'lever_seated_reverse_fly': ExerciseMuscleData(
+    primaryMuscles: {
+      'rear_delts': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.5,
+    },
+    description: 'HOW TO: Sit facing the pad of a lever reverse fly machine with chest against it. Grip the handles with arms extended in front. Pull the handles back and out to your sides in a reverse fly motion. Focus on squeezing your rear delts and shoulder blades together. Return with control. This machine provides perfect rear delt isolation for complete shoulder development and improved posture.',
+  ),
+  'lever_seated_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+    },
+    description: 'HOW TO: Sit at a lever row machine with chest against the pad. Grip the handles. Pull the handles toward your chest by driving your elbows straight back. Squeeze your shoulder blades together. Return with control. The machine provides a fixed path and constant tension, making it excellent for building back thickness without worrying about form breakdown.',
+  ),
+  'lever_seated_shoulder_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'shoulders': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Sit in a lever shoulder press machine with back supported. Grip the handles at shoulder height. Press the handles straight up overhead until arms are fully extended. Lower with control. The machine provides a guided path and stability, allowing you to safely train to failure and build massive shoulders without needing a spotter.',
+  ),
+  'lever_seated_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Sit in a lever squat machine with back against the pad and shoulders under the supports. Place feet on the platform. Release the safety. Lower down by bending your knees as if sitting deeper into a chair. Go at least to parallel. Drive through your heels to press back up. The machine guides the movement, making it safer than free squats while still building powerful legs.',
+  ),
+  'lever_seated_twist': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit in a lever twist machine with the pad positioned across your chest. Grip the handles. Rotate your torso to one side as far as comfortable by contracting your obliques. Return to center, then rotate to the other side. The machine provides resistance throughout the rotational movement, building powerful obliques and rotational core strength for sports and functional movements.',
+  ),
+  'lever_seated_wide_squat': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+      'hip_adductors': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+    },
+    description: 'HOW TO: Sit in a lever squat machine with feet positioned wider than shoulder-width and toes pointed out. Lower down by bending your knees, allowing them to track over your toes. Go deep. Drive through your heels to press back up. The wide stance emphasizes the inner thighs, glutes, and adductors more than standard squats for complete lower body development.',
+  ),
+  'lever_shoulder_press_plate_loaded_ii': ExerciseMuscleData(
+    primaryMuscles: {
+      'shoulders': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Sit in a plate-loaded shoulder press machine with back supported. Grip the handles at shoulder level. Press straight up overhead until arms are fully extended. Lower with control. Plate-loaded machines provide smooth, natural resistance similar to free weights while offering the stability to train safely to failure for maximum shoulder growth.',
+  ),
+  'lever_shoulder_press_plate_loaded_version_3': ExerciseMuscleData(
+    primaryMuscles: {
+      'shoulders': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Position yourself in a plate-loaded shoulder press machine. Press the handles overhead until arms are extended. Lower with control. This variation may offer a different seat angle, handle position, or pressing path compared to other machines, providing variety in your shoulder training while maintaining the benefits of machine stability.',
+  ),
+  'lever_shrug_bench_press_machine': ExerciseMuscleData(
+    primaryMuscles: {
+      'traps': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Position yourself in a bench press machine modified for shrugs. Grip the handles or position shoulder pads on your shoulders. Shrug straight up toward your ears by contracting your traps. Hold at the top. Lower with control. The machine provides a fixed path and allows for heavy loading, building massive trap development.',
+  ),
+  'lever_shrug_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'traps': 0.0,
+    },
+    secondaryMuscles: {
+      'upper_back': 0.6,
+    },
+    description: 'HOW TO: Stand in a plate-loaded shrug machine with handles at your sides or shoulder pads on your shoulders. Shrug straight up by contracting your traps. Hold the peak contraction. Lower with control. Don\'t roll your shoulders. Plate-loaded shrug machines allow for progressive overload and build impressive trap development without grip fatigue limiting your set.',
+  ),
+  'lever_side_hip_abduction': ExerciseMuscleData(
+    primaryMuscles: {
+      'hip_abductors': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand on one leg in a lever hip abduction machine with the pad positioned on the outside of your working leg. Push your leg out to the side by contracting your hip abductors and glutes. Keep your torso upright. Return with control. Complete all reps, then switch sides. This standing version adds a balance challenge while building strong, aesthetic hips.',
+  ),
+  'lever_side_hip_adduction': ExerciseMuscleData(
+    primaryMuscles: {
+      'hip_adductors': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand on one leg in a lever hip adduction machine with the pad on the inside of your free leg. Pull your free leg across your body by contracting your inner thigh. Keep your torso upright and stable. Return with control. Complete all reps, then switch sides. The standing position challenges balance while isolating the inner thigh adductors.',
+  ),
+  'lever_single_arm_neutral_grip_seated_row_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+    },
+    description: 'HOW TO: Sit at a plate-loaded row machine with chest against the pad. Grip one handle with a neutral grip (palm facing in). Pull the handle toward your chest by driving your elbow straight back. Squeeze your lat and upper back. Return with control. Complete all reps, then switch arms. Unilateral training ensures balanced back development and addresses strength imbalances.',
+  ),
+  'lever_squat_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'quads': 0.0,
+      'glutes': 0.0,
+    },
+    secondaryMuscles: {
+      'hamstrings': 0.5,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Position yourself in a plate-loaded squat machine with shoulders under the pads and feet on the platform. Release the safety. Squat down by bending your knees until thighs are at least parallel to the platform. Drive through your heels to press back up. Plate-loaded squats provide smooth resistance while the machine guides the movement for safe, heavy leg training.',
+  ),
+  'lever_standing_calf_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'calves': 0.0,
+    },
+    secondaryMuscles: {
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand in a lever calf raise machine with shoulder pads on your shoulders. Place the balls of your feet on the platform with heels hanging off. Lower your heels below the platform to stretch your calves fully. Press up onto your toes as high as possible. Squeeze hard at the top. Standing calf raises build the gastrocnemius (upper calf) for explosive power and aesthetic development.',
+  ),
+  'lever_standing_hip_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'glutes': 0.0,
+      'hamstrings': 0.0,
+    },
+    secondaryMuscles: {
+      'lower_back': 0.6,
+      'core': 0.6,
+    },
+    description: 'HOW TO: Stand facing a lever hip extension machine. Position the pad behind one leg. Kick your leg straight back by contracting your glutes and hamstrings. Keep your torso upright and core tight. Squeeze your glutes at full extension. Return with control. Complete all reps, then switch legs. This machine isolates the glutes and hamstrings for powerful posterior chain development.',
+  ),
+  'lever_standing_leg_raise': ExerciseMuscleData(
+    primaryMuscles: {
+      'hip_flexors': 0.0,
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'quads': 0.6,
+    },
+    description: 'HOW TO: Stand in a lever leg raise machine with back against the pad. Hook one leg under or on the lever arm. Raise your leg up in front of you by contracting your hip flexors and lower abs. Keep your leg relatively straight. Lower with control. Complete all reps, then switch legs. This machine provides resistance for building strong hip flexors and lower abs.',
+  ),
+  'lever_standing_rear_kick': ExerciseMuscleData(
+    primaryMuscles: {
+      'glutes': 0.0,
+      'hamstrings': 0.0,
+    },
+    secondaryMuscles: {
+      'lower_back': 0.6,
+    },
+    description: 'HOW TO: Stand facing a machine with the pad positioned behind one leg. Kick your leg straight back and up by contracting your glutes and hamstrings. Keep your torso stable and don\'t arch your lower back excessively. Squeeze your glutes hard at the top. Return with control. This isolation exercise builds powerful, shapely glutes.',
+  ),
+  'lever_t_bar_reverse_grip_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.6,
+    },
+    description: 'HOW TO: Straddle a lever T-bar row machine with chest supported if available. Grip the handles with an underhand grip (palms facing up). Pull the handles toward your lower chest by driving your elbows back and keeping them close to your body. Squeeze your lats. The reverse grip increases biceps and lower lat involvement for complete back thickness.',
+  ),
+  'lever_t_bar_row_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+      'lower_back': 0.6,
+    },
+    description: 'HOW TO: Straddle a plate-loaded T-bar row with feet on the platform. Bend forward at the hips with a flat back. Grip the handles. Pull the handles toward your chest by driving your elbows back. Squeeze your lats and upper back together. Lower with control. T-bar rows are legendary for building thick, powerful lats and a wide back.',
+  ),
+  'lever_triceps_dip_plate_loaded': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {
+      'chest': 0.5,
+      'front_delts': 0.6,
+    },
+    description: 'HOW TO: Position yourself in a plate-loaded assisted dip machine. Grip the handles and support yourself. Lower your body by bending your elbows until upper arms are parallel to the floor. Press back up by extending your elbows. Keep your torso upright for triceps emphasis. The assisted machine allows you to complete more reps for building powerful triceps.',
+  ),
+  'lever_triceps_extension': ExerciseMuscleData(
+    primaryMuscles: {
+      'triceps': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Sit or stand at a lever triceps extension machine. Position your elbows on the pad with upper arms stationary. Grip the handles. Extend your forearms by straightening your elbows. Squeeze your triceps at full extension. Return with control. The machine provides a fixed path and constant tension, making it superior to free weights for triceps isolation.',
+  ),
+  'lever_unilateral_row': ExerciseMuscleData(
+    primaryMuscles: {
+      'lats': 0.0,
+      'upper_back': 0.0,
+    },
+    secondaryMuscles: {
+      'biceps': 0.5,
+      'rear_delts': 0.5,
+    },
+    description: 'HOW TO: Sit at a lever row machine with chest against the pad. Grip one handle. Pull the handle toward your chest by driving your elbow straight back. Squeeze your lat and upper back. Return with control. Complete all reps, then switch arms. Unilateral rows ensure balanced back development, prevent compensation patterns, and address strength imbalances.',
+  ),
+  'leverage_incline_chest_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'front_delts': 0.5,
+      'triceps': 0.5,
+    },
+    description: 'HOW TO: Sit in a leverage incline chest press machine with back against the angled pad. Grip the handles at upper chest level. Press the handles up and forward until arms are fully extended. Squeeze your upper chest. Return with control. Leverage machines provide smooth, natural resistance with a fixed path, making them excellent for building the upper chest safely.',
+  ),
+  'lying_leg_raise_and_hold': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+      'hip_flexors': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Lie flat on your back with hands under your glutes. Lift your legs up until they\'re perpendicular to the floor, keeping them straight. Hold this top position for time. Your lower back should stay pressed to the floor. Lower with control when the hold time is complete. This isometric hold builds exceptional core endurance and lower ab strength.',
+  ),
+  'lying_leg_raise_flat_bench': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+      'hip_flexors': 0.0,
+    },
+    secondaryMuscles: {},
+    description: 'HOW TO: Lie on a flat bench with legs extended off one end. Grab the bench above your head for support. Keep your legs straight and together. Lift your legs up by contracting your lower abs until they\'re perpendicular to your body. Lower with control without letting them touch the bench. The elevation increases the range of motion for advanced ab development.',
+  ),
+  'machine_inner_chest_press': ExerciseMuscleData(
+    primaryMuscles: {
+      'chest': 0.0,
+    },
+    secondaryMuscles: {
+      'triceps': 0.5,
+      'front_delts': 0.5,
+    },
+    description: 'HOW TO: Sit in an inner chest press machine designed with a narrow, converging press path. Grip the handles close together. Press forward until arms are extended, bringing the handles together in front of your chest. Squeeze your inner chest hard. Return with control. This specialized machine emphasizes the inner pec fibers for complete chest development.',
+  ),
+  'pull_in_on_stability_ball': ExerciseMuscleData(
+    primaryMuscles: {
+      'core': 0.0,
+    },
+    secondaryMuscles: {
+      'hip_flexors': 0.6,
+      'shoulders': 0.6,
+    },
+    description: 'HOW TO: Start in a plank position with shins on a stability ball and hands on the floor. Keep your body straight. Pull your knees toward your chest by contracting your abs, rolling the ball forward. Pause with knees tucked. Extend your legs back out to plank. The instability of the ball engages deep core stabilizers while building powerful abs.',
+  ),
 };

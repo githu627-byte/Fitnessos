@@ -1,0 +1,515 @@
+EXERCISES NEEDING ELITE DESCRIPTIONS
+================================================================================
+
+Total Missing: 505
+Already Have Descriptions: 24
+
+================================================================================
+LIST (sorted alphabetically):
+================================================================================
+
+  1. 3_4_sit_up
+  2. air_bike_m
+  3. barbell_behind_back_finger_curl
+  4. barbell_bench_front_squat
+  5. barbell_bench_squat
+  6. barbell_bent_arm_pullover
+  7. barbell_close_grip_bench_press
+  8. barbell_deadlift
+  9. barbell_decline_bench_press
+ 10. barbell_decline_bent_arm_pullover
+ 11. barbell_decline_close_grip_to_skull_press
+ 12. barbell_decline_pullover
+ 13. barbell_decline_wide_grip_press
+ 14. barbell_decline_wide_grip_pullover
+ 15. barbell_drag_curl
+ 16. barbell_floor_calf_raise
+ 17. barbell_front_chest_squat
+ 18. barbell_front_raise_and_pullover
+ 19. barbell_front_squat
+ 20. barbell_full_squat
+ 21. barbell_full_zercher_squat
+ 22. barbell_good_morning
+ 23. barbell_high_bar_squat
+ 24. barbell_incline_bench_press
+ 25. barbell_incline_close_grip_bench_press
+ 26. barbell_incline_reverse_grip_press
+ 27. barbell_incline_row
+ 28. barbell_incline_wide_reverse_grip_bench_press
+ 29. barbell_low_bar_squat
+ 30. barbell_low_bar_squat_with_rack
+ 31. barbell_lunge
+ 32. barbell_lying_back_of_the_head_tricep_extension
+ 33. barbell_lying_close_grip_press
+ 34. barbell_lying_close_grip_triceps_extension
+ 35. barbell_lying_extension
+ 36. barbell_lying_lifting_on_hip
+ 37. barbell_olympic_squat
+ 38. barbell_one_leg_squat
+ 39. barbell_preacher_curl
+ 40. barbell_quarter_squat
+ 41. barbell_rear_delt_row
+ 42. barbell_rear_lunge
+ 43. barbell_reverse_close_grip_bench_press
+ 44. barbell_reverse_curl
+ 45. barbell_reverse_grip_bent_over_row
+ 46. barbell_reverse_grip_decline_bench_press
+ 47. barbell_reverse_grip_incline_bench_press
+ 48. barbell_reverse_grip_incline_bench_row
+ 49. barbell_reverse_grip_skullcrusher
+ 50. barbell_reverse_preacher_curl
+ 51. barbell_reverse_wrist_curl
+ 52. barbell_romanian_deadlift
+ 53. barbell_seated_behind_head_military_press
+ 54. barbell_seated_calf_raise
+ 55. barbell_seated_close_grip_behind_neck_triceps_extension
+ 56. barbell_seated_close_grip_concentration_curl
+ 57. barbell_seated_good_morning
+ 58. barbell_seated_military_press_inside_squat_cage
+ 59. barbell_seated_overhead_triceps_extension
+ 60. barbell_seated_twist
+ 61. barbell_shrug
+ 62. barbell_side_bent_ii
+ 63. barbell_side_split_squat_ii
+ 64. barbell_standing_close_grip_military_press
+ 65. barbell_standing_concentration_curl
+ 66. barbell_standing_leg_calf_raise
+ 67. barbell_standing_military_press
+ 68. barbell_standing_overhead_triceps_extension
+ 69. barbell_standing_reverse_grip_curl
+ 70. barbell_standing_twist
+ 71. barbell_standing_wide_grip_biceps_curl
+ 72. barbell_standing_wide_grip_curl
+ 73. barbell_standing_wide_military_press
+ 74. barbell_step_up
+ 75. barbell_stiff_leg_good_morning
+ 76. barbell_straight_leg_deadlift
+ 77. barbell_sumo_deadlift
+ 78. barbell_upright_row
+ 79. barbell_wide_reverse_grip_bench_press
+ 80. barbell_wrist_curl
+ 81. barbell_wrist_curl_version_2
+ 82. barbell_wrist_reverse_curl_version_2
+ 83. bench_dip_knees_bent
+ 84. bodyweight_standing_calf_raise
+ 85. butt_ups
+ 86. cable_alternate_triceps_extension
+ 87. cable_bar_lateral_pulldown
+ 88. cable_bench_press
+ 89. cable_biceps_curl_sz_bar
+ 90. cable_close_grip_curl
+ 91. cable_close_grip_front_lat_pulldown
+ 92. cable_concentration_curl
+ 93. cable_concentration_extension_on_knee
+ 94. cable_cross_over_lateral_pulldown
+ 95. cable_cross_over_revers_fly
+ 96. cable_crossover_variation
+ 97. cable_curl_male
+ 98. cable_curl_with_multipurpose_v_bar
+ 99. cable_decline_fly
+100. cable_decline_press
+101. cable_drag_curl
+102. cable_elevated_row
+103. cable_front_raise
+104. cable_front_shoulder_raise
+105. cable_hammer_curl_with_rope_attachment_male
+106. cable_high_pulley_overhead_tricep_extension
+107. cable_hip_adduction
+108. cable_horizontal_pallof_press
+109. cable_incline_bench_press
+110. cable_incline_fly
+111. cable_incline_pushdown
+112. cable_incline_triceps_extension
+113. cable_kneeling_crunch
+114. cable_kneeling_triceps_extension
+115. cable_kneeling_triceps_extension_version_2
+116. cable_lat_pulldown_full_range_of_motion
+117. cable_low_fly
+118. cable_low_seated_row
+119. cable_lying_extension_pullover_with_rope_attachment
+120. cable_lying_fly
+121. cable_lying_triceps_extension
+122. cable_middle_fly
+123. cable_one_arm_curl
+124. cable_one_arm_inner_biceps_curl
+125. cable_one_arm_lateral_raise
+126. cable_one_arm_side_triceps_pushdown
+127. cable_overhead_curl
+128. cable_overhead_triceps_extension_rope_attachment
+129. cable_preacher_curl
+130. cable_pushdown_straight_arm_ii
+131. cable_rear_pulldown
+132. cable_reverse_crunch
+133. cable_reverse_grip_straight_back_seated_high_row
+134. cable_reverse_grip_triceps_pushdown_sz_bar
+135. cable_reverse_preacher_curl
+136. cable_reverse_wrist_curl
+137. cable_rope_elevated_seated_row
+138. cable_rope_incline_tricep_extension
+139. cable_rope_seated_row
+140. cable_seated_chest_press
+141. cable_seated_crunch
+142. cable_seated_curl
+143. cable_seated_high_row_v_bar
+144. cable_seated_neck_extension_with_head_harness
+145. cable_seated_neck_flexion_with_head_harness
+146. cable_seated_rear_lateral_raise
+147. cable_seated_row
+148. cable_seated_row_bent_bar
+149. cable_seated_shoulder_internal_rotation
+150. cable_seated_twist
+151. cable_seated_wide_grip_row
+152. cable_shoulder_press
+153. cable_shrug
+154. cable_side_bend
+155. cable_standing_calf_raise
+156. cable_standing_cross_over_high_reverse_fly
+157. cable_standing_crunch_with_rope_attachment
+158. cable_standing_fly
+159. cable_standing_hip_extension
+160. cable_standing_inner_curl
+161. cable_standing_leg_curl
+162. cable_standing_reverse_curl_sz_bar
+163. cable_standing_shoulder_external_rotation
+164. cable_standing_up_straight_crossovers
+165. cable_straight_arm_pulldown
+166. cable_straight_back_seated_row
+167. cable_supine_reverse_fly
+168. cable_triceps_pushdown_sz_bar
+169. cable_triceps_pushdown_v_bar_attachment
+170. cable_tuck_reverse_crunch
+171. cable_twist
+172. cable_two_arm_tricep_kickback
+173. cable_underhand_pulldown
+174. cable_upper_chest_crossovers
+175. cable_upper_row
+176. cable_upright_row
+177. cable_vertical_pallof_press
+178. cable_wide_grip_behind_neck_pulldown
+179. cable_wide_pulldown
+180. cable_wrist_curl
+181. chest_dip
+182. chin_ups_narrow_parallel_grip
+183. close_grip_chin_up
+184. cocoons
+185. cross_body_crunch
+186. crunch_floor_m
+187. crunch_on_stability_ball
+188. decline_push_up_m
+189. dumbbell_alternate_biceps_curl
+190. dumbbell_arnold_press
+191. dumbbell_arnold_press_ii
+192. dumbbell_bench_seated_press
+193. dumbbell_bench_squat
+194. dumbbell_bent_over_row
+195. dumbbell_biceps_curl
+196. dumbbell_biceps_curl_reverse
+197. dumbbell_close_grip_press
+198. dumbbell_concentration_curl
+199. dumbbell_cross_body_hammer_curl
+200. dumbbell_cross_body_hammer_curl_version_2
+201. dumbbell_deadlift
+202. dumbbell_decline_bench_press
+203. dumbbell_decline_fly
+204. dumbbell_decline_hammer_press
+205. dumbbell_decline_shrug
+206. dumbbell_decline_triceps_extension
+207. dumbbell_finger_curls
+208. dumbbell_goblet_squat
+209. dumbbell_hammer_curl
+210. dumbbell_hammer_curl_ii
+211. dumbbell_high_curl
+212. dumbbell_incline_bench_press
+213. dumbbell_incline_fly
+214. dumbbell_incline_front_raise
+215. dumbbell_incline_inner_biceps_curl
+216. dumbbell_incline_raise
+217. dumbbell_incline_rear_lateral_raise
+218. dumbbell_incline_reverse_grip_30_degrees_bench_press
+219. dumbbell_incline_row
+220. dumbbell_incline_shrug
+221. dumbbell_incline_triceps_extension
+222. dumbbell_lunge
+223. dumbbell_lying_elbow_press
+224. dumbbell_lying_femoral
+225. dumbbell_lying_hammer_press
+226. dumbbell_lying_hammer_press_version_2
+227. dumbbell_lying_rear_delt_row
+228. dumbbell_lying_single_extension
+229. dumbbell_lying_triceps_extension
+230. dumbbell_one_arm_kickback
+231. dumbbell_one_arm_revers_wrist_curl
+232. dumbbell_one_arm_row_rack_support
+233. dumbbell_one_arm_seated_neutral_wrist_curl
+234. dumbbell_one_arm_wrist_curl
+235. dumbbell_over_bench_neutral_wrist_curl
+236. dumbbell_over_bench_one_arm__neutral_wrist_curl
+237. dumbbell_over_bench_one_arm_reverse_wrist_curl
+238. dumbbell_over_bench_one_arm_wrist_curl
+239. dumbbell_over_bench_revers_wrist_curl
+240. dumbbell_over_bench_wrist_curl
+241. dumbbell_palm_rotational_bent_over_row
+242. dumbbell_palms_in_incline_bench_press
+243. dumbbell_peacher_hammer_curl
+244. dumbbell_pullover
+245. dumbbell_rear_delt_raise
+246. dumbbell_rear_delt_row
+247. dumbbell_rear_fly
+248. dumbbell_rear_lateral_raise
+249. dumbbell_rear_lunge
+250. dumbbell_revers_grip_biceps_curl
+251. dumbbell_reverse_bench_press
+252. dumbbell_reverse_grip_incline_bench_two_arm_row
+253. dumbbell_reverse_preacher_curl
+254. dumbbell_reverse_wrist_curl
+255. dumbbell_romanian_deadlift
+256. dumbbell_seated_bench_extension
+257. dumbbell_seated_bent_arm_lateral_raise
+258. dumbbell_seated_bicep_curl
+259. dumbbell_seated_front_raise
+260. dumbbell_seated_hammer_curl
+261. dumbbell_seated_kickback
+262. dumbbell_seated_lateral_raise
+263. dumbbell_seated_neutral_wrist_curl
+264. dumbbell_seated_palms_up_wrist_curl
+265. dumbbell_seated_preacher_curl
+266. dumbbell_seated_revers_grip_concentration_curl
+267. dumbbell_seated_shoulder_press
+268. dumbbell_seated_triceps_extension
+269. dumbbell_shrug
+270. dumbbell_side_bend
+271. dumbbell_single_leg_split_squat
+272. dumbbell_squat
+273. dumbbell_standing_alternate_raise
+274. dumbbell_standing_bent_over_two_arm_triceps_extension
+275. dumbbell_standing_biceps_curl
+276. dumbbell_standing_calf_raise
+277. dumbbell_standing_concentration_curl
+278. dumbbell_standing_inner_biceps_curl
+279. dumbbell_standing_inner_biceps_curl_version_2
+280. dumbbell_standing_kickback
+281. dumbbell_standing_one_arm_concentration_curl
+282. dumbbell_standing_one_arm_extension
+283. dumbbell_standing_triceps_extension
+284. dumbbell_step_up
+285. dumbbell_stiff_leg_deadlift
+286. dumbbell_straight_arm_pullover
+287. dumbbell_upright_row
+288. dumbbell_upright_row_back_pov
+289. dumbbell_upright_shoulder_external_rotation
+290. dumbbell_zottman_curl
+291. dumbbells_seated_triceps_extension
+292. elbow_to_knee
+293. extra_decline_sit_up
+294. ez_bar_reverse_grip_bent_over_row
+295. ez_bar_seated_close_grip_concentration_curl
+296. ez_barbell_close_grip_curl
+297. ez_barbell_close_grip_preacher_curl
+298. ez_barbell_curl
+299. ez_barbell_decline_triceps_extension
+300. ez_barbell_incline_triceps_extension
+301. ez_barbell_reverse_grip_curl
+302. ez_barbell_reverse_grip_preacher_curl
+303. ez_barbell_seated_curls
+304. ez_barbell_seated_triceps_extension
+305. finger_curls
+306. flutter_kicks_version_2
+307. flutter_kicks_version_3
+308. front_plank
+309. hack_calf_raise
+310. half_wipers_bent_leg
+311. hammer_grip_pull_up_on_dip_cage
+312. hanging_leg_hip_raise
+313. hanging_oblique_knee_raise
+314. hanging_straight_leg_hip_raise
+315. hanging_straight_twisting_leg_hip_raise
+316. hip_raise_bent_knee
+317. hyperextension_on_bench
+318. hyperextension_version_2
+319. incline_leg_hip_raise_leg_straight
+320. incline_reverse_grip_push_up
+321. incline_twisting_sit_up_version_2
+322. incline_twisting_situp
+323. inverse_leg_curl_on_pull_up_cable_machine
+324. inverted_row_bent_knees
+325. jackknife_sit_up
+326. lever_alternate_biceps_curl
+327. lever_alternate_leg_extension_plate_loaded
+328. lever_bicep_curl
+329. lever_calf_press_plate_loaded
+330. lever_calf_raise_bench_press_machine
+331. lever_chair_squat
+332. lever_chest_press
+333. lever_chest_press_plate_loaded
+334. lever_chest_press_version_2
+335. lever_chest_press_version_4
+336. lever_deadlift_plate_loaded
+337. lever_decline_chest_press
+338. lever_decline_chest_press_version_2
+339. lever_donkey_calf_raise
+340. lever_front_pulldown
+341. lever_full_squat
+342. lever_gripless_shrug
+343. lever_gripless_shrug_version_2
+344. lever_gripper_hands_plate_loaded
+345. lever_hammer_grip_preacher_curl
+346. lever_high_row_plate_loaded
+347. lever_hip_extension_version_2
+348. lever_incline_chest_press
+349. lever_incline_hammer_chest_press
+350. lever_kneeling_leg_curl_plate_loaded
+351. lever_lateral_pulldown_plate_loaded
+352. lever_lateral_raise
+353. lever_lateral_raise_plate_loaded
+354. lever_leg_extension
+355. lever_leg_extension_plate_loaded
+356. lever_lying_chest_press_plate_loaded
+357. lever_lying_crunch
+358. lever_lying_leg_curl
+359. lever_lying_t_bar_row
+360. lever_military_press_plate_loaded
+361. lever_neck_extension_plate_loaded
+362. lever_neck_left_side_flexion_plate_loaded
+363. lever_neck_right_side_flexion_plate_loaded
+364. lever_neutral_grip_seated_row_plate_loaded
+365. lever_overhand_triceps_dip
+366. lever_parallel_chest_press
+367. lever_pec_deck_fly
+368. lever_pistol_squat
+369. lever_preacher_curl
+370. lever_preacher_curl_plate_loaded
+371. lever_preacher_curl_version_2
+372. lever_pullover_plate_loaded
+373. lever_reverse_grip_preacher_curl
+374. lever_reverse_grip_vertical_row
+375. lever_reverse_t_bar_row
+376. lever_rotary_calf
+377. lever_row_plate_loaded
+378. lever_seated_calf_press
+379. lever_seated_calf_raise_plate_loaded
+380. lever_seated_crunch
+381. lever_seated_crunch_chest_pad
+382. lever_seated_dip
+383. lever_seated_fly
+384. lever_seated_hip_abduction
+385. lever_seated_hip_abduction_version_2
+386. lever_seated_hip_adduction
+387. lever_seated_hip_adduction_version_2
+388. lever_seated_leg_curl
+389. lever_seated_leg_press
+390. lever_seated_one_leg_calf_raise
+391. lever_seated_reverse_fly
+392. lever_seated_row
+393. lever_seated_shoulder_press
+394. lever_seated_squat
+395. lever_seated_twist
+396. lever_seated_wide_squat
+397. lever_shoulder_press_plate_loaded_ii
+398. lever_shoulder_press_plate_loaded_version_3
+399. lever_shrug_bench_press_machine
+400. lever_shrug_plate_loaded
+401. lever_side_hip_abduction
+402. lever_side_hip_adduction
+403. lever_single_arm_neutral_grip_seated_row_plate_loaded
+404. lever_squat_plate_loaded
+405. lever_standing_calf_raise
+406. lever_standing_hip_extension
+407. lever_standing_leg_raise
+408. lever_standing_rear_kick
+409. lever_t_bar_reverse_grip_row
+410. lever_t_bar_row_plate_loaded
+411. lever_triceps_dip_plate_loaded
+412. lever_triceps_extension
+413. lever_unilateral_row
+414. leverage_incline_chest_press
+415. lying_leg_raise_and_hold
+416. lying_leg_raise_flat_bench
+417. machine_inner_chest_press
+418. pull_in_on_stability_ball
+419. pull_up_neutral_grip
+420. push_up_m
+421. push_up_on_forearms
+422. rear_decline_bridge
+423. rear_pull_up
+424. reverse_crunch_m
+425. reverse_dip
+426. reverse_grip_machine_lat_pulldown
+427. reverse_hyper_on_flat_bench
+428. russian_twist_with_medicine_ball
+429. seated_leg_raise
+430. shoulder_grip_pull_up
+431. side_plank_male
+432. single_leg_squat_with_support_pistol
+433. sit_squat
+434. sit_up_ii
+435. sled_calf_press_on_leg_press
+436. sled_forward_angled_calf_raise
+437. sled_full_hack_squat
+438. sled_hack_squat
+439. sled_lying_squat
+440. sled_reverse_hack_squat
+441. smith_behind_neck_press
+442. smith_bench_press
+443. smith_bent_over_narrow_supinated_grip_row
+444. smith_bent_over_pronated_grip_row
+445. smith_calf_raise_version_2
+446. smith_chair_squat
+447. smith_close_grip_bench_press
+448. smith_deadlift
+449. smith_decline_bench_press
+450. smith_decline_reverse_grip_press
+451. smith_frankenstein_squat
+452. smith_front_squat
+453. smith_front_squat_clean_grip
+454. smith_incline_bench_press
+455. smith_incline_reverse_grip_press
+456. smith_leg_press
+457. smith_low_bar_squat
+458. smith_machine_bicep_curl
+459. smith_machine_decline_close_grip_bench_press
+460. smith_machine_incline_tricep_extension
+461. smith_machine_reverse_decline_close_grip_bench_press
+462. smith_reverse_calf_raises
+463. smith_reverse_grip_bent_over_row
+464. smith_reverse_grip_press
+465. smith_seated_shoulder_press
+466. smith_seated_wrist_curl
+467. smith_shoulder_press
+468. smith_shrug
+469. smith_single_leg_split_squat
+470. smith_split_squat
+471. smith_squat
+472. smith_squat_to_bench
+473. smith_standing_behind_head_military_press
+474. smith_standing_military_press
+475. smith_stiff_legged_deadlift
+476. smith_toe_raise
+477. smith_upright_row
+478. smith_wide_grip_bench_press
+479. smith_wide_grip_decline_bench_press
+480. smith_zercher_squat
+481. spine_twist
+482. squat_m
+483. stationary_bike_run_version_3
+484. triceps_dip
+485. triceps_dips_floor
+486. tuck_crunch
+487. twin_handle_parallel_grip_lat_pulldown
+488. underhand_grip_inverted_back_row
+489. vertical_leg_raise_on_parallel_bars
+490. walking_lunge_male
+491. weighted_bench_dip
+492. weighted_hanging_leg_hip_raise
+493. weighted_lying_neck_extension
+494. weighted_lying_neck_extension_with_head_harness
+495. weighted_lying_neck_flexion
+496. weighted_lying_neck_flexion_with_head_harness
+497. weighted_lying_side_lifting_head_with_head_harness
+498. weighted_seated_neck_extension_with_head_harness
+499. weighted_standing_neck_extension_with_head_harness
+500. wide_grip_chest_dip_on_high_parallel_bars
+501. wide_grip_pull_up
+502. wide_grip_pull_up_on_dip_cage
+503. wide_grip_rear_pull_up
+504. wide_hand_push_up
+505. wipers_straight_leg

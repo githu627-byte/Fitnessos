@@ -1,0 +1,518 @@
+EXERCISES TRULY NEEDING NEW DESCRIPTIONS
+================================================================================
+
+Total: 341 exercises
+
+================================================================================
+
+  1. air_bike_m
+  2. barbell_behind_back_finger_curl
+  3. barbell_bench_squat
+  4. barbell_bent_arm_pullover
+  5. barbell_decline_bent_arm_pullover
+  6. barbell_decline_close_grip_to_skull_press
+  7. barbell_decline_pullover
+  8. barbell_decline_wide_grip_press
+  9. barbell_decline_wide_grip_pullover
+ 10. barbell_drag_curl
+ 11. barbell_full_squat
+ 12. barbell_high_bar_squat
+ 13. barbell_incline_reverse_grip_press
+ 14. barbell_incline_row
+ 15. barbell_incline_wide_reverse_grip_bench_press
+ 16. barbell_low_bar_squat
+ 17. barbell_low_bar_squat_with_rack
+ 18. barbell_lying_back_of_the_head_tricep_extension
+ 19. barbell_lying_close_grip_triceps_extension
+ 20. barbell_lying_extension
+ 21. barbell_lying_lifting_on_hip
+ 22. barbell_olympic_squat
+ 23. barbell_one_leg_squat
+ 24. barbell_quarter_squat
+ 25. barbell_rear_delt_row
+ 26. barbell_rear_lunge
+ 27. barbell_reverse_grip_incline_bench_row
+ 28. barbell_reverse_grip_skullcrusher
+ 29. barbell_seated_behind_head_military_press
+ 30. barbell_seated_close_grip_behind_neck_triceps_extension
+ 31. barbell_seated_close_grip_concentration_curl
+ 32. barbell_seated_military_press_inside_squat_cage
+ 33. barbell_seated_overhead_triceps_extension
+ 34. barbell_side_bent_ii
+ 35. barbell_standing_close_grip_military_press
+ 36. barbell_standing_overhead_triceps_extension
+ 37. barbell_standing_reverse_grip_curl
+ 38. barbell_standing_twist
+ 39. barbell_standing_wide_grip_biceps_curl
+ 40. barbell_standing_wide_grip_curl
+ 41. barbell_standing_wide_military_press
+ 42. barbell_stiff_leg_good_morning
+ 43. barbell_straight_leg_deadlift
+ 44. barbell_wide_reverse_grip_bench_press
+ 45. bench_dip_knees_bent
+ 46. butt_ups
+ 47. cable_alternate_triceps_extension
+ 48. cable_bar_lateral_pulldown
+ 49. cable_biceps_curl_sz_bar
+ 50. cable_close_grip_curl
+ 51. cable_close_grip_front_lat_pulldown
+ 52. cable_concentration_extension_on_knee
+ 53. cable_cross_over_lateral_pulldown
+ 54. cable_cross_over_revers_fly
+ 55. cable_curl_with_multipurpose_v_bar
+ 56. cable_front_shoulder_raise
+ 57. cable_hammer_curl_with_rope_attachment_male
+ 58. cable_high_pulley_overhead_tricep_extension
+ 59. cable_hip_adduction
+ 60. cable_horizontal_pallof_press
+ 61. cable_incline_triceps_extension
+ 62. cable_kneeling_triceps_extension
+ 63. cable_kneeling_triceps_extension_version_2
+ 64. cable_lat_pulldown_full_range_of_motion
+ 65. cable_lying_extension_pullover_with_rope_attachment
+ 66. cable_lying_triceps_extension
+ 67. cable_one_arm_curl
+ 68. cable_one_arm_inner_biceps_curl
+ 69. cable_one_arm_lateral_raise
+ 70. cable_one_arm_side_triceps_pushdown
+ 71. cable_overhead_triceps_extension_rope_attachment
+ 72. cable_pushdown_straight_arm_ii
+ 73. cable_rear_pulldown
+ 74. cable_reverse_grip_straight_back_seated_high_row
+ 75. cable_reverse_grip_triceps_pushdown_sz_bar
+ 76. cable_reverse_preacher_curl
+ 77. cable_seated_chest_press
+ 78. cable_seated_neck_extension_with_head_harness
+ 79. cable_seated_neck_flexion_with_head_harness
+ 80. cable_seated_rear_lateral_raise
+ 81. cable_seated_shoulder_internal_rotation
+ 82. cable_shrug
+ 83. cable_side_bend
+ 84. cable_standing_cross_over_high_reverse_fly
+ 85. cable_standing_crunch_with_rope_attachment
+ 86. cable_standing_hip_extension
+ 87. cable_standing_inner_curl
+ 88. cable_standing_leg_curl
+ 89. cable_standing_reverse_curl_sz_bar
+ 90. cable_standing_shoulder_external_rotation
+ 91. cable_standing_up_straight_crossovers
+ 92. cable_supine_reverse_fly
+ 93. cable_triceps_pushdown_sz_bar
+ 94. cable_triceps_pushdown_v_bar_attachment
+ 95. cable_tuck_reverse_crunch
+ 96. cable_twist
+ 97. cable_two_arm_tricep_kickback
+ 98. cable_underhand_pulldown
+ 99. cable_upper_chest_crossovers
+100. cable_vertical_pallof_press
+101. cable_wide_grip_behind_neck_pulldown
+102. cable_wide_pulldown
+103. chest_dip
+104. chin_ups_narrow_parallel_grip
+105. close_grip_chin_up
+106. cocoons
+107. cross_body_crunch
+108. crunch_floor_m
+109. crunch_on_stability_ball
+110. dumbbell_alternate_biceps_curl
+111. dumbbell_bench_squat
+112. dumbbell_biceps_curl
+113. dumbbell_decline_fly
+114. dumbbell_decline_shrug
+115. dumbbell_decline_triceps_extension
+116. dumbbell_finger_curls
+117. dumbbell_high_curl
+118. dumbbell_incline_inner_biceps_curl
+119. dumbbell_incline_raise
+120. dumbbell_incline_rear_lateral_raise
+121. dumbbell_incline_reverse_grip_30_degrees_bench_press
+122. dumbbell_incline_row
+123. dumbbell_incline_shrug
+124. dumbbell_incline_triceps_extension
+125. dumbbell_lying_elbow_press
+126. dumbbell_lying_femoral
+127. dumbbell_lying_hammer_press
+128. dumbbell_lying_hammer_press_version_2
+129. dumbbell_lying_rear_delt_row
+130. dumbbell_lying_single_extension
+131. dumbbell_lying_triceps_extension
+132. dumbbell_one_arm_kickback
+133. dumbbell_one_arm_revers_wrist_curl
+134. dumbbell_one_arm_seated_neutral_wrist_curl
+135. dumbbell_one_arm_wrist_curl
+136. dumbbell_over_bench_neutral_wrist_curl
+137. dumbbell_over_bench_one_arm__neutral_wrist_curl
+138. dumbbell_over_bench_one_arm_reverse_wrist_curl
+139. dumbbell_over_bench_one_arm_wrist_curl
+140. dumbbell_over_bench_revers_wrist_curl
+141. dumbbell_over_bench_wrist_curl
+142. dumbbell_pullover
+143. dumbbell_rear_delt_raise
+144. dumbbell_rear_delt_row
+145. dumbbell_rear_lunge
+146. dumbbell_revers_grip_biceps_curl
+147. dumbbell_reverse_grip_incline_bench_two_arm_row
+148. dumbbell_seated_bench_extension
+149. dumbbell_seated_bent_arm_lateral_raise
+150. dumbbell_seated_kickback
+151. dumbbell_seated_neutral_wrist_curl
+152. dumbbell_seated_palms_up_wrist_curl
+153. dumbbell_seated_revers_grip_concentration_curl
+154. dumbbell_seated_triceps_extension
+155. dumbbell_side_bend
+156. dumbbell_single_leg_split_squat
+157. dumbbell_standing_alternate_raise
+158. dumbbell_standing_bent_over_two_arm_triceps_extension
+159. dumbbell_standing_biceps_curl
+160. dumbbell_standing_inner_biceps_curl
+161. dumbbell_standing_inner_biceps_curl_version_2
+162. dumbbell_standing_one_arm_concentration_curl
+163. dumbbell_standing_one_arm_extension
+164. dumbbell_standing_triceps_extension
+165. dumbbell_straight_arm_pullover
+166. dumbbell_upright_row_back_pov
+167. dumbbell_upright_shoulder_external_rotation
+168. dumbbells_seated_triceps_extension
+169. elbow_to_knee
+170. extra_decline_sit_up
+171. ez_bar_reverse_grip_bent_over_row
+172. ez_bar_seated_close_grip_concentration_curl
+173. ez_barbell_close_grip_curl
+174. ez_barbell_close_grip_preacher_curl
+175. ez_barbell_decline_triceps_extension
+176. ez_barbell_incline_triceps_extension
+177. ez_barbell_reverse_grip_preacher_curl
+178. ez_barbell_seated_curls
+179. ez_barbell_seated_triceps_extension
+180. finger_curls
+181. flutter_kicks_version_2
+182. flutter_kicks_version_3
+183. front_plank
+184. half_wipers_bent_leg
+185. hammer_grip_pull_up_on_dip_cage
+186. hanging_oblique_knee_raise
+187. hanging_straight_twisting_leg_hip_raise
+188. hip_raise_bent_knee
+189. hyperextension_on_bench
+190. hyperextension_version_2
+191. incline_leg_hip_raise_leg_straight
+192. incline_reverse_grip_push_up
+193. incline_twisting_sit_up_version_2
+194. incline_twisting_situp
+195. inverse_leg_curl_on_pull_up_cable_machine
+196. inverted_row_bent_knees
+197. jackknife_sit_up
+198. lever_alternate_biceps_curl
+199. lever_alternate_leg_extension_plate_loaded
+200. lever_calf_press_plate_loaded
+201. lever_calf_raise_bench_press_machine
+202. lever_chair_squat
+203. lever_chest_press
+204. lever_chest_press_plate_loaded
+205. lever_chest_press_version_2
+206. lever_chest_press_version_4
+207. lever_deadlift_plate_loaded
+208. lever_decline_chest_press
+209. lever_decline_chest_press_version_2
+210. lever_front_pulldown
+211. lever_full_squat
+212. lever_gripless_shrug
+213. lever_gripless_shrug_version_2
+214. lever_gripper_hands_plate_loaded
+215. lever_hammer_grip_preacher_curl
+216. lever_high_row_plate_loaded
+217. lever_hip_extension_version_2
+218. lever_incline_chest_press
+219. lever_incline_hammer_chest_press
+220. lever_kneeling_leg_curl_plate_loaded
+221. lever_lateral_pulldown_plate_loaded
+222. lever_lateral_raise_plate_loaded
+223. lever_leg_extension_plate_loaded
+224. lever_lying_chest_press_plate_loaded
+225. lever_lying_crunch
+226. lever_lying_t_bar_row
+227. lever_military_press_plate_loaded
+228. lever_neck_extension_plate_loaded
+229. lever_neck_left_side_flexion_plate_loaded
+230. lever_neck_right_side_flexion_plate_loaded
+231. lever_neutral_grip_seated_row_plate_loaded
+232. lever_overhand_triceps_dip
+233. lever_parallel_chest_press
+234. lever_pec_deck_fly
+235. lever_preacher_curl_plate_loaded
+236. lever_pullover_plate_loaded
+237. lever_reverse_grip_preacher_curl
+238. lever_reverse_grip_vertical_row
+239. lever_reverse_t_bar_row
+240. lever_rotary_calf
+241. lever_row_plate_loaded
+242. lever_seated_calf_press
+243. lever_seated_calf_raise_plate_loaded
+244. lever_seated_crunch
+245. lever_seated_crunch_chest_pad
+246. lever_seated_dip
+247. lever_seated_fly
+248. lever_seated_hip_abduction
+249. lever_seated_hip_abduction_version_2
+250. lever_seated_hip_adduction
+251. lever_seated_hip_adduction_version_2
+252. lever_seated_leg_press
+253. lever_seated_one_leg_calf_raise
+254. lever_seated_reverse_fly
+255. lever_seated_squat
+256. lever_seated_wide_squat
+257. lever_shoulder_press_plate_loaded_ii
+258. lever_shoulder_press_plate_loaded_version_3
+259. lever_shrug_bench_press_machine
+260. lever_shrug_plate_loaded
+261. lever_side_hip_abduction
+262. lever_side_hip_adduction
+263. lever_single_arm_neutral_grip_seated_row_plate_loaded
+264. lever_squat_plate_loaded
+265. lever_standing_hip_extension
+266. lever_standing_leg_raise
+267. lever_standing_rear_kick
+268. lever_t_bar_reverse_grip_row
+269. lever_t_bar_row_plate_loaded
+270. lever_triceps_dip_plate_loaded
+271. lever_triceps_extension
+272. lever_unilateral_row
+273. leverage_incline_chest_press
+274. lying_leg_raise_flat_bench
+275. pull_in_on_stability_ball
+276. pull_up_neutral_grip
+277. push_up_on_forearms
+278. rear_decline_bridge
+279. rear_pull_up
+280. reverse_crunch_m
+281. reverse_dip
+282. reverse_grip_machine_lat_pulldown
+283. reverse_hyper_on_flat_bench
+284. russian_twist_with_medicine_ball
+285. shoulder_grip_pull_up
+286. single_leg_squat_with_support_pistol
+287. sit_squat
+288. sled_calf_press_on_leg_press
+289. sled_forward_angled_calf_raise
+290. sled_full_hack_squat
+291. sled_lying_squat
+292. sled_reverse_hack_squat
+293. smith_behind_neck_press
+294. smith_bent_over_narrow_supinated_grip_row
+295. smith_bent_over_pronated_grip_row
+296. smith_chair_squat
+297. smith_deadlift
+298. smith_decline_reverse_grip_press
+299. smith_frankenstein_squat
+300. smith_front_squat_clean_grip
+301. smith_incline_reverse_grip_press
+302. smith_low_bar_squat
+303. smith_machine_bicep_curl
+304. smith_machine_decline_close_grip_bench_press
+305. smith_machine_incline_tricep_extension
+306. smith_machine_reverse_decline_close_grip_bench_press
+307. smith_reverse_calf_raises
+308. smith_reverse_grip_bent_over_row
+309. smith_reverse_grip_press
+310. smith_seated_wrist_curl
+311. smith_shrug
+312. smith_single_leg_split_squat
+313. smith_squat
+314. smith_squat_to_bench
+315. smith_standing_behind_head_military_press
+316. smith_standing_military_press
+317. smith_stiff_legged_deadlift
+318. smith_toe_raise
+319. smith_wide_grip_bench_press
+320. smith_wide_grip_decline_bench_press
+321. spine_twist
+322. stationary_bike_run_version_3
+323. triceps_dip
+324. triceps_dips_floor
+325. tuck_crunch
+326. twin_handle_parallel_grip_lat_pulldown
+327. underhand_grip_inverted_back_row
+328. vertical_leg_raise_on_parallel_bars
+329. weighted_lying_neck_extension
+330. weighted_lying_neck_extension_with_head_harness
+331. weighted_lying_neck_flexion
+332. weighted_lying_neck_flexion_with_head_harness
+333. weighted_lying_side_lifting_head_with_head_harness
+334. weighted_seated_neck_extension_with_head_harness
+335. weighted_standing_neck_extension_with_head_harness
+336. wide_grip_chest_dip_on_high_parallel_bars
+337. wide_grip_pull_up
+338. wide_grip_pull_up_on_dip_cage
+339. wide_grip_rear_pull_up
+340. wide_hand_push_up
+341. wipers_straight_leg
+
+
+================================================================================
+FUZZY MATCHES (can copy these descriptions)
+================================================================================
+
+3_4_sit_up                                         -> sit_up                                   (match: 1.00)
+barbell_bench_front_squat                          -> front_squat                              (match: 0.67)
+barbell_close_grip_bench_press                     -> close_grip_bench_press                   (match: 1.00)
+barbell_deadlift                                   -> deadlift                                 (match: 1.00)
+barbell_decline_bench_press                        -> decline_bench_press                      (match: 1.00)
+barbell_floor_calf_raise                           -> calf_raise                               (match: 0.67)
+barbell_front_chest_squat                          -> front_squat                              (match: 0.67)
+barbell_front_raise_and_pullover                   -> front_raise                              (match: 0.67)
+barbell_front_squat                                -> front_squat                              (match: 1.00)
+barbell_full_zercher_squat                         -> zercher_squat                            (match: 0.67)
+barbell_good_morning                               -> good_morning                             (match: 1.00)
+barbell_incline_bench_press                        -> incline_bench_press                      (match: 1.00)
+barbell_incline_close_grip_bench_press             -> close_grip_bench_press                   (match: 0.80)
+barbell_lunge                                      -> lunge                                    (match: 1.00)
+barbell_lying_close_grip_press                     -> close_grip_bench_press                   (match: 0.60)
+barbell_preacher_curl                              -> preacher_curl                            (match: 1.00)
+barbell_reverse_close_grip_bench_press             -> close_grip_bench_press                   (match: 0.80)
+barbell_reverse_curl                               -> reverse_curl                             (match: 1.00)
+barbell_reverse_grip_bent_over_row                 -> bent_over_row                            (match: 0.60)
+barbell_reverse_grip_decline_bench_press           -> decline_bench_press                      (match: 0.60)
+barbell_reverse_grip_incline_bench_press           -> incline_bench_press                      (match: 0.60)
+barbell_reverse_preacher_curl                      -> reverse_curl                             (match: 0.67)
+barbell_reverse_wrist_curl                         -> reverse_wrist_curl                       (match: 1.00)
+barbell_romanian_deadlift                          -> romanian_deadlift                        (match: 1.00)
+barbell_seated_calf_raise                          -> seated_calf_raise                        (match: 1.00)
+barbell_seated_good_morning                        -> good_morning                             (match: 0.67)
+barbell_seated_twist                               -> seated_twist                             (match: 1.00)
+barbell_shrug                                      -> shrug                                    (match: 1.00)
+barbell_side_split_squat_ii                        -> split_squat                              (match: 0.67)
+barbell_standing_concentration_curl                -> concentration_curl                       (match: 0.67)
+barbell_standing_leg_calf_raise                    -> standing_calf_raise                      (match: 0.75)
+barbell_standing_military_press                    -> standing_dumbbell_press                  (match: 0.67)
+barbell_step_up                                    -> step_up                                  (match: 1.00)
+barbell_sumo_deadlift                              -> sumo_deadlift                            (match: 1.00)
+barbell_upright_row                                -> upright_row                              (match: 1.00)
+barbell_wrist_curl                                 -> wrist_curl                               (match: 1.00)
+barbell_wrist_curl_version_2                       -> wrist_curl                               (match: 1.00)
+barbell_wrist_reverse_curl_version_2               -> reverse_wrist_curl                       (match: 1.00)
+bodyweight_standing_calf_raise                     -> standing_calf_raise                      (match: 0.75)
+cable_bench_press                                  -> bench_press                              (match: 0.67)
+cable_concentration_curl                           -> concentration_curl                       (match: 0.67)
+cable_crossover_variation                          -> cable_crossover                          (match: 0.67)
+cable_curl_male                                    -> cable_curl                               (match: 1.00)
+cable_decline_fly                                  -> cable_fly                                (match: 0.67)
+cable_decline_press                                -> decline_press                            (match: 0.67)
+cable_drag_curl                                    -> cable_curl                               (match: 0.67)
+cable_elevated_row                                 -> cable_row                                (match: 0.67)
+cable_front_raise                                  -> front_raise                              (match: 0.67)
+cable_incline_bench_press                          -> incline_bench_press                      (match: 0.75)
+cable_incline_fly                                  -> cable_fly                                (match: 0.67)
+cable_incline_pushdown                             -> cable_pushdown                           (match: 0.67)
+cable_kneeling_crunch                              -> cable_crunch                             (match: 0.67)
+cable_low_fly                                      -> cable_fly                                (match: 0.67)
+cable_low_seated_row                               -> seated_cable_row                         (match: 0.75)
+cable_lying_fly                                    -> cable_fly                                (match: 0.67)
+cable_middle_fly                                   -> cable_fly                                (match: 0.67)
+cable_overhead_curl                                -> cable_curl                               (match: 0.67)
+cable_preacher_curl                                -> preacher_curl                            (match: 0.67)
+cable_reverse_crunch                               -> cable_crunch                             (match: 0.67)
+cable_reverse_wrist_curl                           -> reverse_wrist_curl                       (match: 0.75)
+cable_rope_elevated_seated_row                     -> seated_cable_row                         (match: 0.60)
+cable_rope_incline_tricep_extension                -> cable_tricep_extension                   (match: 0.60)
+cable_rope_seated_row                              -> seated_cable_row                         (match: 0.75)
+cable_seated_crunch                                -> cable_crunch                             (match: 0.67)
+cable_seated_curl                                  -> cable_curl                               (match: 0.67)
+cable_seated_high_row_v_bar                        -> seated_cable_row                         (match: 0.60)
+cable_seated_row                                   -> seated_cable_row                         (match: 1.00)
+cable_seated_row_bent_bar                          -> seated_cable_row                         (match: 0.60)
+cable_seated_twist                                 -> seated_twist                             (match: 0.67)
+cable_seated_wide_grip_row                         -> seated_cable_row                         (match: 0.60)
+cable_shoulder_press                               -> dumbbell_shoulder_press                  (match: 0.67)
+cable_standing_calf_raise                          -> standing_calf_raise                      (match: 0.75)
+cable_standing_fly                                 -> cable_fly                                (match: 0.67)
+cable_straight_arm_pulldown                        -> straight_arm_pulldown                    (match: 0.75)
+cable_straight_back_seated_row                     -> seated_cable_row                         (match: 0.60)
+cable_upper_row                                    -> cable_row                                (match: 0.67)
+cable_upright_row                                  -> upright_row                              (match: 0.67)
+cable_wrist_curl                                   -> wrist_curl                               (match: 0.67)
+decline_push_up_m                                  -> decline_push_up                          (match: 1.00)
+dumbbell_arnold_press                              -> arnold_press                             (match: 1.00)
+dumbbell_arnold_press_ii                           -> arnold_press                             (match: 1.00)
+dumbbell_bench_seated_press                        -> seated_dumbbell_press                    (match: 0.67)
+dumbbell_bent_over_row                             -> bent_over_row                            (match: 1.00)
+dumbbell_biceps_curl_reverse                       -> reverse_curl                             (match: 0.67)
+dumbbell_close_grip_press                          -> close_grip_bench_press                   (match: 0.75)
+dumbbell_concentration_curl                        -> concentration_curl                       (match: 1.00)
+dumbbell_cross_body_hammer_curl                    -> cross_body_hammer_curl                   (match: 1.00)
+dumbbell_cross_body_hammer_curl_version_2          -> cross_body_hammer_curl                   (match: 1.00)
+dumbbell_deadlift                                  -> deadlift                                 (match: 1.00)
+dumbbell_decline_bench_press                       -> decline_bench_press                      (match: 1.00)
+dumbbell_decline_hammer_press                      -> decline_press                            (match: 0.67)
+dumbbell_goblet_squat                              -> goblet_squat                             (match: 1.00)
+dumbbell_hammer_curl                               -> hammer_curl                              (match: 1.00)
+dumbbell_hammer_curl_ii                            -> hammer_curl                              (match: 1.00)
+dumbbell_incline_bench_press                       -> incline_bench_press                      (match: 1.00)
+dumbbell_incline_fly                               -> incline_fly                              (match: 1.00)
+dumbbell_incline_front_raise                       -> front_raise                              (match: 0.67)
+dumbbell_lunge                                     -> lunge                                    (match: 1.00)
+dumbbell_one_arm_row_rack_support                  -> one_arm_row                              (match: 0.60)
+dumbbell_palm_rotational_bent_over_row             -> bent_over_row                            (match: 0.60)
+dumbbell_palms_in_incline_bench_press              -> incline_bench_press                      (match: 0.75)
+dumbbell_peacher_hammer_curl                       -> hammer_curl                              (match: 0.67)
+dumbbell_rear_fly                                  -> rear_delt_fly                            (match: 0.67)
+dumbbell_rear_lateral_raise                        -> lateral_raise                            (match: 0.67)
+dumbbell_reverse_bench_press                       -> bench_press                              (match: 0.67)
+dumbbell_reverse_preacher_curl                     -> reverse_curl                             (match: 0.67)
+dumbbell_reverse_wrist_curl                        -> reverse_wrist_curl                       (match: 1.00)
+dumbbell_romanian_deadlift                         -> romanian_deadlift                        (match: 1.00)
+dumbbell_seated_bicep_curl                         -> barbell_bicep_curl                       (match: 0.67)
+dumbbell_seated_front_raise                        -> front_raise                              (match: 0.67)
+dumbbell_seated_hammer_curl                        -> seated_hammer_curl                       (match: 1.00)
+dumbbell_seated_lateral_raise                      -> lateral_raise                            (match: 0.67)
+dumbbell_seated_preacher_curl                      -> preacher_curl                            (match: 0.67)
+dumbbell_seated_shoulder_press                     -> seated_shoulder_press                    (match: 1.00)
+dumbbell_shrug                                     -> shrug                                    (match: 1.00)
+dumbbell_squat                                     -> barbell_squat                            (match: 1.00)
+dumbbell_standing_calf_raise                       -> standing_calf_raise                      (match: 1.00)
+dumbbell_standing_concentration_curl               -> concentration_curl                       (match: 0.67)
+dumbbell_standing_kickback                         -> standing_glute_kickback                  (match: 0.67)
+dumbbell_step_up                                   -> step_up                                  (match: 1.00)
+dumbbell_stiff_leg_deadlift                        -> stiff_leg_deadlift                       (match: 1.00)
+dumbbell_upright_row                               -> upright_row                              (match: 1.00)
+dumbbell_zottman_curl                              -> zottman_curl                             (match: 1.00)
+ez_barbell_curl                                    -> dumbbell_curl                            (match: 1.00)
+ez_barbell_reverse_grip_curl                       -> reverse_curl                             (match: 0.67)
+hack_calf_raise                                    -> calf_raise                               (match: 0.67)
+hanging_leg_hip_raise                              -> hanging_leg_raise                        (match: 0.75)
+hanging_straight_leg_hip_raise                     -> hanging_leg_raise                        (match: 0.60)
+lever_bicep_curl                                   -> barbell_bicep_curl                       (match: 0.67)
+lever_donkey_calf_raise                            -> donkey_calf_raise                        (match: 0.75)
+lever_lateral_raise                                -> lateral_raise                            (match: 0.67)
+lever_leg_extension                                -> leg_extension                            (match: 0.67)
+lever_lying_leg_curl                               -> lying_leg_curl                           (match: 0.75)
+lever_pistol_squat                                 -> pistol_squat                             (match: 0.67)
+lever_preacher_curl                                -> preacher_curl                            (match: 0.67)
+lever_preacher_curl_version_2                      -> preacher_curl                            (match: 0.67)
+lever_seated_leg_curl                              -> seated_leg_curl                          (match: 0.75)
+lever_seated_row                                   -> seated_row                               (match: 0.67)
+lever_seated_shoulder_press                        -> seated_shoulder_press                    (match: 0.75)
+lever_seated_twist                                 -> seated_twist                             (match: 0.67)
+lever_standing_calf_raise                          -> standing_calf_raise                      (match: 0.75)
+lying_leg_raise_and_hold                           -> side_lying_leg_raise                     (match: 0.60)
+machine_inner_chest_press                          -> machine_chest_press                      (match: 0.75)
+push_up_m                                          -> push_up                                  (match: 1.00)
+seated_leg_raise                                   -> leg_raise                                (match: 0.67)
+side_plank_male                                    -> side_plank                               (match: 1.00)
+sit_up_ii                                          -> sit_up                                   (match: 1.00)
+sled_hack_squat                                    -> hack_squat                               (match: 0.67)
+smith_bench_press                                  -> bench_press                              (match: 0.67)
+smith_calf_raise_version_2                         -> calf_raise                               (match: 0.67)
+smith_close_grip_bench_press                       -> close_grip_bench_press                   (match: 0.80)
+smith_decline_bench_press                          -> decline_bench_press                      (match: 0.75)
+smith_front_squat                                  -> front_squat                              (match: 0.67)
+smith_incline_bench_press                          -> incline_bench_press                      (match: 0.75)
+smith_leg_press                                    -> leg_press                                (match: 0.67)
+smith_seated_shoulder_press                        -> seated_shoulder_press                    (match: 0.75)
+smith_shoulder_press                               -> dumbbell_shoulder_press                  (match: 0.67)
+smith_split_squat                                  -> split_squat                              (match: 0.67)
+smith_upright_row                                  -> upright_row                              (match: 0.67)
+smith_zercher_squat                                -> zercher_squat                            (match: 0.67)
+squat_m                                            -> barbell_squat                            (match: 1.00)
+walking_lunge_male                                 -> walking_lunge                            (match: 1.00)
+weighted_bench_dip                                 -> bench_dip                                (match: 0.67)
+weighted_hanging_leg_hip_raise                     -> hanging_leg_raise                        (match: 0.60)
