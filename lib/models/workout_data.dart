@@ -655,7 +655,7 @@ class WorkoutData {
             secondaryMuscles: ['biceps'],
           ),
           WorkoutExercise(
-            id: 'weighted_pull_up',
+            id: 'pull_up',
             name: 'Weighted Pull-Up',
             sets: 4,
             reps: 8,
@@ -1883,7 +1883,7 @@ class WorkoutData {
             secondaryMuscles: ['biceps'],
           ),
           WorkoutExercise(
-            id: 'weighted_pull_up',
+            id: 'pull_up',
             name: 'Weighted Pull-Up',
             sets: 4,
             reps: 8,
@@ -2273,7 +2273,7 @@ class WorkoutData {
             secondaryMuscles: ['triceps'],
           ),
           WorkoutExercise(
-            id: 'barbell_full_squat',
+            id: 'squat_m',
             name: 'Air Squat',
             sets: 1,
             reps: 0,
@@ -2651,7 +2651,7 @@ class WorkoutData {
       case 'beginner':
         exercises = [
           WorkoutExercise(
-            id: 'barbell_full_squat',
+            id: 'squat_m',
             name: 'Air Squat',
             sets: 1,
             reps: 0,
@@ -4420,7 +4420,7 @@ class WorkoutData {
       case 'beginner':
         exercises = [
           WorkoutExercise(
-            id: 'barbell_full_squat',
+            id: 'squat_m',
             name: 'Air Squat',
             sets: 3,
             reps: 12,
@@ -4731,7 +4731,7 @@ class WorkoutData {
       case 'beginner':
         exercises = [
           WorkoutExercise(
-            id: 'barbell_full_squat',
+            id: 'squat_m',
             name: 'Air Squat',
             sets: 3,
             reps: 15,
@@ -4791,7 +4791,7 @@ class WorkoutData {
             secondaryMuscles: ['glutes'],
           ),
           WorkoutExercise(
-            id: 'barbell_full_squat',
+            id: 'squat_m',
             name: 'Air Squat',
             sets: 4,
             reps: 20,
@@ -4843,7 +4843,7 @@ class WorkoutData {
             secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
-            id: 'barbell_full_squat',
+            id: 'squat_m',
             name: 'Air Squat',
             sets: 4,
             reps: 25,
@@ -5043,7 +5043,7 @@ class WorkoutData {
         rounds = 3;
         exercises = [
           WorkoutExercise(
-            id: 'barbell_full_squat',
+            id: 'squat_m',
             name: 'Air Squat',
             sets: 1,
             reps: 15,
@@ -6786,7 +6786,7 @@ class WorkoutData {
         isCircuit = false;
         exercises = [
           WorkoutExercise(
-            id: 'barbell_full_squat',
+            id: 'squat_m',
             name: 'Air Squat',
             sets: 3,
             reps: 15,
@@ -6986,7 +6986,7 @@ class WorkoutData {
             secondaryMuscles: ['biceps'],
           ),
           WorkoutExercise(
-            id: 'barbell_full_squat',
+            id: 'squat_m',
             name: 'Air Squat',
             sets: 3,
             reps: 15,
@@ -7125,7 +7125,7 @@ class WorkoutData {
         rounds = 3;
         exercises = [
           WorkoutExercise(
-            id: 'barbell_full_squat',
+            id: 'squat_m',
             name: 'Air Squat',
             sets: 1,
             reps: 0,
