@@ -7325,10 +7325,10 @@ class WorkoutData {
         WorkoutExercise(id: 'incline_db_press', name: 'Incline Dumbbell Press', sets: 3, reps: 10),
         WorkoutExercise(id: 'decline_bench_press', name: 'Decline Bench Press', sets: 3, reps: 10),
         WorkoutExercise(id: 'cable_crossover', name: 'Cable Crossover', sets: 3, reps: 12),
-        //WorkoutExercise(id: 'machine_chest_fly', name: 'Machine Chest Fly', sets: 3, reps: 12, included: false),  // DUPLICATE - use machine_fly
-        //WorkoutExercise(id: 'dumbbell_flyes', name: 'Dumbbell Flyes', sets: 3, reps: 12, included: false),  // DUPLICATE - use dumbbell_fly
-        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 3, reps: 15, included: false),  // DUPLICATE - use pushup
-        WorkoutExercise(id: 'chest_dips', name: 'Chest Dips', sets: 3, reps: 10, included: false),
+        //WorkoutExercise(id: 'machine_chest_fly', name: 'Machine Chest Fly', sets: 3, reps: 12, included: true),  // DUPLICATE - use machine_fly
+        //WorkoutExercise(id: 'dumbbell_flyes', name: 'Dumbbell Flyes', sets: 3, reps: 12, included: true),  // DUPLICATE - use dumbbell_fly
+        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 3, reps: 15, included: true),  // DUPLICATE - use pushup
+        WorkoutExercise(id: 'chest_dips', name: 'Chest Dips', sets: 3, reps: 10, included: true),
       ],
     ),
     WorkoutPreset(
@@ -7343,10 +7343,10 @@ class WorkoutData {
         WorkoutExercise(id: 'barbell_row', name: 'Barbell Row', sets: 4, reps: 8),
         WorkoutExercise(id: 'lat_pulldown', name: 'Lat Pulldown', sets: 3, reps: 10),
         WorkoutExercise(id: 'seated_cable_row', name: 'Seated Cable Row', sets: 3, reps: 10),
-        WorkoutExercise(id: 'tbar_row', name: 'T-Bar Row', sets: 3, reps: 10, included: false),
-        WorkoutExercise(id: 'single_arm_db_row', name: 'Single Arm Dumbbell Row', sets: 3, reps: 10, included: false),
-        //WorkoutExercise(id: 'face_pulls', name: 'Face Pulls', sets: 3, reps: 15, included: false),  // DUPLICATE - use face_pull
-        //WorkoutExercise(id: 'pullups', name: 'Pull-Ups', sets: 3, reps: 8, included: false),  // DUPLICATE - use pullup
+        WorkoutExercise(id: 'tbar_row', name: 'T-Bar Row', sets: 3, reps: 10, included: true),
+        WorkoutExercise(id: 'single_arm_db_row', name: 'Single Arm Dumbbell Row', sets: 3, reps: 10, included: true),
+        //WorkoutExercise(id: 'face_pulls', name: 'Face Pulls', sets: 3, reps: 15, included: true),  // DUPLICATE - use face_pull
+        //WorkoutExercise(id: 'pullups', name: 'Pull-Ups', sets: 3, reps: 8, included: true),  // DUPLICATE - use pullup
       ],
     ),
     WorkoutPreset(
@@ -7361,10 +7361,10 @@ class WorkoutData {
         //WorkoutExercise(id: 'seated_db_press', name: 'Seated Dumbbell Press', sets: 3, reps: 10),  // DUPLICATE - use seated_dumbbell_press
         WorkoutExercise(id: 'arnold_press', name: 'Arnold Press', sets: 3, reps: 10),
         WorkoutExercise(id: 'lateral_raise', name: 'Lateral Raise', sets: 3, reps: 12),
-        WorkoutExercise(id: 'front_raise', name: 'Front Raise', sets: 3, reps: 12, included: false),
-        WorkoutExercise(id: 'reverse_fly', name: 'Reverse Fly', sets: 3, reps: 12, included: false),
-        WorkoutExercise(id: 'cable_lateral_raise', name: 'Cable Lateral Raise', sets: 3, reps: 12, included: false),
-        WorkoutExercise(id: 'barbell_shrugs', name: 'Barbell Shrugs', sets: 3, reps: 12, included: false),
+        WorkoutExercise(id: 'front_raise', name: 'Front Raise', sets: 3, reps: 12, included: true),
+        WorkoutExercise(id: 'reverse_fly', name: 'Reverse Fly', sets: 3, reps: 12, included: true),
+        WorkoutExercise(id: 'cable_lateral_raise', name: 'Cable Lateral Raise', sets: 3, reps: 12, included: true),
+        WorkoutExercise(id: 'barbell_shrugs', name: 'Barbell Shrugs', sets: 3, reps: 12, included: true),
       ],
     ),
     WorkoutPreset(
@@ -7379,12 +7379,12 @@ class WorkoutData {
         WorkoutExercise(id: 'front_squat', name: 'Front Squat', sets: 4, reps: 6),
         WorkoutExercise(id: 'romanian_deadlift', name: 'Romanian Deadlift', sets: 3, reps: 10),
         WorkoutExercise(id: 'leg_press', name: 'Leg Press', sets: 3, reps: 12),
-        WorkoutExercise(id: 'bulgarian_split_squat', name: 'Bulgarian Split Squat', sets: 3, reps: 10, included: false),
-        WorkoutExercise(id: 'leg_extension', name: 'Leg Extension', sets: 3, reps: 12, included: false),
-        WorkoutExercise(id: 'leg_curl', name: 'Leg Curl', sets: 3, reps: 12, included: false),
-        WorkoutExercise(id: 'hip_thrust', name: 'Hip Thrust (GLUTE FOCUS)', sets: 4, reps: 10, included: false),
-        WorkoutExercise(id: 'glute_kickback', name: 'Glute Kickback Machine (GLUTE FOCUS)', sets: 3, reps: 12, included: false),
-        WorkoutExercise(id: 'standing_calf_raise', name: 'Standing Calf Raise', sets: 4, reps: 15, included: false),
+        WorkoutExercise(id: 'bulgarian_split_squat', name: 'Bulgarian Split Squat', sets: 3, reps: 10, included: true),
+        WorkoutExercise(id: 'leg_extension', name: 'Leg Extension', sets: 3, reps: 12, included: true),
+        WorkoutExercise(id: 'leg_curl', name: 'Leg Curl', sets: 3, reps: 12, included: true),
+        WorkoutExercise(id: 'hip_thrust', name: 'Hip Thrust (GLUTE FOCUS)', sets: 4, reps: 10, included: true),
+        WorkoutExercise(id: 'glute_kickback', name: 'Glute Kickback Machine (GLUTE FOCUS)', sets: 3, reps: 12, included: true),
+        WorkoutExercise(id: 'standing_calf_raise', name: 'Standing Calf Raise', sets: 4, reps: 15, included: true),
       ],
     ),
     WorkoutPreset(
@@ -7399,12 +7399,12 @@ class WorkoutData {
         WorkoutExercise(id: 'hammer_curl', name: 'Hammer Curl', sets: 3, reps: 10),
         WorkoutExercise(id: 'preacher_curl', name: 'Preacher Curl', sets: 3, reps: 10),
         //WorkoutExercise(id: 'skull_crushers', name: 'Skull Crushers', sets: 3, reps: 10),  // DUPLICATE - use skull_crusher
-        WorkoutExercise(id: 'concentration_curl', name: 'Concentration Curl', sets: 3, reps: 12, included: false),
-        WorkoutExercise(id: 'tricep_pushdown', name: 'Tricep Pushdown', sets: 3, reps: 12, included: false),
-        //WorkoutExercise(id: 'overhead_tricep_ext', name: 'Overhead Tricep Extension', sets: 3, reps: 12, included: false),  // DUPLICATE - use overhead_tricep_extension
-        //WorkoutExercise(id: 'close_grip_bench', name: 'Close Grip Bench Press', sets: 3, reps: 10, included: false),  // DUPLICATE - use close_grip_bench_press
-        WorkoutExercise(id: 'cable_curl', name: 'Cable Curl', sets: 3, reps: 12, included: false),
-        //WorkoutExercise(id: 'tricep_dips', name: 'Tricep Dips', sets: 3, reps: 10, included: false),  // DUPLICATE - use tricep_dip
+        WorkoutExercise(id: 'concentration_curl', name: 'Concentration Curl', sets: 3, reps: 12, included: true),
+        WorkoutExercise(id: 'tricep_pushdown', name: 'Tricep Pushdown', sets: 3, reps: 12, included: true),
+        //WorkoutExercise(id: 'overhead_tricep_ext', name: 'Overhead Tricep Extension', sets: 3, reps: 12, included: true),  // DUPLICATE - use overhead_tricep_extension
+        //WorkoutExercise(id: 'close_grip_bench', name: 'Close Grip Bench Press', sets: 3, reps: 10, included: true),  // DUPLICATE - use close_grip_bench_press
+        WorkoutExercise(id: 'cable_curl', name: 'Cable Curl', sets: 3, reps: 12, included: true),
+        //WorkoutExercise(id: 'tricep_dips', name: 'Tricep Dips', sets: 3, reps: 10, included: true),  // DUPLICATE - use tricep_dip
       ],
     ),
     WorkoutPreset(
@@ -7419,10 +7419,10 @@ class WorkoutData {
         WorkoutExercise(id: 'hanging_leg_raise', name: 'Hanging Leg Raise', sets: 3, reps: 12),
         //WorkoutExercise(id: 'ab_wheel_rollout', name: 'Ab Wheel Rollout', sets: 3, reps: 10),
         WorkoutExercise(id: 'russian_twist', name: 'Russian Twist (weighted)', sets: 3, reps: 20),
-        //WorkoutExercise(id: 'woodchoppers', name: 'Woodchoppers', sets: 3, reps: 12, included: false),  // DUPLICATE - use wood_chop
-        WorkoutExercise(id: 'decline_situp', name: 'Decline Sit-Up', sets: 3, reps: 15, included: false),
-        WorkoutExercise(id: 'plank', name: 'Plank', sets: 3, reps: 45, included: false),
-        WorkoutExercise(id: 'side_plank', name: 'Side Plank', sets: 3, reps: 30, included: false),
+        //WorkoutExercise(id: 'woodchoppers', name: 'Woodchoppers', sets: 3, reps: 12, included: true),  // DUPLICATE - use wood_chop
+        WorkoutExercise(id: 'decline_situp', name: 'Decline Sit-Up', sets: 3, reps: 15, included: true),
+        WorkoutExercise(id: 'plank', name: 'Plank', sets: 3, reps: 45, included: true),
+        WorkoutExercise(id: 'side_plank', name: 'Side Plank', sets: 3, reps: 30, included: true),
       ],
     ),
   ];
@@ -7666,9 +7666,9 @@ class WorkoutData {
         WorkoutExercise(id: 'bulgarian_split_squat', name: 'Bulgarian Split Squat', sets: 3, reps: 10),
         WorkoutExercise(id: 'cable_kickback', name: 'Cable Kickback', sets: 3, reps: 15),
         WorkoutExercise(id: 'romanian_deadlift', name: 'Romanian Deadlift', sets: 3, reps: 12),
-        WorkoutExercise(id: 'sumo_deadlift', name: 'Sumo Deadlift', sets: 3, reps: 10, included: false),
-        //WorkoutExercise(id: 'cable_pullthrough', name: 'Cable Pull-Through', sets: 3, reps: 15, included: false),  // DUPLICATE - use cable_pull_through
-        WorkoutExercise(id: 'leg_press_high', name: 'Leg Press (feet high)', sets: 3, reps: 12, included: false),
+        WorkoutExercise(id: 'sumo_deadlift', name: 'Sumo Deadlift', sets: 3, reps: 10, included: true),
+        //WorkoutExercise(id: 'cable_pullthrough', name: 'Cable Pull-Through', sets: 3, reps: 15, included: true),  // DUPLICATE - use cable_pull_through
+        WorkoutExercise(id: 'leg_press_high', name: 'Leg Press (feet high)', sets: 3, reps: 12, included: true),
       ],
     ),
     WorkoutPreset(
@@ -7686,10 +7686,10 @@ class WorkoutData {
         WorkoutExercise(id: 'shoulder_press', name: 'Shoulder Press', sets: 3, reps: 10),
         WorkoutExercise(id: 'lat_pulldown', name: 'Lat Pulldown', sets: 3, reps: 12),
         // Lower Day
-        WorkoutExercise(id: 'goblet_squat', name: 'Goblet Squat', sets: 4, reps: 12, included: false),
-        //WorkoutExercise(id: 'walking_lunges', name: 'Walking Lunges', sets: 3, reps: 12, included: false),  // DUPLICATE - use walking_lunge
-        WorkoutExercise(id: 'leg_curl', name: 'Leg Curl', sets: 3, reps: 12, included: false),
-        WorkoutExercise(id: 'hip_thrust', name: 'Hip Thrust', sets: 4, reps: 12, included: false),
+        WorkoutExercise(id: 'goblet_squat', name: 'Goblet Squat', sets: 4, reps: 12, included: true),
+        //WorkoutExercise(id: 'walking_lunges', name: 'Walking Lunges', sets: 3, reps: 12, included: true),  // DUPLICATE - use walking_lunge
+        WorkoutExercise(id: 'leg_curl', name: 'Leg Curl', sets: 3, reps: 12, included: true),
+        WorkoutExercise(id: 'hip_thrust', name: 'Hip Thrust', sets: 4, reps: 12, included: true),
       ],
     ),
     WorkoutPreset(
@@ -7706,8 +7706,8 @@ class WorkoutData {
         WorkoutExercise(id: 'romanian_deadlift', name: 'Romanian Deadlift', sets: 3, reps: 10),
         WorkoutExercise(id: 'shoulder_press', name: 'Shoulder Press', sets: 3, reps: 10),
         WorkoutExercise(id: 'hip_thrust', name: 'Hip Thrust', sets: 3, reps: 12),
-        WorkoutExercise(id: 'lat_pulldown', name: 'Lat Pulldown', sets: 3, reps: 12, included: false),
-        WorkoutExercise(id: 'cable_row', name: 'Cable Row', sets: 3, reps: 12, included: false),
+        WorkoutExercise(id: 'lat_pulldown', name: 'Lat Pulldown', sets: 3, reps: 12, included: true),
+        WorkoutExercise(id: 'cable_row', name: 'Cable Row', sets: 3, reps: 12, included: true),
       ],
     ),
     WorkoutPreset(
@@ -7724,14 +7724,14 @@ class WorkoutData {
         WorkoutExercise(id: 'incline_dumbbell_press', name: 'Incline Dumbbell Press', sets: 3, reps: 10),
         WorkoutExercise(id: 'lateral_raise', name: 'Lateral Raise', sets: 3, reps: 12),
         WorkoutExercise(id: 'tricep_pushdown', name: 'Tricep Pushdown', sets: 3, reps: 12),
-        // Pull exercises (included: false for rotation)
-        WorkoutExercise(id: 'lat_pulldown', name: 'Lat Pulldown', sets: 3, reps: 12, included: false),
-        WorkoutExercise(id: 'cable_row', name: 'Cable Row', sets: 3, reps: 12, included: false),
-        WorkoutExercise(id: 'face_pull', name: 'Face Pull', sets: 3, reps: 15, included: false),
-        // Leg exercises (included: false for rotation)
-        WorkoutExercise(id: 'squat', name: 'Squat', sets: 4, reps: 10, included: false),
-        WorkoutExercise(id: 'romanian_deadlift', name: 'Romanian Deadlift', sets: 3, reps: 10, included: false),
-        WorkoutExercise(id: 'leg_press', name: 'Leg Press', sets: 3, reps: 12, included: false),
+        // Pull exercises (included: true for rotation)
+        WorkoutExercise(id: 'lat_pulldown', name: 'Lat Pulldown', sets: 3, reps: 12, included: true),
+        WorkoutExercise(id: 'cable_row', name: 'Cable Row', sets: 3, reps: 12, included: true),
+        WorkoutExercise(id: 'face_pull', name: 'Face Pull', sets: 3, reps: 15, included: true),
+        // Leg exercises (included: true for rotation)
+        WorkoutExercise(id: 'squat', name: 'Squat', sets: 4, reps: 10, included: true),
+        WorkoutExercise(id: 'romanian_deadlift', name: 'Romanian Deadlift', sets: 3, reps: 10, included: true),
+        WorkoutExercise(id: 'leg_press', name: 'Leg Press', sets: 3, reps: 12, included: true),
       ],
     ),
     WorkoutPreset(
@@ -7747,8 +7747,8 @@ class WorkoutData {
         //WorkoutExercise(id: 'cable_flye', name: 'Cable Flye', sets: 3, reps: 12),  // DUPLICATE - use cable_fly
         //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 2, reps: 15),  // DUPLICATE - use pushup
         WorkoutExercise(id: 'overhead_tricep_extension', name: 'Overhead Tricep Extension', sets: 3, reps: 12),
-        WorkoutExercise(id: 'lateral_raise', name: 'Lateral Raise', sets: 3, reps: 15, included: false),
-        WorkoutExercise(id: 'skull_crusher', name: 'Skull Crushers', sets: 3, reps: 10, included: false),
+        WorkoutExercise(id: 'lateral_raise', name: 'Lateral Raise', sets: 3, reps: 15, included: true),
+        WorkoutExercise(id: 'skull_crusher', name: 'Skull Crushers', sets: 3, reps: 10, included: true),
       ],
     ),
   ];
@@ -7973,8 +7973,8 @@ class WorkoutData {
         WorkoutExercise(id: 'single_leg_glute_bridge', name: 'Single Leg Glute Bridge', sets: 3, reps: 10),
         WorkoutExercise(id: 'donkey_kick', name: 'Donkey Kick', sets: 3, reps: 15),
         WorkoutExercise(id: 'fire_hydrant', name: 'Fire Hydrant', sets: 3, reps: 15),
-        //WorkoutExercise(id: 'bulgarian_split_squat_bw', name: 'Bulgarian Split Squat', sets: 3, reps: 10, included: false),  // DUPLICATE - use bulgarian_split_squat
-        WorkoutExercise(id: 'side_lying_leg_raise', name: 'Side-Lying Leg Raise', sets: 3, reps: 15, included: false),
+        //WorkoutExercise(id: 'bulgarian_split_squat_bw', name: 'Bulgarian Split Squat', sets: 3, reps: 10, included: true),  // DUPLICATE - use bulgarian_split_squat
+        WorkoutExercise(id: 'side_lying_leg_raise', name: 'Side-Lying Leg Raise', sets: 3, reps: 15, included: true),
       ],
     ),
     WorkoutPreset(
@@ -7992,9 +7992,9 @@ class WorkoutData {
         //WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15),
         WorkoutExercise(id: 'tricep_dips_chair', name: 'Tricep Dips (chair)', sets: 3, reps: 12),
         // Lower
-        //WorkoutExercise(id: 'air_squats', name: 'Air Squats', sets: 4, reps: 20, included: false),  // DUPLICATE - use air_squat
-        //WorkoutExercise(id: 'lunges', name: 'Lunges', sets: 3, reps: 12, included: false),  // DUPLICATE - use lunge
-        WorkoutExercise(id: 'glute_bridge', name: 'Glute Bridge', sets: 4, reps: 15, included: false),
+        //WorkoutExercise(id: 'air_squats', name: 'Air Squats', sets: 4, reps: 20, included: true),  // DUPLICATE - use air_squat
+        //WorkoutExercise(id: 'lunges', name: 'Lunges', sets: 3, reps: 12, included: true),  // DUPLICATE - use lunge
+        WorkoutExercise(id: 'glute_bridge', name: 'Glute Bridge', sets: 4, reps: 15, included: true),
       ],
     ),
     WorkoutPreset(
@@ -8011,8 +8011,8 @@ class WorkoutData {
         WorkoutExercise(id: 'glute_bridge', name: 'Glute Bridge', sets: 3, reps: 15),
         //WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15),
         //WorkoutExercise(id: 'lunges', name: 'Lunges', sets: 3, reps: 12),  // DUPLICATE - use lunge
-        WorkoutExercise(id: 'plank', name: 'Plank', sets: 2, reps: 45, included: false),
-        //WorkoutExercise(id: 'mountain_climbers', name: 'Mountain Climbers', sets: 3, reps: 20, included: false),  // DUPLICATE - use mountain_climber
+        WorkoutExercise(id: 'plank', name: 'Plank', sets: 2, reps: 45, included: true),
+        //WorkoutExercise(id: 'mountain_climbers', name: 'Mountain Climbers', sets: 3, reps: 20, included: true),  // DUPLICATE - use mountain_climber
       ],
     ),
     WorkoutPreset(
@@ -8029,11 +8029,11 @@ class WorkoutData {
         //WorkoutExercise(id: 'pike_pushups', name: 'Pike Push-Ups', sets: 3, reps: 10),  // DUPLICATE - use pike_pushup
         //WorkoutExercise(id: 'diamond_pushups', name: 'Diamond Push-Ups', sets: 2, reps: 10),  // DUPLICATE - use diamond_pushup
         // Pull
-        //WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15, included: false),
-        //WorkoutExercise(id: 'inverted_rows', name: 'Inverted Rows (table)', sets: 3, reps: 10, included: false),  // DUPLICATE - use inverted_row
+        //WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15, included: true),
+        //WorkoutExercise(id: 'inverted_rows', name: 'Inverted Rows (table)', sets: 3, reps: 10, included: true),  // DUPLICATE - use inverted_row
         // Legs
-        //WorkoutExercise(id: 'air_squats', name: 'Air Squats', sets: 4, reps: 20, included: false),  // DUPLICATE - use air_squat
-        WorkoutExercise(id: 'glute_bridge', name: 'Glute Bridge', sets: 3, reps: 15, included: false),
+        //WorkoutExercise(id: 'air_squats', name: 'Air Squats', sets: 4, reps: 20, included: true),  // DUPLICATE - use air_squat
+        WorkoutExercise(id: 'glute_bridge', name: 'Glute Bridge', sets: 3, reps: 15, included: true),
       ],
     ),
     WorkoutPreset(
@@ -8049,7 +8049,7 @@ class WorkoutData {
         //WorkoutExercise(id: 'wide_pushups', name: 'Wide Push-Ups', sets: 3, reps: 12),  // DUPLICATE - use wide_pushup
         //WorkoutExercise(id: 'pike_pushups', name: 'Pike Push-Ups', sets: 3, reps: 10),  // DUPLICATE - use pike_pushup
         WorkoutExercise(id: 'tricep_dips_chair', name: 'Tricep Dips (chair)', sets: 3, reps: 12),
-        //WorkoutExercise(id: 'diamond_pushups', name: 'Diamond Push-Ups', sets: 2, reps: 10, included: false),  // DUPLICATE - use diamond_pushup
+        //WorkoutExercise(id: 'diamond_pushups', name: 'Diamond Push-Ups', sets: 2, reps: 10, included: true),  // DUPLICATE - use diamond_pushup
       ],
     ),
   ];
