@@ -140,6 +140,7 @@ flutter:
     - assets/images/icons/
     - assets/wake_word/
     - assets/exercise_videos/
+    - assets/exercise_thumbnails/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

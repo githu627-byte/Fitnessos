@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
 import '../utils/app_colors.dart';
 import '../services/exercise_video_service.dart';
 
 /// =============================================================================
-/// EXERCISE LIST THUMBNAIL - STATIC FIRST FRAME FROM VIDEO
+/// EXERCISE LIST THUMBNAIL - STATIC WebP IMAGE FROM PRE-GENERATED THUMBNAILS
 /// =============================================================================
-/// Loads the exercise video, grabs the first frame, displays it as a static
-/// image, then keeps the controller paused. No ongoing video playback.
+/// Uses pre-generated WebP thumbnail images instead of VideoPlayerController.
+/// This avoids the hardware video decoder limit (2-16 concurrent instances)
+/// that caused random thumbnail load failures when showing multiple exercises.
 /// =============================================================================
 
 class ExerciseListThumbnail extends StatefulWidget {
@@ -37,64 +37,23 @@ class ExerciseListThumbnail extends StatefulWidget {
 }
 
 class _ExerciseListThumbnailState extends State<ExerciseListThumbnail> {
-  VideoPlayerController? _controller;
-  bool _isReady = false;
+  String? _thumbnailPath;
   bool _hasError = false;
 
   @override
   void initState() {
     super.initState();
-    _loadFirstFrame();
+    _thumbnailPath = ExerciseVideoService.getThumbnailPath(widget.exerciseId);
+    if (_thumbnailPath == null) _hasError = true;
   }
 
   @override
   void didUpdateWidget(ExerciseListThumbnail oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.exerciseId != widget.exerciseId) {
-      _disposeController();
-      _loadFirstFrame();
+      _thumbnailPath = ExerciseVideoService.getThumbnailPath(widget.exerciseId);
+      _hasError = _thumbnailPath == null;
     }
-  }
-
-  Future<void> _loadFirstFrame() async {
-    try {
-      final videoPath = ExerciseVideoService.getVideoPath(
-        widget.exerciseId,
-        quality: VideoQuality.high, // Only 720p videos are available
-      );
-
-      if (videoPath == null) {
-        if (mounted) setState(() => _hasError = true);
-        return;
-      }
-
-      _controller = VideoPlayerController.asset(videoPath);
-      await _controller!.initialize();
-      // Seek to frame 0 and pause — we just want the first frame
-      await _controller!.seekTo(Duration.zero);
-      await _controller!.pause();
-      _controller!.setVolume(0);
-
-      if (mounted) {
-        setState(() => _isReady = true);
-      }
-    } catch (e) {
-      debugPrint('Thumbnail load error for ${widget.exerciseId}: $e');
-      if (mounted) setState(() => _hasError = true);
-    }
-  }
-
-  void _disposeController() {
-    _controller?.dispose();
-    _controller = null;
-    _isReady = false;
-    _hasError = false;
-  }
-
-  @override
-  void dispose() {
-    _disposeController();
-    super.dispose();
   }
 
   @override
@@ -124,33 +83,22 @@ class _ExerciseListThumbnailState extends State<ExerciseListThumbnail> {
   }
 
   Widget _buildContent() {
-    // Show first frame of video
-    if (_isReady && _controller != null && _controller!.value.isInitialized) {
-      return FittedBox(
+    if (!_hasError && _thumbnailPath != null) {
+      return Image.asset(
+        _thumbnailPath!,
+        width: widget.size,
+        height: widget.size,
         fit: BoxFit.cover,
-        child: SizedBox(
-          width: _controller!.value.size.width,
-          height: _controller!.value.size.height,
-          child: VideoPlayer(_controller!),
-        ),
+        cacheWidth: (widget.size * MediaQuery.of(context).devicePixelRatio).toInt(),
+        errorBuilder: (context, error, stackTrace) {
+          return _buildFallback();
+        },
       );
     }
+    return _buildFallback();
+  }
 
-    // Loading state
-    if (!_hasError) {
-      return Center(
-        child: SizedBox(
-          width: 16,
-          height: 16,
-          child: CircularProgressIndicator(
-            strokeWidth: 2,
-            color: AppColors.cyberLime,
-          ),
-        ),
-      );
-    }
-
-    // Fallback — exercise icon (for exercises with no video)
+  Widget _buildFallback() {
     return Center(
       child: Icon(
         Icons.fitness_center,

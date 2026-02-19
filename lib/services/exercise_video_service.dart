@@ -118,6 +118,31 @@ class ExerciseVideoService {
     return null;
   }
   
+  /// Get the static thumbnail path for an exercise (WebP image)
+  /// Returns null if no thumbnail exists
+  static String? getThumbnailPath(String exerciseId) {
+    // Use same override + mapping logic as getVideoPath
+    final overriddenId = ExerciseIdOverridesFix.getOverriddenId(exerciseId);
+    final normalizedId = _normalizeExerciseId(overriddenId);
+
+    var videoInfo = ExerciseGifMapping.getGifInfo(normalizedId);
+    if (videoInfo == null) {
+      final alternateId = _tryAlternateNormalizations(overriddenId);
+      if (alternateId != null) {
+        videoInfo = ExerciseGifMapping.getGifInfo(alternateId);
+      }
+    }
+
+    if (videoInfo == null) return null;
+
+    // Get the 720p filename and change extension to .webp
+    final videoFilename = videoInfo.gif720;
+    if (videoFilename.isEmpty) return null;
+
+    final thumbFilename = videoFilename.replaceAll('.gif', '.mp4').replaceAll('.mp4', '.webp');
+    return 'assets/exercise_thumbnails/$thumbFilename';
+  }
+
   /// Check if a video exists for the given exercise ID
   static bool hasVideo(String exerciseId) {
     return getVideoPath(exerciseId) != null;
