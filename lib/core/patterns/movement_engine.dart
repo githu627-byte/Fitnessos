@@ -83,9 +83,9 @@ class MovementEngine {
       case PatternType.calf:
         return CalfPattern(cueGood: config.params['cueGood'] ?? 'Up!', cueBad: config.params['cueBad'] ?? 'Higher!');
       case PatternType.piston:
-        return PistonPattern(cueGood: config.params['cueGood'] ?? 'Push!', cueBad: config.params['cueBad'] ?? 'Control!');
+        return PistonPattern(pointA: config.params['pointA'], pointB: config.params['pointB'], pointARight: config.params['pointARight'], pointBRight: config.params['pointBRight'], mode: config.params['mode'] ?? PistonMode.shrink, triggerPercent: config.params['triggerPercent'] ?? 0.70, resetPercent: config.params['resetPercent'] ?? 0.90, cueGood: config.params['cueGood'] ?? 'Push!', cueBad: config.params['cueBad'] ?? 'Control!');
       case PatternType.core:
-        return CorePattern(trackingMode: config.params['trackingMode'] ?? 'noseRise', triggerThreshold: config.params['triggerThreshold'] ?? 10.0, resetThreshold: config.params['resetThreshold'] ?? 2.0, cueGood: config.params['cueGood'] ?? 'Crunch!', cueBad: config.params['cueBad'] ?? 'Higher!');
+        return CorePattern(coreMode: config.params['trackingMode'] == 'ankleRise' ? CoreMode.ankleRise : CoreMode.noseRise, triggerRisePercent: config.params['triggerThreshold'] ?? 15.0, resetRisePercent: config.params['resetThreshold'] ?? 5.0, cueGood: config.params['cueGood'] ?? 'Crunch!', cueBad: config.params['cueBad'] ?? 'Higher!');
     }
   }
   static const Map<String, ExerciseConfig> exercises = {
