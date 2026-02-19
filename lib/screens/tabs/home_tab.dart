@@ -702,9 +702,11 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     return GestureDetector(
       onTap: () async {
         HapticFeedback.mediumImpact();
-        // Build LockedWorkout from schedule data
-        if (workoutPreset != null) {
-          final lockedWorkout = LockedWorkout.fromPreset(workoutPreset);
+        // Build LockedWorkout from schedule data — prefer committed workout (correct difficulty)
+        if (workoutPreset != null || isSameWorkout) {
+          final lockedWorkout = isSameWorkout
+              ? committedWorkout!
+              : LockedWorkout.fromPreset(workoutPreset!);
 
           // Show simplified 2-option picker for secondary/tertiary cards
           final selectedMode = await showModalBottomSheet<String>(
@@ -1227,9 +1229,19 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                       // Build LockedWorkout from display workout
                       LockedWorkout? lockedWorkout;
                       if (displayWorkout is WorkoutSchedule) {
-                        final WorkoutPreset? preset = _findWorkoutById(displayWorkout.workoutId);
-                        if (preset != null) {
-                          lockedWorkout = LockedWorkout.fromPreset(preset);
+                        // FIRST: Check if committed workout matches (has correct difficulty-adjusted exercises)
+                        final committed = ref.read(committedWorkoutProvider);
+                        if (committed != null &&
+                            (committed.id == displayWorkout.workoutId ||
+                             committed.name == displayWorkout.workoutName)) {
+                          lockedWorkout = committed;
+                          debugPrint('✅ Using committed workout: ${committed.name} with ${committed.exercises.length} exercises');
+                        } else {
+                          // Fallback: look up by ID (for non-committed or future-scheduled workouts)
+                          final WorkoutPreset? preset = _findWorkoutById(displayWorkout.workoutId);
+                          if (preset != null) {
+                            lockedWorkout = LockedWorkout.fromPreset(preset);
+                          }
                         }
                       } else if (displayWorkout is LockedWorkout) {
                         lockedWorkout = displayWorkout;
@@ -1246,9 +1258,14 @@ class _HomeTabState extends ConsumerState<HomeTab> {
                       if (result == 'auto') {
                         // Commit workout first so TrainTab picks it up
                         if (displayWorkout is WorkoutSchedule) {
-                          final WorkoutPreset? preset = _findWorkoutById(displayWorkout.workoutId);
-                          if (preset != null) {
-                            await ref.read(committedWorkoutProvider.notifier).commitWorkout(preset);
+                          // Check if already committed with correct exercises
+                          final committed = ref.read(committedWorkoutProvider);
+                          if (committed == null || committed.id != displayWorkout.workoutId) {
+                            // Only re-commit if not already committed
+                            final WorkoutPreset? preset = _findWorkoutById(displayWorkout.workoutId);
+                            if (preset != null) {
+                              await ref.read(committedWorkoutProvider.notifier).commitWorkout(preset);
+                            }
                           }
                         }
                         if (mounted) {
@@ -2815,6 +2832,14 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     if (workout == null) return [];
     
     if (workout is WorkoutSchedule) {
+      // Check committed workout first (has correct difficulty-adjusted exercises)
+      final committed = ref.read(committedWorkoutProvider);
+      if (committed != null &&
+          (committed.id == workout.workoutId ||
+           committed.name == workout.workoutName)) {
+        return committed.exercises.map((e) => e.name).toList();
+      }
+      // Fallback: look up by ID
       final workoutPreset = _findWorkoutById(workout.workoutId);
       if (workoutPreset != null) {
         return workoutPreset.exercises
