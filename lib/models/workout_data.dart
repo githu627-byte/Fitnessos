@@ -93,7 +93,7 @@ class WorkoutData {
       Exercise(id: 'incline_press', name: 'Incline Press', difficulty: 'intermediate', equipment: 'weights'),
       Exercise(id: 'decline_press', name: 'Decline Press', difficulty: 'intermediate', equipment: 'weights'),
       //Exercise(id: 'chest_flys', name: 'Chest Flys', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use chest_fly
-      //Exercise(id: 'pushups', name: 'Push-ups', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use pushup
+      //Exercise(id: 'push_up_m', name: 'Push-ups', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use pushup
       //Exercise(id: 'dips_chest', name: 'Dips (Chest)', difficulty: 'advanced', equipment: 'bodyweight'),  // DUPLICATE - use chest_dips
       Exercise(id: 'cable_crossover_variation', name: 'Cable Crossovers', difficulty: 'intermediate', equipment: 'weights'),
       Exercise(id: 'landmine_press', name: 'Landmine Press', difficulty: 'intermediate', equipment: 'weights'),
@@ -101,11 +101,11 @@ class WorkoutData {
     'back': [
       Exercise(id: 'barbell_deadlift', name: 'Deadlift', difficulty: 'advanced', equipment: 'weights'),
       //Exercise(id: 'bent_rows', name: 'Bent-Over Rows', difficulty: 'intermediate', equipment: 'weights'),  // DUPLICATE - use bent_over_row
-      //Exercise(id: 'pullups', name: 'Pull-ups', difficulty: 'advanced', equipment: 'bodyweight'),  // DUPLICATE - use pullup
+      //Exercise(id: 'pull_up', name: 'Pull-ups', difficulty: 'advanced', equipment: 'bodyweight'),  // DUPLICATE - use pullup
       Exercise(id: 'cable_bar_lateral_pulldown', name: 'Lat Pulldowns', difficulty: 'beginner', equipment: 'weights'),
       //Exercise(id: 'cable_rows', name: 'Cable Rows', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use cable_row
       //Exercise(id: 'tbar_rows', name: 'T-Bar Rows', difficulty: 'intermediate', equipment: 'weights'),  // DUPLICATE - use tbar_row
-      //Exercise(id: 'face_pulls', name: 'Face Pulls', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use face_pull
+      //Exercise(id: 'cable_rear_delt_fly', name: 'Face Pulls', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use face_pull
       //Exercise(id: 'reverse_flys', name: 'Reverse Flys', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use reverse_fly
       //Exercise(id: 'shrugs', name: 'Shrugs', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use shrug
     ],
@@ -116,43 +116,43 @@ class WorkoutData {
       //Exercise(id: 'front_raises', name: 'Front Raises', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use front_raise
       //Exercise(id: 'rear_delt_flys', name: 'Rear Delt Flys', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use rear_delt_fly
       //Exercise(id: 'upright_rows', name: 'Upright Rows', difficulty: 'intermediate', equipment: 'weights'),  // DUPLICATE - use upright_row
-      //Exercise(id: 'pike_pushups', name: 'Pike Push-ups', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use pike_pushup
+      //Exercise(id: 'pike_push_up', name: 'Pike Push-ups', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use pike_pushup
     ],
     'legs': [
       //Exercise(id: 'squats', name: 'Squats', difficulty: 'intermediate', equipment: 'weights'),  // DUPLICATE - use squat
       Exercise(id: 'barbell_romanian_deadlift', name: 'Romanian Deadlift', difficulty: 'intermediate', equipment: 'weights'),
-      //Exercise(id: 'lunges', name: 'Lunges', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use lunge
+      //Exercise(id: 'dumbbell_lunge', name: 'Lunges', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use lunge
       //Exercise(id: 'bulgarian_split', name: 'Bulgarian Split Squats', difficulty: 'advanced', equipment: 'weights'),  // DUPLICATE - use bulgarian_split_squat
       Exercise(id: 'lever_seated_leg_press', name: 'Leg Press', difficulty: 'beginner', equipment: 'weights'),
       //Exercise(id: 'leg_extensions', name: 'Leg Extensions', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use leg_extension
       //Exercise(id: 'leg_curls', name: 'Leg Curls', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use leg_curl
-      //Exercise(id: 'calf_raises', name: 'Calf Raises', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use calf_raise
+      //Exercise(id: 'lever_standing_calf_raise', name: 'Calf Raises', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use calf_raise
       //Exercise(id: 'step_ups', name: 'Step-ups', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use step_up
-      //Exercise(id: 'goblet_squats', name: 'Goblet Squats', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use goblet_squat
+      //Exercise(id: 'dumbbell_goblet_squat', name: 'Goblet Squats', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use goblet_squat
       //Exercise(id: 'wall_sits', name: 'Wall Sits', difficulty: 'beginner', equipment: 'bodyweight'),
-      //Exercise(id: 'jump_squats', name: 'Jump Squats', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use jump_squat
+      //Exercise(id: 'jump_squat', name: 'Jump Squats', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use jump_squat
     ],
     'arms': [
-      //Exercise(id: 'bicep_curls', name: 'Bicep Curls', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use bicep_curl
+      //Exercise(id: 'dumbbell_curl', name: 'Bicep Curls', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use bicep_curl
       //Exercise(id: 'hammer_curls', name: 'Hammer Curls', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use hammer_curl
       //Exercise(id: 'preacher_curls', name: 'Preacher Curls', difficulty: 'intermediate', equipment: 'weights'),  // DUPLICATE - use preacher_curl
       //Exercise(id: 'tricep_extensions', name: 'Tricep Extensions', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use tricep_extension
-      //Exercise(id: 'skull_crushers', name: 'Skull Crushers', difficulty: 'intermediate', equipment: 'weights'),  // DUPLICATE - use skull_crusher
+      //Exercise(id: 'barbell_lying_close_grip_triceps_extension', name: 'Skull Crushers', difficulty: 'intermediate', equipment: 'weights'),  // DUPLICATE - use skull_crusher
       //Exercise(id: 'overhead_tricep', name: 'Overhead Tricep Extension', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use overhead_tricep_extension
       //Exercise(id: 'close_grip_pushups', name: 'Close-grip Push-ups', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use close_grip_pushup
       //Exercise(id: 'concentration_curls', name: 'Concentration Curls', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use concentration_curl
       //Exercise(id: 'cable_curls', name: 'Cable Curls', difficulty: 'beginner', equipment: 'weights'),  // DUPLICATE - use cable_curl
-      //Exercise(id: 'diamond_pushups', name: 'Diamond Push-ups', difficulty: 'advanced', equipment: 'bodyweight'),  // DUPLICATE - use diamond_pushup
+      //Exercise(id: 'diamond_push_up', name: 'Diamond Push-ups', difficulty: 'advanced', equipment: 'bodyweight'),  // DUPLICATE - use diamond_pushup
     ],
     'core': [
       //Exercise(id: 'situps', name: 'Sit-ups', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use situp
       //Exercise(id: 'crunches', name: 'Crunches', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use crunch
       //Exercise(id: 'planks', name: 'Planks', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use plank
       //Exercise(id: 'side_planks', name: 'Side Planks', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use side_plank
-      //Exercise(id: 'leg_raises', name: 'Leg Raises', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use leg_raise
+      //Exercise(id: 'lying_leg_raise', name: 'Leg Raises', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use leg_raise
       //Exercise(id: 'russian_twists', name: 'Russian Twists', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use russian_twist
-      //Exercise(id: 'mountain_climbers', name: 'Mountain Climbers', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use mountain_climber
-      //Exercise(id: 'bicycle_crunches', name: 'Bicycle Crunches', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use bicycle_crunch
+      //Exercise(id: 'mountain_climber', name: 'Mountain Climbers', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use mountain_climber
+      //Exercise(id: 'bicycle_crunch', name: 'Bicycle Crunches', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use bicycle_crunch
     ],
   };
 
@@ -311,29 +311,29 @@ class WorkoutData {
 
   // At Home Exercises
   static const List<Exercise> atHomeExercises = [
-    //Exercise(id: 'pushups', name: 'Push-ups', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use pushup
-    //Exercise(id: 'pullups', name: 'Pull-ups', difficulty: 'advanced', equipment: 'bodyweight'),  // DUPLICATE - use pullup
+    //Exercise(id: 'push_up_m', name: 'Push-ups', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use pushup
+    //Exercise(id: 'pull_up', name: 'Pull-ups', difficulty: 'advanced', equipment: 'bodyweight'),  // DUPLICATE - use pullup
     //Exercise(id: 'dips_chest', name: 'Dips', difficulty: 'advanced', equipment: 'bodyweight'),  // DUPLICATE - use chest_dips
-    //Exercise(id: 'lunges', name: 'Lunges', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use lunge
+    //Exercise(id: 'dumbbell_lunge', name: 'Lunges', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use lunge
     //Exercise(id: 'squats_bw', name: 'Bodyweight Squats', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use squat
     //Exercise(id: 'planks', name: 'Planks', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use plank
-    //Exercise(id: 'mountain_climbers', name: 'Mountain Climbers', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use mountain_climber
-    //Exercise(id: 'burpees', name: 'Burpees', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use burpee
-    //Exercise(id: 'pike_pushups', name: 'Pike Push-ups', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use pike_pushup
+    //Exercise(id: 'mountain_climber', name: 'Mountain Climbers', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use mountain_climber
+    //Exercise(id: 'burpee', name: 'Burpees', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use burpee
+    //Exercise(id: 'pike_push_up', name: 'Pike Push-ups', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use pike_pushup
     //Exercise(id: 'wall_sits', name: 'Wall Sits', difficulty: 'beginner', equipment: 'bodyweight'),
   ];
 
   // Cardio Only Exercises
   static const List<Exercise> cardioExercises = [
-    //Exercise(id: 'burpees', name: 'Burpees', difficulty: 'intermediate', equipment: 'none'),  // DUPLICATE - use burpee
-    //Exercise(id: 'jumping_jacks', name: 'Jumping Jacks', difficulty: 'beginner', equipment: 'none'),  // DUPLICATE - use jumping_jack
-    //Exercise(id: 'high_knees', name: 'High Knees', difficulty: 'beginner', equipment: 'none'),  // DUPLICATE - use high_knee
-    //Exercise(id: 'butt_kicks', name: 'Butt Kicks', difficulty: 'beginner', equipment: 'none'),  // DUPLICATE - use butt_kick
-    //Exercise(id: 'box_jumps', name: 'Box Jumps', difficulty: 'advanced', equipment: 'none'),  // DUPLICATE - use box_jump
+    //Exercise(id: 'burpee', name: 'Burpees', difficulty: 'intermediate', equipment: 'none'),  // DUPLICATE - use burpee
+    //Exercise(id: 'jumping_jack', name: 'Jumping Jacks', difficulty: 'beginner', equipment: 'none'),  // DUPLICATE - use jumping_jack
+    //Exercise(id: 'high_knee_run', name: 'High Knees', difficulty: 'beginner', equipment: 'none'),  // DUPLICATE - use high_knee
+    //Exercise(id: 'high_knee_run', name: 'Butt Kicks', difficulty: 'beginner', equipment: 'none'),  // DUPLICATE - use butt_kick
+    //Exercise(id: 'jump_squat', name: 'Box Jumps', difficulty: 'advanced', equipment: 'none'),  // DUPLICATE - use box_jump
     Exercise(id: 'jump_rope', name: 'Jump Rope', difficulty: 'intermediate', equipment: 'none'),
     // Exercise(id: 'bear_crawls', name: 'Bear Crawls', difficulty: 'intermediate', equipment: 'none'),
     //Exercise(id: 'sprawls', name: 'Sprawls', difficulty: 'advanced', equipment: 'none'),  // DUPLICATE - use sprawl
-    //Exercise(id: 'skaters', name: 'Skaters', difficulty: 'intermediate', equipment: 'none'),  // DUPLICATE - use skater
+    //Exercise(id: 'jump_squat', name: 'Skaters', difficulty: 'intermediate', equipment: 'none'),  // DUPLICATE - use skater
     //Exercise(id: 'tuck_jumps', name: 'Tuck Jumps', difficulty: 'advanced', equipment: 'none'),  // DUPLICATE - use tuck_jump
     //Exercise(id: 'star_jumps', name: 'Star Jumps', difficulty: 'beginner', equipment: 'none'),  // DUPLICATE - use star_jump
     //Exercise(id: 'lateral_hops', name: 'Lateral Hops', difficulty: 'intermediate', equipment: 'none'),  // DUPLICATE - use lateral_hop
@@ -7322,13 +7322,13 @@ class WorkoutData {
       isCircuit: false,
       exercises: [
         WorkoutExercise(id: 'barbell_bench_press', name: 'Barbell Bench Press', sets: 4, reps: 8),
-        WorkoutExercise(id: 'incline_db_press', name: 'Incline Dumbbell Press', sets: 3, reps: 10),
+        WorkoutExercise(id: 'dumbbell_incline_bench_press', name: 'Incline Dumbbell Press', sets: 3, reps: 10),
         WorkoutExercise(id: 'barbell_decline_bench_press', name: 'Decline Bench Press', sets: 3, reps: 10),
         WorkoutExercise(id: 'cable_crossover_variation', name: 'Cable Crossover', sets: 3, reps: 12),
-        //WorkoutExercise(id: 'machine_chest_fly', name: 'Machine Chest Fly', sets: 3, reps: 12, included: true),  // DUPLICATE - use machine_fly
-        //WorkoutExercise(id: 'dumbbell_flyes', name: 'Dumbbell Flyes', sets: 3, reps: 12, included: true),  // DUPLICATE - use dumbbell_fly
-        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 3, reps: 15, included: true),  // DUPLICATE - use pushup
-        WorkoutExercise(id: 'chest_dips', name: 'Chest Dips', sets: 3, reps: 10, included: true),
+        //WorkoutExercise(id: 'lever_chest_press', name: 'Machine Chest Fly', sets: 3, reps: 12, included: true),  // DUPLICATE - use machine_fly
+        //WorkoutExercise(id: 'dumbbell_fly', name: 'Dumbbell Flyes', sets: 3, reps: 12, included: true),  // DUPLICATE - use dumbbell_fly
+        //WorkoutExercise(id: 'push_up_m', name: 'Push-Ups', sets: 3, reps: 15, included: true),  // DUPLICATE - use pushup
+        WorkoutExercise(id: 'chest_dip', name: 'Chest Dips', sets: 3, reps: 10, included: true),
       ],
     ),
     WorkoutPreset(
@@ -7345,8 +7345,8 @@ class WorkoutData {
         WorkoutExercise(id: 'cable_seated_row', name: 'Seated Cable Row', sets: 3, reps: 10),
         WorkoutExercise(id: 'lever_t_bar_row', name: 'T-Bar Row', sets: 3, reps: 10, included: true),
         WorkoutExercise(id: 'dumbbell_one_arm_bent_over_row', name: 'Single Arm Dumbbell Row', sets: 3, reps: 10, included: true),
-        //WorkoutExercise(id: 'face_pulls', name: 'Face Pulls', sets: 3, reps: 15, included: true),  // DUPLICATE - use face_pull
-        //WorkoutExercise(id: 'pullups', name: 'Pull-Ups', sets: 3, reps: 8, included: true),  // DUPLICATE - use pullup
+        //WorkoutExercise(id: 'cable_rear_delt_fly', name: 'Face Pulls', sets: 3, reps: 15, included: true),  // DUPLICATE - use face_pull
+        //WorkoutExercise(id: 'pull_up', name: 'Pull-Ups', sets: 3, reps: 8, included: true),  // DUPLICATE - use pullup
       ],
     ),
     WorkoutPreset(
@@ -7358,10 +7358,10 @@ class WorkoutData {
       isCircuit: false,
       exercises: [
         WorkoutExercise(id: 'barbell_standing_military_press', name: 'Overhead Press', sets: 4, reps: 8),
-        //WorkoutExercise(id: 'seated_db_press', name: 'Seated Dumbbell Press', sets: 3, reps: 10),  // DUPLICATE - use seated_dumbbell_press
+        //WorkoutExercise(id: 'dumbbell_seated_shoulder_press', name: 'Seated Dumbbell Press', sets: 3, reps: 10),  // DUPLICATE - use seated_dumbbell_press
         WorkoutExercise(id: 'dumbbell_arnold_press', name: 'Arnold Press', sets: 3, reps: 10),
         WorkoutExercise(id: 'dumbbell_lateral_raise', name: 'Lateral Raise', sets: 3, reps: 12),
-        WorkoutExercise(id: 'front_raise', name: 'Front Raise', sets: 3, reps: 12, included: true),
+        WorkoutExercise(id: 'dumbbell_lateral_raise', name: 'Front Raise', sets: 3, reps: 12, included: true),
         WorkoutExercise(id: 'dumbbell_rear_delt_fly', name: 'Reverse Fly', sets: 3, reps: 12, included: true),
         WorkoutExercise(id: 'cable_lateral_raise', name: 'Cable Lateral Raise', sets: 3, reps: 12, included: true),
         WorkoutExercise(id: 'barbell_shrug', name: 'Barbell Shrugs', sets: 3, reps: 12, included: true),
@@ -7375,7 +7375,7 @@ class WorkoutData {
       icon: 'legs',
       isCircuit: false,
       exercises: [
-        //WorkoutExercise(id: 'back_squat', name: 'Back Squat', sets: 4, reps: 8),  // DUPLICATE - use barbell_squat
+        //WorkoutExercise(id: 'barbell_full_squat', name: 'Back Squat', sets: 4, reps: 8),  // DUPLICATE - use barbell_squat
         WorkoutExercise(id: 'barbell_front_squat', name: 'Front Squat', sets: 4, reps: 6),
         WorkoutExercise(id: 'barbell_romanian_deadlift', name: 'Romanian Deadlift', sets: 3, reps: 10),
         WorkoutExercise(id: 'lever_seated_leg_press', name: 'Leg Press', sets: 3, reps: 12),
@@ -7398,13 +7398,13 @@ class WorkoutData {
         WorkoutExercise(id: 'barbell_curl', name: 'Barbell Curl', sets: 3, reps: 10),
         WorkoutExercise(id: 'dumbbell_hammer_curl', name: 'Hammer Curl', sets: 3, reps: 10),
         WorkoutExercise(id: 'barbell_preacher_curl', name: 'Preacher Curl', sets: 3, reps: 10),
-        //WorkoutExercise(id: 'skull_crushers', name: 'Skull Crushers', sets: 3, reps: 10),  // DUPLICATE - use skull_crusher
+        //WorkoutExercise(id: 'barbell_lying_close_grip_triceps_extension', name: 'Skull Crushers', sets: 3, reps: 10),  // DUPLICATE - use skull_crusher
         WorkoutExercise(id: 'dumbbell_concentration_curl', name: 'Concentration Curl', sets: 3, reps: 12, included: true),
         WorkoutExercise(id: 'cable_triceps_pushdown', name: 'Tricep Pushdown', sets: 3, reps: 12, included: true),
-        //WorkoutExercise(id: 'overhead_tricep_ext', name: 'Overhead Tricep Extension', sets: 3, reps: 12, included: true),  // DUPLICATE - use overhead_tricep_extension
-        //WorkoutExercise(id: 'close_grip_bench', name: 'Close Grip Bench Press', sets: 3, reps: 10, included: true),  // DUPLICATE - use close_grip_bench_press
+        //WorkoutExercise(id: 'dumbbell_standing_triceps_extension', name: 'Overhead Tricep Extension', sets: 3, reps: 12, included: true),  // DUPLICATE - use overhead_tricep_extension
+        //WorkoutExercise(id: 'barbell_close_grip_bench_press', name: 'Close Grip Bench Press', sets: 3, reps: 10, included: true),  // DUPLICATE - use close_grip_bench_press
         WorkoutExercise(id: 'cable_curl_male', name: 'Cable Curl', sets: 3, reps: 12, included: true),
-        //WorkoutExercise(id: 'tricep_dips', name: 'Tricep Dips', sets: 3, reps: 10, included: true),  // DUPLICATE - use tricep_dip
+        //WorkoutExercise(id: 'triceps_dip', name: 'Tricep Dips', sets: 3, reps: 10, included: true),  // DUPLICATE - use tricep_dip
       ],
     ),
     WorkoutPreset(
@@ -7419,8 +7419,8 @@ class WorkoutData {
         WorkoutExercise(id: 'hanging_leg_hip_raise', name: 'Hanging Leg Raise', sets: 3, reps: 12),
         //WorkoutExercise(id: 'ab_wheel_rollout', name: 'Ab Wheel Rollout', sets: 3, reps: 10),
         WorkoutExercise(id: 'russian_twist_with_medicine_ball', name: 'Russian Twist (weighted)', sets: 3, reps: 20),
-        //WorkoutExercise(id: 'woodchoppers', name: 'Woodchoppers', sets: 3, reps: 12, included: true),  // DUPLICATE - use wood_chop
-        WorkoutExercise(id: 'decline_situp', name: 'Decline Sit-Up', sets: 3, reps: 15, included: true),
+        //WorkoutExercise(id: 'barbell_standing_twist', name: 'Woodchoppers', sets: 3, reps: 12, included: true),  // DUPLICATE - use wood_chop
+        WorkoutExercise(id: 'decline_sit_up', name: 'Decline Sit-Up', sets: 3, reps: 15, included: true),
         WorkoutExercise(id: 'front_plank', name: 'Plank', sets: 3, reps: 45, included: true),
         WorkoutExercise(id: 'side_plank', name: 'Side Plank', sets: 3, reps: 30, included: true),
       ],
@@ -7457,7 +7457,7 @@ class WorkoutData {
       isCircuit: false,
       duration: '~50 min',
       exercises: [
-        //WorkoutExercise(id: 'back_squat', name: 'Back Squat', sets: 4, reps: 8),  // DUPLICATE - use barbell_squat
+        //WorkoutExercise(id: 'barbell_full_squat', name: 'Back Squat', sets: 4, reps: 8),  // DUPLICATE - use barbell_squat
         WorkoutExercise(id: 'barbell_romanian_deadlift', name: 'Romanian Deadlift', sets: 3, reps: 10),
         WorkoutExercise(id: 'lever_seated_leg_press', name: 'Leg Press', sets: 3, reps: 12),
         WorkoutExercise(id: 'barbell_hip_thrust', name: 'Hip Thrust', sets: 4, reps: 10),
@@ -7476,11 +7476,11 @@ class WorkoutData {
       duration: '~40 min',
       exercises: [
         WorkoutExercise(id: 'barbell_bench_press', name: 'Barbell Bench Press', sets: 4, reps: 8),
-        WorkoutExercise(id: 'incline_db_press', name: 'Incline Dumbbell Press', sets: 3, reps: 10),
+        WorkoutExercise(id: 'dumbbell_incline_bench_press', name: 'Incline Dumbbell Press', sets: 3, reps: 10),
         WorkoutExercise(id: 'barbell_standing_military_press', name: 'Overhead Press', sets: 3, reps: 10),
         WorkoutExercise(id: 'dumbbell_lateral_raise', name: 'Lateral Raise', sets: 3, reps: 12),
         WorkoutExercise(id: 'cable_triceps_pushdown', name: 'Tricep Pushdown', sets: 3, reps: 12),
-        //WorkoutExercise(id: 'overhead_tricep_ext', name: 'Overhead Tricep Extension', sets: 3, reps: 12),  // DUPLICATE - use overhead_tricep_extension
+        //WorkoutExercise(id: 'dumbbell_standing_triceps_extension', name: 'Overhead Tricep Extension', sets: 3, reps: 12),  // DUPLICATE - use overhead_tricep_extension
       ],
     ),
     WorkoutPreset(
@@ -7496,7 +7496,7 @@ class WorkoutData {
         WorkoutExercise(id: 'barbell_bent_over_row', name: 'Barbell Row', sets: 4, reps: 8),
         WorkoutExercise(id: 'cable_bar_lateral_pulldown', name: 'Lat Pulldown', sets: 3, reps: 10),
         WorkoutExercise(id: 'cable_seated_row', name: 'Seated Cable Row', sets: 3, reps: 10),
-        //WorkoutExercise(id: 'face_pulls', name: 'Face Pulls', sets: 3, reps: 15),  // DUPLICATE - use face_pull
+        //WorkoutExercise(id: 'cable_rear_delt_fly', name: 'Face Pulls', sets: 3, reps: 15),  // DUPLICATE - use face_pull
         WorkoutExercise(id: 'barbell_curl', name: 'Barbell Curl', sets: 3, reps: 10),
         WorkoutExercise(id: 'dumbbell_hammer_curl', name: 'Hammer Curl', sets: 3, reps: 10),
       ],
@@ -7510,7 +7510,7 @@ class WorkoutData {
       isCircuit: false,
       duration: '~50 min',
       exercises: [
-        //WorkoutExercise(id: 'back_squat', name: 'Back Squat', sets: 4, reps: 8),  // DUPLICATE - use barbell_squat
+        //WorkoutExercise(id: 'barbell_full_squat', name: 'Back Squat', sets: 4, reps: 8),  // DUPLICATE - use barbell_squat
         WorkoutExercise(id: 'barbell_bench_press', name: 'Barbell Bench Press', sets: 4, reps: 8),
         WorkoutExercise(id: 'barbell_bent_over_row', name: 'Barbell Row', sets: 4, reps: 8),
         WorkoutExercise(id: 'barbell_standing_military_press', name: 'Overhead Press', sets: 3, reps: 10),
@@ -7553,10 +7553,10 @@ class WorkoutData {
       duration: '~20 min',
       exercises: [
         WorkoutExercise(id: 'barbell_squat_press', name: 'Barbell Squat to Press', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),
-        //WorkoutExercise(id: 'renegade_rows', name: 'Renegade Rows', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use renegade_row
-        //WorkoutExercise(id: 'box_jumps', name: 'Box Jumps', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use box_jump
+        //WorkoutExercise(id: 'dumbbell_bent_over_row', name: 'Renegade Rows', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use renegade_row
+        //WorkoutExercise(id: 'jump_squat', name: 'Box Jumps', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use box_jump
         WorkoutExercise(id: 'battle_ropes', name: 'Battle Ropes', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),
-        //WorkoutExercise(id: 'burpees', name: 'Burpees', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use burpee
+        //WorkoutExercise(id: 'burpee', name: 'Burpees', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use burpee
       ],
     ),
     WorkoutPreset(
@@ -7569,11 +7569,11 @@ class WorkoutData {
       rounds: 4,
       duration: '~16 min',
       exercises: [
-        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use pushup
+        //WorkoutExercise(id: 'push_up_m', name: 'Push-Ups', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use pushup
         WorkoutExercise(id: 'dumbbell_bent_over_row', name: 'Dumbbell Row', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),
         WorkoutExercise(id: 'dumbbell_seated_shoulder_press', name: 'Shoulder Press', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),
-        //WorkoutExercise(id: 'bicep_curls', name: 'Bicep Curls', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use bicep_curl
-        //WorkoutExercise(id: 'tricep_dips', name: 'Tricep Dips', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use tricep_dip
+        //WorkoutExercise(id: 'dumbbell_curl', name: 'Bicep Curls', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use bicep_curl
+        //WorkoutExercise(id: 'triceps_dip', name: 'Tricep Dips', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use tricep_dip
       ],
     ),
     WorkoutPreset(
@@ -7586,10 +7586,10 @@ class WorkoutData {
       rounds: 4,
       duration: '~16 min',
       exercises: [
-        //WorkoutExercise(id: 'goblet_squats', name: 'Goblet Squats', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use goblet_squat
-        //WorkoutExercise(id: 'walking_lunges', name: 'Walking Lunges', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use walking_lunge
+        //WorkoutExercise(id: 'dumbbell_goblet_squat', name: 'Goblet Squats', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use goblet_squat
+        //WorkoutExercise(id: 'walking_lunge_male', name: 'Walking Lunges', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use walking_lunge
         WorkoutExercise(id: 'barbell_romanian_deadlift', name: 'Romanian Deadlift', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),
-        //WorkoutExercise(id: 'box_stepups', name: 'Box Step-Ups', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use box_step_up
+        //WorkoutExercise(id: 'dumbbell_lunge', name: 'Box Step-Ups', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use box_step_up
         //WorkoutExercise(id: 'kettlebell_swings', name: 'Kettlebell Swings', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use kettlebell_swing
       ],
     ),
@@ -7606,8 +7606,8 @@ class WorkoutData {
         WorkoutExercise(id: 'cable_kneeling_crunch', name: 'Cable Crunch', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),
         WorkoutExercise(id: 'hanging_leg_hip_raise', name: 'Hanging Leg Raise', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),
         WorkoutExercise(id: 'russian_twist_with_medicine_ball', name: 'Russian Twist', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),
-        //WorkoutExercise(id: 'mountain_climbers', name: 'Mountain Climbers', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use mountain_climber
-        //WorkoutExercise(id: 'plank_hold', name: 'Plank Hold', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use plank
+        //WorkoutExercise(id: 'mountain_climber', name: 'Mountain Climbers', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use mountain_climber
+        //WorkoutExercise(id: 'front_plank', name: 'Plank Hold', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use plank
       ],
     ),
   ];
@@ -7628,7 +7628,7 @@ class WorkoutData {
         WorkoutExercise(id: 'barbell_romanian_deadlift', name: 'Romanian Deadlift', sets: 3, reps: 12),
         WorkoutExercise(id: 'cable_kickback', name: 'Cable Kickback', sets: 3, reps: 15),
         WorkoutExercise(id: 'barbell_sumo_squat', name: 'Sumo Squat', sets: 3, reps: 12),
-        //WorkoutExercise(id: 'glute_bridge_single', name: 'Glute Bridge (single leg)', sets: 3, reps: 10),  // DUPLICATE - use single_leg_glute_bridge
+        //WorkoutExercise(id: 'hip_thrusts', name: 'Glute Bridge (single leg)', sets: 3, reps: 10),  // DUPLICATE - use single_leg_glute_bridge
         //WorkoutExercise(id: 'cable_pullthrough', name: 'Cable Pull-Through', sets: 3, reps: 15),  // DUPLICATE - use cable_pull_through
       ],
     ),
@@ -7644,8 +7644,8 @@ class WorkoutData {
         WorkoutExercise(id: 'barbell_hip_thrust', name: 'Barbell Hip Thrust', sets: 4, reps: 10),
         WorkoutExercise(id: 'dumbbell_bulgarian_split_squat', name: 'Bulgarian Split Squat', sets: 3, reps: 10),
         WorkoutExercise(id: 'barbell_sumo_deadlift', name: 'Sumo Deadlift', sets: 3, reps: 12),
-        WorkoutExercise(id: 'leg_press_high', name: 'Leg Press (feet high)', sets: 3, reps: 12),
-        WorkoutExercise(id: 'donkey_kicks_cable', name: 'Donkey Kicks (cable)', sets: 3, reps: 15),
+        WorkoutExercise(id: 'lever_seated_leg_press', name: 'Leg Press (feet high)', sets: 3, reps: 12),
+        WorkoutExercise(id: 'cable_kickback', name: 'Donkey Kicks (cable)', sets: 3, reps: 15),
       ],
     ),
   ];
@@ -7668,7 +7668,7 @@ class WorkoutData {
         WorkoutExercise(id: 'barbell_romanian_deadlift', name: 'Romanian Deadlift', sets: 3, reps: 12),
         WorkoutExercise(id: 'barbell_sumo_deadlift', name: 'Sumo Deadlift', sets: 3, reps: 10, included: true),
         //WorkoutExercise(id: 'cable_pullthrough', name: 'Cable Pull-Through', sets: 3, reps: 15, included: true),  // DUPLICATE - use cable_pull_through
-        WorkoutExercise(id: 'leg_press_high', name: 'Leg Press (feet high)', sets: 3, reps: 12, included: true),
+        WorkoutExercise(id: 'lever_seated_leg_press', name: 'Leg Press (feet high)', sets: 3, reps: 12, included: true),
       ],
     ),
     WorkoutPreset(
@@ -7687,7 +7687,7 @@ class WorkoutData {
         WorkoutExercise(id: 'cable_bar_lateral_pulldown', name: 'Lat Pulldown', sets: 3, reps: 12),
         // Lower Day
         WorkoutExercise(id: 'dumbbell_goblet_squat', name: 'Goblet Squat', sets: 4, reps: 12, included: true),
-        //WorkoutExercise(id: 'walking_lunges', name: 'Walking Lunges', sets: 3, reps: 12, included: true),  // DUPLICATE - use walking_lunge
+        //WorkoutExercise(id: 'walking_lunge_male', name: 'Walking Lunges', sets: 3, reps: 12, included: true),  // DUPLICATE - use walking_lunge
         WorkoutExercise(id: 'lever_lying_leg_curl', name: 'Leg Curl', sets: 3, reps: 12, included: true),
         WorkoutExercise(id: 'barbell_hip_thrust', name: 'Hip Thrust', sets: 4, reps: 12, included: true),
       ],
@@ -7744,8 +7744,8 @@ class WorkoutData {
       duration: '~45 min',
       exercises: [
         WorkoutExercise(id: 'dumbbell_incline_bench_press', name: 'Incline Dumbbell Press', sets: 4, reps: 10),
-        //WorkoutExercise(id: 'cable_flye', name: 'Cable Flye', sets: 3, reps: 12),  // DUPLICATE - use cable_fly
-        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 2, reps: 15),  // DUPLICATE - use pushup
+        //WorkoutExercise(id: 'cable_standing_fly', name: 'Cable Flye', sets: 3, reps: 12),  // DUPLICATE - use cable_fly
+        //WorkoutExercise(id: 'push_up_m', name: 'Push-Ups', sets: 2, reps: 15),  // DUPLICATE - use pushup
         WorkoutExercise(id: 'dumbbell_standing_triceps_extension', name: 'Overhead Tricep Extension', sets: 3, reps: 12),
         WorkoutExercise(id: 'dumbbell_lateral_raise', name: 'Lateral Raise', sets: 3, reps: 15, included: true),
         WorkoutExercise(id: 'barbell_lying_close_grip_triceps_extension', name: 'Skull Crushers', sets: 3, reps: 10, included: true),
@@ -7765,13 +7765,13 @@ class WorkoutData {
       isCircuit: false,
       duration: '~30 min',
       exercises: [
-        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 3, reps: 15),  // DUPLICATE - use pushup
-        //WorkoutExercise(id: 'air_squats', name: 'Air Squats', sets: 3, reps: 20),  // DUPLICATE - use air_squat
-        //WorkoutExercise(id: 'lunges', name: 'Lunges', sets: 3, reps: 12),  // DUPLICATE - use lunge
+        //WorkoutExercise(id: 'push_up_m', name: 'Push-Ups', sets: 3, reps: 15),  // DUPLICATE - use pushup
+        //WorkoutExercise(id: 'squat_m', name: 'Air Squats', sets: 3, reps: 20),  // DUPLICATE - use air_squat
+        //WorkoutExercise(id: 'dumbbell_lunge', name: 'Lunges', sets: 3, reps: 12),  // DUPLICATE - use lunge
         //WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15),
         WorkoutExercise(id: 'hip_thrusts', name: 'Glute Bridge', sets: 3, reps: 15),
         WorkoutExercise(id: 'front_plank', name: 'Plank', sets: 3, reps: 45),
-        //WorkoutExercise(id: 'mountain_climbers', name: 'Mountain Climbers', sets: 3, reps: 20),  // DUPLICATE - use mountain_climber
+        //WorkoutExercise(id: 'mountain_climber', name: 'Mountain Climbers', sets: 3, reps: 20),  // DUPLICATE - use mountain_climber
       ],
     ),
     WorkoutPreset(
@@ -7783,12 +7783,12 @@ class WorkoutData {
       isCircuit: false,
       duration: '~25 min',
       exercises: [
-        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 3, reps: 15),  // DUPLICATE - use pushup
+        //WorkoutExercise(id: 'push_up_m', name: 'Push-Ups', sets: 3, reps: 15),  // DUPLICATE - use pushup
         //WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15),
-        //WorkoutExercise(id: 'pike_pushups', name: 'Pike Push-Ups', sets: 3, reps: 10),  // DUPLICATE - use pike_pushup
-        //WorkoutExercise(id: 'inverted_rows', name: 'Inverted Rows (table)', sets: 3, reps: 12),  // DUPLICATE - use inverted_row
-        WorkoutExercise(id: 'tricep_dips_chair', name: 'Tricep Dips (chair)', sets: 3, reps: 12),
-        //WorkoutExercise(id: 'plank_shoulder_taps', name: 'Plank Shoulder Taps', sets: 3, reps: 20),
+        //WorkoutExercise(id: 'pike_push_up', name: 'Pike Push-Ups', sets: 3, reps: 10),  // DUPLICATE - use pike_pushup
+        //WorkoutExercise(id: 'inverted_row', name: 'Inverted Rows (table)', sets: 3, reps: 12),  // DUPLICATE - use inverted_row
+        WorkoutExercise(id: 'triceps_dips_floor', name: 'Tricep Dips (chair)', sets: 3, reps: 12),
+        //WorkoutExercise(id: 'front_plank', name: 'Plank Shoulder Taps', sets: 3, reps: 20),
       ],
     ),
     WorkoutPreset(
@@ -7800,13 +7800,13 @@ class WorkoutData {
       isCircuit: false,
       duration: '~30 min',
       exercises: [
-        //WorkoutExercise(id: 'air_squats', name: 'Air Squats', sets: 4, reps: 20),  // DUPLICATE - use air_squat
-        //WorkoutExercise(id: 'lunges', name: 'Lunges', sets: 3, reps: 12),  // DUPLICATE - use lunge
+        //WorkoutExercise(id: 'squat_m', name: 'Air Squats', sets: 4, reps: 20),  // DUPLICATE - use air_squat
+        //WorkoutExercise(id: 'dumbbell_lunge', name: 'Lunges', sets: 3, reps: 12),  // DUPLICATE - use lunge
         WorkoutExercise(id: 'hip_thrusts', name: 'Glute Bridge', sets: 4, reps: 15),
         WorkoutExercise(id: 'hip_thrusts', name: 'Single Leg Glute Bridge', sets: 3, reps: 10),
-        //WorkoutExercise(id: 'stepups_chair', name: 'Step-Ups (chair)', sets: 3, reps: 12),  // DUPLICATE - use box_step_up
+        //WorkoutExercise(id: 'dumbbell_lunge', name: 'Step-Ups (chair)', sets: 3, reps: 12),  // DUPLICATE - use box_step_up
         //WorkoutExercise(id: 'wall_sit', name: 'Wall Sit', sets: 3, reps: 45),
-        //WorkoutExercise(id: 'calf_raises', name: 'Calf Raises', sets: 3, reps: 20),  // DUPLICATE - use calf_raise
+        //WorkoutExercise(id: 'lever_standing_calf_raise', name: 'Calf Raises', sets: 3, reps: 20),  // DUPLICATE - use calf_raise
       ],
     ),
     WorkoutPreset(
@@ -7820,10 +7820,10 @@ class WorkoutData {
       exercises: [
         WorkoutExercise(id: 'front_plank', name: 'Plank', sets: 3, reps: 45),
         WorkoutExercise(id: 'side_plank', name: 'Side Plank', sets: 3, reps: 30),
-        //WorkoutExercise(id: 'bicycle_crunches', name: 'Bicycle Crunches', sets: 3, reps: 20),  // DUPLICATE - use bicycle_crunch
-        //WorkoutExercise(id: 'leg_raises', name: 'Leg Raises', sets: 3, reps: 15),  // DUPLICATE - use leg_raise
+        //WorkoutExercise(id: 'bicycle_crunch', name: 'Bicycle Crunches', sets: 3, reps: 20),  // DUPLICATE - use bicycle_crunch
+        //WorkoutExercise(id: 'lying_leg_raise', name: 'Leg Raises', sets: 3, reps: 15),  // DUPLICATE - use leg_raise
         WorkoutExercise(id: 'russian_twist_with_medicine_ball', name: 'Russian Twist', sets: 3, reps: 20),
-        //WorkoutExercise(id: 'mountain_climbers', name: 'Mountain Climbers', sets: 3, reps: 20),  // DUPLICATE - use mountain_climber
+        //WorkoutExercise(id: 'mountain_climber', name: 'Mountain Climbers', sets: 3, reps: 20),  // DUPLICATE - use mountain_climber
         WorkoutExercise(id: 'dead_bug', name: 'Dead Bug', sets: 3, reps: 12),
       ],
     ),
@@ -7842,11 +7842,11 @@ class WorkoutData {
       rounds: 2,
       duration: '10 min',
       exercises: [
-        //WorkoutExercise(id: 'burpees', name: 'Burpees', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use burpee
-        //WorkoutExercise(id: 'jump_squats', name: 'Jump Squats', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use jump_squat
-        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use pushup
-        //WorkoutExercise(id: 'high_knees', name: 'High Knees', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use high_knee
-        //WorkoutExercise(id: 'mountain_climbers', name: 'Mountain Climbers', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use mountain_climber
+        //WorkoutExercise(id: 'burpee', name: 'Burpees', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use burpee
+        //WorkoutExercise(id: 'jump_squat', name: 'Jump Squats', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use jump_squat
+        //WorkoutExercise(id: 'push_up_m', name: 'Push-Ups', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use pushup
+        //WorkoutExercise(id: 'high_knee_run', name: 'High Knees', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use high_knee
+        //WorkoutExercise(id: 'mountain_climber', name: 'Mountain Climbers', sets: 1, reps: 1, timeSeconds: 30, restSeconds: 10),  // DUPLICATE - use mountain_climber
       ],
     ),
     WorkoutPreset(
@@ -7859,11 +7859,11 @@ class WorkoutData {
       rounds: 4,
       duration: '20 min',
       exercises: [
-        //WorkoutExercise(id: 'burpees', name: 'Burpees', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use burpee
-        //WorkoutExercise(id: 'jump_lunges', name: 'Jump Lunges', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use jump_lunge
-        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use pushup
-        //WorkoutExercise(id: 'squat_jumps', name: 'Squat Jumps', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use squat_jump
-        //WorkoutExercise(id: 'plank_jacks', name: 'Plank Jacks', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use plank_jack
+        //WorkoutExercise(id: 'burpee', name: 'Burpees', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use burpee
+        //WorkoutExercise(id: 'jump_lunge', name: 'Jump Lunges', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use jump_lunge
+        //WorkoutExercise(id: 'push_up_m', name: 'Push-Ups', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use pushup
+        //WorkoutExercise(id: 'jump_squat', name: 'Squat Jumps', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use squat_jump
+        //WorkoutExercise(id: 'front_plank', name: 'Plank Jacks', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use plank_jack
       ],
     ),
     WorkoutPreset(
@@ -7876,10 +7876,10 @@ class WorkoutData {
       rounds: 8,
       duration: '16 min',
       exercises: [
-        //WorkoutExercise(id: 'burpees', name: 'Burpees', sets: 1, reps: 1, timeSeconds: 20, restSeconds: 10),  // DUPLICATE - use burpee
-        //WorkoutExercise(id: 'mountain_climbers', name: 'Mountain Climbers', sets: 1, reps: 1, timeSeconds: 20, restSeconds: 10),  // DUPLICATE - use mountain_climber
-        //WorkoutExercise(id: 'jump_squats', name: 'Jump Squats', sets: 1, reps: 1, timeSeconds: 20, restSeconds: 10),  // DUPLICATE - use jump_squat
-        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 1, reps: 1, timeSeconds: 20, restSeconds: 10),  // DUPLICATE - use pushup
+        //WorkoutExercise(id: 'burpee', name: 'Burpees', sets: 1, reps: 1, timeSeconds: 20, restSeconds: 10),  // DUPLICATE - use burpee
+        //WorkoutExercise(id: 'mountain_climber', name: 'Mountain Climbers', sets: 1, reps: 1, timeSeconds: 20, restSeconds: 10),  // DUPLICATE - use mountain_climber
+        //WorkoutExercise(id: 'jump_squat', name: 'Jump Squats', sets: 1, reps: 1, timeSeconds: 20, restSeconds: 10),  // DUPLICATE - use jump_squat
+        //WorkoutExercise(id: 'push_up_m', name: 'Push-Ups', sets: 1, reps: 1, timeSeconds: 20, restSeconds: 10),  // DUPLICATE - use pushup
       ],
     ),
     WorkoutPreset(
@@ -7892,11 +7892,11 @@ class WorkoutData {
       rounds: 3,
       duration: '15 min',
       exercises: [
-        //WorkoutExercise(id: 'jumping_jacks', name: 'Jumping Jacks', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use jumping_jack
-        //WorkoutExercise(id: 'high_knees', name: 'High Knees', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use high_knee
-        //WorkoutExercise(id: 'butt_kicks', name: 'Butt Kicks', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use butt_kick
-        //WorkoutExercise(id: 'skaters', name: 'Skaters', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use skater
-        //WorkoutExercise(id: 'burpees', name: 'Burpees', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use burpee
+        //WorkoutExercise(id: 'jumping_jack', name: 'Jumping Jacks', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use jumping_jack
+        //WorkoutExercise(id: 'high_knee_run', name: 'High Knees', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use high_knee
+        //WorkoutExercise(id: 'high_knee_run', name: 'Butt Kicks', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use butt_kick
+        //WorkoutExercise(id: 'jump_squat', name: 'Skaters', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use skater
+        //WorkoutExercise(id: 'burpee', name: 'Burpees', sets: 1, reps: 1, timeSeconds: 45, restSeconds: 15),  // DUPLICATE - use burpee
       ],
     ),
   ];
@@ -7915,10 +7915,10 @@ class WorkoutData {
       exercises: [
         WorkoutExercise(id: 'hip_thrusts', name: 'Glute Bridge', sets: 3, reps: 20),
         WorkoutExercise(id: 'hip_thrusts', name: 'Single Leg Glute Bridge', sets: 3, reps: 12),
-        //WorkoutExercise(id: 'donkey_kicks', name: 'Donkey Kicks', sets: 3, reps: 15),  // DUPLICATE - use donkey_kick
-        //WorkoutExercise(id: 'fire_hydrants', name: 'Fire Hydrants', sets: 3, reps: 15),  // DUPLICATE - use fire_hydrant
-        //WorkoutExercise(id: 'clamshells', name: 'Clamshells', sets: 3, reps: 15),  // DUPLICATE - use clamshell
-        //WorkoutExercise(id: 'frog_pumps', name: 'Frog Pumps', sets: 3, reps: 20),  // DUPLICATE - use frog_pump
+        //WorkoutExercise(id: 'lever_standing_rear_kick', name: 'Donkey Kicks', sets: 3, reps: 15),  // DUPLICATE - use donkey_kick
+        //WorkoutExercise(id: 'lever_seated_hip_abduction', name: 'Fire Hydrants', sets: 3, reps: 15),  // DUPLICATE - use fire_hydrant
+        //WorkoutExercise(id: 'lever_seated_hip_abduction', name: 'Clamshells', sets: 3, reps: 15),  // DUPLICATE - use clamshell
+        //WorkoutExercise(id: 'hip_thrusts', name: 'Frog Pumps', sets: 3, reps: 20),  // DUPLICATE - use frog_pump
       ],
     ),
     WorkoutPreset(
@@ -7930,12 +7930,12 @@ class WorkoutData {
       isCircuit: false,
       duration: '~30 min',
       exercises: [
-        //WorkoutExercise(id: 'sumo_squat_pulse', name: 'Sumo Squat Pulse', sets: 3, reps: 20),  // DUPLICATE - use squat_pulse
-        //WorkoutExercise(id: 'curtsy_lunges', name: 'Curtsy Lunges', sets: 3, reps: 12),  // DUPLICATE - use curtsy_lunge
-        WorkoutExercise(id: 'glute_bridge_hold', name: 'Glute Bridge Hold', sets: 3, reps: 30),
-        //WorkoutExercise(id: 'donkey_kick_pulses', name: 'Donkey Kick Pulses', sets: 3, reps: 20),  // DUPLICATE - use donkey_kick_pulse
+        //WorkoutExercise(id: 'squat_m', name: 'Sumo Squat Pulse', sets: 3, reps: 20),  // DUPLICATE - use squat_pulse
+        //WorkoutExercise(id: 'dumbbell_lunge', name: 'Curtsy Lunges', sets: 3, reps: 12),  // DUPLICATE - use curtsy_lunge
+        WorkoutExercise(id: 'hip_thrusts', name: 'Glute Bridge Hold', sets: 3, reps: 30),
+        //WorkoutExercise(id: 'lever_standing_rear_kick', name: 'Donkey Kick Pulses', sets: 3, reps: 20),  // DUPLICATE - use donkey_kick_pulse
         WorkoutExercise(id: 'squat_m', name: 'Squat to Kick Back', sets: 3, reps: 12),
-        WorkoutExercise(id: 'single_leg_deadlift', name: 'Single Leg Deadlift', sets: 3, reps: 10),
+        WorkoutExercise(id: 'dumbbell_romanian_deadlift', name: 'Single Leg Deadlift', sets: 3, reps: 10),
       ],
     ),
     WorkoutPreset(
@@ -7947,12 +7947,12 @@ class WorkoutData {
       isCircuit: false,
       duration: '~30 min',
       exercises: [
-        WorkoutExercise(id: 'banded_squat', name: 'Banded Squat', sets: 3, reps: 15),
+        WorkoutExercise(id: 'squat_m', name: 'Banded Squat', sets: 3, reps: 15),
         WorkoutExercise(id: 'hip_thrusts', name: 'Banded Glute Bridge', sets: 3, reps: 15),
-        WorkoutExercise(id: 'banded_clamshell', name: 'Banded Clamshell', sets: 3, reps: 15),
-        WorkoutExercise(id: 'banded_kickback', name: 'Banded Kickback', sets: 3, reps: 15),
-        WorkoutExercise(id: 'banded_lateral_walk', name: 'Banded Lateral Walk', sets: 3, reps: 12),
-        WorkoutExercise(id: 'banded_fire_hydrant', name: 'Banded Fire Hydrant', sets: 3, reps: 12),
+        WorkoutExercise(id: 'lever_seated_hip_abduction', name: 'Banded Clamshell', sets: 3, reps: 15),
+        WorkoutExercise(id: 'cable_kickback', name: 'Banded Kickback', sets: 3, reps: 15),
+        WorkoutExercise(id: 'lever_seated_hip_abduction', name: 'Banded Lateral Walk', sets: 3, reps: 12),
+        WorkoutExercise(id: 'lever_seated_hip_abduction', name: 'Banded Fire Hydrant', sets: 3, reps: 12),
       ],
     ),
   ];
@@ -7973,8 +7973,8 @@ class WorkoutData {
         WorkoutExercise(id: 'hip_thrusts', name: 'Single Leg Glute Bridge', sets: 3, reps: 10),
         WorkoutExercise(id: 'lever_standing_rear_kick', name: 'Donkey Kick', sets: 3, reps: 15),
         WorkoutExercise(id: 'lever_seated_hip_abduction', name: 'Fire Hydrant', sets: 3, reps: 15),
-        //WorkoutExercise(id: 'bulgarian_split_squat_bw', name: 'Bulgarian Split Squat', sets: 3, reps: 10, included: true),  // DUPLICATE - use bulgarian_split_squat
-        WorkoutExercise(id: 'side_lying_leg_raise', name: 'Side-Lying Leg Raise', sets: 3, reps: 15, included: true),
+        //WorkoutExercise(id: 'dumbbell_bulgarian_split_squat', name: 'Bulgarian Split Squat', sets: 3, reps: 10, included: true),  // DUPLICATE - use bulgarian_split_squat
+        WorkoutExercise(id: 'lying_leg_raise', name: 'Side-Lying Leg Raise', sets: 3, reps: 15, included: true),
       ],
     ),
     WorkoutPreset(
@@ -7987,13 +7987,13 @@ class WorkoutData {
       duration: '~40 min',
       exercises: [
         // Upper
-        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 3, reps: 12),  // DUPLICATE - use pushup
-        //WorkoutExercise(id: 'pike_pushups', name: 'Pike Push-Ups', sets: 3, reps: 10),  // DUPLICATE - use pike_pushup
+        //WorkoutExercise(id: 'push_up_m', name: 'Push-Ups', sets: 3, reps: 12),  // DUPLICATE - use pushup
+        //WorkoutExercise(id: 'pike_push_up', name: 'Pike Push-Ups', sets: 3, reps: 10),  // DUPLICATE - use pike_pushup
         //WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15),
-        WorkoutExercise(id: 'tricep_dips_chair', name: 'Tricep Dips (chair)', sets: 3, reps: 12),
+        WorkoutExercise(id: 'triceps_dips_floor', name: 'Tricep Dips (chair)', sets: 3, reps: 12),
         // Lower
-        //WorkoutExercise(id: 'air_squats', name: 'Air Squats', sets: 4, reps: 20, included: true),  // DUPLICATE - use air_squat
-        //WorkoutExercise(id: 'lunges', name: 'Lunges', sets: 3, reps: 12, included: true),  // DUPLICATE - use lunge
+        //WorkoutExercise(id: 'squat_m', name: 'Air Squats', sets: 4, reps: 20, included: true),  // DUPLICATE - use air_squat
+        //WorkoutExercise(id: 'dumbbell_lunge', name: 'Lunges', sets: 3, reps: 12, included: true),  // DUPLICATE - use lunge
         WorkoutExercise(id: 'hip_thrusts', name: 'Glute Bridge', sets: 4, reps: 15, included: true),
       ],
     ),
@@ -8006,13 +8006,13 @@ class WorkoutData {
       isCircuit: false,
       duration: '~35 min',
       exercises: [
-        //WorkoutExercise(id: 'air_squats', name: 'Air Squats', sets: 3, reps: 20),  // DUPLICATE - use air_squat
-        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 3, reps: 12),  // DUPLICATE - use pushup
+        //WorkoutExercise(id: 'squat_m', name: 'Air Squats', sets: 3, reps: 20),  // DUPLICATE - use air_squat
+        //WorkoutExercise(id: 'push_up_m', name: 'Push-Ups', sets: 3, reps: 12),  // DUPLICATE - use pushup
         WorkoutExercise(id: 'hip_thrusts', name: 'Glute Bridge', sets: 3, reps: 15),
         //WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15),
-        //WorkoutExercise(id: 'lunges', name: 'Lunges', sets: 3, reps: 12),  // DUPLICATE - use lunge
+        //WorkoutExercise(id: 'dumbbell_lunge', name: 'Lunges', sets: 3, reps: 12),  // DUPLICATE - use lunge
         WorkoutExercise(id: 'front_plank', name: 'Plank', sets: 2, reps: 45, included: true),
-        //WorkoutExercise(id: 'mountain_climbers', name: 'Mountain Climbers', sets: 3, reps: 20, included: true),  // DUPLICATE - use mountain_climber
+        //WorkoutExercise(id: 'mountain_climber', name: 'Mountain Climbers', sets: 3, reps: 20, included: true),  // DUPLICATE - use mountain_climber
       ],
     ),
     WorkoutPreset(
@@ -8025,14 +8025,14 @@ class WorkoutData {
       duration: '~35 min',
       exercises: [
         // Push
-        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 3, reps: 12),  // DUPLICATE - use pushup
-        //WorkoutExercise(id: 'pike_pushups', name: 'Pike Push-Ups', sets: 3, reps: 10),  // DUPLICATE - use pike_pushup
-        //WorkoutExercise(id: 'diamond_pushups', name: 'Diamond Push-Ups', sets: 2, reps: 10),  // DUPLICATE - use diamond_pushup
+        //WorkoutExercise(id: 'push_up_m', name: 'Push-Ups', sets: 3, reps: 12),  // DUPLICATE - use pushup
+        //WorkoutExercise(id: 'pike_push_up', name: 'Pike Push-Ups', sets: 3, reps: 10),  // DUPLICATE - use pike_pushup
+        //WorkoutExercise(id: 'diamond_push_up', name: 'Diamond Push-Ups', sets: 2, reps: 10),  // DUPLICATE - use diamond_pushup
         // Pull
         //WorkoutExercise(id: 'superman_raises', name: 'Superman Raises', sets: 3, reps: 15, included: true),
-        //WorkoutExercise(id: 'inverted_rows', name: 'Inverted Rows (table)', sets: 3, reps: 10, included: true),  // DUPLICATE - use inverted_row
+        //WorkoutExercise(id: 'inverted_row', name: 'Inverted Rows (table)', sets: 3, reps: 10, included: true),  // DUPLICATE - use inverted_row
         // Legs
-        //WorkoutExercise(id: 'air_squats', name: 'Air Squats', sets: 4, reps: 20, included: true),  // DUPLICATE - use air_squat
+        //WorkoutExercise(id: 'squat_m', name: 'Air Squats', sets: 4, reps: 20, included: true),  // DUPLICATE - use air_squat
         WorkoutExercise(id: 'hip_thrusts', name: 'Glute Bridge', sets: 3, reps: 15, included: true),
       ],
     ),
@@ -8045,11 +8045,11 @@ class WorkoutData {
       isCircuit: false,
       duration: '~30 min',
       exercises: [
-        //WorkoutExercise(id: 'pushups', name: 'Push-Ups', sets: 4, reps: 12),  // DUPLICATE - use pushup
-        //WorkoutExercise(id: 'wide_pushups', name: 'Wide Push-Ups', sets: 3, reps: 12),  // DUPLICATE - use wide_pushup
-        //WorkoutExercise(id: 'pike_pushups', name: 'Pike Push-Ups', sets: 3, reps: 10),  // DUPLICATE - use pike_pushup
-        WorkoutExercise(id: 'tricep_dips_chair', name: 'Tricep Dips (chair)', sets: 3, reps: 12),
-        //WorkoutExercise(id: 'diamond_pushups', name: 'Diamond Push-Ups', sets: 2, reps: 10, included: true),  // DUPLICATE - use diamond_pushup
+        //WorkoutExercise(id: 'push_up_m', name: 'Push-Ups', sets: 4, reps: 12),  // DUPLICATE - use pushup
+        //WorkoutExercise(id: 'wide_hand_push_up', name: 'Wide Push-Ups', sets: 3, reps: 12),  // DUPLICATE - use wide_pushup
+        //WorkoutExercise(id: 'pike_push_up', name: 'Pike Push-Ups', sets: 3, reps: 10),  // DUPLICATE - use pike_pushup
+        WorkoutExercise(id: 'triceps_dips_floor', name: 'Tricep Dips (chair)', sets: 3, reps: 12),
+        //WorkoutExercise(id: 'diamond_push_up', name: 'Diamond Push-Ups', sets: 2, reps: 10, included: true),  // DUPLICATE - use diamond_pushup
       ],
     ),
   ];
@@ -8122,13 +8122,13 @@ class WorkoutData {
     Exercise(id: 'dumbbell_arnold_press', name: 'Arnold Press', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'b_skip', name: 'B Skip', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'back_extension', name: 'Back Extension', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'back_squat', name: 'Back Squat', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'banded_clamshell', name: 'Banded Clamshell', difficulty: 'intermediate', equipment: 'bands'),
-    Exercise(id: 'banded_fire_hydrant', name: 'Banded Fire Hydrant', difficulty: 'intermediate', equipment: 'bands'),
+    Exercise(id: 'barbell_full_squat', name: 'Back Squat', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'lever_seated_hip_abduction', name: 'Banded Clamshell', difficulty: 'intermediate', equipment: 'bands'),
+    Exercise(id: 'lever_seated_hip_abduction', name: 'Banded Fire Hydrant', difficulty: 'intermediate', equipment: 'bands'),
     Exercise(id: 'hip_thrusts', name: 'Banded Glute Bridge', difficulty: 'beginner', equipment: 'bands'),
-    Exercise(id: 'banded_kickback', name: 'Banded Kickback', difficulty: 'intermediate', equipment: 'bands'),
-    Exercise(id: 'banded_lateral_walk', name: 'Banded Lateral Walk', difficulty: 'intermediate', equipment: 'bands'),
-    Exercise(id: 'banded_squat', name: 'Banded Squat', difficulty: 'intermediate', equipment: 'bands'),
+    Exercise(id: 'cable_kickback', name: 'Banded Kickback', difficulty: 'intermediate', equipment: 'bands'),
+    Exercise(id: 'lever_seated_hip_abduction', name: 'Banded Lateral Walk', difficulty: 'intermediate', equipment: 'bands'),
+    Exercise(id: 'squat_m', name: 'Banded Squat', difficulty: 'intermediate', equipment: 'bands'),
     Exercise(id: 'barbell_back_squat', name: 'Barbell Back Squat', difficulty: 'intermediate', equipment: 'barbell'),
     Exercise(id: 'barbell_behind_back_finger_curl', name: 'Barbell Behind Back Finger Curl', difficulty: 'intermediate', equipment: 'barbell'),
     Exercise(id: 'barbell_bench_front_squat', name: 'Barbell Bench Front Squat', difficulty: 'intermediate', equipment: 'barbell'),
@@ -8221,7 +8221,7 @@ class WorkoutData {
     Exercise(id: 'barbell_bench_press', name: 'Bench Press', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'bicep_curl', name: 'Bicep Curl', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'bicycle_crunch', name: 'Bicycle Crunch', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'bicycle_crunches', name: 'Bicycle Crunches', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'bicycle_crunch', name: 'Bicycle Crunches', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'bird_dog', name: 'Bird Dog', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'bodyweight_squat', name: 'Bodyweight Squat', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'bodyweight_standing_calf_raise', name: 'Bodyweight Standing Calf Raise', difficulty: 'beginner', equipment: 'bodyweight'),
@@ -8230,7 +8230,7 @@ class WorkoutData {
     Exercise(id: 'dumbbell_bulgarian_split_squat', name: 'Bulgarian Split Squat', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'butt_kick', name: 'Butt Kick', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'butt_kick_sprint', name: 'Butt Kick Sprint', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'butt_kicks', name: 'Butt Kicks', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'high_knee_run', name: 'Butt Kicks', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'butt_ups', name: 'Butt Ups', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'butterfly_machine', name: 'Butterfly Machine', difficulty: 'intermediate', equipment: 'machine'),
     Exercise(id: 'cable_alternate_triceps_extension', name: 'Cable Alternate Triceps Extension', difficulty: 'intermediate', equipment: 'cable'),
@@ -8304,7 +8304,7 @@ class WorkoutData {
     Exercise(id: 'cable_side_bend', name: 'Cable Side Bend', difficulty: 'intermediate', equipment: 'cable'),
     Exercise(id: 'barbell_sumo_squat', name: 'Sumo Squat', difficulty: 'intermediate', equipment: 'bodyweight'),
     //Exercise(id: 'sumo_squat_hold_pulse', name: 'Sumo Squat Hold Pulse', difficulty: 'beginner', equipment: 'bodyweight'),  // DUPLICATE - use squat_pulse
-    //Exercise(id: 'sumo_squat_pulse', name: 'Sumo Squat Pulse', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use squat_pulse
+    //Exercise(id: 'squat_m', name: 'Sumo Squat Pulse', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use squat_pulse
     Exercise(id: 'thruster', name: 'Thruster', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'tuck_jump', name: 'Tuck Jump', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'walking_lunge_male', name: 'Walking Lunge', difficulty: 'intermediate', equipment: 'bodyweight'),
@@ -8312,7 +8312,7 @@ class WorkoutData {
 
     // ===== STEPUP PATTERN =====
     Exercise(id: 'box_step_up', name: 'Box Step Up', difficulty: 'intermediate', equipment: 'bodyweight'),
-    //Exercise(id: 'box_stepups', name: 'Box Stepups', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use box_step_up
+    //Exercise(id: 'dumbbell_lunge', name: 'Box Stepups', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use box_step_up
     Exercise(id: 'cable_twisting_overhead_press', name: 'Cable Twisting Overhead Press', difficulty: 'intermediate', equipment: 'cable'),
     Exercise(id: 'cable_two_arm_tricep_kickback', name: 'Cable Two Arm Tricep Kickback', difficulty: 'intermediate', equipment: 'cable'),
     Exercise(id: 'cable_underhand_pulldown', name: 'Cable Underhand Pulldown', difficulty: 'intermediate', equipment: 'cable'),
@@ -8449,10 +8449,10 @@ class WorkoutData {
     Exercise(id: 'frog_pump_hold_pulse', name: 'Frog Pump Hold Pulse', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'hip_thrusts', name: 'Frog Pump Pulse', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'front_plank', name: 'Front Plank', difficulty: 'beginner', equipment: 'bodyweight'),
-    Exercise(id: 'front_raise', name: 'Front Raise', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'dumbbell_lateral_raise', name: 'Front Raise', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'barbell_front_squat', name: 'Front Squat', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'hip_thrusts', name: 'Glute Bridge', difficulty: 'beginner', equipment: 'bodyweight'),
-    Exercise(id: 'glute_bridge_hold', name: 'Glute Bridge Hold', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'hip_thrusts', name: 'Glute Bridge Hold', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'cable_kickback', name: 'Glute Kickback', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'dumbbell_goblet_squat', name: 'Goblet Squat', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'good_morning', name: 'Good Morning', difficulty: 'intermediate', equipment: 'bodyweight'),
@@ -8471,7 +8471,7 @@ class WorkoutData {
     Exercise(id: 'high_knee_run', name: 'High Knee', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'high_knee_run', name: 'High Knee Run', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'high_knee_sprint', name: 'High Knee Sprint', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'high_knees', name: 'High Knees', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'high_knee_run', name: 'High Knees', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'high_plank', name: 'High Plank', difficulty: 'beginner', equipment: 'bodyweight'),
     //Exercise(id: 'kb_swing', name: 'KB Swing', difficulty: 'intermediate', equipment: 'bodyweight'),  // DUPLICATE - use kettlebell_swing
     Exercise(id: 'kettlebell_swing', name: 'Kettlebell Swing', difficulty: 'intermediate', equipment: 'weights'),
@@ -8592,7 +8592,7 @@ class WorkoutData {
     Exercise(id: 'military_press', name: 'Military Press', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'mountain_climber', name: 'Mountain Climber', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'mountain_climber_crossover', name: 'Mountain Climber Crossover', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'mountain_climbers', name: 'Mountain Climbers', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'mountain_climber', name: 'Mountain Climbers', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'nordic_curl', name: 'Nordic Curl', difficulty: 'advanced', equipment: 'bodyweight'),
     Exercise(id: 'oblique_crunch', name: 'Oblique Crunch', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'barbell_standing_military_press', name: 'Overhead Press', difficulty: 'intermediate', equipment: 'bodyweight'),
@@ -8650,12 +8650,12 @@ class WorkoutData {
     Exercise(id: 'shoulder_grip_pull_up', name: 'Shoulder Grip Pull Up', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'dumbbell_seated_shoulder_press', name: 'Shoulder Press', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'shrug', name: 'Shrug', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'side_lying_leg_raise', name: 'Side Lying Leg Raise', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'lying_leg_raise', name: 'Side Lying Leg Raise', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'side_plank', name: 'Side Plank', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'side_plank_male', name: 'Side Plank', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'side_step', name: 'Side Step', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'single_leg_calf_raise', name: 'Single Leg Calf Raise', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'single_leg_deadlift', name: 'Single Leg Deadlift', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'dumbbell_romanian_deadlift', name: 'Single Leg Deadlift', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'hip_thrusts', name: 'Single Leg Glute Bridge', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'single_leg_rdl', name: 'Single Leg RDL', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'single_leg_rdl_pulse', name: 'Single Leg RDL Pulse', difficulty: 'intermediate', equipment: 'bodyweight'),
@@ -8744,7 +8744,7 @@ class WorkoutData {
     Exercise(id: 'barbell_sumo_deadlift', name: 'Sumo Deadlift', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'barbell_sumo_squat', name: 'Sumo Squat', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'sumo_squat_hold_pulse', name: 'Sumo Squat Hold Pulse', difficulty: 'intermediate', equipment: 'bodyweight'),
-    Exercise(id: 'sumo_squat_pulse', name: 'Sumo Squat Pulse', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'squat_m', name: 'Sumo Squat Pulse', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'superman', name: 'Superman', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'superman_hold', name: 'Superman Hold', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'lever_t_bar_row', name: 'Tbar Row', difficulty: 'intermediate', equipment: 'bodyweight'),
