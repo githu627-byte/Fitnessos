@@ -3759,6 +3759,105 @@ class ExerciseGifMapping {
       gif720: '12491301-Wipers-(straight-leg)_Waist_720.mp4',
       gif1080: '',
     ), // Wipers-(straight-leg)
+    // Custom exercise videos
+    'bent_knee_glute_bridge': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'bent_knee_glute_bridge.mp4',
+      gif1080: '',
+    ), // Bent Knee Glute Bridge
+    'bodyweight_jump_squat_wide_leg': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'bodyweight_jump_squat_wide_leg.mp4',
+      gif1080: '',
+    ), // Bodyweight Jump Squat Wide Leg
+    'bulgarian_split_squat': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'bulgarian_split_squat.mp4',
+      gif1080: '',
+    ), // Bulgarian Split Squat
+    'bulgarian_split_sumo_squat': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'bulgarian_split_sumo_squat.mp4',
+      gif1080: '',
+    ), // Bulgarian Split Sumo Squat
+    'crossover_high_knee': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'crossover_high_knee.mp4',
+      gif1080: '',
+    ), // Crossover High Knee
+    'donkey_kick_leg_straight': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'donkey_kick_leg_straight.mp4',
+      gif1080: '',
+    ), // Donkey Kick Leg Straight
+    'glute_bridge_hold': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'glute_bridge_hold.mp4',
+      gif1080: '',
+    ), // Glute Bridge Hold
+    'glute_bridge_lift_hip_high': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'glute_bridge_lift_hip_high.mp4',
+      gif1080: '',
+    ), // Glute Bridge Lift Hip High
+    'jump_squat': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'jump_squat.mp4',
+      gif1080: '',
+    ), // Jump Squat
+    'mountain_climber': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'mountain_climber.mp4',
+      gif1080: '',
+    ), // Mountain Climber
+    'pike_push_ups': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'pike_push_ups.mp4',
+      gif1080: '',
+    ), // Pike Push Ups
+    'russian_twist': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'russian_twist.mp4',
+      gif1080: '',
+    ), // Russian Twist
+    'single_leg_glute_bridge': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'single_leg_glute_bridge.mp4',
+      gif1080: '',
+    ), // Single Leg Glute Bridge
+    'sumo_squat': ExerciseGifInfo(
+      folderName: '',
+      gif180: '',
+      gif360: '',
+      gif720: 'sumo_squat.mp4',
+      gif1080: '',
+    ), // Sumo Squat
   };
 
   /// Get the GIF info for an exercise ID

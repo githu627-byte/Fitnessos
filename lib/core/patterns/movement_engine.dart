@@ -716,5 +716,13 @@ class MovementEngine {
     'pallof_press': ExerciseConfig(patternType: PatternType.rotation),
     'seated_twist': ExerciseConfig(patternType: PatternType.rotation),
     'oblique_crunch': ExerciseConfig(patternType: PatternType.rotation),
+    // Custom exercise videos
+    'bent_knee_glute_bridge': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+    'bodyweight_jump_squat_wide_leg': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80}),
+    'bulgarian_split_sumo_squat': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.78, 'resetPercent': 0.88}),
+    'crossover_high_knee': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.verticalKnee, 'cueGood': 'Cross!', 'cueBad': 'Knee up!'}),
+    'donkey_kick_leg_straight': ExerciseConfig(patternType: PatternType.hinge, params: {'cueGood': 'Squeeze!', 'cueBad': 'Higher!'}),
+    'glute_bridge_lift_hip_high': ExerciseConfig(patternType: PatternType.hinge, params: {'floor': true, 'cueGood': 'Squeeze!', 'cueBad': 'Hips up!'}),
+    'pike_push_ups': ExerciseConfig(patternType: PatternType.push),
   };
 }
