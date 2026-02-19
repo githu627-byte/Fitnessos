@@ -89,7 +89,7 @@ class ExerciseDifficultyMapping {
     // Hinge Pattern (Lower Back)
     ExerciseProgression(
       beginner: 'rack_pull',
-      intermediate: 'romanian_deadlift',
+      intermediate: 'barbell_romanian_deadlift',
       advanced: 'conventional_deadlift',
       muscleGroup: 'back',
       movementPattern: 'hinge',
@@ -152,7 +152,7 @@ class ExerciseDifficultyMapping {
     // Squat Pattern
     ExerciseProgression(
       beginner: 'goblet_squat',
-      intermediate: 'barbell_back_squat',
+      intermediate: 'barbell_full_squat',
       advanced: 'front_squat',
       muscleGroup: 'legs',
       movementPattern: 'squat',
@@ -167,7 +167,7 @@ class ExerciseDifficultyMapping {
     // Hinge Pattern
     ExerciseProgression(
       beginner: 'dumbbell_rdl',
-      intermediate: 'romanian_deadlift',
+      intermediate: 'barbell_romanian_deadlift',
       advanced: 'deficit_deadlift',
       muscleGroup: 'legs',
       movementPattern: 'hinge',
@@ -175,7 +175,7 @@ class ExerciseDifficultyMapping {
     // Lunge Pattern
     ExerciseProgression(
       beginner: 'static_lunge',
-      intermediate: 'walking_lunge',
+      intermediate: 'walking_lunge_male',
       advanced: 'bulgarian_split_squat',
       muscleGroup: 'legs',
       movementPattern: 'squat',
@@ -218,7 +218,7 @@ class ExerciseDifficultyMapping {
     // Hip Thrust Pattern
     ExerciseProgression(
       beginner: 'glute_bridge',
-      intermediate: 'single_leg_glute_bridge',
+      intermediate: 'hip_thrusts',
       advanced: 'elevated_glute_bridge',
       muscleGroup: 'glutes',
       movementPattern: 'hinge',
@@ -410,7 +410,7 @@ class ExerciseDifficultyMapping {
     // Lunge Pattern
     ExerciseProgression(
       beginner: 'static_lunge',
-      intermediate: 'walking_lunge',
+      intermediate: 'walking_lunge_male',
       advanced: 'jumping_lunge',
       muscleGroup: 'legs',
       movementPattern: 'squat',

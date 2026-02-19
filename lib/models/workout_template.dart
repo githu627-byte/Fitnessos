@@ -135,7 +135,7 @@ class WorkoutTemplates {
         restSeconds: 150,
       ),
       WorkoutExercise(
-        exerciseId: 'romanian_deadlift',
+        exerciseId: 'barbell_romanian_deadlift',
         name: 'Romanian Deadlift',
         sets: 3,
         reps: '10',

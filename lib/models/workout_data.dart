@@ -7375,7 +7375,7 @@ class WorkoutData {
       icon: 'legs',
       isCircuit: false,
       exercises: [
-        //WorkoutExercise(id: 'barbell_full_squat', name: 'Back Squat', sets: 4, reps: 8),  // DUPLICATE - use barbell_squat
+        WorkoutExercise(id: 'barbell_full_squat', name: 'Back Squat', sets: 4, reps: 8),
         WorkoutExercise(id: 'barbell_front_squat', name: 'Front Squat', sets: 4, reps: 6),
         WorkoutExercise(id: 'barbell_romanian_deadlift', name: 'Romanian Deadlift', sets: 3, reps: 10),
         WorkoutExercise(id: 'lever_seated_leg_press', name: 'Leg Press', sets: 3, reps: 12),
@@ -7457,7 +7457,7 @@ class WorkoutData {
       isCircuit: false,
       duration: '~50 min',
       exercises: [
-        //WorkoutExercise(id: 'barbell_full_squat', name: 'Back Squat', sets: 4, reps: 8),  // DUPLICATE - use barbell_squat
+        WorkoutExercise(id: 'barbell_full_squat', name: 'Back Squat', sets: 4, reps: 8),
         WorkoutExercise(id: 'barbell_romanian_deadlift', name: 'Romanian Deadlift', sets: 3, reps: 10),
         WorkoutExercise(id: 'lever_seated_leg_press', name: 'Leg Press', sets: 3, reps: 12),
         WorkoutExercise(id: 'barbell_hip_thrust', name: 'Hip Thrust', sets: 4, reps: 10),
@@ -7510,7 +7510,7 @@ class WorkoutData {
       isCircuit: false,
       duration: '~50 min',
       exercises: [
-        //WorkoutExercise(id: 'barbell_full_squat', name: 'Back Squat', sets: 4, reps: 8),  // DUPLICATE - use barbell_squat
+        WorkoutExercise(id: 'barbell_full_squat', name: 'Back Squat', sets: 4, reps: 8),
         WorkoutExercise(id: 'barbell_bench_press', name: 'Barbell Bench Press', sets: 4, reps: 8),
         WorkoutExercise(id: 'barbell_bent_over_row', name: 'Barbell Row', sets: 4, reps: 8),
         WorkoutExercise(id: 'barbell_standing_military_press', name: 'Overhead Press', sets: 3, reps: 10),
@@ -7587,7 +7587,7 @@ class WorkoutData {
       duration: '~16 min',
       exercises: [
         //WorkoutExercise(id: 'dumbbell_goblet_squat', name: 'Goblet Squats', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use goblet_squat
-        //WorkoutExercise(id: 'walking_lunge_male', name: 'Walking Lunges', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use walking_lunge
+        WorkoutExercise(id: 'walking_lunge_male', name: 'Walking Lunges', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),
         WorkoutExercise(id: 'barbell_romanian_deadlift', name: 'Romanian Deadlift', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),
         //WorkoutExercise(id: 'dumbbell_lunge', name: 'Box Step-Ups', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use box_step_up
         //WorkoutExercise(id: 'barbell_romanian_deadlift', name: 'Kettlebell Swings', sets: 1, reps: 1, timeSeconds: 40, restSeconds: 20),  // DUPLICATE - use kettlebell_swing
@@ -7628,7 +7628,7 @@ class WorkoutData {
         WorkoutExercise(id: 'barbell_romanian_deadlift', name: 'Romanian Deadlift', sets: 3, reps: 12),
         WorkoutExercise(id: 'cable_kickback', name: 'Cable Kickback', sets: 3, reps: 15),
         WorkoutExercise(id: 'barbell_sumo_deadlift', name: 'Sumo Squat', sets: 3, reps: 12),
-        //WorkoutExercise(id: 'hip_thrusts', name: 'Glute Bridge (single leg)', sets: 3, reps: 10),  // DUPLICATE - use single_leg_glute_bridge
+        WorkoutExercise(id: 'hip_thrusts', name: 'Glute Bridge (single leg)', sets: 3, reps: 10),
         //WorkoutExercise(id: 'cable_pull_through', name: 'Cable Pull-Through', sets: 3, reps: 15),  // DUPLICATE - use cable_pull_through
       ],
     ),
@@ -7687,7 +7687,7 @@ class WorkoutData {
         WorkoutExercise(id: 'cable_bar_lateral_pulldown', name: 'Lat Pulldown', sets: 3, reps: 12),
         // Lower Day
         WorkoutExercise(id: 'dumbbell_goblet_squat', name: 'Goblet Squat', sets: 4, reps: 12, included: true),
-        //WorkoutExercise(id: 'walking_lunge_male', name: 'Walking Lunges', sets: 3, reps: 12, included: true),  // DUPLICATE - use walking_lunge
+        WorkoutExercise(id: 'walking_lunge_male', name: 'Walking Lunges', sets: 3, reps: 12, included: true),
         WorkoutExercise(id: 'lever_lying_leg_curl', name: 'Leg Curl', sets: 3, reps: 12, included: true),
         WorkoutExercise(id: 'barbell_hip_thrust', name: 'Hip Thrust', sets: 4, reps: 12, included: true),
       ],
