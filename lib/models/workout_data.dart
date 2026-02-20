@@ -8108,7 +8108,7 @@ class WorkoutData {
   ];
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // ALL EXERCISES - 749 exercises for AI mode custom workout builder
+  // ALL EXERCISES - 755 exercises for AI mode custom workout builder
   // Every ID in this list exists in movement_engine.dart
   // GIF key IDs display videos directly; home IDs use overrides for video
   // ═══════════════════════════════════════════════════════════════════════════
@@ -8848,6 +8848,14 @@ class WorkoutData {
     Exercise(id: 'sumo_squat', name: 'Sumo Squat', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'toy_soldier_dynamic_stretch', name: 'Toy Soldier Dynamic Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
     Exercise(id: 'weighted_frog_pump', name: 'Weighted Frog Pump', difficulty: 'intermediate', equipment: 'bodyweight'),
+
+    // --- From repo root MP4 uploads (6 exercises) ---
+    Exercise(id: 'lying_back_and_hips_stretch', name: 'Lying Back and Hips Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'quadriceps_hold_stretch', name: 'Quadriceps Hold Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'seated_abductor_flex', name: 'Seated Abductor Flex', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'seated_abductor_hip_lift', name: 'Seated Abductor Hip Lift', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'seated_hamstring_stretch', name: 'Seated Hamstring Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'wall_hinge_stretcher', name: 'Wall Hinge Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
   ];
 
   // ═══════════════════════════════════════════════════════════════════════════
