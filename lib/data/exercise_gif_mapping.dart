@@ -3858,6 +3858,147 @@ class ExerciseGifMapping {
       gif720: 'sumo_squat.mp4',
       gif1080: '',
     ), // Sumo Squat
+    // New GIF-to-MP4 converted exercise videos
+    'bird_dog': ExerciseGifInfo(
+      folderName: '01351301',
+      gif180: '',
+      gif360: '',
+      gif720: '01351301-Bird-Dog_Waist_720.mp4',
+      gif1080: '',
+    ), // Bird Dog
+    'butt_kicks_female': ExerciseGifInfo(
+      folderName: '01461301',
+      gif180: '',
+      gif360: '',
+      gif720: '01461301-Butt-Kicks-(female)_Cardio-FIX_720.mp4',
+      gif1080: '',
+    ), // Butt Kicks (female)
+    'jumping_jack': ExerciseGifInfo(
+      folderName: '05161301',
+      gif180: '',
+      gif360: '',
+      gif720: '05161301-Jumping-Jack_Cardio_720.mp4',
+      gif1080: '',
+    ), // Jumping Jack
+    'star_jump': ExerciseGifInfo(
+      folderName: '07971301',
+      gif180: '',
+      gif360: '',
+      gif720: '07971301-Star-Jump_Cardio_720.mp4',
+      gif1080: '',
+    ), // Star Jump
+    'knee_tuck_jump': ExerciseGifInfo(
+      folderName: '15701301',
+      gif180: '',
+      gif360: '',
+      gif720: '15701301-Knee-Tuck-Jump_Plyometric_720.mp4',
+      gif1080: '',
+    ), // Knee Tuck Jump
+    'archer_push_up': ExerciseGifInfo(
+      folderName: '32941301',
+      gif180: '',
+      gif360: '',
+      gif720: '32941301-Archer-Push-up_Chest_720.mp4',
+      gif1080: '',
+    ), // Archer Push Up
+    'skater_hops': ExerciseGifInfo(
+      folderName: '33611301',
+      gif180: '',
+      gif360: '',
+      gif720: '33611301-Skater-Hops_720.mp4',
+      gif1080: '',
+    ), // Skater Hops
+    'high_knee_run': ExerciseGifInfo(
+      folderName: '35561301',
+      gif180: '',
+      gif360: '',
+      gif720: '35561301-High-Knee-Run_Cardio_720.mp4',
+      gif1080: '',
+    ), // High Knee Run
+    'jump_on_fit_box': ExerciseGifInfo(
+      folderName: '38921301',
+      gif180: '',
+      gif360: '',
+      gif720: '38921301-Jump-on-Fit-Box-(male)_Plyometrics_720.mp4',
+      gif1080: '',
+    ), // Jump on Fit Box
+    'cable_donkey_kickback': ExerciseGifInfo(
+      folderName: '44211301',
+      gif180: '',
+      gif360: '',
+      gif720: '44211301-Cable-Donkey-Kickback-(female)_Hips_720.mp4',
+      gif1080: '',
+    ), // Cable Donkey Kickback
+    'single_straight_leg_glute_bridge_hold': ExerciseGifInfo(
+      folderName: '51981301',
+      gif180: '',
+      gif360: '',
+      gif720: '51981301-Single-Straight-Leg-Glute-Bridge-Hold-(female)_Hips_720.mp4',
+      gif1080: '',
+    ), // Single Straight Leg Glute Bridge Hold
+    'lying_bicycle_crunch': ExerciseGifInfo(
+      folderName: '52501301',
+      gif180: '',
+      gif360: '',
+      gif720: '52501301-Lying-Bicycle-Crunch_Waist_720.mp4',
+      gif1080: '',
+    ), // Lying Bicycle Crunch
+    'cable_medius_kickback': ExerciseGifInfo(
+      folderName: '54701301',
+      gif180: '',
+      gif360: '',
+      gif720: '54701301-Cable-Medius-Kickback_Hips_720.mp4',
+      gif1080: '',
+    ), // Cable Medius Kickback
+    'wide_stance_jump_squat_to_narrow': ExerciseGifInfo(
+      folderName: '58651301',
+      gif180: '',
+      gif360: '',
+      gif720: '58651301-Wide-Stance-Jump-Squat-to-Narrow-Stance-Jump-Squat_Hips_720.mp4',
+      gif1080: '',
+    ), // Wide Stance Jump Squat to Narrow
+    'kneeling_straight_leg_kickback': ExerciseGifInfo(
+      folderName: '62091301',
+      gif180: '',
+      gif360: '',
+      gif720: '62091301-Kneeling-Straight-Leg-Kickback-(VERSION-2)-(left)_Hips_720.mp4',
+      gif1080: '',
+    ), // Kneeling Straight Leg Kickback
+    'bicycle_crunch_female': ExerciseGifInfo(
+      folderName: '62121301',
+      gif180: '',
+      gif360: '',
+      gif720: '62121301-Bicycle-Crunch-(female)_Waist_720.mp4',
+      gif1080: '',
+    ), // Bicycle Crunch (female)
+    'single_curtsy_lunge': ExerciseGifInfo(
+      folderName: '63181301',
+      gif180: '',
+      gif360: '',
+      gif720: '63181301-Single-Curtsy-Lunge-(female)_Hips-FIX_720.mp4',
+      gif1080: '',
+    ), // Single Curtsy Lunge
+    'resistance_band_glute_kickback': ExerciseGifInfo(
+      folderName: '67981301',
+      gif180: '',
+      gif360: '',
+      gif720: '67981301-Resistance-Band-Standing-Balance-Glute-Kickback-(female)_Hips_720.mp4',
+      gif1080: '',
+    ), // Resistance Band Glute Kickback
+    'dumbbell_reverse_lunge_from_deficit': ExerciseGifInfo(
+      folderName: '73261301',
+      gif180: '',
+      gif360: '',
+      gif720: '73261301-Dumbbell-Reverse-Lunge-from-Deficit-(male)_Thighs_720.mp4',
+      gif1080: '',
+    ), // Dumbbell Reverse Lunge from Deficit
+    'bodyweight_pulse_goblet_squat': ExerciseGifInfo(
+      folderName: '97021301',
+      gif180: '',
+      gif360: '',
+      gif720: '97021301-Bodyweight-Pulse-Goblet-Squat-(male)_Thighs_720.mp4',
+      gif1080: '',
+    ), // Bodyweight Pulse Goblet Squat
   };
 
   /// Get the GIF info for an exercise ID
