@@ -39,48 +39,49 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
   // Get all manual exercises from GIF library
   List<Exercise> _getAllManualExercises() {
     final List<Exercise> manualExercises = [];
-    
-    // Equipment prefixes to move to end
+
+    // Equipment prefixes for name formatting
     final equipmentPrefixes = [
-      'barbell', 'dumbbell', 'cable', 'band', 'kettlebell', 
+      'barbell', 'dumbbell', 'cable', 'band', 'kettlebell',
       'ez_bar', 'trap_bar', 'smith', 'lever', 'sled', 'machine'
     ];
 
-    // Load from ExerciseGifMapping (593 exercises)
+    // Build set of AI mode exercise IDs for quick lookup
+    final aiModeIds = <String>{};
+    for (final e in WorkoutData.allMovementEngineExercises) {
+      aiModeIds.add(e.id);
+    }
+
+    // Load ALL GIF exercises that are NOT in AI mode
     ExerciseGifMapping.exerciseGifs.forEach((id, gifInfo) {
       try {
-        // Skip duplicate versions
-        if (id.contains('_version_') || 
-            id.endsWith('_ii') || 
-            id.endsWith('_iii') || 
-            id.endsWith('_iv')) {
-          return; // Skip this exercise
-        }
-        
+        // Skip if this exercise is already in AI mode
+        if (aiModeIds.contains(id)) return;
+
         // Split and capitalize
         final words = id.split('_').where((word) => word.isNotEmpty).toList();
-        
+
         // Check if first word is equipment
         String equipment = '';
         List<String> nameWords = [];
-        
+
         if (words.isNotEmpty && equipmentPrefixes.contains(words[0].toLowerCase())) {
           equipment = words[0][0].toUpperCase() + words[0].substring(1);
           nameWords = words.sublist(1);
         } else {
           nameWords = words;
         }
-        
+
         // Build name
-        String name = nameWords.map((word) => 
+        String name = nameWords.map((word) =>
           word[0].toUpperCase() + word.substring(1)
         ).join(' ');
-        
+
         // Add equipment at end if exists
         if (equipment.isNotEmpty) {
           name = '$name ($equipment)';
         }
-        
+
         manualExercises.add(Exercise(
           id: id,
           name: name.isEmpty ? id : name,
@@ -89,7 +90,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
         ));
       } catch (e) {
         // Skip any exercise that crashes during name conversion
-        debugPrint('⚠️ Skipped exercise: $id - $e');
+        debugPrint('Skipped exercise: $id - $e');
       }
     });
 
