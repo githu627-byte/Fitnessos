@@ -1,6 +1,6 @@
 /// Auto-generated exercise GIF mapping
 /// Generated: 2026-01-14 07:56:48.638629
-/// Total exercises: 587
+/// Total exercises: 593
 
 class ExerciseGifInfo {
   final String folderName;
@@ -4138,6 +4138,50 @@ class ExerciseGifMapping {
       gif720: '98171301-Sumo-Squat_Thighs_720.mp4',
       gif1080: '',
     ), // Sumo-Squat
+
+    // --- From repo root MP4 uploads (6 exercises) ---
+    'lying_back_and_hips_stretch': ExerciseGifInfo(
+      folderName: '98181301',
+      gif180: '',
+      gif360: '98181301-Lying-Back-And-Hips-Stretch_Stretching_360.mp4',
+      gif720: '98181301-Lying-Back-And-Hips-Stretch_Stretching_720.mp4',
+      gif1080: '',
+    ), // Lying-Back-And-Hips-Stretch
+    'quadriceps_hold_stretch': ExerciseGifInfo(
+      folderName: '98191301',
+      gif180: '',
+      gif360: '98191301-Quadriceps-Hold-Stretch_Stretching_360.mp4',
+      gif720: '98191301-Quadriceps-Hold-Stretch_Stretching_720.mp4',
+      gif1080: '',
+    ), // Quadriceps-Hold-Stretch
+    'seated_abductor_flex': ExerciseGifInfo(
+      folderName: '98201301',
+      gif180: '',
+      gif360: '98201301-Seated-Abductor-Flex_Hips_360.mp4',
+      gif720: '98201301-Seated-Abductor-Flex_Hips_720.mp4',
+      gif1080: '',
+    ), // Seated-Abductor-Flex
+    'seated_abductor_hip_lift': ExerciseGifInfo(
+      folderName: '98211301',
+      gif180: '',
+      gif360: '98211301-Seated-Abductor-Hip-Lift_Hips_360.mp4',
+      gif720: '98211301-Seated-Abductor-Hip-Lift_Hips_720.mp4',
+      gif1080: '',
+    ), // Seated-Abductor-Hip-Lift
+    'seated_hamstring_stretch': ExerciseGifInfo(
+      folderName: '98221301',
+      gif180: '',
+      gif360: '98221301-Seated-Hamstring-Stretch_Stretching_360.mp4',
+      gif720: '98221301-Seated-Hamstring-Stretch_Stretching_720.mp4',
+      gif1080: '',
+    ), // Seated-Hamstring-Stretch
+    'wall_hinge_stretcher': ExerciseGifInfo(
+      folderName: '98231301',
+      gif180: '',
+      gif360: '98231301-Wall-Hinge-Stretcher_Stretching_360.mp4',
+      gif720: '98231301-Wall-Hinge-Stretcher_Stretching_720.mp4',
+      gif1080: '',
+    ), // Wall-Hinge-Stretcher
   };
 
   /// Get the GIF info for an exercise ID
