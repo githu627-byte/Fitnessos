@@ -1,6 +1,6 @@
 /// Auto-generated exercise GIF mapping
 /// Generated: 2026-01-14 07:56:48.638629
-/// Total exercises: 534
+/// Total exercises: 587
 
 class ExerciseGifInfo {
   final String folderName;
@@ -3759,6 +3759,385 @@ class ExerciseGifMapping {
       gif720: '12491301-Wipers-(straight-leg)_Waist_720.mp4',
       gif1080: '',
     ), // Wipers-(straight-leg)
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // NEW EXERCISES - Added 2026-02-20
+    // ═══════════════════════════════════════════════════════════════════════
+
+    // --- From GIF sources (36 exercises) ---
+    'barbell_prone_incline_curl': ExerciseGifInfo(
+      folderName: '00721301',
+      gif180: '',
+      gif360: '00721301-Barbell-Prone-Incline-Curl_Upper-Arms_360.mp4',
+      gif720: '00721301-Barbell-Prone-Incline-Curl_Upper-Arms_720.mp4',
+      gif1080: '',
+    ), // Barbell-Prone-Incline-Curl
+    'bird_dog': ExerciseGifInfo(
+      folderName: '01351301',
+      gif180: '',
+      gif360: '01351301-Bird-Dog_Waist_360.mp4',
+      gif720: '01351301-Bird-Dog_Waist_720.mp4',
+      gif1080: '',
+    ), // Bird-Dog
+    'butt_kicks': ExerciseGifInfo(
+      folderName: '01461301',
+      gif180: '',
+      gif360: '01461301-Butt-Kicks-(female)_Cardio-FIX_360.mp4',
+      gif720: '01461301-Butt-Kicks-(female)_Cardio-FIX_720.mp4',
+      gif1080: '',
+    ), // Butt-Kicks
+    'high_knee_step_up': ExerciseGifInfo(
+      folderName: '04791301',
+      gif180: '',
+      gif360: '04791301-High-Knee-Step-up_hips_360.mp4',
+      gif720: '04791301-High-Knee-Step-up_hips_720.mp4',
+      gif1080: '',
+    ), // High-Knee-Step-up
+    'jumping_jack': ExerciseGifInfo(
+      folderName: '05161301',
+      gif180: '',
+      gif360: '05161301-Jumping-Jack_Cardio_360.mp4',
+      gif720: '05161301-Jumping-Jack_Cardio_720.mp4',
+      gif1080: '',
+    ), // Jumping-Jack
+    'star_jump': ExerciseGifInfo(
+      folderName: '07971301',
+      gif180: '',
+      gif360: '07971301-Star-Jump_Cardio_360.mp4',
+      gif720: '07971301-Star-Jump_Cardio_720.mp4',
+      gif1080: '',
+    ), // Star-Jump
+    'smith_lateral_step_up': ExerciseGifInfo(
+      folderName: '08841301',
+      gif180: '',
+      gif360: '08841301-Smith-Lateral-Step-Up_Thighs_360.mp4',
+      gif720: '08841301-Smith-Lateral-Step-Up_Thighs_720.mp4',
+      gif1080: '',
+    ), // Smith-Lateral-Step-Up
+    'weighted_frog_pump': ExerciseGifInfo(
+      folderName: '31821301',
+      gif180: '',
+      gif360: '31821301-Weighted-Frog-Pump_Hips_360.mp4',
+      gif720: '31821301-Weighted-Frog-Pump_Hips_720.mp4',
+      gif1080: '',
+    ), // Weighted-Frog-Pump
+    'archer_push_up': ExerciseGifInfo(
+      folderName: '32941301',
+      gif180: '',
+      gif360: '32941301-Archer-Push-up_Chest_360.mp4',
+      gif720: '32941301-Archer-Push-up_Chest_720.mp4',
+      gif1080: '',
+    ), // Archer-Push-up
+    'skater_hops': ExerciseGifInfo(
+      folderName: '33611301',
+      gif180: '',
+      gif360: '33611301-Skater-Hops_360.mp4',
+      gif720: '33611301-Skater-Hops_720.mp4',
+      gif1080: '',
+    ), // Skater-Hops
+    'jump_on_fit_box': ExerciseGifInfo(
+      folderName: '38921301',
+      gif180: '',
+      gif360: '38921301-Jump-on-Fit-Box-(male)_Plyometrics_360.mp4',
+      gif720: '38921301-Jump-on-Fit-Box-(male)_Plyometrics_720.mp4',
+      gif1080: '',
+    ), // Jump-on-Fit-Box
+    'cable_donkey_kickback': ExerciseGifInfo(
+      folderName: '44211301',
+      gif180: '',
+      gif360: '44211301-Cable-Donkey-Kickback-(female)_Hips_360.mp4',
+      gif720: '44211301-Cable-Donkey-Kickback-(female)_Hips_720.mp4',
+      gif1080: '',
+    ), // Cable-Donkey-Kickback
+    'single_straight_leg_glute_bridge_hold': ExerciseGifInfo(
+      folderName: '51981301',
+      gif180: '',
+      gif360: '51981301-Single-Straight-Leg-Glute-Bridge-Hold-(female)_Hips_360.mp4',
+      gif720: '51981301-Single-Straight-Leg-Glute-Bridge-Hold-(female)_Hips_720.mp4',
+      gif1080: '',
+    ), // Single-Straight-Leg-Glute-Bridge-Hold
+    'lying_bicycle_crunch': ExerciseGifInfo(
+      folderName: '52501301',
+      gif180: '',
+      gif360: '52501301-Lying-Bicycle-Crunch_Waist_360.mp4',
+      gif720: '52501301-Lying-Bicycle-Crunch_Waist_720.mp4',
+      gif1080: '',
+    ), // Lying-Bicycle-Crunch
+    'cable_medius_kickback': ExerciseGifInfo(
+      folderName: '54701301',
+      gif180: '',
+      gif360: '54701301-Cable-Medius-Kickback_Hips_360.mp4',
+      gif720: '54701301-Cable-Medius-Kickback_Hips_720.mp4',
+      gif1080: '',
+    ), // Cable-Medius-Kickback
+    'lean_forward_stretch': ExerciseGifInfo(
+      folderName: '56951301',
+      gif180: '',
+      gif360: '56951301-Lean-Forward-Stretch-(female)_Hips_360.mp4',
+      gif720: '56951301-Lean-Forward-Stretch-(female)_Hips_720.mp4',
+      gif1080: '',
+    ), // Lean-Forward-Stretch
+    'barbell_sumo_romanian_deadlift': ExerciseGifInfo(
+      folderName: '57751301',
+      gif180: '',
+      gif360: '57751301-Barbell-Sumo-Romanian-Deadlift-(female)_Hips_360.mp4',
+      gif720: '57751301-Barbell-Sumo-Romanian-Deadlift-(female)_Hips_720.mp4',
+      gif1080: '',
+    ), // Barbell-Sumo-Romanian-Deadlift
+    'toy_soldier_dynamic_stretch': ExerciseGifInfo(
+      folderName: '59781301',
+      gif180: '',
+      gif360: '59781301-Toy-Soldier-Dynamic-Stretch-(male)_Stretching_360.mp4',
+      gif720: '59781301-Toy-Soldier-Dynamic-Stretch-(male)_Stretching_720.mp4',
+      gif1080: '',
+    ), // Toy-Soldier-Dynamic-Stretch
+    'kneeling_straight_leg_kickback': ExerciseGifInfo(
+      folderName: '62091301',
+      gif180: '',
+      gif360: '62091301-Kneeling-Straight-Leg-Kickback-(VERSION-2)-(left)_Hips_360.mp4',
+      gif720: '62091301-Kneeling-Straight-Leg-Kickback-(VERSION-2)-(left)_Hips_720.mp4',
+      gif1080: '',
+    ), // Kneeling-Straight-Leg-Kickback
+    'bicycle_crunch': ExerciseGifInfo(
+      folderName: '62121301',
+      gif180: '',
+      gif360: '62121301-Bicycle-Crunch-(female)_Waist_360.mp4',
+      gif720: '62121301-Bicycle-Crunch-(female)_Waist_720.mp4',
+      gif1080: '',
+    ), // Bicycle-Crunch
+    'single_curtsy_lunge': ExerciseGifInfo(
+      folderName: '63181301',
+      gif180: '',
+      gif360: '63181301-Single-Curtsy-Lunge-(female)_Hips-FIX_360.mp4',
+      gif720: '63181301-Single-Curtsy-Lunge-(female)_Hips-FIX_720.mp4',
+      gif1080: '',
+    ), // Single-Curtsy-Lunge
+    'big_turn_back_stretch': ExerciseGifInfo(
+      folderName: '65401301',
+      gif180: '',
+      gif360: '65401301-Big-Turn-Back-Stretch-(female)_Chest_360.mp4',
+      gif720: '65401301-Big-Turn-Back-Stretch-(female)_Chest_720.mp4',
+      gif1080: '',
+    ), // Big-Turn-Back-Stretch
+    'forward_bend_back_stretch': ExerciseGifInfo(
+      folderName: '67641301',
+      gif180: '',
+      gif360: '67641301-Forward-Bend-Back-Stretch-(female)_Stretching_360.mp4',
+      gif720: '67641301-Forward-Bend-Back-Stretch-(female)_Stretching_720.mp4',
+      gif1080: '',
+    ), // Forward-Bend-Back-Stretch
+    'smith_sumo_chair_squat': ExerciseGifInfo(
+      folderName: '67961301',
+      gif180: '',
+      gif360: '67961301-Smith-Sumo-Chair-Squat-(male)_Hips_360.mp4',
+      gif720: '67961301-Smith-Sumo-Chair-Squat-(male)_Hips_720.mp4',
+      gif1080: '',
+    ), // Smith-Sumo-Chair-Squat
+    'resistance_band_glute_bridge_abduction': ExerciseGifInfo(
+      folderName: '71981301',
+      gif180: '',
+      gif360: '71981301-Resistance-Band-Glute-Bridge-Abduction-(female)_Hips_360.mp4',
+      gif720: '71981301-Resistance-Band-Glute-Bridge-Abduction-(female)_Hips_720.mp4',
+      gif1080: '',
+    ), // Resistance-Band-Glute-Bridge-Abduction
+    'kneeling_hip_flexor_stretch': ExerciseGifInfo(
+      folderName: '72531301',
+      gif180: '',
+      gif360: '72531301-Kneeling-Hip-Flexor-Stretch-(female)_Hips_360.mp4',
+      gif720: '72531301-Kneeling-Hip-Flexor-Stretch-(female)_Hips_720.mp4',
+      gif1080: '',
+    ), // Kneeling-Hip-Flexor-Stretch
+    'dumbbell_reverse_lunge_from_deficit': ExerciseGifInfo(
+      folderName: '73261301',
+      gif180: '',
+      gif360: '73261301-Dumbbell-Reverse-Lunge-from-Deficit-(male)_Thighs_360.mp4',
+      gif720: '73261301-Dumbbell-Reverse-Lunge-from-Deficit-(male)_Thighs_720.mp4',
+      gif1080: '',
+    ), // Dumbbell-Reverse-Lunge-from-Deficit
+    'dumbbell_goblet_sumo_squat': ExerciseGifInfo(
+      folderName: '75471301',
+      gif180: '',
+      gif360: '75471301-Dumbbell-Goblet-Sumo-Squat-(male)_Thighs_360.mp4',
+      gif720: '75471301-Dumbbell-Goblet-Sumo-Squat-(male)_Thighs_720.mp4',
+      gif1080: '',
+    ), // Dumbbell-Goblet-Sumo-Squat
+    'doorway_chest_stretch': ExerciseGifInfo(
+      folderName: '75531301',
+      gif180: '',
+      gif360: '75531301-Doorway-Chest-Stretch-(male)_Chest_360.mp4',
+      gif720: '75531301-Doorway-Chest-Stretch-(male)_Chest_720.mp4',
+      gif1080: '',
+    ), // Doorway-Chest-Stretch
+    'nordic_hamstring_curl': ExerciseGifInfo(
+      folderName: '77461301',
+      gif180: '',
+      gif360: '77461301-Nordic-Hamstring-Curl-(male)_Thighs_360.mp4',
+      gif720: '77461301-Nordic-Hamstring-Curl-(male)_Thighs_720.mp4',
+      gif1080: '',
+    ), // Nordic-Hamstring-Curl
+    'standing_knee_to_chest_stretch': ExerciseGifInfo(
+      folderName: '80621301',
+      gif180: '',
+      gif360: '80621301-Standing-Knee-to-Chest-Stretch-(female)_Stretching_360.mp4',
+      gif720: '80621301-Standing-Knee-to-Chest-Stretch-(female)_Stretching_720.mp4',
+      gif1080: '',
+    ), // Standing-Knee-to-Chest-Stretch
+    'deep_lunge_to_hamstring_stretch': ExerciseGifInfo(
+      folderName: '81621301',
+      gif180: '',
+      gif360: '81621301-Deep-Lunge-to-Hamstring-Stretch-(female)_Stretching_360.mp4',
+      gif720: '81621301-Deep-Lunge-to-Hamstring-Stretch-(female)_Stretching_720.mp4',
+      gif1080: '',
+    ), // Deep-Lunge-to-Hamstring-Stretch
+    'standing_quadriceps_stretch': ExerciseGifInfo(
+      folderName: '83721301',
+      gif180: '',
+      gif360: '83721301-Standing-Quadriceps-Stretch-(female)_Thighs_360.mp4',
+      gif720: '83721301-Standing-Quadriceps-Stretch-(female)_Thighs_720.mp4',
+      gif1080: '',
+    ), // Standing-Quadriceps-Stretch
+    'burpee_jump_box': ExerciseGifInfo(
+      folderName: '87041301',
+      gif180: '',
+      gif360: '87041301-Burpee-Jump-Box-(male)_Plyometrics_360.mp4',
+      gif720: '87041301-Burpee-Jump-Box-(male)_Plyometrics_720.mp4',
+      gif1080: '',
+    ), // Burpee-Jump-Box
+    'dumbbell_row_with_chest_supported': ExerciseGifInfo(
+      folderName: '96981301',
+      gif180: '',
+      gif360: '96981301-Dumbbell-Row-with-Chest-Supported_Back_360.mp4',
+      gif720: '96981301-Dumbbell-Row-with-Chest-Supported_Back_720.mp4',
+      gif1080: '',
+    ), // Dumbbell-Row-with-Chest-Supported
+    'bodyweight_pulse_goblet_squat': ExerciseGifInfo(
+      folderName: '97021301',
+      gif180: '',
+      gif360: '97021301-Bodyweight-Pulse-Goblet-Squat-(male)_Thighs_360.mp4',
+      gif720: '97021301-Bodyweight-Pulse-Goblet-Squat-(male)_Thighs_720.mp4',
+      gif1080: '',
+    ), // Bodyweight-Pulse-Goblet-Squat
+
+    // --- From MP4 sources (17 exercises) ---
+    'arm_stretch': ExerciseGifInfo(
+      folderName: '98011301',
+      gif180: '',
+      gif360: '98011301-Arm-Stretch_Stretching_360.mp4',
+      gif720: '98011301-Arm-Stretch_Stretching_720.mp4',
+      gif1080: '',
+    ), // Arm-Stretch
+    'bent_knee_glute_bridge': ExerciseGifInfo(
+      folderName: '98021301',
+      gif180: '',
+      gif360: '98021301-Bent-Knee-Glute-Bridge_Hips_360.mp4',
+      gif720: '98021301-Bent-Knee-Glute-Bridge_Hips_720.mp4',
+      gif1080: '',
+    ), // Bent-Knee-Glute-Bridge
+    'bird_dog_hip_stretch': ExerciseGifInfo(
+      folderName: '98031301',
+      gif180: '',
+      gif360: '98031301-Bird-Dog-Hip-Stretch_Stretching_360.mp4',
+      gif720: '98031301-Bird-Dog-Hip-Stretch_Stretching_720.mp4',
+      gif1080: '',
+    ), // Bird-Dog-Hip-Stretch
+    'bodyweight_jump_squat_wide_leg': ExerciseGifInfo(
+      folderName: '98041301',
+      gif180: '',
+      gif360: '98041301-Bodyweight-Jump-Squat-Wide-Leg_Thighs_360.mp4',
+      gif720: '98041301-Bodyweight-Jump-Squat-Wide-Leg_Thighs_720.mp4',
+      gif1080: '',
+    ), // Bodyweight-Jump-Squat-Wide-Leg
+    'bulgarian_split_squat': ExerciseGifInfo(
+      folderName: '98051301',
+      gif180: '',
+      gif360: '98051301-Bulgarian-Split-Squat_Thighs_360.mp4',
+      gif720: '98051301-Bulgarian-Split-Squat_Thighs_720.mp4',
+      gif1080: '',
+    ), // Bulgarian-Split-Squat
+    'bulgarian_split_sumo_squat': ExerciseGifInfo(
+      folderName: '98061301',
+      gif180: '',
+      gif360: '98061301-Bulgarian-Split-Sumo-Squat_Thighs_360.mp4',
+      gif720: '98061301-Bulgarian-Split-Sumo-Squat_Thighs_720.mp4',
+      gif1080: '',
+    ), // Bulgarian-Split-Sumo-Squat
+    'cat_pose_upper_back': ExerciseGifInfo(
+      folderName: '98071301',
+      gif180: '',
+      gif360: '98071301-Cat-Pose-Upper-Back_Stretching_360.mp4',
+      gif720: '98071301-Cat-Pose-Upper-Back_Stretching_720.mp4',
+      gif1080: '',
+    ), // Cat-Pose-Upper-Back
+    'crossover_high_knee': ExerciseGifInfo(
+      folderName: '98081301',
+      gif180: '',
+      gif360: '98081301-Crossover-High-Knee-Cardio_Cardio_360.mp4',
+      gif720: '98081301-Crossover-High-Knee-Cardio_Cardio_720.mp4',
+      gif1080: '',
+    ), // Crossover-High-Knee
+    'donkey_kick_leg_straight': ExerciseGifInfo(
+      folderName: '98091301',
+      gif180: '',
+      gif360: '98091301-Donkey-Kick-Leg-Straight_Hips_360.mp4',
+      gif720: '98091301-Donkey-Kick-Leg-Straight_Hips_720.mp4',
+      gif1080: '',
+    ), // Donkey-Kick-Leg-Straight
+    'glute_bridge_hold': ExerciseGifInfo(
+      folderName: '98101301',
+      gif180: '',
+      gif360: '98101301-Glute-Bridge-Hold_Hips_360.mp4',
+      gif720: '98101301-Glute-Bridge-Hold_Hips_720.mp4',
+      gif1080: '',
+    ), // Glute-Bridge-Hold
+    'glutes_bridge_lift_the_hip_high': ExerciseGifInfo(
+      folderName: '98111301',
+      gif180: '',
+      gif360: '98111301-Glutes-Bridge-Lift-The-Hip-High_Hips_360.mp4',
+      gif720: '98111301-Glutes-Bridge-Lift-The-Hip-High_Hips_720.mp4',
+      gif1080: '',
+    ), // Glutes-Bridge-Lift-The-Hip-High
+    'jump_squat': ExerciseGifInfo(
+      folderName: '98121301',
+      gif180: '',
+      gif360: '98121301-Jump-Squat_Plyometrics_360.mp4',
+      gif720: '98121301-Jump-Squat_Plyometrics_720.mp4',
+      gif1080: '',
+    ), // Jump-Squat
+    'mountain_climber': ExerciseGifInfo(
+      folderName: '98131301',
+      gif180: '',
+      gif360: '98131301-Mountain-Climber_Cardio_360.mp4',
+      gif720: '98131301-Mountain-Climber_Cardio_720.mp4',
+      gif1080: '',
+    ), // Mountain-Climber
+    'pike_push_ups': ExerciseGifInfo(
+      folderName: '98141301',
+      gif180: '',
+      gif360: '98141301-Pike-Push-Ups_Shoulders_360.mp4',
+      gif720: '98141301-Pike-Push-Ups_Shoulders_720.mp4',
+      gif1080: '',
+    ), // Pike-Push-Ups
+    'russian_twist': ExerciseGifInfo(
+      folderName: '98151301',
+      gif180: '',
+      gif360: '98151301-Russian-Twist_Waist_360.mp4',
+      gif720: '98151301-Russian-Twist_Waist_720.mp4',
+      gif1080: '',
+    ), // Russian-Twist
+    'single_leg_glute_bridge': ExerciseGifInfo(
+      folderName: '98161301',
+      gif180: '',
+      gif360: '98161301-Single-Leg-Glute-Bridge_Hips_360.mp4',
+      gif720: '98161301-Single-Leg-Glute-Bridge_Hips_720.mp4',
+      gif1080: '',
+    ), // Single-Leg-Glute-Bridge
+    'sumo_squat': ExerciseGifInfo(
+      folderName: '98171301',
+      gif180: '',
+      gif360: '98171301-Sumo-Squat_Thighs_360.mp4',
+      gif720: '98171301-Sumo-Squat_Thighs_720.mp4',
+      gif1080: '',
+    ), // Sumo-Squat
   };
 
   /// Get the GIF info for an exercise ID

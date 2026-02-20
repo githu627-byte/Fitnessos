@@ -8108,7 +8108,7 @@ class WorkoutData {
   ];
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // ALL EXERCISES - 696 exercises for AI mode custom workout builder
+  // ALL EXERCISES - 749 exercises for AI mode custom workout builder
   // Every ID in this list exists in movement_engine.dart
   // GIF key IDs display videos directly; home IDs use overrides for video
   // ═══════════════════════════════════════════════════════════════════════════
@@ -8789,6 +8789,65 @@ class WorkoutData {
     Exercise(id: 'barbell_wrist_curl', name: 'Wrist Curl', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'barbell_full_zercher_squat', name: 'Zercher Squat', difficulty: 'intermediate', equipment: 'bodyweight'),
     Exercise(id: 'dumbbell_zottman_curl', name: 'Zottman Curl', difficulty: 'intermediate', equipment: 'bodyweight'),
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // NEW EXERCISES - Added 2026-02-20 (53 exercises)
+    // ═══════════════════════════════════════════════════════════════════════
+
+    // --- From GIF sources (36 exercises) ---
+    Exercise(id: 'archer_push_up', name: 'Archer Push-Up', difficulty: 'advanced', equipment: 'bodyweight'),
+    Exercise(id: 'arm_stretch', name: 'Arm Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'barbell_prone_incline_curl', name: 'Prone Incline Curl (Barbell)', difficulty: 'intermediate', equipment: 'barbell'),
+    Exercise(id: 'barbell_sumo_romanian_deadlift', name: 'Sumo Romanian Deadlift (Barbell)', difficulty: 'intermediate', equipment: 'barbell'),
+    Exercise(id: 'bent_knee_glute_bridge', name: 'Bent Knee Glute Bridge', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'bicycle_crunch', name: 'Bicycle Crunch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'big_turn_back_stretch', name: 'Big Turn Back Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'bird_dog', name: 'Bird Dog', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'bird_dog_hip_stretch', name: 'Bird Dog Hip Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'bodyweight_jump_squat_wide_leg', name: 'Jump Squat Wide Leg', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'bodyweight_pulse_goblet_squat', name: 'Pulse Goblet Squat', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'bulgarian_split_squat', name: 'Bulgarian Split Squat', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'bulgarian_split_sumo_squat', name: 'Bulgarian Split Sumo Squat', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'burpee_jump_box', name: 'Burpee Box Jump', difficulty: 'advanced', equipment: 'bodyweight'),
+    Exercise(id: 'butt_kicks', name: 'Butt Kicks', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'cable_donkey_kickback', name: 'Donkey Kickback (Cable)', difficulty: 'intermediate', equipment: 'cable'),
+    Exercise(id: 'cable_medius_kickback', name: 'Medius Kickback (Cable)', difficulty: 'intermediate', equipment: 'cable'),
+    Exercise(id: 'cat_pose_upper_back', name: 'Cat Pose Upper Back', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'crossover_high_knee', name: 'Crossover High Knee', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'deep_lunge_to_hamstring_stretch', name: 'Deep Lunge to Hamstring Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'donkey_kick_leg_straight', name: 'Donkey Kick Leg Straight', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'doorway_chest_stretch', name: 'Doorway Chest Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'dumbbell_goblet_sumo_squat', name: 'Goblet Sumo Squat (Dumbbell)', difficulty: 'intermediate', equipment: 'dumbbell'),
+    Exercise(id: 'dumbbell_reverse_lunge_from_deficit', name: 'Reverse Lunge from Deficit (Dumbbell)', difficulty: 'intermediate', equipment: 'dumbbell'),
+    Exercise(id: 'dumbbell_row_with_chest_supported', name: 'Chest Supported Row (Dumbbell)', difficulty: 'intermediate', equipment: 'dumbbell'),
+    Exercise(id: 'forward_bend_back_stretch', name: 'Forward Bend Back Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'glute_bridge_hold', name: 'Glute Bridge Hold', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'glutes_bridge_lift_the_hip_high', name: 'Glute Bridge Lift High', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'high_knee_step_up', name: 'High Knee Step-Up', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'jump_on_fit_box', name: 'Box Jump', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'jump_squat', name: 'Jump Squat', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'jumping_jack', name: 'Jumping Jack', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'kneeling_hip_flexor_stretch', name: 'Kneeling Hip Flexor Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'kneeling_straight_leg_kickback', name: 'Kneeling Straight Leg Kickback', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'lean_forward_stretch', name: 'Lean Forward Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'lying_bicycle_crunch', name: 'Lying Bicycle Crunch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'mountain_climber', name: 'Mountain Climber', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'nordic_hamstring_curl', name: 'Nordic Hamstring Curl', difficulty: 'advanced', equipment: 'bodyweight'),
+    Exercise(id: 'pike_push_ups', name: 'Pike Push-Up', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'resistance_band_glute_bridge_abduction', name: 'Glute Bridge Abduction (Band)', difficulty: 'beginner', equipment: 'bands'),
+    Exercise(id: 'russian_twist', name: 'Russian Twist', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'single_curtsy_lunge', name: 'Curtsy Lunge', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'single_leg_glute_bridge', name: 'Single Leg Glute Bridge', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'single_straight_leg_glute_bridge_hold', name: 'Single Straight Leg Glute Bridge Hold', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'skater_hops', name: 'Skater Hops', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'smith_lateral_step_up', name: 'Lateral Step-Up (Smith)', difficulty: 'intermediate', equipment: 'machine'),
+    Exercise(id: 'smith_sumo_chair_squat', name: 'Sumo Chair Squat (Smith)', difficulty: 'intermediate', equipment: 'machine'),
+    Exercise(id: 'standing_knee_to_chest_stretch', name: 'Standing Knee to Chest Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'standing_quadriceps_stretch', name: 'Standing Quadriceps Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'star_jump', name: 'Star Jump', difficulty: 'intermediate', equipment: 'bodyweight'),
+    Exercise(id: 'sumo_squat', name: 'Sumo Squat', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'toy_soldier_dynamic_stretch', name: 'Toy Soldier Dynamic Stretch', difficulty: 'beginner', equipment: 'bodyweight'),
+    Exercise(id: 'weighted_frog_pump', name: 'Weighted Frog Pump', difficulty: 'intermediate', equipment: 'bodyweight'),
   ];
 
   // ═══════════════════════════════════════════════════════════════════════════

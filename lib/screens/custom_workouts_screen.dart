@@ -46,7 +46,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
       'ez_bar', 'trap_bar', 'smith', 'lever', 'sled', 'machine'
     ];
 
-    // Load from ExerciseGifMapping (534 exercises)
+    // Load from ExerciseGifMapping (587 exercises)
     ExerciseGifMapping.exerciseGifs.forEach((id, gifInfo) {
       try {
         // Skip duplicate versions
