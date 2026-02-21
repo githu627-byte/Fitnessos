@@ -927,8 +927,8 @@ class WorkoutData {
             secondaryMuscles: ['glutes'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_bulgarian_split_squat',
-            name: 'Bulgarian Split Squat (Dumbbell)',
+            id: 'smith_single_leg_split_squat',
+            name: 'Bulgarian Split Squat (Smith Machine)',
             sets: 4,
             reps: 8,
             primaryMuscles: ['legs'],
@@ -1428,8 +1428,8 @@ class WorkoutData {
             secondaryMuscles: ['glutes'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_bulgarian_split_squat',
-            name: 'Bulgarian Split Squat (Dumbbell)',
+            id: 'smith_single_leg_split_squat',
+            name: 'Bulgarian Split Squat (Smith Machine)',
             sets: 4,
             reps: 8,
             primaryMuscles: ['legs'],
@@ -2020,8 +2020,8 @@ class WorkoutData {
             secondaryMuscles: ['glutes'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_bulgarian_split_squat',
-            name: 'Bulgarian Split Squat (Dumbbell)',
+            id: 'smith_single_leg_split_squat',
+            name: 'Bulgarian Split Squat (Smith Machine)',
             sets: 4,
             reps: 8,
             primaryMuscles: ['legs'],
@@ -2634,8 +2634,8 @@ class WorkoutData {
             secondaryMuscles: ['glutes'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_bulgarian_split_squat',
-            name: 'Bulgarian Split Squat',
+            id: 'smith_single_leg_split_squat',
+            name: 'Bulgarian Split Squat (Smith Machine)',
             sets: 1,
             reps: 0,
             timeSeconds: 45,
@@ -2826,8 +2826,8 @@ class WorkoutData {
             secondaryMuscles: ['glutes'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_bulgarian_split_squat',
-            name: 'Bulgarian Split Squat (Dumbbell)',
+            id: 'smith_single_leg_split_squat',
+            name: 'Bulgarian Split Squat (Smith Machine)',
             sets: 4,
             reps: 8,
             primaryMuscles: ['legs'],
@@ -2850,8 +2850,8 @@ class WorkoutData {
             secondaryMuscles: ['glutes'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_sumo_squat',
-            name: 'Sumo Squat (Dumbbell)',
+            id: 'dumbbell_goblet_sumo_squat',
+            name: 'Goblet Sumo Squat (Dumbbell)',
             sets: 4,
             reps: 8,
             primaryMuscles: ['legs'],
@@ -2882,8 +2882,8 @@ class WorkoutData {
       case 'beginner':
         exercises = [
           WorkoutExercise(
-            id: 'hip_raise_bent_knee',
-            name: 'Glute Bridge',
+            id: 'barbell_hip_thrust',
+            name: 'Hip Thrust (Barbell)',
             sets: 3,
             reps: 12,
             primaryMuscles: ['glutes'],
@@ -2898,8 +2898,8 @@ class WorkoutData {
             secondaryMuscles: ['glutes'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_sumo_squat',
-            name: 'Sumo Squat (Dumbbell)',
+            id: 'dumbbell_goblet_sumo_squat',
+            name: 'Goblet Sumo Squat (Dumbbell)',
             sets: 3,
             reps: 12,
             primaryMuscles: ['legs'],
@@ -2926,8 +2926,8 @@ class WorkoutData {
             secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_bulgarian_split_squat',
-            name: 'Bulgarian Split Squat (Dumbbell)',
+            id: 'smith_single_leg_split_squat',
+            name: 'Bulgarian Split Squat (Smith Machine)',
             sets: 4,
             reps: 10,
             primaryMuscles: ['legs'],
@@ -2950,8 +2950,8 @@ class WorkoutData {
             secondaryMuscles: [],
           ),
           WorkoutExercise(
-            id: 'dumbbell_sumo_squat',
-            name: 'Sumo Squat (Dumbbell)',
+            id: 'dumbbell_goblet_sumo_squat',
+            name: 'Goblet Sumo Squat (Dumbbell)',
             sets: 4,
             reps: 10,
             primaryMuscles: ['legs'],
@@ -2970,8 +2970,8 @@ class WorkoutData {
             secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_bulgarian_split_squat',
-            name: 'Bulgarian Split Squat (Dumbbell)',
+            id: 'smith_single_leg_split_squat',
+            name: 'Bulgarian Split Squat (Smith Machine)',
             sets: 4,
             reps: 8,
             primaryMuscles: ['legs'],
@@ -3002,12 +3002,12 @@ class WorkoutData {
             secondaryMuscles: [],
           ),
           WorkoutExercise(
-            id: 'lever_standing_rear_kick',
-            name: 'Glute Kickback (Machine)',
+            id: 'cable_pull_through',
+            name: 'Cable Pull Through',
             sets: 4,
             reps: 8,
             primaryMuscles: ['glutes'],
-            secondaryMuscles: [],
+            secondaryMuscles: ['hamstrings'],
           ),
         ];
         break;
@@ -3130,8 +3130,8 @@ class WorkoutData {
             secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_bulgarian_split_squat',
-            name: 'Bulgarian Split Squat (Dumbbell)',
+            id: 'smith_single_leg_split_squat',
+            name: 'Bulgarian Split Squat (Smith Machine)',
             sets: 4,
             reps: 8,
             primaryMuscles: ['legs'],
@@ -3241,8 +3241,8 @@ class WorkoutData {
             secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_bulgarian_split_squat',
-            name: 'Bulgarian Split Squat (Dumbbell)',
+            id: 'smith_single_leg_split_squat',
+            name: 'Bulgarian Split Squat (Smith Machine)',
             sets: 4,
             reps: 10,
             primaryMuscles: ['legs'],
@@ -3273,8 +3273,8 @@ class WorkoutData {
             secondaryMuscles: ['glutes'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_sumo_squat',
-            name: 'Sumo Squat (Dumbbell)',
+            id: 'dumbbell_goblet_sumo_squat',
+            name: 'Goblet Sumo Squat (Dumbbell)',
             sets: 4,
             reps: 10,
             primaryMuscles: ['legs'],
@@ -3293,8 +3293,8 @@ class WorkoutData {
             secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_bulgarian_split_squat',
-            name: 'Bulgarian Split Squat (Dumbbell)',
+            id: 'smith_single_leg_split_squat',
+            name: 'Bulgarian Split Squat (Smith Machine)',
             sets: 4,
             reps: 8,
             primaryMuscles: ['legs'],
@@ -3613,8 +3613,8 @@ class WorkoutData {
             secondaryMuscles: ['hamstrings'],
           ),
           WorkoutExercise(
-            id: 'dumbbell_bulgarian_split_squat',
-            name: 'Bulgarian Split Squat (Dumbbell)',
+            id: 'smith_single_leg_split_squat',
+            name: 'Bulgarian Split Squat (Smith Machine)',
             sets: 4,
             reps: 8,
             primaryMuscles: ['legs'],
@@ -3845,8 +3845,8 @@ class WorkoutData {
             secondaryMuscles: [],
           ),
           WorkoutExercise(
-            id: 'dumbbell_bulgarian_split_squat',
-            name: 'Bulgarian Split Squat',
+            id: 'smith_single_leg_split_squat',
+            name: 'Bulgarian Split Squat (Smith Machine)',
             sets: 1,
             reps: 0,
             timeSeconds: 45,
