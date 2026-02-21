@@ -1,5 +1,7 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
 /// ═══════════════════════════════════════════════════════════════════════════
 /// FIREBASE ANALYTICS SERVICE - FitnessOS Event Tracking
@@ -7,6 +9,8 @@ import 'package:flutter/foundation.dart';
 /// Singleton service for logging all user events to Firebase Analytics.
 /// Organized by: User Properties, App Lifecycle, Onboarding, Auth, Paywall,
 /// Navigation, Workouts, AI Camera, Recording, Profile, Errors.
+///
+/// Gracefully degrades to no-op when Firebase is not configured.
 /// ═══════════════════════════════════════════════════════════════════════════
 
 class FirebaseAnalyticsService {
@@ -14,31 +18,57 @@ class FirebaseAnalyticsService {
   static final FirebaseAnalyticsService _instance = FirebaseAnalyticsService._();
   factory FirebaseAnalyticsService() => _instance;
 
-  final FirebaseAnalytics _analytics = FirebaseAnalytics.instance;
+  static bool _firebaseAvailable = false;
+  FirebaseAnalytics? _analytics;
 
-  /// Navigator observer for automatic route tracking
-  FirebaseAnalyticsObserver get observer =>
-      FirebaseAnalyticsObserver(analytics: _analytics);
+  /// Call once during app startup. Safe to call even if Firebase isn't configured.
+  static Future<void> initialize() async {
+    try {
+      await Firebase.initializeApp();
+      _instance._analytics = FirebaseAnalytics.instance;
+      _firebaseAvailable = true;
+      debugPrint('Firebase Analytics initialized');
+    } catch (e) {
+      _firebaseAvailable = false;
+      debugPrint('Firebase not configured — analytics disabled: $e');
+    }
+  }
+
+  /// Navigator observer for automatic route tracking.
+  /// Returns a no-op observer when Firebase is not available.
+  NavigatorObserver get observer {
+    if (_firebaseAvailable && _analytics != null) {
+      return FirebaseAnalyticsObserver(analytics: _analytics!);
+    }
+    return NavigatorObserver();
+  }
 
   // ═══════════════════════════════════════════════════════════════════════════
   // CORE HELPERS
   // ═══════════════════════════════════════════════════════════════════════════
 
   Future<void> setUserId(String? userId) async {
-    await _analytics.setUserId(id: userId);
+    if (!_firebaseAvailable) return;
+    try {
+      await _analytics!.setUserId(id: userId);
+    } catch (e) {
+      debugPrint('Analytics setUserId error: $e');
+    }
   }
 
   Future<void> _logEvent(String name, [Map<String, Object>? params]) async {
+    if (!_firebaseAvailable) return;
     try {
-      await _analytics.logEvent(name: name, parameters: params);
+      await _analytics!.logEvent(name: name, parameters: params);
     } catch (e) {
       debugPrint('Analytics error ($name): $e');
     }
   }
 
   Future<void> _setUserProperty(String name, String? value) async {
+    if (!_firebaseAvailable) return;
     try {
-      await _analytics.setUserProperty(name: name, value: value);
+      await _analytics!.setUserProperty(name: name, value: value);
     } catch (e) {
       debugPrint('Analytics user property error ($name): $e');
     }
@@ -164,11 +194,17 @@ class FirebaseAnalyticsService {
   Future<void> logScreenView({
     required String screenName,
     String? screenClass,
-  }) =>
-      _analytics.logScreenView(
+  }) async {
+    if (!_firebaseAvailable) return;
+    try {
+      await _analytics!.logScreenView(
         screenName: screenName,
         screenClass: screenClass,
       );
+    } catch (e) {
+      debugPrint('Analytics error (screen_view): $e');
+    }
+  }
 
   Future<void> logTabSelected({required String tabName}) =>
       _logEvent('tab_selected', {'tab_name': tabName});
