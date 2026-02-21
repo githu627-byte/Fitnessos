@@ -397,17 +397,30 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
       FirebaseAnalyticsService().logSetCompleted(exerciseId: _committedWorkout!.exercises[_currentExerciseIndex].id, setNumber: setComplete, reps: _session?.completedRepsPerSet.lastOrNull ?? 0, durationSeconds: _setElapsedSeconds);
       print('📞 onSetComplete callback: setComplete=$setComplete, totalSets=$totalSets');
       print('   Current exercise: ${_currentExerciseIndex + 1}/${_committedWorkout?.exercises.length ?? 0}');
-      
+
       if (setComplete >= totalSets) {
         // ALL SETS DONE FOR THIS EXERCISE - Move to next exercise (with rest)
         print('✅ All sets complete for this exercise!');
         print('→ Calling _moveToNextExercise()');
+        // Triple-buzz for exercise complete
+        HapticFeedback.heavyImpact();
+        Future.delayed(const Duration(milliseconds: 200), () {
+          HapticFeedback.heavyImpact();
+          Future.delayed(const Duration(milliseconds: 200), () {
+            HapticFeedback.heavyImpact();
+          });
+        });
         _isBetweenExerciseRest = true; // Mark as between-exercise rest
         _moveToNextExercise();
       } else {
         // MORE SETS TO GO - Start rest timer for SAME exercise
         print('⏸️ Set $setComplete/$totalSets complete, starting rest');
         print('→ Calling _startRest()');
+        // Double-buzz pattern for set complete
+        HapticFeedback.heavyImpact();
+        Future.delayed(const Duration(milliseconds: 200), () {
+          HapticFeedback.heavyImpact();
+        });
         _isBetweenExerciseRest = false; // Mark as between-set rest
         _startRest();
       }

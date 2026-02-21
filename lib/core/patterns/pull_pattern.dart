@@ -26,10 +26,10 @@ class PullPattern implements BasePattern {
   bool _justHitTrigger = false;
 
   // ANGLE THRESHOLDS (TUNED)
-  // Extension: 125 degrees (Low to allow floor-view foreshortening)
-  // Flexion: 105 degrees (Higher to ensure easy trigger)
-  static const double _extensionThreshold = 125.0;
-  static const double _flexionThreshold = 105.0;
+  // RELAXED for free-weight rows from diagonal camera angle
+  // Foreshortening makes elbows appear more open than they are
+  static const double _extensionThreshold = 130.0;   // Was 125 — more room to reset
+  static const double _flexionThreshold = 115.0;     // Was 105 — triggers on moderate pull
 
   double _currentAngle = 180;
   double _smoothedAngle = 180;

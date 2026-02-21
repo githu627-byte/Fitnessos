@@ -16,6 +16,8 @@ class PushPattern implements BasePattern {
   final bool inverted; // false = Pushup (Start Extended), true = OHP (Start Bent)
   final String cueGood;
   final String cueBad;
+  final double extensionThreshold;
+  final double flexionThreshold;
 
   RepState _state = RepState.ready;
   bool _baselineCaptured = false;
@@ -23,11 +25,10 @@ class PushPattern implements BasePattern {
   String _feedback = "";
   bool _justHitTrigger = false;
 
-  // ANGLE THRESHOLDS
-  // Extension: Arm Straight (> 150 degrees)
-  // Flexion: Arm Bent (< 95 degrees)
-  static const double _extensionThreshold = 150.0;
-  static const double _flexionThreshold = 95.0;
+  // DEFAULT THRESHOLDS
+  static const double _defaultExtensionThreshold = 150.0;
+  static const double _defaultFlexionThreshold = 95.0;
+  static const double _ohpExtensionThreshold = 138.0;  // Relaxed for OHP
 
   // Current angle for UI gauge
   double _currentAngle = 180;
@@ -43,7 +44,11 @@ class PushPattern implements BasePattern {
     this.inverted = false,
     this.cueGood = "Good depth!",
     this.cueBad = "Lock out!",
-  });
+    double? extensionThreshold,
+    double? flexionThreshold,
+  }) : extensionThreshold = extensionThreshold ??
+         (inverted ? _ohpExtensionThreshold : _defaultExtensionThreshold),
+       flexionThreshold = flexionThreshold ?? _defaultFlexionThreshold;
 
   @override RepState get state => _state;
   @override bool get isLocked => _baselineCaptured;
@@ -58,11 +63,11 @@ class PushPattern implements BasePattern {
   double get chargeProgress {
     // UI Progress Bar Logic
     if (inverted) {
-      // OHP: Start Bent (~70) -> Goal Straight (180)
-      return ((_currentAngle - 70) / (160 - 70)).clamp(0.0, 1.0);
+      // OHP: Start Bent (~70) -> Goal Straight (extensionThreshold)
+      return ((_currentAngle - 70) / (extensionThreshold - 70)).clamp(0.0, 1.0);
     } else {
-      // Pushup: Start Straight (180) -> Goal Bent (90)
-      return ((180 - _currentAngle) / (180 - 90)).clamp(0.0, 1.0);
+      // Pushup: Start Straight (180) -> Goal Bent (flexionThreshold)
+      return ((180 - _currentAngle) / (180 - flexionThreshold)).clamp(0.0, 1.0);
     }
   }
 
@@ -151,8 +156,8 @@ class PushPattern implements BasePattern {
     _smoothedAngle = (_smoothingFactor * rawAngle) + ((1 - _smoothingFactor) * _smoothedAngle);
     _currentAngle = _smoothedAngle;
 
-    bool isBent = _currentAngle <= _flexionThreshold;      
-    bool isStraight = _currentAngle >= _extensionThreshold;
+    bool isBent = _currentAngle <= flexionThreshold;
+    bool isStraight = _currentAngle >= extensionThreshold;
 
     // 3. State Machine
     if (inverted) {
