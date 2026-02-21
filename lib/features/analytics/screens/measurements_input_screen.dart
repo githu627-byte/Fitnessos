@@ -7,6 +7,7 @@ import '../../../utils/app_colors.dart';
 import '../../../widgets/glow_button.dart';
 import '../models/analytics_data.dart';
 import '../services/analytics_service.dart';
+import '../../../services/firebase_analytics_service.dart';
 
 /// ═══════════════════════════════════════════════════════════════════════════
 /// MEASUREMENTS INPUT SCREEN - Beautiful Bottom Sheet
@@ -68,6 +69,7 @@ class _MeasurementsInputScreenState extends State<MeasurementsInputScreen>
   @override
   void initState() {
     super.initState();
+    FirebaseAnalyticsService().logMeasurementsOpened();
     _animController = AnimationController(
       duration: const Duration(milliseconds: 400),
       vsync: this,
@@ -147,7 +149,8 @@ class _MeasurementsInputScreenState extends State<MeasurementsInputScreen>
       );
       
       await AnalyticsService.saveMeasurement(measurement);
-      
+      FirebaseAnalyticsService().logMeasurementLogged(type: 'body_measurements');
+
       // Save photos
       for (int i = 0; i < _selectedPhotos.length; i++) {
         final photo = ProgressPhoto(

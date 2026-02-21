@@ -8,6 +8,7 @@ import '../../models/goal_config.dart';
 import '../../providers/user_provider.dart';
 import '../../providers/workout_schedule_provider.dart';
 import '../../services/workout_schedule_generator.dart';
+import '../../services/firebase_analytics_service.dart';
 import '../home_screen.dart';
 import '../auth/sign_in_screen.dart';
 import 'personal_info_screen.dart';
@@ -42,6 +43,12 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
   int _daysPerWeek = 3;
   int _minutesPerSession = 30;
   bool _hasCompletedPayment = false;
+  final DateTime _onboardingStartTime = DateTime.now();
+
+  static const _v2StepNames = [
+    'welcome', 'personal_info', 'goal', 'experience_level',
+    'constraints', 'time_commitment', 'camera_permission', 'payment', 'completion',
+  ];
 
   void _nextPage() {
     if (_currentPage < _totalPages - 1) {
@@ -63,6 +70,12 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
   }
 
   Future<void> _skipToHome() async {
+    final totalSeconds = DateTime.now().difference(_onboardingStartTime).inSeconds;
+    final fa = FirebaseAnalyticsService();
+    fa.logOnboardingCompleted(totalTimeSeconds: totalSeconds);
+    fa.setOnboardingCompleted(true);
+    if (_selectedGoal != null) fa.setFitnessGoal(_selectedGoal!);
+    if (_experienceLevel != null) fa.setExperienceLevel(_experienceLevel!);
     // Save all user data
     final user = UserModel(
       name: _name.isNotEmpty ? _name : 'User',
@@ -134,6 +147,10 @@ class _V2OnboardingMainState extends ConsumerState<V2OnboardingMain> {
             physics: const NeverScrollableScrollPhysics(),
             onPageChanged: (index) {
               setState(() => _currentPage = index);
+              FirebaseAnalyticsService().logOnboardingStepCompleted(
+                stepName: _v2StepNames[index],
+                stepNumber: index,
+              );
             },
             children: [
               _buildWelcomeScreen(),

@@ -6,6 +6,7 @@ import '../utils/app_colors.dart';
 import '../models/workout_models.dart';
 import '../models/exercise_set_data.dart';
 import '../services/unified_workout_save_service.dart';
+import '../services/firebase_analytics_service.dart';
 import '../widgets/exercise_animation_widget.dart';
 import '../widgets/quick_swap_modal.dart';
 import '../widgets/workout_summary_screen.dart';
@@ -52,6 +53,15 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
     _workoutStartTime = DateTime.now();
     _initializeExercise();
     _startWorkoutTimer();
+
+    FirebaseAnalyticsService().logScreenView(screenName: 'manual_training', screenClass: 'ManualTrainingScreen');
+    FirebaseAnalyticsService().logWorkoutStarted(
+      mode: 'manual',
+      workoutName: widget.workout.name,
+      exerciseCount: widget.workout.exercises.length,
+      isPreset: true,
+      isCustom: false,
+    );
 
     // Keep screen awake during workout
     WakelockPlus.enable();
@@ -115,9 +125,16 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
       'timestamp': DateTime.now(),
     });
     
+    FirebaseAnalyticsService().logSetCompleted(
+      exerciseId: exercise.id,
+      setNumber: _currentSet,
+      reps: _currentReps,
+      durationSeconds: _totalElapsedSeconds,
+    );
+
     // Haptic feedback
     HapticFeedback.mediumImpact();
-    
+
     // Check if all sets complete
     if (_currentSet >= exercise.sets) {
       _moveToNextExercise();
@@ -199,6 +216,7 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
   }
 
   void _skipRest() {
+    FirebaseAnalyticsService().logRestTimerSkipped(secondsRemaining: _restTimeRemaining);
     _restTimer?.cancel();
     _endRest();
   }
@@ -269,8 +287,17 @@ class _ManualTrainingScreenState extends ConsumerState<ManualTrainingScreen> {
     final totalSets = _workoutLog.values.fold<int>(0, (sum, sets) => sum + sets.length);
     final calories = actualCalories; // Use accurate calories from service
     
+    FirebaseAnalyticsService().logWorkoutCompleted(
+      mode: 'manual',
+      durationSeconds: duration.inSeconds,
+      totalReps: totalReps,
+      totalSets: totalSets,
+      exercisesCompleted: widget.workout.exercises.length,
+      workoutName: widget.workout.name,
+    );
+
     HapticFeedback.heavyImpact();
-    
+
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (context) => WorkoutSummaryScreen(

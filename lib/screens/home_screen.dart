@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../utils/app_colors.dart';
 import '../widgets/cyber_grid_background.dart';
+import '../services/firebase_analytics_service.dart';
 import 'tabs/home_tab.dart';
 import 'tabs/train_tab.dart';
 import 'tabs/workouts_tab.dart';
@@ -32,7 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  static const _tabNames = ['HOME', 'WORKOUTS', 'PROFILE'];
+
   void changeTab(int index) {
+    FirebaseAnalyticsService().logTabSelected(tabName: _tabNames[index]);
     setState(() {
       _currentIndex = index;
     });

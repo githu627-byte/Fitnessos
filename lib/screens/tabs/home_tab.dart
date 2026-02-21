@@ -23,6 +23,7 @@ import '../../features/analytics/widgets/hero_stats_card.dart';
 import '../../features/analytics/widgets/workout_heatmap_widget.dart';
 import '../../features/analytics/models/analytics_data.dart';
 import '../../features/analytics/services/analytics_service.dart';
+import '../../services/firebase_analytics_service.dart';
 import '../home_screen.dart' show TabNavigator;
 import '../tabs/settings_tab.dart';
 import '../../features/form_checking/form_check_exercise_picker_screen.dart';
@@ -72,6 +73,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     _loadAnalyticsData();
     _loadUserWeight();
     _loadCustomWorkouts();
+    FirebaseAnalyticsService().logScreenView(screenName: 'home_tab', screenClass: 'HomeTab');
   }
 
   Future<void> _loadCustomWorkouts() async {
@@ -2509,6 +2511,7 @@ class _HomeTabState extends ConsumerState<HomeTab> {
     return GestureDetector(
       onTap: () {
         HapticFeedback.mediumImpact();
+        FirebaseAnalyticsService().logFormCheckCardTapped();
         Navigator.push(
           context,
           MaterialPageRoute(

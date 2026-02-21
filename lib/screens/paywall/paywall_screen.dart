@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../services/firebase_analytics_service.dart';
 
 /// ═══════════════════════════════════════════════════════════════════════════════
 /// PAYWALL SCREEN - Elite Black + Cyber Lime
@@ -23,6 +24,13 @@ class PaywallScreen extends StatefulWidget {
 
 class _PaywallScreenState extends State<PaywallScreen> {
   bool _isYearly = true; // default to yearly (better value)
+  final DateTime _openedAt = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAnalyticsService().logPaywallViewed(source: 'onboarding');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +54,10 @@ class _PaywallScreenState extends State<PaywallScreen> {
                     child: GestureDetector(
                       onTap: () {
                         HapticFeedback.lightImpact();
+                        FirebaseAnalyticsService().logPaywallDismissed(
+                          source: 'onboarding',
+                          timeOnScreenSeconds: DateTime.now().difference(_openedAt).inSeconds,
+                        );
                         Navigator.of(context).pushReplacementNamed('/home');
                       },
                       child: Container(
@@ -254,8 +266,14 @@ class _PaywallScreenState extends State<PaywallScreen> {
                 GestureDetector(
                   onTap: () {
                     HapticFeedback.mediumImpact();
+                    final productId = _isYearly ? PaywallScreen.yearlyProductId : PaywallScreen.monthlyProductId;
+                    final price = _isYearly ? '24.99' : '2.99';
+                    FirebaseAnalyticsService().logSubscriptionStarted(
+                      productId: productId,
+                      price: price,
+                      isTrial: false,
+                    );
                     // TODO: Trigger purchase with RevenueCat
-                    // final productId = _isYearly ? PaywallScreen.yearlyProductId : PaywallScreen.monthlyProductId;
                     // For now, just go home
                     Navigator.of(context).pushReplacementNamed('/home');
                   },

@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui' as ui;
 import '../utils/app_colors.dart';
+import '../services/firebase_analytics_service.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:typed_data';
 import 'dart:io';
@@ -49,11 +50,12 @@ class _WorkoutSummaryScreenState extends State<WorkoutSummaryScreen>
       vsync: this,
       duration: const Duration(milliseconds: 800),
     )..forward();
-    
+
     _slideController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 600),
     )..forward();
+    FirebaseAnalyticsService().logScreenView(screenName: 'workout_summary', screenClass: 'WorkoutSummaryScreen');
   }
 
   @override
@@ -75,6 +77,7 @@ class _WorkoutSummaryScreenState extends State<WorkoutSummaryScreen>
   Future<void> _shareWorkout() async {
     try {
       HapticFeedback.mediumImpact();
+      FirebaseAnalyticsService().logWorkoutRecordingShared();
       
       // Capture the summary as an image
       final boundary = _summaryKey.currentContext?.findRenderObject() as RenderRepaintBoundary?;

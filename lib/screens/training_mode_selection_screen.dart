@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../utils/app_colors.dart';
 import '../models/workout_models.dart';
+import '../services/firebase_analytics_service.dart';
 
 /// 🔥 Mode selection screen - Choose Auto AI or Manual training
 class TrainingModeSelectionScreen extends StatelessWidget {
@@ -88,6 +89,7 @@ class TrainingModeSelectionScreen extends StatelessWidget {
                   ),
                   onTap: () {
                     HapticFeedback.mediumImpact();
+                    FirebaseAnalyticsService().logTrainingModeSelected(mode: 'auto');
                     Navigator.of(context).pop('auto');
                   },
                 ),
@@ -109,6 +111,7 @@ class TrainingModeSelectionScreen extends StatelessWidget {
                 ),
                 onTap: () {
                   HapticFeedback.mediumImpact();
+                  FirebaseAnalyticsService().logTrainingModeSelected(mode: 'manual');
                   Navigator.of(context).pop('manual');
                 },
               ),
@@ -126,6 +129,7 @@ class TrainingModeSelectionScreen extends StatelessWidget {
                 ),
                 onTap: () {
                   HapticFeedback.mediumImpact();
+                  FirebaseAnalyticsService().logTrainingModeSelected(mode: 'hevy_manual');
                   Navigator.of(context).pop('hevy_manual');
                 },
               ),

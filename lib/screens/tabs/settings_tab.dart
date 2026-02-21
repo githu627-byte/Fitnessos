@@ -3,12 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:in_app_review/in_app_review.dart';
 import '../../utils/app_colors.dart';
 import 'settings_detail_screens.dart';
+import '../../services/firebase_analytics_service.dart';
 
 class SettingsTab extends StatelessWidget {
   const SettingsTab({super.key});
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalyticsService().logScreenView(screenName: 'settings', screenClass: 'SettingsTab');
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(

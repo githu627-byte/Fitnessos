@@ -11,6 +11,7 @@ import '../providers/workout_provider.dart';
 import '../providers/workout_schedule_provider.dart';
 import '../services/storage_service.dart';
 import '../data/exercise_gif_mapping.dart';
+import '../services/firebase_analytics_service.dart';
 import 'exercise_explanation_screen.dart';
 import 'exercise_config_screen.dart';
 import 'workout_review_screen.dart';
@@ -529,6 +530,13 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    FirebaseAnalyticsService().logScreenView(screenName: 'custom_workouts', screenClass: 'CustomWorkoutsScreen');
+    FirebaseAnalyticsService().logCustomWorkoutStarted(mode: _workoutMode);
+  }
+
+  @override
   void dispose() {
     _searchController.dispose();
     _workoutNameController.dispose();
@@ -546,6 +554,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
           restSeconds: 60,
         );
       });
+      FirebaseAnalyticsService().logExerciseAddedToCustom(exerciseId: exercise.id, mode: _workoutMode);
       HapticFeedback.mediumImpact();
     }
   }
@@ -555,6 +564,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
       _selectedExercises.removeWhere((e) => e.id == exercise.id);
       _exerciseSettings.remove(exercise.id);
     });
+    FirebaseAnalyticsService().logExerciseRemovedFromCustom(exerciseId: exercise.id);
     HapticFeedback.lightImpact();
   }
 
@@ -606,7 +616,7 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
     // Save if user chose to
     if (shouldSave == true) {
       final storage = await StorageService.getInstance();
-      
+
       // Save to appropriate storage based on mode
       if (_workoutMode == 'manual') {
         await storage.saveManualWorkout(customPreset);
@@ -614,6 +624,12 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
         await storage.saveCustomWorkout(customPreset); // AI workouts
       }
     }
+
+    FirebaseAnalyticsService().logCustomWorkoutSaved(
+      exerciseCount: _selectedExercises.length,
+      mode: _workoutMode,
+      name: _workoutNameController.text.isEmpty ? 'My Custom Workout' : _workoutNameController.text,
+    );
 
     // ═══════════════════════════════════════════════════════════════════════════
     // Ask user which card to commit to (same as workouts_tab does)
@@ -1355,6 +1371,15 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
           border: InputBorder.none,
         ),
         onChanged: (_) => setState(() {}),
+        onSubmitted: (query) {
+          if (query.isNotEmpty) {
+            FirebaseAnalyticsService().logExerciseSearched(
+              query: query,
+              resultsCount: _filteredExercises.length,
+              mode: _workoutMode,
+            );
+          }
+        },
       ),
     );
   }
