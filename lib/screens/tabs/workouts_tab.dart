@@ -1068,26 +1068,55 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
 
   int _getCaloriesPerSet(String exerciseName) {
     final name = exerciseName.toLowerCase();
-    
-    if (name.contains('squat') || name.contains('deadlift') || 
+
+    // High intensity compound movements (10-12 cal/set)
+    if (name.contains('squat') || name.contains('deadlift') ||
         name.contains('clean') || name.contains('snatch') ||
         name.contains('thruster') || name.contains('burpee')) {
       return 12;
     }
-    
+
+    // Medium-high compound (8-10 cal/set)
     if (name.contains('bench press') || name.contains('overhead press') ||
         name.contains('military press') || name.contains('row') ||
         name.contains('pull-up') || name.contains('chin-up') ||
         name.contains('lunge') || name.contains('leg press')) {
       return 9;
     }
-    
+
+    // Medium intensity (6-8 cal/set)
     if (name.contains('dip') || name.contains('push-up') ||
         name.contains('cable') || name.contains('machine') ||
         name.contains('leg curl') || name.contains('leg extension')) {
       return 7;
     }
-    
+
+    // HIIT/Cardio (10 cal/set)
+    if (name.contains('jumping jack') || name.contains('mountain climber') ||
+        name.contains('high knee') || name.contains('skater')) {
+      return 10;
+    }
+
+    // Glute-dominant (8 cal/set)
+    if (name.contains('glute') || name.contains('hip thrust') ||
+        name.contains('bridge') || name.contains('kickback') ||
+        name.contains('donkey') || name.contains('frog pump')) {
+      return 8;
+    }
+
+    // Core exercises (6 cal/set)
+    if (name.contains('crunch') || name.contains('sit-up') || name.contains('sit up') ||
+        name.contains('plank') || name.contains('russian twist') || name.contains('wood chop') ||
+        name.contains('bird dog') || name.contains('fire hydrant')) {
+      return 6;
+    }
+
+    // Calf & ankle (4 cal/set)
+    if (name.contains('calf') || (name.contains('raise') && !name.contains('front'))) {
+      return 4;
+    }
+
+    // Isolation/lower intensity (4-6 cal/set)
     return 5;
   }
 

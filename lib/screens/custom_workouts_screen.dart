@@ -1725,12 +1725,56 @@ class _CustomWorkoutsScreenState extends ConsumerState<CustomWorkoutsScreen> {
 
   int _getCaloriesPerSet(String name) {
     final lower = name.toLowerCase();
-    if (lower.contains('squat') || lower.contains('deadlift') || 
-        lower.contains('burpee')) return 12;
-    if (lower.contains('press') || lower.contains('row') || 
-        lower.contains('pull')) return 9;
-    if (lower.contains('curl') || lower.contains('extension')) return 5;
-    return 7;
+
+    // High intensity compound movements (10-12 cal/set)
+    if (lower.contains('squat') || lower.contains('deadlift') ||
+        lower.contains('clean') || lower.contains('snatch') ||
+        lower.contains('thruster') || lower.contains('burpee')) {
+      return 12;
+    }
+
+    // Medium-high compound (8-10 cal/set)
+    if (lower.contains('bench press') || lower.contains('overhead press') ||
+        lower.contains('military press') || lower.contains('row') ||
+        lower.contains('pull-up') || lower.contains('chin-up') ||
+        lower.contains('lunge') || lower.contains('leg press')) {
+      return 9;
+    }
+
+    // Medium intensity (6-8 cal/set)
+    if (lower.contains('dip') || lower.contains('push-up') ||
+        lower.contains('cable') || lower.contains('machine') ||
+        lower.contains('leg curl') || lower.contains('leg extension')) {
+      return 7;
+    }
+
+    // HIIT/Cardio (10 cal/set)
+    if (lower.contains('jumping jack') || lower.contains('mountain climber') ||
+        lower.contains('high knee') || lower.contains('skater')) {
+      return 10;
+    }
+
+    // Glute-dominant (8 cal/set)
+    if (lower.contains('glute') || lower.contains('hip thrust') ||
+        lower.contains('bridge') || lower.contains('kickback') ||
+        lower.contains('donkey') || lower.contains('frog pump')) {
+      return 8;
+    }
+
+    // Core exercises (6 cal/set)
+    if (lower.contains('crunch') || lower.contains('sit-up') || lower.contains('sit up') ||
+        lower.contains('plank') || lower.contains('russian twist') || lower.contains('wood chop') ||
+        lower.contains('bird dog') || lower.contains('fire hydrant')) {
+      return 6;
+    }
+
+    // Calf & ankle (4 cal/set)
+    if (lower.contains('calf') || (lower.contains('raise') && !lower.contains('front'))) {
+      return 4;
+    }
+
+    // Isolation/lower intensity (4-6 cal/set)
+    return 5;
   }
 }
 
