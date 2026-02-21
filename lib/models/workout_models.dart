@@ -196,7 +196,32 @@ class WorkoutPreset {
         name.contains('leg curl') || name.contains('leg extension')) {
       return 7;
     }
-    
+
+    // HIIT/Cardio (10 cal/set)
+    if (name.contains('jumping jack') || name.contains('mountain climber') ||
+        name.contains('high knee') || name.contains('skater')) {
+      return 10;
+    }
+
+    // Glute-dominant (8 cal/set)
+    if (name.contains('glute') || name.contains('hip thrust') ||
+        name.contains('bridge') || name.contains('kickback') ||
+        name.contains('donkey') || name.contains('frog pump')) {
+      return 8;
+    }
+
+    // Core exercises (6 cal/set)
+    if (name.contains('crunch') || name.contains('sit-up') || name.contains('sit up') ||
+        name.contains('plank') || name.contains('russian twist') || name.contains('wood chop') ||
+        name.contains('bird dog') || name.contains('fire hydrant')) {
+      return 6;
+    }
+
+    // Calf & ankle (4 cal/set)
+    if (name.contains('calf') || (name.contains('raise') && !name.contains('front'))) {
+      return 4;
+    }
+
     // Isolation/lower intensity (4-6 cal/set)
     return 5;
   }
@@ -322,7 +347,32 @@ class LockedWorkout {
         name.contains('leg curl') || name.contains('leg extension')) {
       return 7;
     }
-    
+
+    // HIIT/Cardio (10 cal/set)
+    if (name.contains('jumping jack') || name.contains('mountain climber') ||
+        name.contains('high knee') || name.contains('skater')) {
+      return 10;
+    }
+
+    // Glute-dominant (8 cal/set)
+    if (name.contains('glute') || name.contains('hip thrust') ||
+        name.contains('bridge') || name.contains('kickback') ||
+        name.contains('donkey') || name.contains('frog pump')) {
+      return 8;
+    }
+
+    // Core exercises (6 cal/set)
+    if (name.contains('crunch') || name.contains('sit-up') || name.contains('sit up') ||
+        name.contains('plank') || name.contains('russian twist') || name.contains('wood chop') ||
+        name.contains('bird dog') || name.contains('fire hydrant')) {
+      return 6;
+    }
+
+    // Calf & ankle (4 cal/set)
+    if (name.contains('calf') || (name.contains('raise') && !name.contains('front'))) {
+      return 4;
+    }
+
     return 5;
   }
 
