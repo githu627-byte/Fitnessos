@@ -9,7 +9,6 @@ import 'package:timezone/data/latest.dart' as tzdata;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'utils/app_theme.dart';
 import 'screens/home_screen.dart';
@@ -45,10 +44,9 @@ void main() async {
   // ═══════════════════════════════════════════════════════════════════════════
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // FIREBASE SETUP
+  // FIREBASE SETUP — safe init, no-ops if Firebase isn't configured
   // ═══════════════════════════════════════════════════════════════════════════
-  await Firebase.initializeApp();
-  debugPrint('✅ Firebase initialized');
+  await FirebaseAnalyticsService.initialize();
 
   // Log app_opened with days since install
   final prefs = await SharedPreferences.getInstance();
@@ -59,7 +57,6 @@ void main() async {
   final daysSinceInstall = installTimestamp != null
       ? DateTime.now().difference(DateTime.fromMillisecondsSinceEpoch(installTimestamp)).inDays
       : 0;
-  // isSubscribed check will use a simple prefs flag; screens update it on subscription changes
   final isSubscribed = prefs.getBool('is_subscribed') ?? false;
   FirebaseAnalyticsService().logAppOpened(
     isSubscribed: isSubscribed,
