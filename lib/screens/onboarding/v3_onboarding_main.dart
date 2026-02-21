@@ -9,6 +9,7 @@ import '../../models/goal_config.dart';
 import '../../providers/user_provider.dart';
 import '../../providers/workout_schedule_provider.dart';
 import '../../services/workout_schedule_generator.dart';
+import '../../services/firebase_analytics_service.dart';
 import '../home_screen.dart';
 import '../auth/sign_in_screen.dart';
 
@@ -59,7 +60,11 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
     Future.delayed(const Duration(milliseconds: 500), () {
       if (mounted) _gaugeController.forward();
     });
+    FirebaseAnalyticsService().logOnboardingStarted();
+    _onboardingStartTime = DateTime.now();
   }
+
+  DateTime _onboardingStartTime = DateTime.now();
 
   @override
   void dispose() {
@@ -91,6 +96,10 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
 
   Future<void> _completeOnboarding() async {
     HapticFeedback.heavyImpact();
+    final totalSeconds = DateTime.now().difference(_onboardingStartTime).inSeconds;
+    final fa = FirebaseAnalyticsService();
+    fa.logOnboardingCompleted(totalTimeSeconds: totalSeconds);
+    fa.setOnboardingCompleted(true);
 
     final user = UserModel(
       name: _nameController.text.isNotEmpty ? _nameController.text : 'Athlete',
@@ -140,7 +149,14 @@ class _V3OnboardingMainState extends ConsumerState<V3OnboardingMain>
           PageView(
             controller: _pageController,
             physics: const NeverScrollableScrollPhysics(),
-            onPageChanged: (i) => setState(() => _currentPage = i),
+            onPageChanged: (i) {
+              setState(() => _currentPage = i);
+              const stepNames = ['ai_tracking', 'library', 'analytics', 'import', 'personal_info', 'setup'];
+              FirebaseAnalyticsService().logOnboardingStepCompleted(
+                stepName: stepNames[i],
+                stepNumber: i,
+              );
+            },
             children: [
               _page1AITracking(),
               _page2Library(),

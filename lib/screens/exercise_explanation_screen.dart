@@ -6,6 +6,7 @@ import '../utils/app_colors.dart';
 import '../widgets/exercise_animation_widget.dart';
 import '../widgets/cyber_grid_background.dart';
 import '../data/exercise_muscle_database.dart';
+import '../services/firebase_analytics_service.dart';
 
 /// Beautiful exercise explanation screen with animation and floating bubbles
 class ExerciseExplanationScreen extends StatefulWidget {
@@ -27,6 +28,7 @@ class _ExerciseExplanationScreenState extends State<ExerciseExplanationScreen>
   @override
   void initState() {
     super.initState();
+    FirebaseAnalyticsService().logExerciseExplanationViewed(exerciseId: widget.exercise.id);
     _fadeController = AnimationController(
       duration: const Duration(milliseconds: 400),
       vsync: this,

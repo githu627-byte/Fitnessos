@@ -14,7 +14,8 @@ import '../../widgets/exercise_animation_widget.dart';
 import '../../providers/workout_provider.dart';
 import '../../providers/workout_schedule_provider.dart';
 import '../../providers/schedule_date_provider.dart';
-import '../../services/storage_service.dart'; // Add this import
+import '../../services/storage_service.dart';
+import '../../services/firebase_analytics_service.dart';
 import '../../services/calorie_calculation_service.dart'; // NEW: For accurate calorie estimates
 import '../workout_editor_screen.dart';
 import '../custom_workouts_screen.dart';
@@ -143,8 +144,9 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
   @override
   void initState() {
     super.initState();
-    _loadCustomWorkouts(); // Load on init
-    _loadUserWeight(); // Load user weight
+    _loadCustomWorkouts();
+    _loadUserWeight();
+    FirebaseAnalyticsService().logScreenView(screenName: 'workouts_tab', screenClass: 'WorkoutsTab');
   }
   
   Future<void> _loadUserWeight() async {
@@ -924,9 +926,20 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
     required Color color,
     required bool isSelected,
     required VoidCallback onTap,
+    String? presetId,
+    String? oldDifficulty,
   }) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        if (presetId != null && oldDifficulty != null && oldDifficulty != difficulty) {
+          FirebaseAnalyticsService().logDifficultyChanged(
+            presetId: presetId,
+            oldDifficulty: oldDifficulty,
+            newDifficulty: difficulty,
+          );
+        }
+        onTap();
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
         decoration: BoxDecoration(
@@ -1200,10 +1213,12 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                     difficulty: 'beginner',
                     color: Colors.green,
                     isSelected: currentDifficulty == 'beginner',
+                    presetId: preset.id,
+                    oldDifficulty: currentDifficulty,
                     onTap: () {
                       setState(() {
                         _selectedDifficulties[preset.id] = 'beginner';
-                        _editedPresets.remove(preset.id); // Clear edits on difficulty change
+                        _editedPresets.remove(preset.id);
                       });
                       HapticFeedback.lightImpact();
                     },
@@ -1217,10 +1232,12 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                     difficulty: 'intermediate',
                     color: Colors.blue,
                     isSelected: currentDifficulty == 'intermediate',
+                    presetId: preset.id,
+                    oldDifficulty: currentDifficulty,
                     onTap: () {
                       setState(() {
                         _selectedDifficulties[preset.id] = 'intermediate';
-                        _editedPresets.remove(preset.id); // Clear edits on difficulty change
+                        _editedPresets.remove(preset.id);
                       });
                       HapticFeedback.lightImpact();
                     },
@@ -1234,10 +1251,12 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
                     difficulty: 'advanced',
                     color: Colors.orange,
                     isSelected: currentDifficulty == 'advanced',
+                    presetId: preset.id,
+                    oldDifficulty: currentDifficulty,
                     onTap: () {
                       setState(() {
                         _selectedDifficulties[preset.id] = 'advanced';
-                        _editedPresets.remove(preset.id); // Clear edits on difficulty change
+                        _editedPresets.remove(preset.id);
                       });
                       HapticFeedback.lightImpact();
                     },
@@ -1373,6 +1392,13 @@ class _WorkoutsTabState extends ConsumerState<WorkoutsTab> {
 
   Future<void> _commitWorkout(WorkoutPreset preset) async {
     HapticFeedback.mediumImpact();
+    final currentDiff = _selectedDifficulties[preset.id] ?? 'intermediate';
+    FirebaseAnalyticsService().logPresetWorkoutSelected(
+      presetId: preset.id,
+      presetName: preset.name,
+      category: preset.subcategory,
+      difficulty: currentDiff,
+    );
 
     // Use user-edited preset if available, otherwise use difficulty-adjusted template
     final WorkoutPreset adjustedPreset;

@@ -9,6 +9,8 @@ import 'package:timezone/data/latest.dart' as tzdata;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'utils/app_theme.dart';
 import 'screens/home_screen.dart';
 import 'screens/onboarding/v2_onboarding_main.dart';
@@ -16,6 +18,7 @@ import 'screens/onboarding/v3_onboarding_main.dart';
 import 'screens/auth/sign_in_screen.dart';
 import 'screens/paywall/paywall_screen.dart';
 import 'services/workout_alarm_service.dart';
+import 'services/firebase_analytics_service.dart';
 import 'providers/user_provider.dart';
 import 'models/workout_schedule.dart';
 
@@ -40,7 +43,30 @@ void main() async {
   // ═══════════════════════════════════════════════════════════════════════════
   await _initTimezone();
   // ═══════════════════════════════════════════════════════════════════════════
-  
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // FIREBASE SETUP
+  // ═══════════════════════════════════════════════════════════════════════════
+  await Firebase.initializeApp();
+  debugPrint('✅ Firebase initialized');
+
+  // Log app_opened with days since install
+  final prefs = await SharedPreferences.getInstance();
+  final installTimestamp = prefs.getInt('install_timestamp');
+  if (installTimestamp == null) {
+    await prefs.setInt('install_timestamp', DateTime.now().millisecondsSinceEpoch);
+  }
+  final daysSinceInstall = installTimestamp != null
+      ? DateTime.now().difference(DateTime.fromMillisecondsSinceEpoch(installTimestamp)).inDays
+      : 0;
+  // isSubscribed check will use a simple prefs flag; screens update it on subscription changes
+  final isSubscribed = prefs.getBool('is_subscribed') ?? false;
+  FirebaseAnalyticsService().logAppOpened(
+    isSubscribed: isSubscribed,
+    daysSinceInstall: daysSinceInstall,
+  );
+  // ═══════════════════════════════════════════════════════════════════════════
+
   // Initialize Hive
   await Hive.initFlutter();
   
@@ -83,6 +109,7 @@ class MyApp extends ConsumerWidget {
       title: 'FitnessOS',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
+      navigatorObservers: [FirebaseAnalyticsService().observer],
       home: const AppInitializer(), // Check onboarding state on startup
       routes: {
         '/home': (context) => const HomeScreen(),

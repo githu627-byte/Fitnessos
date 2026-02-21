@@ -9,6 +9,7 @@ import '../models/exercise_in_workout.dart';
 import '../models/workout_set_model.dart';
 import '../models/exercise_set_data.dart';
 import '../services/unified_workout_save_service.dart';
+import '../services/firebase_analytics_service.dart';
 import '../widgets/hevy_exercise_card.dart';
 import '../features/analytics/services/analytics_service.dart';
 import '../widgets/workout_summary_screen.dart';
@@ -42,6 +43,15 @@ class _HevyManualWorkoutScreenState extends ConsumerState<HevyManualWorkoutScree
     _startWorkoutTimer();
     _initializeExercises(); // Now async, loads previous sets
     
+    FirebaseAnalyticsService().logScreenView(screenName: 'hevy_manual_workout', screenClass: 'HevyManualWorkoutScreen');
+    FirebaseAnalyticsService().logWorkoutStarted(
+      mode: 'hevy',
+      workoutName: widget.workout.name,
+      exerciseCount: widget.workout.exercises.length,
+      isPreset: widget.workout.category != 'custom',
+      isCustom: widget.workout.category == 'custom',
+    );
+
     // Keep screen awake during workout
     WakelockPlus.enable();
     
@@ -104,6 +114,7 @@ class _HevyManualWorkoutScreenState extends ConsumerState<HevyManualWorkoutScree
       setState(() {
         _exercises.add(ExerciseInWorkout.fromWorkoutExercise(selectedExercise));
       });
+      FirebaseAnalyticsService().logExerciseAddedToCustom(exerciseId: selectedExercise.name, mode: 'hevy');
       HapticFeedback.mediumImpact();
     }
   }
@@ -185,6 +196,16 @@ class _HevyManualWorkoutScreenState extends ConsumerState<HevyManualWorkoutScree
       );
       return;
     }
+
+    final exercisesWithCompletedSets = _exercises.where((ex) => ex.completedSetsCount > 0).length;
+    FirebaseAnalyticsService().logWorkoutCompleted(
+      mode: 'hevy',
+      durationSeconds: _elapsed.inSeconds,
+      totalReps: totalReps,
+      totalSets: totalSets,
+      exercisesCompleted: exercisesWithCompletedSets,
+      workoutName: widget.workout.name,
+    );
 
     // Convert exercises to ExerciseSetData list
     final List<ExerciseSetData> allSets = [];
@@ -300,6 +321,11 @@ class _HevyManualWorkoutScreenState extends ConsumerState<HevyManualWorkoutScree
           ),
           TextButton(
             onPressed: () {
+              FirebaseAnalyticsService().logWorkoutAbandoned(
+                mode: 'hevy',
+                durationSeconds: _elapsed.inSeconds,
+                exercisesCompleted: _exercises.where((ex) => ex.completedSetsCount > 0).length,
+              );
               Navigator.pop(context); // Close dialog
               Navigator.pop(context); // Close workout screen
             },

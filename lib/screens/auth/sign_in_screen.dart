@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../services/firebase_analytics_service.dart';
 import '../paywall/paywall_screen.dart';
 
 /// ═══════════════════════════════════════════════════════════════════════════════
@@ -157,6 +158,7 @@ class _SignInScreenState extends State<SignInScreen> {
               GestureDetector(
                 onTap: () {
                   HapticFeedback.lightImpact();
+                  FirebaseAnalyticsService().logSignInCompleted(method: 'email');
                   // TODO: Real auth logic
                   // For now, navigate to paywall
                   _goToPaywall();
@@ -213,6 +215,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 icon: 'assets/images/icons/google_icon.png',
                 onTap: () {
                   HapticFeedback.lightImpact();
+                  FirebaseAnalyticsService().logSignInCompleted(method: 'google');
                   // TODO: Google sign in
                   _goToPaywall();
                 },
@@ -229,6 +232,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 appleIcon: true,
                 onTap: () {
                   HapticFeedback.lightImpact();
+                  FirebaseAnalyticsService().logSignInCompleted(method: 'apple');
                   // TODO: Apple sign in
                   _goToPaywall();
                 },

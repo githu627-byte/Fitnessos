@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import '../models/exercise_set_data.dart';
 import '../features/analytics/services/analytics_service.dart';
+import 'firebase_analytics_service.dart';
 import 'supabase_sync_service.dart';
 import 'storage_service.dart';
 import 'calorie_calculation_service.dart';
@@ -145,6 +146,7 @@ class UnifiedWorkoutSaveService {
     } catch (e) {
       debugPrint('❌ Error saving workout: $e');
       debugPrint('Stack trace: ${StackTrace.current}');
+      FirebaseAnalyticsService().logWorkoutSaveError(errorMessage: e.toString());
       return {'success': false, 'caloriesBurned': 0};
     }
   }

@@ -40,6 +40,7 @@ import '../../services/workout_session.dart';
 import '../../core/patterns/movement_engine.dart';
 import '../../services/unified_workout_save_service.dart';
 import '../../models/exercise_set_data.dart';
+import '../../services/firebase_analytics_service.dart';
 
 /// Elite countdown phases
 enum CountdownPhase { positioning, counting, scanning }
@@ -148,6 +149,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
   @override
   void initState() {
     super.initState();
+    FirebaseAnalyticsService().logScreenView(screenName: 'train_tab', screenClass: 'TrainTab');
     _loadCommittedWorkout();
   }
 
@@ -212,7 +214,9 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
       _cameraController!.startImageStream(_processFrame);
 
       setState(() => _isCameraInitialized = true);
+      FirebaseAnalyticsService().logCameraInitialized(success: true);
     } catch (e) {
+      FirebaseAnalyticsService().logCameraError(errorMessage: e.toString());
       setState(() => _cameraError = 'Camera error: $e');
     }
   }
@@ -390,6 +394,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
     };
     
     _session!.onSetComplete = (setComplete, totalSets) {
+      FirebaseAnalyticsService().logSetCompleted(exerciseId: _committedWorkout!.exercises[_currentExerciseIndex].id, setNumber: setComplete, reps: _session?.completedRepsPerSet.lastOrNull ?? 0, durationSeconds: _setElapsedSeconds);
       print('📞 onSetComplete callback: setComplete=$setComplete, totalSets=$totalSets');
       print('   Current exercise: ${_currentExerciseIndex + 1}/${_committedWorkout?.exercises.length ?? 0}');
       
@@ -515,11 +520,12 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
   }
 
   void _finishCommitAndStartWorkout() {
+    FirebaseAnalyticsService().logWorkoutStarted(mode: 'auto', workoutName: _committedWorkout?.name ?? 'Unknown', exerciseCount: _committedWorkout?.exercises.length ?? 0, isPreset: true, isCustom: false);
     setState(() {
       _isScanning = false;
       _isCommitted = true;
     });
-    
+
     // Show COMMITTED for 1.5 seconds, then hide countdown and start workout
     Future.delayed(const Duration(milliseconds: 1500), () {
       if (mounted) {
@@ -641,6 +647,8 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
       }
     }
     
+    FirebaseAnalyticsService().logWorkoutCompleted(mode: 'auto', durationSeconds: workoutDuration.inSeconds, totalReps: totalReps, totalSets: totalSets, exercisesCompleted: _committedWorkout!.exercises.length, workoutName: _committedWorkout!.name);
+
     // End workout state FIRST (cleans up camera, session, etc)
     _endWorkout();
 
@@ -923,6 +931,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
   }
 
   void _skipRest() {
+    FirebaseAnalyticsService().logRestTimerSkipped(secondsRemaining: _restTimeRemaining);
     _restTimer?.cancel();
     _endRest();
   }
@@ -1426,6 +1435,7 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
             child: IconButton(
               onPressed: () {
                 _countdownTimer?.cancel();
+                FirebaseAnalyticsService().logWorkoutAbandoned(mode: 'auto', durationSeconds: _workoutStartTime != null ? DateTime.now().difference(_workoutStartTime!).inSeconds : 0, exercisesCompleted: _currentExerciseIndex);
                 setState(() {
                   _showCountdown = false;
                   _isWorkoutActive = false;
@@ -1848,7 +1858,10 @@ class _TrainTabState extends ConsumerState<TrainTab> with TickerProviderStateMix
             top: 50,
             right: 16,
             child: GestureDetector(
-              onTap: _endWorkout,
+              onTap: () {
+                FirebaseAnalyticsService().logWorkoutAbandoned(mode: 'auto', durationSeconds: _workoutStartTime != null ? DateTime.now().difference(_workoutStartTime!).inSeconds : 0, exercisesCompleted: _currentExerciseIndex);
+                _endWorkout();
+              },
               child: Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(

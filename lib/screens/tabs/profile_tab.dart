@@ -15,6 +15,7 @@ import '../../features/analytics/widgets/pr_timeline_widget.dart';
 import '../../features/analytics/widgets/form_analytics_widget.dart';
 import '../../features/analytics/screens/measurements_input_screen.dart';
 import '../tabs/settings_tab.dart';
+import '../../services/firebase_analytics_service.dart';
 
 /// =============================================================================
 /// PROFILE TAB - Swipeable Tabs with Pressable Animations
@@ -45,6 +46,7 @@ class _ProfileTabState extends ConsumerState<ProfileTab> {
   @override
   void initState() {
     super.initState();
+    FirebaseAnalyticsService().logScreenView(screenName: 'profile_tab', screenClass: 'ProfileTab');
     _pageController = PageController();
     _loadUserData();
     _loadAnalytics();
@@ -94,6 +96,7 @@ class _ProfileTabState extends ConsumerState<ProfileTab> {
   }
 
   void _onPeriodChanged(AnalyticsPeriod period) {
+    FirebaseAnalyticsService().logAnalyticsPeriodChanged(period: period.displayName);
     HapticFeedback.selectionClick();
     setState(() {
       _selectedPeriod = period;
@@ -103,6 +106,7 @@ class _ProfileTabState extends ConsumerState<ProfileTab> {
   }
 
   void _openSettings(BuildContext context) {
+    FirebaseAnalyticsService().logSettingsOpened();
     Navigator.push(
       context,
       PageRouteBuilder(
@@ -137,6 +141,7 @@ class _ProfileTabState extends ConsumerState<ProfileTab> {
                 controller: _pageController,
                 onPageChanged: (index) {
                   setState(() => _selectedTab = index);
+                  FirebaseAnalyticsService().logProfileSubTabViewed(subTab: _tabs[index].toLowerCase());
                   HapticFeedback.selectionClick();
                 },
                 physics: const BouncingScrollPhysics(),

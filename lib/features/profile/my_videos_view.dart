@@ -4,6 +4,7 @@ import 'dart:io';
 import '../../../utils/app_colors.dart';
 import '../../../services/workout_recording_service.dart';
 import '../../../widgets/workout_video_player.dart';
+import '../../services/firebase_analytics_service.dart';
 
 /// ═══════════════════════════════════════════════════════════════════════════
 /// MY VIDEOS VIEW - Recorded Workout Videos
@@ -26,6 +27,7 @@ class _MyVideosViewState extends State<MyVideosView> {
   @override
   void initState() {
     super.initState();
+    FirebaseAnalyticsService().logScreenView(screenName: 'my_videos', screenClass: 'MyVideosView');
     _loadRecordings();
   }
 
