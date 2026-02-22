@@ -303,8 +303,8 @@ class MovementEngine {
     'bodyweight_jump_squat_wide_leg': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80, 'cueGood': 'Explode!', 'cueBad': 'Lower!'}),
     'jump_on_fit_box': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80, 'cueGood': 'Explode!', 'cueBad': 'Lower!'}),
     'jump_squat': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80, 'cueGood': 'Explode!', 'cueBad': 'Lower!'}),
-    'jumping_jack': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.90, 'cueGood': 'Jump!', 'cueBad': 'Arms up!'}),
-    'star_jump': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.85, 'cueGood': 'Explode!', 'cueBad': 'Arms up!'}),
+    'squat_jump': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80, 'cueGood': 'Explode!', 'cueBad': 'Lower!'}),
+    'box_jump': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80, 'cueGood': 'Explode!', 'cueBad': 'Lower!'}),
     'tuck_jump': ExerciseConfig(patternType: PatternType.squat, params: {'triggerPercent': 0.80, 'cueGood': 'Knees up!', 'cueBad': 'Higher!'}),
 
     // DEADLIFTS (squat pattern)
@@ -705,6 +705,7 @@ class MovementEngine {
 
     // BURPEES
     'burpee': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
+    'burpees': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
     'burpee_jump_box': ExerciseConfig(patternType: PatternType.hinge, params: {'triggerPercent': 0.40, 'resetPercent': 0.75, 'cueGood': 'Lockout!', 'cueBad': 'Hips forward!'}),
 
     // HIP ABDUCTION/ADDUCTION
@@ -798,33 +799,61 @@ class MovementEngine {
     // ===== KNEE DRIVE PATTERN - Cardio movements =====
     // =========================================================================
 
-    // VERTICAL KNEE (high knees, skaters)
+    // GROUP A: VERTICAL KNEE — knee rises toward hip (high knees, skaters, marching)
+    'a_skip': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.verticalKnee}),
+    'b_skip': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.verticalKnee}),
     'crossover_high_knee': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.verticalKnee}),
     'elbow_to_knee': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.verticalKnee}),
     'high_knee': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.verticalKnee}),
+    'marching_in_place': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.verticalKnee}),
+    'running_in_place': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.verticalKnee}),
     'skater': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.verticalKnee}),
     'skater_hops': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.verticalKnee}),
 
-    // HORIZONTAL KNEE (mountain climbers)
+    // GROUP A (horizontal): MOUNTAIN CLIMBERS — plank knee drive
     'mountain_climber': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.horizontalKnee, 'cueGood': 'Drive!', 'cueBad': 'Knee in!'}),
     'mountain_climbers': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.horizontalKnee}),
+    'mountain_climber_crossover': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.horizontalKnee, 'cueGood': 'Cross!', 'cueBad': 'Knee in!'}),
 
-    // LEG RAISES
-    'bicycle_crunch': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'cueGood': 'Twist!', 'cueBad': 'Opposite!'}),
-    'flutter_kicks': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'triggerThreshold': 0.25, 'resetThreshold': 0.12}),
-    'flutter_kicks_version_2': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'triggerThreshold': 0.25, 'resetThreshold': 0.12}),
-    'flutter_kicks_version_3': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'triggerThreshold': 0.25, 'resetThreshold': 0.12}),
+    // GROUP B: BUTT KICKS — ankle rises toward hip (heel kicks up behind)
+    'butt_kick': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.buttKick, 'cueGood': 'Snap!', 'cueBad': 'Heels up!'}),
+    'butt_kicks': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.buttKick, 'cueGood': 'Snap!', 'cueBad': 'Heels up!'}),
+    'butt_kick_sprint': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.buttKick, 'cueGood': 'Snap!', 'cueBad': 'Heels up!'}),
+    'butt_ups': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.buttKick, 'cueGood': 'Snap!', 'cueBad': 'Heels up!'}),
+
+    // GROUP D: LEG RAISES — ankle rises toward hip (lying/hanging)
     'hanging_leg_hip_raise': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise}),
+    'hanging_leg_raise': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise}),
+    'leg_raise': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise}),
+    'leg_raises': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise}),
     'lever_standing_leg_raise': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise}),
     'lying_leg_raise': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise}),
     'lying_leg_raise_and_hold': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise}),
     'lying_leg_raise_flat_bench': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise}),
     'seated_leg_raise': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise}),
+    'v_up': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise}),
+    'v_ups': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise}),
 
-    // BUTT KICKS
-    'butt_kick': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.buttKick, 'cueGood': 'Snap!', 'cueBad': 'Heels up!'}),
-    'butt_kicks': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.buttKick, 'cueGood': 'Snap!', 'cueBad': 'Heels up!'}),
-    'butt_ups': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.buttKick, 'cueGood': 'Snap!', 'cueBad': 'Heels up!'}),
+    // GROUP E: FAST ALTERNATING — leg raises with low threshold (flutter/scissor kicks)
+    'bicycle_crunch': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'triggerThreshold': 0.25, 'resetThreshold': 0.12, 'cueGood': 'Twist!', 'cueBad': 'Opposite!'}),
+    'dead_bug': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'triggerThreshold': 0.25, 'resetThreshold': 0.12}),
+    'dead_bugs': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'triggerThreshold': 0.25, 'resetThreshold': 0.12}),
+    'flutter_kick': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'triggerThreshold': 0.25, 'resetThreshold': 0.12}),
+    'flutter_kicks': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'triggerThreshold': 0.25, 'resetThreshold': 0.12}),
+    'flutter_kicks_version_2': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'triggerThreshold': 0.25, 'resetThreshold': 0.12}),
+    'flutter_kicks_version_3': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'triggerThreshold': 0.25, 'resetThreshold': 0.12}),
+    'scissor_kick': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'triggerThreshold': 0.25, 'resetThreshold': 0.12}),
+    'scissor_kicks': ExerciseConfig(patternType: PatternType.kneeDrive, params: {'mode': KneeDriveMode.legRaise, 'triggerThreshold': 0.25, 'resetThreshold': 0.12}),
+
+    // =========================================================================
+    // ===== PISTON PATTERN - Ankle Spread (jumping jacks, star jumps) =====
+    // =========================================================================
+
+    // GROUP C: ANKLES SPREAD APART — feet jump apart then come back together
+    'jumping_jack': ExerciseConfig(patternType: PatternType.piston, params: {'pointA': PoseLandmarkType.leftAnkle, 'pointB': PoseLandmarkType.rightAnkle, 'mode': PistonMode.grow, 'triggerPercent': 1.80, 'resetPercent': 1.30, 'cueGood': 'Jump!', 'cueBad': 'Wider!'}),
+    'jumping_jacks': ExerciseConfig(patternType: PatternType.piston, params: {'pointA': PoseLandmarkType.leftAnkle, 'pointB': PoseLandmarkType.rightAnkle, 'mode': PistonMode.grow, 'triggerPercent': 1.80, 'resetPercent': 1.30, 'cueGood': 'Jump!', 'cueBad': 'Wider!'}),
+    'star_jump': ExerciseConfig(patternType: PatternType.piston, params: {'pointA': PoseLandmarkType.leftAnkle, 'pointB': PoseLandmarkType.rightAnkle, 'mode': PistonMode.grow, 'triggerPercent': 1.80, 'resetPercent': 1.30, 'cueGood': 'Explode!', 'cueBad': 'Wider!'}),
+    'star_jumps': ExerciseConfig(patternType: PatternType.piston, params: {'pointA': PoseLandmarkType.leftAnkle, 'pointB': PoseLandmarkType.rightAnkle, 'mode': PistonMode.grow, 'triggerPercent': 1.80, 'resetPercent': 1.30, 'cueGood': 'Explode!', 'cueBad': 'Wider!'}),
 
     // =========================================================================
     // ===== HOLD PATTERN - Isometric holds =====

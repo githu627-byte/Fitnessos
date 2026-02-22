@@ -118,16 +118,19 @@ class KneeDrivePattern extends BasePattern {
   // THE ENGINE: Maps your entire config list to the correct biology
   double _getVal(PoseLandmark hip, PoseLandmark knee, PoseLandmark ankle) {
     switch (mode) {
-      case KneeDriveMode.horizontalKnee: // MOUNTAIN CLIMBERS
-      case KneeDriveMode.buttKick:       // BUTT KICKS
-        // Uses 3D math for the plank plane
+      case KneeDriveMode.horizontalKnee: // MOUNTAIN CLIMBERS (plank)
+        // 3D distance — ankle drives toward hip in plank plane
         return math.sqrt(
-          math.pow(ankle.x - hip.x, 2) + 
-          math.pow(ankle.y - hip.y, 2) + 
+          math.pow(ankle.x - hip.x, 2) +
+          math.pow(ankle.y - hip.y, 2) +
           math.pow((ankle.z ?? 0) - (hip.z ?? 0), 2)
         );
-      case KneeDriveMode.legRaise: // LEG RAISES / CRUNCHES
-        return ankle.y; 
+      case KneeDriveMode.buttKick: // BUTT KICKS — heel kicks up toward glute
+        // Track ankle-to-hip Y distance (shrinks as heel rises)
+        return ankle.y - hip.y;
+      case KneeDriveMode.legRaise: // LEG RAISES / FLUTTER KICKS
+        // Track ankle-to-hip Y distance (shrinks as legs rise)
+        return ankle.y - hip.y;
       default: // HIGH KNEES / MARCHING
         return knee.y - hip.y;
     }
