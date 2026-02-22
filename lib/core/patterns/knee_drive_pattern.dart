@@ -84,7 +84,7 @@ class KneeDrivePattern extends BasePattern {
 
     // 3. LEFT LEG INDEPENDENT TRACKER
     if (leftVal < _leftPeak) _leftPeak = leftVal;
-    if (!_leftActive && leftVal < _leftBase - 0.08) _leftActive = true;
+    if (!_leftActive && leftVal < _leftBase - 0.04) _leftActive = true;
     if (_leftActive && leftVal > _leftPeak + triggerThreshold) {
       _repCount++;
       _justHitTrigger = true;
@@ -96,7 +96,7 @@ class KneeDrivePattern extends BasePattern {
 
     // 4. RIGHT LEG INDEPENDENT TRACKER
     if (rightVal < _rightPeak) _rightPeak = rightVal;
-    if (!_rightActive && rightVal < _rightBase - 0.08) _rightActive = true;
+    if (!_rightActive && rightVal < _rightBase - 0.04) _rightActive = true;
     if (_rightActive && rightVal > _rightPeak + triggerThreshold) {
       _repCount++;
       _justHitTrigger = true;
@@ -117,35 +117,19 @@ class KneeDrivePattern extends BasePattern {
 
   // THE ENGINE: Maps your entire config list to the correct biology
   double _getVal(PoseLandmark hip, PoseLandmark knee, PoseLandmark ankle) {
-    // Leg length for normalization — prevents ghost reps from walking/swaying
-    double legLength = math.sqrt(
-      math.pow(hip.x - knee.x, 2) + math.pow(hip.y - knee.y, 2)
-    ) + math.sqrt(
-      math.pow(knee.x - ankle.x, 2) + math.pow(knee.y - ankle.y, 2)
-    );
-    if (legLength < 1.0) legLength = 1.0;
-
     switch (mode) {
-      case KneeDriveMode.buttKick:
-        // Butt kick: heel kicks UP toward glute
-        // Track ankle Y relative to KNEE Y (not hip) — shorter distance, more sensitive
-        // When heel kicks up, ankle rises toward knee, value shrinks
-        return (ankle.y - knee.y) / legLength;
-
-      case KneeDriveMode.horizontalKnee:
-        // Mountain climber: in plank, knee drives toward chest
-        // From front camera, knee rises toward hip — same as high knees
-        // Using knee-to-hip Y normalized
-        return (knee.y - hip.y) / legLength;
-
-      case KneeDriveMode.legRaise:
-        // Leg raises, flutter kicks, bicycle crunches
-        // Ankle Y relative to hip Y — legs rise up
-        return (ankle.y - hip.y) / legLength;
-
-      default: // verticalKnee — HIGH KNEES (WORKING — DO NOT CHANGE THIS LOGIC)
-        // Knee Y relative to hip Y, normalized
-        return (knee.y - hip.y) / legLength;
+      case KneeDriveMode.horizontalKnee: // MOUNTAIN CLIMBERS
+      case KneeDriveMode.buttKick:       // BUTT KICKS
+        // Uses 3D math for the plank plane
+        return math.sqrt(
+          math.pow(ankle.x - hip.x, 2) + 
+          math.pow(ankle.y - hip.y, 2) + 
+          math.pow((ankle.z ?? 0) - (hip.z ?? 0), 2)
+        );
+      case KneeDriveMode.legRaise: // LEG RAISES / CRUNCHES
+        return ankle.y; 
+      default: // HIGH KNEES / MARCHING
+        return knee.y - hip.y;
     }
   }
 
