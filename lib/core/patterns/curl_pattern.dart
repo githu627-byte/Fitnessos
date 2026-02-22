@@ -39,7 +39,9 @@ class CurlPattern implements BasePattern {
   double _smoothedCurlProgress = 0;
   
   // Anti-ghost
-  static const double _smoothingFactor = 0.3;
+  // 0.3 was too responsive for small ROM exercises (rows)
+  // 0.45 gives smooth gauge fill while still being reactive
+  static const double _smoothingFactor = 0.45;
   DateTime? _intentTimer;
   DateTime _lastRepTime = DateTime.now();
   static const int _intentDelayMs = 250;
