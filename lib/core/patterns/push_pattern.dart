@@ -63,8 +63,8 @@ class PushPattern implements BasePattern {
   double get chargeProgress {
     // UI Progress Bar Logic
     if (inverted) {
-      // OHP: Start Bent (~70) -> Goal Straight (extensionThreshold)
-      return ((_currentAngle - 70) / (extensionThreshold - 70)).clamp(0.0, 1.0);
+      // OHP: Start Bent (flexionThreshold) -> Goal Straight (extensionThreshold)
+      return ((_currentAngle - flexionThreshold) / (extensionThreshold - flexionThreshold)).clamp(0.0, 1.0);
     } else {
       // Pushup: Start Straight (180) -> Goal Bent (flexionThreshold)
       return ((180 - _currentAngle) / (180 - flexionThreshold)).clamp(0.0, 1.0);

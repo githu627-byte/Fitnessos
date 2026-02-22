@@ -26,10 +26,11 @@ class PullPattern implements BasePattern {
   bool _justHitTrigger = false;
 
   // ANGLE THRESHOLDS (TUNED)
-  // RELAXED for free-weight rows from diagonal camera angle
-  // Foreshortening makes elbows appear more open than they are
-  static const double _extensionThreshold = 130.0;   // Was 125 — more room to reset
-  static const double _flexionThreshold = 115.0;     // Was 105 — triggers on moderate pull
+  // RELAXED: 105° required pulling wrist to shoulder — way too far
+  // 125° triggers when wrist reaches stomach/ribcage area — correct for rows
+  // Extension bumped to 145° so arms don't have to go fully straight to reset
+  static const double _extensionThreshold = 145.0;
+  static const double _flexionThreshold = 125.0;
 
   double _currentAngle = 180;
   double _smoothedAngle = 180;
@@ -58,9 +59,8 @@ class PullPattern implements BasePattern {
 
   @override
   double get chargeProgress {
-    // Start Straight (180) -> Goal Bent (90)
-    // Adjusted visualization to match new thresholds
-    return ((180 - _currentAngle) / (180 - 90)).clamp(0.0, 1.0);
+    // Gauge fills from extension threshold to flexion threshold
+    return ((_extensionThreshold - _currentAngle) / (_extensionThreshold - _flexionThreshold)).clamp(0.0, 1.0);
   }
 
   double _calculateAngle(PoseLandmark first, PoseLandmark middle, PoseLandmark last) {
