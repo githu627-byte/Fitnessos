@@ -125,11 +125,12 @@ class MovementEngine {
         );
         
       case PatternType.push:
-        // FIXED: No more triggerAngle/resetAngle
         return PushPattern(
           inverted: config.params['inverted'] ?? false,
           cueGood: config.params['cueGood'] ?? 'Good!',
           cueBad: config.params['cueBad'] ?? 'Lower!',
+          extensionThreshold: config.params['extensionThreshold'] as double?,
+          flexionThreshold: config.params['flexionThreshold'] as double?,
         );
         
       case PatternType.pull:
@@ -506,14 +507,8 @@ class MovementEngine {
     'lever_seated_fly': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'lever_seated_reverse_fly': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
 
-    // ROWS (push pattern)
-    'barbell_bent_over_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'barbell_incline_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'barbell_rear_delt_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'barbell_reverse_grip_bent_over_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
+    // ROWS — Seated/machine rows (push pattern, side view)
     'barbell_reverse_grip_incline_bench_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'barbell_upright_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'cable_elevated_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'cable_low_seated_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'cable_reverse_grip_straight_back_seated_high_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'cable_rope_elevated_seated_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
@@ -523,37 +518,16 @@ class MovementEngine {
     'cable_seated_row_bent_bar': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'cable_seated_wide_grip_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'cable_straight_back_seated_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'cable_upper_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'cable_upright_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'dumbbell_bent_over_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'dumbbell_incline_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'dumbbell_lying_rear_delt_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'dumbbell_one_arm_row_rack_support': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'dumbbell_palm_rotational_bent_over_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'dumbbell_rear_delt_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'dumbbell_reverse_grip_incline_bench_two_arm_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'dumbbell_row_with_chest_supported': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'dumbbell_upright_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'dumbbell_upright_row_back_pov': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'ez_bar_reverse_grip_bent_over_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'inverted_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'inverted_row_bent_knees': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'lever_high_row_plate_loaded': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'lever_lying_t_bar_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'lever_neutral_grip_seated_row_plate_loaded': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'lever_reverse_grip_vertical_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'lever_reverse_t_bar_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'lever_row_plate_loaded': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'lever_seated_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'lever_single_arm_neutral_grip_seated_row_plate_loaded': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'lever_t_bar_reverse_grip_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'lever_t_bar_row_plate_loaded': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
     'lever_unilateral_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'smith_bent_over_narrow_supinated_grip_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'smith_bent_over_pronated_grip_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'smith_reverse_grip_bent_over_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'smith_upright_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
-    'underhand_grip_inverted_back_row': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
 
     // FACE PULLS & REAR DELTS (push pattern)
     'dumbbell_rear_delt_raise': ExerciseConfig(patternType: PatternType.push, params: {'cueGood': 'Squeeze!', 'cueBad': 'Open up!'}),
@@ -595,6 +569,39 @@ class MovementEngine {
     // =========================================================================
     // ===== PULL PATTERN - Pull-ups, pulldowns, shrugs, twists =====
     // =========================================================================
+
+    // ═════════════════════════════════════════════════════════════════════════
+    // PULL PATTERN - FREE WEIGHT ROWS (diagonal view)
+    // Moved from push — these work from front/diagonal angle on pull pattern
+    // Seated/machine rows STAY on push pattern (side view)
+    // ═════════════════════════════════════════════════════════════════════════
+    'barbell_bent_over_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'barbell_incline_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'barbell_rear_delt_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'barbell_reverse_grip_bent_over_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'barbell_upright_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'cable_elevated_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'cable_upper_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'cable_upright_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'dumbbell_bent_over_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'dumbbell_incline_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'dumbbell_one_arm_row_rack_support': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'dumbbell_palm_rotational_bent_over_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'dumbbell_rear_delt_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'dumbbell_upright_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'dumbbell_upright_row_back_pov': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'ez_bar_reverse_grip_bent_over_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'inverted_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'inverted_row_bent_knees': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'lever_high_row_plate_loaded': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'lever_reverse_t_bar_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'lever_t_bar_reverse_grip_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'lever_t_bar_row_plate_loaded': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'smith_bent_over_narrow_supinated_grip_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'smith_bent_over_pronated_grip_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'smith_reverse_grip_bent_over_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'smith_upright_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
+    'underhand_grip_inverted_back_row': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.55, 'resetPercent': 0.85, 'cueGood': 'Squeeze!', 'cueBad': 'Full extension!'}),
 
     // PULL-UPS & CHIN-UPS
     'barbell_decline_wide_grip_pullover': ExerciseConfig(patternType: PatternType.pull, params: {'triggerPercent': 0.60, 'resetPercent': 0.85}),
